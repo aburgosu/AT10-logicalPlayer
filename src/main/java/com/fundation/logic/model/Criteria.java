@@ -7,7 +7,7 @@
   * with Jalasoft.
   */
 
- package com.fundation.logic.Model;
+ package com.fundation.logic.model;
 
   /* Implements the model class File and the getter and setter´s methods
   * @author Andres Burgos
