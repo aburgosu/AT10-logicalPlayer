@@ -1,0 +1,102 @@
+package com.fundation.logic.view;
+
+import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
+import uk.co.caprica.vlcj.player.MediaPlayer;
+import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
+
+import javax.swing.JLabel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+
+public class ButtonListener {
+
+    int vol;
+    boolean actionProgress;
+
+    public ButtonListener(int vol) {
+
+        this.vol = vol;
+        actionProgress = true;
+    }
+
+    public void listen(JLabel playButton, JLabel stopButton, JLabel pauseButton, EmbeddedMediaPlayerComponent player,
+                       File file, JSlider progressBar, JSlider volumen) {
+
+        playButton.addMouseListener(new MouseAdapter() {
+
+            public void mousePressed(MouseEvent e) {
+
+                player.getMediaPlayer().playMedia(file.getAbsolutePath());
+                player.getMediaPlayer().setVolume(vol);
+                progressBar.setEnabled(true);
+            }
+        });
+
+        volumen.addChangeListener(new ChangeListener() {
+
+            public void stateChanged(ChangeEvent e) {
+
+                vol = volumen.getValue();
+                player.getMediaPlayer().setVolume(vol);
+            }
+        });
+
+        stopButton.addMouseListener(new MouseAdapter() {
+
+            public void mousePressed(MouseEvent e) {
+
+                player.getMediaPlayer().stop();
+                progressBar.setValue(0);
+                progressBar.setEnabled(false);
+            }
+        });
+
+        pauseButton.addMouseListener(new MouseAdapter() {
+
+            public void mousePressed(MouseEvent e) {
+
+                player.getMediaPlayer().setPause(player.getMediaPlayer().isPlaying() ? true : false);
+            }
+        });
+
+        progressBar.addMouseListener(new MouseAdapter() {
+
+            public void mousePressed(MouseEvent e) {
+
+                actionProgress = false;
+            }
+
+            public void mouseReleased(MouseEvent e) {
+
+                actionProgress = true;
+            }
+        });
+
+        progressBar.addChangeListener(new ChangeListener() {
+
+            public synchronized void stateChanged(ChangeEvent e) {
+
+                if (!actionProgress) {
+                    float position = progressBar.getValue() / 100f;
+                    player.getMediaPlayer().setPosition(position);
+                }
+            }
+        });
+
+        player.getMediaPlayer().addMediaPlayerEventListener(new MediaPlayerEventAdapter() {
+
+            public void positionChanged(MediaPlayer mp, float position) {
+
+                if (actionProgress) {
+                    int value = Math.min(100, Math.round(position * 100.0f));
+                    progressBar.setValue(value);
+                }
+            }
+        });
+    }
+}
+

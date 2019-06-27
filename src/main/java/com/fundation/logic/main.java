@@ -6,19 +6,16 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+ package com.fundation.logic;
 
-/**
- * Runs player PlayerJFrame only for testing purposes
- *
- * @author Melissa Román
- * @version 1.0
- */
-public class PlayerMain {
+ /**
+  * Implements the main class
+  * @author Andres Burgos
+  * @version 1.0 *
+  */
+public class main {
 
-    public static void main(String[] args) {
+    public static void main(String[] arg){
 
-        new PlayerJFrame();
     }
 }
-
