@@ -8,9 +8,10 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.BorderLayout;
 
 /**
  * Implements the SearchVideoFrame class
