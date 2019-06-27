@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2019 Jalasoft.
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jalasoft.
+ */
 package com.fundation.logic.view;
 
 import com.sun.jna.NativeLibrary;
@@ -5,7 +13,6 @@ import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -14,6 +21,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 
+/**
+ * Implements the player frame with playing control buttons
+ *
+ * @author Melissa Román
+ * @version 1.0
+ */
 class PlayerJFrame extends JFrame {
 
     private JLabel playButton = new JLabel();
@@ -44,7 +57,6 @@ class PlayerJFrame extends JFrame {
 
         setTitle("LogicalPlayer");
 
-        // Icons buttons
         try {
             playButton.setIcon(new ImageIcon("resources/Play.png"));
             stopButton.setIcon(new ImageIcon("resources/Stop.png"));
