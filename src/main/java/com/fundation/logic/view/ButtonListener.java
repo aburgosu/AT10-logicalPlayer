@@ -1,9 +1,16 @@
+/**
+ * Copyright (c) 2019 Jalasoft.
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jalasoft.
+ */
 package com.fundation.logic.view;
 
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
-
 import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -12,6 +19,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 
+/**
+ * Implements the ButtonListener class which listen to player buttons
+ *
+ * @author Melissa Román
+ * @version 1.0
+ */
 public class ButtonListener {
 
     int vol;

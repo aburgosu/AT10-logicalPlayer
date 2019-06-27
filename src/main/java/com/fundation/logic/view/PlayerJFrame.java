@@ -11,7 +11,6 @@ package com.fundation.logic.view;
 import com.sun.jna.NativeLibrary;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,16 +36,13 @@ class PlayerJFrame extends JFrame {
     private JLabel stopButton = new JLabel();
     private JLabel pauseButton = new JLabel();
     private int vol = 50;
-
     private JPanel headerPanel = new JPanel();
     private JPanel playingPanel = new JPanel();
     private JPanel bottomPanel = new JPanel();
-
     private JSlider progressBar = new JSlider(0, 100, 0);
     private JSlider volumen = new JSlider(0, 100, vol);
-
     private EmbeddedMediaPlayerComponent player = new EmbeddedMediaPlayerComponent();
-    private File file1 = new File("resources/Wildlife.wmv");
+    private File fileToBePlayed = new File("resources/Wildlife.wmv");
 
     static {
 
@@ -57,7 +53,6 @@ class PlayerJFrame extends JFrame {
 
         setBounds(new Rectangle(80, 100, 800, 600));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         setTitle("LogicalPlayer");
 
         try {
@@ -108,7 +103,7 @@ class PlayerJFrame extends JFrame {
         setVisible(true);
 
         ButtonListener buttonListener = new ButtonListener(vol);
-        buttonListener.listen(playButton, stopButton, pauseButton, player, file1, progressBar, volumen);
+        buttonListener.listen(playButton, stopButton, pauseButton, player, fileToBePlayed, progressBar, volumen);
     }
 }
 
