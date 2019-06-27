@@ -21,9 +21,9 @@ class PlayerJFrame extends JFrame {
     private JLabel pauseButton = new JLabel();
     private int vol = 50;
 
-    private JPanel jPanel1 = new JPanel();
-    private JPanel jPanel2 = new JPanel();
-    private JPanel jPanel3 = new JPanel();
+    private JPanel headerPanel = new JPanel();
+    private JPanel playingPanel = new JPanel();
+    private JPanel bottomPanel = new JPanel();
 
     private JSlider progressBar = new JSlider(0, 100, 0);
     private JSlider volumen = new JSlider(0, 100, vol);
@@ -59,37 +59,37 @@ class PlayerJFrame extends JFrame {
         Box caja2 = Box.createVerticalBox();
         Box caja3 = Box.createVerticalBox();
 
-        add(jPanel1, BorderLayout.NORTH);
-        jPanel1.setBackground(Color.BLUE);
+        add(headerPanel, BorderLayout.NORTH);
+        headerPanel.setBackground(Color.BLUE);
         grupo.setPreferredSize(new Dimension(100, 50));
-        jPanel1.add(grupo);
+        headerPanel.add(grupo);
 
-        add(jPanel3, BorderLayout.SOUTH);
-        jPanel3.setBackground(Color.BLUE);
+        add(bottomPanel, BorderLayout.SOUTH);
+        bottomPanel.setBackground(Color.BLUE);
 
         caja.setPreferredSize(new Dimension(50, 50));
         caja.add(playButton);
-        jPanel3.add(caja);
+        bottomPanel.add(caja);
 
         caja1.setPreferredSize(new Dimension(50, 50));
         caja1.add(pauseButton);
-        jPanel3.add(caja1);
+        bottomPanel.add(caja1);
 
         caja2.setPreferredSize(new Dimension(50, 50));
         caja2.add(stopButton);
-        jPanel3.add(caja2);
+        bottomPanel.add(caja2);
 
         caja3.setPreferredSize(new Dimension(300, 50));
         caja3.add(progressBar);
         progressBar.setEnabled(false);
         caja3.add(volumen);
-        jPanel3.add(caja3);
+        bottomPanel.add(caja3);
 
-        add(jPanel2, BorderLayout.CENTER);
-        jPanel2.setBackground(Color.BLACK);
+        add(playingPanel, BorderLayout.CENTER);
+        playingPanel.setBackground(Color.BLACK);
 
         add(player);
-        player.setSize(jPanel2.getSize());
+        player.setSize(playingPanel.getSize());
         player.setVisible(true);
 
         setVisible(true);
