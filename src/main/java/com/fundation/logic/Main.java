@@ -9,14 +9,17 @@
 
  package com.fundation.logic;
 
+ import com.fundation.logic.view.SearchVideoFrame;
+
  /* Implements the model class File and the getter and setter´s methods
   * @author Andres Burgos
   * @version 1.0 *
   */
+ public class Main {
 
-public class Main {
+     public static void main(String[] arg) {
 
-    public static void main(String[] arg){
-
-    }
-}
+         SearchVideoFrame initMainWindow = new SearchVideoFrame();
+         initMainWindow.setVisible(true);
+     }
+ }
