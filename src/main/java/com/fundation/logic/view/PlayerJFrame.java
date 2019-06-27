@@ -45,7 +45,6 @@ class PlayerJFrame extends JFrame {
     private File fileToBePlayed = new File("resources/Wildlife.wmv");
 
     static {
-
         NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:/Program Files/VideoLAN/VLC/");
     }
 
@@ -60,7 +59,6 @@ class PlayerJFrame extends JFrame {
             stopButton.setIcon(new ImageIcon("resources/Stop.png"));
             pauseButton.setIcon(new ImageIcon("resources/Pause.png"));
         } catch (NullPointerException e) {
-
             System.out.println("Icons cannot be found..");
         }
 
@@ -99,7 +97,6 @@ class PlayerJFrame extends JFrame {
         add(player);
         player.setSize(playingPanel.getSize());
         player.setVisible(true);
-
         setVisible(true);
 
         ButtonListener buttonListener = new ButtonListener(vol);

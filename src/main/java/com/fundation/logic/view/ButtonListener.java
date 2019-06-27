@@ -40,9 +40,7 @@ public class ButtonListener {
                        File file, JSlider progressBar, JSlider volumen) {
 
         playButton.addMouseListener(new MouseAdapter() {
-
             public void mousePressed(MouseEvent e) {
-
                 player.getMediaPlayer().playMedia(file.getAbsolutePath());
                 player.getMediaPlayer().setVolume(vol);
                 progressBar.setEnabled(true);
@@ -50,18 +48,14 @@ public class ButtonListener {
         });
 
         volumen.addChangeListener(new ChangeListener() {
-
             public void stateChanged(ChangeEvent e) {
-
                 vol = volumen.getValue();
                 player.getMediaPlayer().setVolume(vol);
             }
         });
 
         stopButton.addMouseListener(new MouseAdapter() {
-
             public void mousePressed(MouseEvent e) {
-
                 player.getMediaPlayer().stop();
                 progressBar.setValue(0);
                 progressBar.setEnabled(false);
@@ -69,30 +63,23 @@ public class ButtonListener {
         });
 
         pauseButton.addMouseListener(new MouseAdapter() {
-
             public void mousePressed(MouseEvent e) {
-
                 player.getMediaPlayer().setPause(player.getMediaPlayer().isPlaying() ? true : false);
             }
         });
 
         progressBar.addMouseListener(new MouseAdapter() {
-
             public void mousePressed(MouseEvent e) {
-
                 actionProgress = false;
             }
 
             public void mouseReleased(MouseEvent e) {
-
                 actionProgress = true;
             }
         });
 
         progressBar.addChangeListener(new ChangeListener() {
-
             public synchronized void stateChanged(ChangeEvent e) {
-
                 if (!actionProgress) {
                     float position = progressBar.getValue() / 100f;
                     player.getMediaPlayer().setPosition(position);
@@ -101,9 +88,7 @@ public class ButtonListener {
         });
 
         player.getMediaPlayer().addMediaPlayerEventListener(new MediaPlayerEventAdapter() {
-
             public void positionChanged(MediaPlayer mp, float position) {
-
                 if (actionProgress) {
                     int value = Math.min(100, Math.round(position * 100.0f));
                     progressBar.setValue(value);
