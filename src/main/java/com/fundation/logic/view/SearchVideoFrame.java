@@ -22,15 +22,15 @@ public class SearchVideoFrame extends JFrame {
 
     private JPanel contentSearchVideoPane;
 
-    public  SearchVideoFrame(){
+    public SearchVideoFrame() {
 
-    initComponent();
-    initSetting();
+        initComponent();
+        initSetting();
 
     }
 
     /**
-     *This method init all component
+     * This method init all component
      */
     public void initComponent() {
 
