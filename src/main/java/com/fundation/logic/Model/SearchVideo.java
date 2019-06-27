@@ -34,8 +34,19 @@ static Criteria criteria;
         File file = new File(FILE_PATH);
         File[] allSubFiles=file.listFiles();
         for (File fileExtractor : allSubFiles) {
-            if (criteria.getPath().equals(""))
-            listFileAndDirectory.add(fileExtractor.getAbsolutePath());
+            //search by path
+            if (!(criteria.getPath().equals("")) && (criteria.getFileName().equals("")) &&(criteria.getExtension().equals("")) ) {
+                listFileAndDirectory.add(fileExtractor.getAbsolutePath());
+            }
+            if (!(criteria.getPath().equals("")) && (!criteria.getFileName().equals("")) &&(criteria.getExtension().equals("")) ) {
+                if (criteria.getFileName().equals(fileExtractor.getName())) {
+                    listFileAndDirectory.add(fileExtractor.getName());
+                }
+            }
+            if (!(criteria.getPath().equals("")) && (!criteria.getFileName().equals("")) &&(!criteria.getExtension().equals("")) ){
+                listFileAndDirectory.add(fileExtractor.getName().contains());
+            }
+
 
         }
         return listFileAndDirectory;
