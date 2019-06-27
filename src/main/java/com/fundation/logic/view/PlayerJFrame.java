@@ -1,35 +1,18 @@
 package com.fundation.logic.view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
-import javax.swing.Box;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import com.sun.jna.NativeLibrary;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 
-public class Player {
-
-    public static void main(String[] args) {
-        new PlayerJFrame();
-    }
-}
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
 
 class PlayerJFrame extends JFrame {
 
@@ -55,19 +38,6 @@ class PlayerJFrame extends JFrame {
     }
 
     public PlayerJFrame() {
-
-        try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-        } catch (InstantiationException ex) {
-        } catch (IllegalAccessException ex) {
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-        }
 
         setBounds(new Rectangle(80, 200, 800, 600));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -133,11 +103,11 @@ class PlayerJFrame extends JFrame {
 
             playButton.addMouseListener(new MouseAdapter() {
                 public void mousePressed(MouseEvent e) {
-                        player.getMediaPlayer().playMedia(file1.getAbsolutePath());
-                        player.getMediaPlayer().setVolume(vol);
-                        progressBar.setEnabled(true);
-                        setTitle(file1.getName() + " - LogicalPlayer");
-                 }
+                    player.getMediaPlayer().playMedia(file1.getAbsolutePath());
+                    player.getMediaPlayer().setVolume(vol);
+                    progressBar.setEnabled(true);
+                    setTitle(file1.getName() + " - LogicalPlayer");
+                }
             });
 
             volumen.addChangeListener(new ChangeListener() {
@@ -164,11 +134,11 @@ class PlayerJFrame extends JFrame {
 
             progressBar.addMouseListener(new MouseAdapter() {
                 public void mousePressed(MouseEvent e) {
-                      AccionProgres = false;
+                    AccionProgres = false;
                 }
 
                 public void mouseReleased(MouseEvent e) {
-                     AccionProgres = true;
+                    AccionProgres = true;
                 }
             });
 
@@ -192,3 +162,5 @@ class PlayerJFrame extends JFrame {
         }
     }
 }
+
+
