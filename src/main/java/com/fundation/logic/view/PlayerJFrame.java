@@ -53,37 +53,37 @@ class PlayerJFrame extends JFrame {
             System.out.println("Icons cannot be found..");
         }
 
-        Box grupo = Box.createHorizontalBox();
-        Box caja = Box.createVerticalBox();
-        Box caja1 = Box.createVerticalBox();
-        Box caja2 = Box.createVerticalBox();
-        Box caja3 = Box.createVerticalBox();
+        Box headerBox = Box.createHorizontalBox();
+        Box playButtonBox = Box.createVerticalBox();
+        Box pauseButtonBox = Box.createVerticalBox();
+        Box stopButtonBox = Box.createVerticalBox();
+        Box progressBarBox = Box.createVerticalBox();
 
         add(headerPanel, BorderLayout.NORTH);
         headerPanel.setBackground(Color.BLUE);
-        grupo.setPreferredSize(new Dimension(100, 50));
-        headerPanel.add(grupo);
+        headerBox.setPreferredSize(new Dimension(100, 50));
+        headerPanel.add(headerBox);
 
         add(bottomPanel, BorderLayout.SOUTH);
         bottomPanel.setBackground(Color.BLUE);
 
-        caja.setPreferredSize(new Dimension(50, 50));
-        caja.add(playButton);
-        bottomPanel.add(caja);
+        playButtonBox.setPreferredSize(new Dimension(50, 50));
+        playButtonBox.add(playButton);
+        bottomPanel.add(playButtonBox);
 
-        caja1.setPreferredSize(new Dimension(50, 50));
-        caja1.add(pauseButton);
-        bottomPanel.add(caja1);
+        pauseButtonBox.setPreferredSize(new Dimension(50, 50));
+        pauseButtonBox.add(pauseButton);
+        bottomPanel.add(pauseButtonBox);
 
-        caja2.setPreferredSize(new Dimension(50, 50));
-        caja2.add(stopButton);
-        bottomPanel.add(caja2);
+        stopButtonBox.setPreferredSize(new Dimension(50, 50));
+        stopButtonBox.add(stopButton);
+        bottomPanel.add(stopButtonBox);
 
-        caja3.setPreferredSize(new Dimension(300, 50));
-        caja3.add(progressBar);
+        progressBarBox.setPreferredSize(new Dimension(300, 50));
+        progressBarBox.add(progressBar);
         progressBar.setEnabled(false);
-        caja3.add(volumen);
-        bottomPanel.add(caja3);
+        progressBarBox.add(volumen);
+        bottomPanel.add(progressBarBox);
 
         add(playingPanel, BorderLayout.CENTER);
         playingPanel.setBackground(Color.BLACK);
