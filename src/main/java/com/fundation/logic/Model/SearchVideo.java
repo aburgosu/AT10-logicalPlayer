@@ -28,77 +28,38 @@ static Criteria criteria;
         this.criteria = criteria;
     }
 
-    public List searchAnyWant() {
+    public List searchByPath() {
+        if ((criteria.getPath().equals("")) && (criteria.getFileName().equals("")) && (criteria.getExtension().equals(""))) {
+            return null;
+        }
+        if ((criteria.getPath().equals(""))) {
+            return null;
+        }
         final String FILE_PATH = criteria.getPath();
         List<String> listFileAndDirectory = new ArrayList<String>();
         File file = new File(FILE_PATH);
         File[] allSubFiles=file.listFiles();
         for (File fileExtractor : allSubFiles) {
-            //search by path
-            if (!(criteria.getPath().equals("")) && (criteria.getFileName().equals("")) &&(criteria.getExtension().equals("")) ) {
+            if (!(criteria.getPath().equals("")) && (criteria.getFileName().equals("")) && (criteria.getExtension().equals(""))) {
                 listFileAndDirectory.add(fileExtractor.getAbsolutePath());
             }
-            if (!(criteria.getPath().equals("")) && (!criteria.getFileName().equals("")) &&(criteria.getExtension().equals("")) ) {
-                if (criteria.getFileName().equals(fileExtractor.getName())) {
-                    listFileAndDirectory.add(fileExtractor.getName());
+            if (!(criteria.getPath().equals("")) && (!criteria.getFileName().equals("")) && (criteria.getExtension().equals(""))) {
+                if (fileExtractor.getName().contains(criteria.getFileName()) && fileExtractor.getAbsolutePath().contains(criteria.getPath())) {
+                    listFileAndDirectory.add(fileExtractor.getAbsolutePath());
                 }
             }
-            if (!(criteria.getPath().equals("")) && (!criteria.getFileName().equals("")) &&(!criteria.getExtension().equals("")) ){
-                listFileAndDirectory.add(fileExtractor.getName().contains());
+            if (!(criteria.getPath().equals("")) && (!criteria.getFileName().equals("")) && (!criteria.getExtension().equals(""))) {
+                if (fileExtractor.getName().contains(criteria.getFileName()) && fileExtractor.getName().contains(criteria.getExtension())) {
+                    listFileAndDirectory.add(fileExtractor.getAbsolutePath());
+                }
             }
-
-
-        }
-        return listFileAndDirectory;
-    }
-    public boolean searchByFile(){
-        final String FILE_PATH = criteria.getPath();
-        File file = new File(FILE_PATH);
-        File[] allSubFiles=file.listFiles();
-        for (File fileExtractor : allSubFiles) {
-            if (file.getName().equals(criteria.getFileName())){
-                return false;
-            }
-        }
-        return false;
-    }
-    public List searchByExtencions(){
-        final String FILE_PATH = criteria.getPath();
-        List<String> listFileAndDirectory = new ArrayList<String>();
-        File file = new File(FILE_PATH);
-        File[] allSubFiles=file.listFiles();
-        for (File fileExtractor : allSubFiles) {
-            if (file.getName().substring((file.getName().length())-3),file.getName().length()).equals(criteria.getExtension()){
-                listFileAndDirectory.add(fileExtractor.getAbsolutePath());
+            if (!(criteria.getPath().equals("")) && (criteria.getFileName().equals("")) && (!criteria.getExtension().equals(""))) {
+                if (fileExtractor.getName().contains(criteria.getExtension())) {
+                    listFileAndDirectory.add(fileExtractor.getAbsolutePath());
+                }
             }
         }
         return listFileAndDirectory;
-    }
-
-
-
-        public static void main(String arg[]){
-
-
-        final String ROOT_FILE_PATH="/home/pepe";
-        File f=new File(ROOT_FILE_PATH);
-        File[] allSubFiles=f.listFiles();
-        for (File file : allSubFiles) {
-            if(file.isDirectory())
-            {
-                System.out.println(file.getAbsolutePath()+" is directory");
-
-                //Steps for directory
-            }
-            else
-            {
-                System.out.println(file.getAbsolutePath()+" is file");
-                //steps for files
-                System.out.println(file.getName()+"AAAA");
-            }
-        }
-
-
     }
 }
 
