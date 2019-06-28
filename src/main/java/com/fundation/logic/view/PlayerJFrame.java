@@ -55,7 +55,7 @@ public class PlayerJFrame extends JFrame {
     /**
      * Initializes a PlayerJFrame object with all panels, labels and sliders required
      */
-    public PlayerJFrame() {
+    public PlayerJFrame(String path) {
 
         playButton = new JLabel();
         stopButton = new JLabel();
@@ -67,7 +67,7 @@ public class PlayerJFrame extends JFrame {
         progressBar = new JSlider(0, 100, 0);
         volumen = new JSlider(0, 100, vol);
         player = new EmbeddedMediaPlayerComponent();
-        fileToBePlayed = new File("resources/Wildlife.wmv");
+        fileToBePlayed = new File(path);
 
         setBounds(new Rectangle(80, 100, 800, 600));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
