@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -28,14 +29,21 @@ import java.io.File;
 public class ButtonListener {
 
     int vol;
-    boolean actionProgress;
+    boolean actionInProgress;
 
+    /**
+     * Initializes a ButtonListener object with an initial volumen level given as parameter
+     */
     public ButtonListener(int vol) {
 
         this.vol = vol;
-        actionProgress = true;
+        actionInProgress = true;
     }
 
+    /**
+     * This method is charge of listening on every button given as parameter and also sliders
+     * to perform a specified action
+     */
     public void listen(JLabel playButton, JLabel stopButton, JLabel pauseButton, EmbeddedMediaPlayerComponent player,
                        File file, JSlider progressBar, JSlider volumen) {
 
@@ -70,17 +78,17 @@ public class ButtonListener {
 
         progressBar.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                actionProgress = false;
+                actionInProgress = false;
             }
 
             public void mouseReleased(MouseEvent e) {
-                actionProgress = true;
+                actionInProgress = true;
             }
         });
 
         progressBar.addChangeListener(new ChangeListener() {
             public synchronized void stateChanged(ChangeEvent e) {
-                if (!actionProgress) {
+                if (!actionInProgress) {
                     float position = progressBar.getValue() / 100f;
                     player.getMediaPlayer().setPosition(position);
                 }
@@ -89,7 +97,7 @@ public class ButtonListener {
 
         player.getMediaPlayer().addMediaPlayerEventListener(new MediaPlayerEventAdapter() {
             public void positionChanged(MediaPlayer mp, float position) {
-                if (actionProgress) {
+                if (actionInProgress) {
                     int value = Math.min(100, Math.round(position * 100.0f));
                     progressBar.setValue(value);
                 }

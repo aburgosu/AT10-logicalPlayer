@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -30,25 +31,43 @@ import java.io.File;
  * @author Melissa Román
  * @version 1.0
  */
-class PlayerJFrame extends JFrame {
+public class PlayerJFrame extends JFrame {
 
-    private JLabel playButton = new JLabel();
-    private JLabel stopButton = new JLabel();
-    private JLabel pauseButton = new JLabel();
-    private int vol = 50;
-    private JPanel headerPanel = new JPanel();
-    private JPanel playingPanel = new JPanel();
-    private JPanel bottomPanel = new JPanel();
-    private JSlider progressBar = new JSlider(0, 100, 0);
-    private JSlider volumen = new JSlider(0, 100, vol);
-    private EmbeddedMediaPlayerComponent player = new EmbeddedMediaPlayerComponent();
-    private File fileToBePlayed = new File("resources/Wildlife.wmv");
+    private JLabel playButton;
+    private JLabel stopButton;
+    private JLabel pauseButton;
+    private int vol;
+    private JPanel headerPanel;
+    private JPanel playingPanel;
+    private JPanel bottomPanel;
+    private JSlider progressBar;
+    private JSlider volumen;
+    private EmbeddedMediaPlayerComponent player;
+    private File fileToBePlayed;
 
+    /**
+     * Searchs for required vlc libraries: vlclib.dll vlccore.dll
+     */
     static {
         NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:/Program Files/VideoLAN/VLC/");
     }
 
+    /**
+     * Initializes a PlayerJFrame object with all panels, labels and sliders required
+     */
     public PlayerJFrame() {
+
+        playButton = new JLabel();
+        stopButton = new JLabel();
+        pauseButton = new JLabel();
+        vol = 50;
+        headerPanel = new JPanel();
+        playingPanel = new JPanel();
+        bottomPanel = new JPanel();
+        progressBar = new JSlider(0, 100, 0);
+        volumen = new JSlider(0, 100, vol);
+        player = new EmbeddedMediaPlayerComponent();
+        fileToBePlayed = new File("resources/Wildlife.wmv");
 
         setBounds(new Rectangle(80, 100, 800, 600));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -99,9 +118,8 @@ class PlayerJFrame extends JFrame {
         player.setVisible(true);
         setVisible(true);
 
+        //Initializes an instance of ButtonListener class
         ButtonListener buttonListener = new ButtonListener(vol);
         buttonListener.listen(playButton, stopButton, pauseButton, player, fileToBePlayed, progressBar, volumen);
     }
 }
-
-
