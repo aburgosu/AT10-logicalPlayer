@@ -1,4 +1,4 @@
- /*
+ /**
   * Copyright (c) 2019 Jalasoft.
   * This software is the confidential and proprietary information of Jalasoft.
   * ("Confidential Information"). You shall not
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
- /* Implements the model class File and the getter and setter´s methods
+ /** Implements the model class File and the getter and setter´s methods
   * @author Jesus Menacho
   * @version 1.0 *
   */
@@ -38,7 +38,7 @@ static Criteria criteria;
         final String FILE_PATH = criteria.getPath();
         List<File> listFileAndDirectory = new ArrayList<File>();
         File file = new File(FILE_PATH);
-        File[] allSubFiles=file.listFiles();
+        File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
             if (!(criteria.getPath().equals("")) && (criteria.getFileName().equals("")) && (criteria.getExtension().equals(""))) {
                 listFileAndDirectory.add(new File(fileExtractor.getAbsolutePath()));
