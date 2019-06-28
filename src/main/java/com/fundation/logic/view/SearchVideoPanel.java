@@ -25,8 +25,9 @@ public class SearchVideoPanel extends JPanel {
     private JTextField txtFldPath, txtFldFileName, txtFldSize, txtFldCreationDate, txtFldModificationDate,
             txtFldFrameRate, txtFldVideoFormat, txtFldResolution;
     private JLabel lblSearch, lblPath, lblFileName, lblSize, lblCreationDate, lblModificationDate,
-            lblVideoSearchTittle, lblFrameRate, lblVideoFormat, lblResolution, lblAudio;
-    private JComboBox comboSize;
+            lblVideoSearchTittle, lblFrameRate, lblVideoFormat, lblResolution, lblAudio, lblAurioSearchTittle,
+            lblAudioChanel, lblAudioFileFormat;
+    private JComboBox comboSize, comboAudioFileFormat, comboAudioChanel;
     private JCheckBox chxYes, chxNo;
     private Integer positionOneX, positionTwoX, positionThreeX;//position x default
 
@@ -66,6 +67,13 @@ public class SearchVideoPanel extends JPanel {
         add(lblResolution);
         lblAudio = new JLabel("Audio");
         add(lblAudio);
+        //lblAudio search options
+        lblAurioSearchTittle = new JLabel("Specific audio search");
+        add(lblAurioSearchTittle);
+        lblAudioChanel = new JLabel("Audio chanel");
+        add(lblAudioChanel);
+        lblAudioFileFormat = new JLabel("Audio File Format");
+        add(lblAudioFileFormat);
 
         //Init and adds Texts Fields
         txtFldPath = new JTextField();
@@ -89,6 +97,10 @@ public class SearchVideoPanel extends JPanel {
         //Init and adds combo box
         comboSize = new JComboBox();
         add(comboSize);
+        comboAudioChanel = new JComboBox();
+        add(comboAudioChanel);
+        comboAudioFileFormat = new JComboBox();
+        add(comboAudioFileFormat);
 
         ////Init and adds check box
         chxNo = new JCheckBox("No");
@@ -103,10 +115,12 @@ public class SearchVideoPanel extends JPanel {
      */
     public void initSetting() {
 
+        //positions to align labels textFields checkBoxes comboBoxes
         positionOneX = 10;
         positionTwoX = 180;
         positionThreeX = 300;
 
+        //General search labels positions
         lblSearch.setBounds(positionOneX, 23, 62, 27);
         lblPath.setBounds(positionOneX, 56, 51, 27);
         lblFileName.setBounds(positionOneX, 86, 90, 27);
@@ -120,27 +134,35 @@ public class SearchVideoPanel extends JPanel {
         lblFrameRate.setBounds(positionOneX, 300, 100, 20);
         lblAudio.setBounds(positionOneX, 330, 100, 20);
 
+        //General search textFields positions
         txtFldPath.setBounds(positionTwoX, 59, 86, 20);
         txtFldFileName.setBounds(positionTwoX, 90, 86, 20);
         txtFldSize.setBounds(positionTwoX, 120, 86, 20);
-        comboSize.setBounds(positionThreeX, 120, 45, 20);
         txtFldCreationDate.setBounds(positionTwoX, 150, 60, 20);
         txtFldModificationDate.setBounds(positionTwoX, 180, 60, 20);
         //Video search text fields positions
         txtFldFrameRate.setBounds(positionTwoX, 300, 100, 20);
         txtFldVideoFormat.setBounds(positionTwoX, 240, 100, 20);
         txtFldResolution.setBounds(positionTwoX, 270, 100, 20);
+        //Video search text fields positions
+        lblAurioSearchTittle.setBounds(positionOneX, 350, 170, 20);
+        lblAudioChanel.setBounds(positionOneX, 380, 100, 20);
+        lblAudioFileFormat.setBounds(positionOneX, 410, 100, 20);
 
+        //text inside "TextFields"
         txtFldPath.setText("...");
         txtFldFileName.setText("...");
         txtFldSize.setText("...");
         txtFldCreationDate.setText("...");
         txtFldModificationDate.setText("...");
 
+        //comboBoxes positions
+        comboSize.setBounds(positionThreeX, 120, 45, 20);
+        comboAudioChanel.setBounds(positionTwoX, 380, 60, 20);
+        comboAudioFileFormat.setBounds(positionTwoX, 410, 60, 20);
+
         //check boxs positions
         chxYes.setBounds(positionTwoX, 330, 60, 25);
         chxNo.setBounds(240, 330, 60, 25);
-
-
     }
 }
