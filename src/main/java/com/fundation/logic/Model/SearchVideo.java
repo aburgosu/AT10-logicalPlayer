@@ -36,26 +36,26 @@ static Criteria criteria;
             return null;
         }
         final String FILE_PATH = criteria.getPath();
-        List<String> listFileAndDirectory = new ArrayList<String>();
+        List<File> listFileAndDirectory = new ArrayList<File>();
         File file = new File(FILE_PATH);
         File[] allSubFiles=file.listFiles();
         for (File fileExtractor : allSubFiles) {
             if (!(criteria.getPath().equals("")) && (criteria.getFileName().equals("")) && (criteria.getExtension().equals(""))) {
-                listFileAndDirectory.add(fileExtractor.getAbsolutePath());
+                listFileAndDirectory.add(new File(fileExtractor.getAbsolutePath()));
             }
             if (!(criteria.getPath().equals("")) && (!criteria.getFileName().equals("")) && (criteria.getExtension().equals(""))) {
                 if (fileExtractor.getName().contains(criteria.getFileName()) && fileExtractor.getAbsolutePath().contains(criteria.getPath())) {
-                    listFileAndDirectory.add(fileExtractor.getAbsolutePath());
+                    listFileAndDirectory.add(new File(fileExtractor.getAbsolutePath()));
                 }
             }
             if (!(criteria.getPath().equals("")) && (!criteria.getFileName().equals("")) && (!criteria.getExtension().equals(""))) {
                 if (fileExtractor.getName().contains(criteria.getFileName()) && fileExtractor.getName().contains(criteria.getExtension())) {
-                    listFileAndDirectory.add(fileExtractor.getAbsolutePath());
+                    listFileAndDirectory.add(new File(fileExtractor.getAbsolutePath()));
                 }
             }
             if (!(criteria.getPath().equals("")) && (criteria.getFileName().equals("")) && (!criteria.getExtension().equals(""))) {
                 if (fileExtractor.getName().contains(criteria.getExtension())) {
-                    listFileAndDirectory.add(fileExtractor.getAbsolutePath());
+                    listFileAndDirectory.add(new File(fileExtractor.getAbsolutePath()));
                 }
             }
         }
