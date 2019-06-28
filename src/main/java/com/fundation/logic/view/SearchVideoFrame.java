@@ -27,7 +27,6 @@ public class SearchVideoFrame extends JFrame {
 
         initComponent();
         initSetting();
-
     }
 
     /**
@@ -40,7 +39,8 @@ public class SearchVideoFrame extends JFrame {
         mainSearchPanel.setVisible(true);
         add(mainSearchPanel);
 
-
+        SearchVideoPanel initSearchPanel = new SearchVideoPanel();
+        contentSearchVideoPane.add(initSearchPanel);
     }
 
     /**
@@ -52,8 +52,5 @@ public class SearchVideoFrame extends JFrame {
         contentSearchVideoPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentSearchVideoPane.setLayout(new BorderLayout(0, 0));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        SearchVideoPanel initSearchPanel = new SearchVideoPanel();
-        contentSearchVideoPane.add(initSearchPanel);
     }
 }
