@@ -1,5 +1,6 @@
- /*
+ /**
   * Copyright (c) 2019 Jalasoft.
+  *
   * This software is the confidential and proprietary information of Jalasoft.
   * ("Confidential Information"). You shall not
   * disclose such Confidential Information and shall use it only in
@@ -9,11 +10,15 @@
 
  package com.fundation.logic.model;
 
- /* Implements the model class File and the getter and setter´s methods
+ import java.io.File;
+
+ /**
+  * Implements the model class File and the getter and setter´s methods
+  *
   * @author Andres Burgos
   * @version 1.0 *
   */
+ interface ISearch {
 
- interface ISearch{
     public List<File> search();
 }
