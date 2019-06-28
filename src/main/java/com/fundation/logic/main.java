@@ -6,9 +6,11 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
- package com.fundation.logic;
+package com.fundation.logic;
 
- /**
+import com.fundation.logic.view.PlayerJFrame;
+
+/**
   * Implements the main class
   * @author Andres Burgos
   * @version 1.0 *
@@ -16,6 +18,6 @@
 public class main {
 
     public static void main(String[] arg){
-
+        PlayerJFrame player = new PlayerJFrame("resources/Wildlife.wmv");
     }
 }
