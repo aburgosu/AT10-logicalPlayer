@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -12,6 +13,7 @@ import com.fundation.logic.view.PlayerJFrame;
 
 /**
   * Implements the main class
+ * 
   * @author Andres Burgos
   * @version 1.0 *
   */
