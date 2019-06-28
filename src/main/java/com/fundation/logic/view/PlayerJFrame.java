@@ -46,7 +46,7 @@ public class PlayerJFrame extends JFrame {
     private File fileToBePlayed;
 
     /**
-     * Searchs for required vlc libraries: vlclib.dll vlccore.dll
+     * Searchs for required vlc libraries: libvlc.dll libvlccore.dll
      */
     static {
         NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:/Program Files/VideoLAN/VLC/");
