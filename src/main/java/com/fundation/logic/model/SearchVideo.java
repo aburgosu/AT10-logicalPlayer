@@ -1,5 +1,4 @@
 /**
-*
 * * Copyright (c) 2019 Jalasoft.
 * This software is the confidential and proprietary information of Jalasoft.
 * ("Confidential Information"). You shall not
@@ -23,11 +22,11 @@ import java.util.stream.Stream;
 * @version 1.0 *
 */
 public class SearchVideo implements ISearch{
-static Criteria criteria;
+    static private Criteria criteria;
     public SearchVideo(Criteria criteria){
         this.criteria = criteria;
     }
-    public List searchByPath() {
+    public List search() {
         if (criteria.getPath() == null) {
             return null;
         }
