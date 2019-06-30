@@ -11,6 +11,7 @@
  package com.fundation.logic.model;
 
  import java.io.File;
+ import java.util.List;
 
  /**
   * Implements the model class File and the getter and setter´s methods
