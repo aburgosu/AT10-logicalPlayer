@@ -9,7 +9,7 @@
  */
 package com.fundation.logic;
 
-import com.fundation.logic.view.PlayerJFrame;
+import com.fundation.logic.view.SearchVideoFrame;
 
 /**
   * Implements the main class
@@ -20,6 +20,7 @@ import com.fundation.logic.view.PlayerJFrame;
 public class main {
 
     public static void main(String[] arg){
-        PlayerJFrame player = new PlayerJFrame("resources/Wildlife.wmv");
+         SearchVideoFrame initMainWindow = new SearchVideoFrame();
+         initMainWindow.setVisible(true);
     }
 }

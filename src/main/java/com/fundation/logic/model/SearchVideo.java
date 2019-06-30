@@ -7,7 +7,10 @@
   * with Jalasoft.
   */
 
- package com.fundation.logic.Model;
+ package com.fundation.logic.model;
+
+import com.fundation.logic.model.Criteria;
+import com.fundation.logic.model.ISearch;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -28,7 +31,7 @@ static Criteria criteria;
         this.criteria = criteria;
     }
 
-    public List searchByPath() {
+    public List search() {
         if ((criteria.getPath().equals("")) && (criteria.getFileName().equals("")) && (criteria.getExtension().equals(""))) {
             return null;
         }
