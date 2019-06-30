@@ -70,7 +70,6 @@ public class PlayerJFrame extends JFrame {
         fileToBePlayed = new File(path);
 
         setBounds(new Rectangle(80, 100, 800, 600));
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("LogicalPlayer");
 
         try {
