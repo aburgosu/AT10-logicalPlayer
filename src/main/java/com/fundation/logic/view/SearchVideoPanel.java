@@ -8,7 +8,12 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.*;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import javax.swing.JButton;
 
 /**
  * Implements the SearchVideoPanel class
