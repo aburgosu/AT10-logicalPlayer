@@ -21,9 +21,9 @@ import java.util.stream.Stream;
 * @author Jesus Menacho
 * @version 1.0 *
 */
-public class SearchVideo implements ISearch{
+public class SearchVideo implements ISearch {
     static private Criteria criteria;
-    public SearchVideo(Criteria criteria){
+    public SearchVideo(Criteria criteria) {
         this.criteria = criteria;
     }
     public List search() {
@@ -35,31 +35,26 @@ public class SearchVideo implements ISearch{
         File file = new File(FILE_PATH);
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
-            if (fileExtractor.isHidden() == criteria.getFileHidden())
-            {
-                if ((fileExtractor.canRead() && !fileExtractor.canWrite()) == criteria.getFileReadOnly())
-                {
-                    if (compareFile(fileExtractor) != null){
+            if (fileExtractor.isHidden() == criteria.getFileHidden()) {
+                if ((fileExtractor.canRead() && !fileExtractor.canWrite()) == criteria.getFileReadOnly()) {
+                    if (compareFile(fileExtractor) != null) {
                     listFileAndDirectory.add(compareFile(fileExtractor));
                     }
                 }
-                else
-                {
-                    if (compareFile(fileExtractor) != null){
+                else {
+                    if (compareFile(fileExtractor) != null) {
                     listFileAndDirectory.add(compareFile(fileExtractor));
                     }
                 }
             }
-            else
-            {
-                if ((fileExtractor.canRead() && !fileExtractor.canWrite()) == criteria.getFileReadOnly())
-                {
-                    if (compareFile(fileExtractor) != null){
+            else {
+                if ((fileExtractor.canRead() && !fileExtractor.canWrite()) == criteria.getFileReadOnly()) {
+                    if (compareFile(fileExtractor) != null) {
                     listFileAndDirectory.add(compareFile(fileExtractor));
                     }
                 }
-                else
-                {   if (compareFile(fileExtractor) != null){
+                else {
+                    if (compareFile(fileExtractor) != null) {
                     listFileAndDirectory.add(compareFile(fileExtractor));
                     }
                 }
@@ -67,7 +62,7 @@ public class SearchVideo implements ISearch{
         }
         return listFileAndDirectory;
     }
-    private File compareFile(File fileExtractor){
+    private File compareFile(File fileExtractor) {
         if (!(criteria.getPath() == null) && (criteria.getFileName() == null) && (criteria.getExtension() == null)) {
             return (new File(fileExtractor.getAbsolutePath()));
         }
