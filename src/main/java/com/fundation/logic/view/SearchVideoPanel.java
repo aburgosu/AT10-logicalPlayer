@@ -8,11 +8,7 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JCheckBox;
+import javax.swing.*;
 
 /**
  * Implements the SearchVideoPanel class
@@ -29,6 +25,7 @@ public class SearchVideoPanel extends JPanel {
     private JComboBox comboSize, comboAudioFileFormat, comboAudioChanel;
     private JCheckBox chxYes, chxNo;
     private Integer positionOneX, positionTwoX, positionThreeX;//position x default
+    private JButton btnPlayer;
 
     public SearchVideoPanel() {
         initComponent();
@@ -101,6 +98,9 @@ public class SearchVideoPanel extends JPanel {
         add(chxNo);
         chxYes = new JCheckBox("Yes");
         add(chxYes);
+        //Init button
+        btnPlayer = new JButton("Player");
+        add(btnPlayer);
     }
 
     /**
@@ -151,5 +151,8 @@ public class SearchVideoPanel extends JPanel {
         //check boxs positions
         chxYes.setBounds(positionTwoX, 330, 60, 25);
         chxNo.setBounds(240, 330, 60, 25);
+        //Button position and init action click
+        ActionPlayButton.clickAction(btnPlayer);
+        btnPlayer.setBounds(450, 56, 100, 25);
     }
 }
