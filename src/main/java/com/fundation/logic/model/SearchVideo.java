@@ -39,13 +39,13 @@ public class SearchVideo implements ISearch{
             {
                 if ((fileExtractor.canRead() && !fileExtractor.canWrite()) == criteria.getFileReadOnly())
                 {
-                    if (compareFile(fileExtractor)!=null){
+                    if (compareFile(fileExtractor) != null){
                     listFileAndDirectory.add(compareFile(fileExtractor));
                     }
                 }
                 else
                 {
-                    if (compareFile(fileExtractor)!=null){
+                    if (compareFile(fileExtractor) != null){
                     listFileAndDirectory.add(compareFile(fileExtractor));
                     }
                 }
@@ -54,12 +54,12 @@ public class SearchVideo implements ISearch{
             {
                 if ((fileExtractor.canRead() && !fileExtractor.canWrite()) == criteria.getFileReadOnly())
                 {
-                    if (compareFile(fileExtractor)!=null){
+                    if (compareFile(fileExtractor) != null){
                     listFileAndDirectory.add(compareFile(fileExtractor));
                     }
                 }
                 else
-                {   if (compareFile(fileExtractor)!=null){
+                {   if (compareFile(fileExtractor) != null){
                     listFileAndDirectory.add(compareFile(fileExtractor));
                     }
                 }
@@ -68,7 +68,7 @@ public class SearchVideo implements ISearch{
         return listFileAndDirectory;
     }
     private File compareFile(File fileExtractor){
-        if (!(criteria.getPath()==null) && (criteria.getFileName() == null) && (criteria.getExtension() == null)) {
+        if (!(criteria.getPath() == null) && (criteria.getFileName() == null) && (criteria.getExtension() == null)) {
             return (new File(fileExtractor.getAbsolutePath()));
         }
         if (!(criteria.getPath() == null) && (!(criteria.getFileName() == null)) && (criteria.getExtension() == null)) {
@@ -81,7 +81,7 @@ public class SearchVideo implements ISearch{
                 return (new File(fileExtractor.getAbsolutePath()));
             }
         }
-        if (!(criteria.getPath() == (null)) && (criteria.getFileName()==null) && (!(criteria.getExtension() == null))) {
+        if (!(criteria.getPath() == (null)) && (criteria.getFileName() == null) && (!(criteria.getExtension() == null))) {
             if (fileExtractor.getName().contains(criteria.getExtension())) {
                 return (new File(fileExtractor.getAbsolutePath()));
             }
