@@ -20,11 +20,8 @@ import java.awt.BorderLayout;
  * @version 1.0
  */
 public class SearchVideoFrame extends JFrame {
-
     private JPanel contentSearchVideoPane;
-
     public SearchVideoFrame() {
-
         initComponent();
         initSetting();
     }
@@ -33,22 +30,19 @@ public class SearchVideoFrame extends JFrame {
      * This method init all component
      */
     public void initComponent() {
-
         contentSearchVideoPane = new JPanel();
         SearchVideoPanel mainSearchPanel = new SearchVideoPanel();
         mainSearchPanel.setVisible(true);
         add(mainSearchPanel);
-
         SearchVideoPanel initSearchPanel = new SearchVideoPanel();
         contentSearchVideoPane.add(initSearchPanel);
     }
 
     /**
-     * This method init all setting of the components
+     * This method init all setting of the components like the position
      */
     public void initSetting() {
-
-        setBounds(100, 100, 1000, 700);
+        setBounds(100, 100, 700, 700);
         contentSearchVideoPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentSearchVideoPane.setLayout(new BorderLayout(0, 0));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
