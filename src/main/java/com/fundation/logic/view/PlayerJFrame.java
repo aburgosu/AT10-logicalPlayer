@@ -12,6 +12,7 @@ package com.fundation.logic.view;
 import com.sun.jna.NativeLibrary;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,7 +33,6 @@ import java.io.File;
  * @version 1.0
  */
 public class PlayerJFrame extends JFrame {
-
     private JButton playButton;
     private JButton stopButton;
     private JButton pauseButton;
@@ -55,7 +55,6 @@ public class PlayerJFrame extends JFrame {
      * Initializes a PlayerJFrame object with all panels, labels and sliders required
      */
     public PlayerJFrame(String path) {
-
         playButton = new JButton();
         stopButton = new JButton();
         pauseButton = new JButton();
@@ -63,14 +62,12 @@ public class PlayerJFrame extends JFrame {
         bottomPanel = new JPanel();
         progressBar = new JSlider(0, 100, 0);
         volumeLevel = 50;
-        volumeSlider = new JSlider(JSlider.VERTICAL,0, 100, volumeLevel);
-        //JSlider slider = new JSlider(JSlider.VERTICAL, 0, 20, 4);
+        volumeSlider = new JSlider(JSlider.VERTICAL, 0, 100, volumeLevel);
         player = new EmbeddedMediaPlayerComponent();
         fileToBePlayed = new File(path);
 
         setBounds(new Rectangle(80, 100, 800, 540));
         setTitle("LogicalPlayer");
-
         try {
             playButton.setIcon(new ImageIcon("resources/Play.png"));
             stopButton.setIcon(new ImageIcon("resources/Stop.png"));
@@ -86,7 +83,7 @@ public class PlayerJFrame extends JFrame {
         bottomPanel.add(pauseButton);
         stopButton.setPreferredSize(new Dimension(35, 35));
         bottomPanel.add(stopButton);
-        progressBar.setPreferredSize(new Dimension(600, 20));
+        progressBar.setPreferredSize(new Dimension(610, 20));
         progressBar.setEnabled(false);
         bottomPanel.add(progressBar);
         volumeSlider.setPreferredSize(new Dimension(20, 50));
