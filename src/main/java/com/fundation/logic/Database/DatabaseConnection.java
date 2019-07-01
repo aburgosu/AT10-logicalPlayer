@@ -24,15 +24,10 @@ public class DatabaseConnection {
     public static void createNewDatabase(String fileName) {
         String url = "jdbc:sqlite:" + fileName;
         try {
-            Connection connection = DriverManager.getConnection(url);
-            if (connection != null) {
-                DatabaseMetaData meta = connection.getMetaData();
-                System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("The database" + fileName + "has been created.");
-            }
-
+            DriverManager.getConnection(url);
+            
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.getMessage();
         }
     }
 }

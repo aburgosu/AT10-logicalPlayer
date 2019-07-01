@@ -21,6 +21,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Query {
 
@@ -31,23 +33,23 @@ public class Query {
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.getMessage();
         }
         return conn;
     }
 
-    public void insertCriteria(String name, String date, String json) {
-        String sql = "INSERT INTO criterias(name, date, json) VALUES(?,?,?)";
+    public void insertCriteria(String name, String json) {
+        String sql = "INSERT INTO criterias(name, json) VALUES(?,?,?)";
 
         try {
             Connection connection = this.connect();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
-            statement.setString(2, date);
+            statement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
             statement.setString(3, json);
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.getMessage();
         }
     }
 

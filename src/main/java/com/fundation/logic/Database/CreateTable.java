@@ -33,10 +33,9 @@ public class CreateTable {
         try {
             Connection connection = DriverManager.getConnection(url);
             Statement statement = connection.createStatement();
-            statement.execute(sql);
-            System.out.println("Table created");
+            statement.execute(sql);            
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.getMessage();
         }
     }
 }
