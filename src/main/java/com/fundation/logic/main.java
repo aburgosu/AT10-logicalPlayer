@@ -24,10 +24,8 @@ import java.util.List;
 public class main {
 
     public static void main(String[] arg) {
-        SearchVideoFrame initMainWindow = new SearchVideoFrame();
-        initMainWindow.setVisible(true);
-
-        Controller controller = new Controller();
+        SearchVideoFrame searchFrame = new SearchVideoFrame();
+        Controller controller = new Controller(searchFrame);
         List<File> filesInPath;
 
         System.out.println("Search by path");
@@ -36,6 +34,7 @@ public class main {
         for (int index = 0; index < filesInPath.size(); index++) {
             System.out.println(filesInPath.get(index));
         }
+        System.out.println();
 
         System.out.println("Search by path and filename");
         filesInPath = controller.makeSearch(controller.setCriteria("C:/Users/MelissaRoman/Downloads/",
@@ -43,6 +42,7 @@ public class main {
         for (int index = 0; index < filesInPath.size(); index++) {
             System.out.println(filesInPath.get(index));
         }
+        System.out.println();
 
         System.out.println("Search by path and extension");
         filesInPath = controller.makeSearch(controller.setCriteria("C:/Users/MelissaRoman/Downloads/",
@@ -50,6 +50,7 @@ public class main {
         for (int index = 0; index < filesInPath.size(); index++) {
             System.out.println(filesInPath.get(index));
         }
+        System.out.println();
 
         System.out.println("Search by path including hidden files");
         filesInPath = controller.makeSearch(controller.setCriteria("C:/Users/MelissaRoman/Downloads/",
@@ -57,6 +58,7 @@ public class main {
         for (int index = 0; index < filesInPath.size(); index++) {
             System.out.println(filesInPath.get(index));
         }
+        System.out.println();
 
         System.out.println("Search by path read only files only");
         filesInPath = controller.makeSearch(controller.setCriteria("C:/Users/MelissaRoman/Downloads/",
@@ -64,5 +66,6 @@ public class main {
         for (int index = 0; index < filesInPath.size(); index++) {
             System.out.println(filesInPath.get(index));
         }
+        System.out.println();
     }
 }
