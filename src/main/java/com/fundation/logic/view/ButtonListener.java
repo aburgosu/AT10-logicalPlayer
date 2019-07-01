@@ -13,7 +13,6 @@ import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -28,16 +27,14 @@ import java.io.File;
  * @version 1.0
  */
 public class ButtonListener {
-
-    int vol;
+    int volumeLevel;
     boolean actionInProgress;
 
     /**
-     * Initializes a ButtonListener object with an initial volumen level given as parameter
+     * Initializes a ButtonListener object with an initial volume level given as parameter
      */
-    public ButtonListener(int vol) {
-
-        this.vol = vol;
+    public ButtonListener(int volumeLevel) {
+        this.volumeLevel = volumeLevel;
         actionInProgress = true;
     }
 
@@ -46,37 +43,41 @@ public class ButtonListener {
      * to perform a specified action
      */
     public void listen(JButton playButton, JButton stopButton, JButton pauseButton, EmbeddedMediaPlayerComponent player,
-                       File file, JSlider progressBar, JSlider volumen) {
-
+            File file, JSlider progressBar, JSlider volume) {
+        //Actions to perform when playerButton is pressed
         playButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                player.getMediaPlayer().playMedia(file.getAbsolutePath());
-                player.getMediaPlayer().setVolume(vol);
-                progressBar.setEnabled(true);
+            player.getMediaPlayer().playMedia(file.getAbsolutePath());
+            player.getMediaPlayer().setVolume(volumeLevel);
+            progressBar.setEnabled(true);
             }
         });
 
-        volumen.addChangeListener(new ChangeListener() {
+        //Set volume in player
+        volume.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                vol = volumen.getValue();
-                player.getMediaPlayer().setVolume(vol);
+                volumeLevel = volume.getValue();
+                player.getMediaPlayer().setVolume(volumeLevel);
             }
         });
 
+        //Actions to perform when stopButton is pressed
         stopButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                player.getMediaPlayer().stop();
-                progressBar.setValue(0);
-                progressBar.setEnabled(false);
+            player.getMediaPlayer().stop();
+            progressBar.setValue(0);
+            progressBar.setEnabled(false);
             }
         });
 
+        //Actions to perform when pauseButton is pressed
         pauseButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                player.getMediaPlayer().setPause(player.getMediaPlayer().isPlaying() ? true : false);
+            player.getMediaPlayer().setPause(player.getMediaPlayer().isPlaying() ? true : false);
             }
         });
 
+        //Actions related to changes in progressBar
         progressBar.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 actionInProgress = false;
@@ -98,10 +99,10 @@ public class ButtonListener {
 
         player.getMediaPlayer().addMediaPlayerEventListener(new MediaPlayerEventAdapter() {
             public void positionChanged(MediaPlayer mp, float position) {
-                if (actionInProgress) {
-                    int value = Math.min(100, Math.round(position * 100.0f));
-                    progressBar.setValue(value);
-                }
+            if (actionInProgress) {
+                int value = Math.min(100, Math.round(position * 100.0f));
+                progressBar.setValue(value);
+            }
             }
         });
     }

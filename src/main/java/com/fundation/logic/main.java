@@ -30,7 +30,7 @@ public class main {
 
         System.out.println("Search by path");
         filesInPath = controller.makeSearch(controller.setCriteria("C:/Users/MelissaRoman/Downloads/",
-                null, null, false, false));
+            null, null, false, false));
         for (int index = 0; index < filesInPath.size(); index++) {
             System.out.println(filesInPath.get(index));
         }
@@ -38,7 +38,7 @@ public class main {
 
         System.out.println("Search by path and filename");
         filesInPath = controller.makeSearch(controller.setCriteria("C:/Users/MelissaRoman/Downloads/",
-                "desktop", "", false, false));
+            "desktop", "", false, false));
         for (int index = 0; index < filesInPath.size(); index++) {
             System.out.println(filesInPath.get(index));
         }
@@ -46,7 +46,7 @@ public class main {
 
         System.out.println("Search by path and extension");
         filesInPath = controller.makeSearch(controller.setCriteria("C:/Users/MelissaRoman/Downloads/",
-                "", "docx", false, false));
+            "", "docx", false, false));
         for (int index = 0; index < filesInPath.size(); index++) {
             System.out.println(filesInPath.get(index));
         }
@@ -54,7 +54,7 @@ public class main {
 
         System.out.println("Search by path including hidden files");
         filesInPath = controller.makeSearch(controller.setCriteria("C:/Users/MelissaRoman/Downloads/",
-                "", "", true, false));
+            "", "", true, false));
         for (int index = 0; index < filesInPath.size(); index++) {
             System.out.println(filesInPath.get(index));
         }
@@ -62,7 +62,15 @@ public class main {
 
         System.out.println("Search by path read only files only");
         filesInPath = controller.makeSearch(controller.setCriteria("C:/Users/MelissaRoman/Downloads/",
-                "", "", false, true));
+            "", "", false, true));
+        for (int index = 0; index < filesInPath.size(); index++) {
+            System.out.println(filesInPath.get(index));
+        }
+        System.out.println();
+
+        System.out.println("Search by path, filename and extension");
+        filesInPath = controller.makeSearch(controller.setCriteria("C:/Users/MelissaRoman/Downloads/",
+                "1.-libro-base", "zip", false, false));
         for (int index = 0; index < filesInPath.size(); index++) {
             System.out.println(filesInPath.get(index));
         }
