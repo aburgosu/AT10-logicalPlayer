@@ -29,13 +29,13 @@ public class Query {
     private Connection connect() {
         // SQLite connection string
         String url = "jdbc:sqlite:at10-player.db";
-        Connection conn = null;
+        Connection connection = null;
         try {
-            conn = DriverManager.getConnection(url);
+            connection = DriverManager.getConnection(url);
         } catch (SQLException e) {
             e.getMessage();
         }
-        return conn;
+        return connection;
     }
 
     public void insertCriteria(String name, String json) {
