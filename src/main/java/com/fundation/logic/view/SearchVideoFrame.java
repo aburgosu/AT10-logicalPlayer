@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * <p>
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -21,7 +21,9 @@ import java.awt.BorderLayout;
  * @version 1.0
  */
 public class SearchVideoFrame extends JFrame {
-    private JPanel contentSearchVideoPane;
+    private String pathAddress;
+    private SearchVideoPanel mainSearchPanel;
+
     public SearchVideoFrame() {
         initComponent();
         initSetting();
@@ -31,12 +33,9 @@ public class SearchVideoFrame extends JFrame {
      * This method init all component
      */
     public void initComponent() {
-        contentSearchVideoPane = new JPanel();
-        SearchVideoPanel mainSearchPanel = new SearchVideoPanel();
-        mainSearchPanel.setVisible(true);
+        mainSearchPanel = new SearchVideoPanel();
         add(mainSearchPanel);
-        SearchVideoPanel initSearchPanel = new SearchVideoPanel();
-        contentSearchVideoPane.add(initSearchPanel);
+        setVisible(true);
     }
 
     /**
@@ -44,8 +43,11 @@ public class SearchVideoFrame extends JFrame {
      */
     public void initSetting() {
         setBounds(100, 100, 700, 700);
-        contentSearchVideoPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentSearchVideoPane.setLayout(new BorderLayout(0, 0));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public String getPath() {
+        pathAddress = mainSearchPanel.getPath();
+        return pathAddress;
     }
 }
