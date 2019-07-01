@@ -68,7 +68,7 @@ public class PlayerJFrame extends JFrame {
         player = new EmbeddedMediaPlayerComponent();
         fileToBePlayed = new File(path);
 
-        setBounds(new Rectangle(80, 100, 800, 550));
+        setBounds(new Rectangle(80, 100, 800, 540));
         setTitle("LogicalPlayer");
 
         try {
@@ -80,16 +80,16 @@ public class PlayerJFrame extends JFrame {
         }
 
         add(bottomPanel, BorderLayout.SOUTH);
-        playButton.setPreferredSize(new Dimension(50, 50));
+        playButton.setPreferredSize(new Dimension(35, 35));
         bottomPanel.add(playButton);
-        pauseButton.setPreferredSize(new Dimension(50, 50));
+        pauseButton.setPreferredSize(new Dimension(35, 35));
         bottomPanel.add(pauseButton);
-        stopButton.setPreferredSize(new Dimension(50, 50));
+        stopButton.setPreferredSize(new Dimension(35, 35));
         bottomPanel.add(stopButton);
-        progressBar.setPreferredSize(new Dimension(570, 20));
+        progressBar.setPreferredSize(new Dimension(600, 20));
         progressBar.setEnabled(false);
         bottomPanel.add(progressBar);
-        volumeSlider.setPreferredSize(new Dimension(20, 70));
+        volumeSlider.setPreferredSize(new Dimension(20, 50));
         bottomPanel.add(volumeSlider);
 
         add(playingPanel, BorderLayout.CENTER);
