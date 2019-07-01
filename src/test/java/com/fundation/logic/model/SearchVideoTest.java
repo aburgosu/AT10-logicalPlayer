@@ -11,15 +11,17 @@ package com.fundation.logic.model;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import java.io.File;
 import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 /**
  * Implements the model class File and the getter and setter´s methods
  *
- * @authors Andres Burgos, Jesus Menacho.
- * @version 1.1
+ * @authors Jesus Menacho.
+ * @version 1.0
  */
 public class SearchVideoTest {
     Criteria criteria;
@@ -82,6 +84,7 @@ public class SearchVideoTest {
         }
         assertEquals(expected, actual);
     }
+
     @Test
     public void FoundAnyFilesbyPathAndFileAndExtencionsAndFileHidden_ResultTrue() {
         boolean expected = true;
@@ -101,6 +104,7 @@ public class SearchVideoTest {
         }
         assertEquals(expected, actual);
     }
+
     @Test
     public void Search_FoundFilesReadOnlyAndHiddenSelect_ResultTrue() {
         boolean expected = true;

@@ -9,16 +9,9 @@
  */
 package com.fundation.logic.model;
 
-import com.fundation.logic.model.Criteria;
-import com.fundation.logic.model.ISearch;
-
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * Implements the model class File and the getter and setter´s methods
@@ -28,11 +21,9 @@ import java.util.stream.Stream;
  */
 public class SearchVideo implements ISearch {
     static private Criteria criteria;
-
     public SearchVideo(Criteria criteria) {
         this.criteria = criteria;
     }
-
     public List search() {
         if (criteria.getPath() == null) {
             return null;
