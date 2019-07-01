@@ -50,7 +50,7 @@ public class PlayerJFrame extends JFrame {
     }
 
     /**
-     * Initializes a PlayerJFrame object with all panels, labels and sliders required
+     * Initializes a PlayerJFrame object
      */
     public PlayerJFrame(String path) {
         initComponent(path);
@@ -62,6 +62,9 @@ public class PlayerJFrame extends JFrame {
         buttonListener.listen(playButton, stopButton, pauseButton, player, fileToBePlayed, progressBar, volumeSlider);
     }
 
+    /**
+     * Initializes a PlayerJFrame object with all panels, labels and sliders required
+     */
     private void initComponent(String path){
         playButton = new JButton();
         stopButton = new JButton();
@@ -75,6 +78,9 @@ public class PlayerJFrame extends JFrame {
         fileToBePlayed = new File(path);
     }
 
+    /**
+     * Set all PlayerJFrame components
+     */
     private void initSetting(){
         setBounds(new Rectangle(80, 100, 800, 540));
         setTitle("LogicalPlayer");
