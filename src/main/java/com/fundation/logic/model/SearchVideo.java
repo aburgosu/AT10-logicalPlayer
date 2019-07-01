@@ -17,13 +17,21 @@ import java.util.List;
  * Implements the model class File and the getter and setter´s methods
  *
  * @author Jesus Menacho
- * @version 1.0 *
+ * @version 1.0
+ *
  */
 public class SearchVideo implements ISearch {
     static private Criteria criteria;
+    /**
+     * SearchVideo this constructor to recive a class criteria
+     * that contains the following variables path, file , extension, readonly, hidden.
+     */
     public SearchVideo(Criteria criteria) {
         this.criteria = criteria;
     }
+    /**
+     * This method search a file following a criteria that could be a file, extension, readOnly and hidden.
+     */
     public List search() {
         if (criteria.getPath() == null) {
             return null;
@@ -61,7 +69,10 @@ public class SearchVideo implements ISearch {
         }
         return listFileAndDirectory;
     }
-
+    /**
+     * This method result a file type File acoording a criteria.
+     * that criteria could be a Path, FileName, Extension
+     */
     private File compareFile(File fileExtractor) {
         if (!(criteria.getPath() == null) && (criteria.getFileName() == null) && (criteria.getExtension() == null)) {
             return (new File(fileExtractor.getAbsolutePath()));
