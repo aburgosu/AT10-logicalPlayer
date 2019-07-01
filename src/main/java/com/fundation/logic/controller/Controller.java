@@ -34,7 +34,6 @@ public class Controller {
     public Controller(SearchVideoFrame searchFrame) {
         criteria = new Criteria();
         this.searchFrame = searchFrame;
-        //searchFrame.setVisible(true);
     }
 
     /**

@@ -37,6 +37,7 @@ public class SearchVideoFrame extends JFrame {
         add(mainSearchPanel);
         SearchVideoPanel initSearchPanel = new SearchVideoPanel();
         contentSearchVideoPane.add(initSearchPanel);
+        setVisible(true);
     }
 
     /**
