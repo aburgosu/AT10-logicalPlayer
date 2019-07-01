@@ -22,7 +22,7 @@ import java.sql.Statement;
  */
 public class CreateTable {
     public static void createTable(String database) {
-        String url = database;
+        String url = "jdbc:sqlite:"+database;
         // SQL statement for creating a new table
         String sql =    "CREATE TABLE IF NOT EXISTS criterias (\n" 
                     +   " id integer PRIMARY KEY,\n"
