@@ -1,12 +1,12 @@
 /**
-* Copyright (c) 2019 Jalasoft.
-*
-* This software is the confidential and proprietary information of Jalasoft.
-* ("Confidential Information"). You shall not
-* disclose such Confidential Information and shall use it only in
-* accordance with the terms of the license agreement you entered into
-* with Jalasoft.
-*/
+ * Copyright (c) 2019 Jalasoft.
+ * <p>
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jalasoft.
+ */
 package com.fundation.logic.model;
 
 import com.fundation.logic.model.Criteria;
@@ -20,15 +20,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-/** 
-* Implements the model class File and the getter and setter´s methods
-*
-* @author Jesus Menacho
-* @version 1.0 *
-*/
+/**
+ * Implements the model class File and the getter and setter´s methods
+ *
+ * @author Jesus Menacho
+ * @version 1.0 *
+ */
 public class SearchVideo implements ISearch {
     static private Criteria criteria;
-  
+
     public SearchVideo(Criteria criteria) {
         this.criteria = criteria;
     }
@@ -42,49 +42,51 @@ public class SearchVideo implements ISearch {
         File file = new File(FILE_PATH);
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
-            if (fileExtractor.isHidden() == criteria.getFileHidden()) {
-                if ((fileExtractor.canRead() && !fileExtractor.canWrite()) == criteria.getFileReadOnly()) {
+            if (fileExtractor.isHidden() && criteria.getFileHidden()) {
+                if ((!fileExtractor.canWrite()) && criteria.getFileReadOnly()) {
                     if (compareFile(fileExtractor) != null) {
-                    listFileAndDirectory.add(compareFile(fileExtractor));
+                        listFileAndDirectory.add(compareFile(fileExtractor));
                     }
                 }
-                else {
+                if (!criteria.getFileReadOnly()) {
                     if (compareFile(fileExtractor) != null) {
-                    listFileAndDirectory.add(compareFile(fileExtractor));
+                        listFileAndDirectory.add(compareFile(fileExtractor));
                     }
                 }
-            }
-            else {
-                if ((fileExtractor.canRead() && !fileExtractor.canWrite()) == criteria.getFileReadOnly()) {
-                    if (compareFile(fileExtractor) != null) {
-                    listFileAndDirectory.add(compareFile(fileExtractor));
+            } else {
+                if (!fileExtractor.isHidden()) {
+                    if ((!fileExtractor.canWrite()) && criteria.getFileReadOnly()) {
+                        if (compareFile(fileExtractor) != null) {
+                            listFileAndDirectory.add(compareFile(fileExtractor));
+                        }
                     }
-                }
-                else {
-                    if (compareFile(fileExtractor) != null) {
-                    listFileAndDirectory.add(compareFile(fileExtractor));
+                    if (!criteria.getFileReadOnly()) {
+                        if (compareFile(fileExtractor) != null) {
+                            listFileAndDirectory.add(compareFile(fileExtractor));
+                        }
                     }
                 }
             }
         }
         return listFileAndDirectory;
     }
+
     private File compareFile(File fileExtractor) {
         if (!(criteria.getPath() == null) && (criteria.getFileName() == null) && (criteria.getExtension() == null)) {
             return (new File(fileExtractor.getAbsolutePath()));
         }
         if (!(criteria.getPath() == null) && (!(criteria.getFileName() == null)) && (criteria.getExtension() == null)) {
-            if (fileExtractor.getName().contains(criteria.getFileName()) && fileExtractor.getPath().contains(criteria.getPath())) {
+            if (fileExtractor.getName().contains(criteria.getFileName())) {
                 return (new File(fileExtractor.getAbsolutePath()));
             }
         }
         if (!(criteria.getPath() == null) && (!(criteria.getFileName() == null)) && (!(criteria.getExtension() == null))) {
-            if (fileExtractor.getName().contains(criteria.getFileName()) && fileExtractor.getName().contains(criteria.getExtension())) {
+            if (fileExtractor.getName().contains(criteria.getFileName()) && fileExtractor.getName().endsWith(criteria.getExtension())) {
                 return (new File(fileExtractor.getAbsolutePath()));
             }
         }
         if (!(criteria.getPath() == (null)) && (criteria.getFileName() == null) && (!(criteria.getExtension() == null))) {
-            if (fileExtractor.getName().contains(criteria.getExtension())) {
+            if (fileExtractor.getName().endsWith(criteria.getExtension())) {
                 return (new File(fileExtractor.getAbsolutePath()));
             }
         }
