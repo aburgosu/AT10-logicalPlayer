@@ -12,6 +12,7 @@ package com.fundation.logic.view;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -44,7 +45,7 @@ public class ButtonListener {
      * This method is charge of listening on every button given as parameter and also sliders
      * to perform a specified action
      */
-    public void listen(JLabel playButton, JLabel stopButton, JLabel pauseButton, EmbeddedMediaPlayerComponent player,
+    public void listen(JButton playButton, JButton stopButton, JButton pauseButton, EmbeddedMediaPlayerComponent player,
                        File file, JSlider progressBar, JSlider volumen) {
 
         playButton.addMouseListener(new MouseAdapter() {
