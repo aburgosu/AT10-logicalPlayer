@@ -41,7 +41,7 @@ public class PlayerJFrame extends JFrame {
     private int volumeLevel;
     private EmbeddedMediaPlayerComponent player;
     private File fileToBePlayed;
-    ButtonListener buttonListener;
+    private ButtonListener buttonListener;
 
     /**
      * Searchs for required vlc libraries: libvlc.dll libvlccore.dll
