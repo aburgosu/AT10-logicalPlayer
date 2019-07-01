@@ -41,6 +41,7 @@ public class PlayerJFrame extends JFrame {
     private int volumeLevel;
     private EmbeddedMediaPlayerComponent player;
     private File fileToBePlayed;
+    ButtonListener buttonListener;
 
     /**
      * Searchs for required vlc libraries: libvlc.dll libvlccore.dll
@@ -55,17 +56,12 @@ public class PlayerJFrame extends JFrame {
     public PlayerJFrame(String path) {
         initComponent(path);
         initSetting();
-
-        //Initializes an instance of ButtonListener class
-        ButtonListener buttonListener = new ButtonListener(volumeLevel);
-        //Sends all required arguments to buttonListener's listen method
-        buttonListener.listen(playButton, stopButton, pauseButton, player, fileToBePlayed, progressBar, volumeSlider);
     }
 
     /**
      * Initializes a PlayerJFrame object with all panels, labels and sliders required
      */
-    private void initComponent(String path){
+    private void initComponent(String path) {
         playButton = new JButton();
         stopButton = new JButton();
         pauseButton = new JButton();
@@ -76,12 +72,13 @@ public class PlayerJFrame extends JFrame {
         volumeSlider = new JSlider(JSlider.VERTICAL, 0, 100, volumeLevel);
         player = new EmbeddedMediaPlayerComponent();
         fileToBePlayed = new File(path);
+        buttonListener = new ButtonListener(volumeLevel);
     }
 
     /**
      * Set all PlayerJFrame components
      */
-    private void initSetting(){
+    private void initSetting() {
         setBounds(new Rectangle(80, 100, 800, 540));
         setTitle("LogicalPlayer");
         try {
@@ -110,5 +107,7 @@ public class PlayerJFrame extends JFrame {
         player.setSize(playingPanel.getSize());
         player.setVisible(true);
         setVisible(true);
+        //Sends all required arguments to buttonListener's listen method
+        buttonListener.listen(playButton, stopButton, pauseButton, player, fileToBePlayed, progressBar, volumeSlider);
     }
 }
