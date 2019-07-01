@@ -21,6 +21,5 @@ public class main {
 
     public static void main(String[] arg){
          SearchVideoFrame initMainWindow = new SearchVideoFrame();
-         initMainWindow.setVisible(true);
     }
 }
