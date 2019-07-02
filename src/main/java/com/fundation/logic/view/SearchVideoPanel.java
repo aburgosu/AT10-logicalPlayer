@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * <p>
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -9,12 +9,15 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Implements the SearchVideoPanel class
@@ -23,15 +26,38 @@ import javax.swing.JButton;
  * @version 1.0
  */
 public class SearchVideoPanel extends JPanel {
-    private JTextField txtFldPath, txtFldFileName, txtFldSize, txtFldCreationDate, txtFldModificationDate,
-            txtFldFrameRate, txtFldVideoFormat, txtFldResolution;
-    private JLabel lblSearch, lblPath, lblFileName, lblSize, lblCreationDate, lblModificationDate,
-            lblVideoSearchTittle, lblFrameRate, lblVideoFormat, lblResolution, lblAudio, lblAurioSearchTittle,
-            lblAudioChanel, lblAudioFileFormat;
-    private JComboBox comboSize, comboAudioFileFormat, comboAudioChanel;
+    private JTextField txtFldFileName;
+    private JTextField txtFldSize;
+    private JTextField txtFldCreationDate;
+    private JTextField txtFldModificationDate;
+    private JTextField txtFldFrameRate;
+    private JTextField txtFldVideoFormat;
+    private JTextField txtFldResolution;
+    private JTextField txtFldPath;
+    private JLabel lblSearch;
+    private JLabel lblPath;
+    private JLabel lblFileName;
+    private JLabel lblSize;
+    private JLabel lblCreationDate;
+    private JLabel lblModificationDate;
+    private JLabel lblVideoSearchTittle;
+    private JLabel lblFrameRate;
+    private JLabel lblVideoFormat;
+    private JLabel lblResolution;
+    private JLabel lblAudio;
+    private JLabel lblAurioSearchTittle;
+    private JLabel lblAudioChanel;
+    private JLabel lblAudioFileFormat;
+    private JComboBox comboSize;
+    private JComboBox comboAudioFileFormat;
+    private JComboBox comboAudioChanel;
     private JCheckBox chxYes, chxNo;
-    private Integer positionOneX, positionTwoX, positionThreeX;//position x default
+    private Integer positionOneX;
+    private Integer positionTwoX;
+    private Integer positionThreeX;
     private JButton btnPlayer;
+    private JButton btnSearchFile;
+    private String pathAddress;
 
     public SearchVideoPanel() {
         initComponent();
@@ -107,6 +133,8 @@ public class SearchVideoPanel extends JPanel {
         //Init button
         btnPlayer = new JButton("Player");
         add(btnPlayer);
+        btnSearchFile = new JButton("Path");
+        add(btnSearchFile);
     }
 
     /**
@@ -114,9 +142,9 @@ public class SearchVideoPanel extends JPanel {
      */
     public void initSetting() {
         //positions to align labels textFields checkBoxes comboBoxes
-        positionOneX = 10;
-        positionTwoX = 180;
-        positionThreeX = 300;
+        positionOneX = 10; //First column position for labels
+        positionTwoX = 180;//Second column position for textField or comboBox
+        positionThreeX = 300;//Third column position for button or comboBox
         //General search labels positions
         lblSearch.setBounds(positionOneX, 23, 62, 27);
         lblPath.setBounds(positionOneX, 56, 51, 27);
@@ -131,7 +159,7 @@ public class SearchVideoPanel extends JPanel {
         lblFrameRate.setBounds(positionOneX, 300, 100, 20);
         lblAudio.setBounds(positionOneX, 330, 100, 20);
         //General search textFields positions
-        txtFldPath.setBounds(positionTwoX, 59, 86, 20);
+        txtFldPath.setBounds(positionTwoX, 59, 200, 20);
         txtFldFileName.setBounds(positionTwoX, 90, 86, 20);
         txtFldSize.setBounds(positionTwoX, 120, 86, 20);
         txtFldCreationDate.setBounds(positionTwoX, 150, 60, 20);
@@ -145,7 +173,7 @@ public class SearchVideoPanel extends JPanel {
         lblAudioChanel.setBounds(positionOneX, 380, 100, 20);
         lblAudioFileFormat.setBounds(positionOneX, 410, 100, 20);
         //text inside "TextFields"
-        txtFldPath.setText("...");
+        //txtFldPath.setText("...");
         txtFldFileName.setText("...");
         txtFldSize.setText("...");
         txtFldCreationDate.setText("...");
@@ -159,6 +187,33 @@ public class SearchVideoPanel extends JPanel {
         chxNo.setBounds(240, 330, 60, 25);
         //Button position and init action click
         ActionPlayButton.clickAction(btnPlayer);
-        btnPlayer.setBounds(450, 56, 100, 25);
+        btnPlayer.setBounds(500, 56, 70, 25);
+        findPath(btnSearchFile);
+        btnSearchFile.setBounds(400, 56, 70, 25);
+    }
+
+    /**
+     * This method set the path to txtFldPath
+     */
+    public void findPath(JButton btnSearchFile) {
+        btnSearchFile.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                JFileChooser pathChooser = new JFileChooser();
+                pathChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                int returnPath = pathChooser.showOpenDialog(null);
+                if (returnPath == JFileChooser.APPROVE_OPTION) {
+                    txtFldPath.setText(pathChooser.getSelectedFile().getPath());
+                }
+            }
+        });
+    }
+
+    /**
+     * This method get the path from txtFldPath
+     */
+    public String getPath() {
+        pathAddress = txtFldPath.getText();
+        return pathAddress;
     }
 }
