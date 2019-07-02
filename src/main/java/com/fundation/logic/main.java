@@ -10,16 +10,17 @@
 package com.fundation.logic;
 
 import com.fundation.logic.view.SearchVideoFrame;
-
+import com.fundation.logic.controller.Controller;
 /**
-  * Implements the main class
- * 
-  * @author Andres Burgos
-  * @version 1.0 *
-  */
+ * Implements the main class
+ *
+ * @author Andres Burgos
+ * @version 1.0
+ */
 public class main {
 
-    public static void main(String[] arg){
-         SearchVideoFrame initMainWindow = new SearchVideoFrame();
+    public static void main(String[] arg) {
+        SearchVideoFrame searchFrame = new SearchVideoFrame();
+        Controller controller = new Controller(searchFrame);
     }
 }

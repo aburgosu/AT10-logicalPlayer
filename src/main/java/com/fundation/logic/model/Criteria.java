@@ -9,15 +9,35 @@
   */
  package com.fundation.logic.model;
 
- /** 
+ /**
   * Implements the model class File and the getter and setter´s methods
-  * @author Andres Burgos
-  * @version 1.0 *
+  *
+  * @authors Andres Burgos, Jesus Menacho.
+  * @version 1.1
   */
+
  public class Criteria {
      private String path;
      private String fileName;
      private String extension;
+     private Boolean fileHidden = false;
+     private Boolean fileReadOnly = false;
+
+     public Boolean getFileHidden() {
+         return fileHidden;
+     }
+
+     public void setFileHidden(Boolean fileHidden) {
+         this.fileHidden = fileHidden;
+     }
+
+     public Boolean getFileReadOnly() {
+         return fileReadOnly;
+     }
+
+     public void setFileReadOnly(Boolean fileReadOnly){
+         this.fileReadOnly = fileReadOnly;
+     }
 
      public String getPath() {
          return path;

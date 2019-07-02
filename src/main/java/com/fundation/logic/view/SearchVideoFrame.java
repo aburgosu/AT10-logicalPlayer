@@ -35,6 +35,8 @@ public class SearchVideoFrame extends JFrame {
     public void initComponent() {
         mainSearchPanel = new SearchVideoPanel();
         add(mainSearchPanel);
+        SearchVideoPanel initSearchPanel = new SearchVideoPanel();
+        contentSearchVideoPane.add(initSearchPanel);
         setVisible(true);
     }
 
