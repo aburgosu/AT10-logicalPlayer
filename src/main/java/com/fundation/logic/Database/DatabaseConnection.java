@@ -25,7 +25,6 @@ public class DatabaseConnection {
         String url = "jdbc:sqlite:" + fileName;
         try {
             DriverManager.getConnection(url);
-            
         } catch (SQLException e) {
             e.getMessage();
         }
