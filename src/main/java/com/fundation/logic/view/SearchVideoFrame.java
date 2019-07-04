@@ -48,11 +48,8 @@ public class SearchVideoFrame extends JFrame {
         tableScrollPanel.add(tableResult);
         mainSplitPanel.setRightComponent(tableResult);
 
-
-        mainSearchPanel = new SearchVideoPanel();
-        mainSplitPanel.setLeftComponent(mainSearchPanel);
-        SearchVideoPanel initSearchPanel = new SearchVideoPanel();
-
+        SearchTabs searchTabs = new SearchTabs();
+        mainSplitPanel.setLeftComponent(searchTabs);
     }
 
     /**
@@ -62,6 +59,7 @@ public class SearchVideoFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setBounds(100, 100, 800, 400);
+        setTitle("J2AM Player");
         initComponent();
         setContentPane(mainContentPanel);
         setVisible(true);
