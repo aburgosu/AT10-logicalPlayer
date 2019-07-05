@@ -67,6 +67,9 @@ public class SearchVideoFrame extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * This method return the TableResult
+     */
     public TableResult getTableResult(){
         return tableResult;
     }
