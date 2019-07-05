@@ -32,7 +32,7 @@ public class Query {
     public void insertCriteria(String name, String json) {
         String sql = "INSERT INTO criterias(name, date, json) VALUES(?,?,?)";
         try {
-            Connection connection =DBConnection.getInstance().getConnection();
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
             statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
@@ -42,6 +42,7 @@ public class Query {
             e.getMessage();
         }
     }
+
     /**
      * This method show informations from the table criteria.
      */
@@ -53,13 +54,14 @@ public class Query {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                infCriterias.add(result.getInt("id") + "\t" +result.getString("name") + "\t" + result.getDate("date") + "\t" + result.getString("json"));
+                infCriterias.add(result.getInt("id") + "\t" + result.getString("name") + "\t" + result.getDate("date") + "\t" + result.getString("json"));
             }
         } catch (SQLException e) {
             e.getMessage();
         }
         return infCriterias;
     }
+
     /**
      * This method delete informations acording a id from the table criteria.
      */
@@ -74,6 +76,7 @@ public class Query {
             e.getMessage();
         }
     }
+
     /**
      * This method show the info criteria between two dates.
      */
@@ -87,7 +90,7 @@ public class Query {
             statement.setString(2, secondDate);
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                infCriterias.add(result.getInt("id") + "\t" +result.getString("name") + "\t" + result.getDate("date") + "\t" + result.getString("json"));
+                infCriterias.add(result.getInt("id") + "\t" + result.getString("name") + "\t" + result.getDate("date") + "\t" + result.getString("json"));
             }
         } catch (SQLException e) {
             e.getMessage();
