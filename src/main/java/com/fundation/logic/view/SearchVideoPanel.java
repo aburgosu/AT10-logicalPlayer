@@ -68,6 +68,8 @@ public class SearchVideoPanel extends JPanel {
      * This method init all component
      */
     public void initComponent() {
+
+
         setLayout(null);
         //Init and adds Labels
         lblSearch = new JLabel("Search");

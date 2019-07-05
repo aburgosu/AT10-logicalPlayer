@@ -11,6 +11,8 @@ package com.fundation.logic.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 
@@ -21,11 +23,12 @@ import java.awt.BorderLayout;
  * @version 1.0
  */
 public class SearchVideoFrame extends JFrame {
-    private String pathAddress;
+    JPanel mainContentPanel;
     private SearchVideoPanel mainSearchPanel;
+    private SearchTabs searchTabs;
+    private TableResult tableResult;
 
     public SearchVideoFrame() {
-        initComponent();
         initSetting();
     }
 
@@ -33,23 +36,43 @@ public class SearchVideoFrame extends JFrame {
      * This method init all component
      */
     public void initComponent() {
-        mainSearchPanel = new SearchVideoPanel();
-        add(mainSearchPanel);
-        SearchVideoPanel initSearchPanel = new SearchVideoPanel();
-        contentSearchVideoPane.add(initSearchPanel);
-        setVisible(true);
+
+        mainContentPanel = new JPanel();
+        mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        mainContentPanel.setLayout(new BorderLayout(0, 0));
+
+        JSplitPane mainSplitPanel = new JSplitPane();
+        mainSplitPanel.setDividerLocation(getWidth()/2);
+        mainContentPanel.add(mainSplitPanel, BorderLayout.CENTER);
+
+        tableResult = new TableResult();
+        JScrollPane tableScrollPanel = new JScrollPane();
+        tableScrollPanel.add(tableResult);
+        mainSplitPanel.setRightComponent(tableResult);
+
+        searchTabs = new SearchTabs();
+        mainSplitPanel.setLeftComponent(searchTabs);
     }
 
     /**
      * This method init all setting of the components like the position
      */
     public void initSetting() {
-        setBounds(100, 100, 700, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setBounds(100, 100, 800, 400);
+        setTitle("J2AM Player");
+        initComponent();
+        setContentPane(mainContentPanel);
+        setVisible(true);
     }
 
-    public String getPath() {
-        pathAddress = mainSearchPanel.getPath();
-        return pathAddress;
+    /**
+     * This method return the TableResult
+     */
+    public TableResult getTableResult(){
+        return tableResult;
     }
+
+
 }
