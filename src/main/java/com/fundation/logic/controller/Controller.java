@@ -11,10 +11,11 @@ package com.fundation.logic.controller;
 
 import com.fundation.logic.model.Criteria;
 import com.fundation.logic.model.ISearch;
-import com.fundation.logic.model.SearchVideo;
+import com.fundation.logic.model.Search;
 import com.fundation.logic.view.SearchVideoFrame;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,6 +28,7 @@ public class Controller {
     ISearch search;
     Criteria criteria;
     SearchVideoFrame searchFrame;
+    List<File> filesInPath;
 
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
@@ -39,22 +41,52 @@ public class Controller {
     /**
      * Sets criteria according on input parameters
      */
-    public Criteria setCriteria(String path, String fileName, String extension, Boolean fileHidden,
-            Boolean fileReadOnly) {
+    public void setCriteria(String path, String fileName, String extension,
+                            Boolean fileHidden, Boolean fileReadOnly,
+                            Float lowerLimit, Float upperLimit, Date creDLL,
+                            Date creDUL, Date accDLL, Date accDUL, Date modDLL, Date modDUL) {
         criteria.setPath(path);
         criteria.setFileName(fileName);
         criteria.setExtension(extension);
         criteria.setFileHidden(fileHidden);
         criteria.setFileReadOnly(fileReadOnly);
-        return criteria;
+        criteria.setSizeLowerLimit(lowerLimit);
+        criteria.setSizeUpperLimit(upperLimit);
+        criteria.setCreationDateLL(creDLL);
+        criteria.setCreationDateUL(creDUL);
+        criteria.setAccessDateLL(accDLL);
+        criteria.setAccessDateUL(accDUL);
+        criteria.setModificationDateLL(modDLL);
+        criteria.setModificationDateUL(modDUL);
     }
 
     /**
      * Make the search sending the criteria as parameter
      */
     public List makeSearch(Criteria criteria) {
-        search = new SearchVideo(criteria);
-        List<File> foundFiles = search.search();
-        return foundFiles;
+        search = new Search(criteria);
+        try {
+            List<File> foundFiles = search.search();
+            return foundFiles;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * print the result in the table
+     */
+    public void printSearchResult() {
+        setCriteria("resources/",
+                null, null, false, false, null, null,
+                null, null, null, null, null, null);
+        filesInPath = makeSearch(criteria);
+        for (int index = 0; index < filesInPath.size(); index++) {
+            this.searchFrame.getTableResult().addResult(filesInPath.get(index).getName(),
+                    filesInPath.get(index).getName().substring(filesInPath.get(index).getName().length() - 3),
+                    new Float(filesInPath.get(index).length()),
+                    new Date(System.currentTimeMillis()), "--x");
+        }
     }
 }
