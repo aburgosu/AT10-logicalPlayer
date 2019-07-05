@@ -2,12 +2,12 @@
  * Copyright (c) 2019 Jalasoft.
  *
  * This software is the confidential and proprietary information of Jalasoft.
- * (" Confidential Information"). You shall not
+ * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.Database;
+package com.fundation.logic.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -28,14 +28,14 @@ public class DBConnection {
         initConnection();
     }
 
-    private static DBConnection getInstance(){
+    public static DBConnection getInstance(){
         if (dbcon == null){
             dbcon = new DBConnection();
         }
         return dbcon;
     }
 
-    public static Connection initConnection(){
+    private static void initConnection(){
         String file="AT10-player.db";
         String url ="jdbc:sqlite:" + file;
         try {
@@ -57,6 +57,9 @@ public class DBConnection {
         } catch (SQLException e) {
             e.getMessage();
         }
+
+    }
+    public Connection getConnection(){
         return conn;
     }
 }

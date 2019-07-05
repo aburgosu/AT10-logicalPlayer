@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.Database;
+package com.fundation.logic.database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,7 +32,7 @@ public class Query {
     public void insertCriteria(String name, String json) {
         String sql = "INSERT INTO criterias(name, date, json) VALUES(?,?,?)";
         try {
-            Connection connection =DBConnection.initConnection();
+            Connection connection =DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
             statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
@@ -49,7 +49,7 @@ public class Query {
         List<String> infCriterias = new ArrayList<String>();
         String sql = "SELECT * FROM criterias";
         try {
-            Connection conn = DBConnection.initConnection();
+            Connection conn = DBConnection.getInstance().getConnection();
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
@@ -66,7 +66,7 @@ public class Query {
     public void deleteByIde(String ID) {
         String sql = "DELETE FROM criterias WHERE id = ?";
         try {
-            Connection connection = DBConnection.initConnection();
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, ID);
             statement.executeUpdate();
@@ -81,7 +81,7 @@ public class Query {
         List<String> infCriterias = new ArrayList<String>();
         String sql = "SELECT * FROM criterias WHERE data BETWEEN '?' AND '?'";
         try {
-            Connection connection = DBConnection.initConnection();
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, firstDate);
             statement.setString(2, secondDate);
