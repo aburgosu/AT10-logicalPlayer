@@ -20,8 +20,8 @@ import java.util.Date;
  * @version 1.0
  */
 public class TableResult extends JTable {
-
     DefaultTableModel model;
+    
     /**
      * Initializes a TableResult instance with headers
      */
@@ -30,6 +30,7 @@ public class TableResult extends JTable {
         model.addRow(new Object[]{"FILE","EXTENSION","SIZE","DATE","ATTRIBUTE"});
         this.setModel(model);
     }
+
     /**
      * Add a new row to ResultTable
      */
