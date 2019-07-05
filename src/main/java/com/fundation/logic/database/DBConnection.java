@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 /**
  * Implements insert in a table .
  *
@@ -20,35 +21,34 @@ import java.sql.Statement;
  * @version 1.0
  */
 public class DBConnection {
-
     private static DBConnection dbcon = new DBConnection();
     private static Connection conn;
 
-    private DBConnection(){
+    private DBConnection() {
         initConnection();
     }
 
-    public static DBConnection getInstance(){
-        if (dbcon == null){
+    public static DBConnection getInstance() {
+        if (dbcon == null) {
             dbcon = new DBConnection();
         }
         return dbcon;
     }
 
-    private static void initConnection(){
-        String file="AT10-player.db";
-        String url ="jdbc:sqlite:" + file;
+    private static void initConnection() {
+        String file = "AT10-player.db";
+        String url = "jdbc:sqlite:" + file;
         try {
-            conn=DriverManager.getConnection(url);
+            conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
             e.getMessage();
         }
-        String sql =    "CREATE TABLE IF NOT EXISTS criterias (\n"
-                +   " id integer PRIMARY KEY,\n"
-                +   " name text NOT NULL,\n"
-                +   " date datetime NOT NULL,\n"
-                +   " json text NOT NULL\n"
-                +   ");";
+        String sql = "CREATE TABLE IF NOT EXISTS criterias (\n"
+                + " id integer PRIMARY KEY,\n"
+                + " name text NOT NULL,\n"
+                + " date datetime NOT NULL,\n"
+                + " json text NOT NULL\n"
+                + ");";
 
         try {
             Connection connection = conn;
@@ -59,7 +59,8 @@ public class DBConnection {
         }
 
     }
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         return conn;
     }
 }
