@@ -56,7 +56,7 @@ public class Query {
                 infCriterias.add(result.getInt("id") + "\t" +result.getString("name") + "\t" + result.getDate("date") + "\t" + result.getString("json"));
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.getMessage();
         }
         return infCriterias;
     }
@@ -66,12 +66,32 @@ public class Query {
     public void deleteByIde(String ID) {
         String sql = "DELETE FROM criterias WHERE id = ?";
         try {
-            Connection connection =DBConnection.initConnection();
+            Connection connection = DBConnection.initConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, ID);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.getMessage();
         }
+    }
+    /**
+     * This method show the info criteria between two dates.
+     */
+    public List filterByDates(String firstDate, String secondDate) {
+        List<String> infCriterias = new ArrayList<String>();
+        String sql = "SELECT * FROM criterias WHERE data BETWEEN '?' AND '?'";
+        try {
+            Connection connection = DBConnection.initConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, firstDate);
+            statement.setString(2, secondDate);
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()) {
+                infCriterias.add(result.getInt("id") + "\t" +result.getString("name") + "\t" + result.getDate("date") + "\t" + result.getString("json"));
+            }
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+        return infCriterias;
     }
 }
