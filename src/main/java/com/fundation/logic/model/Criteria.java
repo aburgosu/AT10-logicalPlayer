@@ -9,10 +9,12 @@
   */
  package com.fundation.logic.model;
 
+ import java.util.Date;
+
  /**
   * Implements the model class File and the getter and setter´s methods
   *
-  * @authors Andres Burgos, Jesus Menacho.
+  * @authors Andres Burgos, Jesus Menacho, Melissa Román
   * @version 1.1
   */
 
@@ -22,44 +24,194 @@
      private String extension;
      private Boolean fileHidden = false;
      private Boolean fileReadOnly = false;
+     private Float sizeLowerLimit;
+     private Float sizeUpperLimit;
+     private Date creationDateLL;
+     private Date creationDateUL;
+     private Date accessDateLL;
+     private Date accessDateUL;
+     private Date modificationDateLL;
+     private Date modificationDateUL;
 
-     public Boolean getFileHidden() {
-         return fileHidden;
-     }
-
+     /**
+      * Set criteria's fileHidden.
+      */
      public void setFileHidden(Boolean fileHidden) {
          this.fileHidden = fileHidden;
      }
 
-     public Boolean getFileReadOnly() {
-         return fileReadOnly;
+     /**
+      * @return Criteria's hidden status.
+      */
+     public Boolean getFileHidden() {
+         return fileHidden;
      }
 
+     /**
+      * Set criteria's readOnly status.
+      */
      public void setFileReadOnly(Boolean fileReadOnly){
          this.fileReadOnly = fileReadOnly;
      }
 
-     public String getPath() {
-         return path;
+     /**
+      * @return Criteria's readOnly status.
+      */
+     public Boolean getFileReadOnly() {
+         return fileReadOnly;
      }
 
+     /**
+      * Set criteria's path.
+      */
      public void setPath(String path) {
          this.path = path;
      }
 
-     public String getFileName() {
-         return fileName;
+     /**
+      * @return Criteria's path.
+      */
+     public String getPath() {
+         return path;
      }
 
+     /**
+      * Set criteria's fileName.
+      */
      public void setFileName(String fileName) {
          this.fileName = fileName;
      }
 
+     /**
+      * @return Criteria's fileName.
+      */
+     public String getFileName() {
+         return fileName;
+     }
+
+     /**
+      * Set criteria's extension.
+      */
+     public void setExtension(String extension) {
+         this.extension = extension;
+     }
+
+     /**
+      * @return Criteria's extension.
+      */
      public String getExtension() {
          return extension;
      }
 
-     public void setExtension(String extension) {
-         this.extension = extension;
+     /**
+      * Set lower limit for search by size criteria.
+      */
+     public void setSizeLowerLimit(Float sizeLowerLimit) {
+         this.sizeLowerLimit = sizeLowerLimit;
+     }
+
+     /**
+      * @return Criteria's lower limit for search.
+      */
+     public Float getSizeLowerLimit() {
+         return sizeLowerLimit;
+     }
+
+     /**
+      * Set upper limit for search by size criteria.
+      */
+     public void setSizeUpperLimit(Float sizeUpperLimit) {
+         this.sizeUpperLimit = sizeUpperLimit;
+     }
+
+     /**
+      * @return Criteria's upper limit for search by size.
+      */
+     public Float getSizeUpperLimit() {
+         return sizeUpperLimit;
+     }
+
+     /**
+      * Set lower limit for search by creation date criteria.
+      */
+     public void setCreationDateLL(Date creationDateLL) {
+         this.creationDateLL = creationDateLL;
+     }
+
+     /**
+      * @return Criteria's lower limit for search by creation date.
+      */
+     public Date getCreationDateLL() {
+         return creationDateLL;
+     }
+
+     /**
+      * Set upper limit for search by creation date criteria.
+      */
+     public void setCreationDateUL(Date creationDateUL) {
+         this.creationDateUL = creationDateUL;
+     }
+
+     /**
+      * @return Criteria's upper limit for search by creation date.
+      */
+     public Date getCreationDateUL() {
+         return creationDateUL;
+     }
+
+     /**
+      * Set lower limit for search by access date criteria.
+      */
+     public void setAccessDateLL(Date accessDateLL) {
+         this.accessDateLL = accessDateLL;
+     }
+
+     /**
+      * @return Criteria's lower limit for search by access date.
+      */
+     public Date getAccessDateLL() {
+         return accessDateLL;
+     }
+
+     /**
+      * Set upper limit for search by access date criteria.
+      */
+     public void setAccessDateUL(Date accessDateUL) {
+         this.accessDateUL = accessDateUL;
+     }
+
+     /**
+      * @return Criteria's upper limit for search by access date.
+      */
+     public Date getAccessDateUL() {
+         return accessDateUL;
+     }
+
+     /**
+      * Set lower limit for search by modification date criteria.
+      */
+     public void setModificationDateLL(Date modificationDateLL) {
+         this.modificationDateLL = modificationDateLL;
+     }
+
+     /**
+      * @return Criteria's lower limit for search by modification date.
+      */
+     public Date getModificationDateLL() {
+         return modificationDateLL;
+     }
+
+     /**
+      * Set upper limit for search by modification date criteria.
+      */
+     public void setModificationDateUL(Date modificationDateUL) {
+         this.modificationDateUL = modificationDateUL;
+     }
+
+     /**
+      * @return Criteria's upper limit for search by modification date.
+      */
+     public Date getModificationDateUL() {
+         return modificationDateUL;
      }
  }
