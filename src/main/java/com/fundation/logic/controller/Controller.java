@@ -28,7 +28,6 @@ public class Controller {
     ISearch search;
     Criteria criteria;
     SearchVideoFrame searchFrame;
-    List<File> filesInPath;
 
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
@@ -81,11 +80,12 @@ public class Controller {
         setCriteria("resources/",
                 null, null, false, false, null, null,
                 null, null, null, null, null, null);
-        filesInPath = makeSearch(criteria);
-        for (int index = 0; index < filesInPath.size(); index++) {
-            this.searchFrame.getTableResult().addResult(filesInPath.get(index).getName(),
-                    filesInPath.get(index).getName().substring(filesInPath.get(index).getName().length() - 3),
-                    new Float(filesInPath.get(index).length()),
+        List<File> foundFiles;
+        foundFiles = makeSearch(criteria);
+        for (int index = 0; index < foundFiles.size(); index++) {
+            this.searchFrame.getTableResult().addResult(foundFiles.get(index).getName(),
+                    foundFiles.get(index).getName().substring(foundFiles.get(index).getName().length() - 3),
+                    new Float(foundFiles.get(index).length()),
                     new Date(System.currentTimeMillis()), "--x");
         }
     }
