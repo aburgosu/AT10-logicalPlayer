@@ -34,7 +34,7 @@
      private Date criteriaModificationDateUL;
 
      /**
-      * Set criteria's criteriaFileHidden.
+      * Set criteriaFileHidden.
       */
      public void setCriteriaFileHidden(Boolean criteriaFileHidden) {
          this.criteriaFileHidden = criteriaFileHidden;
@@ -50,7 +50,7 @@
      /**
       * Set criteria's readOnly status.
       */
-     public void setCriteriaFileReadOnly(Boolean criteriaFileReadOnly){
+     public void setCriteriaFileReadOnly(Boolean criteriaFileReadOnly) {
          this.criteriaFileReadOnly = criteriaFileReadOnly;
      }
 
@@ -62,42 +62,42 @@
      }
 
      /**
-      * Set criteria's criteriaPath.
+      * Set criteriaPath.
       */
      public void setCriteriaPath(String criteriaPath) {
          this.criteriaPath = criteriaPath;
      }
 
      /**
-      * @return Criteria's criteriaPath.
+      * @return criteriaPath.
       */
      public String getCriteriaPath() {
          return criteriaPath;
      }
 
      /**
-      * Set criteria's criteriaFileName.
+      * Set criteria's fileName.
       */
      public void setCriteriaFileName(String criteriaFileName) {
          this.criteriaFileName = criteriaFileName;
      }
 
      /**
-      * @return Criteria's criteriaFileName.
+      * @return criteriaFileName.
       */
      public String getCriteriaFileName() {
          return criteriaFileName;
      }
 
      /**
-      * Set criteria's criteriaExtension.
+      * Set criteria's extension.
       */
      public void setCriteriaExtension(String criteriaExtension) {
          this.criteriaExtension = criteriaExtension;
      }
 
      /**
-      * @return Criteria's criteriaExtension.
+      * @return criteriaExtension.
       */
      public String getCriteriaExtension() {
          return criteriaExtension;
