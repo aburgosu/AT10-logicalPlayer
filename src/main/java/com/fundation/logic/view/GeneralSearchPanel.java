@@ -46,7 +46,7 @@ public class GeneralSearchPanel extends JPanel {
     /**
      * Initializes a SearchTabs instance for the search options
      */
-    public GeneralSearchPanel(){
+    public GeneralSearchPanel() {
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{29, 246, 67, 0};
         gridBagLayout.rowHeights = new int[]{23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
