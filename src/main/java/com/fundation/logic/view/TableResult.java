@@ -37,4 +37,12 @@ public class TableResult extends JTable {
     public void addResult(String path, String extension, Float size, Date date, String attribute) {
         model.addRow(new Object[]{path, extension, size, date, attribute});
     }
+
+    /**
+     * Removes all the rows in the ResultTable
+     */
+    public void clearTableResult() {
+        model.getDataVector().removeAllElements();
+        revalidate();
+    }
 }
