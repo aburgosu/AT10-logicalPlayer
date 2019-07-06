@@ -11,6 +11,7 @@ package com.fundation.logic.controller;
 import com.fundation.logic.model.Criteria;
 import com.fundation.logic.model.ISearch;
 import com.fundation.logic.model.Search;
+import com.fundation.logic.view.GeneralSearchPanel;
 import com.fundation.logic.view.SearchVideoFrame;
 import com.fundation.logic.model.CustomizedFile;
 
@@ -44,14 +45,14 @@ public class Controller {
     /**
      * Sets criteria according on input parameters
      */
-    public void setCriteria(String path, String fileName, String extension, Boolean fileHidden, Boolean fileReadOnly,
+    public void setCriteria(String path, String fileName, String extension, boolean fileHiddenStatus, boolean fileReadOnlyStatus,
                             Float minSize, Float maxSize, Date minCreationDate, Date maxCreationDate, Date minAccessDate,
                             Date maxAccessDate, Date minModificationDate, Date maxModificationDate, String owner) {
         criteria.setCriteriaPath(path);
         criteria.setCriteriaFileName(fileName);
         criteria.setCriteriaExtension(extension);
-        criteria.setCriteriaFileHidden(fileHidden);
-        criteria.setCriteriaFileReadOnly(fileReadOnly);
+        criteria.setCriteriaFileHidden(fileHiddenStatus);
+        criteria.setCriteriaFileReadOnly(fileReadOnlyStatus);
         criteria.setCriteriaSizeMin(minSize);
         criteria.setCriteriaSizeMax(maxSize);
         criteria.setCriteriaCreationDateMin(minCreationDate);
@@ -68,21 +69,16 @@ public class Controller {
      */
     public List makeSearch(Criteria criteria) {
         search = new Search(criteria);
-        try {
-            List<File> foundFiles = search.search();
-            return foundFiles;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        List<File> foundFiles = search.search();
+        return foundFiles;
     }
 
     /**
-     * print the result in the table
+     * show the result in the table
      */
-    public void printSearchResult() {
+    public void showSearchResult() {
         setCriteria("resources/",
-                null, "docx", true, false, null, null,
+                null, null, true, false, null, null,
                 null, null, null, null, null,
                 null, null);
         List<CustomizedFile> foundFiles;
@@ -104,7 +100,7 @@ public class Controller {
         btnSearch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 searchFrame.getTableResult().clearTableResult();
-                printSearchResult();
+                showSearchResult();
             }
         });
     }
