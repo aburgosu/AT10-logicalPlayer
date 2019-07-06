@@ -43,6 +43,7 @@ public class SearchVideoFrame extends JFrame {
 
         JSplitPane mainSplitPanel = new JSplitPane();
         mainSplitPanel.setDividerLocation(getWidth()/2);
+        mainSplitPanel.setEnabled(false);
         mainContentPanel.add(mainSplitPanel, BorderLayout.CENTER);
 
         tableResult = new TableResult();
@@ -52,6 +53,7 @@ public class SearchVideoFrame extends JFrame {
 
         searchTabs = new SearchTabs();
         mainSplitPanel.setLeftComponent(searchTabs);
+
     }
 
     /**
