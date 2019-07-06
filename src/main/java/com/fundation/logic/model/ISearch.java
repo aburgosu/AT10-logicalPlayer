@@ -19,6 +19,5 @@ import java.util.List;
  * @version 1.0 *
  */
 public interface ISearch {
-
-    public List<File> search();
+    List<File> search() throws Exception;
 }
