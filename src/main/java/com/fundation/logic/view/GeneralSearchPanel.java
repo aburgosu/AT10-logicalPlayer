@@ -331,7 +331,7 @@ public class GeneralSearchPanel extends JPanel {
     /**
      * This method return the Search Button
      */
-    public JButton getSearchButton(){
+    public JButton getSearchButton() {
         return btnSearch;
     }
 
