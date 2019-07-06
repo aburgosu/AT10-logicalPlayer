@@ -80,7 +80,7 @@ public class CustomizedFile {
     /**
      * @return File's hidden status.
      */
-    public boolean getHiddenStatus(){
+    public boolean getHiddenStatus() {
         return hiddenStatus;
     }
 
