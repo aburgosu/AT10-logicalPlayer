@@ -24,6 +24,11 @@ import java.util.Date;
  * @version 1.0
  */
 public abstract class FileInfo {
+    /**
+     * @param file
+     * @param option
+     * @return String according to file's denomination option input.
+     */
     public static String getFileDenomination(File file, String option) {
         String complete = file.getName();
         int indexPoint = complete.indexOf(".");
@@ -39,6 +44,10 @@ public abstract class FileInfo {
         }
     }
 
+    /**
+     * @param file
+     * @return File's size in bytes.
+     */
     public static Float getFileSize(File file) {
         Path filePath = FileSystems.getDefault().getPath(file.getAbsolutePath());
         try {
@@ -50,6 +59,11 @@ public abstract class FileInfo {
         return null;
     }
 
+    /**
+     * @param file
+     * @param option
+     * @return File's related date according to option input.
+     */
     public static Date getFileDate(File file, String option) {
         Path filePath = FileSystems.getDefault().getPath(file.getAbsolutePath());
         try {
@@ -71,6 +85,11 @@ public abstract class FileInfo {
         return null;
     }
 
+    /**
+     * @param file
+     * @param option
+     * @return String according to file's owner option input.
+     */
     public static String getFileOwner(File file, String option) {
         Path filePath = FileSystems.getDefault().getPath(file.getAbsolutePath());
         try {

@@ -41,7 +41,7 @@ public class Search implements ISearch {
         if (criteria.getCriteriaPath() == null) {
             return null;
         }
-        List<File> listFileAndDirectory = new ArrayList<File>();
+        List<CustomizedFile> searchResult = new ArrayList<>();
         File file = new File(criteria.getCriteriaPath());
         String criteriaFileName = criteria.getCriteriaFileName();
         String criteriaExtension = criteria.getCriteriaExtension();
@@ -60,24 +60,29 @@ public class Search implements ISearch {
         for (File fileExtractor : allSubFiles) {
             String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
             String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
-            Float sizeFileExtractor = FileInfo.getFileSize(fileExtractor);
+            boolean fileHiddenStatus = fileExtractor.isHidden();
+            boolean fileCanWrite = fileExtractor.canWrite();
+            Float fileSize = FileInfo.getFileSize(fileExtractor);
             Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
             Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
             Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
             String owner = FileInfo.getFileOwner(fileExtractor, "user");
             if (evaluateString(fileName, criteriaFileName) &&
                     evaluateString(fileExtension, criteriaExtension) &&
-                    evaluateHidden(fileExtractor.isHidden(), criteriaHidden) &&
-                    evaluateReadOnly(fileExtractor.canWrite(), criteriaReadOnly) &&
-                    evaluateSizeLimits(sizeFileExtractor, sizeLowerLimit, sizeUpperLimit) &&
+                    evaluateHidden(fileHiddenStatus, criteriaHidden) &&
+                    evaluateReadOnly(fileCanWrite, criteriaReadOnly) &&
+                    evaluateSizeLimits(fileSize, sizeLowerLimit, sizeUpperLimit) &&
                     evaluateDate(creationDate, creationDateLL, creationDateUL) &&
                     evaluateDate(accessDate, accessDateLL, accessDateUL) &&
                     evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
                     evaluateString(owner, criteriaOwner)) {
-                listFileAndDirectory.add(fileExtractor);
+                CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
+                    fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
+                    modificationDate, owner);
+                searchResult.add(matchingFile);
             }
         }
-        return listFileAndDirectory;
+        return searchResult;
     }
 
     /**
