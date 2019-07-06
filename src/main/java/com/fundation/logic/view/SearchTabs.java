@@ -39,4 +39,11 @@ public class SearchTabs extends JTabbedPane {
         panelLoadSave = new JPanel();
         addTab("Load/Save", null, panelLoadSave, "Load/Save searches");
     }
+
+    /**
+     * This method return GeneralSearchTab Panel
+     */
+    public GeneralSearchPanel getGeneralSearchPanel() {
+        return generalSearchPanel;
+    }
 }
