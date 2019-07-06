@@ -70,14 +70,14 @@ public class SearchVideoFrame extends JFrame {
     /**
      * This method return the TableResult
      */
-    public TableResult getTableResult(){
+    public TableResult getTableResult() {
         return tableResult;
     }
 
     /**
      * This method return the SearchTabs
      */
-    public SearchTabs getSearchTabs(){
+    public SearchTabs getSearchTabs() {
         return searchTabs;
     }
 }

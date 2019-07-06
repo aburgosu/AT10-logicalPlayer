@@ -43,7 +43,7 @@ public class SearchTabs extends JTabbedPane {
     /**
      * This method return GeneralSearchTab Panel
      */
-    public GeneralSearchPanel getGeneralSearchPanel(){
+    public GeneralSearchPanel getGeneralSearchPanel() {
         return generalSearchPanel;
     }
 }
