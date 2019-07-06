@@ -41,8 +41,7 @@ public class TableResult extends JTable {
     /**
      * Removes all the rows in the ResultTable
      */
-    public void clearTableResult()
-    {
+    public void clearTableResult() {
         model.getDataVector().removeAllElements();
         revalidate();
     }
