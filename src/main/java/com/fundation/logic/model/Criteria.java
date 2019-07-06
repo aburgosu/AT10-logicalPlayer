@@ -24,14 +24,15 @@
      private String criteriaExtension;
      private Boolean criteriaFileHidden;
      private Boolean criteriaFileReadOnly;
-     private Float criteriaSizeLowerLimit;
-     private Float criteriaSizeUpperLimit;
-     private Date criteriaCreationDateLL;
-     private Date criteriaCreationDateUL;
-     private Date criteriaAccessDateLL;
-     private Date criteriaAccessDateUL;
-     private Date criteriaModificationDateLL;
-     private Date criteriaModificationDateUL;
+     private Float criteriaSizeMin;
+     private Float criteriaSizeMax;
+     private Date criteriaCreationDateMin;
+     private Date criteriaCreationDateMax;
+     private Date criteriaAccessDateMin;
+     private Date criteriaAccessDateMax;
+     private Date criteriaModificationDateMin;
+     private Date criteriaModificationDateMax;
+     private String criteriaOwner;
 
      /**
       * Set criteriaFileHidden.
@@ -106,112 +107,126 @@
      /**
       * Set lower limit for search by size criteria.
       */
-     public void setCriteriaSizeLowerLimit(Float criteriaSizeLowerLimit) {
-         this.criteriaSizeLowerLimit = criteriaSizeLowerLimit;
+     public void setCriteriaSizeMin(Float criteriaSizeMin) {
+         this.criteriaSizeMin = criteriaSizeMin;
      }
 
      /**
       * @return Criteria's lower limit for search.
       */
-     public Float getCriteriaSizeLowerLimit() {
-         return criteriaSizeLowerLimit;
+     public Float getCriteriaSizeMin() {
+         return criteriaSizeMin;
      }
 
      /**
       * Set upper limit for search by size criteria.
       */
-     public void setCriteriaSizeUpperLimit(Float criteriaSizeUpperLimit) {
-         this.criteriaSizeUpperLimit = criteriaSizeUpperLimit;
+     public void setCriteriaSizeMax(Float criteriaSizeMax) {
+         this.criteriaSizeMax = criteriaSizeMax;
      }
 
      /**
       * @return Criteria's upper limit for search by size.
       */
-     public Float getCriteriaSizeUpperLimit() {
-         return criteriaSizeUpperLimit;
+     public Float getCriteriaSizeMax() {
+         return criteriaSizeMax;
      }
 
      /**
       * Set lower limit for search by creation date criteria.
       */
-     public void setCriteriaCreationDateLL(Date criteriaCreationDateLL) {
-         this.criteriaCreationDateLL = criteriaCreationDateLL;
+     public void setCriteriaCreationDateMin(Date criteriaCreationDateMin) {
+         this.criteriaCreationDateMin = criteriaCreationDateMin;
      }
 
      /**
       * @return Criteria's lower limit for search by creation date.
       */
-     public Date getCriteriaCreationDateLL() {
-         return criteriaCreationDateLL;
+     public Date getCriteriaCreationDateMin() {
+         return criteriaCreationDateMin;
      }
 
      /**
       * Set upper limit for search by creation date criteria.
       */
-     public void setCriteriaCreationDateUL(Date criteriaCreationDateUL) {
-         this.criteriaCreationDateUL = criteriaCreationDateUL;
+     public void setCriteriaCreationDateMax(Date criteriaCreationDateMax) {
+         this.criteriaCreationDateMax = criteriaCreationDateMax;
      }
 
      /**
       * @return Criteria's upper limit for search by creation date.
       */
-     public Date getCriteriaCreationDateUL() {
-         return criteriaCreationDateUL;
+     public Date getCriteriaCreationDateMax() {
+         return criteriaCreationDateMax;
      }
 
      /**
       * Set lower limit for search by access date criteria.
       */
-     public void setCriteriaAccessDateLL(Date criteriaAccessDateLL) {
-         this.criteriaAccessDateLL = criteriaAccessDateLL;
+     public void setCriteriaAccessDateMin(Date criteriaAccessDateMin) {
+         this.criteriaAccessDateMin = criteriaAccessDateMin;
      }
 
      /**
       * @return Criteria's lower limit for search by access date.
       */
-     public Date getCriteriaAccessDateLL() {
-         return criteriaAccessDateLL;
+     public Date getCriteriaAccessDateMin() {
+         return criteriaAccessDateMin;
      }
 
      /**
       * Set upper limit for search by access date criteria.
       */
-     public void setCriteriaAccessDateUL(Date criteriaAccessDateUL) {
-         this.criteriaAccessDateUL = criteriaAccessDateUL;
+     public void setCriteriaAccessDateMax(Date criteriaAccessDateMax) {
+         this.criteriaAccessDateMax = criteriaAccessDateMax;
      }
 
      /**
       * @return Criteria's upper limit for search by access date.
       */
-     public Date getCriteriaAccessDateUL() {
-         return criteriaAccessDateUL;
+     public Date getCriteriaAccessDateMax() {
+         return criteriaAccessDateMax;
      }
 
      /**
       * Set lower limit for search by modification date criteria.
       */
-     public void setCriteriaModificationDateLL(Date criteriaModificationDateLL) {
-         this.criteriaModificationDateLL = criteriaModificationDateLL;
+     public void setCriteriaModificationDateMin(Date criteriaModificationDateMin) {
+         this.criteriaModificationDateMin = criteriaModificationDateMin;
      }
 
      /**
       * @return Criteria's lower limit for search by modification date.
       */
-     public Date getCriteriaModificationDateLL() {
-         return criteriaModificationDateLL;
+     public Date getCriteriaModificationDateMin() {
+         return criteriaModificationDateMin;
      }
 
      /**
       * Set upper limit for search by modification date criteria.
       */
-     public void setCriteriaModificationDateUL(Date criteriaModificationDateUL) {
-         this.criteriaModificationDateUL = criteriaModificationDateUL;
+     public void setCriteriaModificationDateMax(Date criteriaModificationDateMax) {
+         this.criteriaModificationDateMax = criteriaModificationDateMax;
      }
 
      /**
       * @return Criteria's upper limit for search by modification date.
       */
-     public Date getCriteriaModificationDateUL() {
-         return criteriaModificationDateUL;
+     public Date getCriteriaModificationDateMax() {
+         return criteriaModificationDateMax;
+     }
+
+     /**
+      * Set criteria's owner.
+      */
+     public void setCriteriaOwner(String criteriaOwner) {
+         this.criteriaOwner = criteriaOwner;
+     }
+
+     /**
+      * @return Criteria's owner.
+      */
+     public String getCriteriaOwner() {
+         return criteriaOwner;
      }
  }

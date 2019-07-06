@@ -9,12 +9,9 @@
  */
 package com.fundation.logic.model;
 
+import com.fundation.logic.common.FileInfo;
+
 import java.io.File;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.UserPrincipal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +37,7 @@ public class Search implements ISearch {
      *
      * @return List of found items according on criteria.
      */
-    public List search() throws Exception {
+    public List search() {
         if (criteria.getCriteriaPath() == null) {
             return null;
         }
@@ -50,31 +47,33 @@ public class Search implements ISearch {
         String criteriaExtension = criteria.getCriteriaExtension();
         boolean criteriaHidden = criteria.getCriteriaFileHidden();
         boolean criteriaReadOnly = criteria.getCriteriaFileReadOnly();
-        Float sizeLowerLimit = criteria.getCriteriaSizeLowerLimit();
-        Float sizeUpperLimit = criteria.getCriteriaSizeUpperLimit();
-        Date creationDateLL = criteria.getCriteriaCreationDateLL();
-        Date creationDateUL = criteria.getCriteriaCreationDateUL();
-        Date accessDateLL = criteria.getCriteriaAccessDateLL();
-        Date accessDateUL = criteria.getCriteriaAccessDateUL();
-        Date modificationDateLL = criteria.getCriteriaModificationDateLL();
-        Date modificationDateUL = criteria.getCriteriaModificationDateUL();
+        Float sizeLowerLimit = criteria.getCriteriaSizeMin();
+        Float sizeUpperLimit = criteria.getCriteriaSizeMax();
+        Date creationDateLL = criteria.getCriteriaCreationDateMin();
+        Date creationDateUL = criteria.getCriteriaCreationDateMax();
+        Date accessDateLL = criteria.getCriteriaAccessDateMin();
+        Date accessDateUL = criteria.getCriteriaAccessDateMax();
+        Date modificationDateLL = criteria.getCriteriaModificationDateMin();
+        Date modificationDateUL = criteria.getCriteriaModificationDateMax();
+        String criteriaOwner = criteria.getCriteriaOwner();
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
-            Path filePath = FileSystems.getDefault().getPath(fileExtractor.getAbsolutePath());
-            Float sizeFileExtractor = new Float(Files.size(filePath));
-            BasicFileAttributes fileAttributes = Files.readAttributes(filePath, BasicFileAttributes.class);
-            Date creationDate = new Date(fileAttributes.creationTime().toMillis());
-            Date accessDate = new Date(fileAttributes.lastAccessTime().toMillis());
-            Date modificationDate = new Date(fileAttributes.lastModifiedTime().toMillis());
-            UserPrincipal fileOwner = Files.getOwner(filePath);
-            if (compareFileName(fileExtractor.getName(), criteriaFileName) &&
-                    compareExtension(fileExtractor.getName(), criteriaExtension) &&
+            String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
+            String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
+            Float sizeFileExtractor = FileInfo.getFileSize(fileExtractor);
+            Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
+            Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
+            Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
+            String owner = FileInfo.getFileOwner(fileExtractor, "user");
+            if (evaluateString(fileName, criteriaFileName) &&
+                    evaluateString(fileExtension, criteriaExtension) &&
                     evaluateHidden(fileExtractor.isHidden(), criteriaHidden) &&
                     evaluateReadOnly(fileExtractor.canWrite(), criteriaReadOnly) &&
                     evaluateSizeLimits(sizeFileExtractor, sizeLowerLimit, sizeUpperLimit) &&
                     evaluateDate(creationDate, creationDateLL, creationDateUL) &&
                     evaluateDate(accessDate, accessDateLL, accessDateUL) &&
-                    evaluateDate(modificationDate, modificationDateLL, modificationDateUL)) {
+                    evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
+                    evaluateString(owner, criteriaOwner)) {
                 listFileAndDirectory.add(fileExtractor);
             }
         }
@@ -82,27 +81,15 @@ public class Search implements ISearch {
     }
 
     /**
-     * Evaluates fileName field according on criteria.
+     * Evaluates specific string field according on criteria.
      *
      * @return Answer after evaluation.
      */
-    private boolean compareFileName(String fileExtractorCriteria, String criteria) {
-        if (criteria == null || fileExtractorCriteria.contains(criteria)) {
+    private boolean evaluateString(String fileExtractorCriteria, String criteria) {
+        if (criteria == null || fileExtractorCriteria.equalsIgnoreCase(criteria)) {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Evaluates extension field according on criteria.
-     *
-     * @return Answer after evaluation.
-     */
-    private boolean compareExtension(String fileExtractorCriteria, String criteria) {
-        if (criteria == null) {
-            return true;
-        }
-        return (fileExtractorCriteria.endsWith(criteria));
     }
 
     /**
