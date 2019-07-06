@@ -22,7 +22,7 @@ public interface ISearch {
 
     /**
      * @return Search result, list of found files.
-     * @throws Exception due to java.nio.file methods
+     * @throws Exception due to java.nio.file methods.
      */
     List search() throws Exception;
 }

@@ -41,23 +41,23 @@ public class Search implements ISearch {
      * @return List of found items according on criteria.
      */
     public List search() throws Exception {
-        if (criteria.getPath() == null) {
+        if (criteria.getCriteriaPath() == null) {
             return null;
         }
         List<File> listFileAndDirectory = new ArrayList<File>();
-        File file = new File(criteria.getPath());
-        String criteriaFileName = criteria.getFileName();
-        String criteriaExtension = criteria.getExtension();
-        boolean criteriaHidden = criteria.getFileHidden();
-        boolean criteriaReadOnly = criteria.getFileReadOnly();
-        Float sizeLowerLimit = criteria.getSizeLowerLimit();
-        Float sizeUpperLimit = criteria.getSizeUpperLimit();
-        Date creationDateLL = criteria.getCreationDateLL();
-        Date creationDateUL = criteria.getCreationDateUL();
-        Date accessDateLL = criteria.getAccessDateLL();
-        Date accessDateUL = criteria.getAccessDateUL();
-        Date modificationDateLL = criteria.getModificationDateLL();
-        Date modificationDateUL = criteria.getModificationDateUL();
+        File file = new File(criteria.getCriteriaPath());
+        String criteriaFileName = criteria.getCriteriaFileName();
+        String criteriaExtension = criteria.getCriteriaExtension();
+        boolean criteriaHidden = criteria.getCriteriaFileHidden();
+        boolean criteriaReadOnly = criteria.getCriteriaFileReadOnly();
+        Float sizeLowerLimit = criteria.getCriteriaSizeLowerLimit();
+        Float sizeUpperLimit = criteria.getCriteriaSizeUpperLimit();
+        Date creationDateLL = criteria.getCriteriaCreationDateLL();
+        Date creationDateUL = criteria.getCriteriaCreationDateUL();
+        Date accessDateLL = criteria.getCriteriaAccessDateLL();
+        Date accessDateUL = criteria.getCriteriaAccessDateUL();
+        Date modificationDateLL = criteria.getCriteriaModificationDateLL();
+        Date modificationDateUL = criteria.getCriteriaModificationDateUL();
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
             Path filePath = FileSystems.getDefault().getPath(fileExtractor.getAbsolutePath());
