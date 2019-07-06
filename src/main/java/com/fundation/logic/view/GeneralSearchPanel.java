@@ -9,15 +9,25 @@
 package com.fundation.logic.view;
 
 import com.toedter.calendar.JDateChooser;
-
 import javax.swing.JTextField;
-import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
-import java.awt.*;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+/**
+ * Implements the GeneralSearch Panel
+ *
+ * @author Andres Burgos
+ * @version 1.0
+ */
 public class GeneralSearchPanel extends JPanel {
 
     private JTextField textFieldFilename;
@@ -33,6 +43,9 @@ public class GeneralSearchPanel extends JPanel {
     private JTextField textFieldSizeTo;
     private JButton btnSearch;
 
+    /**
+     * Initializes a SearchTabs instance for the search options
+     */
     public GeneralSearchPanel(){
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{29, 246, 67, 0};
@@ -59,6 +72,16 @@ public class GeneralSearchPanel extends JPanel {
         getTextFieldPath().setColumns(10);
 
         JButton btnBrowsePath = new JButton("Browse");
+        btnBrowsePath.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                JFileChooser folderChooser = new JFileChooser();
+                folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                int returnVal = folderChooser.showOpenDialog(null);
+                if(returnVal == JFileChooser.APPROVE_OPTION) {
+                    textFieldPath.setText(folderChooser.getSelectedFile().getPath());
+                }
+            }
+        });
         GridBagConstraints gbc_btnBrowsePath = new GridBagConstraints();
         gbc_btnBrowsePath.insets = new Insets(0, 0, 5, 0);
         gbc_btnBrowsePath.anchor = GridBagConstraints.NORTHWEST;
@@ -305,86 +328,143 @@ public class GeneralSearchPanel extends JPanel {
         add(btnSearch, gbc_btnSearch);
     }
 
+    /**
+     * This method return the Search Button
+     */
     public JButton getSearchButton(){
         return btnSearch;
     }
 
+    /**
+     * This method return the Text Field FileName
+     */
     public JTextField getTextFieldFilename() {
         return textFieldFilename;
     }
 
-    public void setTextFieldFilename(JTextField textFieldFilename) {
-        this.textFieldFilename = textFieldFilename;
-    }
-
+    /**
+     * This method return the Text Field Path
+     */
     public JTextField getTextFieldPath() {
         return textFieldPath;
     }
 
-    public void setTextFieldPath(JTextField textFieldPath) {
-        this.textFieldPath = textFieldPath;
-    }
-
+    /**
+     * This method return the TexFieldExtension
+     */
     public JTextField getTextFieldExtension() {
         return textFieldExtension;
     }
 
-    public void setTextFieldExtension(JTextField textFieldExtension) {
-        this.textFieldExtension = textFieldExtension;
-    }
-
+    /**
+     * This method return the FieldToDateCreation
+     */
     public JDateChooser getFieldToDateCreation() {
         return FieldToDateCreation;
     }
 
-    public void setFieldToDateCreation(JDateChooser fieldToDateCreation) {
-        FieldToDateCreation = fieldToDateCreation;
-    }
-
+    /**
+     * This method return the FieldDateModificationFrom
+     */
     public JDateChooser getFieldDateModificationFrom() {
         return FieldDateModificationFrom;
     }
 
-    public void setFieldDateModificationFrom(JDateChooser fieldDateModificationFrom) {
-        FieldDateModificationFrom = fieldDateModificationFrom;
-    }
-
+    /**
+     * This method return the FieldDateModificationTo
+     */
     public JDateChooser getFieldDateModificationTo() {
         return FieldDateModificationTo;
     }
 
-    public void setFieldDateModificationTo(JDateChooser fieldDateModificationTo) {
-        FieldDateModificationTo = fieldDateModificationTo;
-    }
-
+    /**
+     * This method return the Field Date Access From
+     */
     public JDateChooser getFieldDateAccessFrom() {
         return FieldDateAccessFrom;
     }
 
-    public void setFieldDateAccessFrom(JDateChooser fieldDateAccessFrom) {
-        FieldDateAccessFrom = fieldDateAccessFrom;
-    }
-
+    /**
+     * This method return the FieldDateModificationTo
+     */
     public JDateChooser getFieldDateAccessTo() {
         return FieldDateAccessTo;
     }
 
-    public void setFieldDateAccessTo(JDateChooser fieldDateAccessTo) {
-        FieldDateAccessTo = fieldDateAccessTo;
-    }
-
+    /**
+     * This method return the Field SizeFrom
+     */
     public JTextField getTextFieldSizeFrom() {
         return textFieldSizeFrom;
     }
 
-    public void setTextFieldSizeFrom(JTextField textFieldSizeFrom) {
-        this.textFieldSizeFrom = textFieldSizeFrom;
-    }
-
+    /**
+     * This method return the Field SizeTo
+     */
     public JTextField getTextFieldSizeTo() {
         return textFieldSizeTo;
     }
 
+     /**
+     * This method return the Text Field FileName
+     */
+
+     public void setTextFieldFilename(JTextField textFieldFilename) {
+        this.textFieldFilename = textFieldFilename;
+     }
+
+    /**
+     * This method set the Text Field Path
+     */
+    public void setTextFieldPath(JTextField textFieldPath) {
+        this.textFieldPath = textFieldPath;
+    }
+
+    /**
+     * This method set the TextField Extension
+     */
+    public void setTextFieldExtension(JTextField textFieldExtension) {
+        this.textFieldExtension = textFieldExtension;
+    }
+
+    /**
+     * This method set the Field DateModificationFrom
+     */
+    public void setFieldDateModificationFrom(JDateChooser fieldDateModificationFrom) {
+        FieldDateModificationFrom = fieldDateModificationFrom;
+    }
+
+    /**
+     * This method set theField DateModificationTo
+     */
+    public void setFieldDateModificationTo(JDateChooser fieldDateModificationTo) {
+        FieldDateModificationTo = fieldDateModificationTo;
+    }
+
+    /**
+     * This method set the Field DateAccessFrom
+     */
+    public void setFieldDateAccessFrom(JDateChooser fieldDateAccessFrom) {
+        FieldDateAccessFrom = fieldDateAccessFrom;
+    }
+
+    /**
+     * This method set the Field DateAccessTo
+     */
+    public void setFieldDateAccessTo(JDateChooser fieldDateAccessTo) {
+        FieldDateAccessTo = fieldDateAccessTo;
+    }
+
+    /**
+     * This method set the TextField SizeFrom
+     */
+    public void setTextFieldSizeFrom(JTextField textFieldSizeFrom) {
+        this.textFieldSizeFrom = textFieldSizeFrom;
+    }
+
+    /**
+     * This method set the TextField SizeTo
+     */
     public void setTextFieldSizeTo(JTextField textFieldSizeTo) {
         this.textFieldSizeTo = textFieldSizeTo;
     }
