@@ -13,11 +13,16 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Implements the model class File and the getter and setter´s methods
+ * Implements ISearch interface with search method.
  *
  * @author Andres Burgos
  * @version 1.0 *
  */
 public interface ISearch {
-    List<File> search() throws Exception;
+
+    /**
+     * @return Search result, list of found files.
+     * @throws Exception due to java.nio.file methods
+     */
+    List search() throws Exception;
 }
