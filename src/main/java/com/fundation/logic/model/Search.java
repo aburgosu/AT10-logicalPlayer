@@ -9,12 +9,9 @@
  */
 package com.fundation.logic.model;
 
+import com.fundation.logic.common.FileInfo;
+
 import java.io.File;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.UserPrincipal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,69 +37,64 @@ public class Search implements ISearch {
      *
      * @return List of found items according on criteria.
      */
-    public List search() throws Exception {
-        if (criteria.getPath() == null) {
+    public List search() {
+        if (criteria.getCriteriaPath() == null) {
             return null;
         }
-        List<File> listFileAndDirectory = new ArrayList<File>();
-        File file = new File(criteria.getPath());
-        String criteriaFileName = criteria.getFileName();
-        String criteriaExtension = criteria.getExtension();
-        boolean criteriaHidden = criteria.getFileHidden();
-        boolean criteriaReadOnly = criteria.getFileReadOnly();
-        Float sizeLowerLimit = criteria.getSizeLowerLimit();
-        Float sizeUpperLimit = criteria.getSizeUpperLimit();
-        Date creationDateLL = criteria.getCreationDateLL();
-        Date creationDateUL = criteria.getCreationDateUL();
-        Date accessDateLL = criteria.getAccessDateLL();
-        Date accessDateUL = criteria.getAccessDateUL();
-        Date modificationDateLL = criteria.getModificationDateLL();
-        Date modificationDateUL = criteria.getModificationDateUL();
+        List<CustomizedFile> searchResult = new ArrayList<>();
+        File file = new File(criteria.getCriteriaPath());
+        String criteriaFileName = criteria.getCriteriaFileName();
+        String criteriaExtension = criteria.getCriteriaExtension();
+        boolean criteriaHidden = criteria.getCriteriaFileHidden();
+        boolean criteriaReadOnly = criteria.getCriteriaFileReadOnly();
+        Float sizeLowerLimit = criteria.getCriteriaSizeMin();
+        Float sizeUpperLimit = criteria.getCriteriaSizeMax();
+        Date creationDateLL = criteria.getCriteriaCreationDateMin();
+        Date creationDateUL = criteria.getCriteriaCreationDateMax();
+        Date accessDateLL = criteria.getCriteriaAccessDateMin();
+        Date accessDateUL = criteria.getCriteriaAccessDateMax();
+        Date modificationDateLL = criteria.getCriteriaModificationDateMin();
+        Date modificationDateUL = criteria.getCriteriaModificationDateMax();
+        String criteriaOwner = criteria.getCriteriaOwner();
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
-            Path filePath = FileSystems.getDefault().getPath(fileExtractor.getAbsolutePath());
-            Float sizeFileExtractor = new Float(Files.size(filePath));
-            BasicFileAttributes fileAttributes = Files.readAttributes(filePath, BasicFileAttributes.class);
-            Date creationDate = new Date(fileAttributes.creationTime().toMillis());
-            Date accessDate = new Date(fileAttributes.lastAccessTime().toMillis());
-            Date modificationDate = new Date(fileAttributes.lastModifiedTime().toMillis());
-            UserPrincipal fileOwner = Files.getOwner(filePath);
-            if (compareFileName(fileExtractor.getName(), criteriaFileName) &&
-                    compareExtension(fileExtractor.getName(), criteriaExtension) &&
-                    evaluateHidden(fileExtractor.isHidden(), criteriaHidden) &&
-                    evaluateReadOnly(fileExtractor.canWrite(), criteriaReadOnly) &&
-                    evaluateSizeLimits(sizeFileExtractor, sizeLowerLimit, sizeUpperLimit) &&
+            String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
+            String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
+            boolean fileHiddenStatus = fileExtractor.isHidden();
+            boolean fileCanWrite = fileExtractor.canWrite();
+            Float fileSize = FileInfo.getFileSize(fileExtractor);
+            Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
+            Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
+            Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
+            String owner = FileInfo.getFileOwner(fileExtractor, "user");
+            if (evaluateString(fileName, criteriaFileName) &&
+                    evaluateString(fileExtension, criteriaExtension) &&
+                    evaluateHidden(fileHiddenStatus, criteriaHidden) &&
+                    evaluateReadOnly(fileCanWrite, criteriaReadOnly) &&
+                    evaluateSizeLimits(fileSize, sizeLowerLimit, sizeUpperLimit) &&
                     evaluateDate(creationDate, creationDateLL, creationDateUL) &&
                     evaluateDate(accessDate, accessDateLL, accessDateUL) &&
-                    evaluateDate(modificationDate, modificationDateLL, modificationDateUL)) {
-                listFileAndDirectory.add(fileExtractor);
+                    evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
+                    evaluateString(owner, criteriaOwner)) {
+                CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
+                    fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
+                    modificationDate, owner);
+                searchResult.add(matchingFile);
             }
         }
-        return listFileAndDirectory;
+        return searchResult;
     }
 
     /**
-     * Evaluates fileName field according on criteria.
+     * Evaluates specific string field according on criteria.
      *
      * @return Answer after evaluation.
      */
-    private boolean compareFileName(String fileExtractorCriteria, String criteria) {
-        if (criteria == null || fileExtractorCriteria.contains(criteria)) {
+    private boolean evaluateString(String fileExtractorCriteria, String criteria) {
+        if (criteria == null || fileExtractorCriteria.equalsIgnoreCase(criteria)) {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Evaluates extension field according on criteria.
-     *
-     * @return Answer after evaluation.
-     */
-    private boolean compareExtension(String fileExtractorCriteria, String criteria) {
-        if (criteria == null) {
-            return true;
-        }
-        return (fileExtractorCriteria.endsWith(criteria));
     }
 
     /**

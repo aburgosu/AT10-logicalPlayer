@@ -24,7 +24,6 @@ import java.awt.BorderLayout;
  */
 public class SearchVideoFrame extends JFrame {
     JPanel mainContentPanel;
-    private SearchVideoPanel mainSearchPanel;
     private SearchTabs searchTabs;
     private TableResult tableResult;
 
@@ -43,6 +42,7 @@ public class SearchVideoFrame extends JFrame {
 
         JSplitPane mainSplitPanel = new JSplitPane();
         mainSplitPanel.setDividerLocation(getWidth()/2);
+        mainSplitPanel.setEnabled(false);
         mainContentPanel.add(mainSplitPanel, BorderLayout.CENTER);
 
         tableResult = new TableResult();
@@ -70,9 +70,14 @@ public class SearchVideoFrame extends JFrame {
     /**
      * This method return the TableResult
      */
-    public TableResult getTableResult(){
+    public TableResult getTableResult() {
         return tableResult;
     }
 
-
+    /**
+     * This method return the SearchTabs
+     */
+    public SearchTabs getSearchTabs() {
+        return searchTabs;
+    }
 }

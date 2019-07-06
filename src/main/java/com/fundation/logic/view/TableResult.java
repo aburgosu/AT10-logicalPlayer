@@ -21,7 +21,7 @@ import java.util.Date;
  */
 public class TableResult extends JTable {
     DefaultTableModel model;
-    
+
     /**
      * Initializes a TableResult instance with headers
      */
@@ -34,7 +34,15 @@ public class TableResult extends JTable {
     /**
      * Add a new row to ResultTable
      */
-    public void addResult(String path, String extension, long size, Date date, String attribute) {
+    public void addResult(String path, String extension, Float size, Date date, String attribute) {
         model.addRow(new Object[]{path, extension, size, date, attribute});
+    }
+
+    /**
+     * Removes all the rows in the ResultTable
+     */
+    public void clearTableResult() {
+        model.getDataVector().removeAllElements();
+        revalidate();
     }
 }
