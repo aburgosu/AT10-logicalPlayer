@@ -1,6 +1,5 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -14,9 +13,12 @@ import com.fundation.logic.model.ISearch;
 import com.fundation.logic.model.Search;
 import com.fundation.logic.view.SearchVideoFrame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JButton;
 
 /**
  * Implements the Controller class
@@ -35,6 +37,7 @@ public class Controller {
     public Controller(SearchVideoFrame searchFrame) {
         criteria = new Criteria();
         this.searchFrame = searchFrame;
+        setEvents();
     }
 
     /**
@@ -88,5 +91,18 @@ public class Controller {
                     new Float(foundFiles.get(index).length()),
                     new Date(System.currentTimeMillis()), "--x");
         }
+    }
+
+    /**
+     * send the search by clicking on search
+     */
+    public void setEvents() {
+        JButton btnSearch = searchFrame.getSearchTabs().getGeneralSearchPanel().getSearchButton();
+        btnSearch.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                searchFrame.getTableResult().clearTableResult();
+                printSearchResult();
+            }
+        });
     }
 }
