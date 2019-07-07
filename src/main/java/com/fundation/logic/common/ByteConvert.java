@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.useful;
+package com.fundation.logic.common;
 
 /**
  * Implements FileInfo abstract class which is used to get file details.
@@ -20,15 +20,15 @@ public class ByteConvert {
     /**
      *This method convert byte to Kb, Mb and Gb.
      */
-    public String bytesConvert(String bytesNumber, String unitConversion) {
+    public Float bytesConvert(String bytesNumber, String unitConversion) {
         double unitBase = 1024;
         switch (unitConversion) {
             case "KB":
-                return Double.toString(Double.parseDouble(bytesNumber) / unitBase);
+                return (float) (Double.parseDouble(bytesNumber) / unitBase);
             case "MB":
-                return Double.toString((Double.parseDouble(bytesNumber) / unitBase) / unitBase);
+                return (float) ((Double.parseDouble(bytesNumber) / unitBase) / unitBase);
             case "GB":
-                return Double.toString(((Double.parseDouble(bytesNumber) / unitBase) / unitBase) / unitBase);
+                return (float) (((Double.parseDouble(bytesNumber) / unitBase) / unitBase)/ unitBase);
         }
         return null;
     }
@@ -36,16 +36,16 @@ public class ByteConvert {
     /**
      *This method from Kb, Mb and Gb to bytes.
      */
-    public String anyConvertBytes(String unitConversion, String numberToConvert) {
+    public Float anyConvertBytes(String unitConversion, String numberToConvert) {
         double unitBase = 1024;
         double numberConvert = Double.parseDouble(numberToConvert);
         switch (unitConversion) {
             case "KB":
-                return Double.toString(numberConvert * unitBase);
+                return (float)(numberConvert * unitBase);
             case "MB":
-                return Double.toString((numberConvert * unitBase) * unitBase);
+                return (float)((numberConvert * unitBase) * unitBase);
             case "GB":
-                return Double.toString(((numberConvert * unitBase) * unitBase) * unitBase);
+                return (float)(((numberConvert * unitBase) * unitBase) * unitBase);
         }
         return null;
     }
