@@ -33,6 +33,7 @@
      private Date criteriaModificationDateMin;
      private Date criteriaModificationDateMax;
      private String criteriaOwner;
+     private String criteriaMimeType;
 
      /**
       * Set criteriaFileHidden.
@@ -228,5 +229,19 @@
       */
      public String getCriteriaOwner() {
          return criteriaOwner;
+     }
+
+     /**
+      * Set criteria's mimeType.
+      */
+     public void setCriteriaMimeType(String criteriaMimeType) {
+         this.criteriaMimeType = criteriaMimeType;
+     }
+
+     /**
+      * @return Criteria's mimeType.
+      */
+     public String getCriteriaMimeType() {
+         return criteriaMimeType;
      }
  }
