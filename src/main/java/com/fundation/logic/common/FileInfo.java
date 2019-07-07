@@ -49,7 +49,7 @@ public abstract class FileInfo {
      * @return File's size in bytes.
      */
     public static Float getFileSize(File file) {
-        Path filePath = FileSystems.getDefault().getPath(file.getAbsolutePath());
+        Path filePath = file.toPath();
         try {
             Float fileSize = new Float(Files.size(filePath));
             return fileSize;
@@ -65,7 +65,7 @@ public abstract class FileInfo {
      * @return File's related date according to option input.
      */
     public static Date getFileDate(File file, String option) {
-        Path filePath = FileSystems.getDefault().getPath(file.getAbsolutePath());
+        Path filePath = file.toPath();
         try {
             BasicFileAttributes fileAttributes = Files.readAttributes(filePath, BasicFileAttributes.class);
             switch (option) {
@@ -91,7 +91,7 @@ public abstract class FileInfo {
      * @return String according to file's owner option input.
      */
     public static String getFileOwner(File file, String option) {
-        Path filePath = FileSystems.getDefault().getPath(file.getAbsolutePath());
+        Path filePath = file.toPath();
         try {
             UserPrincipal fileOwner = Files.getOwner(filePath);
             String complete = fileOwner.getName();
@@ -104,6 +104,21 @@ public abstract class FileInfo {
                     String user = complete.substring(indexBackSlash + 1);
                     return user;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * @param file
+     * @return File's mimeType.
+     */
+    public static String getMimeType(File file) {
+        Path path = file.toPath();
+        try {
+            String mimeType = Files.probeContentType(path);
+            return mimeType;
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -56,6 +56,7 @@ public class Search implements ISearch {
         Date modificationDateLL = criteria.getCriteriaModificationDateMin();
         Date modificationDateUL = criteria.getCriteriaModificationDateMax();
         String criteriaOwner = criteria.getCriteriaOwner();
+        String criteriaMimeType = criteria.getCriteriaMimeType();
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
             String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
@@ -67,6 +68,7 @@ public class Search implements ISearch {
             Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
             Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
             String owner = FileInfo.getFileOwner(fileExtractor, "user");
+            String mimeType = FileInfo.getMimeType(fileExtractor);
             if (evaluateString(fileName, criteriaFileName) &&
                     evaluateString(fileExtension, criteriaExtension) &&
                     evaluateHidden(fileHiddenStatus, criteriaHidden) &&
@@ -75,10 +77,10 @@ public class Search implements ISearch {
                     evaluateDate(creationDate, creationDateLL, creationDateUL) &&
                     evaluateDate(accessDate, accessDateLL, accessDateUL) &&
                     evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
-                    evaluateString(owner, criteriaOwner)) {
+                    evaluateString(owner, criteriaOwner) && evaluateMimeType(mimeType, criteriaMimeType)) {
                 CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                     fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
-                    modificationDate, owner);
+                    modificationDate, owner, mimeType);
                 searchResult.add(matchingFile);
             }
         }
@@ -149,5 +151,17 @@ public class Search implements ISearch {
             return fileExtractorDate.before(upperLimit);
         }
         return (fileExtractorDate.after(lowerLimit) && fileExtractorDate.before(upperLimit));
+    }
+
+    /**
+     * Evaluates file's mimeType according on selected criteria.
+     *
+     * @return Answer after evaluation.
+     */
+    private boolean evaluateMimeType(String fileExtractorCriteria, String criteria) {
+        if (criteria == null || fileExtractorCriteria.contains(criteria)) {
+            return true;
+        }
+        return false;
     }
 }

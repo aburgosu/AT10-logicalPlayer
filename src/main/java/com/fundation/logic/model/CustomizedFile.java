@@ -28,6 +28,7 @@ public class CustomizedFile {
     private Date accessDate;
     private Date modificationDate;
     private String owner;
+    private String mimeType;
 
     /**
      * CustomizedFile constructor. It requires all parameters so them will be assigned to each attribute.
@@ -43,7 +44,7 @@ public class CustomizedFile {
      * @param owner
      */
     public CustomizedFile( String path, String name, String extension, boolean hiddenStatus, boolean readOnlyStatus,
-            Float size, Date creationDate, Date accessDate, Date modificationDate, String owner) {
+            Float size, Date creationDate, Date accessDate, Date modificationDate, String owner, String mimeType) {
         this.path = path;
         this.name = name;
         this.extension = extension;
@@ -54,6 +55,7 @@ public class CustomizedFile {
         this.accessDate = accessDate;
         this.modificationDate = modificationDate;
         this.owner = owner;
+        this.mimeType = mimeType;
     }
 
     /**
@@ -124,5 +126,12 @@ public class CustomizedFile {
      */
     public String getOwner() {
         return owner;
+    }
+
+    /**
+     * @return File's mimeType.
+     */
+    public String getMimeType() {
+        return mimeType;
     }
 }
