@@ -47,7 +47,8 @@ public class Controller {
      */
     public void setCriteria(String path, String fileName, String extension, boolean fileHiddenStatus, boolean fileReadOnlyStatus,
                             Float minSize, Float maxSize, Date minCreationDate, Date maxCreationDate, Date minAccessDate,
-                            Date maxAccessDate, Date minModificationDate, Date maxModificationDate, String owner) {
+                            Date maxAccessDate, Date minModificationDate,
+                            Date maxModificationDate, String owner, String mimeType) {
         criteria.setCriteriaPath(path);
         criteria.setCriteriaFileName(fileName);
         criteria.setCriteriaExtension(extension);
@@ -62,6 +63,7 @@ public class Controller {
         criteria.setCriteriaModificationDateMin(minModificationDate);
         criteria.setCriteriaModificationDateMax(maxModificationDate);
         criteria.setCriteriaOwner(owner);
+        criteria.setCriteriaMimeType(mimeType);
     }
 
     /**
@@ -98,7 +100,10 @@ public class Controller {
         if (sizeTo.length() != 0) {
             sizeToF = new Float(sizeTo);
         }
-
+        Date fromDateCreation = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldFromDateCreation().getDate();
+        if (fromDateCreation == null) {
+            fromDateCreation = null;
+        }
         Date toDateCreation = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldToDateCreation().getDate();
         if (toDateCreation == null) {
             toDateCreation = null;
@@ -121,17 +126,26 @@ public class Controller {
             dateModificationTo = null;
         }
 
+        String owner = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldOwner().getText();
+        if (owner.length() == 0) {
+            owner = null;
+        }
+        String mimeType = searchFrame.getSearchTabs().getGeneralSearchPanel().getComboBoxMimetype().getSelectedItem().toString();
+
+        System.out.println(mimeType);
+        boolean fileHidden = searchFrame.getSearchTabs().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
+        boolean readOnly = searchFrame.getSearchTabs().getGeneralSearchPanel().getCheckBoxReadOnly().isSelected();
         String testPath = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldPath().getText().replace("\\","/");
         System.out.println(testPath);
         setCriteria(testPath,
                 fileName,
                 extensionName,
-                false, false,
+                fileHidden, readOnly ,
                 sizeFromF,
                 sizeToF,
-                null, toDateCreation, dateAccessFrom,
+                fromDateCreation, toDateCreation, dateAccessFrom,
                 dateAccessTo, dateModificationFrom,
-                dateModificationTo, null);
+                dateModificationTo, owner,null);
         List<CustomizedFile> foundFiles;
         foundFiles = makeSearch(criteria);
         for (int index = 0; index < foundFiles.size(); index++) {
