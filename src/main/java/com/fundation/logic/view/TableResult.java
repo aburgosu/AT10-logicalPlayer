@@ -43,6 +43,8 @@ public class TableResult extends JTable {
      */
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
+        model = new DefaultTableModel(new Object[] { "Path", "Extension","Size","Date","Attributes" }, 0);
+        model.addRow(new Object[]{"FILE","EXTENSION","SIZE","DATE","ATTRIBUTE"});
         revalidate();
     }
 }
