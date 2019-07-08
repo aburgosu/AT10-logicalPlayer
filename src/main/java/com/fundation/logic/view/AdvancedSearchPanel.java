@@ -1,8 +1,30 @@
+/**
+ * Copyright (c) 2019 Jalasoft.
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jalasoft.
+ */
 package com.fundation.logic.view;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
+/**
+ * Implements the tab of AdvancedSearch Panel.
+ *
+ * @author Andres Burgos
+ * @version 1.0
+ */
 public class AdvancedSearchPanel extends JPanel {
     private JTextField textFieldVideoBitrate;
     private JTextField textFieldVideoFramerate;

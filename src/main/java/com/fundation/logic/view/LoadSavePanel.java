@@ -8,6 +8,12 @@ import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
+/**
+ * Implements the tab of LoadSave Panel.
+ *
+ * @author Andres Burgos
+ * @version 1.0
+ */
 public class LoadSavePanel extends JPanel {
     private JTable dataTable;
 
@@ -57,7 +63,5 @@ public class LoadSavePanel extends JPanel {
         gbc_btnDelete.gridx = 5;
         gbc_btnDelete.gridy = 1;
         add(btnDelete, gbc_btnDelete);
-
     }
-
 }
