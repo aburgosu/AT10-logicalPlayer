@@ -9,13 +9,8 @@
 package com.fundation.logic.view;
 
 import com.toedter.calendar.JDateChooser;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JCheckBox;
+
+import javax.swing.*;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -29,7 +24,7 @@ import java.awt.event.ActionListener;
  * @version 1.0
  */
 public class GeneralSearchPanel extends JPanel {
-
+    private final JTextField textFieldOwner;
     private JTextField textFieldFilename;
     private JTextField textFieldPath;
     private JTextField textFieldExtension;
@@ -42,6 +37,10 @@ public class GeneralSearchPanel extends JPanel {
     private JTextField textFieldSizeFrom;
     private JTextField textFieldSizeTo;
     private JButton btnSearch;
+    private JCheckBox checkBoxReadOnly;
+    private JCheckBox checkBoxHidden;
+    private JComboBox comboBoxSizeUnit;
+    private JComboBox comboBoxMimetype;
 
     /**
      * Initializes a SearchTabs instance for the search options
@@ -49,9 +48,9 @@ public class GeneralSearchPanel extends JPanel {
     public GeneralSearchPanel() {
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{29, 246, 67, 0};
-        gridBagLayout.rowHeights = new int[]{23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        gridBagLayout.rowHeights = new int[]{23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
-        gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         setLayout(gridBagLayout);
 
         JLabel lblPath = new JLabel("Path: ");
@@ -287,36 +286,87 @@ public class GeneralSearchPanel extends JPanel {
         gbc_labelSizeTo.gridy = 10;
         add(labelSizeTo, gbc_labelSizeTo);
 
+        JLabel lblSizeUnits = new JLabel("Size units: ");
+        GridBagConstraints gbc_lblSizeUnits = new GridBagConstraints();
+        gbc_lblSizeUnits.anchor = GridBagConstraints.EAST;
+        gbc_lblSizeUnits.insets = new Insets(0, 0, 5, 5);
+        gbc_lblSizeUnits.gridx = 0;
+        gbc_lblSizeUnits.gridy = 11;
+        add(lblSizeUnits, gbc_lblSizeUnits);
+
+        comboBoxSizeUnit = new JComboBox();
+        comboBoxSizeUnit.setModel(new DefaultComboBoxModel(new String[] {"Bytes", "KBytes", "MBytes", "GBytes"}));
+        GridBagConstraints gbc_comboBoxSizeUnit = new GridBagConstraints();
+        gbc_comboBoxSizeUnit.insets = new Insets(0, 0, 5, 5);
+        gbc_comboBoxSizeUnit.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBoxSizeUnit.gridx = 1;
+        gbc_comboBoxSizeUnit.gridy = 11;
+        add(comboBoxSizeUnit, gbc_comboBoxSizeUnit);
+
+        JLabel lblMimetype = new JLabel("Mimetype: ");
+        GridBagConstraints gbc_lblMimetype = new GridBagConstraints();
+        gbc_lblMimetype.anchor = GridBagConstraints.EAST;
+        gbc_lblMimetype.insets = new Insets(0, 0, 5, 5);
+        gbc_lblMimetype.gridx = 0;
+        gbc_lblMimetype.gridy = 12;
+        add(lblMimetype, gbc_lblMimetype);
+
+        comboBoxMimetype = new JComboBox();
+        comboBoxMimetype.setModel(new DefaultComboBoxModel(new String[] {"Audio", "Video", "Image", "Text", "Application"}));
+        GridBagConstraints gbc_comboBoxMimetype = new GridBagConstraints();
+        gbc_comboBoxMimetype.insets = new Insets(0, 0, 5, 5);
+        gbc_comboBoxMimetype.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBoxMimetype.gridx = 1;
+        gbc_comboBoxMimetype.gridy = 12;
+        add(comboBoxMimetype, gbc_comboBoxMimetype);
+
+        JLabel lblOwner = new JLabel("Owner: ");
+        GridBagConstraints gbc_lblOwner = new GridBagConstraints();
+        gbc_lblOwner.anchor = GridBagConstraints.EAST;
+        gbc_lblOwner.insets = new Insets(0, 0, 5, 5);
+        gbc_lblOwner.gridx = 0;
+        gbc_lblOwner.gridy = 13;
+        add(lblOwner, gbc_lblOwner);
+
+        textFieldOwner = new JTextField();
+        GridBagConstraints gbc_textFieldOwner = new GridBagConstraints();
+        gbc_textFieldOwner.insets = new Insets(0, 0, 5, 5);
+        gbc_textFieldOwner.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textFieldOwner.gridx = 1;
+        gbc_textFieldOwner.gridy = 13;
+        add(textFieldOwner, gbc_textFieldOwner);
+        textFieldOwner.setColumns(10);
+
         JLabel labelHidden = new JLabel("Hidden: ");
         GridBagConstraints gbc_labelHidden = new GridBagConstraints();
         gbc_labelHidden.anchor = GridBagConstraints.EAST;
         gbc_labelHidden.insets = new Insets(0, 0, 5, 5);
         gbc_labelHidden.gridx = 0;
-        gbc_labelHidden.gridy = 11;
+        gbc_labelHidden.gridy = 14;
         add(labelHidden, gbc_labelHidden);
 
-        JCheckBox checkBoxHidden = new JCheckBox("");
+        checkBoxHidden = new JCheckBox("");
         GridBagConstraints gbc_checkBoxHidden = new GridBagConstraints();
         gbc_checkBoxHidden.anchor = GridBagConstraints.WEST;
         gbc_checkBoxHidden.insets = new Insets(0, 0, 5, 5);
         gbc_checkBoxHidden.gridx = 1;
-        gbc_checkBoxHidden.gridy = 11;
+        gbc_checkBoxHidden.gridy = 14;
         add(checkBoxHidden, gbc_checkBoxHidden);
 
         JLabel lblReadOnly = new JLabel("Read Only: ");
         GridBagConstraints gbc_lblReadOnly = new GridBagConstraints();
         gbc_lblReadOnly.anchor = GridBagConstraints.EAST;
-        gbc_lblReadOnly.insets = new Insets(0, 0, 0, 5);
+        gbc_lblReadOnly.insets = new Insets(0, 0, 5, 5);
         gbc_lblReadOnly.gridx = 0;
-        gbc_lblReadOnly.gridy = 12;
+        gbc_lblReadOnly.gridy = 15;
         add(lblReadOnly, gbc_lblReadOnly);
 
-        JCheckBox checkBoxReadOnly = new JCheckBox("");
+        checkBoxReadOnly = new JCheckBox("");
         GridBagConstraints gbc_checkBoxReadOnly = new GridBagConstraints();
         gbc_checkBoxReadOnly.anchor = GridBagConstraints.WEST;
-        gbc_checkBoxReadOnly.insets = new Insets(0, 0, 0, 5);
+        gbc_checkBoxReadOnly.insets = new Insets(0, 0, 5, 5);
         gbc_checkBoxReadOnly.gridx = 1;
-        gbc_checkBoxReadOnly.gridy = 12;
+        gbc_checkBoxReadOnly.gridy = 15;
         add(checkBoxReadOnly, gbc_checkBoxReadOnly);
 
         btnSearch = new JButton("Search");
@@ -324,7 +374,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_btnSearch.anchor = GridBagConstraints.NORTH;
         gbc_btnSearch.insets = new Insets(0, 0, 5, 5);
         gbc_btnSearch.gridx = 1;
-        gbc_btnSearch.gridy = 13;
+        gbc_btnSearch.gridy = 16;
         add(btnSearch, gbc_btnSearch);
     }
 
@@ -363,6 +413,12 @@ public class GeneralSearchPanel extends JPanel {
         return FieldToDateCreation;
     }
 
+    /**
+     * This method return the FieldFromDateCreation
+     */
+    public JDateChooser getTextFieldFromDateCreation() {
+        return textFieldFromDateCreation;
+    }
     /**
      * This method return the FieldDateModificationFrom
      */
@@ -405,10 +461,44 @@ public class GeneralSearchPanel extends JPanel {
         return textFieldSizeTo;
     }
 
-     /**
-     * This method return the Text Field FileName
+    /**
+     * This method return the CheckBox Read Only
      */
+    public JCheckBox getCheckBoxReadOnly() {
+        return checkBoxReadOnly;
+    }
 
+    /**
+     * This method return the CheckBox Hidden
+     */
+    public JCheckBox getCheckBoxHidden() {
+        return checkBoxHidden;
+    }
+
+    /**
+     * This method return the TextField Owner
+     */
+    public JTextField getTextFieldOwner() {
+        return textFieldOwner;
+    }
+
+    /**
+     * This method return the ComboBox SizeUnit
+     */
+    public JComboBox getComboBoxSizeUnit() {
+        return comboBoxSizeUnit;
+    }
+
+    /**
+     * This method return the ComboBox Mimetype
+     */
+    public JComboBox getComboBoxMimetype() {
+        return comboBoxMimetype;
+    }
+
+    /**
+    * This method return the Text Field FileName
+    */
      public void setTextFieldFilename(JTextField textFieldFilename) {
         this.textFieldFilename = textFieldFilename;
      }
