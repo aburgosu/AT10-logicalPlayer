@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2019 Jalasoft.
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jalasoft.
+ */
 package com.fundation.logic.view;
 
 import javax.swing.JButton;
@@ -12,11 +20,19 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+/**
+ * Implements the Converter Panel
+ *
+ * @author Andres Burgos
+ * @version 1.0
+ */
 public class ConverterPanel extends JPanel {
-
     private JTextField textFieldSource;
     private JTextField textFieldDestain;
 
+    /**
+     * Create the panel.
+     */
     public ConverterPanel(){
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
