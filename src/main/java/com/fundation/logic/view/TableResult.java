@@ -43,9 +43,11 @@ public class TableResult extends JTable {
      */
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
+        controller/search-integration
         model.setRowCount(0);
         model.addRow(new Object[]{"FILE","EXTENSION","SIZE","DATE","ATTRIBUTE"});
         model.fireTableDataChanged();
+
         revalidate();
     }
 }
