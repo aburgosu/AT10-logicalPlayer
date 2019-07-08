@@ -22,7 +22,7 @@ public class SearchTabs extends JTabbedPane {
     private SearchVideoPanel panelGeneral;
     private GeneralSearchPanel generalSearchPanel;
     private LoadSavePanel loadSavePanel;
-    private final JPanel panelConvert;
+    private final ConverterPanel panelConvert;
 
     /**
      * Initializes a SearchTabs instance for the search options
@@ -40,7 +40,7 @@ public class SearchTabs extends JTabbedPane {
         loadSavePanel = new LoadSavePanel();
         addTab("Load/Save", null, loadSavePanel, "Load/Save searches");
 
-        panelConvert = new JPanel();
+        panelConvert = new ConverterPanel();
         addTab("Converter", null, panelConvert, "Perform a video/audio convertion");
     }
 
