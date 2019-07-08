@@ -35,14 +35,22 @@ public class Search implements ISearch {
     /**
      * Main search method.
      *
-     * @return List of found items according on criteria.
+     * @return List of found items if criteria's path is not null.
      */
     public List search() {
         if (criteria.getCriteriaPath() == null) {
             return null;
         }
+        return searchInPath(criteria.getCriteriaPath());
+    }
+
+    /**
+     * @param path
+     * @return Complete list of found items according on criteria's path.
+     */
+    public List searchInPath(String path) {
         List<CustomizedFile> searchResult = new ArrayList<>();
-        File file = new File(criteria.getCriteriaPath());
+        File file = new File(path);
         String criteriaFileName = criteria.getCriteriaFileName();
         String criteriaExtension = criteria.getCriteriaExtension();
         boolean criteriaHidden = criteria.getCriteriaFileHidden();
@@ -59,29 +67,33 @@ public class Search implements ISearch {
         String criteriaMimeType = criteria.getCriteriaMimeType();
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
-            String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
-            String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
-            boolean fileHiddenStatus = fileExtractor.isHidden();
-            boolean fileCanWrite = fileExtractor.canWrite();
-            Float fileSize = FileInfo.getFileSize(fileExtractor);
-            Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
-            Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
-            Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
-            String owner = FileInfo.getFileOwner(fileExtractor, "user");
-            String mimeType = FileInfo.getMimeType(fileExtractor);
-            if (evaluateString(fileName, criteriaFileName) &&
-                    evaluateString(fileExtension, criteriaExtension) &&
-                    evaluateHidden(fileHiddenStatus, criteriaHidden) &&
-                    evaluateReadOnly(fileCanWrite, criteriaReadOnly) &&
-                    evaluateSizeLimits(fileSize, sizeLowerLimit, sizeUpperLimit) &&
-                    evaluateDate(creationDate, creationDateLL, creationDateUL) &&
-                    evaluateDate(accessDate, accessDateLL, accessDateUL) &&
-                    evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
-                    evaluateString(owner, criteriaOwner) && evaluateMimeType(mimeType, criteriaMimeType)) {
-                CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
-                    fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
-                    modificationDate, owner, mimeType);
-                searchResult.add(matchingFile);
+            if (fileExtractor.isDirectory()) {
+                searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
+            } else {
+                String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
+                String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
+                boolean fileHiddenStatus = fileExtractor.isHidden();
+                boolean fileCanWrite = fileExtractor.canWrite();
+                Float fileSize = FileInfo.getFileSize(fileExtractor);
+                Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
+                Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
+                Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
+                String owner = FileInfo.getFileOwner(fileExtractor, "user");
+                String mimeType = FileInfo.getMimeType(fileExtractor);
+                if (evaluateString(fileName, criteriaFileName) &&
+                        evaluateString(fileExtension, criteriaExtension) &&
+                        evaluateHidden(fileHiddenStatus, criteriaHidden) &&
+                        evaluateReadOnly(fileCanWrite, criteriaReadOnly) &&
+                        evaluateSizeLimits(fileSize, sizeLowerLimit, sizeUpperLimit) &&
+                        evaluateDate(creationDate, creationDateLL, creationDateUL) &&
+                        evaluateDate(accessDate, accessDateLL, accessDateUL) &&
+                        evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
+                        evaluateString(owner, criteriaOwner) && evaluateStringContains(mimeType, criteriaMimeType)) {
+                    CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
+                            fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
+                            modificationDate, owner, mimeType);
+                    searchResult.add(matchingFile);
+                }
             }
         }
         return searchResult;
@@ -158,8 +170,8 @@ public class Search implements ISearch {
      *
      * @return Answer after evaluation.
      */
-    private boolean evaluateMimeType(String fileExtractorCriteria, String criteria) {
-        if (criteria == null || fileExtractorCriteria.contains(criteria)) {
+    private boolean evaluateStringContains(String fileExtractorCriteria, String criteria) {
+        if (criteria == null || fileExtractorCriteria.contains(criteria.toLowerCase())) {
             return true;
         }
         return false;

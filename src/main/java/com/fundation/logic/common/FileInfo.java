@@ -31,7 +31,7 @@ public abstract class FileInfo {
      */
     public static String getFileDenomination(File file, String option) {
         String complete = file.getName();
-        int indexPoint = complete.indexOf(".");
+        int indexPoint = complete.lastIndexOf(".");
         switch (option) {
             case "name":
                 String fileName = complete.substring(0, indexPoint);
