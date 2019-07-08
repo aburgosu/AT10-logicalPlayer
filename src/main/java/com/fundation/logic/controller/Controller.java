@@ -11,12 +11,9 @@ package com.fundation.logic.controller;
 import com.fundation.logic.model.Criteria;
 import com.fundation.logic.model.ISearch;
 import com.fundation.logic.model.Search;
-import com.fundation.logic.view.GeneralSearchPanel;
 import com.fundation.logic.view.SearchVideoFrame;
 import com.fundation.logic.model.CustomizedFile;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Date;
 import java.util.List;
@@ -87,16 +84,13 @@ public class Controller {
         if (extensionName.length() == 0) {
             extensionName = null;
         }
-
-        String sizeFrom =(searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeFrom().getText());
+        String sizeFrom = (searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeFrom().getText());
         Float sizeFromF = null;
         if (sizeFrom.length() != 0) {
             sizeFromF = new Float(sizeFrom);
         }
-
-        String sizeTo =(searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeTo().getText());
+        String sizeTo = (searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeTo().getText());
         Float sizeToF = null;
-        System.out.println("hsad"+sizeTo+"hsad");
         if (sizeTo.length() != 0) {
             sizeToF = new Float(sizeTo);
         }
@@ -116,36 +110,31 @@ public class Controller {
         if (dateAccessTo == null) {
             dateAccessTo = null;
         }
-
         Date dateModificationFrom = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldDateModificationFrom().getDate();
         if (dateModificationFrom == null) {
             dateModificationFrom = null;
         }
         Date dateModificationTo = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldDateModificationTo().getDate();
-        if (dateModificationTo == null ) {
+        if (dateModificationTo == null) {
             dateModificationTo = null;
         }
-
         String owner = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldOwner().getText();
         if (owner.length() == 0) {
             owner = null;
         }
         String mimeType = searchFrame.getSearchTabs().getGeneralSearchPanel().getComboBoxMimetype().getSelectedItem().toString();
-
-        System.out.println(mimeType);
         boolean fileHidden = searchFrame.getSearchTabs().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
         boolean readOnly = searchFrame.getSearchTabs().getGeneralSearchPanel().getCheckBoxReadOnly().isSelected();
-        String testPath = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldPath().getText().replace("\\","/");
-        System.out.println(testPath);
+        String testPath = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldPath().getText().replace("\\", "/");
         setCriteria(testPath,
                 fileName,
                 extensionName,
-                fileHidden, readOnly ,
+                fileHidden, readOnly,
                 sizeFromF,
                 sizeToF,
                 fromDateCreation, toDateCreation, dateAccessFrom,
                 dateAccessTo, dateModificationFrom,
-                dateModificationTo, owner,null);
+                dateModificationTo, owner, null);
         List<CustomizedFile> foundFiles;
         foundFiles = makeSearch(criteria);
         for (int index = 0; index < foundFiles.size(); index++) {
