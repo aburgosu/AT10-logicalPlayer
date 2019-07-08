@@ -32,8 +32,6 @@ public class Controller {
     ISearch search;
     Criteria criteria;
     SearchVideoFrame searchFrame;
-    private String fileName;
-    private String extensionName;
 
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
@@ -79,28 +77,61 @@ public class Controller {
      * show the result in the table
      */
     public void showSearchResult() {
-        fileName = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldFilename().getText();
+        String fileName = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldFilename().getText();
         if (fileName.length() == 0) {
             fileName = null;
         }
-        extensionName = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldExtension().getText();
+        String extensionName = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldExtension().getText();
         if (extensionName.length() == 0) {
             extensionName = null;
         }
-        extensionName = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldExtension().getText();
-        if (extensionName.length() == 0) {
-            extensionName = null;
+
+        String sizeFrom =(searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeFrom().getText());
+        Float sizeFromF = null;
+        if (sizeFrom.length() != 0) {
+            sizeFromF = new Float(sizeFrom);
         }
+
+        String sizeTo =(searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeTo().getText());
+        Float sizeToF = null;
+        System.out.println("hsad"+sizeTo+"hsad");
+        if (sizeTo.length() != 0) {
+            sizeToF = new Float(sizeTo);
+        }
+
+        Date toDateCreation = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldToDateCreation().getDate();
+        if (toDateCreation == null) {
+            toDateCreation = null;
+        }
+        Date dateAccessFrom = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldDateAccessFrom().getDate();
+        if (dateAccessFrom == null) {
+            dateAccessFrom = null;
+        }
+        Date dateAccessTo = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldDateAccessTo().getDate();
+        if (dateAccessTo == null) {
+            dateAccessTo = null;
+        }
+
+        Date dateModificationFrom = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldDateModificationFrom().getDate();
+        if (dateModificationFrom == null) {
+            dateModificationFrom = null;
+        }
+        Date dateModificationTo = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldDateModificationTo().getDate();
+        if (dateModificationTo == null ) {
+            dateModificationTo = null;
+        }
+
         String testPath = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldPath().getText().replace("\\","/");
         System.out.println(testPath);
         setCriteria(testPath,
                 fileName,
                 extensionName,
                 false, false,
-                new Float(searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeFrom().getText()),
-                new Float(searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeTo().getText()),
-                null, null, null, null, null,
-                null, null);
+                sizeFromF,
+                sizeToF,
+                null, toDateCreation, dateAccessFrom,
+                dateAccessTo, dateModificationFrom,
+                dateModificationTo, null);
         List<CustomizedFile> foundFiles;
         foundFiles = makeSearch(criteria);
         for (int index = 0; index < foundFiles.size(); index++) {
