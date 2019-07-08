@@ -35,7 +35,7 @@ public class TableResult extends JTable {
      * Add a new row to ResultTable
      */
     public void addResult(String path, String extension, Float size, Date date, String attribute) {
-        model.addRow(new Object[]{path, extension, size, date, attribute});
+        model.addRow(new Object[]{path, extension, size+" bytes", date, attribute});
     }
 
     /**
@@ -43,8 +43,11 @@ public class TableResult extends JTable {
      */
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
+        controller/search-integration
+        model.setRowCount(0);
         model.addRow(new Object[]{"FILE","EXTENSION","SIZE","DATE","ATTRIBUTE"});
-        this.setModel(model);
+        model.fireTableDataChanged();
+
         revalidate();
     }
 }
