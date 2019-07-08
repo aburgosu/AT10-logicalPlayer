@@ -1,6 +1,5 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -11,11 +10,17 @@ package com.fundation.logic.controller;
 
 import com.fundation.logic.model.Criteria;
 import com.fundation.logic.model.ISearch;
-import com.fundation.logic.model.SearchVideo;
+import com.fundation.logic.model.Search;
+import com.fundation.logic.view.GeneralSearchPanel;
 import com.fundation.logic.view.SearchVideoFrame;
+import com.fundation.logic.model.CustomizedFile;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JButton;
 
 /**
  * Implements the Controller class
@@ -34,27 +39,69 @@ public class Controller {
     public Controller(SearchVideoFrame searchFrame) {
         criteria = new Criteria();
         this.searchFrame = searchFrame;
+        setEvents();
     }
 
     /**
      * Sets criteria according on input parameters
      */
-    public Criteria setCriteria(String path, String fileName, String extension, Boolean fileHidden,
-            Boolean fileReadOnly) {
-        criteria.setPath(path);
-        criteria.setFileName(fileName);
-        criteria.setExtension(extension);
-        criteria.setFileHidden(fileHidden);
-        criteria.setFileReadOnly(fileReadOnly);
-        return criteria;
+    public void setCriteria(String path, String fileName, String extension, boolean fileHiddenStatus, boolean fileReadOnlyStatus,
+                            Float minSize, Float maxSize, Date minCreationDate, Date maxCreationDate, Date minAccessDate,
+                            Date maxAccessDate, Date minModificationDate, Date maxModificationDate, String owner) {
+        criteria.setCriteriaPath(path);
+        criteria.setCriteriaFileName(fileName);
+        criteria.setCriteriaExtension(extension);
+        criteria.setCriteriaFileHidden(fileHiddenStatus);
+        criteria.setCriteriaFileReadOnly(fileReadOnlyStatus);
+        criteria.setCriteriaSizeMin(minSize);
+        criteria.setCriteriaSizeMax(maxSize);
+        criteria.setCriteriaCreationDateMin(minCreationDate);
+        criteria.setCriteriaCreationDateMax(maxCreationDate);
+        criteria.setCriteriaAccessDateMin(minAccessDate);
+        criteria.setCriteriaAccessDateMax(maxAccessDate);
+        criteria.setCriteriaModificationDateMin(minModificationDate);
+        criteria.setCriteriaModificationDateMax(maxModificationDate);
+        criteria.setCriteriaOwner(owner);
     }
 
     /**
      * Make the search sending the criteria as parameter
      */
     public List makeSearch(Criteria criteria) {
-        search = new SearchVideo(criteria);
+        search = new Search(criteria);
         List<File> foundFiles = search.search();
         return foundFiles;
+    }
+
+    /**
+     * show the result in the table
+     */
+    public void showSearchResult() {
+        setCriteria("resources/",
+                null, null, true, false, null, null,
+                null, null, null, null, null,
+                null, null);
+        List<CustomizedFile> foundFiles;
+        foundFiles = makeSearch(criteria);
+        for (int index = 0; index < foundFiles.size(); index++) {
+            String path = foundFiles.get(index).getName();
+            String extension = foundFiles.get(index).getExtension();
+            Float size = foundFiles.get(index).getSize();
+            Date creationDate = foundFiles.get(index).getCreationDate();
+            this.searchFrame.getTableResult().addResult(path, extension, size, creationDate, "---");
+        }
+    }
+
+    /**
+     * send the search by clicking on search
+     */
+    public void setEvents() {
+        JButton btnSearch = searchFrame.getSearchTabs().getGeneralSearchPanel().getSearchButton();
+        btnSearch.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                searchFrame.getTableResult().clearTableResult();
+                showSearchResult();
+            }
+        });
     }
 }

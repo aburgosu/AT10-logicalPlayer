@@ -9,57 +9,239 @@
   */
  package com.fundation.logic.model;
 
+ import java.util.Date;
+
  /**
   * Implements the model class File and the getter and setter´s methods
   *
-  * @authors Andres Burgos, Jesus Menacho.
+  * @authors Andres Burgos, Jesus Menacho, Melissa Román
   * @version 1.1
   */
 
  public class Criteria {
-     private String path;
-     private String fileName;
-     private String extension;
-     private Boolean fileHidden = false;
-     private Boolean fileReadOnly = false;
+     private String criteriaPath;
+     private String criteriaFileName;
+     private String criteriaExtension;
+     private Boolean criteriaFileHidden;
+     private Boolean criteriaFileReadOnly;
+     private Float criteriaSizeMin;
+     private Float criteriaSizeMax;
+     private Date criteriaCreationDateMin;
+     private Date criteriaCreationDateMax;
+     private Date criteriaAccessDateMin;
+     private Date criteriaAccessDateMax;
+     private Date criteriaModificationDateMin;
+     private Date criteriaModificationDateMax;
+     private String criteriaOwner;
+     private String criteriaMimeType;
 
-     public Boolean getFileHidden() {
-         return fileHidden;
+     /**
+      * Set criteriaFileHidden.
+      */
+     public void setCriteriaFileHidden(Boolean criteriaFileHidden) {
+         this.criteriaFileHidden = criteriaFileHidden;
      }
 
-     public void setFileHidden(Boolean fileHidden) {
-         this.fileHidden = fileHidden;
+     /**
+      * @return Criteria's hidden status.
+      */
+     public Boolean getCriteriaFileHidden() {
+         return criteriaFileHidden;
      }
 
-     public Boolean getFileReadOnly() {
-         return fileReadOnly;
+     /**
+      * Set criteria's readOnly status.
+      */
+     public void setCriteriaFileReadOnly(Boolean criteriaFileReadOnly) {
+         this.criteriaFileReadOnly = criteriaFileReadOnly;
      }
 
-     public void setFileReadOnly(Boolean fileReadOnly){
-         this.fileReadOnly = fileReadOnly;
+     /**
+      * @return Criteria's readOnly status.
+      */
+     public Boolean getCriteriaFileReadOnly() {
+         return criteriaFileReadOnly;
      }
 
-     public String getPath() {
-         return path;
+     /**
+      * Set criteriaPath.
+      */
+     public void setCriteriaPath(String criteriaPath) {
+         this.criteriaPath = criteriaPath;
      }
 
-     public void setPath(String path) {
-         this.path = path;
+     /**
+      * @return criteriaPath.
+      */
+     public String getCriteriaPath() {
+         return criteriaPath;
      }
 
-     public String getFileName() {
-         return fileName;
+     /**
+      * Set criteria's fileName.
+      */
+     public void setCriteriaFileName(String criteriaFileName) {
+         this.criteriaFileName = criteriaFileName;
      }
 
-     public void setFileName(String fileName) {
-         this.fileName = fileName;
+     /**
+      * @return criteriaFileName.
+      */
+     public String getCriteriaFileName() {
+         return criteriaFileName;
      }
 
-     public String getExtension() {
-         return extension;
+     /**
+      * Set criteria's extension.
+      */
+     public void setCriteriaExtension(String criteriaExtension) {
+         this.criteriaExtension = criteriaExtension;
      }
 
-     public void setExtension(String extension) {
-         this.extension = extension;
+     /**
+      * @return criteriaExtension.
+      */
+     public String getCriteriaExtension() {
+         return criteriaExtension;
+     }
+
+     /**
+      * Set lower limit for search by size criteria.
+      */
+     public void setCriteriaSizeMin(Float criteriaSizeMin) {
+         this.criteriaSizeMin = criteriaSizeMin;
+     }
+
+     /**
+      * @return Criteria's lower limit for search.
+      */
+     public Float getCriteriaSizeMin() {
+         return criteriaSizeMin;
+     }
+
+     /**
+      * Set upper limit for search by size criteria.
+      */
+     public void setCriteriaSizeMax(Float criteriaSizeMax) {
+         this.criteriaSizeMax = criteriaSizeMax;
+     }
+
+     /**
+      * @return Criteria's upper limit for search by size.
+      */
+     public Float getCriteriaSizeMax() {
+         return criteriaSizeMax;
+     }
+
+     /**
+      * Set lower limit for search by creation date criteria.
+      */
+     public void setCriteriaCreationDateMin(Date criteriaCreationDateMin) {
+         this.criteriaCreationDateMin = criteriaCreationDateMin;
+     }
+
+     /**
+      * @return Criteria's lower limit for search by creation date.
+      */
+     public Date getCriteriaCreationDateMin() {
+         return criteriaCreationDateMin;
+     }
+
+     /**
+      * Set upper limit for search by creation date criteria.
+      */
+     public void setCriteriaCreationDateMax(Date criteriaCreationDateMax) {
+         this.criteriaCreationDateMax = criteriaCreationDateMax;
+     }
+
+     /**
+      * @return Criteria's upper limit for search by creation date.
+      */
+     public Date getCriteriaCreationDateMax() {
+         return criteriaCreationDateMax;
+     }
+
+     /**
+      * Set lower limit for search by access date criteria.
+      */
+     public void setCriteriaAccessDateMin(Date criteriaAccessDateMin) {
+         this.criteriaAccessDateMin = criteriaAccessDateMin;
+     }
+
+     /**
+      * @return Criteria's lower limit for search by access date.
+      */
+     public Date getCriteriaAccessDateMin() {
+         return criteriaAccessDateMin;
+     }
+
+     /**
+      * Set upper limit for search by access date criteria.
+      */
+     public void setCriteriaAccessDateMax(Date criteriaAccessDateMax) {
+         this.criteriaAccessDateMax = criteriaAccessDateMax;
+     }
+
+     /**
+      * @return Criteria's upper limit for search by access date.
+      */
+     public Date getCriteriaAccessDateMax() {
+         return criteriaAccessDateMax;
+     }
+
+     /**
+      * Set lower limit for search by modification date criteria.
+      */
+     public void setCriteriaModificationDateMin(Date criteriaModificationDateMin) {
+         this.criteriaModificationDateMin = criteriaModificationDateMin;
+     }
+
+     /**
+      * @return Criteria's lower limit for search by modification date.
+      */
+     public Date getCriteriaModificationDateMin() {
+         return criteriaModificationDateMin;
+     }
+
+     /**
+      * Set upper limit for search by modification date criteria.
+      */
+     public void setCriteriaModificationDateMax(Date criteriaModificationDateMax) {
+         this.criteriaModificationDateMax = criteriaModificationDateMax;
+     }
+
+     /**
+      * @return Criteria's upper limit for search by modification date.
+      */
+     public Date getCriteriaModificationDateMax() {
+         return criteriaModificationDateMax;
+     }
+
+     /**
+      * Set criteria's owner.
+      */
+     public void setCriteriaOwner(String criteriaOwner) {
+         this.criteriaOwner = criteriaOwner;
+     }
+
+     /**
+      * @return Criteria's owner.
+      */
+     public String getCriteriaOwner() {
+         return criteriaOwner;
+     }
+
+     /**
+      * Set criteria's mimeType.
+      */
+     public void setCriteriaMimeType(String criteriaMimeType) {
+         this.criteriaMimeType = criteriaMimeType;
+     }
+
+     /**
+      * @return Criteria's mimeType.
+      */
+     public String getCriteriaMimeType() {
+         return criteriaMimeType;
      }
  }
