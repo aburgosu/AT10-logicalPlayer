@@ -32,6 +32,8 @@ public class Controller {
     ISearch search;
     Criteria criteria;
     SearchVideoFrame searchFrame;
+    private String fileName;
+    private String extensionName;
 
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
@@ -77,8 +79,26 @@ public class Controller {
      * show the result in the table
      */
     public void showSearchResult() {
-        setCriteria("resources/",
-                null, null, true, false, null, null,
+        fileName = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldFilename().getText();
+        if (fileName.length() == 0) {
+            fileName = null;
+        }
+        extensionName = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldExtension().getText();
+        if (extensionName.length() == 0) {
+            extensionName = null;
+        }
+        extensionName = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldExtension().getText();
+        if (extensionName.length() == 0) {
+            extensionName = null;
+        }
+        String testPath = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldPath().getText().replace("\\","/");
+        System.out.println(testPath);
+        setCriteria(testPath,
+                fileName,
+                extensionName,
+                false, false,
+                new Float(searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeFrom().getText()),
+                new Float(searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeTo().getText()),
                 null, null, null, null, null,
                 null, null);
         List<CustomizedFile> foundFiles;
@@ -97,11 +117,9 @@ public class Controller {
      */
     public void setEvents() {
         JButton btnSearch = searchFrame.getSearchTabs().getGeneralSearchPanel().getSearchButton();
-        btnSearch.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                searchFrame.getTableResult().clearTableResult();
-                showSearchResult();
-            }
+        btnSearch.addActionListener(e -> {
+            searchFrame.getTableResult().clearTableResult();
+            showSearchResult();
         });
     }
 }
