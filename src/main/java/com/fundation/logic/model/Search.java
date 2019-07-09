@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.model;
 
+import com.fundation.logic.common.DateSetter;
 import com.fundation.logic.common.FileInfo;
 
 import java.io.File;
@@ -158,18 +159,13 @@ public class Search implements ISearch {
             return true;
         }
         if (lowerLimit != null && upperLimit == null) {
-            return fileExtractorDate.after(lowerLimit);
+            return fileExtractorDate.after(DateSetter.setStartOfDay(lowerLimit));
         }
         if (lowerLimit == null && upperLimit != null) {
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(upperLimit);
-            cal.add(Calendar.DATE, 1);
-            return fileExtractorDate.before(cal.getTime());
+            return fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit));
         }
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(upperLimit);
-        cal.add(Calendar.DATE, 1);
-        return (fileExtractorDate.after(lowerLimit) && fileExtractorDate.before(cal.getTime()));
+        return (fileExtractorDate.after(DateSetter.setStartOfDay(lowerLimit)) &&
+            fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit)));
     }
 
     /**
