@@ -24,7 +24,7 @@ import java.util.Date;
  * @version 1.0
  */
 public class TableResult extends JTable {
-    DefaultTableModel model;
+    private DefaultTableModel model;
 
     /**
      * Initializes a TableResult instance with headers
