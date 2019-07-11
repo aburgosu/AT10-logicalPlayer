@@ -36,13 +36,15 @@
      private String criteriaMimeType;
 
      /**
-      * Set criteriaFileHidden.
+      * Sets criteria's fileHidden status.
+      * @param criteriaFileHidden - Value to be assigned to fileHidden status.
       */
      public void setCriteriaFileHidden(Boolean criteriaFileHidden) {
          this.criteriaFileHidden = criteriaFileHidden;
      }
 
      /**
+      * Allows to get criteria's fileHidden status.
       * @return Criteria's hidden status.
       */
      public Boolean getCriteriaFileHidden() {
@@ -50,13 +52,15 @@
      }
 
      /**
-      * Set criteria's readOnly status.
+      * Sets criteria's readOnly status.
+      * @param criteriaFileReadOnly - Value to be assigned to criteria's fileHidden status.
       */
      public void setCriteriaFileReadOnly(Boolean criteriaFileReadOnly) {
          this.criteriaFileReadOnly = criteriaFileReadOnly;
      }
 
      /**
+      * Allows to get criteria's readOnly status.
       * @return Criteria's readOnly status.
       */
      public Boolean getCriteriaFileReadOnly() {
@@ -64,167 +68,191 @@
      }
 
      /**
-      * Set criteriaPath.
+      * Sets criteria's path.
+      * @param criteriaPath - Value to be assigned to criteria's path.
       */
      public void setCriteriaPath(String criteriaPath) {
          this.criteriaPath = criteriaPath;
      }
 
      /**
-      * @return criteriaPath.
+      * Allows to get criteria's path.
+      * @return Criteria's Path.
       */
      public String getCriteriaPath() {
          return criteriaPath;
      }
 
      /**
-      * Set criteria's fileName.
+      * Sets criteria's fileName.
+      * @param criteriaFileName - Value to be assigned to criteria's fileName.
       */
      public void setCriteriaFileName(String criteriaFileName) {
          this.criteriaFileName = criteriaFileName;
      }
 
      /**
-      * @return criteriaFileName.
+      * Allows to get criteria's fileName.
+      * @return Criteria's fileName.
       */
      public String getCriteriaFileName() {
          return criteriaFileName;
      }
 
      /**
-      * Set criteria's extension.
+      * Sets criteria's extension.
+      * @param criteriaExtension - Value to be assigned to criteria's extension.
       */
      public void setCriteriaExtension(String criteriaExtension) {
          this.criteriaExtension = criteriaExtension;
      }
 
      /**
-      * @return criteriaExtension.
+      * Allows to get criteria's extension.
+      * @return Criteria's extension.
       */
      public String getCriteriaExtension() {
          return criteriaExtension;
      }
 
      /**
-      * Set lower limit for search by size criteria.
+      * Sets criteria's minimum size.
+      * @param criteriaSizeMin - Value to be assigned to criteria's minimum size.
       */
      public void setCriteriaSizeMin(Float criteriaSizeMin) {
          this.criteriaSizeMin = criteriaSizeMin;
      }
 
      /**
-      * @return Criteria's lower limit for search.
+      * Allows to get criteria's minimum size.
+      * @return Criteria's minimum size.
       */
      public Float getCriteriaSizeMin() {
          return criteriaSizeMin;
      }
 
      /**
-      * Set upper limit for search by size criteria.
+      * Sets criteria's maximum size.
+      * @param criteriaSizeMax - Value to be assigned to criteria's maximum size.
       */
      public void setCriteriaSizeMax(Float criteriaSizeMax) {
          this.criteriaSizeMax = criteriaSizeMax;
      }
 
      /**
-      * @return Criteria's upper limit for search by size.
+      * Allows to get criteria's maximum size.
+      * @return Criteria's maximum size.
       */
      public Float getCriteriaSizeMax() {
          return criteriaSizeMax;
      }
 
      /**
-      * Set lower limit for search by creation date criteria.
+      * Sets criteria's minimum creation date.
+      * @param criteriaCreationDateMin - Value to be assigned to criteria's minimum creation date.
       */
      public void setCriteriaCreationDateMin(Date criteriaCreationDateMin) {
          this.criteriaCreationDateMin = criteriaCreationDateMin;
      }
 
      /**
-      * @return Criteria's lower limit for search by creation date.
+      * Allows to get criteria's minimum creation date.
+      * @return Criteria's minimum creation date..
       */
      public Date getCriteriaCreationDateMin() {
          return criteriaCreationDateMin;
      }
 
      /**
-      * Set upper limit for search by creation date criteria.
+      * Sets criteria's maximum creation date.
+      * @param criteriaCreationDateMax - Value to be assigned to criteria's maximum creation date.
       */
      public void setCriteriaCreationDateMax(Date criteriaCreationDateMax) {
          this.criteriaCreationDateMax = criteriaCreationDateMax;
      }
 
      /**
-      * @return Criteria's upper limit for search by creation date.
+      * Allows to get criteria's maximum creation date.
+      * @return Criteria's maximum creation date.
       */
      public Date getCriteriaCreationDateMax() {
          return criteriaCreationDateMax;
      }
 
      /**
-      * Set lower limit for search by access date criteria.
+      * Sets criteria's minimum access date.
+      * @param criteriaAccessDateMin - Value to be assigned to criteria's minimum access date.
       */
      public void setCriteriaAccessDateMin(Date criteriaAccessDateMin) {
          this.criteriaAccessDateMin = criteriaAccessDateMin;
      }
 
      /**
-      * @return Criteria's lower limit for search by access date.
+      * Allows to get criteria's minimum access date.
+      * @return Criteria's minimum access date.
       */
      public Date getCriteriaAccessDateMin() {
          return criteriaAccessDateMin;
      }
 
      /**
-      * Set upper limit for search by access date criteria.
+      * Sets criteria's maximum access date.
+      * @param criteriaAccessDateMax - Value to be assigned to criteria's maximum access date.
       */
      public void setCriteriaAccessDateMax(Date criteriaAccessDateMax) {
          this.criteriaAccessDateMax = criteriaAccessDateMax;
      }
 
      /**
-      * @return Criteria's upper limit for search by access date.
+      * Allows to get criteria's maximum access date.
+      * @return Criteria's maximum access date.
       */
      public Date getCriteriaAccessDateMax() {
          return criteriaAccessDateMax;
      }
 
      /**
-      * Set lower limit for search by modification date criteria.
+      * Sets criteria's minimum modification date.
+      * @param criteriaModificationDateMin - Value to be assigned to criteria's minimum modification date.
       */
      public void setCriteriaModificationDateMin(Date criteriaModificationDateMin) {
          this.criteriaModificationDateMin = criteriaModificationDateMin;
      }
 
      /**
-      * @return Criteria's lower limit for search by modification date.
+      * Allows to get criteria's minimum modification date.
+      * @return Criteria's minimum modification date.
       */
      public Date getCriteriaModificationDateMin() {
          return criteriaModificationDateMin;
      }
 
      /**
-      * Set upper limit for search by modification date criteria.
+      * Sets criteria's maximum modification date.
+      * @param criteriaModificationDateMax - Value to be assigned to criteria's maximum modification date.
       */
      public void setCriteriaModificationDateMax(Date criteriaModificationDateMax) {
          this.criteriaModificationDateMax = criteriaModificationDateMax;
      }
 
      /**
-      * @return Criteria's upper limit for search by modification date.
+      * Allows to get criteria's maximum modification date.
+      * @return Criteria's maximum modification date.
       */
      public Date getCriteriaModificationDateMax() {
          return criteriaModificationDateMax;
      }
 
      /**
-      * Set criteria's owner.
+      * Sets criteria's owner.
+      * @param criteriaOwner - Value to be assigned to criteria's owner.
       */
      public void setCriteriaOwner(String criteriaOwner) {
          this.criteriaOwner = criteriaOwner;
      }
 
      /**
+      * Allows to get criteria's owner.
       * @return Criteria's owner.
       */
      public String getCriteriaOwner() {
@@ -232,13 +260,15 @@
      }
 
      /**
-      * Set criteria's mimeType.
+      * Sets criteria's mimeType.
+      * @param criteriaMimeType - Value to be assigned to criteria's mimeType.
       */
      public void setCriteriaMimeType(String criteriaMimeType) {
          this.criteriaMimeType = criteriaMimeType;
      }
 
      /**
+      * Allows to get criteria's mimeType.
       * @return Criteria's mimeType.
       */
      public String getCriteriaMimeType() {

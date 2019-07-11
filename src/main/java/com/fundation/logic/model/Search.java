@@ -9,10 +9,12 @@
  */
 package com.fundation.logic.model;
 
+import com.fundation.logic.common.DateSetter;
 import com.fundation.logic.common.FileInfo;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -139,12 +141,12 @@ public class Search implements ISearch {
             return true;
         }
         if (lowerLimit != null && upperLimit == null) {
-            return sizeFileExtractor > lowerLimit;
+            return sizeFileExtractor >= lowerLimit;
         }
         if (lowerLimit == null && upperLimit != null) {
-            return sizeFileExtractor < upperLimit;
+            return sizeFileExtractor <= upperLimit;
         }
-        return (sizeFileExtractor > lowerLimit && sizeFileExtractor < upperLimit);
+        return (sizeFileExtractor >= lowerLimit && sizeFileExtractor <= upperLimit);
     }
 
     /**
@@ -157,12 +159,13 @@ public class Search implements ISearch {
             return true;
         }
         if (lowerLimit != null && upperLimit == null) {
-            return fileExtractorDate.after(lowerLimit);
+            return fileExtractorDate.after(DateSetter.setStartOfDay(lowerLimit));
         }
         if (lowerLimit == null && upperLimit != null) {
-            return fileExtractorDate.before(upperLimit);
+            return fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit));
         }
-        return (fileExtractorDate.after(lowerLimit) && fileExtractorDate.before(upperLimit));
+        return (fileExtractorDate.after(DateSetter.setStartOfDay(lowerLimit)) &&
+            fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit)));
     }
 
     /**
