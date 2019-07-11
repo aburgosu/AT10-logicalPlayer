@@ -21,19 +21,19 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 
 /**
- * Implements the ButtonListener class which listen to player buttons
+ * Implements the PlayerButtonListener class which listen to player buttons
  *
  * @author Melissa Román
  * @version 1.0
  */
-public class ButtonListener {
+public class PlayerButtonListener {
     int volumeLevel;
     boolean actionInProgress;
 
     /**
-     * Initializes a ButtonListener object with an initial volume level given as parameter
+     * Initializes a PlayerButtonListener object with an initial volume level given as parameter
      */
-    public ButtonListener(int volumeLevel) {
+    public PlayerButtonListener(int volumeLevel) {
         this.volumeLevel = volumeLevel;
         actionInProgress = true;
     }
@@ -44,7 +44,7 @@ public class ButtonListener {
      */
     public void listen(JButton playButton, JButton stopButton, JButton pauseButton, EmbeddedMediaPlayerComponent player,
             File file, JSlider progressBar, JSlider volume) {
-        //Actions to perform when playerButton is pressed
+        //Actions to perform when playButton is pressed
         playButton.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
             player.getMediaPlayer().playMedia(file.getAbsolutePath());

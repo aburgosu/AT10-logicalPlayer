@@ -124,4 +124,20 @@ public abstract class FileInfo {
         }
         return null;
     }
+
+    public static boolean isVideo(String path){
+        File file = new File(path);
+        if(getMimeType(file).contains("video")){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isAudio(String path){
+        File file = new File(path);
+        if(getMimeType(file).contains("audio")){
+            return true;
+        }
+        return false;
+    }
 }

@@ -30,7 +30,7 @@ import java.io.File;
  * @author Melissa Román
  * @version 1.0
  */
-public class PlayerJFrame extends JFrame {
+public class PlayerFrame extends JFrame {
     private JButton playButton;
     private JButton stopButton;
     private JButton pauseButton;
@@ -41,7 +41,7 @@ public class PlayerJFrame extends JFrame {
     private int volumeLevel;
     private EmbeddedMediaPlayerComponent player;
     private File fileToBePlayed;
-    private ButtonListener buttonListener;
+    private PlayerButtonListener buttonListener;
 
     /**
      * Searchs for required vlc libraries: libvlc.dll libvlccore.dll
@@ -51,15 +51,18 @@ public class PlayerJFrame extends JFrame {
     }
 
     /**
-     * Initializes a PlayerJFrame object
+     * Initializes a PlayerFrame object which will play the file in the given path.
+     * @param path - Path of the file to be played.
      */
-    public PlayerJFrame(String path) {
+    public PlayerFrame(String path) {
         initComponent(path);
         initSetting();
     }
 
     /**
-     * Initializes a PlayerJFrame object with all panels, labels and sliders required
+     * Initializes a PlayerFrame object with all panels, labels and sliders required.
+     * Player will play the file in the given path.
+     * @param path
      */
     private void initComponent(String path) {
         playButton = new JButton();
@@ -72,28 +75,23 @@ public class PlayerJFrame extends JFrame {
         volumeSlider = new JSlider(JSlider.VERTICAL, 0, 100, volumeLevel);
         player = new EmbeddedMediaPlayerComponent();
         fileToBePlayed = new File(path);
-        buttonListener = new ButtonListener(volumeLevel);
+        buttonListener = new PlayerButtonListener(volumeLevel);
     }
 
     /**
-     * Set all PlayerJFrame components
+     * Set all PlayerFrame components
      */
     private void initSetting() {
         setBounds(new Rectangle(80, 100, 800, 540));
-        setTitle("LogicalPlayer");
-        try {
-            playButton.setIcon(new ImageIcon("resources/Play.png"));
-            stopButton.setIcon(new ImageIcon("resources/Stop.png"));
-            pauseButton.setIcon(new ImageIcon("resources/Pause.png"));
-        } catch (NullPointerException e) {
-            System.out.println("Player icons cannot be found..");
-        }
-
+        setTitle(fileToBePlayed.getName());
         add(bottomPanel, BorderLayout.SOUTH);
+        playButton.setIcon(new ImageIcon("resources/Images/Play.png"));
         playButton.setPreferredSize(new Dimension(35, 35));
         bottomPanel.add(playButton);
+        pauseButton.setIcon(new ImageIcon("resources/Images/Pause.png"));
         pauseButton.setPreferredSize(new Dimension(35, 35));
         bottomPanel.add(pauseButton);
+        stopButton.setIcon(new ImageIcon("resources/Images/Stop.png"));
         stopButton.setPreferredSize(new Dimension(35, 35));
         bottomPanel.add(stopButton);
         progressBar.setPreferredSize(new Dimension(610, 20));
@@ -107,6 +105,10 @@ public class PlayerJFrame extends JFrame {
         player.setSize(playingPanel.getSize());
         player.setVisible(true);
         setVisible(true);
+        //Initializes playing
+        player.getMediaPlayer().playMedia(fileToBePlayed.getAbsolutePath());
+        player.getMediaPlayer().setVolume(volumeLevel);
+        progressBar.setEnabled(true);
         //Sends all required arguments to buttonListener's listen method
         buttonListener.listen(playButton, stopButton, pauseButton, player, fileToBePlayed, progressBar, volumeSlider);
     }
