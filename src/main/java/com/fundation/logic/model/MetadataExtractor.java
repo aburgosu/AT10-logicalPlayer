@@ -71,4 +71,58 @@ public class MetadataExtractor {
         }
         return null;
     }
+
+    /**
+     * This method returns metadata resolution.
+     */
+    public String getResolution(File path) {
+        String resolution = null;
+        try {
+            Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + path.toString());
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
+            while ((resolution = stdInput.readLine()) != null) {
+                if ((resolution.contains("Source Image Height"))) {
+                    System.out.println(resolution);
+                    int initIndex = resolution.indexOf(":");
+                    int endIndex = resolution.length();
+                    resolution = resolution.substring(initIndex + 2, endIndex);
+                    System.out.println(resolution);
+                    return resolution;
+                }
+            }
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return null;
+    }
+
+    /**
+     * This method returns duration of the video.
+     */
+    public String getDuration(File path) {
+        String duration = null;
+        try {
+            Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + path.toString());
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
+            while ((duration = stdInput.readLine()) != null) {
+                if ((duration.contains("Source Image Height"))) {
+                    System.out.println(duration);
+                    int initIndex = duration.indexOf(":");
+                    int endIndex = duration.length();
+                    duration = duration.substring(initIndex + 2, endIndex);
+                    System.out.println(duration);
+                    return duration;
+
+                }
+            }
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return null;
+    }
 }
+
