@@ -10,7 +10,6 @@
 package com.fundation.logic.common;
 
 import java.io.File;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -25,6 +24,7 @@ import java.util.Date;
  */
 public abstract class FileInfo {
     /**
+     * Allows to get the required file's denomination according on option.
      * @param file
      * @param option
      * @return String according to file's denomination option input.
@@ -45,6 +45,7 @@ public abstract class FileInfo {
     }
 
     /**
+     * Allows to get file's size.
      * @param file
      * @return File's size in bytes.
      */
@@ -60,6 +61,7 @@ public abstract class FileInfo {
     }
 
     /**
+     * Allows to get file's date according on option.
      * @param file
      * @param option
      * @return File's related date according to option input.
@@ -86,6 +88,7 @@ public abstract class FileInfo {
     }
 
     /**
+     * Allows to get file's owner according on option.
      * @param file
      * @param option
      * @return String according to file's owner option input.
@@ -111,6 +114,7 @@ public abstract class FileInfo {
     }
 
     /**
+     * Allows to get file's mimeType.
      * @param file
      * @return File's mimeType.
      */
@@ -125,6 +129,11 @@ public abstract class FileInfo {
         return null;
     }
 
+    /**
+     * Verifies if the file in path is a video.
+     * @param path
+     * @return True if file is a video.
+     */
     public static boolean isVideo(String path){
         File file = new File(path);
         if(getMimeType(file).contains("video")){
@@ -133,6 +142,11 @@ public abstract class FileInfo {
         return false;
     }
 
+    /**
+     * Verifies if the file in path is an audio.
+     * @param path
+     * @return True if file is an audio.
+     */
     public static boolean isAudio(String path){
         File file = new File(path);
         if(getMimeType(file).contains("audio")){

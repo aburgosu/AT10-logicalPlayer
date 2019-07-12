@@ -37,7 +37,7 @@ public class TableResult extends JTable {
     }
 
     /**
-     * Add a new row to ResultTable
+     * Adds a new row to ResultTable
      */
     public void addResult(String path, String extension, Float size, Date date, String attribute) {
         model.addRow(new Object[]{path, extension, size + " bytes", date, attribute});
@@ -62,7 +62,8 @@ public class TableResult extends JTable {
             public void mouseClicked(MouseEvent me) {
                 if (me.getButton() == MouseEvent.BUTTON3) {
                     int row = getSelectedRow();
-                    String filePath = (String) model.getValueAt(row, 0);
+                    final int PATHCOLUMN = 0;
+                    String filePath = (String) model.getValueAt(row, PATHCOLUMN);
                     if (FileInfo.isVideo(filePath) || FileInfo.isAudio(filePath)) {
                         PlayerFrame playerWindow = new PlayerFrame(filePath);
                         playerWindow.setVisible(true);

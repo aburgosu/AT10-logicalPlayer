@@ -70,9 +70,11 @@ public class PlayerFrame extends JFrame {
         pauseButton = new JButton();
         playingPanel = new JPanel();
         bottomPanel = new JPanel();
-        progressBar = new JSlider(0, 100, 0);
+        final int SLIDER_MIN_VALUE = 0;
+        final int SLIDER_MAX_VALUE = 100;
+        progressBar = new JSlider(SLIDER_MIN_VALUE, SLIDER_MAX_VALUE, 0);
         volumeLevel = 50;
-        volumeSlider = new JSlider(JSlider.VERTICAL, 0, 100, volumeLevel);
+        volumeSlider = new JSlider(JSlider.VERTICAL, SLIDER_MIN_VALUE, SLIDER_MAX_VALUE, volumeLevel);
         player = new EmbeddedMediaPlayerComponent();
         fileToBePlayed = new File(path);
         buttonListener = new PlayerButtonListener(volumeLevel);
@@ -82,22 +84,31 @@ public class PlayerFrame extends JFrame {
      * Set all PlayerFrame components
      */
     private void initSetting() {
-        setBounds(new Rectangle(80, 100, 800, 540));
+        final int BUTTON_SIDE_SIZE = 35;
+        final int PLAYER_FRAME_WIDTH = 800;
+        final int PLAYER_FRAME_HEIGHT = 540;
+        final int PROGRESS_BAR_LENGTH = 610;
+        final int PROGRESS_BAR_HEIGHT = 20;
+        final int VOLUME_BAR_HEIGHT = 50;
+        final int VOLUME_BAR_LENGTH = 20;
+        final int FRAME_X_POSITION = 80;
+        final int FRAME_Y_POSITION = 100;
+        setBounds(new Rectangle(FRAME_X_POSITION, FRAME_Y_POSITION, PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
         setTitle(fileToBePlayed.getName());
         add(bottomPanel, BorderLayout.SOUTH);
         playButton.setIcon(new ImageIcon("resources/Images/Play.png"));
-        playButton.setPreferredSize(new Dimension(35, 35));
+        playButton.setPreferredSize(new Dimension(BUTTON_SIDE_SIZE, BUTTON_SIDE_SIZE));
         bottomPanel.add(playButton);
         pauseButton.setIcon(new ImageIcon("resources/Images/Pause.png"));
-        pauseButton.setPreferredSize(new Dimension(35, 35));
+        pauseButton.setPreferredSize(new Dimension(BUTTON_SIDE_SIZE, BUTTON_SIDE_SIZE));
         bottomPanel.add(pauseButton);
         stopButton.setIcon(new ImageIcon("resources/Images/Stop.png"));
-        stopButton.setPreferredSize(new Dimension(35, 35));
+        stopButton.setPreferredSize(new Dimension(BUTTON_SIDE_SIZE, BUTTON_SIDE_SIZE));
         bottomPanel.add(stopButton);
-        progressBar.setPreferredSize(new Dimension(610, 20));
+        progressBar.setPreferredSize(new Dimension(PROGRESS_BAR_LENGTH, PROGRESS_BAR_HEIGHT));
         progressBar.setEnabled(false);
         bottomPanel.add(progressBar);
-        volumeSlider.setPreferredSize(new Dimension(20, 50));
+        volumeSlider.setPreferredSize(new Dimension(VOLUME_BAR_LENGTH, VOLUME_BAR_HEIGHT));
         bottomPanel.add(volumeSlider);
         add(playingPanel, BorderLayout.CENTER);
         playingPanel.setBackground(Color.BLACK);
