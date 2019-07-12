@@ -9,8 +9,12 @@
  */
 package com.fundation.logic.view;
 
+import com.fundation.logic.common.FileInfo;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Date;
 
 /**
@@ -20,22 +24,23 @@ import java.util.Date;
  * @version 1.0
  */
 public class TableResult extends JTable {
-    DefaultTableModel model;
+    private DefaultTableModel model;
 
     /**
      * Initializes a TableResult instance with headers
      */
-    public TableResult(){
-        model = new DefaultTableModel(new Object[] { "Path", "Extension","Size","Date","Attributes" }, 0);
-        model.addRow(new Object[]{"FILE","EXTENSION","SIZE","DATE","ATTRIBUTE"});
+    public TableResult() {
+        model = new DefaultTableModel(new Object[]{"Path", "Extension", "Size", "Date", "Attributes"}, 0);
+        model.addRow(new Object[]{"FILE", "EXTENSION", "SIZE", "DATE", "ATTRIBUTE"});
         this.setModel(model);
+        this.initListen();
     }
 
     /**
-     * Add a new row to ResultTable
+     * Adds a new row to ResultTable
      */
     public void addResult(String path, String extension, Float size, Date date, String attribute) {
-        model.addRow(new Object[]{path, extension, size+" bytes", date, attribute});
+        model.addRow(new Object[]{path, extension, size + " bytes", date, attribute});
     }
 
     /**
@@ -44,8 +49,27 @@ public class TableResult extends JTable {
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
-        model.addRow(new Object[]{"FILE","EXTENSION","SIZE","DATE","ATTRIBUTE"});
+        model.addRow(new Object[]{"FILE", "EXTENSION", "SIZE", "DATE", "ATTRIBUTE"});
         model.fireTableDataChanged();
         revalidate();
+    }
+
+    /**
+     * Listen to right click to play the selected row's file.
+     */
+    public void initListen() {
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent me) {
+                if (me.getButton() == MouseEvent.BUTTON3) {
+                    int row = getSelectedRow();
+                    final int PATH_COLUMN = 0;
+                    String filePath = (String) model.getValueAt(row, PATH_COLUMN);
+                    if (FileInfo.isVideo(filePath) || FileInfo.isAudio(filePath)) {
+                        PlayerFrame playerWindow = new PlayerFrame(filePath);
+                        playerWindow.setVisible(true);
+                    }
+                }
+            }
+        });
     }
 }

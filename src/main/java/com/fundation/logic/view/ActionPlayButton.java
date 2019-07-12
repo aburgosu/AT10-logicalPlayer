@@ -30,7 +30,7 @@ public class ActionPlayButton {
         btnPlayer.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                PlayerJFrame playerWindow = new PlayerJFrame("resources/Wildlife.wmv");
+                PlayerFrame playerWindow = new PlayerFrame("resources/Wildlife.wmv");
                 playerWindow.setVisible(true);
             }
         });
