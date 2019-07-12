@@ -81,6 +81,7 @@ public class GeneralSearchPanel extends JPanel {
                 }
             }
         });
+
         GridBagConstraints gbc_btnBrowsePath = new GridBagConstraints();
         gbc_btnBrowsePath.insets = new Insets(0, 0, 5, 0);
         gbc_btnBrowsePath.anchor = GridBagConstraints.NORTHWEST;
