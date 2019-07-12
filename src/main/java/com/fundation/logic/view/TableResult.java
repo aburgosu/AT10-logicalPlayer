@@ -62,8 +62,8 @@ public class TableResult extends JTable {
             public void mouseClicked(MouseEvent me) {
                 if (me.getButton() == MouseEvent.BUTTON3) {
                     int row = getSelectedRow();
-                    final int PATHCOLUMN = 0;
-                    String filePath = (String) model.getValueAt(row, PATHCOLUMN);
+                    final int PATH_COLUMN = 0;
+                    String filePath = (String) model.getValueAt(row, PATH_COLUMN);
                     if (FileInfo.isVideo(filePath) || FileInfo.isAudio(filePath)) {
                         PlayerFrame playerWindow = new PlayerFrame(filePath);
                         playerWindow.setVisible(true);
