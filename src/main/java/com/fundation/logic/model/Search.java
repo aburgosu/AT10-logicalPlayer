@@ -10,6 +10,7 @@
 package com.fundation.logic.model;
 
 import com.fundation.logic.common.FileInfo;
+import com.fundation.logic.model.Criteria.Criteria;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -38,10 +39,10 @@ public class Search implements ISearch {
      * @return List of found items if criteria's path is not null.
      */
     public List search() {
-        if (criteria.getCriteriaPath() == null) {
+        if (criteria.getPath() == null) {
             return null;
         }
-        return searchInPath(criteria.getCriteriaPath());
+        return searchInPath(criteria.getPath());
     }
 
     /**
@@ -51,7 +52,7 @@ public class Search implements ISearch {
     public List searchInPath(String path) {
         List<CustomizedFile> searchResult = new ArrayList<>();
         File file = new File(path);
-        String criteriaFileName = criteria.getCriteriaFileName();
+        String criteriaFileName = criteria.getFileName();
         String criteriaExtension = criteria.getCriteriaExtension();
         boolean criteriaHidden = criteria.getCriteriaFileHidden();
         boolean criteriaReadOnly = criteria.getCriteriaFileReadOnly();
