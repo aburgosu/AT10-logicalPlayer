@@ -22,13 +22,12 @@ import java.io.InputStreamReader;
 public class MetadataExtractor {
 
     /**
-     * This method return metadata frame rate
+     * This method returns metadata frame rate.
      */
     public String getFrameRate(File path) {
         String frameRate = null;
-
         try {
-            Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe "+ path.toString());
+            Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + path.toString());
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
             while ((frameRate = stdInput.readLine()) != null) {
                 if ((frameRate.contains("Video Frame Rate"))) {
@@ -36,8 +35,33 @@ public class MetadataExtractor {
                     int endIndex = frameRate.length();
                     frameRate = frameRate.substring(initIndex + 2, endIndex);
                     frameRate = Float.toString(Math.round(Float.parseFloat(frameRate)));
-                    frameRate = frameRate.substring(0,2);
+                    frameRate = frameRate.substring(0, 2);
                     return frameRate;
+                }
+            }
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return null;
+    }
+
+    /**
+     * This method returns metadata file type.
+     */
+    public String getFileType(File path) {
+        String videoFileType = null;
+        try {
+            Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + path.toString());
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
+            while ((videoFileType = stdInput.readLine()) != null) {
+                if ((videoFileType.contains("File Type"))) {
+                    int initIndex = videoFileType.indexOf(":");
+                    int endIndex = videoFileType.length();
+                    videoFileType = videoFileType.substring(initIndex + 2, endIndex);
+                    System.out.println(videoFileType);
+                    return videoFileType;
                 }
             }
             System.exit(0);
