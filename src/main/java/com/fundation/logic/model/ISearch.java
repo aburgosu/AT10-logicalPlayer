@@ -9,14 +9,13 @@
  */
 package com.fundation.logic.model;
 
-import java.io.File;
 import java.util.List;
 
 /**
  * Implements ISearch interface with search method.
  *
  * @author Andres Burgos
- * @version 1.0 *
+ * @version 1.0
  */
 public interface ISearch {
 
