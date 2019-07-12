@@ -10,12 +10,11 @@
 package com.fundation.logic.model.Criteria;
 
 /**
- * Implements the model class Multimedia and the getter and setter´s methods
+ * Implements the model class Multimedia and the getter and setter´s methods.
  *
  * @authors Andres Burgos.
  * @version 1.1
  */
-
 public class Multimedia extends Criteria {
     private String audioCodec;
     private int duration;

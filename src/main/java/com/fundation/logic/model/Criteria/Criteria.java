@@ -10,12 +10,11 @@
  package com.fundation.logic.model.Criteria;
 
  /**
-  * Implements the model class Criteria and the getter and setter´s methods
+  * Implements the model class Criteria and the getter and setter´s methods.
   *
   * @authors Andres Burgos, Jesus Menacho, Melissa Román
   * @version 1.1
   */
-
  public class Criteria {
      private String path;
      private String fileName;

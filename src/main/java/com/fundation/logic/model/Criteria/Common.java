@@ -12,12 +12,11 @@ package com.fundation.logic.model.Criteria;
 import java.util.Date;
 
 /**
- * Implements the model class Common and the getter and setter´s methods
+ * Implements the model class Common and the getter and setter´s methods.
  *
  * @authors Andres Burgos.
  * @version 1.1
  */
-
 public class Common extends Criteria {
     private Boolean criteriaFileHidden;
     private Boolean criteriaFileReadOnly;
