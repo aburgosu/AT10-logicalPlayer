@@ -92,8 +92,7 @@ public class CommonSearch implements ISearch {
                         evaluateDate(creationDate, creationDateLL, creationDateUL) &&
                         evaluateDate(accessDate, accessDateLL, accessDateUL) &&
                         evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
-                        evaluateString(owner, criteriaOwner) && evaluateStringContains(mimeType, criteriaMimeType)
-                    ) {
+                        evaluateString(owner, criteriaOwner) && evaluateStringContains(mimeType, criteriaMimeType)){
                     CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                             fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
                             modificationDate, owner, mimeType);
