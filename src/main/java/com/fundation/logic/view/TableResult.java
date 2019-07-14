@@ -26,7 +26,7 @@ public class TableResult extends JTable {
      * Initializes a TableResult instance with headers
      */
     public TableResult(){
-        model = new DefaultTableModel(new Object[] {"Path","File", "Extension","Size","Creation_Date","Modification_Date","Last_Access_Date","Attributes"}, 0) {
+        model = new DefaultTableModel(new Object[] {"path","file", "extension","size","creationDate","modificationDate","lastAccessDate","attributes"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -40,8 +40,8 @@ public class TableResult extends JTable {
     /**
      * Add a new row to ResultTable
      */
-    public void addResult(String path,String file, String extension, Float size, Date creation_date,Date modification_date ,Date last_access_date,String attribute) {
-        model.addRow(new Object[]{path, file, extension, size+" bytes", creation_date,modification_date,last_access_date, attribute});
+    public void addResult(String path,String file, String extension, Float size, Date creationDate,Date modificationDate ,Date lastAccessDate,String attribute) {
+        model.addRow(new Object[]{path, file, extension, size+" bytes", creationDate,modificationDate,lastAccessDate, attribute});
     }
 
     /**

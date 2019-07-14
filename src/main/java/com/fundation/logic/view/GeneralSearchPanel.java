@@ -14,8 +14,6 @@ import javax.swing.*;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Implements the GeneralSearch Panel
@@ -179,7 +177,7 @@ public class GeneralSearchPanel extends JPanel {
         add(lblMimetype, gbc_lblMimetype);
 
         comboBoxMimetype = new JComboBox();
-        comboBoxMimetype.setModel(new DefaultComboBoxModel(new String[] {"Audio", "Video", "Image", "Text", "Application","ALL"}));
+        comboBoxMimetype.setModel(new DefaultComboBoxModel(new String[] {"ALL","Audio", "Video", "Image", "Text", "Application"}));
         GridBagConstraints gbc_comboBoxMimetype = new GridBagConstraints();
         gbc_comboBoxMimetype.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxMimetype.fill = GridBagConstraints.HORIZONTAL;
