@@ -10,8 +10,14 @@
 package com.fundation.logic.view;
 
 import com.fundation.logic.view.components.SettingPanel;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 /**
  * This class show the content the advance video panel.
@@ -171,7 +177,7 @@ public class AdvancedVideoPanel extends JPanel {
     }
 
     /**
-     * This method return comboBoxVideoCodec
+     * This method return comboBoxVideoCodec.
      * @return comboBoxVideoCodec
      */
     public JComboBox getComboBoxVideoCodec() {
@@ -179,7 +185,7 @@ public class AdvancedVideoPanel extends JPanel {
     }
 
     /**
-     * This method return comboBoxVideoBitrate
+     * This method return comboBoxVideoBitrate.
      * @return comboBoxVideoBitrate
      */
     public JComboBox getComboBoxVideoBitrate() {
@@ -187,7 +193,7 @@ public class AdvancedVideoPanel extends JPanel {
     }
 
     /**
-     * This method return comboBoxVideoFramerate
+     * This method return comboBoxVideoFramerate.
      * @return comboBoxVideoFramerate
      */
     public JComboBox getComboBoxVideoFramerate() {
@@ -195,7 +201,7 @@ public class AdvancedVideoPanel extends JPanel {
     }
 
     /**
-     * This method return comboBoxResolution
+     * This method return comboBoxResolution.
      * @return comboBoxResolution.
      */
     public JComboBox getComboBoxResolution() {
@@ -203,7 +209,7 @@ public class AdvancedVideoPanel extends JPanel {
     }
 
     /**
-     * This method return textFieldDurationsSecond
+     * This method return textFieldDurationsSecond.
      * @return textFieldDurationsSecond
      */
     public JTextField getTextFieldDurationsSecond() {
@@ -211,7 +217,7 @@ public class AdvancedVideoPanel extends JPanel {
     }
 
     /**
-     * This method return textFieldDurationFirst
+     * This method return textFieldDurationFirst.
      * @return textFieldDurationFirst
      */
     public JTextField getTextFieldDurationFirst() {
@@ -219,7 +225,7 @@ public class AdvancedVideoPanel extends JPanel {
     }
 
     /**
-     * This method return comboBoxAudioCodecName
+     * This method return comboBoxAudioCodecName.
      * @return comboBoxAudioCodecName
      */
     public JComboBox getComboBoxAudioCodecName() {
@@ -227,7 +233,7 @@ public class AdvancedVideoPanel extends JPanel {
     }
 
     /**
-     * This method return btnSearchAdvanceVideoPanel
+     * This method return btnSearchAdvanceVideoPanel.
      * @return btnSearchAdvanceVideoPanel
      */
     public JButton getBtnSearchAdvanceVideoPanel() {

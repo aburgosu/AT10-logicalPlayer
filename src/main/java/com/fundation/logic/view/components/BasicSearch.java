@@ -9,10 +9,16 @@
  */
 package com.fundation.logic.view.components;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JFileChooser;
+import javax.swing.JButton;
+import java.awt.GridBagConstraints;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Insets;
 
 /**
  * This class is in charge of displaying Path, filename and type information.
@@ -127,7 +133,7 @@ public class BasicSearch extends JPanel {
     }
 
     /**
-     * This method return Path in TextFieldPath
+     * This method return Path in TextFieldPath.
      * @return textFieldPath
      */
     public JTextField getTextFieldPath() {
@@ -135,7 +141,7 @@ public class BasicSearch extends JPanel {
     }
 
     /**
-     * This method return File Name in TextFileName
+     * This method return File Name in TextFileName.
      * @return textFileName
      */
     public JTextField getTextFileName() {
@@ -143,7 +149,7 @@ public class BasicSearch extends JPanel {
     }
 
     /**
-     * This method return File Type in TextFieldFileType
+     * This method return File Type in TextFieldFileType.
      * @return textFileType
      */
     public JTextField getTextFieldFileType() {

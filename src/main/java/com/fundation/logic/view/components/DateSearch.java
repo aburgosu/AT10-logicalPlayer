@@ -10,8 +10,12 @@
 package com.fundation.logic.view.components;
 
 import com.toedter.calendar.JDateChooser;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 /**
  * This class displays the filter fields by date.
@@ -96,7 +100,7 @@ public class DateSearch extends JPanel {
     }
 
     /**
-     * This method returns getBtnFilterByDate
+     * This method returns getBtnFilterByDate.
      * @return getBtnFilterByDate
      */
     public JButton getBtnFilterByDate() {
@@ -104,7 +108,7 @@ public class DateSearch extends JPanel {
     }
 
     /**
-     * This method returns getFieldDateFirstDate
+     * This method returns getFieldDateFirstDate.
      * @return getFieldDateFirstDate
      */
     public JDateChooser getFieldDateFirstDate() {
@@ -112,7 +116,7 @@ public class DateSearch extends JPanel {
     }
 
     /**
-     * This method returns getFieldDateSecondDate
+     * This method returns getFieldDateSecondDate.
      * @return
      */
     public JDateChooser getFieldDateSecondDate() {

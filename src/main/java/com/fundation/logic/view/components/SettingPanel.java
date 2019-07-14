@@ -9,7 +9,8 @@
  */
 package com.fundation.logic.view.components;
 
-import java.awt.*;
+import java.awt.Container;
+import java.awt.GridBagLayout;
 
 /**
  * This class allows you to set all panels.

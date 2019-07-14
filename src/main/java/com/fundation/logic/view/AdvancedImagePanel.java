@@ -10,12 +10,17 @@
 package com.fundation.logic.view;
 
 import com.fundation.logic.view.components.SettingPanel;
-
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 /**
- * This class show the Advance image in a panel
+ * This class show the Advance image in a panel.
  *
  * @author Jesus Menacho
  * @version 1.0
@@ -44,7 +49,7 @@ public class AdvancedImagePanel extends JPanel {
     }
 
     /**
-     * This method show the content panel
+     * This method show the content panel.
      */
     private void imageContentPanel() {
         JLabel lblWidth = new JLabel("Width: ");
@@ -113,7 +118,7 @@ public class AdvancedImagePanel extends JPanel {
     }
 
     /**
-     * This method return textFieldWidth
+     * This method return textFieldWidth.
      * @return textFieldWidth
      */
     public JTextField getTextFieldWidth() {
@@ -121,7 +126,7 @@ public class AdvancedImagePanel extends JPanel {
     }
 
     /**
-     * This method return textFieldHeight
+     * This method return textFieldHeight.
      * @return textFieldHeight
      */
     public JTextField getTextFieldHeight() {
@@ -129,7 +134,7 @@ public class AdvancedImagePanel extends JPanel {
     }
 
     /**
-     * This method return comboBoxColorSpaceData
+     * This method return comboBoxColorSpaceData.
      * @return comboBoxColorSpaceData
      */
     public JComboBox getComboBoxColorSpaceData() {

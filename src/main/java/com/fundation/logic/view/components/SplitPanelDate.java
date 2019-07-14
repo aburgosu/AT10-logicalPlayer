@@ -10,8 +10,8 @@
 package com.fundation.logic.view.components;
 
 import com.fundation.logic.view.LoadSavePanel;
-
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  * This class allows you to separate the panels.

@@ -10,8 +10,14 @@
 package com.fundation.logic.view;
 
 import com.fundation.logic.view.components.SettingPanel;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 /**
  * This class allows you to display content related to the audio.
@@ -38,7 +44,7 @@ public class AdvancedAudioPanel extends JPanel {
     /**
      * This method set the panel and show the content panel audio.
      */
-    public void initComponent(){
+    public void initComponent() {
         settingPanel = new SettingPanel();
         settingPanel.settingPanelAdvanceSearch(this);
         audioContentPanel();
@@ -140,7 +146,7 @@ public class AdvancedAudioPanel extends JPanel {
     }
 
     /**
-     * This method return comboBoxAudioCodecName
+     * This method return comboBoxAudioCodecName.
      * @return comboBoxAudioCodecName
      */
     public JComboBox getComboBoxAudioCodecName() {
@@ -148,7 +154,7 @@ public class AdvancedAudioPanel extends JPanel {
     }
 
     /**
-     * This method return comboBoxAudioChannel
+     * This method return comboBoxAudioChannel.
      * @return comboBoxAudioChannel
      */
     public JComboBox getComboBoxAudioChannel() {
@@ -156,7 +162,7 @@ public class AdvancedAudioPanel extends JPanel {
     }
 
     /**
-     * This method return comboBoxAudioSampleRate
+     * This method return comboBoxAudioSampleRate.
      * @return comboBoxAudioSampleRate
      */
     public JComboBox getComboBoxAudioSampleRate() {
@@ -164,7 +170,7 @@ public class AdvancedAudioPanel extends JPanel {
     }
 
     /**
-     * This method return textFieldDurationFirst
+     * This method return textFieldDurationFirst.
      * @return textFieldDurationFirst
      */
     public JTextField getTextFieldDurationFirst() {

@@ -23,7 +23,7 @@ public class SearchAdvanceTab extends JTabbedPane {
     private AdvancedAudioPanel panelAudioAdvanced;
 
     /**
-     * Initializes a SearchTabs instance for the search options
+     * Initializes a SearchTabs instance for the search options.
      */
     public SearchAdvanceTab() {
         generalSearchPanel = new GeneralSearchPanel();

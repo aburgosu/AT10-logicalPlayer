@@ -10,7 +10,9 @@
 package com.fundation.logic.view.components;
 
 import com.fundation.logic.view.SearchAdvanceTab;
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JTabbedPane;
 
 /**
  * This class allows you to separate the panels.
