@@ -71,7 +71,7 @@ public class SearchVideoPanel extends JPanel {
 
         setLayout(null);
         //Init and adds Labels
-        lblSearch = new JLabel("Search");
+        lblSearch = new JLabel("CommonSearch");
         add(lblSearch);
         lblPath = new JLabel("Path");
         add(lblPath);
@@ -84,7 +84,7 @@ public class SearchVideoPanel extends JPanel {
         lblModificationDate = new JLabel("Modification Date");
         add(lblModificationDate);
         //LabelsVideo search options
-        lblVideoSearchTittle = new JLabel("Search Video");
+        lblVideoSearchTittle = new JLabel("CommonSearch Video");
         add(lblVideoSearchTittle);
         lblVideoFormat = new JLabel("Video Format");
         add(lblVideoFormat);

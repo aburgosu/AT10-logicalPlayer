@@ -8,9 +8,10 @@
  */
 package com.fundation.logic.controller;
 
+import com.fundation.logic.model.CommonSearch;
+import com.fundation.logic.model.criteria.Common;
 import com.fundation.logic.model.criteria.Criteria;
 import com.fundation.logic.model.ISearch;
-import com.fundation.logic.model.Search;
 import com.fundation.logic.view.SearchVideoFrame;
 import com.fundation.logic.model.CustomizedFile;
 
@@ -27,14 +28,14 @@ import javax.swing.JButton;
  */
 public class Controller {
     ISearch search;
-    Criteria criteria;
+    Common criteria;
     SearchVideoFrame searchFrame;
 
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
      */
     public Controller(SearchVideoFrame searchFrame) {
-        criteria = new Criteria();
+        criteria = new Common();
         this.searchFrame = searchFrame;
         setEvents();
     }
@@ -48,7 +49,7 @@ public class Controller {
                             Date maxModificationDate, String owner, String mimeType) {
         criteria.setPath(path);
         criteria.setFileName(fileName);
-        criteria.setCriteriaExtension(extension);
+        criteria.setExtension(extension);
         criteria.setCriteriaFileHidden(fileHiddenStatus);
         criteria.setCriteriaFileReadOnly(fileReadOnlyStatus);
         criteria.setCriteriaSizeMin(minSize);
@@ -66,8 +67,8 @@ public class Controller {
     /**
      * Make the search sending the criteria as parameter
      */
-    public List makeSearch(Criteria criteria) {
-        search = new Search(criteria);
+    public List makeSearch(Common criteria) {
+        search = new CommonSearch(criteria);
         List<File> foundFiles = search.search();
         return foundFiles;
     }

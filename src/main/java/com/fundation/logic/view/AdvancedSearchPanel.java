@@ -169,7 +169,7 @@ public class AdvancedSearchPanel extends JPanel {
         add(textFieldAudioBitrate, gbc_textFieldAudioBitrate);
         textFieldAudioBitrate.setColumns(10);
 
-        JButton btnSearch = new JButton("Search");
+        JButton btnSearch = new JButton("CommonSearch");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.gridwidth = 2;
         gbc_btnSearch.gridx = 0;

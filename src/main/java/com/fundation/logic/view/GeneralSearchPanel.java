@@ -369,7 +369,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_checkBoxReadOnly.gridy = 15;
         add(checkBoxReadOnly, gbc_checkBoxReadOnly);
 
-        btnSearch = new JButton("Search");
+        btnSearch = new JButton("CommonSearch");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.anchor = GridBagConstraints.NORTH;
         gbc_btnSearch.insets = new Insets(0, 0, 5, 5);
@@ -379,7 +379,7 @@ public class GeneralSearchPanel extends JPanel {
     }
 
     /**
-     * This method return the Search Button
+     * This method return the CommonSearch Button
      */
     public JButton getSearchButton() {
         return btnSearch;
