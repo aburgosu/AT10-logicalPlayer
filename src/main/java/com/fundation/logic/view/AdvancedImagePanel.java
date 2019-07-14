@@ -1,113 +1,58 @@
+/**
+ * Copyright (c) 2019 Jalasoft.
+ *
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jalasoft.
+ */
 package com.fundation.logic.view;
+
+import com.fundation.logic.view.components.SettingPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-
+/**
+ * This class show the Advance image in a panel
+ *
+ * @author Jesus Menacho
+ * @version 1.0
+ */
 public class AdvancedImagePanel extends JPanel {
-private JTextField textFieldPath;
-private JTextField textFileName;
-private JTextField textFieldFileType;
-private JTextField textFieldWidth;
-private JTextField textFieldHeight;
-private JTextField textFieldColorSpaceData;
-    public AdvancedImagePanel(){
+    private JButton btnSearchAdvanceImage;
+    private JTextField textFieldWidth;
+    private JTextField textFieldHeight;
+    private JComboBox comboBoxColorSpaceData;
+    private SettingPanel settingPanel;
 
-        GridBagLayout gridBagLayout = new GridBagLayout();
-        gridBagLayout.columnWidths = new int[]{0, 0, 0};
-        gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
-        gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-        gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    /**
+     * This constructor initializer the component.
+     */
+    public AdvancedImagePanel() {
+        initComponent();
+    }
 
-        setLayout(gridBagLayout);
+    /**
+     * This method initializer the set to the panel and content image panel.
+     */
+    public void initComponent() {
+        settingPanel = new SettingPanel();
+        settingPanel.settingPanelAdvanceSearch(this);
+        imageContentPanel();
+    }
 
-        JLabel lblImage = new JLabel("Image Advanced Search");
-        lblImage.setFont(new Font("Tahoma", Font.BOLD, 14));
-        GridBagConstraints gbc_lblImage = new GridBagConstraints();
-        gbc_lblImage.gridwidth = 2;
-        gbc_lblImage.insets = new Insets(0, 0, 5, 0);
-        gbc_lblImage.gridx = 0;
-        gbc_lblImage.gridy = 3;
-        add(lblImage, gbc_lblImage);
-
-        JLabel lblPath = new JLabel("Path: ");
-        GridBagConstraints gbc_lblPath = new GridBagConstraints();
-        gbc_lblPath.anchor = GridBagConstraints.EAST;
-        gbc_lblPath.insets = new Insets(0, 0, 5, 5);
-        gbc_lblPath.gridx = 0;
-        gbc_lblPath.gridy = 4;
-        add(lblPath, gbc_lblPath);
-
-        textFieldPath = new JTextField();
-        GridBagConstraints gbc_textFieldPath = new GridBagConstraints();
-        gbc_textFieldPath.insets = new Insets(0, 0, 5, 5);
-        gbc_textFieldPath.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldPath.gridx = 1;
-        gbc_textFieldPath.gridy = 4;
-        add(textFieldPath, gbc_textFieldPath);
-        textFieldPath.setColumns(10);
-
-        JButton btnBrowsePath = new JButton("Browse");
-        btnBrowsePath.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                JFileChooser folderChooser = new JFileChooser();
-                folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                int returnVal = folderChooser.showOpenDialog(null);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    textFieldPath.setText(folderChooser.getSelectedFile().getPath());
-                }
-            }
-        });
-
-//        GridBagConstraints cgbc_btnSearch = new GridBagConstraints();
-//        cgbc_btnSearch.gridwidth = 2;
-//        cgbc_btnSearch.gridx = 2;
-//        cgbc_btnSearch.gridy = 4;
-//        add(btnBrowsePath, cgbc_btnSearch);
-
-        JLabel lblFileName = new JLabel("File Name: ");
-        GridBagConstraints gbc_lblTittle = new GridBagConstraints();
-        gbc_lblTittle.anchor = GridBagConstraints.EAST;
-        gbc_lblTittle.insets = new Insets(0, 0, 5, 5);
-        gbc_lblTittle.gridx = 0;
-        gbc_lblTittle.gridy = 5;
-        add(lblFileName, gbc_lblTittle);
-
-        textFileName = new JTextField();
-        GridBagConstraints gbc_textFieldTittle = new GridBagConstraints();
-        gbc_textFieldTittle.insets = new Insets(0, 0, 5, 0);
-        gbc_textFieldTittle.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldTittle.gridx = 1;
-        gbc_textFieldTittle.gridy = 5;
-        add(textFileName, gbc_textFieldTittle);
-        textFileName.setColumns(10);
-
-
-        JLabel lblFileType = new JLabel("Extension: ");
-        GridBagConstraints gbc_lblFileType = new GridBagConstraints();
-        gbc_lblFileType.anchor = GridBagConstraints.EAST;
-        gbc_lblFileType.insets = new Insets(0, 0, 5, 5);
-        gbc_lblFileType.gridx = 0;
-        gbc_lblFileType.gridy = 6;
-        add(lblFileType, gbc_lblFileType);
-
-        textFieldFileType = new JTextField();
-        GridBagConstraints textFiled_FileType = new GridBagConstraints();
-        textFiled_FileType.insets = new Insets(0, 0, 5, 0);
-        textFiled_FileType.fill = GridBagConstraints.HORIZONTAL;
-        textFiled_FileType.gridx = 1;
-        textFiled_FileType.gridy = 6;
-        add(textFieldFileType, textFiled_FileType);
-
-
+    /**
+     * This method show the content panel
+     */
+    private void imageContentPanel() {
         JLabel lblWidth = new JLabel("Width: ");
         GridBagConstraints gbc_lblWidth = new GridBagConstraints();
         gbc_lblWidth.anchor = GridBagConstraints.EAST;
         gbc_lblWidth.insets = new Insets(0, 0, 5, 5);
         gbc_lblWidth.gridx = 0;
-        gbc_lblWidth.gridy = 7;
+        gbc_lblWidth.gridy = 4;
         add(lblWidth, gbc_lblWidth);
 
         textFieldWidth = new JTextField();
@@ -115,16 +60,15 @@ private JTextField textFieldColorSpaceData;
         gbc_textFieldWith.insets = new Insets(0, 0, 5, 0);
         gbc_textFieldWith.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldWith.gridx = 1;
-        gbc_textFieldWith.gridy = 7;
+        gbc_textFieldWith.gridy = 4;
         add(textFieldWidth, gbc_textFieldWith);
-        textFieldWidth.setColumns(10);
 
         JLabel lblHeight = new JLabel("Height: ");
         GridBagConstraints gbc_lblHeight = new GridBagConstraints();
         gbc_lblHeight.insets = new Insets(0, 0, 5, 5);
         gbc_lblHeight.anchor = GridBagConstraints.EAST;
         gbc_lblHeight.gridx = 0;
-        gbc_lblHeight.gridy = 8;
+        gbc_lblHeight.gridy = 5;
         add(lblHeight, gbc_lblHeight);
 
         textFieldHeight = new JTextField();
@@ -132,80 +76,63 @@ private JTextField textFieldColorSpaceData;
         gbc_textFieldWidth.insets = new Insets(0, 0, 5, 0);
         gbc_textFieldWidth.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldWidth.gridx = 1;
-        gbc_textFieldWidth.gridy = 8;
+        gbc_textFieldWidth.gridy = 5;
         add(textFieldHeight, gbc_textFieldWidth);
-        textFieldHeight.setColumns(25);
 
         JLabel lblColorSpaceData = new JLabel("Color Space Data: ");
         GridBagConstraints gbc_ColorSpaceData = new GridBagConstraints();
         gbc_ColorSpaceData.anchor = GridBagConstraints.EAST;
         gbc_ColorSpaceData.insets = new Insets(0, 0, 5, 5);
         gbc_ColorSpaceData.gridx = 0;
-        gbc_ColorSpaceData.gridy = 9;
+        gbc_ColorSpaceData.gridy = 6;
         add(lblColorSpaceData, gbc_ColorSpaceData);
 
-        textFieldColorSpaceData = new JTextField();
-        GridBagConstraints gbc_textFielColorSpaceData = new GridBagConstraints();
-        gbc_textFielColorSpaceData.insets = new Insets(0, 0, 5, 0);
-        gbc_textFielColorSpaceData.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFielColorSpaceData.gridx = 1;
-        gbc_textFielColorSpaceData.gridy = 9;
-        add(textFieldColorSpaceData, gbc_textFielColorSpaceData);
-        textFieldColorSpaceData.setColumns(10);
+        comboBoxColorSpaceData = new JComboBox();
+        comboBoxColorSpaceData.setModel(new DefaultComboBoxModel(new String[]{"RGB", "MCY", "MCYK", "RGK", "RG", "TSL", "CMYK", "YIQ", "YPbPr", "xvYCC", "HSV", "HSL", "ALL"}));
+        GridBagConstraints gbc_ComboBoxColorSpaceData = new GridBagConstraints();
+        gbc_ComboBoxColorSpaceData.insets = new Insets(0, 0, 5, 0);
+        gbc_ComboBoxColorSpaceData.fill = GridBagConstraints.HORIZONTAL;
+        gbc_ComboBoxColorSpaceData.gridx = 1;
+        gbc_ComboBoxColorSpaceData.gridy = 6;
+        add(comboBoxColorSpaceData, gbc_ComboBoxColorSpaceData);
 
-        JButton btnSearch = new JButton("Search");
+        btnSearchAdvanceImage = new JButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.gridwidth = 2;
         gbc_btnSearch.gridx = 0;
-        gbc_btnSearch.gridy = 10;
-        add(btnSearch, gbc_btnSearch);
+        gbc_btnSearch.gridy = 7;
+        add(btnSearchAdvanceImage, gbc_btnSearch);
     }
 
-    public JTextField getTextFieldPath() {
-        return textFieldPath;
+    /**
+     * This method return btnSearchAdvanceImage.
+     * @return
+     */
+    public JButton getBtnSearchAdvanceImage() {
+        return btnSearchAdvanceImage;
     }
 
-    public void setTextFieldPath(JTextField textFieldPath) {
-        this.textFieldPath = textFieldPath;
-    }
-
-    public JTextField getTextFileName() {
-        return textFileName;
-    }
-
-    public void setTextFileName(JTextField textFileName) {
-        this.textFileName = textFileName;
-    }
-
-    public JTextField getTextFieldFileType() {
-        return textFieldFileType;
-    }
-
-    public void setTextFieldFileType(JTextField textFieldFileType) {
-        this.textFieldFileType = textFieldFileType;
-    }
-
+    /**
+     * This method return textFieldWidth
+     * @return textFieldWidth
+     */
     public JTextField getTextFieldWidth() {
         return textFieldWidth;
     }
 
-    public void setTextFieldWidth(JTextField textFieldWidth) {
-        this.textFieldWidth = textFieldWidth;
-    }
-
+    /**
+     * This method return textFieldHeight
+     * @return textFieldHeight
+     */
     public JTextField getTextFieldHeight() {
         return textFieldHeight;
     }
 
-    public void setTextFieldHeight(JTextField textFieldHeight) {
-        this.textFieldHeight = textFieldHeight;
-    }
-
-    public JTextField getTextFieldColorSpaceData() {
-        return textFieldColorSpaceData;
-    }
-
-    public void setTextFieldColorSpaceData(JTextField textFieldColorSpaceData) {
-        this.textFieldColorSpaceData = textFieldColorSpaceData;
+    /**
+     * This method return comboBoxColorSpaceData
+     * @return comboBoxColorSpaceData
+     */
+    public JComboBox getComboBoxColorSpaceData() {
+        return comboBoxColorSpaceData;
     }
 }

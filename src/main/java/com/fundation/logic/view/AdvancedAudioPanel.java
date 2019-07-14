@@ -1,203 +1,181 @@
+/**
+ * Copyright (c) 2019 Jalasoft.
+ *
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jalasoft.
+ */
 package com.fundation.logic.view;
 
+import com.fundation.logic.view.components.SettingPanel;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-
+/**
+ * This class allows you to display content related to the audio.
+ *
+ * @author Jesus Menacho
+ * @version 1.0
+ */
 public class AdvancedAudioPanel extends JPanel {
-private JTextField textFieldPath;
-private JTextField textFileName;
-private JTextField textFieldAudioCodecName;
-private JTextField textFieldAudioChannel;
-private JTextField textFieldAudioSampleRate;
-private JTextField textField;
+    private JTextField textFieldDurationSecond;
+    private JButton btnSearchAdvanceAudio;
+    private JComboBox comboBoxAudioCodecName;
+    private JComboBox comboBoxAudioChannel;
+    private JComboBox comboBoxAudioSampleRate;
+    private JTextField textFieldDurationFirst;
+    private SettingPanel settingPanel;
+
+    /**
+     * The constructor let initializer component.
+     */
     public AdvancedAudioPanel() {
-        GridBagLayout gridBagLayout = new GridBagLayout();
-        gridBagLayout.columnWidths = new int[]{0, 0, 0};
-        gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
-        gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-        gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        initComponent();
+    }
 
-        setLayout(gridBagLayout);
+    /**
+     * This method set the panel and show the content panel audio.
+     */
+    public void initComponent(){
+        settingPanel = new SettingPanel();
+        settingPanel.settingPanelAdvanceSearch(this);
+        audioContentPanel();
+    }
 
-        JLabel lblVideo = new JLabel("Audio Advanced Search");
-        lblVideo.setFont(new Font("Tahoma", Font.BOLD, 14));
-        GridBagConstraints gbc_lblVideo = new GridBagConstraints();
-        gbc_lblVideo.gridwidth = 2;
-        gbc_lblVideo.insets = new Insets(0, 0, 5, 0);
-        gbc_lblVideo.gridx = 0;
-        gbc_lblVideo.gridy = 3;
-        add(lblVideo, gbc_lblVideo);
-
-        JLabel lblPath = new JLabel("Path: ");
-        GridBagConstraints gbc_lblPath = new GridBagConstraints();
-        gbc_lblPath.anchor = GridBagConstraints.EAST;
-        gbc_lblPath.insets = new Insets(0, 0, 5, 5);
-        gbc_lblPath.gridx = 0;
-        gbc_lblPath.gridy = 4;
-        add(lblPath, gbc_lblPath);
-
-        textFieldPath = new JTextField();
-        GridBagConstraints gbc_textFieldPath = new GridBagConstraints();
-        gbc_textFieldPath.insets = new Insets(0, 0, 5, 5);
-        gbc_textFieldPath.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldPath.gridx = 1;
-        gbc_textFieldPath.gridy = 4;
-        add(textFieldPath, gbc_textFieldPath);
-        textFieldPath.setColumns(10);
-
-        JButton btnBrowsePath = new JButton("Browse");
-        btnBrowsePath.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                JFileChooser folderChooser = new JFileChooser();
-                folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                int returnVal = folderChooser.showOpenDialog(null);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    textFieldPath.setText(folderChooser.getSelectedFile().getPath());
-                }
-            }
-        });
-
-        JLabel lblFileName = new JLabel("File Name: ");
-        GridBagConstraints gbc_lblTittle = new GridBagConstraints();
-        gbc_lblTittle.anchor = GridBagConstraints.EAST;
-        gbc_lblTittle.insets = new Insets(0, 0, 5, 5);
-        gbc_lblTittle.gridx = 0;
-        gbc_lblTittle.gridy = 5;
-        add(lblFileName, gbc_lblTittle);
-
-        textFileName = new JTextField();
-        GridBagConstraints gbc_textFieldTittle = new GridBagConstraints();
-        gbc_textFieldTittle.insets = new Insets(0, 0, 5, 0);
-        gbc_textFieldTittle.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldTittle.gridx = 1;
-        gbc_textFieldTittle.gridy = 5;
-        add(textFileName, gbc_textFieldTittle);
-        textFileName.setColumns(10);
-
-        JLabel lblAudioCodecName = new JLabel("Audio Codec Name: ");
+    /**
+     * This method show the content audio panel.
+     */
+    private void audioContentPanel() {
+        JLabel lblAudioCodecName = new JLabel("Codec Name: ");
         GridBagConstraints gbc_lblAudioCodecName = new GridBagConstraints();
         gbc_lblAudioCodecName.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodecName.insets = new Insets(0, 0, 5, 5);
         gbc_lblAudioCodecName.gridx = 0;
-        gbc_lblAudioCodecName.gridy = 6;
+        gbc_lblAudioCodecName.gridy = 7;
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
-        textFieldAudioCodecName = new JTextField();
-        GridBagConstraints textFiled_AudioCodecName = new GridBagConstraints();
-        textFiled_AudioCodecName.insets = new Insets(0, 0, 5, 0);
-        textFiled_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;
-        textFiled_AudioCodecName.gridx = 1;
-        textFiled_AudioCodecName.gridy = 6;
-        add(textFieldAudioCodecName, textFiled_AudioCodecName);
+        comboBoxAudioCodecName = new JComboBox();
+        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"MPEG-4 ALS", "WAV", "MP3", "RTA"}));
+        GridBagConstraints comboBox_AudioCodecName = new GridBagConstraints();
+        comboBox_AudioCodecName.insets = new Insets(0, 0, 5, 0);
+        comboBox_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;
+        comboBox_AudioCodecName.gridx = 1;
+        comboBox_AudioCodecName.gridy = 7;
+        add(comboBoxAudioCodecName, comboBox_AudioCodecName);
 
-
-        JLabel lblAudioChanel = new JLabel("Audio Channel: ");
+        JLabel lblAudioChanel = new JLabel("Channel: ");
         GridBagConstraints gbc_lblAudioChannel = new GridBagConstraints();
         gbc_lblAudioChannel.anchor = GridBagConstraints.EAST;
         gbc_lblAudioChannel.insets = new Insets(0, 0, 5, 5);
         gbc_lblAudioChannel.gridx = 0;
-        gbc_lblAudioChannel.gridy = 7;
+        gbc_lblAudioChannel.gridy = 8;
         add(lblAudioChanel, gbc_lblAudioChannel);
 
-        textFieldAudioChannel = new JTextField();
-        GridBagConstraints gbc_textFieldAudioChannel = new GridBagConstraints();
-        gbc_textFieldAudioChannel.insets = new Insets(0, 0, 5, 0);
-        gbc_textFieldAudioChannel.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldAudioChannel.gridx = 1;
-        gbc_textFieldAudioChannel.gridy = 7;
-        add(textFieldAudioChannel, gbc_textFieldAudioChannel);
-        textFieldAudioChannel.setColumns(10);
+        comboBoxAudioChannel = new JComboBox();
+        comboBoxAudioChannel.setModel(new DefaultComboBoxModel(new String[]{"0", "1.0","2.0", "2.1", "5.1", "6.1", "7.1","All"}));
+        GridBagConstraints gbc_comboBoxAudioChannel = new GridBagConstraints();
+        gbc_comboBoxAudioChannel.insets = new Insets(0, 0, 5, 0);
+        gbc_comboBoxAudioChannel.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBoxAudioChannel.gridx = 1;
+        gbc_comboBoxAudioChannel.gridy = 8;
+        add(comboBoxAudioChannel, gbc_comboBoxAudioChannel);
 
-        JLabel lblAudioSampleRate = new JLabel("Audio Sample Rate: ");
+        JLabel lblAudioSampleRate = new JLabel("Sample Rate: ");
         GridBagConstraints gbc_lblAudioSampleRate = new GridBagConstraints();
         gbc_lblAudioSampleRate.insets = new Insets(0, 0, 5, 5);
         gbc_lblAudioSampleRate.anchor = GridBagConstraints.EAST;
         gbc_lblAudioSampleRate.gridx = 0;
-        gbc_lblAudioSampleRate.gridy = 8;
+        gbc_lblAudioSampleRate.gridy = 9;
         add(lblAudioSampleRate, gbc_lblAudioSampleRate);
 
-        textFieldAudioSampleRate = new JTextField();
-        GridBagConstraints gbc_textFieldAudioSampleRate = new GridBagConstraints();
-        gbc_textFieldAudioSampleRate.insets = new Insets(0, 0, 5, 0);
-        gbc_textFieldAudioSampleRate.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldAudioSampleRate.gridx = 1;
-        gbc_textFieldAudioSampleRate.gridy = 8;
-        add(textFieldAudioSampleRate, gbc_textFieldAudioSampleRate);
-        textFieldAudioSampleRate.setColumns(25);
+        comboBoxAudioSampleRate = new JComboBox();
+        comboBoxAudioSampleRate.setModel(new DefaultComboBoxModel(new String[]{"8000 Hz", "11025 Hz","16000 Hz", "22050 Hz", "32000 Hz", "37800 Hz", "44056 Hz","47250 Hz","48000 Hz","50000 Hz","50400 Hz", "64000 Hz", "88200 Hz", "96000 Hz", "176400 Hz", "192000 Hz", "352800 Hz", "All"}));
+        GridBagConstraints gbc_comboBoxAudioSampleRate = new GridBagConstraints();
+        gbc_comboBoxAudioSampleRate.insets = new Insets(0, 0, 5, 0);
+        gbc_comboBoxAudioSampleRate.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBoxAudioSampleRate.gridx = 1;
+        gbc_comboBoxAudioSampleRate.gridy = 9;
+        add(comboBoxAudioSampleRate, gbc_comboBoxAudioSampleRate);
 
         JLabel lblDuration = new JLabel("Duration: ");
         GridBagConstraints gbc_lblDuration = new GridBagConstraints();
         gbc_lblDuration.anchor = GridBagConstraints.EAST;
         gbc_lblDuration.insets = new Insets(0, 0, 5, 5);
         gbc_lblDuration.gridx = 0;
-        gbc_lblDuration.gridy = 9;
+        gbc_lblDuration.gridy = 10;
         add(lblDuration, gbc_lblDuration);
 
-        textField = new JTextField();
-        GridBagConstraints gbc_textField = new GridBagConstraints();
-        gbc_textField.insets = new Insets(0, 0, 5, 0);
-        gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textField.gridx = 1;
-        gbc_textField.gridy = 9;
-        add(textField, gbc_textField);
-        textField.setColumns(10);
+        textFieldDurationFirst = new JTextField();
+        GridBagConstraints gbc_textFieldDurationFirst = new GridBagConstraints();
+        gbc_textFieldDurationFirst.insets = new Insets(0, 0, 5, 0);
+        gbc_textFieldDurationFirst.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textFieldDurationFirst.gridx = 1;
+        gbc_textFieldDurationFirst.gridy = 10;
+        add(textFieldDurationFirst, gbc_textFieldDurationFirst);
 
-        JButton btnSearch = new JButton("Search");
-        GridBagConstraints gbc_btnSearch = new GridBagConstraints();
-        gbc_btnSearch.gridwidth = 2;
-        gbc_btnSearch.gridx = 0;
-        gbc_btnSearch.gridy = 10;
-        add(btnSearch, gbc_btnSearch);
+        textFieldDurationSecond = new JTextField();
+        GridBagConstraints gbc_textFieldDurationSecond = new GridBagConstraints();
+        gbc_textFieldDurationSecond.insets = new Insets(0, 0, 5, 0);
+        gbc_textFieldDurationSecond.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textFieldDurationSecond.gridx = 1;
+        gbc_textFieldDurationSecond.gridy = 11;
+        add(textFieldDurationSecond, gbc_textFieldDurationSecond);
+
+        btnSearchAdvanceAudio = new JButton("Search");
+        GridBagConstraints gbc_btnSearchAdvanceAudio = new GridBagConstraints();
+        gbc_btnSearchAdvanceAudio.gridwidth = 2;
+        gbc_btnSearchAdvanceAudio.gridx = 1;
+        gbc_btnSearchAdvanceAudio.gridy = 12;
+        add(btnSearchAdvanceAudio, gbc_btnSearchAdvanceAudio);
     }
 
-    public JTextField getTextFieldPath() {
-        return textFieldPath;
+    /**
+     * This method return the JButton related btnSearch Advance Audio.
+     * @return btnSearchAdvanceAudio
+     */
+    public JButton getBtnSearchAdvanceAudio() {
+        return btnSearchAdvanceAudio;
     }
 
-    public void setTextFieldPath(JTextField textFieldPath) {
-        this.textFieldPath = textFieldPath;
+    /**
+     * This method return comboBoxAudioCodecName
+     * @return comboBoxAudioCodecName
+     */
+    public JComboBox getComboBoxAudioCodecName() {
+        return comboBoxAudioCodecName;
     }
 
-    public JTextField getTextFileName() {
-        return textFileName;
+    /**
+     * This method return comboBoxAudioChannel
+     * @return comboBoxAudioChannel
+     */
+    public JComboBox getComboBoxAudioChannel() {
+        return comboBoxAudioChannel;
     }
 
-    public void setTextFileName(JTextField textFileName) {
-        this.textFileName = textFileName;
+    /**
+     * This method return comboBoxAudioSampleRate
+     * @return comboBoxAudioSampleRate
+     */
+    public JComboBox getComboBoxAudioSampleRate() {
+        return comboBoxAudioSampleRate;
     }
 
-    public JTextField getTextFieldAudioCodecName() {
-        return textFieldAudioCodecName;
+    /**
+     * This method return textFieldDurationFirst
+     * @return textFieldDurationFirst
+     */
+    public JTextField getTextFieldDurationFirst() {
+        return textFieldDurationFirst;
     }
 
-    public void setTextFieldAudioCodecName(JTextField textFieldAudioCodecName) {
-        this.textFieldAudioCodecName = textFieldAudioCodecName;
-    }
-
-    public JTextField getTextFieldAudioChannel() {
-        return textFieldAudioChannel;
-    }
-
-    public void setTextFieldAudioChannel(JTextField textFieldAudioChannel) {
-        this.textFieldAudioChannel = textFieldAudioChannel;
-    }
-
-    public JTextField getTextFieldAudioSampleRate() {
-        return textFieldAudioSampleRate;
-    }
-
-    public void setTextFieldAudioSampleRate(JTextField textFieldAudioSampleRate) {
-        this.textFieldAudioSampleRate = textFieldAudioSampleRate;
-    }
-
-    public JTextField getTextField() {
-        return textField;
-    }
-
-    public void setTextField(JTextField textField) {
-        this.textField = textField;
+    /**
+     * This method return settingPanel.
+     * @return settingPanel.
+     */
+    public SettingPanel getSettingPanel() {
+        return settingPanel;
     }
 }

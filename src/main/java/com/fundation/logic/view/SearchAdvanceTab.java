@@ -13,10 +13,11 @@ import javax.swing.JTabbedPane;
 /**
  * Implements the tabs of different options.
  *
- * @author Andres Burgos
+ * @author Jesus Menacho
  * @version 1.0
  */
 public class SearchAdvanceTab extends JTabbedPane {
+    private GeneralSearchPanel generalSearchPanel;
     private AdvancedVideoPanel panelAdvanced;
     private AdvancedImagePanel panelImageAdvanced;
     private AdvancedAudioPanel panelAudioAdvanced;
@@ -25,13 +26,13 @@ public class SearchAdvanceTab extends JTabbedPane {
      * Initializes a SearchTabs instance for the search options
      */
     public SearchAdvanceTab() {
-
-        //this.setSize(1,1);
-        panelAdvanced= new AdvancedVideoPanel();
+        generalSearchPanel = new GeneralSearchPanel();
+        addTab("General",null, generalSearchPanel,"Search general");
+        panelAdvanced = new AdvancedVideoPanel();
         addTab("Video ", null, panelAdvanced, "Search advance Video");
-        panelImageAdvanced= new AdvancedImagePanel();
+        panelImageAdvanced = new AdvancedImagePanel();
         addTab("Image ", null, panelImageAdvanced, "Search advance Image");
-        panelAudioAdvanced= new AdvancedAudioPanel();
+        panelAudioAdvanced = new AdvancedAudioPanel();
         addTab("Audio ", null, panelAudioAdvanced, "Audio");
 
     }

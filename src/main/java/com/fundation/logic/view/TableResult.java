@@ -16,7 +16,7 @@ import java.util.Date;
 /**
  * Implements the Table Result to show to the users the results of th searches.
  *
- * @author Andres Burgos
+ * @author Andres Burgos, Jesus Menacho
  * @version 1.0
  */
 public class TableResult extends JTable {
@@ -26,16 +26,22 @@ public class TableResult extends JTable {
      * Initializes a TableResult instance with headers
      */
     public TableResult(){
-        model = new DefaultTableModel(new Object[] { "Path", "Extension","Size","Date","Attributes" }, 0);
-        model.addRow(new Object[]{"FILE","EXTENSION","SIZE","DATE","ATTRIBUTE"});
+        model = new DefaultTableModel(new Object[] {"Path","File", "Extension","Size","Creation_Date","Modification_Date","Last_Access_Date","Attributes"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        model.addRow(new Object[]{"PATH","FILE","EXTENSION","SIZE","CREATION DATE","MODIFICATION DATE","LAST ACCESS DATE","ATTRIBUTE"});
         this.setModel(model);
     }
 
     /**
      * Add a new row to ResultTable
      */
-    public void addResult(String path, String extension, Float size, Date date, String attribute) {
-        model.addRow(new Object[]{path, extension, size+" bytes", date, attribute});
+    public void addResult(String path,String file, String extension, Float size, Date creation_date,Date modification_date ,Date last_access_date,String attribute) {
+        model.addRow(new Object[]{path, file, extension, size+" bytes", creation_date,modification_date,last_access_date, attribute});
     }
 
     /**
@@ -44,7 +50,7 @@ public class TableResult extends JTable {
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
-        model.addRow(new Object[]{"FILE","EXTENSION","SIZE","DATE","ATTRIBUTE"});
+        model.addRow(new Object[]{"PATH","FILE","EXTENSION","SIZE","CREATION DATE","MODIFICATION DATE","LAST ACCESS DATE","ATTRIBUTE"});
         model.fireTableDataChanged();
         revalidate();
     }
