@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -23,7 +24,7 @@ public class AdvancedSearchPanel extends JPanel {
      * This method setting the size panel advance search
      */
     public AdvancedSearchPanel() {
-        tabAdvance= new SearchAdvanceTab();
+        tabAdvance = new SearchAdvanceTab();
         tabAdvance.setSize(380,400);
         this.add(tabAdvance);
     }

@@ -20,7 +20,7 @@ import java.util.List;
 public interface ISearch {
 
     /**
-     * @return Search result, list of found files.
+     * @return CommonSearch result, list of found files.
      */
     List search();
 }

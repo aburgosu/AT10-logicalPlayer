@@ -122,7 +122,7 @@ public abstract class FileInfo {
         Path path = file.toPath();
         try {
             String mimeType = Files.probeContentType(path);
-            return mimeType;imeType.
+            return mimeType;
         } catch (Exception e) {
             e.printStackTrace();
         }

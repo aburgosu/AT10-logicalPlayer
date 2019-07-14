@@ -11,7 +11,7 @@ package com.fundation.logic.model;
 
 import com.fundation.logic.common.DateSetter;
 import com.fundation.logic.common.FileInfo;
-import com.fundation.logic.model.criteria.Criteria;
+import com.fundation.logic.model.criteria.Common;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -19,18 +19,18 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implements new Search class with improvements in searching algorithm.
+ * Implements new CommonSearch class with improvements in searching algorithm.
  *
  * @author Melissa Román
  * @version 1.0
  */
-public class Search implements ISearch {
-    static private Criteria criteria;
+public class CommonSearch implements ISearch {
+    static private Common criteria;
 
     /**
-     * Initializes a Search instance which requires a criteria as parameter.
+     * Initializes a CommonSearch instance which requires a criteria as parameter.
      */
-    public Search(Criteria criteria) {
+    public CommonSearch(Common criteria) {
         this.criteria = criteria;
     }
 
@@ -54,7 +54,7 @@ public class Search implements ISearch {
         List<CustomizedFile> searchResult = new ArrayList<>();
         File file = new File(path);
         String criteriaFileName = criteria.getFileName();
-        String criteriaExtension = criteria.getCriteriaExtension();
+        String criteriaExtension = criteria.getExtension();
         boolean criteriaHidden = criteria.getCriteriaFileHidden();
         boolean criteriaReadOnly = criteria.getCriteriaFileReadOnly();
         Float sizeLowerLimit = criteria.getCriteriaSizeMin();
@@ -67,6 +67,7 @@ public class Search implements ISearch {
         Date modificationDateUL = criteria.getCriteriaModificationDateMax();
         String criteriaOwner = criteria.getCriteriaOwner();
         String criteriaMimeType = criteria.getCriteriaMimeType();
+
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
             if (fileExtractor.isDirectory()) {
@@ -90,7 +91,7 @@ public class Search implements ISearch {
                         evaluateDate(creationDate, creationDateLL, creationDateUL) &&
                         evaluateDate(accessDate, accessDateLL, accessDateUL) &&
                         evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
-                        evaluateString(owner, criteriaOwner) && evaluateStringContains(mimeType, criteriaMimeType)) {
+                        evaluateString(owner, criteriaOwner) && evaluateStringContains(mimeType, criteriaMimeType)){
                     CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                             fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
                             modificationDate, owner, mimeType);
