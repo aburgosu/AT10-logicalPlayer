@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Implements the GeneralSearch Panel
+ * Implements the GeneralSearch Panel.
  *
  * @author Andres Burgos
  * @version 1.0
