@@ -8,7 +8,7 @@
  */
 package com.fundation.logic.controller;
 
-import com.fundation.logic.model.Criteria.Criteria;
+import com.fundation.logic.model.criteria.Criteria;
 import com.fundation.logic.model.ISearch;
 import com.fundation.logic.model.Search;
 import com.fundation.logic.view.SearchVideoFrame;
