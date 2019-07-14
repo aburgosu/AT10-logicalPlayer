@@ -143,7 +143,7 @@ public class Controller {
             String extension = foundFiles.get(index).getExtension();
             Float size = foundFiles.get(index).getSize();
             Date creationDate = foundFiles.get(index).getCreationDate();
-            this.searchFrame.getTableResult().addResult(path, extension, size, creationDate, "---");
+            //this.searchFrame.getTableResult().addResult(path, extension, size, creationDate, "---");
         }
     }
 
