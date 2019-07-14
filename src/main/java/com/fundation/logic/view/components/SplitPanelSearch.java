@@ -21,6 +21,8 @@ import javax.swing.JTabbedPane;
  * @version 1.0
  */
 public class SplitPanelSearch extends JPanel {
+    private BasicSearch basicSearch;
+    private SearchAdvanceTab searchOptionTabs;
     /**
      * The constructor allows components to be initialized.
      */
@@ -39,10 +41,18 @@ public class SplitPanelSearch extends JPanel {
      * This method shows the content of the division of panels in a splitPane.
      */
     public void ContentsplitPanel() {
-        JPanel basicSearch = new BasicSearch();
-        JTabbedPane a = new SearchAdvanceTab();
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true, basicSearch, a);
-        splitPane.setOneTouchExpandable(true);
+        basicSearch = new BasicSearch();
+        searchOptionTabs = new SearchAdvanceTab();
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true, basicSearch, searchOptionTabs);
+        splitPane.setOneTouchExpandable(false);
         add(splitPane);
+    }
+
+    public BasicSearch getBasicSearchPanel() {
+        return basicSearch;
+    }
+
+    public SearchAdvanceTab getSearchAdvanceTab() {
+        return searchOptionTabs;
     }
 }

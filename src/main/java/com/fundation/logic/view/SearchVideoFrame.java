@@ -60,7 +60,7 @@ public class SearchVideoFrame extends JFrame {
     public void initSetting() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setBounds(100, 100, 800, 400);
+        setBounds(100, 100, 870, 400);
         setTitle("J2AM Player");
         initComponent();
         setContentPane(mainContentPanel);

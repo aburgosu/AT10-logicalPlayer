@@ -34,6 +34,9 @@ public class SearchAdvanceTab extends JTabbedPane {
         addTab("Image ", null, panelImageAdvanced, "Search advance Image");
         panelAudioAdvanced = new AdvancedAudioPanel();
         addTab("Audio ", null, panelAudioAdvanced, "Audio");
+    }
 
+    public GeneralSearchPanel getGeneralSearchPanel() {
+        return generalSearchPanel;
     }
 }
