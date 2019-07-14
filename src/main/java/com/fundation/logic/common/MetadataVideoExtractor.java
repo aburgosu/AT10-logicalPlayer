@@ -100,20 +100,44 @@ public class MetadataVideoExtractor {
     }
 
     /**
-     * This method returns metadata resolution.
+     * This method returns metadata image height.
      */
-    public static String getResolution(File pathFile) {
-        String resolution = null;
+    public static String getHeight(File pathFile) {
+        String height = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((resolution = stdInput.readLine()) != null) {
-                if ((resolution.contains("Image Height"))) {
-                    int initIndex = resolution.indexOf(":");
-                    int endIndex = resolution.length();
+            while ((height = stdInput.readLine()) != null) {
+                if ((height.contains("Image Height"))) {
+                    int initIndex = height.indexOf(":");
+                    int endIndex = height.length();
                     int freeSpace = 2;
-                    resolution = resolution.substring(initIndex + freeSpace, endIndex);
-                    return resolution;
+                    height = height.substring(initIndex + freeSpace, endIndex);
+                    return height;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return "No resolution";
+    }
+
+    /**
+     * This method returns metadata image width.
+     */
+    public static String getWidth(File pathFile) {
+        String width = null;
+        try {
+            Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
+            while ((width = stdInput.readLine()) != null) {
+                if ((width.contains("Image Width"))) {
+                    int initIndex = width.indexOf(":");
+                    int endIndex = width.length();
+                    int freeSpace = 2;
+                    width = width.substring(initIndex + freeSpace, endIndex);
+                    return width;
                 }
             }
         } catch (IOException e) {
