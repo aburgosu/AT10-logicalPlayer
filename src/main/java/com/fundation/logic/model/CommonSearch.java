@@ -12,7 +12,6 @@ package com.fundation.logic.model;
 import com.fundation.logic.common.DateSetter;
 import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.model.criteria.Common;
-import com.fundation.logic.model.criteria.Criteria;
 
 import java.io.File;
 import java.util.ArrayList;
