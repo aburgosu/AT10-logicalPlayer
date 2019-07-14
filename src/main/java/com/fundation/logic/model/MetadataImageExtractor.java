@@ -25,7 +25,7 @@ public class MetadataImageExtractor {
     /**
      * This method returns metadata image height.
      */
-    public String getHeight(File pathFile) {
+    public static String getHeight(File pathFile) {
         String height = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
@@ -49,7 +49,7 @@ public class MetadataImageExtractor {
     /**
      * This method returns metadata image Width.
      */
-    public String getWidth(File pathFile) {
+    public static String getWidth(File pathFile) {
         String width = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
@@ -73,7 +73,7 @@ public class MetadataImageExtractor {
     /**
      * This method returns metadata image color space.
      */
-    public String getColorSpace(File pathFile) {
+    public static String getColorSpace(File pathFile) {
         String colorSpace = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
@@ -97,7 +97,7 @@ public class MetadataImageExtractor {
     /**
      * This method returns metadata file type.
      */
-    public String getFileType(File pathFile) {
+    public static String getFileType(File pathFile) {
         String imageFileType = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile);

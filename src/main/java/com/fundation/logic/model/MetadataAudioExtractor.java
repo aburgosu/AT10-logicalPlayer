@@ -25,7 +25,7 @@ public class MetadataAudioExtractor {
     /**
      * This method returns duration of the audio.
      */
-    public String getAudioChannel(File pathFile) {
+    public static String getAudioChannel(File pathFile) {
         String channelMode = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
@@ -50,7 +50,7 @@ public class MetadataAudioExtractor {
     /**
      * This method returns metadata sample rate.
      */
-    public String getSampleRate(File pathFile) {
+    public static String getSampleRate(File pathFile) {
         String sampleRate = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
@@ -74,7 +74,7 @@ public class MetadataAudioExtractor {
     /**
      * This method returns duration of the audio.
      */
-    public String getDuration(File pathFile) {
+    public static String getDuration(File pathFile) {
         String duration = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());

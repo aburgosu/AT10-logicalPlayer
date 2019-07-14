@@ -26,7 +26,7 @@ public class MetadataVideoExtractor {
     /**
      * This method returns metadata frame rate.
      */
-    public String getFileName(File pathFile) {
+    public static String getFileName(File pathFile) {
         String fileName = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
@@ -50,7 +50,7 @@ public class MetadataVideoExtractor {
     /**
      * This method returns metadata frame rate.
      */
-    public String getFrameRate(File pathFile) {
+    public static String getFrameRate(File pathFile) {
         String frameRate = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
@@ -78,7 +78,7 @@ public class MetadataVideoExtractor {
     /**
      * This method returns metadata file type.
      */
-    public String getFileType(File pathFile) {
+    public static String getFileType(File pathFile) {
         String videoFileType = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile);
@@ -102,7 +102,7 @@ public class MetadataVideoExtractor {
     /**
      * This method returns metadata resolution.
      */
-    public String getResolution(File pathFile) {
+    public static String getResolution(File pathFile) {
         String resolution = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
@@ -126,7 +126,7 @@ public class MetadataVideoExtractor {
     /**
      * This method returns duration of the video.
      */
-    public String getDuration(File pathFile) {
+    public static String getDuration(File pathFile) {
         String duration = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
@@ -151,7 +151,7 @@ public class MetadataVideoExtractor {
     /**
      * This method returns duration of the video.
      */
-    public String getTitle(File pathFile) {
+    public static String getTitle(File pathFile) {
         String title = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
@@ -175,7 +175,7 @@ public class MetadataVideoExtractor {
     /**
      * This method returns video codec.
      */
-    public String getVideoCodec(File pathFile) {
+    public static String getVideoCodec(File pathFile) {
         String videoCodec = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
@@ -202,7 +202,7 @@ public class MetadataVideoExtractor {
     /**
      * This method returns video audio codec.
      */
-    public String getVideoAudioCodec(File pathFile) {
+    public static String getVideoAudioCodec(File pathFile) {
         String videoAudioCodec = null;
         try {
             Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
