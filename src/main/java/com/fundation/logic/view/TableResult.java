@@ -9,8 +9,12 @@
  */
 package com.fundation.logic.view;
 
+import com.fundation.logic.common.FileInfo;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Date;
 
 /**
@@ -20,7 +24,7 @@ import java.util.Date;
  * @version 1.0
  */
 public class TableResult extends JTable {
-    DefaultTableModel model;
+    private DefaultTableModel model;
 
     /**
      * Initializes a TableResult instance with headers
@@ -35,10 +39,11 @@ public class TableResult extends JTable {
 
         model.addRow(new Object[]{"PATH","FILE","EXTENSION","SIZE","CREATION DATE","MODIFICATION DATE","LAST ACCESS DATE","ATTRIBUTE"});
         this.setModel(model);
+        this.initListen();
     }
 
     /**
-     * Add a new row to ResultTable
+     * Adds a new row to ResultTable
      */
     public void addResult(String path,String file, String extension, Float size, Date creationDate,Date modificationDate ,Date lastAccessDate,String attribute) {
         model.addRow(new Object[]{path, file, extension, size+" bytes", creationDate,modificationDate,lastAccessDate, attribute});
@@ -53,5 +58,24 @@ public class TableResult extends JTable {
         model.addRow(new Object[]{"PATH","FILE","EXTENSION","SIZE","CREATION DATE","MODIFICATION DATE","LAST ACCESS DATE","ATTRIBUTE"});
         model.fireTableDataChanged();
         revalidate();
+    }
+
+    /**
+     * Listen to right click to play the selected row's file.
+     */
+    public void initListen() {
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent me) {
+                if (me.getButton() == MouseEvent.BUTTON3) {
+                    int row = getSelectedRow();
+                    final int PATH_COLUMN = 0;
+                    String filePath = (String) model.getValueAt(row, PATH_COLUMN);
+                    if (FileInfo.isVideo(filePath) || FileInfo.isAudio(filePath)) {
+                        PlayerFrame playerWindow = new PlayerFrame(filePath);
+                        playerWindow.setVisible(true);
+                    }
+                }
+            }
+        });
     }
 }

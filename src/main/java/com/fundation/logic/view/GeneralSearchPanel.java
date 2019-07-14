@@ -21,7 +21,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
 /**
- * Implements the GeneralSearch Panel
+ * Implements the GeneralSearch Panel.
  *
  * @author Andres Burgos, Jesus Menacho
  * @version 1.0

@@ -8,7 +8,7 @@
  */
 package com.fundation.logic.controller;
 
-import com.fundation.logic.model.Criteria;
+import com.fundation.logic.model.criteria.Criteria;
 import com.fundation.logic.model.ISearch;
 import com.fundation.logic.model.Search;
 import com.fundation.logic.view.SearchVideoFrame;
@@ -46,8 +46,8 @@ public class Controller {
                             Float minSize, Float maxSize, Date minCreationDate, Date maxCreationDate, Date minAccessDate,
                             Date maxAccessDate, Date minModificationDate,
                             Date maxModificationDate, String owner, String mimeType) {
-        criteria.setCriteriaPath(path);
-        criteria.setCriteriaFileName(fileName);
+        criteria.setPath(path);
+        criteria.setFileName(fileName);
         criteria.setCriteriaExtension(extension);
         criteria.setCriteriaFileHidden(fileHiddenStatus);
         criteria.setCriteriaFileReadOnly(fileReadOnlyStatus);

@@ -116,16 +116,42 @@ public abstract class FileInfo {
     /**
      * Allows to get file's mimeType.
      * @param file - File from which the info is get.
-     * @return File's mimeType.
+     * @return File's mimeType
      */
     public static String getMimeType(File file) {
         Path path = file.toPath();
         try {
             String mimeType = Files.probeContentType(path);
-            return mimeType;
+            return mimeType;imeType.
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * Verifies if the file in path is a video.
+     * @param path
+     * @return True if file is a video.
+     */
+    public static boolean isVideo(String path){
+        File file = new File(path);
+        if(getMimeType(file).contains("video")){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Verifies if the file in path is an audio.
+     * @param path
+     * @return True if file is an audio.
+     */
+    public static boolean isAudio(String path){
+        File file = new File(path);
+        if(getMimeType(file).contains("audio")){
+            return true;
+        }
+        return false;
     }
 }
