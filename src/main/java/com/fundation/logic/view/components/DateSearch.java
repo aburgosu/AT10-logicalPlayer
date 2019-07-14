@@ -1,0 +1,125 @@
+/**
+ * Copyright (c) 2019 Jalasoft.
+ *
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jalasoft.
+ */
+package com.fundation.logic.view.components;
+
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+
+/**
+ * This class displays the filter fields by date.
+ *
+ * @author Jesus Menacho
+ * @version 1.0
+ */
+public class DateSearch extends JPanel {
+    private SettingPanel settingPanel;
+    private JButton btnFilterByDate;
+    private JDateChooser fieldDateFirstDate;
+    private JDateChooser fieldDateSecondDate;
+
+    /**
+     *  The constructor let it initializer.
+     */
+    public DateSearch() {
+        dateSearchInitializer();
+    }
+
+    /**
+     * This method initializes the content of Basic Search and also sets it.
+     */
+    public void dateSearchInitializer() {
+
+        settingPanel = new SettingPanel();
+        settingPanel.settingPanelAdvanceSearch(this);
+        contentBasicSearch();
+    }
+
+    /**
+     * This method is responsible for displaying the content of BasicSearch.
+     */
+    private void contentBasicSearch() {
+        JLabel title = new JLabel("Search by Date");
+        title.setFont(new Font("Tahoma", Font.BOLD, 14));
+        GridBagConstraints gbc_lblVideo = new GridBagConstraints();
+        gbc_lblVideo.gridwidth = 3;
+        gbc_lblVideo.insets = new Insets(0, 0, 5, 0);
+        gbc_lblVideo.gridx = 0;
+        gbc_lblVideo.gridy = 0;
+        add(title, gbc_lblVideo);
+
+        JLabel lblPath = new JLabel("First Date: ");
+        GridBagConstraints gbc_lblPath = new GridBagConstraints();
+        gbc_lblPath.anchor = GridBagConstraints.EAST;
+        gbc_lblPath.insets = new Insets(0, 0, 5, 5);
+        gbc_lblPath.gridx = 0;
+        gbc_lblPath.gridy = 1;
+        add(lblPath, gbc_lblPath);
+
+        fieldDateFirstDate = new JDateChooser();
+        GridBagConstraints gbc_FieldToDateCreation = new GridBagConstraints();
+        gbc_FieldToDateCreation.insets = new Insets(0, 0, 5, 5);
+        gbc_FieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
+        gbc_FieldToDateCreation.gridx = 1;
+        gbc_FieldToDateCreation.gridy = 1;
+        add(fieldDateFirstDate, gbc_FieldToDateCreation);
+
+        JLabel lblFileName = new JLabel("Second Date: ");
+        GridBagConstraints gbc_lblTittle = new GridBagConstraints();
+        gbc_lblTittle.anchor = GridBagConstraints.EAST;
+        gbc_lblTittle.insets = new Insets(0, 0, 5, 5);
+        gbc_lblTittle.gridx = 0;
+        gbc_lblTittle.gridy = 2;
+        add(lblFileName, gbc_lblTittle);
+
+        fieldDateSecondDate = new JDateChooser();
+        GridBagConstraints gbc_FieldToDateSecondDate = new GridBagConstraints();
+        gbc_FieldToDateSecondDate.insets = new Insets(0, 0, 5, 5);
+        gbc_FieldToDateSecondDate.fill = GridBagConstraints.HORIZONTAL;
+        gbc_FieldToDateSecondDate.gridx = 1;
+        gbc_FieldToDateSecondDate.gridy = 2;
+        add(fieldDateSecondDate, gbc_FieldToDateSecondDate);
+
+        btnFilterByDate = new JButton("Filter");
+        GridBagConstraints gbc_btnSearch = new GridBagConstraints();
+        gbc_btnSearch.gridwidth = 2;
+        gbc_btnSearch.gridx = 0;
+        gbc_btnSearch.gridy = 3;
+        add(btnFilterByDate, gbc_btnSearch);
+    }
+
+    /**
+     * This method returns getBtnFilterByDate.
+     * @return getBtnFilterByDate
+     */
+    public JButton getBtnFilterByDate() {
+        return btnFilterByDate;
+    }
+
+    /**
+     * This method returns getFieldDateFirstDate.
+     * @return getFieldDateFirstDate
+     */
+    public JDateChooser getFieldDateFirstDate() {
+        return fieldDateFirstDate;
+    }
+
+    /**
+     * This method returns getFieldDateSecondDate.
+     * @return
+     */
+    public JDateChooser getFieldDateSecondDate() {
+        return fieldDateSecondDate;
+    }
+}

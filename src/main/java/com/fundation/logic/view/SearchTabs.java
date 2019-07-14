@@ -8,13 +8,16 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JTabbedPane;
-import javax.swing.JPanel;
+import com.fundation.logic.view.components.BasicSearch;
+import com.fundation.logic.view.components.SplitPanelSearch;
+import com.fundation.logic.view.components.SplitPanelDate;
+
+import javax.swing.*;
 
 /**
  * Implements the tabs of different options.
  *
- * @author Andres Burgos
+ * @author Andres Burgos, Jesus Menacho
  * @version 1.0
  */
 public class SearchTabs extends JTabbedPane {
@@ -23,6 +26,9 @@ public class SearchTabs extends JTabbedPane {
     private GeneralSearchPanel generalSearchPanel;
     private LoadSavePanel loadSavePanel;
     private final ConverterPanel panelConvert;
+    private BasicSearch basicSearch;
+    private SplitPanelSearch splitPanelSearch;
+    private SplitPanelDate splitPanelDate;
 
     /**
      * Initializes a SearchTabs instance for the search options
@@ -32,13 +38,13 @@ public class SearchTabs extends JTabbedPane {
         generalSearchPanel = new GeneralSearchPanel();
         panelGeneral = new SearchVideoPanel();
         panelGeneral.initComponent();
-        addTab("General", null, generalSearchPanel, "Perform a general search");
-
-        panelAdvanced = new AdvancedSearchPanel();
-        addTab("Advanced", null, panelAdvanced, "Perform an advanced search");
+        basicSearch = new BasicSearch();
+        splitPanelSearch = new SplitPanelSearch();
+        splitPanelDate = new SplitPanelDate();
+        addTab("Search", null, splitPanelSearch, "Perform a general search");
 
         loadSavePanel = new LoadSavePanel();
-        addTab("Load/Save", null, loadSavePanel, "Load/Save searches");
+        addTab("Load/Save", null, splitPanelDate, "Load/Save searches");
 
         panelConvert = new ConverterPanel();
         addTab("Converter", null, panelConvert, "Perform a video/audio convertion");
