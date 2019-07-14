@@ -10,7 +10,6 @@
 package com.fundation.logic.common;
 
 import java.io.File;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -25,9 +24,10 @@ import java.util.Date;
  */
 public abstract class FileInfo {
     /**
-     * @param file
-     * @param option
-     * @return String according to file's denomination option input.
+     * Allows to get file's name or extension depending on option parameter.
+     * @param file - File from which the info is get.
+     * @param option - Desired file's denomination (name, extension).
+     * @return Denomination string.
      */
     public static String getFileDenomination(File file, String option) {
         String complete = file.getName();
@@ -45,8 +45,9 @@ public abstract class FileInfo {
     }
 
     /**
-     * @param file
-     * @return File's size in bytes.
+     * Allows to get file's size.
+     * @param file - File from which the info is get.
+     * @return File's size in Float data type.
      */
     public static Float getFileSize(File file) {
         Path filePath = file.toPath();
@@ -60,9 +61,10 @@ public abstract class FileInfo {
     }
 
     /**
-     * @param file
-     * @param option
-     * @return File's related date according to option input.
+     * Allows to get file's creation, access and modification date depending on option parameter.
+     * @param file - File from which the info is get.
+     * @param option - Desired file's date (creation, access, modification).
+     * @return File's date according on option.
      */
     public static Date getFileDate(File file, String option) {
         Path filePath = file.toPath();
@@ -86,9 +88,10 @@ public abstract class FileInfo {
     }
 
     /**
-     * @param file
-     * @param option
-     * @return String according to file's owner option input.
+     * Allows to get file's owner, user or domain, depending on option parameter.
+     * @param file - File from which the info is get.
+     * @param option - Desired file's owner (user, domain).
+     * @return String file's owner according on option.
      */
     public static String getFileOwner(File file, String option) {
         Path filePath = file.toPath();
@@ -111,17 +114,44 @@ public abstract class FileInfo {
     }
 
     /**
-     * @param file
-     * @return File's mimeType.
+     * Allows to get file's mimeType.
+     * @param file - File from which the info is get.
+     * @return File's mimeType
      */
     public static String getMimeType(File file) {
         Path path = file.toPath();
         try {
             String mimeType = Files.probeContentType(path);
-            return mimeType;
+            return mimeType;imeType.
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * Verifies if the file in path is a video.
+     * @param path
+     * @return True if file is a video.
+     */
+    public static boolean isVideo(String path){
+        File file = new File(path);
+        if(getMimeType(file).contains("video")){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Verifies if the file in path is an audio.
+     * @param path
+     * @return True if file is an audio.
+     */
+    public static boolean isAudio(String path){
+        File file = new File(path);
+        if(getMimeType(file).contains("audio")){
+            return true;
+        }
+        return false;
     }
 }

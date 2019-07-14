@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model.Criteria;
+package com.fundation.logic.model.criteria;
 
 import java.util.Date;
 
@@ -39,7 +39,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's hidden status.
+     * @return criteria's hidden status.
      */
     public Boolean getCriteriaFileHidden() {
         return criteriaFileHidden;
@@ -53,7 +53,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's readOnly status.
+     * @return criteria's readOnly status.
      */
     public Boolean getCriteriaFileReadOnly() {
         return criteriaFileReadOnly;
@@ -67,7 +67,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's lower limit for search.
+     * @return criteria's lower limit for search.
      */
     public Float getCriteriaSizeMin() {
         return criteriaSizeMin;
@@ -81,7 +81,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's upper limit for search by size.
+     * @return criteria's upper limit for search by size.
      */
     public Float getCriteriaSizeMax() {
         return criteriaSizeMax;
@@ -95,7 +95,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's lower limit for search by creation date.
+     * @return criteria's lower limit for search by creation date.
      */
     public Date getCriteriaCreationDateMin() {
         return criteriaCreationDateMin;
@@ -109,7 +109,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's upper limit for search by creation date.
+     * @return criteria's upper limit for search by creation date.
      */
     public Date getCriteriaCreationDateMax() {
         return criteriaCreationDateMax;
@@ -123,7 +123,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's lower limit for search by access date.
+     * @return criteria's lower limit for search by access date.
      */
     public Date getCriteriaAccessDateMin() {
         return criteriaAccessDateMin;
@@ -137,7 +137,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's upper limit for search by access date.
+     * @return criteria's upper limit for search by access date.
      */
     public Date getCriteriaAccessDateMax() {
         return criteriaAccessDateMax;
@@ -151,7 +151,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's lower limit for search by modification date.
+     * @return criteria's lower limit for search by modification date.
      */
     public Date getCriteriaModificationDateMin() {
         return criteriaModificationDateMin;
@@ -165,7 +165,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's upper limit for search by modification date.
+     * @return criteria's upper limit for search by modification date.
      */
     public Date getCriteriaModificationDateMax() {
         return criteriaModificationDateMax;
@@ -179,7 +179,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's owner.
+     * @return criteria's owner.
      */
     public String getCriteriaOwner() {
         return criteriaOwner;
@@ -193,7 +193,7 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return Criteria's mimeType.
+     * @return criteria's mimeType.
      */
     public String getCriteriaMimeType() {
         return criteriaMimeType;

@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model.Criteria;
+package com.fundation.logic.model.criteria;
 
 /**
  * Implements the model class Multimedia and the getter and setter´s methods.
