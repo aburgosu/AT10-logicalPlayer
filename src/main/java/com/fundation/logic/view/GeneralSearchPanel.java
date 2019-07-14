@@ -9,18 +9,21 @@
 package com.fundation.logic.view;
 
 import com.toedter.calendar.JDateChooser;
-
-import javax.swing.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Implements the GeneralSearch Panel.
  *
- * @author Andres Burgos
+ * @author Andres Burgos, Jesus Menacho
  * @version 1.0
  */
 public class GeneralSearchPanel extends JPanel {
@@ -53,74 +56,6 @@ public class GeneralSearchPanel extends JPanel {
         gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         setLayout(gridBagLayout);
 
-        JLabel lblPath = new JLabel("Path: ");
-        GridBagConstraints gbc_lblPath = new GridBagConstraints();
-        gbc_lblPath.anchor = GridBagConstraints.EAST;
-        gbc_lblPath.insets = new Insets(0, 0, 5, 5);
-        gbc_lblPath.gridx = 0;
-        gbc_lblPath.gridy = 0;
-        add(lblPath, gbc_lblPath);
-
-        setTextFieldPath(new JTextField());
-        GridBagConstraints gbc_textFieldPath = new GridBagConstraints();
-        gbc_textFieldPath.insets = new Insets(0, 0, 5, 5);
-        gbc_textFieldPath.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldPath.gridx = 1;
-        gbc_textFieldPath.gridy = 0;
-        add(getTextFieldPath(), gbc_textFieldPath);
-        getTextFieldPath().setColumns(10);
-
-        JButton btnBrowsePath = new JButton("Browse");
-        btnBrowsePath.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                JFileChooser folderChooser = new JFileChooser();
-                folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                int returnVal = folderChooser.showOpenDialog(null);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    textFieldPath.setText(folderChooser.getSelectedFile().getPath());
-                }
-            }
-        });
-        GridBagConstraints gbc_btnBrowsePath = new GridBagConstraints();
-        gbc_btnBrowsePath.insets = new Insets(0, 0, 5, 0);
-        gbc_btnBrowsePath.anchor = GridBagConstraints.NORTHWEST;
-        gbc_btnBrowsePath.gridx = 2;
-        gbc_btnBrowsePath.gridy = 0;
-        add(btnBrowsePath, gbc_btnBrowsePath);
-
-        JLabel lblFilename = new JLabel("Filename: ");
-        GridBagConstraints gbc_lblFilename = new GridBagConstraints();
-        gbc_lblFilename.anchor = GridBagConstraints.EAST;
-        gbc_lblFilename.insets = new Insets(0, 0, 5, 5);
-        gbc_lblFilename.gridx = 0;
-        gbc_lblFilename.gridy = 1;
-        add(lblFilename, gbc_lblFilename);
-
-        setTextFieldFilename(new JTextField());
-        GridBagConstraints gbc_textFieldFilename = new GridBagConstraints();
-        gbc_textFieldFilename.insets = new Insets(0, 0, 5, 5);
-        gbc_textFieldFilename.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldFilename.gridx = 1;
-        gbc_textFieldFilename.gridy = 1;
-        add(getTextFieldFilename(), gbc_textFieldFilename);
-        getTextFieldFilename().setColumns(10);
-
-        JLabel lblExtension = new JLabel("Extension: ");
-        GridBagConstraints gbc_lblExtension = new GridBagConstraints();
-        gbc_lblExtension.anchor = GridBagConstraints.EAST;
-        gbc_lblExtension.insets = new Insets(0, 0, 5, 5);
-        gbc_lblExtension.gridx = 0;
-        gbc_lblExtension.gridy = 2;
-        add(lblExtension, gbc_lblExtension);
-
-        setTextFieldExtension(new JTextField());
-        GridBagConstraints gbc_textFieldExtension = new GridBagConstraints();
-        gbc_textFieldExtension.insets = new Insets(0, 0, 5, 5);
-        gbc_textFieldExtension.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldExtension.gridx = 1;
-        gbc_textFieldExtension.gridy = 2;
-        add(getTextFieldExtension(), gbc_textFieldExtension);
-        getTextFieldExtension().setColumns(10);
 
         JLabel lblDateCreation = new JLabel("Creation Date");
         GridBagConstraints gbc_lblDateCreation = new GridBagConstraints();
@@ -135,33 +70,16 @@ public class GeneralSearchPanel extends JPanel {
         gbc_FieldToDateCreation.insets = new Insets(0, 0, 5, 5);
         gbc_FieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
         gbc_FieldToDateCreation.gridx = 1;
-        gbc_FieldToDateCreation.gridy = 3;
+        gbc_FieldToDateCreation.gridy = 4;
         add(getFieldToDateCreation(), gbc_FieldToDateCreation);
-
-        JLabel labelFromDateCreation = new JLabel("< FROM");
-        labelFromDateCreation.setHorizontalAlignment(SwingConstants.LEFT);
-        GridBagConstraints gbc_labelFromDateCreation = new GridBagConstraints();
-        gbc_labelFromDateCreation.insets = new Insets(0, 0, 5, 0);
-        gbc_labelFromDateCreation.gridx = 2;
-        gbc_labelFromDateCreation.gridy = 3;
-        add(labelFromDateCreation, gbc_labelFromDateCreation);
 
         textFieldFromDateCreation = new JDateChooser();
         GridBagConstraints gbc_textFieldToDateCreation = new GridBagConstraints();
         gbc_textFieldToDateCreation.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldToDateCreation.gridx = 1;
-        gbc_textFieldToDateCreation.gridy = 4;
+        gbc_textFieldToDateCreation.gridy = 3;
         add(textFieldFromDateCreation, gbc_textFieldToDateCreation);
-
-
-        JLabel labelToDateCreation = new JLabel("< TO");
-        labelToDateCreation.setHorizontalAlignment(SwingConstants.LEFT);
-        GridBagConstraints gbc_labelToDateCreation = new GridBagConstraints();
-        gbc_labelToDateCreation.insets = new Insets(0, 0, 5, 0);
-        gbc_labelToDateCreation.gridx = 2;
-        gbc_labelToDateCreation.gridy = 4;
-        add(labelToDateCreation, gbc_labelToDateCreation);
 
         JLabel lblDateModification = new JLabel("Date Modification: ");
         GridBagConstraints gbc_lblDateModification = new GridBagConstraints();
@@ -176,16 +94,8 @@ public class GeneralSearchPanel extends JPanel {
         gbc_FieldDateModificationFrom.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateModificationFrom.fill = GridBagConstraints.HORIZONTAL;
         gbc_FieldDateModificationFrom.gridx = 1;
-        gbc_FieldDateModificationFrom.gridy = 5;
+        gbc_FieldDateModificationFrom.gridy = 6;
         add(getFieldDateModificationFrom(), gbc_FieldDateModificationFrom);
-
-        JLabel labelFromDateModification = new JLabel("< FROM");
-        labelFromDateModification.setHorizontalAlignment(SwingConstants.LEFT);
-        GridBagConstraints gbc_labelFromDateModification = new GridBagConstraints();
-        gbc_labelFromDateModification.insets = new Insets(0, 0, 5, 0);
-        gbc_labelFromDateModification.gridx = 2;
-        gbc_labelFromDateModification.gridy = 5;
-        add(labelFromDateModification, gbc_labelFromDateModification);
 
         setFieldDateModificationTo(new JDateChooser());
 
@@ -193,16 +103,8 @@ public class GeneralSearchPanel extends JPanel {
         gbc_FieldDateModificationTo.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateModificationTo.fill = GridBagConstraints.HORIZONTAL;
         gbc_FieldDateModificationTo.gridx = 1;
-        gbc_FieldDateModificationTo.gridy = 6;
+        gbc_FieldDateModificationTo.gridy = 5;
         add(getFieldDateModificationTo(), gbc_FieldDateModificationTo);
-
-        JLabel labelToDateModification = new JLabel("< TO");
-        labelToDateModification.setHorizontalAlignment(SwingConstants.LEFT);
-        GridBagConstraints gbc_labelToDateModification = new GridBagConstraints();
-        gbc_labelToDateModification.insets = new Insets(0, 0, 5, 0);
-        gbc_labelToDateModification.gridx = 2;
-        gbc_labelToDateModification.gridy = 6;
-        add(labelToDateModification, gbc_labelToDateModification);
 
         JLabel labelDateAccess = new JLabel("Date Access: ");
         GridBagConstraints gbc_labelDateAccess = new GridBagConstraints();
@@ -217,32 +119,16 @@ public class GeneralSearchPanel extends JPanel {
         gbc_FieldDateAccessFrom.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateAccessFrom.fill = GridBagConstraints.HORIZONTAL;
         gbc_FieldDateAccessFrom.gridx = 1;
-        gbc_FieldDateAccessFrom.gridy = 7;
+        gbc_FieldDateAccessFrom.gridy = 8;
         add(getFieldDateAccessFrom(), gbc_FieldDateAccessFrom);
-
-        JLabel labelFromDateAccess = new JLabel("< FROM");
-        labelFromDateAccess.setHorizontalAlignment(SwingConstants.LEFT);
-        GridBagConstraints gbc_labelFromDateAccess = new GridBagConstraints();
-        gbc_labelFromDateAccess.insets = new Insets(0, 0, 5, 0);
-        gbc_labelFromDateAccess.gridx = 2;
-        gbc_labelFromDateAccess.gridy = 7;
-        add(labelFromDateAccess, gbc_labelFromDateAccess);
 
         setFieldDateAccessTo(new JDateChooser());
         GridBagConstraints gbc_FieldDateAccessTo = new GridBagConstraints();
         gbc_FieldDateAccessTo.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateAccessTo.fill = GridBagConstraints.HORIZONTAL;
         gbc_FieldDateAccessTo.gridx = 1;
-        gbc_FieldDateAccessTo.gridy = 8;
+        gbc_FieldDateAccessTo.gridy = 7;
         add(getFieldDateAccessTo(), gbc_FieldDateAccessTo);
-
-        JLabel labelToDateAccess = new JLabel("< TO");
-        labelToDateAccess.setHorizontalAlignment(SwingConstants.LEFT);
-        GridBagConstraints gbc_labelToDateAccess = new GridBagConstraints();
-        gbc_labelToDateAccess.insets = new Insets(0, 0, 5, 0);
-        gbc_labelToDateAccess.gridx = 2;
-        gbc_labelToDateAccess.gridy = 8;
-        add(labelToDateAccess, gbc_labelToDateAccess);
 
         JLabel labelSize = new JLabel("Size: ");
         GridBagConstraints gbc_labelSize = new GridBagConstraints();
@@ -258,16 +144,8 @@ public class GeneralSearchPanel extends JPanel {
         gbc_textFieldSizeFrom.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeFrom.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldSizeFrom.gridx = 1;
-        gbc_textFieldSizeFrom.gridy = 9;
+        gbc_textFieldSizeFrom.gridy = 10;
         add(getTextFieldSizeFrom(), gbc_textFieldSizeFrom);
-
-        JLabel labelSizeFrom = new JLabel("< FROM");
-        labelSizeFrom.setHorizontalAlignment(SwingConstants.LEFT);
-        GridBagConstraints gbc_labelSizeFrom = new GridBagConstraints();
-        gbc_labelSizeFrom.insets = new Insets(0, 0, 5, 0);
-        gbc_labelSizeFrom.gridx = 2;
-        gbc_labelSizeFrom.gridy = 9;
-        add(labelSizeFrom, gbc_labelSizeFrom);
 
         setTextFieldSizeTo(new JTextField());
         getTextFieldSizeTo().setColumns(10);
@@ -275,16 +153,8 @@ public class GeneralSearchPanel extends JPanel {
         gbc_textFieldSizeTo.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeTo.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldSizeTo.gridx = 1;
-        gbc_textFieldSizeTo.gridy = 10;
+        gbc_textFieldSizeTo.gridy = 9;
         add(getTextFieldSizeTo(), gbc_textFieldSizeTo);
-
-        JLabel labelSizeTo = new JLabel("< TO");
-        labelSizeTo.setHorizontalAlignment(SwingConstants.LEFT);
-        GridBagConstraints gbc_labelSizeTo = new GridBagConstraints();
-        gbc_labelSizeTo.insets = new Insets(0, 0, 5, 0);
-        gbc_labelSizeTo.gridx = 2;
-        gbc_labelSizeTo.gridy = 10;
-        add(labelSizeTo, gbc_labelSizeTo);
 
         JLabel lblSizeUnits = new JLabel("Size units: ");
         GridBagConstraints gbc_lblSizeUnits = new GridBagConstraints();
@@ -312,7 +182,7 @@ public class GeneralSearchPanel extends JPanel {
         add(lblMimetype, gbc_lblMimetype);
 
         comboBoxMimetype = new JComboBox();
-        comboBoxMimetype.setModel(new DefaultComboBoxModel(new String[] {"Audio", "Video", "Image", "Text", "Application"}));
+        comboBoxMimetype.setModel(new DefaultComboBoxModel(new String[] {"ALL","Audio", "Video", "Image", "Text", "Application"}));
         GridBagConstraints gbc_comboBoxMimetype = new GridBagConstraints();
         gbc_comboBoxMimetype.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxMimetype.fill = GridBagConstraints.HORIZONTAL;
@@ -391,7 +261,6 @@ public class GeneralSearchPanel extends JPanel {
     public JTextField getTextFieldFilename() {
         return textFieldFilename;
     }
-
     /**
      * This method return the Text Field Path
      */
