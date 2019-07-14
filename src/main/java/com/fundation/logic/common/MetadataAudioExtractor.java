@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model;
+package com.fundation.logic.common;
 
 import java.io.BufferedReader;
 import java.io.File;
