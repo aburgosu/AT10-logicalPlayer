@@ -22,5 +22,6 @@ public class main {
     public static void main(String[] arg) {
         SearchVideoFrame searchFrame = new SearchVideoFrame();
         Controller controller = new Controller(searchFrame);
+        controller.setEvents();
     }
 }

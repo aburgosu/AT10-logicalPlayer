@@ -43,6 +43,7 @@ public class CommonSearch implements ISearch {
         if (criteria.getPath() == null) {
             return null;
         }
+        System.out.println("EL path es: " +criteria.getPath());
         return searchInPath(criteria.getPath());
     }
 
@@ -82,7 +83,7 @@ public class CommonSearch implements ISearch {
                 Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
                 Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
                 String owner = FileInfo.getFileOwner(fileExtractor, "user");
-                String mimeType = FileInfo.getMimeType(fileExtractor);
+                String mimeType = null;
                 if (evaluateString(fileName, criteriaFileName) &&
                         evaluateString(fileExtension, criteriaExtension) &&
                         evaluateHidden(fileHiddenStatus, criteriaHidden) &&
@@ -175,9 +176,10 @@ public class CommonSearch implements ISearch {
      * @return Answer after evaluation.
      */
     private boolean evaluateStringContains(String fileExtractorCriteria, String criteria) {
-        if (criteria == null || fileExtractorCriteria.contains(criteria.toLowerCase())) {
-            return true;
-        }
-        return false;
+//        if (criteria == null || fileExtractorCriteria.contains(criteria.toLowerCase())) {
+//            return true;
+//        }
+//        return false;
+        return true;
     }
 }
