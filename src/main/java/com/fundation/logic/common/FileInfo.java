@@ -122,7 +122,7 @@ public abstract class FileInfo {
         Path path = file.toPath();
         try {
             String mimeType = Files.probeContentType(path);
-            return mimeType;imeType.
+            return mimeType;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -150,6 +150,19 @@ public abstract class FileInfo {
     public static boolean isAudio(String path){
         File file = new File(path);
         if(getMimeType(file).contains("audio")){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Verifies if the file in path is an image.
+     * @param path
+     * @return True if file is an image.
+     */
+    public static boolean isImage(String path){
+        File file = new File(path);
+        if(getMimeType(file).contains("image")){
             return true;
         }
         return false;
