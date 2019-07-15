@@ -72,11 +72,6 @@ public class ImageSearch implements ISearch {
                 if (criteriaHeight != ""){
                     height = MetadataImageExtractor.getHeight(fileExtractor);
                 }
-
-                System.out.println(width);
-                System.out.println(height);
-                System.out.println(criteriaHeight);
-                System.out.println(criteriaWidth);
                 Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
                 Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
                 Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
