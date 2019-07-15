@@ -26,6 +26,7 @@ import java.util.List;
 public class Controller {
     private ISearch search;
     private SearchVideoFrame searchFrame;
+    private QueryForCriteria queryCriteria;
 
     private final int COMMON_SEARCH = 0;
     private final int VIDEO_SEARCH = 1;
@@ -37,6 +38,7 @@ public class Controller {
      */
     public Controller(SearchVideoFrame searchFrame) {
         this.searchFrame = searchFrame;
+        queryCriteria = new QueryForCriteria();
     }
 
     /**
@@ -146,6 +148,9 @@ public class Controller {
             owner = null;
         }
         String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimetype().getSelectedItem().toString();
+        if(mimeType == "ALL") {
+            mimeType = null;
+        }
         boolean fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
         boolean readOnly = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxReadOnly().isSelected();
 
@@ -245,5 +250,15 @@ public class Controller {
             searchFrame.getTableResult().clearTableResult();
             showSearchResult(IMAGE_SEARCH);
         });
+    }
+
+    public void showLoadSaveData(){
+        searchFrame.getSearchTabs().getSplitPanelDate().getLoadSavePanel().clearTableResult();
+        List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();
+        for (int index = 0; index < registers.size(); index++) {
+            String name = registers.get(index).getName();
+            String date = registers.get(index).getDate();
+            searchFrame.getSearchTabs().getSplitPanelDate().getLoadSavePanel().addRegister(name,date);
+        }
     }
 }

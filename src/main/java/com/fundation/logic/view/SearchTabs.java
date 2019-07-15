@@ -28,6 +28,11 @@ public class SearchTabs extends JTabbedPane {
     private final ConverterPanel panelConvert;
     private BasicSearch basicSearch;
     private SplitPanelSearch splitPanelSearch;
+
+    public SplitPanelDate getSplitPanelDate() {
+        return splitPanelDate;
+    }
+
     private SplitPanelDate splitPanelDate;
 
     /**
