@@ -141,7 +141,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_textFieldSizeFrom.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeFrom.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldSizeFrom.gridx = 1;
-        gbc_textFieldSizeFrom.gridy = 10;
+        gbc_textFieldSizeFrom.gridy = 9;
         add(getTextFieldSizeFrom(), gbc_textFieldSizeFrom);
 
         setTextFieldSizeTo(new JTextField());
@@ -150,7 +150,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_textFieldSizeTo.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeTo.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldSizeTo.gridx = 1;
-        gbc_textFieldSizeTo.gridy = 9;
+        gbc_textFieldSizeTo.gridy = 10;
         add(getTextFieldSizeTo(), gbc_textFieldSizeTo);
 
         JLabel lblSizeUnits = new JLabel("Size units: ");
