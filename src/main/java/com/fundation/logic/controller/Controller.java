@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -22,7 +23,7 @@ import java.util.List;
 /**
  * Implements the Controller class
  *
- * @author Melissa Román
+ * @author Melissa Román, John Salazar, Andrés Burgos
  * @version 1.0
  */
 public class Controller {

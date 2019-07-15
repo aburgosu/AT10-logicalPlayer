@@ -46,7 +46,7 @@ public class Query {
     /**
      * This method show informations from the table criteria.
      */
-    public List showAllCriterias() {
+    public List getAllCriterias() {
         List<String> infCriterias = new ArrayList<String>();
         String sql = "SELECT * FROM criterias";
         try {

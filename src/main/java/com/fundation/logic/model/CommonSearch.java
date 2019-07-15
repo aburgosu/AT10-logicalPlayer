@@ -43,7 +43,6 @@ public class CommonSearch implements ISearch {
         if (criteria.getPath() == null) {
             return null;
         }
-        System.out.println("EL path es: " +criteria.getPath());
         return searchInPath(criteria.getPath());
     }
 
