@@ -55,9 +55,8 @@ public class ImageSearch implements ISearch {
         File file = new File(path);
         String criteriaFileName = imageCriteria.getFileName();
         String criteriaExtension = imageCriteria.getExtension();
-        String criteriaWidth = Integer.toString(imageCriteria.getWidth());
-        String criteriaHeight = Integer.toString(imageCriteria.getHeight());
-        String criteriaColorSpace = imageCriteria.getColorSpaceData();
+        String criteriaWidth = imageCriteria.getWidth();
+        String criteriaHeight = imageCriteria.getHeight();
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
             if (fileExtractor.isDirectory()) {
@@ -65,16 +64,22 @@ public class ImageSearch implements ISearch {
             } else {
                 String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
                 String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
-                String width = MetadataImageExtractor.getWidth(fileExtractor);
-                String height = MetadataImageExtractor.getHeight(fileExtractor);
-                String colorSpace = MetadataImageExtractor.getColorSpace(fileExtractor);
+                String width = "";
+                if (criteriaWidth != ""){
+                    width = MetadataImageExtractor.getWidth(fileExtractor);
+                }
+                String height = "";
+                if (criteriaHeight != ""){
+                    height = MetadataImageExtractor.getHeight(fileExtractor);
+                }
                 Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
                 Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
                 Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
                 Float fileSize = FileInfo.getFileSize(fileExtractor);
                 if (evaluateString(fileName, criteriaFileName) && evaluateString(fileExtension, criteriaExtension)
-                        && evaluateString(width, criteriaWidth) && evaluateString(height, criteriaHeight)
-                        && evaluateString(colorSpace, criteriaColorSpace)) {
+                        && evaluateString(width, criteriaWidth)
+                        && evaluateString(height, criteriaHeight)
+                ) {
                     CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
                             fileName, fileExtension, false, false,
                             fileSize, creationDate, accessDate,
