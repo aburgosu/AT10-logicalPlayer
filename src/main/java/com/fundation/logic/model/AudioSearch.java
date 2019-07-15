@@ -79,8 +79,7 @@ public class AudioSearch {
 
                 if (evaluateString(fileName, criteriaFileName)
                         && evaluateString(fileExtension, criteriaExtension)
-                        && evaluateString(channel, criteriaChannel)
-                ) {
+                        && evaluateString(channel, criteriaChannel)) {
                     CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                             fileExtension, false, false,
                             fileSize, creationDate, accessDate,
