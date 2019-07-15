@@ -132,7 +132,7 @@ public class AdvancedAudioPanel extends JPanel {
 
         btnSearchAdvanceAudio = new JButton("Search");
         GridBagConstraints gbc_btnSearchAdvanceAudio = new GridBagConstraints();
-        gbc_btnSearchAdvanceAudio.gridwidth = 2;
+        gbc_btnSearchAdvanceAudio.anchor = GridBagConstraints.EAST;
         gbc_btnSearchAdvanceAudio.gridx = 1;
         gbc_btnSearchAdvanceAudio.gridy = 12;
         add(btnSearchAdvanceAudio, gbc_btnSearchAdvanceAudio);

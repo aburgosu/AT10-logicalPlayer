@@ -104,6 +104,7 @@ public class AdvancedImagePanel extends JPanel {
 
         btnSearchAdvanceImage = new JButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
+        gbc_btnSearch.anchor = GridBagConstraints.EAST;
         gbc_btnSearch.gridwidth = 2;
         gbc_btnSearch.gridx = 0;
         gbc_btnSearch.gridy = 7;
