@@ -36,6 +36,10 @@ public class SearchAdvanceTab extends JTabbedPane {
         addTab("Audio ", null, panelAudioAdvanced, "Audio");
     }
 
+    /**
+     * This method return the content the getGeneralSearchPanel.
+     * @return generalSearchPanel.
+     */
     public GeneralSearchPanel getGeneralSearchPanel() {
         return generalSearchPanel;
     }

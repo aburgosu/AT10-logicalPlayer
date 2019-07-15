@@ -48,10 +48,18 @@ public class SplitPanelSearch extends JPanel {
         add(splitPane);
     }
 
+    /**
+     * This method return the basicSearch content.
+     * @return basicSearch
+     */
     public BasicSearch getBasicSearchPanel() {
         return basicSearch;
     }
 
+    /**
+     * This method return the searchOptionTabs content.
+     * @return searchOptionTabs.
+     */
     public SearchAdvanceTab getSearchAdvanceTab() {
         return searchOptionTabs;
     }

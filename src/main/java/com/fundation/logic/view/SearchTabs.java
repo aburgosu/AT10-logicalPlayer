@@ -64,6 +64,10 @@ public class SearchTabs extends JTabbedPane {
         return loadSavePanel;
     }
 
+    /**
+     * This method return the content splitPanelSearch.
+     * @return splitPanelSearch.
+     */
     public SplitPanelSearch getSplitPanelSearch() {
         return splitPanelSearch;
     }
