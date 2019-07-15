@@ -63,7 +63,7 @@ public class AdvancedAudioPanel extends JPanel {
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
         comboBoxAudioCodecName = new JComboBox();
-        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"MPEG-4 ALS", "WAV", "MP3", "RTA","All"}));
+        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"All","MPEG-4 ALS", "WAV", "MP3", "RTA"}));
         GridBagConstraints comboBox_AudioCodecName = new GridBagConstraints();
         comboBox_AudioCodecName.insets = new Insets(0, 0, 5, 0);
         comboBox_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;
@@ -80,7 +80,7 @@ public class AdvancedAudioPanel extends JPanel {
         add(lblAudioChanel, gbc_lblAudioChannel);
 
         comboBoxAudioChannel = new JComboBox();
-        comboBoxAudioChannel.setModel(new DefaultComboBoxModel(new String[]{"0", "1.0","2.0", "2.1", "5.1", "6.1", "7.1","All"}));
+        comboBoxAudioChannel.setModel(new DefaultComboBoxModel(new String[]{"All","0", "1.0","2.0", "2.1", "5.1", "6.1", "7.1"}));
         GridBagConstraints gbc_comboBoxAudioChannel = new GridBagConstraints();
         gbc_comboBoxAudioChannel.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioChannel.fill = GridBagConstraints.HORIZONTAL;
@@ -97,7 +97,7 @@ public class AdvancedAudioPanel extends JPanel {
         add(lblAudioSampleRate, gbc_lblAudioSampleRate);
 
         comboBoxAudioSampleRate = new JComboBox();
-        comboBoxAudioSampleRate.setModel(new DefaultComboBoxModel(new String[]{"8000 Hz", "11025 Hz","16000 Hz", "22050 Hz", "32000 Hz", "37800 Hz", "44056 Hz","47250 Hz","48000 Hz","50000 Hz","50400 Hz", "64000 Hz", "88200 Hz", "96000 Hz", "176400 Hz", "192000 Hz", "352800 Hz", "All"}));
+        comboBoxAudioSampleRate.setModel(new DefaultComboBoxModel(new String[]{"All","8000 Hz", "11025 Hz","16000 Hz", "22050 Hz", "32000 Hz", "37800 Hz", "44056 Hz","47250 Hz","48000 Hz","50000 Hz","50400 Hz", "64000 Hz", "88200 Hz", "96000 Hz", "176400 Hz", "192000 Hz", "352800 Hz"}));
         GridBagConstraints gbc_comboBoxAudioSampleRate = new GridBagConstraints();
         gbc_comboBoxAudioSampleRate.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioSampleRate.fill = GridBagConstraints.HORIZONTAL;
