@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * <p>
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -59,7 +59,6 @@ public class ImageSearch {
         String criteriaHeight = Integer.toString(imageCriteria.getHeight());
         String criteriaColorSpace = imageCriteria.getColorSpaceData();
         File[] allSubFiles = file.listFiles();
-
         for (File fileExtractor : allSubFiles) {
             if (fileExtractor.isDirectory()) {
                 searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
@@ -69,20 +68,17 @@ public class ImageSearch {
                 String width = MetadataImageExtractor.getWidth(fileExtractor);
                 String height = MetadataImageExtractor.getHeight(fileExtractor);
                 String colorSpace = MetadataImageExtractor.getColorSpace(fileExtractor);
-
                 Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
                 Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
                 Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
                 Float fileSize = FileInfo.getFileSize(fileExtractor);
-
                 if (evaluateString(fileName, criteriaFileName)
                         && evaluateString(fileExtension, criteriaExtension)
                         && evaluateString(width, criteriaWidth)
                         && evaluateString(height, criteriaHeight)
-                        && evaluateString(colorSpace, criteriaColorSpace)
-                ) {
-                    CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
-                            fileExtension, false, false,
+                        && evaluateString(colorSpace, criteriaColorSpace)) {
+                    CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
+                            fileName, fileExtension, false, false,
                             fileSize, creationDate, accessDate,
                             modificationDate, "MimeType", "video");
                     searchResult.add(matchingFile);
