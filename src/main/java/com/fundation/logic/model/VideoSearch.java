@@ -24,7 +24,7 @@ import java.util.List;
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class VideoSearch {
+public class VideoSearch implements ISearch {
     static private Video videoCriteria;
 
     /**
@@ -56,22 +56,36 @@ public class VideoSearch {
         String criteriaFileName = videoCriteria.getFileName();
         String criteriaExtension = videoCriteria.getExtension();
         String criteriVideoCodec = videoCriteria.getVideoCodec();
+        String criteriAudioVideoCodec = videoCriteria.getAudioCodec();
+
         String criteriaFrameRate = videoCriteria.getFrameRate();
         String criteriaHeight = Integer.toString(videoCriteria.getHeight());
-        String criteriaWidth = Integer.toString(videoCriteria.getWidth());
         File[] allSubFiles = file.listFiles();
 
         for (File fileExtractor : allSubFiles) {
             if (fileExtractor.isDirectory()) {
                 searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
             } else {
-                String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
-                String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
-                String fileVideoCodec = MetadataVideoExtractor.getVideoCodec(fileExtractor);
-                String fileHeight = MetadataVideoExtractor.getResolution(fileExtractor);
-                String fileWidth = MetadataVideoExtractor.getResolution(fileExtractor);
-                String videoCodec = MetadataVideoExtractor.getVideoCodec(fileExtractor);
-                String frameRate = MetadataVideoExtractor.getFrameRate(fileExtractor);
+               String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
+               String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
+               String frameRate = "All";
+               if (criteriaFrameRate != "All") {
+                   frameRate = MetadataVideoExtractor.getFrameRate(fileExtractor);
+               }
+
+                String fileVideoCodec = "All";
+                if (criteriVideoCodec != "All") {
+                    fileVideoCodec = MetadataVideoExtractor.getVideoCodec(fileExtractor);
+                }
+                String videoAudioCodec = "All";
+                if (criteriAudioVideoCodec != "All") {
+                    videoAudioCodec = MetadataVideoExtractor.getVideoAudioCodec(fileExtractor);
+                }
+                String fileHeight = "All";
+                if (criteriaHeight != "All") {
+                    fileHeight = MetadataVideoExtractor.getResolution(fileExtractor);
+                }
+
                 Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
                 Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
                 Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
@@ -80,6 +94,9 @@ public class VideoSearch {
                 if (evaluateString(frameRate, criteriaFrameRate)
                         && evaluateString(fileName, criteriaFileName)
                         && evaluateString(fileExtension, criteriaExtension)
+                        && evaluateString(fileVideoCodec, criteriVideoCodec)
+                        && evaluateString(videoAudioCodec, criteriAudioVideoCodec)
+                        && evaluateString(fileHeight, criteriaHeight)
                 ) {
                     CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                             fileExtension, false, false,

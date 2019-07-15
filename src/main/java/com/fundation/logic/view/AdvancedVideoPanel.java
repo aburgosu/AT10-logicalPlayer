@@ -67,7 +67,8 @@ public class AdvancedVideoPanel extends JPanel {
         add(lblCodecVideo, gbc_lblCodecVideo);
 
         comboBoxVideoCodec = new JComboBox();
-        comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"All", "H.264", "MPEG-4", "AVC"}));
+        comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"MPEG-4", "WMV","All"}));
+
         GridBagConstraints gbc_comboBoxVideoCodec = new GridBagConstraints();
         gbc_comboBoxVideoCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoCodec.fill = GridBagConstraints.HORIZONTAL;
@@ -84,30 +85,13 @@ public class AdvancedVideoPanel extends JPanel {
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
         comboBoxAudioCodecName = new JComboBox();
-        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"All", "MPEG-4 ALS", "WAV", "MP3", "RTA"}));
+        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"MPEG", "WMA", "AAC","All"}));
         GridBagConstraints textFiled_AudioCodecName = new GridBagConstraints();
         textFiled_AudioCodecName.insets = new Insets(0, 0, 5, 0);
         textFiled_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;
         textFiled_AudioCodecName.gridx = 1;
         textFiled_AudioCodecName.gridy = 8;
         add(comboBoxAudioCodecName, textFiled_AudioCodecName);
-
-        JLabel lblBitrateVideo = new JLabel("Bitrate: ");
-        GridBagConstraints gbc_lblBitrateVideo = new GridBagConstraints();
-        gbc_lblBitrateVideo.anchor = GridBagConstraints.EAST;
-        gbc_lblBitrateVideo.insets = new Insets(0, 0, 5, 5);
-        gbc_lblBitrateVideo.gridx = 0;
-        gbc_lblBitrateVideo.gridy = 9;
-        add(lblBitrateVideo, gbc_lblBitrateVideo);
-
-        comboBoxVideoBitrate = new JComboBox();
-        comboBoxVideoBitrate.setModel(new DefaultComboBoxModel(new String[]{"All", "400 kbps", "700 kbps", "1500 kbps", "2500 kbps", "4000 kbps"}));
-        GridBagConstraints gbc_textFieldVideoBitrate = new GridBagConstraints();
-        gbc_textFieldVideoBitrate.insets = new Insets(0, 0, 5, 0);
-        gbc_textFieldVideoBitrate.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldVideoBitrate.gridx = 1;
-        gbc_textFieldVideoBitrate.gridy = 9;
-        add(comboBoxVideoBitrate, gbc_textFieldVideoBitrate);
 
         JLabel lblFramerate = new JLabel("Framerate: ");
         GridBagConstraints gbc_lblFramerate = new GridBagConstraints();
@@ -135,7 +119,8 @@ public class AdvancedVideoPanel extends JPanel {
         add(lblResolution, gbc_lblWidth);
 
         comboBoxResolution = new JComboBox();
-        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"All", "320x200", "320x240", "512x384", "640x350", "640x480", "720x348", "720x350", "720x360", "767x343", "850x480", "1024x768", "1152x640", "1280x720"}));
+        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"1280x720", "1920x1080", "320x240", "640x480"}));
+
         GridBagConstraints gbc_comboBoxResolution = new GridBagConstraints();
         gbc_comboBoxResolution.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxResolution.fill = GridBagConstraints.HORIZONTAL;

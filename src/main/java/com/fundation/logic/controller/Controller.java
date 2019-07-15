@@ -9,12 +9,9 @@
  */
 package com.fundation.logic.controller;
 
-import com.fundation.logic.model.CommonSearch;
-import com.fundation.logic.model.criteria.Common;
-import com.fundation.logic.model.ISearch;
-import com.fundation.logic.model.criteria.Criteria;
+import com.fundation.logic.model.*;
+import com.fundation.logic.model.criteria.*;
 import com.fundation.logic.view.SearchVideoFrame;
-import com.fundation.logic.model.CustomizedFile;
 
 import java.io.File;
 import java.util.Date;
@@ -30,6 +27,11 @@ public class Controller {
     private ISearch search;
     private SearchVideoFrame searchFrame;
 
+    private final int COMMON_SEARCH = 0;
+    private final int VIDEO_SEARCH = 1;
+    private final int AUDIO_SEARCH = 2;
+    private final int IMAGE_SEARCH = 3;
+
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
      */
@@ -38,8 +40,59 @@ public class Controller {
     }
 
     /**
-     * Sets criteria according on input parameters
-     * @return
+     * Make the search sending the criteria as parameter
+     */
+    public List makeSearch(Criteria criteria) {
+        if (criteria instanceof Common) {
+            search = new CommonSearch((Common) criteria);
+        }
+        if (criteria instanceof Video) {
+            search = new VideoSearch((Video) criteria);
+        }
+        if (criteria instanceof Audio) {
+            search = new AudioSearch((Audio) criteria);
+        }
+        if (criteria instanceof Image) {
+            search = new ImageSearch((Image) criteria);
+        }
+        List<File> foundFiles = search.search();
+        return foundFiles;
+    }
+
+    /**
+     * show the result in the table
+     */
+    public void showSearchResult(int searchType) {
+        List<CustomizedFile> foundFiles = null;
+        if (searchType == COMMON_SEARCH) {
+            foundFiles = makeSearch(getCommonCriteria());
+        }
+        if (searchType == VIDEO_SEARCH) {
+            foundFiles = makeSearch(getVideoCriteria());
+        }
+        if (searchType == AUDIO_SEARCH) {
+            foundFiles = makeSearch(getAudioCriteria());
+        }
+        if (searchType == IMAGE_SEARCH) {
+            foundFiles = makeSearch(getImageCriteria());
+        }
+
+        for (int index = 0; index < foundFiles.size(); index++) {
+            String path = foundFiles.get(index).getPath();
+            String name = foundFiles.get(index).getName();
+            String extension = foundFiles.get(index).getExtension();
+            Float size = foundFiles.get(index).getSize();
+            Date creationDate = foundFiles.get(index).getCreationDate();
+            Date modificationDate = foundFiles.get(index).getModificationDate();
+            Date lastAccessDate = foundFiles.get(index).getAccessDate();
+            this.searchFrame.getTableResult().addResult(path, name, extension, size, creationDate,
+                    modificationDate, lastAccessDate, "---");
+        }
+    }
+
+    /**
+     * Get Common criteria
+     * @return Common criteria
      */
     public Common getCommonCriteria() {
         Common criteria = new Common();
@@ -54,47 +107,47 @@ public class Controller {
         if (extensionName.length() == 0) {
             extensionName = null;
         }
-        String sizeFrom = (searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeFrom().getText());
+        String sizeFrom = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getTextFieldSizeFrom().getText());
         Float sizeFromF = null;
         if (sizeFrom.length() != 0) {
             sizeFromF = new Float(sizeFrom);
         }
-        String sizeTo = (searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldSizeTo().getText());
+        String sizeTo = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getTextFieldSizeTo().getText());
         Float sizeToF = null;
         if (sizeTo.length() != 0) {
             sizeToF = new Float(sizeTo);
         }
-        Date fromDateCreation = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldFromDateCreation().getDate();
+        Date fromDateCreation = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getTextFieldFromDateCreation().getDate();
         if (fromDateCreation == null) {
             fromDateCreation = null;
         }
-        Date toDateCreation = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldToDateCreation().getDate();
+        Date toDateCreation = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getFieldToDateCreation().getDate();
         if (toDateCreation == null) {
             toDateCreation = null;
         }
-        Date dateAccessFrom = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldDateAccessFrom().getDate();
+        Date dateAccessFrom = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getFieldDateAccessFrom().getDate();
         if (dateAccessFrom == null) {
             dateAccessFrom = null;
         }
-        Date dateAccessTo = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldDateAccessTo().getDate();
+        Date dateAccessTo = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getFieldDateAccessTo().getDate();
         if (dateAccessTo == null) {
             dateAccessTo = null;
         }
-        Date dateModificationFrom = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldDateModificationFrom().getDate();
+        Date dateModificationFrom = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getFieldDateModificationFrom().getDate();
         if (dateModificationFrom == null) {
             dateModificationFrom = null;
         }
-        Date dateModificationTo = searchFrame.getSearchTabs().getGeneralSearchPanel().getFieldDateModificationTo().getDate();
+        Date dateModificationTo = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getFieldDateModificationTo().getDate();
         if (dateModificationTo == null) {
             dateModificationTo = null;
         }
-        String owner = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldOwner().getText();
+        String owner = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getTextFieldOwner().getText();
         if (owner.length() == 0) {
             owner = null;
         }
-        String mimeType = searchFrame.getSearchTabs().getGeneralSearchPanel().getComboBoxMimetype().getSelectedItem().toString();
-        boolean fileHidden = searchFrame.getSearchTabs().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
-        boolean readOnly = searchFrame.getSearchTabs().getGeneralSearchPanel().getCheckBoxReadOnly().isSelected();
+        String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimetype().getSelectedItem().toString();
+        boolean fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
+        boolean readOnly = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxReadOnly().isSelected();
 
         criteria.setPath(path);
         criteria.setFileName(fileName);
@@ -115,31 +168,61 @@ public class Controller {
     }
 
     /**
-     * Make the search sending the criteria as parameter
+     * Get Image criteria
+     * @return Image criteria
      */
-    public List makeSearch(Criteria criteria) {
-        search = new CommonSearch((Common) criteria);
-        List<File> foundFiles = search.search();
-        return foundFiles;
+    private Criteria getImageCriteria() {
+        return null;
     }
 
     /**
-     * show the result in the table
+     * Get Audio criteria
+     * @return Audio criteria
      */
-    public void showSearchResult() {
-        List<CustomizedFile> foundFiles;
-        foundFiles = makeSearch(getCommonCriteria());
-        for (int index = 0; index < foundFiles.size(); index++) {
-            String path = foundFiles.get(index).getPath();
-            String name = foundFiles.get(index).getName();
-            String extension = foundFiles.get(index).getExtension();
-            Float size = foundFiles.get(index).getSize();
-            Date creationDate = foundFiles.get(index).getCreationDate();
-            Date modificationDate = foundFiles.get(index).getModificationDate();
-            Date lastAccessDate = foundFiles.get(index).getAccessDate();
-            this.searchFrame.getTableResult().addResult(path, name, extension, size, creationDate,
-                modificationDate, lastAccessDate, "---");
+    private Criteria getAudioCriteria() {
+        return null;
+    }
+
+    /**
+     * Get Video criteria
+     * @return Video criteria
+     */
+    private Criteria getVideoCriteria() {
+        Video criteria = new Video();
+
+        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath().getText();
+        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName().getText();
+        if (fileName.length() == 0) {
+            fileName = null;
         }
+        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldFileType().getText();
+        if (extensionName.length() == 0) {
+            extensionName = null;
+        }
+        String videoCodec = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoCodec().getSelectedItem().toString());
+        if (videoCodec.length() == 0) {
+            videoCodec = null;
+        }
+        String audioCodec = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxAudioCodecName().getSelectedItem().toString());
+        if (audioCodec.length() == 0) {
+            audioCodec = null;
+        }
+        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoFramerate().getSelectedItem().toString());
+        if (framerate.length() == 0) {
+            framerate = null;
+        }
+        String resolution = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxResolution().getSelectedItem().toString());
+        if (resolution.length() == 0) {
+            resolution = null;
+        }
+        criteria.setPath(path);
+        criteria.setFileName(fileName);
+        criteria.setExtension(extensionName);
+        criteria.setVideoCodec(videoCodec);
+        criteria.setAudioCodec(audioCodec);
+        criteria.setFrameRate(framerate);
+        criteria.setHeight(Integer.parseInt(resolution.substring(resolution.indexOf("x")+1)));
+        return criteria;
     }
 
     /**
@@ -148,7 +231,19 @@ public class Controller {
     public void setEvents() {
         searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getSearchButton().addActionListener(e -> {
             searchFrame.getTableResult().clearTableResult();
-            showSearchResult();
+            showSearchResult(COMMON_SEARCH);
+        });
+        searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getBtnSearchAdvanceVideoPanel().addActionListener(e -> {
+            searchFrame.getTableResult().clearTableResult();
+            showSearchResult(VIDEO_SEARCH);
+        });
+        searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getBtnSearchAdvanceAudio().addActionListener(e -> {
+            searchFrame.getTableResult().clearTableResult();
+            showSearchResult(AUDIO_SEARCH);
+        });
+        searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced().getBtnSearchAdvanceImage().addActionListener(e -> {
+            searchFrame.getTableResult().clearTableResult();
+            showSearchResult(IMAGE_SEARCH);
         });
     }
 }

@@ -24,7 +24,7 @@ import java.util.List;
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class AudioSearch {
+public class AudioSearch implements ISearch {
     static private Audio audioCriteria;
 
     /**

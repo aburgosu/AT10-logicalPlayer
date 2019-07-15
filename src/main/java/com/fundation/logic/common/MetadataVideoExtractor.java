@@ -44,7 +44,7 @@ public class MetadataVideoExtractor {
             e.printStackTrace();
             System.exit(-1);
         }
-        return "No file name";
+        return "All";
     }
 
     /**
@@ -72,7 +72,7 @@ public class MetadataVideoExtractor {
             e.printStackTrace();
             System.exit(-1);
         }
-        return "No Frame rate";
+        return "All";
     }
 
     /**
@@ -96,7 +96,7 @@ public class MetadataVideoExtractor {
             e.printStackTrace();
             System.exit(-1);
         }
-        return "No file type";
+        return "All";
     }
 
     /**
@@ -120,7 +120,7 @@ public class MetadataVideoExtractor {
             e.printStackTrace();
             System.exit(-1);
         }
-        return "No resolution";
+        return "All";
     }
 
     /**
@@ -145,7 +145,7 @@ public class MetadataVideoExtractor {
             System.out.println(e.getMessage());
             System.exit(-1);
         }
-        return "No Duration";
+        return "All";
     }
 
     /**
@@ -169,7 +169,7 @@ public class MetadataVideoExtractor {
             e.printStackTrace();
             System.exit(-1);
         }
-        return "No title";
+        return "All";
     }
 
     /**
@@ -190,13 +190,17 @@ public class MetadataVideoExtractor {
                         videoCodec = "WMV";
                         return videoCodec;
                     }
+                    if (videoCodec.contains("MP")) {
+                        videoCodec = "MPEG-4";
+                        return videoCodec;
+                    }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
         }
-        return "No video codec";
+        return "All";
     }
 
     /**
@@ -208,13 +212,21 @@ public class MetadataVideoExtractor {
             Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
             while ((videoAudioCodec = stdInput.readLine()) != null) {
-                if (videoAudioCodec.contains("Video Codec")) {
+                if (videoAudioCodec.contains("Audio Codec")) {
                     int initIndex = videoAudioCodec.indexOf(":");
                     int endIndex = videoAudioCodec.length();
                     int freeSpace = 2;
                     videoAudioCodec = videoAudioCodec.substring(initIndex + freeSpace, endIndex);
                     if (videoAudioCodec.contains("Windows")) {
-                        videoAudioCodec = "WMV";
+                        videoAudioCodec = "WMA";
+                        return videoAudioCodec;
+                    }
+                    if (videoAudioCodec.contains("AAC")) {
+                        videoAudioCodec = "AAC";
+                        return videoAudioCodec;
+                    }
+                    if (videoAudioCodec.contains("MPEG")) {
+                        videoAudioCodec = "MPEG";
                         return videoAudioCodec;
                     }
                 }
@@ -223,6 +235,6 @@ public class MetadataVideoExtractor {
             e.printStackTrace();
             System.exit(-1);
         }
-        return "No video codec";
+        return "All";
     }
 }

@@ -18,7 +18,7 @@ import javax.swing.JTabbedPane;
  */
 public class SearchAdvanceTab extends JTabbedPane {
     private GeneralSearchPanel generalSearchPanel;
-    private AdvancedVideoPanel panelAdvanced;
+    private AdvancedVideoPanel panelVideoAdvanced;
     private AdvancedImagePanel panelImageAdvanced;
     private AdvancedAudioPanel panelAudioAdvanced;
 
@@ -28,8 +28,8 @@ public class SearchAdvanceTab extends JTabbedPane {
     public SearchAdvanceTab() {
         generalSearchPanel = new GeneralSearchPanel();
         addTab("General",null, generalSearchPanel,"Search general");
-        panelAdvanced = new AdvancedVideoPanel();
-        addTab("Video ", null, panelAdvanced, "Search advance Video");
+        panelVideoAdvanced = new AdvancedVideoPanel();
+        addTab("Video ", null, panelVideoAdvanced, "Search advance Video");
         panelImageAdvanced = new AdvancedImagePanel();
         addTab("Image ", null, panelImageAdvanced, "Search advance Image");
         panelAudioAdvanced = new AdvancedAudioPanel();
@@ -42,5 +42,29 @@ public class SearchAdvanceTab extends JTabbedPane {
      */
     public GeneralSearchPanel getGeneralSearchPanel() {
         return generalSearchPanel;
+    }
+
+    /**
+     * This method return the content the PanelVideoAdvanced.
+     * @return generalSearchPanel.
+     */
+    public AdvancedVideoPanel getPanelVideoAdvanced() {
+        return panelVideoAdvanced;
+    }
+
+    /**
+     * This method return the content the PanelImageAdvanced.
+     * @return generalSearchPanel.
+     */
+    public AdvancedImagePanel getPanelImageAdvanced() {
+        return panelImageAdvanced;
+    }
+
+    /**
+     * This method return the content the PanelAudioAdvanced.
+     * @return generalSearchPanel.
+     */
+    public AdvancedAudioPanel getPanelAudioAdvanced() {
+        return panelAudioAdvanced;
     }
 }
