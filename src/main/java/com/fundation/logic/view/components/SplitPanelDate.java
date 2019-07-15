@@ -21,6 +21,9 @@ import javax.swing.JSplitPane;
  */
 public class SplitPanelDate extends JPanel {
 
+
+    private LoadSavePanel loadSavePanel;
+
     /**
      *  The constructor let it initializer.
      */
@@ -40,9 +43,14 @@ public class SplitPanelDate extends JPanel {
      */
     public void contentSplitPanels() {
         JPanel dateSearch = new DateSearch();
-        JPanel loadSavePanel = new LoadSavePanel();
+        loadSavePanel = new LoadSavePanel();
         JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, dateSearch, loadSavePanel);
         splitPane.setOneTouchExpandable(true);
         add(splitPane);
     }
+
+    public LoadSavePanel getLoadSavePanel() {
+        return loadSavePanel;
+    }
+
 }

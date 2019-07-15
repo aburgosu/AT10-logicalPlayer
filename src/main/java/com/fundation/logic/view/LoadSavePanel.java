@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.Date;
 
 /**
  * Implements the tab of LoadSave Panel.
@@ -16,6 +17,7 @@ import java.awt.Insets;
  */
 public class LoadSavePanel extends JPanel {
     private JTable dataTable;
+    private DefaultTableModel model;
 
     /**
      * Create the panel.
@@ -29,7 +31,7 @@ public class LoadSavePanel extends JPanel {
         setLayout(gridBagLayout);
 
         dataTable = new JTable();
-        DefaultTableModel model = new DefaultTableModel(new Object[] {"NAME","DATE"}, 0);
+        model = new DefaultTableModel(new Object[] {"NAME","DATE"}, 0);
         model.addRow(new Object[]{"NAME","DATE"});
         dataTable.setModel(model);
         GridBagConstraints gbc_table = new GridBagConstraints();
@@ -63,5 +65,24 @@ public class LoadSavePanel extends JPanel {
         gbc_btnDelete.gridx = 5;
         gbc_btnDelete.gridy = 1;
         add(btnDelete, gbc_btnDelete);
+    }
+
+    /**
+     * Adds a new row to ResultTable
+     */
+    public void addRegister(String name, String date) {
+        model.addRow(new Object[]{name, date});
+        revalidate();
+    }
+
+    /**
+     * Removes all the rows in the ResultTable
+     */
+    public void clearTableResult() {
+        model.getDataVector().removeAllElements();
+        model.setRowCount(0);
+        model.addRow(new Object[]{"NAME", "DATE"});
+        model.fireTableDataChanged();
+        revalidate();
     }
 }

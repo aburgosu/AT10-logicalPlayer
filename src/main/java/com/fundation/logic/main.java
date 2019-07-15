@@ -23,5 +23,6 @@ public class main {
         SearchVideoFrame searchFrame = new SearchVideoFrame();
         Controller controller = new Controller(searchFrame);
         controller.setEvents();
+        controller.showLoadSaveData();
     }
 }
