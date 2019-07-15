@@ -13,7 +13,7 @@ package com.fundation.logic.model.criteria;
  * Implements the model class Audio and the getter and setter´s methods.
  *
  * @authors Andres Burgos.
- * @version 1.1
+ * @version 1.0
  */
 public class Audio extends Multimedia{
     private int channel;
