@@ -10,6 +10,7 @@
 package com.fundation.logic.view;
 
 import com.fundation.logic.view.components.SettingPanel;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -67,6 +68,7 @@ public class AdvancedVideoPanel extends JPanel {
 
         comboBoxVideoCodec = new JComboBox();
         comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"MPEG-4", "WMV","All"}));
+
         GridBagConstraints gbc_comboBoxVideoCodec = new GridBagConstraints();
         gbc_comboBoxVideoCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoCodec.fill = GridBagConstraints.HORIZONTAL;
@@ -85,7 +87,7 @@ public class AdvancedVideoPanel extends JPanel {
         comboBoxAudioCodecName = new JComboBox();
         comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"MPEG", "WMA", "AAC","All"}));
         GridBagConstraints textFiled_AudioCodecName = new GridBagConstraints();
-        textFiled_AudioCodecName.insets = new Insets(0, 0, 5, 5);
+        textFiled_AudioCodecName.insets = new Insets(0, 0, 5, 0);
         textFiled_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;
         textFiled_AudioCodecName.gridx = 1;
         textFiled_AudioCodecName.gridy = 8;
@@ -100,9 +102,9 @@ public class AdvancedVideoPanel extends JPanel {
         add(lblFramerate, gbc_lblFramerate);
 
         comboBoxVideoFramerate = new JComboBox();
-        comboBoxVideoFramerate.setModel(new DefaultComboBoxModel(new String[]{"21", "24", "30", "60","All"}));
+        comboBoxVideoFramerate.setModel(new DefaultComboBoxModel(new String[]{"All", "21", "24", "30", "60"}));
         GridBagConstraints gbc_comboBoxVideoFramerate = new GridBagConstraints();
-        gbc_comboBoxVideoFramerate.insets = new Insets(0, 0, 5, 5);
+        gbc_comboBoxVideoFramerate.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoFramerate.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxVideoFramerate.gridx = 1;
         gbc_comboBoxVideoFramerate.gridy = 10;
@@ -118,6 +120,7 @@ public class AdvancedVideoPanel extends JPanel {
 
         comboBoxResolution = new JComboBox();
         comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"1280x720", "1920x1080", "320x240", "640x480"}));
+
         GridBagConstraints gbc_comboBoxResolution = new GridBagConstraints();
         gbc_comboBoxResolution.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxResolution.fill = GridBagConstraints.HORIZONTAL;
@@ -153,6 +156,7 @@ public class AdvancedVideoPanel extends JPanel {
 
         btnSearchAdvanceVideoPanel = new JButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
+        gbc_btnSearch.anchor = GridBagConstraints.EAST;
         gbc_btnSearch.gridwidth = 2;
         gbc_btnSearch.gridx = 0;
         gbc_btnSearch.gridy = 14;

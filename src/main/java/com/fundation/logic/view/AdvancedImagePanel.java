@@ -10,6 +10,7 @@
 package com.fundation.logic.view;
 
 import com.fundation.logic.view.components.SettingPanel;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -93,7 +94,7 @@ public class AdvancedImagePanel extends JPanel {
         add(lblColorSpaceData, gbc_ColorSpaceData);
 
         comboBoxColorSpaceData = new JComboBox();
-        comboBoxColorSpaceData.setModel(new DefaultComboBoxModel(new String[]{"RGB", "MCY", "RG",  "CMYK", "ALL"}));
+        comboBoxColorSpaceData.setModel(new DefaultComboBoxModel(new String[]{"ALL", "RGB", "MCY", "RG", "CMYK",}));
         GridBagConstraints gbc_ComboBoxColorSpaceData = new GridBagConstraints();
         gbc_ComboBoxColorSpaceData.insets = new Insets(0, 0, 5, 0);
         gbc_ComboBoxColorSpaceData.fill = GridBagConstraints.HORIZONTAL;
@@ -103,6 +104,7 @@ public class AdvancedImagePanel extends JPanel {
 
         btnSearchAdvanceImage = new JButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
+        gbc_btnSearch.anchor = GridBagConstraints.EAST;
         gbc_btnSearch.gridwidth = 2;
         gbc_btnSearch.gridx = 0;
         gbc_btnSearch.gridy = 7;

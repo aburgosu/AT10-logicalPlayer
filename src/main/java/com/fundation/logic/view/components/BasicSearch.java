@@ -71,7 +71,7 @@ public class BasicSearch extends JPanel {
 
         textFieldPath = new JTextField();
         GridBagConstraints gbc_textFieldPath = new GridBagConstraints();
-        gbc_textFieldPath.insets = new Insets(0, 0, 5, 5);
+        gbc_textFieldPath.insets = new Insets(0, 0, 5, 0);
         gbc_textFieldPath.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldPath.gridx = 1;
         gbc_textFieldPath.gridy = 1;

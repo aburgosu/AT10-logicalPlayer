@@ -238,8 +238,8 @@ public class GeneralSearchPanel extends JPanel {
 
         btnSearch = new JButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
-        gbc_btnSearch.anchor = GridBagConstraints.NORTH;
-        gbc_btnSearch.insets = new Insets(0, 0, 5, 5);
+        gbc_btnSearch.anchor = GridBagConstraints.EAST;
+        gbc_btnSearch.insets = new Insets(0, 0, 5, 0);
         gbc_btnSearch.gridx = 1;
         gbc_btnSearch.gridy = 16;
         add(btnSearch, gbc_btnSearch);

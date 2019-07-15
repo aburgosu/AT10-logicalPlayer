@@ -13,7 +13,7 @@
   * Implements the model class criteria and the getter and setter´s methods.
   *
   * @authors Andres Burgos, Jesus Menacho, Melissa Román
-  * @version 1.1
+  * @version 1.0
   */
  public class Criteria {
      private String path;

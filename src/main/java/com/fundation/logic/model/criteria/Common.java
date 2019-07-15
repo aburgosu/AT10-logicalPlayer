@@ -15,7 +15,7 @@ import java.util.Date;
  * Implements the model class Common and the getter and setter´s methods.
  *
  * @authors Andres Burgos.
- * @version 1.1
+ * @version 1.0
  */
 public class Common extends Criteria {
     private Boolean criteriaFileHidden;
