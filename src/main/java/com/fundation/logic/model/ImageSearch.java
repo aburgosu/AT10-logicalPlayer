@@ -24,7 +24,7 @@ import java.util.List;
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class ImageSearch {
+public class ImageSearch implements ISearch {
     static private Image imageCriteria;
 
     /**
