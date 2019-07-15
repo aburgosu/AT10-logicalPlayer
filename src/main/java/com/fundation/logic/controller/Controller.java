@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -10,78 +11,46 @@ package com.fundation.logic.controller;
 
 import com.fundation.logic.model.CommonSearch;
 import com.fundation.logic.model.criteria.Common;
-import com.fundation.logic.model.criteria.Criteria;
 import com.fundation.logic.model.ISearch;
+import com.fundation.logic.model.criteria.Criteria;
 import com.fundation.logic.view.SearchVideoFrame;
 import com.fundation.logic.model.CustomizedFile;
 
 import java.io.File;
 import java.util.Date;
 import java.util.List;
-import javax.swing.JButton;
 
 /**
  * Implements the Controller class
  *
- * @author Melissa Román
+ * @author Melissa Román, John Salazar, Andrés Burgos
  * @version 1.0
  */
 public class Controller {
-    ISearch search;
-    Common criteria;
-    SearchVideoFrame searchFrame;
+    private ISearch search;
+    private SearchVideoFrame searchFrame;
 
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
      */
     public Controller(SearchVideoFrame searchFrame) {
-        criteria = new Common();
         this.searchFrame = searchFrame;
-        setEvents();
     }
 
     /**
      * Sets criteria according on input parameters
+     * @return
      */
-    public void setCriteria(String path, String fileName, String extension, boolean fileHiddenStatus, boolean fileReadOnlyStatus,
-                            Float minSize, Float maxSize, Date minCreationDate, Date maxCreationDate, Date minAccessDate,
-                            Date maxAccessDate, Date minModificationDate,
-                            Date maxModificationDate, String owner, String mimeType) {
-        criteria.setPath(path);
-        criteria.setFileName(fileName);
-        criteria.setExtension(extension);
-        criteria.setCriteriaFileHidden(fileHiddenStatus);
-        criteria.setCriteriaFileReadOnly(fileReadOnlyStatus);
-        criteria.setCriteriaSizeMin(minSize);
-        criteria.setCriteriaSizeMax(maxSize);
-        criteria.setCriteriaCreationDateMin(minCreationDate);
-        criteria.setCriteriaCreationDateMax(maxCreationDate);
-        criteria.setCriteriaAccessDateMin(minAccessDate);
-        criteria.setCriteriaAccessDateMax(maxAccessDate);
-        criteria.setCriteriaModificationDateMin(minModificationDate);
-        criteria.setCriteriaModificationDateMax(maxModificationDate);
-        criteria.setCriteriaOwner(owner);
-        criteria.setCriteriaMimeType(mimeType);
-    }
+    public Common getCommonCriteria() {
+        Common criteria = new Common();
 
-    /**
-     * Make the search sending the criteria as parameter
-     */
-    public List makeSearch(Common criteria) {
-        search = new CommonSearch(criteria);
-        List<File> foundFiles = search.search();
-        return foundFiles;
-    }
+        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath().getText();
 
-    /**
-     * show the result in the table
-     */
-    public void showSearchResult() {
-        String fileName = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldFilename().getText();
+        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName().getText();
         if (fileName.length() == 0) {
             fileName = null;
         }
-        String extensionName = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldExtension().getText();
+        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldFileType().getText();
         if (extensionName.length() == 0) {
             extensionName = null;
         }
@@ -126,24 +95,50 @@ public class Controller {
         String mimeType = searchFrame.getSearchTabs().getGeneralSearchPanel().getComboBoxMimetype().getSelectedItem().toString();
         boolean fileHidden = searchFrame.getSearchTabs().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
         boolean readOnly = searchFrame.getSearchTabs().getGeneralSearchPanel().getCheckBoxReadOnly().isSelected();
-        String testPath = searchFrame.getSearchTabs().getGeneralSearchPanel().getTextFieldPath().getText().replace("\\", "/");
-        setCriteria(testPath,
-                fileName,
-                extensionName,
-                fileHidden, readOnly,
-                sizeFromF,
-                sizeToF,
-                fromDateCreation, toDateCreation, dateAccessFrom,
-                dateAccessTo, dateModificationFrom,
-                dateModificationTo, owner, null);
+
+        criteria.setPath(path);
+        criteria.setFileName(fileName);
+        criteria.setExtension(extensionName);
+        criteria.setCriteriaFileHidden(fileHidden);
+        criteria.setCriteriaFileReadOnly(readOnly);
+        criteria.setCriteriaSizeMin(sizeFromF);
+        criteria.setCriteriaSizeMax(sizeToF);
+        criteria.setCriteriaCreationDateMin(fromDateCreation);
+        criteria.setCriteriaCreationDateMax(toDateCreation);
+        criteria.setCriteriaAccessDateMin(dateAccessFrom);
+        criteria.setCriteriaAccessDateMax(dateAccessTo);
+        criteria.setCriteriaModificationDateMin(dateModificationFrom);
+        criteria.setCriteriaModificationDateMax(dateModificationTo);
+        criteria.setCriteriaOwner(owner);
+        criteria.setCriteriaMimeType(mimeType);
+        return criteria;
+    }
+
+    /**
+     * Make the search sending the criteria as parameter
+     */
+    public List makeSearch(Criteria criteria) {
+        search = new CommonSearch((Common) criteria);
+        List<File> foundFiles = search.search();
+        return foundFiles;
+    }
+
+    /**
+     * show the result in the table
+     */
+    public void showSearchResult() {
         List<CustomizedFile> foundFiles;
-        foundFiles = makeSearch(criteria);
+        foundFiles = makeSearch(getCommonCriteria());
         for (int index = 0; index < foundFiles.size(); index++) {
-            String path = foundFiles.get(index).getName();
+            String path = foundFiles.get(index).getPath();
+            String name = foundFiles.get(index).getName();
             String extension = foundFiles.get(index).getExtension();
             Float size = foundFiles.get(index).getSize();
             Date creationDate = foundFiles.get(index).getCreationDate();
-            //this.searchFrame.getTableResult().addResult(path, extension, size, creationDate, "---");
+            Date modificationDate = foundFiles.get(index).getModificationDate();
+            Date lastAccessDate = foundFiles.get(index).getAccessDate();
+            this.searchFrame.getTableResult().addResult(path, name, extension, size, creationDate,
+                modificationDate, lastAccessDate, "---");
         }
     }
 
@@ -151,8 +146,7 @@ public class Controller {
      * send the search by clicking on search
      */
     public void setEvents() {
-        JButton btnSearch = searchFrame.getSearchTabs().getGeneralSearchPanel().getSearchButton();
-        btnSearch.addActionListener(e -> {
+        searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getSearchButton().addActionListener(e -> {
             searchFrame.getTableResult().clearTableResult();
             showSearchResult();
         });

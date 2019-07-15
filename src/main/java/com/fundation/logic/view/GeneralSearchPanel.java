@@ -28,9 +28,6 @@ import java.awt.Insets;
  */
 public class GeneralSearchPanel extends JPanel {
     private final JTextField textFieldOwner;
-    private JTextField textFieldFilename;
-    private JTextField textFieldPath;
-    private JTextField textFieldExtension;
     private JDateChooser FieldToDateCreation;
     private JDateChooser textFieldFromDateCreation;
     private JDateChooser FieldDateModificationFrom;
@@ -239,7 +236,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_checkBoxReadOnly.gridy = 15;
         add(checkBoxReadOnly, gbc_checkBoxReadOnly);
 
-        btnSearch = new JButton("CommonSearch");
+        btnSearch = new JButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.anchor = GridBagConstraints.NORTH;
         gbc_btnSearch.insets = new Insets(0, 0, 5, 5);
@@ -253,26 +250,6 @@ public class GeneralSearchPanel extends JPanel {
      */
     public JButton getSearchButton() {
         return btnSearch;
-    }
-
-    /**
-     * This method return the Text Field FileName
-     */
-    public JTextField getTextFieldFilename() {
-        return textFieldFilename;
-    }
-    /**
-     * This method return the Text Field Path
-     */
-    public JTextField getTextFieldPath() {
-        return textFieldPath;
-    }
-
-    /**
-     * This method return the TexFieldExtension
-     */
-    public JTextField getTextFieldExtension() {
-        return textFieldExtension;
     }
 
     /**
@@ -363,27 +340,6 @@ public class GeneralSearchPanel extends JPanel {
      */
     public JComboBox getComboBoxMimetype() {
         return comboBoxMimetype;
-    }
-
-    /**
-    * This method return the Text Field FileName
-    */
-     public void setTextFieldFilename(JTextField textFieldFilename) {
-        this.textFieldFilename = textFieldFilename;
-     }
-
-    /**
-     * This method set the Text Field Path
-     */
-    public void setTextFieldPath(JTextField textFieldPath) {
-        this.textFieldPath = textFieldPath;
-    }
-
-    /**
-     * This method set the TextField Extension
-     */
-    public void setTextFieldExtension(JTextField textFieldExtension) {
-        this.textFieldExtension = textFieldExtension;
     }
 
     /**
