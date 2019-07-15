@@ -12,8 +12,8 @@ package com.fundation.logic.model.criteria;
 /**
  * Implements the model class Image and the getter and setter´s methods.
  *
- * @authors Andres Burgos.
- * @version 1.1
+ * @authors Andres Burgos
+ * @version 1.0
  */
 public class Image extends Criteria{
     private int width;
@@ -28,7 +28,7 @@ public class Image extends Criteria{
     }
 
     /**
-     * Set Image Width.
+     * Sets Image Width.
      */
     public void setWidth(int width) {
         this.width = width;
@@ -42,7 +42,7 @@ public class Image extends Criteria{
     }
 
     /**
-     * Set Image Height.
+     * Sets Image Height.
      */
     public void setHeight(int height) {
         this.height = height;
@@ -56,7 +56,7 @@ public class Image extends Criteria{
     }
 
     /**
-     * Set Image Color Space Data.
+     * Sets Image Color Space Data.
      */
     public void setColorSpaceData(String colorSpaceData) {
         this.colorSpaceData = colorSpaceData;

@@ -19,26 +19,34 @@ import com.google.gson.Gson;
  * @version 1.0
  */
 public abstract class JsonConverter {
+    /**
+     * Converts an instance of Criteria class to json.
+     * @param criteria - Criteria to be convert to json.
+     * @return json corresponding to given criteria.
+     */
     public static String criteriaToJson(Criteria criteria) {
         Gson gson = new Gson();
         String json = gson.toJson(criteria);
         return json;
     }
 
-    public static Criteria jsonToCriteria(String json) {
+    /**
+     * Converts a json to a Criteria instance according on given type.
+     * @param json - String corresponding to json.
+     * @param type - Criteria's type.
+     * @return Instance of Criteria class according on given type.
+     */
+    public static Criteria jsonToCriteria(String json, String type) {
         Gson gson = new Gson();
-        int indexType = json.indexOf(" ");
-        String criteriaType = json.substring(0, indexType);
-        String jsonCriteria = json.substring(indexType + 1);
-        switch (criteriaType) {
+        switch (type) {
             case "Audio":
-                return gson.fromJson(jsonCriteria, Audio.class);
+                return gson.fromJson(json, Audio.class);
             case "Common":
-                return gson.fromJson(jsonCriteria, Common.class);
+                return gson.fromJson(json, Common.class);
             case "Image":
-                return gson.fromJson(jsonCriteria, Image.class);
+                return gson.fromJson(json, Image.class);
             case "Video":
-                return gson.fromJson(jsonCriteria, Video.class);
+                return gson.fromJson(json, Video.class);
             default:
                 return null;
         }
