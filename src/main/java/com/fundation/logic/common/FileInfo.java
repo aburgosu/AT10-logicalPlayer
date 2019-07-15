@@ -134,9 +134,9 @@ public abstract class FileInfo {
      * @param path
      * @return True if file is a video.
      */
-    public static boolean isVideo(String path){
+    public static boolean isVideo(String path) {
         File file = new File(path);
-        if(getMimeType(file).contains("video")){
+        if (getMimeType(file).contains("video")) {
             return true;
         }
         return false;
@@ -147,9 +147,22 @@ public abstract class FileInfo {
      * @param path
      * @return True if file is an audio.
      */
-    public static boolean isAudio(String path){
+    public static boolean isAudio(String path) {
         File file = new File(path);
-        if(getMimeType(file).contains("audio")){
+        if (getMimeType(file).contains("audio")) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Verifies if the file in path is an image.
+     * @param path
+     * @return True if file is an image.
+     */
+    public static boolean isImage(String path) {
+        File file = new File(path);
+        if (getMimeType(file).contains("image")) {
             return true;
         }
         return false;
