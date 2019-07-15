@@ -74,9 +74,6 @@ public class QueryForCriteria {
      */
     public void showCriteriaInDB() {
         List criteria = query.getAllCriterias();
-        for (int index = 0; index < criteria.size(); index++) {
-            System.out.println(criteria.get(index));
-        }
     }
 
     /**
@@ -88,8 +85,5 @@ public class QueryForCriteria {
         String firstDate = date1.toString();
         String secondDate = date2.toString();
         List list = query.filterByDates(firstDate, secondDate);
-        for (int index = 0; index < list.size(); index++) {
-            System.out.println(list.get(index));
-        }
     }
 }
