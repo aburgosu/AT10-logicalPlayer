@@ -63,7 +63,7 @@ public class CriteriaRecord {
     }
 
     /**
-     * Allows to get criteria's type
+     * Allows to get criteria's type.
      * @return Criteria's type.
      */
     public String getType() {

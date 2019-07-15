@@ -15,7 +15,7 @@ package com.fundation.logic.model.criteria;
  * @authors Andres Burgos
  * @version 1.0
  */
-public class Image extends Criteria{
+public class Image extends Criteria {
     private int width;
     private int height;
     private String colorSpaceData;
