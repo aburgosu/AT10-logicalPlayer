@@ -63,7 +63,7 @@ public class AdvancedAudioPanel extends JPanel {
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
         comboBoxAudioCodecName = new JComboBox();
-        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"MPEG-4 ALS", "WAV", "MP3", "RTA"}));
+        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"MPEG-4 ALS", "WAV", "MP3", "RTA","All"}));
         GridBagConstraints comboBox_AudioCodecName = new GridBagConstraints();
         comboBox_AudioCodecName.insets = new Insets(0, 0, 5, 0);
         comboBox_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;

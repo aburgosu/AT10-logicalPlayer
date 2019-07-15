@@ -66,7 +66,7 @@ public class AdvancedVideoPanel extends JPanel {
         add(lblCodecVideo, gbc_lblCodecVideo);
 
         comboBoxVideoCodec = new JComboBox();
-        comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"H.264", "MPEG-4", "AVC", "VP8"}));
+        comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"H.264", "MPEG-4", "AVC", "VP8","All"}));
         GridBagConstraints gbc_comboBoxVideoCodec = new GridBagConstraints();
         gbc_comboBoxVideoCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoCodec.fill = GridBagConstraints.HORIZONTAL;
@@ -83,7 +83,7 @@ public class AdvancedVideoPanel extends JPanel {
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
         comboBoxAudioCodecName = new JComboBox();
-        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"MPEG-4 ALS", "WAV", "MP3", "RTA"}));
+        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"MPEG-4 ALS", "WAV", "MP3", "RTA","All"}));
         GridBagConstraints textFiled_AudioCodecName = new GridBagConstraints();
         textFiled_AudioCodecName.insets = new Insets(0, 0, 5, 5);
         textFiled_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;
@@ -117,7 +117,7 @@ public class AdvancedVideoPanel extends JPanel {
         add(lblFramerate, gbc_lblFramerate);
 
         comboBoxVideoFramerate = new JComboBox();
-        comboBoxVideoFramerate.setModel(new DefaultComboBoxModel(new String[]{"21", "24", "30", "60"}));
+        comboBoxVideoFramerate.setModel(new DefaultComboBoxModel(new String[]{"21", "24", "30", "60","All"}));
         GridBagConstraints gbc_comboBoxVideoFramerate = new GridBagConstraints();
         gbc_comboBoxVideoFramerate.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxVideoFramerate.fill = GridBagConstraints.HORIZONTAL;
@@ -134,7 +134,7 @@ public class AdvancedVideoPanel extends JPanel {
         add(lblResolution, gbc_lblWidth);
 
         comboBoxResolution = new JComboBox();
-        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"320x200", "320x240", "512x384", "640x350", "640x480", "720x348", "720x350", "720x360", "767x343", "850x480", "1024x768", "1152x640", "1280x720"}));
+        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"320x200", "320x240", "512x384", "640x350", "640x480", "720x348", "720x350", "720x360", "767x343", "850x480", "1024x768", "1152x640", "1280x720","All"}));
         GridBagConstraints gbc_comboBoxResolution = new GridBagConstraints();
         gbc_comboBoxResolution.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxResolution.fill = GridBagConstraints.HORIZONTAL;
