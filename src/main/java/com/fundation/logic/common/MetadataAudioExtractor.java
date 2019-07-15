@@ -28,7 +28,7 @@ public class MetadataAudioExtractor {
     public static String getAudioChannel(File pathFile) {
         String channelMode = null;
         try {
-            Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
+            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
             while ((stdInput.readLine()) != null) {
                 channelMode = stdInput.readLine();
@@ -53,7 +53,7 @@ public class MetadataAudioExtractor {
     public static String getSampleRate(File pathFile) {
         String sampleRate = null;
         try {
-            Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
+            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
             while ((sampleRate = stdInput.readLine()) != null) {
                 if ((sampleRate.contains("Sample Rate"))) {
@@ -77,7 +77,7 @@ public class MetadataAudioExtractor {
     public static String getDuration(File pathFile) {
         String duration = null;
         try {
-            Process extractMetadata = Runtime.getRuntime().exec("resources/exiftool.exe " + pathFile.toString());
+            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
             while ((duration = stdInput.readLine()) != null) {
                 if ((duration.contains("Duration"))) {
