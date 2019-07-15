@@ -9,8 +9,6 @@
  */
 package com.fundation.logic.view;
 
-import com.fundation.logic.common.FileInfo;
-
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
@@ -20,7 +18,7 @@ import java.util.Date;
 /**
  * Implements the Table Result to show to the users the results of th searches.
  *
- * @author Andres Burgos, Jesus Menacho
+ * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
 public class TableResult extends JTable {
@@ -29,15 +27,17 @@ public class TableResult extends JTable {
     /**
      * Initializes a TableResult instance with headers
      */
-    public TableResult(){
-        model = new DefaultTableModel(new Object[] {"path","file", "extension","size","creationDate","modificationDate","lastAccessDate","attributes"}, 0) {
+    public TableResult() {
+        model = new DefaultTableModel(new Object[]{"path", "file", "extension", "size", "creationDate",
+            "modificationDate", "lastAccessDate", "attributes"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
 
-        model.addRow(new Object[]{"PATH","FILE","EXTENSION","SIZE","CREATION DATE","MODIFICATION DATE","LAST ACCESS DATE","ATTRIBUTE"});
+        model.addRow(new Object[]{"PATH", "FILE", "EXTENSION", "SIZE", "CREATION DATE", "MODIFICATION DATE",
+            "LAST ACCESS DATE", "ATTRIBUTE"});
         this.setModel(model);
         this.initListen();
     }
@@ -45,8 +45,10 @@ public class TableResult extends JTable {
     /**
      * Adds a new row to ResultTable
      */
-    public void addResult(String path,String file, String extension, Float size, Date creationDate,Date modificationDate ,Date lastAccessDate,String attribute) {
-        model.addRow(new Object[]{path, file, extension, size+" bytes", creationDate,modificationDate,lastAccessDate, attribute});
+    public void addResult(String path, String file, String extension, Float size, Date creationDate,
+            Date modificationDate, Date lastAccessDate, String attribute) {
+        model.addRow(new Object[]{path, file, extension, size + " bytes", creationDate, modificationDate,
+            lastAccessDate, attribute});
     }
 
     /**
@@ -55,7 +57,8 @@ public class TableResult extends JTable {
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
-        model.addRow(new Object[]{"PATH","FILE","EXTENSION","SIZE","CREATION DATE","MODIFICATION DATE","LAST ACCESS DATE","ATTRIBUTE"});
+        model.addRow(new Object[]{"PATH", "FILE", "EXTENSION", "SIZE", "CREATION DATE", "MODIFICATION DATE",
+            "LAST ACCESS DATE", "ATTRIBUTE"});
         model.fireTableDataChanged();
         revalidate();
     }
@@ -70,10 +73,9 @@ public class TableResult extends JTable {
                     int row = getSelectedRow();
                     final int PATH_COLUMN = 0;
                     String filePath = (String) model.getValueAt(row, PATH_COLUMN);
-                    if (FileInfo.isVideo(filePath) || FileInfo.isAudio(filePath)) {
-                        PlayerFrame playerWindow = new PlayerFrame(filePath);
-                        playerWindow.setVisible(true);
-                    }
+                    PopupMenu menu = new PopupMenu(filePath);
+                    menu.show(me.getComponent(), me.getX(), me.getY());
+                    menu.setVisible(true);
                 }
             }
         });
