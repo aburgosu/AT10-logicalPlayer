@@ -160,9 +160,9 @@ public abstract class FileInfo {
      * @param path
      * @return True if file is an image.
      */
-    public static boolean isImage(String path){
+    public static boolean isImage(String path) {
         File file = new File(path);
-        if(getMimeType(file).contains("image")){
+        if(getMimeType(file).contains("image")) {
             return true;
         }
         return false;
