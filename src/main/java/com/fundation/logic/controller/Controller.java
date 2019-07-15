@@ -14,6 +14,7 @@ import com.fundation.logic.model.criteria.*;
 import com.fundation.logic.view.SearchVideoFrame;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -77,16 +78,18 @@ public class Controller {
             foundFiles = makeSearch(getImageCriteria());
         }
 
-        for (int index = 0; index < foundFiles.size(); index++) {
-            String path = foundFiles.get(index).getPath();
-            String name = foundFiles.get(index).getName();
-            String extension = foundFiles.get(index).getExtension();
-            Float size = foundFiles.get(index).getSize();
-            Date creationDate = foundFiles.get(index).getCreationDate();
-            Date modificationDate = foundFiles.get(index).getModificationDate();
-            Date lastAccessDate = foundFiles.get(index).getAccessDate();
-            this.searchFrame.getTableResult().addResult(path, name, extension, size, creationDate,
-                    modificationDate, lastAccessDate, "---");
+        if (foundFiles != null) {
+            for (int index = 0; index < foundFiles.size(); index++) {
+                String path = foundFiles.get(index).getPath();
+                String name = foundFiles.get(index).getName();
+                String extension = foundFiles.get(index).getExtension();
+                Float size = foundFiles.get(index).getSize();
+                Date creationDate = foundFiles.get(index).getCreationDate();
+                Date modificationDate = foundFiles.get(index).getModificationDate();
+                Date lastAccessDate = foundFiles.get(index).getAccessDate();
+                this.searchFrame.getTableResult().addResult(path, name, extension, size, creationDate,
+                        modificationDate, lastAccessDate, "---");
+            }
         }
     }
 
@@ -172,7 +175,28 @@ public class Controller {
      * @return Image criteria
      */
     private Criteria getImageCriteria() {
-        return null;
+        Image criteria = new Image();
+        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath().getText();
+        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName().getText();
+        if (fileName.length() == 0) {
+            fileName = null;
+        }
+        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldFileType().getText();
+        if (extensionName.length() == 0) {
+            extensionName = null;
+        }
+        String width = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced().getTextFieldWidth().getText();
+        if (width.length() == 0) {
+            width = "0";
+        }
+        String height = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced().getTextFieldHeight().getText();
+        if (height.length() == 0) {
+            height= "0";
+        }
+        criteria.setPath(path);
+        criteria.setWidth(Integer.parseInt(width));
+        criteria.setHeight(Integer.parseInt(height));
+        return criteria;
     }
 
     /**

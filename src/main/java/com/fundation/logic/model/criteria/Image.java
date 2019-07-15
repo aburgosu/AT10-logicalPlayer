@@ -23,8 +23,8 @@ public class Image extends Criteria {
     /**
      * @return Image Width.
      */
-    public int getWidth() {
-        return width;
+    public String getWidth() {
+        return Integer.toString(width);
     }
 
     /**
@@ -37,8 +37,8 @@ public class Image extends Criteria {
     /**
      * @return Image Height.
      */
-    public int getHeight() {
-        return height;
+    public String getHeight() {
+        return Integer.toString(height);
     }
 
     /**
