@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * <p>
+ * 
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -72,10 +72,8 @@ public class ImageSearch {
                 Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
                 Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
                 Float fileSize = FileInfo.getFileSize(fileExtractor);
-                if (evaluateString(fileName, criteriaFileName)
-                        && evaluateString(fileExtension, criteriaExtension)
-                        && evaluateString(width, criteriaWidth)
-                        && evaluateString(height, criteriaHeight)
+                if (evaluateString(fileName, criteriaFileName) && evaluateString(fileExtension, criteriaExtension)
+                        && evaluateString(width, criteriaWidth) && evaluateString(height, criteriaHeight)
                         && evaluateString(colorSpace, criteriaColorSpace)) {
                     CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
                             fileName, fileExtension, false, false,
