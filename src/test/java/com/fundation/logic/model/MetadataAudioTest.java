@@ -23,12 +23,35 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class MetadataAudioTest {
 
+    //This unit test verify the correct metadata duration.
     @Test
     public void testDuration() {
         File path = new File(" resources/AudioPronunciacion.MP3");
         MetadataAudioExtractor metadata = new MetadataAudioExtractor();
         String expected = "0:01:05";
         String result = metadata.getDuration(path);
+        assertEquals(expected, result);
+    }
+
+    //This unit test verify the correct metadata sampleRate.
+    @Test
+    public void testSampleRate()
+    {
+        File path = new File(" resources/AudioPronunciacion.MP3");
+        MetadataAudioExtractor metadata = new MetadataAudioExtractor();
+        String expected = "44100";
+        String result = metadata.getSampleRate(path);
+        assertEquals(expected, result);
+    }
+
+    //This unit test verify the correct audio channel.
+    @Test
+    public void testAudioChannel()
+    {
+        File path = new File(" resources/AudioPronunciacion.MP3");
+        MetadataAudioExtractor metadata = new MetadataAudioExtractor();
+        String expected = "Mono";
+        String result = metadata.getAudioChannel(path);
         assertEquals(expected, result);
     }
 }
