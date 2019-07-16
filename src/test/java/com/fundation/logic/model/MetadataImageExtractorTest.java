@@ -22,6 +22,7 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class MetadataImageExtractorTest {
 
+    //This unit test verify the correct metadata width.
     @Test
     public void testWidth()
     {
@@ -29,6 +30,28 @@ public class MetadataImageExtractorTest {
         MetadataImageExtractor metadata = new MetadataImageExtractor();
         String expected = "35";
         String result = metadata.getWidth(path);
+        assertEquals(expected, result);
+    }
+
+    //This unit test verify the correct metadata height.
+    @Test
+    public void testHeight()
+    {
+        File path = new File("resources/Images/Play.png");
+        MetadataImageExtractor metadata = new MetadataImageExtractor();
+        String expected = "35";
+        String result = metadata.getHeight(path);
+        assertEquals(expected, result);
+    }
+
+    //This unit test verify the correct metadata color space.
+    @Test
+    public void testColorSpaceRGB()
+    {
+        File path = new File("resources/Images/Play.png");
+        MetadataImageExtractor metadata = new MetadataImageExtractor();
+        String expected = "RGB";
+        String result = metadata.getColorSpace(path);
         assertEquals(expected, result);
     }
 }
