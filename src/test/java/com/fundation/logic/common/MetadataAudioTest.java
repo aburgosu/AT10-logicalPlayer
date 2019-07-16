@@ -7,9 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model;
-
-import com.fundation.logic.common.MetadataAudioExtractor;
+package com.fundation.logic.common;
 
 import org.junit.Test;
 import java.io.File;

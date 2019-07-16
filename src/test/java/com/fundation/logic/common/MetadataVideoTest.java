@@ -7,9 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model;
-
-import com.fundation.logic.common.MetadataVideoExtractor;
+package com.fundation.logic.common;
 
 import org.junit.Test;
 import java.io.File;
@@ -21,7 +19,7 @@ import static junit.framework.TestCase.assertEquals;
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class MetadataVideoExtractorTest {
+public class MetadataVideoTest {
 
     //This unit test verify the correct metadata frame rate
     @Test
@@ -72,7 +70,7 @@ public class MetadataVideoExtractorTest {
         String result = metadata.getResolution(path);
         assertEquals(expected, result);
     }
-    
+
     //This unit test verify the correct metadata video codec
     @Test
     public void testVideoCodec() {

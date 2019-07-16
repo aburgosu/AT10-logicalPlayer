@@ -7,20 +7,19 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model;
+package com.fundation.logic.common;
 
-import com.fundation.logic.common.MetadataImageExtractor;
 import org.junit.Test;
 import java.io.File;
 import static junit.framework.TestCase.assertEquals;
 
 /**
- * Implements new MetadataImageExtractorTest class.
+ * Implements new MetadataImageTest class.
  *
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class MetadataImageExtractorTest {
+public class MetadataImageTest {
 
     //This unit test verify the correct metadata width.
     @Test
@@ -35,8 +34,7 @@ public class MetadataImageExtractorTest {
 
     //This unit test verify the correct metadata height.
     @Test
-    public void testHeight()
-    {
+    public void testHeight() {
         File path = new File("resources/Images/Play.png");
         MetadataImageExtractor metadata = new MetadataImageExtractor();
         String expected = "35";
@@ -46,8 +44,7 @@ public class MetadataImageExtractorTest {
 
     //This unit test verify the correct metadata color space.
     @Test
-    public void testColorSpaceRGB()
-    {
+    public void testColorSpaceRGB() {
         File path = new File("resources/Images/Play.png");
         MetadataImageExtractor metadata = new MetadataImageExtractor();
         String expected = "RGB";
