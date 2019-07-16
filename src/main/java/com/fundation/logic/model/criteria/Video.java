@@ -76,4 +76,25 @@ public class Video extends Multimedia {
     public void setHeight(int height) {
         this.height = height;
     }
+
+    /**
+     * Equals override to compare two video criteria.
+     * @param criteria - Criteria to be compare with.
+     * @return True if two criteria are equal.
+     */
+    public boolean equals(Criteria criteria) {
+        try {
+            Video videoCriteria = (Video) criteria;
+            if(this.getPath().equals(videoCriteria.getPath()) && this.getFileName().equals(videoCriteria.getFileName())
+                    && this.getExtension().equals(videoCriteria.getExtension()) &&
+                    this.videoCodec.equals(videoCriteria.videoCodec) &&
+                    this.frameRate.equals(videoCriteria.frameRate) && this.width == videoCriteria.width &&
+                    this.height == videoCriteria.height) {
+                return true;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return false;
+    }
 }
