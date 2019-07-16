@@ -72,4 +72,24 @@ public class MetadataVideoExtractorTest {
         String result = metadata.getResolution(path);
         assertEquals(expected, result);
     }
+    
+    //This unit test verify the correct metadata video codec
+    @Test
+    public void testVideoCodec() {
+        File path = new File("resources/Wildlife.wmv");
+        MetadataVideoExtractor metadata = new MetadataVideoExtractor();
+        String expected = "WMV";
+        String result = metadata.getVideoCodec(path);
+        assertEquals(expected, result);
+    }
+
+    //This unit test verify the correct metadata image height
+    @Test
+    public void testWithoutVideoCodec() {
+        File path = new File("resources/Grammar_posesivo_genitivo.mp4");
+        MetadataVideoExtractor metadata = new MetadataVideoExtractor();
+        String expected = "All";
+        String result = metadata.getVideoCodec(path);
+        assertEquals(expected, result);
+    }
 }
