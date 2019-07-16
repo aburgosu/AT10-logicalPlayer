@@ -23,13 +23,23 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class MetadataVideoExtractorTest {
 
-    //This test case verify the correct frame rate
+    //This unit test verify the correct metadata frame rate
     @Test
     public void testFrame() {
         File path = new File("resources/Grammar_posesivo_genitivo.mp4");
         MetadataVideoExtractor metadata = new MetadataVideoExtractor();
         String expected = "30";
         String result = metadata.getFrameRate(path);
+        assertEquals(expected, result);
+    }
+
+    //This unit test verify the correct metadata duration
+    @Test
+    public void testDuration() {
+        File path = new File("resources/Wildlife.wmv");
+        MetadataVideoExtractor metadata = new MetadataVideoExtractor();
+        String expected = "0:00:37";
+        String result = metadata.getDuration(path);
         assertEquals(expected, result);
     }
 }
