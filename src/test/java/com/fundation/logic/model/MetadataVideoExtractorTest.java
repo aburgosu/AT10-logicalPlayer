@@ -42,4 +42,34 @@ public class MetadataVideoExtractorTest {
         String result = metadata.getDuration(path);
         assertEquals(expected, result);
     }
+
+    //This unit test verify the correct metadata file type wmv
+    @Test
+    public void testFileTypeWMV() {
+        File path = new File("resources/Wildlife.wmv");
+        MetadataVideoExtractor metadata = new MetadataVideoExtractor();
+        String expected = "WMV";
+        String result = metadata.getFileType(path);
+        assertEquals(expected, result);
+    }
+
+    //This unit test verify the correct metadata file type mp4
+    @Test
+    public void testFileTypeMP4() {
+        File path = new File("resources/Grammar_posesivo_genitivo.mp4");
+        MetadataVideoExtractor metadata = new MetadataVideoExtractor();
+        String expected = "MP4";
+        String result = metadata.getFileType(path);
+        assertEquals(expected, result);
+    }
+
+    //This unit test verify the correct metadata image height
+    @Test
+    public void testHeight() {
+        File path = new File("resources/Wildlife.wmv");
+        MetadataVideoExtractor metadata = new MetadataVideoExtractor();
+        String expected = "720";
+        String result = metadata.getResolution(path);
+        assertEquals(expected, result);
+    }
 }
