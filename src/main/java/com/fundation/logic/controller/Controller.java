@@ -29,10 +29,10 @@ public class Controller {
     private SearchVideoFrame searchFrame;
     private QueryForCriteria queryCriteria;
 
-    private final int COMMON_SEARCH = 0;
-    private final int VIDEO_SEARCH = 1;
-    private final int AUDIO_SEARCH = 2;
-    private final int IMAGE_SEARCH = 3;
+    static final int COMMON_SEARCH = 0;
+    static final int VIDEO_SEARCH = 1;
+    static final int AUDIO_SEARCH = 2;
+    static final int IMAGE_SEARCH = 3;
 
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
@@ -209,7 +209,21 @@ public class Controller {
      * @return Audio criteria
      */
     private Criteria getAudioCriteria() {
-        return null;
+        Audio criteria = new Audio();
+        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath().getText();
+        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName().getText();
+        if (fileName.length() == 0) {
+            fileName = null;
+        }
+        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldFileType().getText();
+        if (extensionName.length() == 0) {
+            extensionName = null;
+        }
+        criteria.setPath(path);
+        criteria.setFileName(fileName);
+        criteria.setExtension(extensionName);
+
+        return criteria;
     }
 
     /**
