@@ -28,16 +28,16 @@ public class TableResult extends JTable {
      * Initializes a TableResult instance with headers
      */
     public TableResult() {
-        model = new DefaultTableModel(new Object[]{"path", "file", "extension", "size", "creationDate",
-            "modificationDate", "lastAccessDate", "attributes"}, 0) {
+        model = new DefaultTableModel(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
+                "Date last accessed", "Attribute"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
 
-        model.addRow(new Object[]{"PATH", "FILE", "EXTENSION", "SIZE", "CREATION DATE", "MODIFICATION DATE",
-            "LAST ACCESS DATE", "ATTRIBUTE"});
+        model.addRow(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
+            "Date last accessed", "Attribute"});
         this.setModel(model);
         this.initListen();
     }
@@ -57,8 +57,8 @@ public class TableResult extends JTable {
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
-        model.addRow(new Object[]{"PATH", "FILE", "EXTENSION", "SIZE", "CREATION DATE", "MODIFICATION DATE",
-            "LAST ACCESS DATE", "ATTRIBUTE"});
+        model.addRow(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
+            "Date last accessed", "Attribute"});
         model.fireTableDataChanged();
         revalidate();
     }

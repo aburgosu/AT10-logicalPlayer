@@ -67,7 +67,7 @@ public class AdvancedVideoPanel extends JPanel {
         add(lblCodecVideo, gbc_lblCodecVideo);
 
         comboBoxVideoCodec = new JComboBox();
-        comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"MPEG-4", "WMV","All"}));
+        comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"All", "MPEG-4", "WMV"}));
 
         GridBagConstraints gbc_comboBoxVideoCodec = new GridBagConstraints();
         gbc_comboBoxVideoCodec.insets = new Insets(0, 0, 5, 0);
@@ -85,7 +85,7 @@ public class AdvancedVideoPanel extends JPanel {
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
         comboBoxAudioCodecName = new JComboBox();
-        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"MPEG", "WMA", "AAC","All"}));
+        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"All", "MPEG", "WMA", "AAC"}));
         GridBagConstraints textFiled_AudioCodecName = new GridBagConstraints();
         textFiled_AudioCodecName.insets = new Insets(0, 0, 5, 0);
         textFiled_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;
@@ -143,7 +143,7 @@ public class AdvancedVideoPanel extends JPanel {
         gbc_textField.gridx = 1;
         gbc_textField.gridy = 12;
         add(textFieldDurationFirst, gbc_textField);
-        textFieldDurationFirst.setColumns(10);
+        textFieldDurationFirst.setColumns(5);
 
         textFieldDurationsSecond = new JTextField();
         GridBagConstraints gbc_textFieldHeight = new GridBagConstraints();
@@ -152,7 +152,7 @@ public class AdvancedVideoPanel extends JPanel {
         gbc_textFieldHeight.gridx = 1;
         gbc_textFieldHeight.gridy = 13;
         add(textFieldDurationsSecond, gbc_textFieldHeight);
-        textFieldDurationsSecond.setColumns(10);
+        textFieldDurationsSecond.setColumns(5);
 
         btnSearchAdvanceVideoPanel = new JButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();

@@ -55,7 +55,7 @@ public class AdvancedAudioPanel extends JPanel {
      * This method show the content audio panel.
      */
     private void audioContentPanel() {
-        JLabel lblAudioCodecName = new JLabel("Codec Name: ");
+        JLabel lblAudioCodecName = new JLabel("Codec: ");
         GridBagConstraints gbc_lblAudioCodecName = new GridBagConstraints();
         gbc_lblAudioCodecName.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodecName.insets = new Insets(0, 0, 5, 5);

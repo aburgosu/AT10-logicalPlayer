@@ -94,7 +94,7 @@ public class AdvancedImagePanel extends JPanel {
         add(lblColorSpaceData, gbc_ColorSpaceData);
 
         comboBoxColorSpaceData = new JComboBox();
-        comboBoxColorSpaceData.setModel(new DefaultComboBoxModel(new String[]{"ALL", "RGB", "MCY", "RG", "CMYK",}));
+        comboBoxColorSpaceData.setModel(new DefaultComboBoxModel(new String[]{"All", "RGB", "MCY", "RG", "CMYK",}));
         GridBagConstraints gbc_ComboBoxColorSpaceData = new GridBagConstraints();
         gbc_ComboBoxColorSpaceData.insets = new Insets(0, 0, 5, 0);
         gbc_ComboBoxColorSpaceData.fill = GridBagConstraints.HORIZONTAL;

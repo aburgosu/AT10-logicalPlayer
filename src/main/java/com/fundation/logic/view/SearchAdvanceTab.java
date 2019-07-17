@@ -28,12 +28,12 @@ public class SearchAdvanceTab extends JTabbedPane {
     public SearchAdvanceTab() {
         generalSearchPanel = new GeneralSearchPanel();
         addTab("General",null, generalSearchPanel,"Search general");
-        panelVideoAdvanced = new AdvancedVideoPanel();
-        addTab("Video ", null, panelVideoAdvanced, "Search advance Video");
         panelImageAdvanced = new AdvancedImagePanel();
         addTab("Image ", null, panelImageAdvanced, "Search advance Image");
         panelAudioAdvanced = new AdvancedAudioPanel();
         addTab("Audio ", null, panelAudioAdvanced, "Audio");
+        panelVideoAdvanced = new AdvancedVideoPanel();
+        addTab("Video ", null, panelVideoAdvanced, "Search advance Video");
     }
 
     /**

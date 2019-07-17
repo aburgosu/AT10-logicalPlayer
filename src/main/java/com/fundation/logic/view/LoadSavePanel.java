@@ -31,8 +31,8 @@ public class LoadSavePanel extends JPanel {
         setLayout(gridBagLayout);
 
         dataTable = new JTable();
-        model = new DefaultTableModel(new Object[] {"NAME","DATE"}, 0);
-        model.addRow(new Object[]{"NAME","DATE"});
+        model = new DefaultTableModel(new Object[] {"Name","Date"}, 0);
+        model.addRow(new Object[]{"Name","Date"});
         dataTable.setModel(model);
         GridBagConstraints gbc_table = new GridBagConstraints();
         gbc_table.gridwidth = 7;
@@ -81,7 +81,7 @@ public class LoadSavePanel extends JPanel {
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
-        model.addRow(new Object[]{"NAME", "DATE"});
+        model.addRow(new Object[]{"Name", "Date"});
         model.fireTableDataChanged();
         revalidate();
     }
