@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * <p>
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -55,11 +55,10 @@ public class AudioSearch implements ISearch {
         File file = new File(path);
         String criteriaFileName = audioCriteria.getFileName();
         String criteriaExtension = audioCriteria.getExtension();
-        String criteriAudioCodec = audioCriteria.getAudioCodec();
-        String criteriaDuration = Integer.toString(audioCriteria.getDuration());
-        String criteriaBitrate = Integer.toString(audioCriteria.getBitrate());
+        String criteriaAudioCodec = audioCriteria.getAudioCodec();
         String criteriaChannel = Integer.toString(audioCriteria.getChannel());
-        int criteriaSampleRate = audioCriteria.getSampleRate();
+        System.out.println(criteriaChannel);
+        System.out.println(criteriaAudioCodec);
         File[] allSubFiles = file.listFiles();
 
         for (File fileExtractor : allSubFiles) {
@@ -68,8 +67,7 @@ public class AudioSearch implements ISearch {
             } else {
                 String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
                 String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
-                String fileDuration = MetadataAudioExtractor.getDuration(fileExtractor);
-                String sampleRate = MetadataAudioExtractor.getSampleRate(fileExtractor);
+
                 String channel = MetadataAudioExtractor.getAudioChannel(fileExtractor);
 
                 Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
@@ -79,7 +77,8 @@ public class AudioSearch implements ISearch {
 
                 if (evaluateString(fileName, criteriaFileName)
                         && evaluateString(fileExtension, criteriaExtension)
-                        && evaluateString(channel, criteriaChannel)) {
+                      && evaluateString(channel, criteriaChannel)
+                ) {
                     CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                             fileExtension, false, false,
                             fileSize, creationDate, accessDate,
