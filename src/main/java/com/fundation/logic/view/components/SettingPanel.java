@@ -24,9 +24,10 @@ public class SettingPanel {
      * This method allows you to set GridBagLayout values.
      * @param component
      */
-    public void settingPanelAdvanceSearch(Container component) {
+    public void setPanel(Container component) {
         GridBagLayout gridBagLayout = new GridBagLayout();
-        gridBagLayout.columnWidths = new int[]{29, 246, 67, 0};
+        //gridBagLayout.columnWidths = new int[]{40, 40, 40, 40};
+        gridBagLayout.columnWidths = new int[]{5, 80, 80, 80, 80, 5};
         gridBagLayout.rowHeights = new int[]{23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
         gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};

@@ -8,8 +8,7 @@
  */
 package com.fundation.logic.view;
 
-import com.fundation.logic.view.components.BasicSearch;
-import com.fundation.logic.view.components.SplitPanelSearch;
+import com.fundation.logic.view.components.SearchSplitPanel;
 import com.fundation.logic.view.components.SplitPanelDate;
 
 import javax.swing.*;
@@ -21,38 +20,29 @@ import javax.swing.*;
  * @version 1.0
  */
 public class SearchTabs extends JTabbedPane {
-    private AdvancedSearchPanel panelAdvanced;
     private SearchVideoPanel panelGeneral;
     private GeneralSearchPanel generalSearchPanel;
     private LoadSavePanel loadSavePanel;
-    private final ConverterPanel panelConvert;
-    private BasicSearch basicSearch;
-    private SplitPanelSearch splitPanelSearch;
-
-    public SplitPanelDate getSplitPanelDate() {
-        return splitPanelDate;
-    }
-
-    private SplitPanelDate splitPanelDate;
+    private SearchSplitPanel splitPanelSearch;
+    private SplitPanelDate splitPanelSavedCriteria;
+    private SplitPanelConvert splitPanelConvert;
 
     /**
      * Initializes a SearchTabs instance for the search options
      */
     public SearchTabs() {
-
         generalSearchPanel = new GeneralSearchPanel();
         panelGeneral = new SearchVideoPanel();
         panelGeneral.initComponent();
-        basicSearch = new BasicSearch();
-        splitPanelSearch = new SplitPanelSearch();
-        splitPanelDate = new SplitPanelDate();
-        addTab("Search", null, splitPanelSearch, "Perform a general search");
+        splitPanelSearch = new SearchSplitPanel();
+        splitPanelSavedCriteria = new SplitPanelDate();
+        addTab("Search", null, splitPanelSearch, "Perform general and advance search");
 
         loadSavePanel = new LoadSavePanel();
-        addTab("Load/Save", null, splitPanelDate, "Load/Save searches");
+        addTab("Saved Criteria", null, splitPanelSavedCriteria, "Save and load criteria");
 
-        panelConvert = new ConverterPanel();
-        addTab("Converter", null, panelConvert, "Perform a video/audio convertion");
+        splitPanelConvert = new SplitPanelConvert();
+        addTab("Convert", null, splitPanelConvert, "Perform video/audio converts");
     }
 
     /**
@@ -73,7 +63,11 @@ public class SearchTabs extends JTabbedPane {
      * This method return the content splitPanelSearch.
      * @return splitPanelSearch.
      */
-    public SplitPanelSearch getSplitPanelSearch() {
+    public SearchSplitPanel getSplitPanelSearch() {
         return splitPanelSearch;
+    }
+
+    public SplitPanelDate getSplitPanelSavedCriteria() {
+        return splitPanelSavedCriteria;
     }
 }

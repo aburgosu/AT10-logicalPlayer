@@ -50,7 +50,7 @@ public class AdvancedVideoPanel extends JPanel {
      */
     public void initComponet() {
         settingPanel = new SettingPanel();
-        settingPanel.settingPanelAdvanceSearch(this);
+        settingPanel.setPanel(this);
         videoContentPanel();
     }
 
@@ -62,7 +62,7 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints gbc_lblCodecVideo = new GridBagConstraints();
         gbc_lblCodecVideo.anchor = GridBagConstraints.EAST;
         gbc_lblCodecVideo.insets = new Insets(0, 0, 5, 5);
-        gbc_lblCodecVideo.gridx = 0;
+        gbc_lblCodecVideo.gridx = 1;//0
         gbc_lblCodecVideo.gridy = 7;
         add(lblCodecVideo, gbc_lblCodecVideo);
 
@@ -72,7 +72,7 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints gbc_comboBoxVideoCodec = new GridBagConstraints();
         gbc_comboBoxVideoCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoCodec.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxVideoCodec.gridx = 1;
+        gbc_comboBoxVideoCodec.gridx = 2;//1
         gbc_comboBoxVideoCodec.gridy = 7;
         add(comboBoxVideoCodec, gbc_comboBoxVideoCodec);
 
@@ -80,7 +80,7 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints gbc_lblAudioCodecName = new GridBagConstraints();
         gbc_lblAudioCodecName.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodecName.insets = new Insets(0, 0, 5, 5);
-        gbc_lblAudioCodecName.gridx = 0;
+        gbc_lblAudioCodecName.gridx = 1;//0
         gbc_lblAudioCodecName.gridy = 8;
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
@@ -89,15 +89,15 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints textFiled_AudioCodecName = new GridBagConstraints();
         textFiled_AudioCodecName.insets = new Insets(0, 0, 5, 0);
         textFiled_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;
-        textFiled_AudioCodecName.gridx = 1;
+        textFiled_AudioCodecName.gridx = 2;//1
         textFiled_AudioCodecName.gridy = 8;
         add(comboBoxAudioCodecName, textFiled_AudioCodecName);
 
-        JLabel lblFramerate = new JLabel("Framerate: ");
+        JLabel lblFramerate = new JLabel("Frame rate: ");
         GridBagConstraints gbc_lblFramerate = new GridBagConstraints();
         gbc_lblFramerate.anchor = GridBagConstraints.EAST;
         gbc_lblFramerate.insets = new Insets(0, 0, 5, 5);
-        gbc_lblFramerate.gridx = 0;
+        gbc_lblFramerate.gridx = 1;//0
         gbc_lblFramerate.gridy = 10;
         add(lblFramerate, gbc_lblFramerate);
 
@@ -106,7 +106,7 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints gbc_comboBoxVideoFramerate = new GridBagConstraints();
         gbc_comboBoxVideoFramerate.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoFramerate.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxVideoFramerate.gridx = 1;
+        gbc_comboBoxVideoFramerate.gridx = 2;//1
         gbc_comboBoxVideoFramerate.gridy = 10;
         add(comboBoxVideoFramerate, gbc_comboBoxVideoFramerate);
 
@@ -114,7 +114,7 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints gbc_lblWidth = new GridBagConstraints();
         gbc_lblWidth.insets = new Insets(0, 0, 5, 5);
         gbc_lblWidth.anchor = GridBagConstraints.EAST;
-        gbc_lblWidth.gridx = 0;
+        gbc_lblWidth.gridx = 1;//0
         gbc_lblWidth.gridy = 11;
         add(lblResolution, gbc_lblWidth);
 
@@ -124,7 +124,7 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints gbc_comboBoxResolution = new GridBagConstraints();
         gbc_comboBoxResolution.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxResolution.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxResolution.gridx = 1;
+        gbc_comboBoxResolution.gridx = 2;//1
         gbc_comboBoxResolution.gridy = 11;
         add(comboBoxResolution, gbc_comboBoxResolution);
 
@@ -132,7 +132,7 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints gbc_lblDuration = new GridBagConstraints();
         gbc_lblDuration.anchor = GridBagConstraints.EAST;
         gbc_lblDuration.insets = new Insets(0, 0, 5, 5);
-        gbc_lblDuration.gridx = 0;
+        gbc_lblDuration.gridx = 1;//0
         gbc_lblDuration.gridy = 12;
         add(lblDuration, gbc_lblDuration);
 
@@ -140,7 +140,7 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints gbc_textField = new GridBagConstraints();
         gbc_textField.insets = new Insets(0, 0, 5, 0);
         gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textField.gridx = 1;
+        gbc_textField.gridx = 2;//1
         gbc_textField.gridy = 12;
         add(textFieldDurationFirst, gbc_textField);
         textFieldDurationFirst.setColumns(5);
@@ -149,7 +149,7 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints gbc_textFieldHeight = new GridBagConstraints();
         gbc_textFieldHeight.insets = new Insets(0, 0, 5, 0);
         gbc_textFieldHeight.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldHeight.gridx = 1;
+        gbc_textFieldHeight.gridx = 2;//1
         gbc_textFieldHeight.gridy = 13;
         add(textFieldDurationsSecond, gbc_textFieldHeight);
         textFieldDurationsSecond.setColumns(5);
@@ -158,7 +158,7 @@ public class AdvancedVideoPanel extends JPanel {
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.anchor = GridBagConstraints.EAST;
         gbc_btnSearch.gridwidth = 2;
-        gbc_btnSearch.gridx = 0;
+        gbc_btnSearch.gridx = 1;
         gbc_btnSearch.gridy = 14;
         add(btnSearchAdvanceVideoPanel, gbc_btnSearch);
     }

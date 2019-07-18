@@ -12,9 +12,9 @@ package com.fundation.logic.controller;
 import com.fundation.logic.model.*;
 import com.fundation.logic.model.criteria.*;
 import com.fundation.logic.view.SearchVideoFrame;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -59,6 +59,7 @@ public class Controller {
             search = new ImageSearch((Image) criteria);
         }
         List<File> foundFiles = search.search();
+        System.out.println(foundFiles.size());
         return foundFiles;
     }
 
@@ -89,6 +90,8 @@ public class Controller {
                 Date creationDate = foundFiles.get(index).getCreationDate();
                 Date modificationDate = foundFiles.get(index).getModificationDate();
                 Date lastAccessDate = foundFiles.get(index).getAccessDate();
+
+                System.out.println("show");
                 this.searchFrame.getTableResult().addResult(path, name, extension, size, creationDate,
                         modificationDate, lastAccessDate, "---");
             }
@@ -277,12 +280,12 @@ public class Controller {
     }
 
     public void showLoadSaveData(){
-        searchFrame.getSearchTabs().getSplitPanelDate().getLoadSavePanel().clearTableResult();
+        searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().clearTableResult();
         List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();
         for (int index = 0; index < registers.size(); index++) {
             String name = registers.get(index).getName();
             String date = registers.get(index).getDate();
-            searchFrame.getSearchTabs().getSplitPanelDate().getLoadSavePanel().addRegister(name,date);
+            searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name,date);
         }
     }
 }

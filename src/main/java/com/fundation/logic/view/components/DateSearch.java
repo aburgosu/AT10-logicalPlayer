@@ -40,17 +40,16 @@ public class DateSearch extends JPanel {
      * This method initializes the content of Basic Search and also sets it.
      */
     public void dateSearchInitializer() {
-
         settingPanel = new SettingPanel();
-        settingPanel.settingPanelAdvanceSearch(this);
+        settingPanel.setPanel(this);
         contentBasicSearch();
     }
 
     /**
-     * This method is responsible for displaying the content of BasicSearch.
+     * This method is responsible for displaying the content of BasicSearchPanel.
      */
     private void contentBasicSearch() {
-        JLabel title = new JLabel("Search by Date");
+        JLabel title = new JLabel("Search criteria");
         title.setFont(new Font("Tahoma", Font.BOLD, 14));
         GridBagConstraints gbc_lblVideo = new GridBagConstraints();
         gbc_lblVideo.gridwidth = 3;
@@ -59,11 +58,11 @@ public class DateSearch extends JPanel {
         gbc_lblVideo.gridy = 0;
         add(title, gbc_lblVideo);
 
-        JLabel lblPath = new JLabel("First Date: ");
+        JLabel lblPath = new JLabel("Date saved: ");
         GridBagConstraints gbc_lblPath = new GridBagConstraints();
         gbc_lblPath.anchor = GridBagConstraints.EAST;
         gbc_lblPath.insets = new Insets(0, 0, 5, 5);
-        gbc_lblPath.gridx = 0;
+        gbc_lblPath.gridx = 1;
         gbc_lblPath.gridy = 1;
         add(lblPath, gbc_lblPath);
 
@@ -71,10 +70,10 @@ public class DateSearch extends JPanel {
         GridBagConstraints gbc_FieldToDateCreation = new GridBagConstraints();
         gbc_FieldToDateCreation.insets = new Insets(0, 0, 5, 5);
         gbc_FieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
-        gbc_FieldToDateCreation.gridx = 1;
+        gbc_FieldToDateCreation.gridx = 2;
         gbc_FieldToDateCreation.gridy = 1;
         add(fieldDateFirstDate, gbc_FieldToDateCreation);
-
+/*
         JLabel lblFileName = new JLabel("Second Date: ");
         GridBagConstraints gbc_lblTittle = new GridBagConstraints();
         gbc_lblTittle.anchor = GridBagConstraints.EAST;
@@ -83,12 +82,14 @@ public class DateSearch extends JPanel {
         gbc_lblTittle.gridy = 2;
         add(lblFileName, gbc_lblTittle);
 
+ */
+
         fieldDateSecondDate = new JDateChooser();
         GridBagConstraints gbc_FieldToDateSecondDate = new GridBagConstraints();
         gbc_FieldToDateSecondDate.insets = new Insets(0, 0, 5, 5);
         gbc_FieldToDateSecondDate.fill = GridBagConstraints.HORIZONTAL;
-        gbc_FieldToDateSecondDate.gridx = 1;
-        gbc_FieldToDateSecondDate.gridy = 2;
+        gbc_FieldToDateSecondDate.gridx = 3;
+        gbc_FieldToDateSecondDate.gridy = 1;
         add(fieldDateSecondDate, gbc_FieldToDateSecondDate);
 
         btnFilterByDate = new JButton("Filter");

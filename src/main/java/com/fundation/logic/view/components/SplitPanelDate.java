@@ -20,8 +20,6 @@ import javax.swing.JSplitPane;
  * @version 1.0
  */
 public class SplitPanelDate extends JPanel {
-
-
     private LoadSavePanel loadSavePanel;
 
     /**

@@ -47,7 +47,7 @@ public class AdvancedAudioPanel extends JPanel {
      */
     public void initComponent() {
         settingPanel = new SettingPanel();
-        settingPanel.settingPanelAdvanceSearch(this);
+        settingPanel.setPanel(this);
         audioContentPanel();
     }
 
@@ -59,7 +59,7 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_lblAudioCodecName = new GridBagConstraints();
         gbc_lblAudioCodecName.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodecName.insets = new Insets(0, 0, 5, 5);
-        gbc_lblAudioCodecName.gridx = 0;
+        gbc_lblAudioCodecName.gridx = 1;//0
         gbc_lblAudioCodecName.gridy = 7;
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
@@ -68,7 +68,7 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints comboBox_AudioCodecName = new GridBagConstraints();
         comboBox_AudioCodecName.insets = new Insets(0, 0, 5, 0);
         comboBox_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;
-        comboBox_AudioCodecName.gridx = 1;
+        comboBox_AudioCodecName.gridx = 2;//1
         comboBox_AudioCodecName.gridy = 7;
         add(comboBoxAudioCodecName, comboBox_AudioCodecName);
 
@@ -76,7 +76,7 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_lblAudioChannel = new GridBagConstraints();
         gbc_lblAudioChannel.anchor = GridBagConstraints.EAST;
         gbc_lblAudioChannel.insets = new Insets(0, 0, 5, 5);
-        gbc_lblAudioChannel.gridx = 0;
+        gbc_lblAudioChannel.gridx = 1;//0
         gbc_lblAudioChannel.gridy = 8;
         add(lblAudioChanel, gbc_lblAudioChannel);
 
@@ -85,7 +85,7 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_comboBoxAudioChannel = new GridBagConstraints();
         gbc_comboBoxAudioChannel.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioChannel.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxAudioChannel.gridx = 1;
+        gbc_comboBoxAudioChannel.gridx = 2;//1
         gbc_comboBoxAudioChannel.gridy = 8;
         add(comboBoxAudioChannel, gbc_comboBoxAudioChannel);
 
@@ -93,7 +93,7 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_lblAudioSampleRate = new GridBagConstraints();
         gbc_lblAudioSampleRate.insets = new Insets(0, 0, 5, 5);
         gbc_lblAudioSampleRate.anchor = GridBagConstraints.EAST;
-        gbc_lblAudioSampleRate.gridx = 0;
+        gbc_lblAudioSampleRate.gridx = 1;//0
         gbc_lblAudioSampleRate.gridy = 9;
         add(lblAudioSampleRate, gbc_lblAudioSampleRate);
 
@@ -102,7 +102,7 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_comboBoxAudioSampleRate = new GridBagConstraints();
         gbc_comboBoxAudioSampleRate.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioSampleRate.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxAudioSampleRate.gridx = 1;
+        gbc_comboBoxAudioSampleRate.gridx = 2;//1
         gbc_comboBoxAudioSampleRate.gridy = 9;
         add(comboBoxAudioSampleRate, gbc_comboBoxAudioSampleRate);
 
@@ -110,7 +110,7 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_lblDuration = new GridBagConstraints();
         gbc_lblDuration.anchor = GridBagConstraints.EAST;
         gbc_lblDuration.insets = new Insets(0, 0, 5, 5);
-        gbc_lblDuration.gridx = 0;
+        gbc_lblDuration.gridx = 1; //0
         gbc_lblDuration.gridy = 10;
         add(lblDuration, gbc_lblDuration);
 
@@ -118,7 +118,7 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_textFieldDurationFirst = new GridBagConstraints();
         gbc_textFieldDurationFirst.insets = new Insets(0, 0, 5, 0);
         gbc_textFieldDurationFirst.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldDurationFirst.gridx = 1;
+        gbc_textFieldDurationFirst.gridx = 2;//1
         gbc_textFieldDurationFirst.gridy = 10;
         add(textFieldDurationFirst, gbc_textFieldDurationFirst);
 
@@ -126,14 +126,14 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_textFieldDurationSecond = new GridBagConstraints();
         gbc_textFieldDurationSecond.insets = new Insets(0, 0, 5, 0);
         gbc_textFieldDurationSecond.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldDurationSecond.gridx = 1;
+        gbc_textFieldDurationSecond.gridx = 2;//1
         gbc_textFieldDurationSecond.gridy = 11;
         add(textFieldDurationSecond, gbc_textFieldDurationSecond);
 
         btnSearchAdvanceAudio = new JButton("Search");
         GridBagConstraints gbc_btnSearchAdvanceAudio = new GridBagConstraints();
         gbc_btnSearchAdvanceAudio.anchor = GridBagConstraints.EAST;
-        gbc_btnSearchAdvanceAudio.gridx = 1;
+        gbc_btnSearchAdvanceAudio.gridx = 2;//0
         gbc_btnSearchAdvanceAudio.gridy = 12;
         add(btnSearchAdvanceAudio, gbc_btnSearchAdvanceAudio);
     }

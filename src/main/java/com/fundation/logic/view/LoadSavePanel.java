@@ -24,7 +24,8 @@ public class LoadSavePanel extends JPanel {
      */
     public LoadSavePanel() {
         GridBagLayout gridBagLayout = new GridBagLayout();
-        gridBagLayout.columnWidths = new int[]{121, 70, 0, 70, 0, 70, 91, 0};
+        //gridBagLayout.columnWidths = new int[]{70, 70, 0, 70, 0, 70, 91, 0};
+        gridBagLayout.columnWidths = new int[]{40, 40, 40, 40};
         gridBagLayout.rowHeights = new int[]{0, 0, 0};
         gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gridBagLayout.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
