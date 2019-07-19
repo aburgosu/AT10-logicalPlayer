@@ -16,9 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+import java.awt.*;
 
 /**
  * Implements the GeneralSearch Panel.
@@ -46,6 +44,8 @@ public class GeneralSearchPanel extends JPanel {
      * Initializes a SearchTabs instance for the search options
      */
     public GeneralSearchPanel() {
+        Color newColor = new Color(81, 209, 246);
+        setBackground(newColor);
         GridBagLayout gridBagLayout = new GridBagLayout();
         //gridBagLayout.columnWidths = new int[]{40, 40, 40, 40};
         gridBagLayout.columnWidths = new int[]{5, 80, 80, 80, 80, 5};

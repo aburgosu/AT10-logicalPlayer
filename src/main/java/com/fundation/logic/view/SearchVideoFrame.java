@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
+import java.awt.*;
 
 /**
  * Implements the SearchVideoFrame class
@@ -35,7 +35,8 @@ public class SearchVideoFrame extends JFrame {
      * This method init all component
      */
     public void initComponent() {
-
+        Color newColor = new Color(81, 209, 246);
+        this.setBackground( newColor );
         mainContentPanel = new JPanel();
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));

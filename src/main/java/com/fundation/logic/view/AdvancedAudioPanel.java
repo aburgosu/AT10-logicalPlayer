@@ -11,14 +11,11 @@ package com.fundation.logic.view;
 
 import com.fundation.logic.view.components.SettingPanel;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * This class allows you to display content related to the audio.
@@ -130,11 +127,27 @@ public class AdvancedAudioPanel extends JPanel {
         gbc_textFieldDurationSecond.gridy = 11;
         add(textFieldDurationSecond, gbc_textFieldDurationSecond);
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 1);
+        SpinnerDateModel minuteSpinnerModel = new SpinnerDateModel();
+        minuteSpinnerModel.setValue(calendar.getTime());
+        JSpinner minuteSpinner = new JSpinner(minuteSpinnerModel);
+        JSpinner.DateEditor de = new JSpinner.DateEditor(minuteSpinner, "hh:mm:ss");
+        de.getTextField().setEditable(false);
+        minuteSpinner.setEditor(de);
+        GridBagConstraints gbc_spinner = new GridBagConstraints();
+        gbc_spinner.anchor = GridBagConstraints.EAST;
+        gbc_spinner.gridx = 2;//0
+        gbc_spinner.gridy = 12;
+        add(minuteSpinner, gbc_spinner);
+
         btnSearchAdvanceAudio = new JButton("Search");
         GridBagConstraints gbc_btnSearchAdvanceAudio = new GridBagConstraints();
         gbc_btnSearchAdvanceAudio.anchor = GridBagConstraints.EAST;
         gbc_btnSearchAdvanceAudio.gridx = 2;//0
-        gbc_btnSearchAdvanceAudio.gridy = 12;
+        gbc_btnSearchAdvanceAudio.gridy = 13;
         add(btnSearchAdvanceAudio, gbc_btnSearchAdvanceAudio);
     }
 

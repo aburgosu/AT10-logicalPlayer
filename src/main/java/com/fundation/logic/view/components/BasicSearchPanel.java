@@ -14,11 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JFileChooser;
 import javax.swing.JButton;
-import java.awt.GridBagConstraints;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Insets;
 
 /**
  * This class is in charge of displaying Path, filename and type information.
@@ -81,6 +79,8 @@ public class BasicSearchPanel extends JPanel {
         textFieldPath.setColumns(5);
 
         JButton btnBrowsePath = new JButton("Browse");
+        Color newColor = new Color(81, 209, 246);
+        btnBrowsePath.setBackground(newColor);
         btnBrowsePath.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 JFileChooser folderChooser = new JFileChooser();
