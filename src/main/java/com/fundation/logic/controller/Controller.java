@@ -154,7 +154,7 @@ public class Controller {
             owner = null;
         }
         String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimetype().getSelectedItem().toString();
-        if(mimeType == "ALL") {
+        if(mimeType == "All") {
             mimeType = null;
         }
         boolean fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
@@ -175,6 +175,22 @@ public class Controller {
         criteria.setCriteriaModificationDateMax(dateModificationTo);
         criteria.setCriteriaOwner(owner);
         criteria.setCriteriaMimeType(mimeType);
+        System.out.println(criteria.getPath());
+        System.out.println(criteria.getFileName());
+        System.out.println(criteria.getExtension());
+        System.out.println(criteria.getCriteriaFileHidden());
+        System.out.println(criteria.getCriteriaFileReadOnly());
+        System.out.println(criteria.getCriteriaSizeMin());
+        System.out.println(criteria.getCriteriaSizeMax());
+        System.out.println(criteria.getCriteriaCreationDateMin());
+        System.out.println(criteria.getCriteriaCreationDateMax());
+        System.out.println(criteria.getCriteriaModificationDateMin());
+        System.out.println(criteria.getCriteriaModificationDateMax());
+        System.out.println(criteria.getCriteriaAccessDateMin());
+        System.out.println(criteria.getCriteriaAccessDateMax());
+        System.out.println(criteria.getCriteriaOwner());
+        System.out.println(criteria.getCriteriaMimeType());
+
         return criteria;
     }
 
