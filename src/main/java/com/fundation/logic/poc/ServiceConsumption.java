@@ -9,7 +9,7 @@ public class ServiceConsumption {
     public static void main(String[] args) {
         try {
 
-            URL url = new URL("http://172.20.16.17");
+            URL url = new URL("http://172.20.16.15");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
