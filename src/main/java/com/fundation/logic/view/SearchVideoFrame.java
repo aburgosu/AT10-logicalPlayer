@@ -9,12 +9,9 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
+import java.awt.*;
 
 /**
  * Implements the SearchVideoFrame class
@@ -79,5 +76,18 @@ public class SearchVideoFrame extends JFrame {
      */
     public SearchTabs getSearchTabs() {
         return searchTabs;
+    }
+
+    public void showPopupMessage(String messageTittle, String messageText) {
+        JDialog message = new JDialog(this, messageTittle);
+        message.setBounds(50,200,350,150);
+        message.setSize(350, 120);
+        JPanel messageTextPanel = new JPanel();
+        JLabel text = new JLabel(messageText);
+        text.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        text.setForeground(Color.red);
+        messageTextPanel.add(text, SwingConstants.CENTER );
+        message.add(messageTextPanel, BorderLayout.CENTER);
+        message.setVisible(true);
     }
 }
