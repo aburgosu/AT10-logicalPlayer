@@ -15,7 +15,7 @@
   * @authors Andres Burgos, Jesus Menacho, Melissa Román
   * @version 1.0
   */
- public class Criteria {
+ public abstract class Criteria {
      private String path;
      private String fileName;
      private String extension;
@@ -62,4 +62,10 @@
          return fileName;
      }
 
+     /**
+      * Equals override to be implemented in subclasses.
+      * @param criteria - Criteria to be compare with.
+      * @return True if two criteria are equal.
+      */
+     public abstract boolean equals(Criteria criteria);
  }

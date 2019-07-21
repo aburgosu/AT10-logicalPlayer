@@ -198,4 +198,31 @@ public class Common extends Criteria {
     public String getCriteriaMimeType() {
         return criteriaMimeType;
     }
+
+    /**
+     * Equals override to compare two common criteria.
+     * @param criteria - Criteria to be compare with.
+     * @return True if two criteria are equal.
+     */
+    public boolean equals(Criteria criteria) {
+            Common commonCriteria = (Common) criteria;
+            if(this.getPath().equals(commonCriteria.getPath()) &&
+                    this.getFileName().equals(commonCriteria.getFileName()) &&
+                    this.getExtension().equals(commonCriteria.getExtension()) &&
+                    this.criteriaFileHidden.equals(commonCriteria.criteriaFileHidden) &&
+                    this.criteriaFileReadOnly.equals(commonCriteria.criteriaFileReadOnly) &&
+                    this.criteriaSizeMin.equals(commonCriteria.criteriaSizeMin) &&
+                    this.criteriaSizeMax.equals(commonCriteria.criteriaSizeMax) &&
+                    this.criteriaCreationDateMin.equals(commonCriteria.criteriaCreationDateMin) &&
+                    this.criteriaCreationDateMax.equals(commonCriteria.criteriaCreationDateMax) &&
+                    this.criteriaAccessDateMin.equals(commonCriteria.criteriaAccessDateMin) &&
+                    this.criteriaAccessDateMax.equals(commonCriteria.criteriaAccessDateMax) &&
+                    this.criteriaModificationDateMin.equals(commonCriteria.criteriaModificationDateMin) &&
+                    this.criteriaModificationDateMax.equals(commonCriteria.criteriaModificationDateMax) &&
+                    this.criteriaOwner.equals(commonCriteria.criteriaOwner) &&
+                    this.criteriaMimeType.equals(commonCriteria.criteriaMimeType)) {
+                return true;
+            }
+        return false;
+    }
 }

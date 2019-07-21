@@ -1,4 +1,4 @@
-package com.fundation.logic.view;
+package com.fundation.logic.view.loadSaveCriteria;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.util.Date;
 
 /**
  * Implements the tab of LoadSave Panel.
@@ -24,15 +23,15 @@ public class LoadSavePanel extends JPanel {
      */
     public LoadSavePanel() {
         GridBagLayout gridBagLayout = new GridBagLayout();
-        gridBagLayout.columnWidths = new int[]{121, 70, 0, 70, 0, 70, 91, 0};
+        gridBagLayout.columnWidths = new int[]{40, 40, 40, 40};
         gridBagLayout.rowHeights = new int[]{0, 0, 0};
         gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gridBagLayout.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
         setLayout(gridBagLayout);
 
         dataTable = new JTable();
-        model = new DefaultTableModel(new Object[] {"NAME","DATE"}, 0);
-        model.addRow(new Object[]{"NAME","DATE"});
+        model = new DefaultTableModel(new Object[] {"Name","Date"}, 0);
+        model.addRow(new Object[]{"Name","Date"});
         dataTable.setModel(model);
         GridBagConstraints gbc_table = new GridBagConstraints();
         gbc_table.gridwidth = 7;
@@ -81,7 +80,7 @@ public class LoadSavePanel extends JPanel {
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
-        model.addRow(new Object[]{"NAME", "DATE"});
+        model.addRow(new Object[]{"Name", "Date"});
         model.fireTableDataChanged();
         revalidate();
     }

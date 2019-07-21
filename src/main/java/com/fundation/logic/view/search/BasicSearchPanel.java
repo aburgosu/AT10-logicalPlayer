@@ -7,18 +7,21 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view.components;
+package com.fundation.logic.view.search;
+
+import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JFileChooser;
 import javax.swing.JButton;
-import java.awt.GridBagConstraints;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Insets;
 
 /**
  * This class is in charge of displaying Path, filename and type information.
@@ -26,16 +29,16 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class BasicSearch extends JPanel {
+public class BasicSearchPanel extends JPanel {
     private JTextField textFieldPath;
     private JTextField textFileName;
     private JTextField textFieldFileType;
-    private SettingPanel settingPanel;
+    private PanelSetter settingPanel;
 
     /**
      *  The constructor let it initializer.
      */
-    public BasicSearch() {
+    public BasicSearchPanel() {
         basicSearchInitializer();
     }
 
@@ -43,42 +46,46 @@ public class BasicSearch extends JPanel {
      * This method initializes the basic search content and sets the panel.
      */
     public void basicSearchInitializer() {
-        settingPanel = new SettingPanel();
-        settingPanel.settingPanelAdvanceSearch(this);
+        settingPanel = new PanelSetter();
+        settingPanel.setPanel(this);
         contentBasicSearch();
     }
 
     /**
-     * This method displays Basic Search content on the screen.
+     * This method displays Basic search content on the screen.
      */
     private void contentBasicSearch() {
-        JLabel title = new JLabel("File Search");
+        JLabel title = new JLabel("Search");
         title.setFont(new Font("Tahoma", Font.BOLD, 14));
         GridBagConstraints gbc_lblVideo = new GridBagConstraints();
-        gbc_lblVideo.gridwidth = 3;
-        gbc_lblVideo.insets = new Insets(0, 0, 5, 0);
-        gbc_lblVideo.gridx = 0;
+        gbc_lblVideo.gridwidth = 6;
+        gbc_lblVideo.insets = new Insets(5, 5, 5, 5);
+        gbc_lblVideo.gridx = 0;//3
         gbc_lblVideo.gridy = 0;
         add(title, gbc_lblVideo);
 
         JLabel lblPath = new JLabel("Path: ");
         GridBagConstraints gbc_lblPath = new GridBagConstraints();
         gbc_lblPath.anchor = GridBagConstraints.EAST;
-        gbc_lblPath.insets = new Insets(0, 0, 5, 5);
-        gbc_lblPath.gridx = 0;
+        gbc_lblPath.insets = new Insets(0, 5, 5, 5);
+        gbc_lblPath.gridx = 1;//0
         gbc_lblPath.gridy = 1;
         add(lblPath, gbc_lblPath);
 
         textFieldPath = new JTextField();
         GridBagConstraints gbc_textFieldPath = new GridBagConstraints();
-        gbc_textFieldPath.insets = new Insets(0, 0, 5, 0);
+        gbc_textFieldPath.gridwidth = 2;
+        gbc_textFieldPath.insets = new Insets(0, 0, 5, 10);
         gbc_textFieldPath.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldPath.gridx = 1;
+        gbc_textFieldPath.gridx = 2;//1
         gbc_textFieldPath.gridy = 1;
+        //textFieldPath.setEditable(false);
         add(textFieldPath, gbc_textFieldPath);
-        textFieldPath.setColumns(10);
+        textFieldPath.setColumns(5);
 
         JButton btnBrowsePath = new JButton("Browse");
+        Color newColor = new Color(81, 209, 246);
+        btnBrowsePath.setBackground(newColor);
         btnBrowsePath.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 JFileChooser folderChooser = new JFileChooser();
@@ -91,45 +98,46 @@ public class BasicSearch extends JPanel {
         });
 
         GridBagConstraints gbc_btnBrowsePath = new GridBagConstraints();
-        gbc_btnBrowsePath.insets = new Insets(0, 0, 5, 0);
+        gbc_btnBrowsePath.insets = new Insets(0, 0, 5, 10);
         gbc_btnBrowsePath.anchor = GridBagConstraints.NORTHWEST;
-        gbc_btnBrowsePath.gridx = 2;
+        gbc_btnBrowsePath.gridx = 4;//2
         gbc_btnBrowsePath.gridy = 1;
         add(btnBrowsePath, gbc_btnBrowsePath);
 
-        JLabel lblFileName = new JLabel("File Name: ");
+        JLabel lblFileName = new JLabel("Name: ");
         GridBagConstraints gbc_lblTittle = new GridBagConstraints();
         gbc_lblTittle.anchor = GridBagConstraints.EAST;
-        gbc_lblTittle.insets = new Insets(0, 0, 5, 5);
-        gbc_lblTittle.gridx = 0;
+        gbc_lblTittle.insets = new Insets(0, 5, 5, 5);
+        gbc_lblTittle.gridx = 1; //0
         gbc_lblTittle.gridy = 2;
         add(lblFileName, gbc_lblTittle);
 
         textFileName = new JTextField();
         GridBagConstraints gbc_textFieldTittle = new GridBagConstraints();
-        gbc_textFieldTittle.insets = new Insets(0, 0, 5, 0);
+        gbc_textFieldTittle.gridwidth = 2;
+        gbc_textFieldTittle.insets = new Insets(0, 0, 5, 10);
         gbc_textFieldTittle.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldTittle.gridx = 1;
+        gbc_textFieldTittle.gridx = 2; //1
         gbc_textFieldTittle.gridy = 2;
         add(textFileName, gbc_textFieldTittle);
-        textFileName.setColumns(10);
+        textFileName.setColumns(5);
 
-        JLabel lblExtension = new JLabel("File Extension: ");
+        JLabel lblExtension = new JLabel("Extension: ");
         GridBagConstraints gbc_lblFileType = new GridBagConstraints();
         gbc_lblFileType.anchor = GridBagConstraints.EAST;
-        gbc_lblFileType.insets = new Insets(0, 0, 5, 5);
-        gbc_lblFileType.gridx = 0;
+        gbc_lblFileType.insets = new Insets(0, 10, 5, 5);
+        gbc_lblFileType.gridx = 1; //0
         gbc_lblFileType.gridy = 3;
         add(lblExtension, gbc_lblFileType);
 
         textFieldFileType = new JTextField();
         GridBagConstraints gbc_textFieldFileExtension = new GridBagConstraints();
-        gbc_textFieldFileExtension.insets = new Insets(0, 0, 5, 0);
+        gbc_textFieldFileExtension.insets = new Insets(0, 0, 5, 10);
         gbc_textFieldFileExtension.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldFileExtension.gridx = 1;
+        gbc_textFieldFileExtension.gridx = 2;//1
         gbc_textFieldFileExtension.gridy = 3;
         add(textFieldFileType, gbc_textFieldFileExtension);
-        textFieldFileType.setColumns(10);
+        textFieldFileType.setColumns(5);
     }
 
     /**

@@ -9,12 +9,22 @@
  */
 package com.fundation.logic.controller;
 
-import com.fundation.logic.model.*;
-import com.fundation.logic.model.criteria.*;
-import com.fundation.logic.view.SearchVideoFrame;
+import com.fundation.logic.model.AudioSearch;
+import com.fundation.logic.model.CommonSearch;
+import com.fundation.logic.model.CriteriaRecord;
+import com.fundation.logic.model.CustomizedFile;
+import com.fundation.logic.model.ISearch;
+import com.fundation.logic.model.ImageSearch;
+import com.fundation.logic.model.QueryForCriteria;
+import com.fundation.logic.model.VideoSearch;
+import com.fundation.logic.model.criteria.Audio;
+import com.fundation.logic.model.criteria.Common;
+import com.fundation.logic.model.criteria.Criteria;
+import com.fundation.logic.model.criteria.Image;
+import com.fundation.logic.model.criteria.Video;
+import com.fundation.logic.view.MainFrame;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +36,7 @@ import java.util.List;
  */
 public class Controller {
     private ISearch search;
-    private SearchVideoFrame searchFrame;
+    private MainFrame searchFrame;
     private QueryForCriteria queryCriteria;
 
     private final int COMMON_SEARCH = 0;
@@ -37,7 +47,7 @@ public class Controller {
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
      */
-    public Controller(SearchVideoFrame searchFrame) {
+    public Controller(MainFrame searchFrame) {
         this.searchFrame = searchFrame;
         queryCriteria = new QueryForCriteria();
     }
@@ -63,7 +73,7 @@ public class Controller {
     }
 
     /**
-     * show the result in the table
+     * Shows the result in the table
      */
     public void showSearchResult(int searchType) {
         List<CustomizedFile> foundFiles = null;
@@ -150,8 +160,8 @@ public class Controller {
         if (owner.length() == 0) {
             owner = null;
         }
-        String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimetype().getSelectedItem().toString();
-        if(mimeType == "ALL") {
+        String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimeType().getSelectedItem().toString();
+        if(mimeType == "All") {
             mimeType = null;
         }
         boolean fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
@@ -172,6 +182,7 @@ public class Controller {
         criteria.setCriteriaModificationDateMax(dateModificationTo);
         criteria.setCriteriaOwner(owner);
         criteria.setCriteriaMimeType(mimeType);
+
         return criteria;
     }
 
@@ -236,7 +247,7 @@ public class Controller {
         if (audioCodec.length() == 0) {
             audioCodec = null;
         }
-        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoFramerate().getSelectedItem().toString());
+        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoFrameRate().getSelectedItem().toString());
         if (framerate.length() == 0) {
             framerate = null;
         }
@@ -276,13 +287,13 @@ public class Controller {
         });
     }
 
-    public void showLoadSaveData(){
-        searchFrame.getSearchTabs().getSplitPanelDate().getLoadSavePanel().clearTableResult();
+    public void showLoadSaveData() {
+        searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().clearTableResult();
         List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();
         for (int index = 0; index < registers.size(); index++) {
             String name = registers.get(index).getName();
             String date = registers.get(index).getDate();
-            searchFrame.getSearchTabs().getSplitPanelDate().getLoadSavePanel().addRegister(name,date);
+            searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name,date);
         }
     }
 }

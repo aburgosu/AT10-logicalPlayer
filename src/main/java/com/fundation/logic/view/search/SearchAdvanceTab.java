@@ -1,19 +1,20 @@
 /**
  * Copyright (c) 2019 Jalasoft.
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.search;
 
 import javax.swing.JTabbedPane;
 
 /**
  * Implements the tabs of different options.
  *
- * @author Jesus Menacho
+ * @author Jesus Menacho, Melissa Román
  * @version 1.0
  */
 public class SearchAdvanceTab extends JTabbedPane {
@@ -23,17 +24,17 @@ public class SearchAdvanceTab extends JTabbedPane {
     private AdvancedAudioPanel panelAudioAdvanced;
 
     /**
-     * Initializes a SearchTabs instance for the search options.
+     * Initializes a MainTabs instance for the search options.
      */
     public SearchAdvanceTab() {
         generalSearchPanel = new GeneralSearchPanel();
-        addTab("General",null, generalSearchPanel,"Search general");
-        panelVideoAdvanced = new AdvancedVideoPanel();
-        addTab("Video ", null, panelVideoAdvanced, "Search advance Video");
+        addTab("General",null, generalSearchPanel,"General search");
         panelImageAdvanced = new AdvancedImagePanel();
-        addTab("Image ", null, panelImageAdvanced, "Search advance Image");
+        addTab("Image ", null, panelImageAdvanced, "Advance image search");
         panelAudioAdvanced = new AdvancedAudioPanel();
-        addTab("Audio ", null, panelAudioAdvanced, "Audio");
+        addTab("Audio ", null, panelAudioAdvanced, "Advance audio search");
+        panelVideoAdvanced = new AdvancedVideoPanel();
+        addTab("Video ", null, panelVideoAdvanced, "Advance video search");
     }
 
     /**

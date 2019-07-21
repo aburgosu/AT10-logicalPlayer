@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.resultTable;
 
 import com.fundation.logic.common.FileInfo;
 
@@ -40,7 +40,7 @@ public class PopupMenu extends JPopupMenu {
         }
         detailsItem = new JMenuItem("Details");
         add(detailsItem);
-        convertItem = new JMenuItem("Convert");
+        convertItem = new JMenuItem("convert");
         add(convertItem);
         initItemMenuListener();
     }
@@ -49,14 +49,18 @@ public class PopupMenu extends JPopupMenu {
      * Initializes item menu listener.
      */
     public void initItemMenuListener(){
-        playItem.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getButton() == MouseEvent.BUTTON1) {
-                    PlayerFrame playerWindow = new PlayerFrame(filePath);
-                    playerWindow.setVisible(true);
+        try {
+            playItem.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (e.getButton() == MouseEvent.BUTTON1) {
+                        PlayerFrame playerWindow = new PlayerFrame(filePath);
+                        playerWindow.setVisible(true);
+                    }
                 }
-            }
-        });
+            });
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 }

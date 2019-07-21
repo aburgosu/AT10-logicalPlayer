@@ -9,7 +9,10 @@
  */
 package com.fundation.logic.view;
 
+import com.fundation.logic.view.resultTable.TableResult;
+
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JScrollPane;
@@ -21,19 +24,18 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Color;
 
-
 /**
- * Implements the SearchVideoFrame class
+ * Implements the MainFrame class
  *
  * @author John Salazar Pinto, Melissa Román
  * @version 1.0
  */
-public class SearchVideoFrame extends JFrame {
+public class MainFrame extends JFrame {
     JPanel mainContentPanel;
-    private SearchTabs searchTabs;
+    private MainTabs searchTabs;
     private TableResult tableResult;
 
-    public SearchVideoFrame() {
+    public MainFrame() {
         initSetting();
     }
 
@@ -41,7 +43,11 @@ public class SearchVideoFrame extends JFrame {
      * This method init all component
      */
     public void initComponent() {
-
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
         mainContentPanel = new JPanel();
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));
@@ -56,7 +62,7 @@ public class SearchVideoFrame extends JFrame {
         tableScrollPanel.add(tableResult);
         mainSplitPanel.setRightComponent(tableResult);
 
-        searchTabs = new SearchTabs();
+        searchTabs = new MainTabs();
         mainSplitPanel.setLeftComponent(searchTabs);
     }
 
@@ -81,9 +87,9 @@ public class SearchVideoFrame extends JFrame {
     }
 
     /**
-     * This method return the SearchTabs
+     * This method return the MainTabs
      */
-    public SearchTabs getSearchTabs() {
+    public MainTabs getSearchTabs() {
         return searchTabs;
     }
 

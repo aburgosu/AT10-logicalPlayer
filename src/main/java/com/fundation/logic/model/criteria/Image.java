@@ -61,4 +61,24 @@ public class Image extends Criteria {
     public void setColorSpaceData(String colorSpaceData) {
         this.colorSpaceData = colorSpaceData;
     }
+
+    /**
+     * Equals override to compare two image criteria.
+     * @param criteria - Criteria to be compare with.
+     * @return True if two criteria are equal.
+     */
+    public boolean equals(Criteria criteria) {
+        try {
+            Image imageCriteria = (Image) criteria;
+            if(this.getPath().equals(imageCriteria.getPath()) && this.getFileName().equals(imageCriteria.getFileName())
+                    && this.getExtension().equals(imageCriteria.getExtension()) &&
+                    this.width == imageCriteria.width && this.height == imageCriteria.height &&
+                    this.colorSpaceData.equals(imageCriteria.colorSpaceData)) {
+                return true;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return false;
+    }
 }

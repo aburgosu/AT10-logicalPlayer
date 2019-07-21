@@ -7,33 +7,35 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.components.SettingPanel;
+import com.fundation.logic.view.PanelSetter;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.Calendar;
 
 /**
  * This class allows you to display content related to the audio.
  *
- * @author Jesus Menacho
+ * @author Jesus Menacho, Melissa Román
  * @version 1.0
  */
 public class AdvancedAudioPanel extends JPanel {
-    private JTextField textFieldDurationSecond;
     private JButton btnSearchAdvanceAudio;
     private JComboBox comboBoxAudioCodecName;
     private JComboBox comboBoxAudioChannel;
     private JComboBox comboBoxAudioSampleRate;
-    private JTextField textFieldDurationFirst;
-    private SettingPanel settingPanel;
+    private JSpinner minuteSpinner;
+    private JSpinner minuteSpinnerTo;
+    private PanelSetter settingPanel;
 
     /**
      * The constructor let initializer component.
@@ -46,8 +48,8 @@ public class AdvancedAudioPanel extends JPanel {
      * This method set the panel and show the content panel audio.
      */
     public void initComponent() {
-        settingPanel = new SettingPanel();
-        settingPanel.settingPanelAdvanceSearch(this);
+        settingPanel = new PanelSetter();
+        settingPanel.setPanel(this);
         audioContentPanel();
     }
 
@@ -55,20 +57,21 @@ public class AdvancedAudioPanel extends JPanel {
      * This method show the content audio panel.
      */
     private void audioContentPanel() {
-        JLabel lblAudioCodecName = new JLabel("Codec Name: ");
+        JLabel lblAudioCodecName = new JLabel("Codec: ");
         GridBagConstraints gbc_lblAudioCodecName = new GridBagConstraints();
         gbc_lblAudioCodecName.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodecName.insets = new Insets(0, 0, 5, 5);
-        gbc_lblAudioCodecName.gridx = 0;
+        gbc_lblAudioCodecName.gridx = 1;
         gbc_lblAudioCodecName.gridy = 7;
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
         comboBoxAudioCodecName = new JComboBox();
-        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"All", "MPEG-4 ALS", "WAV", "MP3", "RTA"}));
+        comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"All", "MPEG-4 ALS", "WAV", "MP3",
+            "RTA"}));
         GridBagConstraints comboBox_AudioCodecName = new GridBagConstraints();
         comboBox_AudioCodecName.insets = new Insets(0, 0, 5, 0);
         comboBox_AudioCodecName.fill = GridBagConstraints.HORIZONTAL;
-        comboBox_AudioCodecName.gridx = 1;
+        comboBox_AudioCodecName.gridx = 2;
         comboBox_AudioCodecName.gridy = 7;
         add(comboBoxAudioCodecName, comboBox_AudioCodecName);
 
@@ -76,24 +79,25 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_lblAudioChannel = new GridBagConstraints();
         gbc_lblAudioChannel.anchor = GridBagConstraints.EAST;
         gbc_lblAudioChannel.insets = new Insets(0, 0, 5, 5);
-        gbc_lblAudioChannel.gridx = 0;
+        gbc_lblAudioChannel.gridx = 1;
         gbc_lblAudioChannel.gridy = 8;
         add(lblAudioChanel, gbc_lblAudioChannel);
 
         comboBoxAudioChannel = new JComboBox();
-        comboBoxAudioChannel.setModel(new DefaultComboBoxModel(new String[]{"All", "0", "1.0", "2.0", "2.1", "5.1", "6.1", "7.1"}));
+        comboBoxAudioChannel.setModel(new DefaultComboBoxModel(new String[]{"All", "0", "1.0", "2.0", "2.1", "5.1",
+            "6.1", "7.1"}));
         GridBagConstraints gbc_comboBoxAudioChannel = new GridBagConstraints();
         gbc_comboBoxAudioChannel.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioChannel.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxAudioChannel.gridx = 1;
+        gbc_comboBoxAudioChannel.gridx = 2;
         gbc_comboBoxAudioChannel.gridy = 8;
         add(comboBoxAudioChannel, gbc_comboBoxAudioChannel);
 
-        JLabel lblAudioSampleRate = new JLabel("Sample Rate: ");
+        JLabel lblAudioSampleRate = new JLabel("Sample rate: ");
         GridBagConstraints gbc_lblAudioSampleRate = new GridBagConstraints();
         gbc_lblAudioSampleRate.insets = new Insets(0, 0, 5, 5);
         gbc_lblAudioSampleRate.anchor = GridBagConstraints.EAST;
-        gbc_lblAudioSampleRate.gridx = 0;
+        gbc_lblAudioSampleRate.gridx = 1;
         gbc_lblAudioSampleRate.gridy = 9;
         add(lblAudioSampleRate, gbc_lblAudioSampleRate);
 
@@ -102,7 +106,7 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_comboBoxAudioSampleRate = new GridBagConstraints();
         gbc_comboBoxAudioSampleRate.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioSampleRate.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxAudioSampleRate.gridx = 1;
+        gbc_comboBoxAudioSampleRate.gridx = 2;
         gbc_comboBoxAudioSampleRate.gridy = 9;
         add(comboBoxAudioSampleRate, gbc_comboBoxAudioSampleRate);
 
@@ -110,31 +114,44 @@ public class AdvancedAudioPanel extends JPanel {
         GridBagConstraints gbc_lblDuration = new GridBagConstraints();
         gbc_lblDuration.anchor = GridBagConstraints.EAST;
         gbc_lblDuration.insets = new Insets(0, 0, 5, 5);
-        gbc_lblDuration.gridx = 0;
+        gbc_lblDuration.gridx = 1;
         gbc_lblDuration.gridy = 10;
         add(lblDuration, gbc_lblDuration);
 
-        textFieldDurationFirst = new JTextField();
-        GridBagConstraints gbc_textFieldDurationFirst = new GridBagConstraints();
-        gbc_textFieldDurationFirst.insets = new Insets(0, 0, 5, 0);
-        gbc_textFieldDurationFirst.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldDurationFirst.gridx = 1;
-        gbc_textFieldDurationFirst.gridy = 10;
-        add(textFieldDurationFirst, gbc_textFieldDurationFirst);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR, 24);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
 
-        textFieldDurationSecond = new JTextField();
-        GridBagConstraints gbc_textFieldDurationSecond = new GridBagConstraints();
-        gbc_textFieldDurationSecond.insets = new Insets(0, 0, 5, 0);
-        gbc_textFieldDurationSecond.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldDurationSecond.gridx = 1;
-        gbc_textFieldDurationSecond.gridy = 11;
-        add(textFieldDurationSecond, gbc_textFieldDurationSecond);
+        SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
+        minuteSpinnerModelFrom.setValue(calendar.getTime());
+        minuteSpinner = new JSpinner(minuteSpinnerModelFrom);
+        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "hh:mm:ss");
+        dateEditor.getTextField().setEditable(false);
+        minuteSpinner.setEditor(dateEditor);
+        GridBagConstraints gbc_spinner = new GridBagConstraints();
+        gbc_spinner.anchor = GridBagConstraints.EAST;
+        gbc_spinner.gridx = 2;
+        gbc_spinner.gridy = 10;
+        add(minuteSpinner, gbc_spinner);
+
+        SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
+        minuteSpinnerModelTo.setValue(calendar.getTime());
+        minuteSpinnerTo = new JSpinner(minuteSpinnerModelTo);
+        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "hh:mm:ss");
+        dateEditorTo.getTextField().setEditable(false);
+        minuteSpinnerTo.setEditor(dateEditorTo);
+        GridBagConstraints gbc_minuteSpinnerTo = new GridBagConstraints();
+        gbc_minuteSpinnerTo.anchor = GridBagConstraints.EAST;
+        gbc_minuteSpinnerTo.gridx = 3;
+        gbc_minuteSpinnerTo.gridy = 10;
+        add(minuteSpinnerTo, gbc_minuteSpinnerTo);
 
         btnSearchAdvanceAudio = new JButton("Search");
         GridBagConstraints gbc_btnSearchAdvanceAudio = new GridBagConstraints();
         gbc_btnSearchAdvanceAudio.anchor = GridBagConstraints.EAST;
-        gbc_btnSearchAdvanceAudio.gridx = 1;
-        gbc_btnSearchAdvanceAudio.gridy = 12;
+        gbc_btnSearchAdvanceAudio.gridx = 2;
+        gbc_btnSearchAdvanceAudio.gridy = 13;
         add(btnSearchAdvanceAudio, gbc_btnSearchAdvanceAudio);
     }
 
@@ -171,18 +188,18 @@ public class AdvancedAudioPanel extends JPanel {
     }
 
     /**
-     * This method return textFieldDurationFirst.
-     * @return textFieldDurationFirst
+     * Allows to get minuteSpinner.
+     * @return minuteSpinner
      */
-    public JTextField getTextFieldDurationFirst() {
-        return textFieldDurationFirst;
+    public JSpinner getMinuteSpinner() {
+        return minuteSpinner;
     }
 
     /**
-     * This method return settingPanel.
-     * @return settingPanel.
+     * Allows to get minuteSpinnerTo.
+     * @return minuteSpinnerTo
      */
-    public SettingPanel getSettingPanel() {
-        return settingPanel;
+    public JSpinner getMinuteSpinnerTo() {
+        return minuteSpinnerTo;
     }
 }

@@ -46,4 +46,23 @@ public class Audio extends Multimedia{
     public void setSampleRate(int sampleRate) {
         this.sampleRate = sampleRate;
     }
+
+    /**
+     * Equals override to compare two audio criteria.
+     * @param criteria - Criteria to be compare with.
+     * @return True if two criteria are equal.
+     */
+    public boolean equals(Criteria criteria) {
+        try {
+            Audio audioCriteria = (Audio) criteria;
+            if(this.getPath().equals(audioCriteria.getPath()) && this.getFileName().equals(audioCriteria.getFileName())
+                    && this.getExtension().equals(audioCriteria.getExtension()) &&
+                    this.channel == audioCriteria.channel && this.sampleRate == audioCriteria.sampleRate) {
+                return true;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return false;
+    }
 }
