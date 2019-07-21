@@ -27,7 +27,7 @@ import java.awt.Color;
 /**
  * Implements the MainFrame class
  *
- * @author John Salazar Pinto
+ * @author John Salazar Pinto, Melissa Román
  * @version 1.0
  */
 public class MainFrame extends JFrame {
