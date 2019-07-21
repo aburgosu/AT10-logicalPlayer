@@ -9,7 +9,8 @@
  */
 package com.fundation.logic.view.convert;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  * This class allows you to separate the panels.

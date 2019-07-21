@@ -9,8 +9,19 @@
  */
 package com.fundation.logic.controller;
 
-import com.fundation.logic.model.*;
-import com.fundation.logic.model.criteria.*;
+import com.fundation.logic.model.AudioSearch;
+import com.fundation.logic.model.CommonSearch;
+import com.fundation.logic.model.CriteriaRecord;
+import com.fundation.logic.model.CustomizedFile;
+import com.fundation.logic.model.ISearch;
+import com.fundation.logic.model.ImageSearch;
+import com.fundation.logic.model.QueryForCriteria;
+import com.fundation.logic.model.VideoSearch;
+import com.fundation.logic.model.criteria.Audio;
+import com.fundation.logic.model.criteria.Common;
+import com.fundation.logic.model.criteria.Criteria;
+import com.fundation.logic.model.criteria.Image;
+import com.fundation.logic.model.criteria.Video;
 import com.fundation.logic.view.MainFrame;
 
 import java.io.File;

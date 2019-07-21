@@ -14,7 +14,7 @@ import com.fundation.logic.view.loadSaveCriteria.SplitPanelDate;
 import com.fundation.logic.view.search.GeneralSearchPanel;
 import com.fundation.logic.view.search.SearchSplitPanel;
 
-import javax.swing.*;
+import javax.swing.JTabbedPane;
 
 /**
  * Implements the tabs of different options.
@@ -39,7 +39,7 @@ public class MainTabs extends JTabbedPane {
         addTab("Search", null, splitPanelSearch, "Perform general and advance search");
 
         loadSavePanel = new LoadSavePanel();
-        addTab("Saved Criteria", null, splitPanelSavedCriteria, "Save and load criteria");
+        addTab("Save/Load", null, splitPanelSavedCriteria, "Save and load criteria");
 
         splitPanelConvert = new SplitPanelConvert();
         addTab("Convert", null, splitPanelConvert, "Perform video/audio converts");

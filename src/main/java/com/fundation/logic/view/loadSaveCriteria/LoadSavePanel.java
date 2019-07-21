@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.util.Date;
 
 /**
  * Implements the tab of LoadSave Panel.
