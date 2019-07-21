@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * <p>
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -11,15 +11,21 @@ package com.fundation.logic.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JScrollPane;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.Color;
+
 
 /**
  * Implements the SearchVideoFrame class
  *
- * @author John Salazar Pinto
+ * @author John Salazar Pinto, Melissa Román
  * @version 1.0
  */
 public class SearchVideoFrame extends JFrame {
@@ -79,5 +85,23 @@ public class SearchVideoFrame extends JFrame {
      */
     public SearchTabs getSearchTabs() {
         return searchTabs;
+    }
+
+    /**
+     * Shows a popup message
+     * @param messageTittle - Tittle of the message
+     * @param messageText - Text of the message
+     */
+    public void showPopupMessage(String messageTittle, String messageText) {
+        JDialog message = new JDialog(this, messageTittle);
+        message.setBounds(50, 200, 350, 150);
+        message.setSize(350, 120);
+        JPanel messageTextPanel = new JPanel();
+        JLabel text = new JLabel(messageText);
+        text.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        text.setForeground(Color.red);
+        messageTextPanel.add(text, SwingConstants.CENTER);
+        message.add(messageTextPanel, BorderLayout.CENTER);
+        message.setVisible(true);
     }
 }
