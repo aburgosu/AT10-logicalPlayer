@@ -207,9 +207,6 @@ public class Common extends Criteria {
     public boolean equals(Criteria criteria) {
 
             Common commonCriteria = (Common) criteria;
-            System.out.println(commonCriteria.getPath());
-            System.out.println(this.getFileName());
-            System.out.println(commonCriteria.getFileName());
             if(this.getPath().equals(commonCriteria.getPath()) &&
                     this.getFileName().equals(commonCriteria.getFileName()) &&
                     this.getExtension().equals(commonCriteria.getExtension()) &&
