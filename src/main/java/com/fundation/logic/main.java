@@ -9,10 +9,8 @@
  */
 package com.fundation.logic;
 
-import com.fundation.logic.view.SearchVideoFrame;
+import com.fundation.logic.view.MainFrame;
 import com.fundation.logic.controller.Controller;
-
-import javax.swing.*;
 
 /**
  * Implements the main class
@@ -22,10 +20,8 @@ import javax.swing.*;
  */
 public class main {
 
-    public static void main(String[] arg) throws Exception{
-        //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-        SearchVideoFrame searchFrame = new SearchVideoFrame();
+    public static void main(String[] arg) {
+        MainFrame searchFrame = new MainFrame();
         Controller controller = new Controller(searchFrame);
         controller.setEvents();
         controller.showLoadSaveData();

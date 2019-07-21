@@ -7,19 +7,20 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.convert;
 
 import javax.swing.*;
 
 /**
  * This class allows you to separate the panels.
  *
- * @author Jesus Menacho
+ * @author Melissa Román
  * @version 1.0
  */
 public class SplitPanelConvert extends JPanel {
     private ConvertBasicPanel basicConvert;
-    private ConverterTab converterTab;
+    private ConvertTabs converterTab;
+
     /**
      * The constructor allows components to be initialized.
      */
@@ -39,8 +40,9 @@ public class SplitPanelConvert extends JPanel {
      */
     public void convertSplitPanel() {
         basicConvert = new ConvertBasicPanel();
-        converterTab = new ConverterTab();
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true, basicConvert, converterTab);
+        converterTab = new ConvertTabs();
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true, basicConvert,
+            converterTab);
         splitPane.setOneTouchExpandable(false);
         add(splitPane);
     }

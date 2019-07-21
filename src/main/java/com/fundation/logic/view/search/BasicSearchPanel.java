@@ -7,7 +7,9 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view.components;
+package com.fundation.logic.view.search;
+
+import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -28,7 +30,7 @@ public class BasicSearchPanel extends JPanel {
     private JTextField textFieldPath;
     private JTextField textFileName;
     private JTextField textFieldFileType;
-    private SettingPanel settingPanel;
+    private PanelSetter settingPanel;
 
     /**
      *  The constructor let it initializer.
@@ -41,13 +43,13 @@ public class BasicSearchPanel extends JPanel {
      * This method initializes the basic search content and sets the panel.
      */
     public void basicSearchInitializer() {
-        settingPanel = new SettingPanel();
+        settingPanel = new PanelSetter();
         settingPanel.setPanel(this);
         contentBasicSearch();
     }
 
     /**
-     * This method displays Basic Search content on the screen.
+     * This method displays Basic search content on the screen.
      */
     private void contentBasicSearch() {
         JLabel title = new JLabel("Search");

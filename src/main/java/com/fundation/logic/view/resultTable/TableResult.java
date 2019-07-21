@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.resultTable;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;

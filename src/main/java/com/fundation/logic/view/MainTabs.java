@@ -8,8 +8,11 @@
  */
 package com.fundation.logic.view;
 
-import com.fundation.logic.view.components.SearchSplitPanel;
-import com.fundation.logic.view.components.SplitPanelDate;
+import com.fundation.logic.view.loadSaveCriteria.LoadSavePanel;
+import com.fundation.logic.view.convert.SplitPanelConvert;
+import com.fundation.logic.view.loadSaveCriteria.SplitPanelDate;
+import com.fundation.logic.view.search.GeneralSearchPanel;
+import com.fundation.logic.view.search.SearchSplitPanel;
 
 import javax.swing.*;
 
@@ -19,8 +22,7 @@ import javax.swing.*;
  * @author Andres Burgos, Jesus Menacho
  * @version 1.0
  */
-public class SearchTabs extends JTabbedPane {
-    private SearchVideoPanel panelGeneral;
+public class MainTabs extends JTabbedPane {
     private GeneralSearchPanel generalSearchPanel;
     private LoadSavePanel loadSavePanel;
     private SearchSplitPanel splitPanelSearch;
@@ -28,12 +30,10 @@ public class SearchTabs extends JTabbedPane {
     private SplitPanelConvert splitPanelConvert;
 
     /**
-     * Initializes a SearchTabs instance for the search options
+     * Initializes a MainTabs instance for the search options
      */
-    public SearchTabs() {
+    public MainTabs() {
         generalSearchPanel = new GeneralSearchPanel();
-        panelGeneral = new SearchVideoPanel();
-        panelGeneral.initComponent();
         splitPanelSearch = new SearchSplitPanel();
         splitPanelSavedCriteria = new SplitPanelDate();
         addTab("Search", null, splitPanelSearch, "Perform general and advance search");

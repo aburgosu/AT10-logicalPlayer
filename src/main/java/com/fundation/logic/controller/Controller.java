@@ -11,8 +11,7 @@ package com.fundation.logic.controller;
 
 import com.fundation.logic.model.*;
 import com.fundation.logic.model.criteria.*;
-import com.fundation.logic.view.SearchVideoFrame;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import com.fundation.logic.view.MainFrame;
 
 import java.io.File;
 import java.util.Date;
@@ -26,7 +25,7 @@ import java.util.List;
  */
 public class Controller {
     private ISearch search;
-    private SearchVideoFrame searchFrame;
+    private MainFrame searchFrame;
     private QueryForCriteria queryCriteria;
 
     private final int COMMON_SEARCH = 0;
@@ -37,7 +36,7 @@ public class Controller {
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
      */
-    public Controller(SearchVideoFrame searchFrame) {
+    public Controller(MainFrame searchFrame) {
         this.searchFrame = searchFrame;
         queryCriteria = new QueryForCriteria();
     }
@@ -59,12 +58,11 @@ public class Controller {
             search = new ImageSearch((Image) criteria);
         }
         List<File> foundFiles = search.search();
-        System.out.println(foundFiles.size());
         return foundFiles;
     }
 
     /**
-     * show the result in the table
+     * Shows the result in the table
      */
     public void showSearchResult(int searchType) {
         List<CustomizedFile> foundFiles = null;
@@ -90,8 +88,6 @@ public class Controller {
                 Date creationDate = foundFiles.get(index).getCreationDate();
                 Date modificationDate = foundFiles.get(index).getModificationDate();
                 Date lastAccessDate = foundFiles.get(index).getAccessDate();
-
-                System.out.println("show");
                 this.searchFrame.getTableResult().addResult(path, name, extension, size, creationDate,
                         modificationDate, lastAccessDate, "---");
             }
@@ -153,7 +149,7 @@ public class Controller {
         if (owner.length() == 0) {
             owner = null;
         }
-        String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimetype().getSelectedItem().toString();
+        String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimeType().getSelectedItem().toString();
         if(mimeType == "All") {
             mimeType = null;
         }
@@ -175,21 +171,6 @@ public class Controller {
         criteria.setCriteriaModificationDateMax(dateModificationTo);
         criteria.setCriteriaOwner(owner);
         criteria.setCriteriaMimeType(mimeType);
-        System.out.println(criteria.getPath());
-        System.out.println(criteria.getFileName());
-        System.out.println(criteria.getExtension());
-        System.out.println(criteria.getCriteriaFileHidden());
-        System.out.println(criteria.getCriteriaFileReadOnly());
-        System.out.println(criteria.getCriteriaSizeMin());
-        System.out.println(criteria.getCriteriaSizeMax());
-        System.out.println(criteria.getCriteriaCreationDateMin());
-        System.out.println(criteria.getCriteriaCreationDateMax());
-        System.out.println(criteria.getCriteriaModificationDateMin());
-        System.out.println(criteria.getCriteriaModificationDateMax());
-        System.out.println(criteria.getCriteriaAccessDateMin());
-        System.out.println(criteria.getCriteriaAccessDateMax());
-        System.out.println(criteria.getCriteriaOwner());
-        System.out.println(criteria.getCriteriaMimeType());
 
         return criteria;
     }
@@ -255,7 +236,7 @@ public class Controller {
         if (audioCodec.length() == 0) {
             audioCodec = null;
         }
-        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoFramerate().getSelectedItem().toString());
+        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoFrameRate().getSelectedItem().toString());
         if (framerate.length() == 0) {
             framerate = null;
         }

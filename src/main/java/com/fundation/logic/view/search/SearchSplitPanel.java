@@ -7,9 +7,8 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view.components;
+package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.SearchAdvanceTab;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 

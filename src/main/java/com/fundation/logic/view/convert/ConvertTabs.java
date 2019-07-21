@@ -1,31 +1,31 @@
 /**
  * Copyright (c) 2019 Jalasoft.
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.convert;
 
-import javax.swing.*;
+import javax.swing.JTabbedPane;
 
 /**
- * Implements the tabs of different options.
+ * Implements the ConvertTabs class.
  *
- * @author Jesus Menacho
+ * @author Melissa Román
  * @version 1.0
  */
-public class ConverterTab extends JTabbedPane {
+public class ConvertTabs extends JTabbedPane {
     private ConvertAudioPanel convertAudioPanel;
     private ConvertVideoPanel convertVideoPanel;
     private ConvertPPTPanel convertPPTPanel;
 
-
     /**
-     * Initializes a SearchTabs instance for the search options.
+     * Initializes a ConvertTabs instance for the convert options.
      */
-    public ConverterTab() {
+    public ConvertTabs() {
         convertAudioPanel = new ConvertAudioPanel();
         addTab("Audio ", null, convertAudioPanel, "Convert audio");
         convertVideoPanel = new ConvertVideoPanel();

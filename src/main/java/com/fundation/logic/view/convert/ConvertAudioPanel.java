@@ -7,15 +7,20 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.convert;
 
-import com.fundation.logic.view.components.SettingPanel;
+import com.fundation.logic.view.PanelSetter;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 /**
- * This class implements convert audio panel.
+ * Implements convert audio criteria panel.
  *
  * @author Melissa Román
  * @version 1.0
@@ -25,30 +30,29 @@ public class ConvertAudioPanel extends JPanel {
     private JComboBox comboBoxCodec;
     private JComboBox comboBoxBit;
     private JComboBox comboBoxChannel;
-    private JComboBox comboBoxRate;
-    private SettingPanel settingPanel;
+    private PanelSetter settingPanel;
     private JButton btnConvertAudio;
 
     /**
-     * This constructor initializer the component.
+     * This constructor initializes the component.
      */
     public ConvertAudioPanel() {
         initComponent();
     }
 
     /**
-     * This method initializer the set to the panel and content image panel.
+     * This method initializes the convert audio panel.
      */
     public void initComponent() {
-        settingPanel = new SettingPanel();
+        settingPanel = new PanelSetter();
         settingPanel.setPanel(this);
-        videoCriteriaConvertPanel();
+        showAudioCriteriaConvertForm();
     }
 
     /**
-     * This method show the content panel.
+     * This method show the form to set a convert criteria.
      */
-    private void videoCriteriaConvertPanel() {
+    private void showAudioCriteriaConvertForm() {
         JLabel lblNewFormat = new JLabel("New format: ");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
@@ -75,7 +79,8 @@ public class ConvertAudioPanel extends JPanel {
         add(lblCodec, gbc_lblCodec);
 
         comboBoxCodec = new JComboBox();
-        comboBoxCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "MP3", "WACPack", "AAC", "WMA", "Vorbis", "FLAC"}));
+        comboBoxCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "MP3", "WACPack", "AAC", "WMA",
+            "Vorbis", "FLAC"}));
         GridBagConstraints gbc_comboBoxCodec = new GridBagConstraints();
         gbc_comboBoxCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxCodec.fill = GridBagConstraints.HORIZONTAL;
@@ -83,7 +88,7 @@ public class ConvertAudioPanel extends JPanel {
         gbc_comboBoxCodec.gridy = 5;
         add(comboBoxCodec, gbc_comboBoxCodec);
 
-        JLabel lblBit = new JLabel("Bit: ");
+        JLabel lblBit = new JLabel("Bitrate: ");
         GridBagConstraints gbc_lblBit = new GridBagConstraints();
         gbc_lblBit.anchor = GridBagConstraints.EAST;
         gbc_lblBit.insets = new Insets(0, 0, 5, 5);
@@ -92,7 +97,7 @@ public class ConvertAudioPanel extends JPanel {
         add(lblBit, gbc_lblBit);
 
         comboBoxBit = new JComboBox();
-        comboBoxBit.setModel(new DefaultComboBoxModel(new String[]{"Default", "PNG", "JPG", "BMP", "TIF", "GIF"}));
+        comboBoxBit.setModel(new DefaultComboBoxModel(new String[]{"Default", "128000"}));
         GridBagConstraints gbc_comboBoxBit = new GridBagConstraints();
         gbc_comboBoxBit.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxBit.fill = GridBagConstraints.HORIZONTAL;
@@ -117,23 +122,6 @@ public class ConvertAudioPanel extends JPanel {
         gbc_comboBoxChannel.gridy = 7;
         add(comboBoxChannel, gbc_comboBoxChannel);
 
-        JLabel lblRate = new JLabel("Rate: ");
-        GridBagConstraints gbc_lblRate = new GridBagConstraints();
-        gbc_lblRate.anchor = GridBagConstraints.EAST;
-        gbc_lblRate.insets = new Insets(0, 0, 5, 5);
-        gbc_lblRate.gridx = 0;
-        gbc_lblRate.gridy = 8;
-        add(lblRate, gbc_lblRate);
-
-        comboBoxRate = new JComboBox();
-        comboBoxRate.setModel(new DefaultComboBoxModel(new String[]{"Default", "16000", "22050", "24000", "32000", "44100", "48000"}));
-        GridBagConstraints gbc_comboBoxRate = new GridBagConstraints();
-        gbc_comboBoxRate.insets = new Insets(0, 0, 5, 0);
-        gbc_comboBoxRate.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxRate.gridx = 1;
-        gbc_comboBoxRate.gridy = 8;
-        add(comboBoxRate, gbc_comboBoxRate);
-
         btnConvertAudio = new JButton("Convert");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.anchor = GridBagConstraints.EAST;
@@ -141,5 +129,45 @@ public class ConvertAudioPanel extends JPanel {
         gbc_btnSearch.gridx = 0;
         gbc_btnSearch.gridy = 9;
         add(btnConvertAudio, gbc_btnSearch);
+    }
+
+    /**
+     * Allows to get comboBoxNewFormat.
+     * @return comboBoxNewFormat
+     */
+    public JComboBox getComboBoxNewFormat() {
+        return comboBoxNewFormat;
+    }
+
+    /**
+     * Allows to get comboBoxCodec.
+     * @return comboBoxCodec
+     */
+    public JComboBox getComboBoxCodec() {
+        return comboBoxCodec;
+    }
+
+    /**
+     * Allows to get comboBoxBit.
+     * @return comboBoxBit
+     */
+    public JComboBox getComboBoxBit() {
+        return comboBoxBit;
+    }
+
+    /**
+     * Allows to get comboBoxChannel.
+     * @return comboBoxChannel
+     */
+    public JComboBox getComboBoxChannel() {
+        return comboBoxChannel;
+    }
+
+    /**
+     * Allows to get convertAudio button.
+     * @return btnConvertAudio
+     */
+    public JButton getBtnConvertAudio() {
+        return btnConvertAudio;
     }
 }

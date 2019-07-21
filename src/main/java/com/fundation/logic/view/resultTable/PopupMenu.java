@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.resultTable;
 
 import com.fundation.logic.common.FileInfo;
 
@@ -40,7 +40,7 @@ public class PopupMenu extends JPopupMenu {
         }
         detailsItem = new JMenuItem("Details");
         add(detailsItem);
-        convertItem = new JMenuItem("Convert");
+        convertItem = new JMenuItem("convert");
         add(convertItem);
         initItemMenuListener();
     }

@@ -7,8 +7,9 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view.components;
+package com.fundation.logic.view.loadSaveCriteria;
 
+import com.fundation.logic.view.PanelSetter;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,8 +24,8 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class DateSearch extends JPanel {
-    private SettingPanel settingPanel;
+public class SearchByDate extends JPanel {
+    private PanelSetter settingPanel;
     private JButton btnFilterByDate;
     private JDateChooser fieldDateFirstDate;
     private JDateChooser fieldDateSecondDate;
@@ -32,15 +33,15 @@ public class DateSearch extends JPanel {
     /**
      *  The constructor let it initializer.
      */
-    public DateSearch() {
+    public SearchByDate() {
         dateSearchInitializer();
     }
 
     /**
-     * This method initializes the content of Basic Search and also sets it.
+     * This method initializes the content of Basic search and also sets it.
      */
     public void dateSearchInitializer() {
-        settingPanel = new SettingPanel();
+        settingPanel = new PanelSetter();
         settingPanel.setPanel(this);
         contentBasicSearch();
     }
@@ -49,7 +50,7 @@ public class DateSearch extends JPanel {
      * This method is responsible for displaying the content of BasicSearchPanel.
      */
     private void contentBasicSearch() {
-        JLabel title = new JLabel("Search criteria");
+        JLabel title = new JLabel("Search Criteria");
         title.setFont(new Font("Tahoma", Font.BOLD, 14));
         GridBagConstraints gbc_lblVideo = new GridBagConstraints();
         gbc_lblVideo.gridwidth = 3;
@@ -73,16 +74,6 @@ public class DateSearch extends JPanel {
         gbc_FieldToDateCreation.gridx = 2;
         gbc_FieldToDateCreation.gridy = 1;
         add(fieldDateFirstDate, gbc_FieldToDateCreation);
-/*
-        JLabel lblFileName = new JLabel("Second Date: ");
-        GridBagConstraints gbc_lblTittle = new GridBagConstraints();
-        gbc_lblTittle.anchor = GridBagConstraints.EAST;
-        gbc_lblTittle.insets = new Insets(0, 0, 5, 5);
-        gbc_lblTittle.gridx = 0;
-        gbc_lblTittle.gridy = 2;
-        add(lblFileName, gbc_lblTittle);
-
- */
 
         fieldDateSecondDate = new JDateChooser();
         GridBagConstraints gbc_FieldToDateSecondDate = new GridBagConstraints();

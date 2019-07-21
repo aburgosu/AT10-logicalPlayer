@@ -7,47 +7,56 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.convert;
 
-import com.fundation.logic.view.components.SettingPanel;
+import com.fundation.logic.view.PanelSetter;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import javax.swing.JFileChooser;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * This class is in charge of displaying Path, filename and type information.
+ * Implements basic convert panel.
  *
- * @author Jesus Menacho
+ * @author Melissa Román
  * @version 1.0
  */
 public class ConvertBasicPanel extends JPanel {
     private JTextField textFieldSourcePath;
     private JTextField textFieldDestinationPath;
     private JTextField textFieldNewName;
-    private SettingPanel settingPanel;
+    private JComboBox comboBoxMetadataFormat;
+    private PanelSetter settingPanel;
 
     /**
-     *  The constructor let it initializer.
+     * The constructor let it initialize.
      */
     public ConvertBasicPanel() {
         basicConvertInitializer();
     }
 
     /**
-     * This method initializes the basic search content and sets the panel.
+     * This method initializes the basic convert criteria fields panel.
      */
     public void basicConvertInitializer() {
-        settingPanel = new SettingPanel();
+        settingPanel = new PanelSetter();
         settingPanel.setPanel(this);
-        contentBasicConvert();
+        showBasicConvertForm();
     }
 
     /**
-     * This method displays Basic Search content on the screen.
+     * This method displays basic convert criteria form.
      */
-    private void contentBasicConvert() {
+    private void showBasicConvertForm() {
         JLabel title = new JLabel("Convert");
         title.setFont(new Font("Tahoma", Font.BOLD, 14));
         GridBagConstraints gbc_lblTittle = new GridBagConstraints();
@@ -71,7 +80,6 @@ public class ConvertBasicPanel extends JPanel {
         gbc_textFieldSourcePath.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldSourcePath.gridx = 1;
         gbc_textFieldSourcePath.gridy = 1;
-        //textFieldSourcePath.setEditable(false);
         add(textFieldSourcePath, gbc_textFieldSourcePath);
         textFieldSourcePath.setColumns(5);
 
@@ -108,7 +116,6 @@ public class ConvertBasicPanel extends JPanel {
         gbc_textFieldDestinationPath.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldDestinationPath.gridx = 1;
         gbc_textFieldDestinationPath.gridy = 2;
-        //textFieldSourcePath.setEditable(false);
         add(textFieldDestinationPath, gbc_textFieldDestinationPath);
         textFieldDestinationPath.setColumns(5);
 
@@ -147,5 +154,54 @@ public class ConvertBasicPanel extends JPanel {
         gbc_textFieldNewName.gridy = 3;
         add(textFieldNewName, gbc_textFieldNewName);
         textFieldNewName.setColumns(5);
+
+        JLabel lblMetadataFormat = new JLabel("Metadata format: ");
+        GridBagConstraints gbc_lblMetadataFormat = new GridBagConstraints();
+        gbc_lblMetadataFormat.anchor = GridBagConstraints.EAST;
+        gbc_lblMetadataFormat.insets = new Insets(0, 0, 5, 5);
+        gbc_lblMetadataFormat.gridx = 1;
+        gbc_lblMetadataFormat.gridy = 4;
+        add(lblMetadataFormat, gbc_lblMetadataFormat);
+
+        comboBoxMetadataFormat = new JComboBox();
+        comboBoxMetadataFormat.setModel(new DefaultComboBoxModel(new String[]{"XMP", "JSON"}));
+        GridBagConstraints gbc_comboBoxMetadataFormat = new GridBagConstraints();
+        gbc_comboBoxMetadataFormat.insets = new Insets(0, 0, 5, 0);
+        gbc_comboBoxMetadataFormat.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBoxMetadataFormat.gridx = 2;
+        gbc_comboBoxMetadataFormat.gridy = 4;
+        add(comboBoxMetadataFormat, gbc_comboBoxMetadataFormat);
+    }
+
+    /**
+     * Allows to get textFieldSourcePath.
+     * @return textFieldSourcePath
+     */
+    public JTextField getTextFieldSourcePath() {
+        return textFieldSourcePath;
+    }
+
+    /**
+     * Allows to get textFieldDestinationPath.
+     * @return textFieldDestinationPath
+     */
+    public JTextField getTextFieldDestinationPath() {
+        return textFieldDestinationPath;
+    }
+
+    /**
+     * Allows to get textFieldNewName.
+     * @return textFieldNewName
+     */
+    public JTextField getTextFieldNewName() {
+        return textFieldNewName;
+    }
+
+    /**
+     * Allows to get textFieldMetadataFormat.
+     * @return comboBoxMetadataFormat
+     */
+    public JComboBox getComboBoxMetadataFormat() {
+        return comboBoxMetadataFormat;
     }
 }

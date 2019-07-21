@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.search;
 
 import javax.swing.JTabbedPane;
 
@@ -24,7 +24,7 @@ public class SearchAdvanceTab extends JTabbedPane {
     private AdvancedAudioPanel panelAudioAdvanced;
 
     /**
-     * Initializes a SearchTabs instance for the search options.
+     * Initializes a MainTabs instance for the search options.
      */
     public SearchAdvanceTab() {
         generalSearchPanel = new GeneralSearchPanel();
