@@ -11,6 +11,8 @@ package com.fundation.logic.view.loadSaveCriteria;
 
 import com.fundation.logic.view.PanelSetter;
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -68,6 +70,8 @@ public class SearchByDate extends JPanel {
         add(lblPath, gbc_lblPath);
 
         fieldDateFirstDate = new JDateChooser();
+        JTextFieldDateEditor editorDateFrom = (JTextFieldDateEditor) fieldDateFirstDate.getDateEditor();
+        editorDateFrom.setEditable(false);
         GridBagConstraints gbc_FieldToDateCreation = new GridBagConstraints();
         gbc_FieldToDateCreation.insets = new Insets(0, 0, 5, 5);
         gbc_FieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
@@ -76,6 +80,8 @@ public class SearchByDate extends JPanel {
         add(fieldDateFirstDate, gbc_FieldToDateCreation);
 
         fieldDateSecondDate = new JDateChooser();
+        JTextFieldDateEditor editorDateTo = (JTextFieldDateEditor) fieldDateSecondDate.getDateEditor();
+        editorDateTo.setEditable(false);
         GridBagConstraints gbc_FieldToDateSecondDate = new GridBagConstraints();
         gbc_FieldToDateSecondDate.insets = new Insets(0, 0, 5, 5);
         gbc_FieldToDateSecondDate.fill = GridBagConstraints.HORIZONTAL;

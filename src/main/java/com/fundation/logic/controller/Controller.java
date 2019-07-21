@@ -276,7 +276,7 @@ public class Controller {
         });
     }
 
-    public void showLoadSaveData(){
+    public void showLoadSaveData() {
         searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().clearTableResult();
         List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();
         for (int index = 0; index < registers.size(); index++) {

@@ -10,6 +10,8 @@
 package com.fundation.logic.view.search;
 
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -22,17 +24,17 @@ import java.awt.*;
 /**
  * Implements the GeneralSearch Panel.
  *
- * @author Andres Burgos, Jesus Menacho
+ * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
 public class GeneralSearchPanel extends JPanel {
-    private final JTextField textFieldOwner;
-    private JDateChooser FieldToDateCreation;
+    private JTextField textFieldOwner;
+    private JDateChooser fieldToDateCreation;
     private JDateChooser textFieldFromDateCreation;
-    private JDateChooser FieldDateModificationFrom;
-    private JDateChooser FieldDateModificationTo;
-    private JDateChooser FieldDateAccessFrom;
-    private JDateChooser FieldDateAccessTo;
+    private JDateChooser fieldDateModificationFrom;
+    private JDateChooser fieldDateModificationTo;
+    private JDateChooser fieldDateAccessFrom;
+    private JDateChooser fieldDateAccessTo;
     private JTextField textFieldSizeFrom;
     private JTextField textFieldSizeTo;
     private JButton btnSearch;
@@ -64,6 +66,8 @@ public class GeneralSearchPanel extends JPanel {
         add(lblDateCreation, gbc_lblDateCreation);
 
         textFieldFromDateCreation = new JDateChooser();
+        JTextFieldDateEditor editorCreationDateFrom = (JTextFieldDateEditor) textFieldFromDateCreation.getDateEditor();
+        editorCreationDateFrom.setEditable(false);
         GridBagConstraints gbc_textFieldToDateCreation = new GridBagConstraints();
         gbc_textFieldToDateCreation.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
@@ -71,7 +75,9 @@ public class GeneralSearchPanel extends JPanel {
         gbc_textFieldToDateCreation.gridy = 3;
         add(textFieldFromDateCreation, gbc_textFieldToDateCreation);
 
-        FieldToDateCreation = new JDateChooser();
+        fieldToDateCreation = new JDateChooser();
+        JTextFieldDateEditor editorCreationDateTo = (JTextFieldDateEditor) fieldToDateCreation.getDateEditor();
+        editorCreationDateTo.setEditable(false);
         GridBagConstraints gbc_FieldToDateCreation = new GridBagConstraints();
         gbc_FieldToDateCreation.insets = new Insets(0, 0, 5, 5);
         gbc_FieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
@@ -87,7 +93,9 @@ public class GeneralSearchPanel extends JPanel {
         gbc_lblDateModification.gridy = 4;
         add(lblDateModification, gbc_lblDateModification);
 
-        setFieldDateModificationFrom(new JDateChooser());
+        fieldDateModificationFrom = new JDateChooser();
+        JTextFieldDateEditor editorModificationFrom = (JTextFieldDateEditor) fieldDateModificationFrom.getDateEditor();
+        editorModificationFrom.setEditable(false);
         GridBagConstraints gbc_FieldDateModificationFrom = new GridBagConstraints();
         gbc_FieldDateModificationFrom.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateModificationFrom.fill = GridBagConstraints.HORIZONTAL;
@@ -95,8 +103,9 @@ public class GeneralSearchPanel extends JPanel {
         gbc_FieldDateModificationFrom.gridy = 4;
         add(getFieldDateModificationFrom(), gbc_FieldDateModificationFrom);
 
-        setFieldDateModificationTo(new JDateChooser());
-
+        fieldDateModificationTo = new JDateChooser();
+        JTextFieldDateEditor editorModificationTo = (JTextFieldDateEditor) fieldDateModificationTo.getDateEditor();
+        editorModificationTo.setEditable(false);
         GridBagConstraints gbc_FieldDateModificationTo = new GridBagConstraints();
         gbc_FieldDateModificationTo.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateModificationTo.fill = GridBagConstraints.HORIZONTAL;
@@ -112,7 +121,9 @@ public class GeneralSearchPanel extends JPanel {
         gbc_labelDateAccess.gridy = 5;
         add(labelDateAccess, gbc_labelDateAccess);
 
-        setFieldDateAccessFrom(new JDateChooser());
+        fieldDateAccessFrom = new JDateChooser();
+        JTextFieldDateEditor editorAccessFrom = (JTextFieldDateEditor) fieldDateAccessFrom.getDateEditor();
+        editorAccessFrom.setEditable(false);
         GridBagConstraints gbc_FieldDateAccessFrom = new GridBagConstraints();
         gbc_FieldDateAccessFrom.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateAccessFrom.fill = GridBagConstraints.HORIZONTAL;
@@ -120,7 +131,9 @@ public class GeneralSearchPanel extends JPanel {
         gbc_FieldDateAccessFrom.gridy = 5;
         add(getFieldDateAccessFrom(), gbc_FieldDateAccessFrom);
 
-        setFieldDateAccessTo(new JDateChooser());
+        fieldDateAccessTo = new JDateChooser();
+        JTextFieldDateEditor editorAccessTo = (JTextFieldDateEditor) fieldDateAccessTo.getDateEditor();
+        editorAccessTo.setEditable(false);
         GridBagConstraints gbc_FieldDateAccessTo = new GridBagConstraints();
         gbc_FieldDateAccessTo.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateAccessTo.fill = GridBagConstraints.HORIZONTAL;
@@ -136,7 +149,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_labelSize.gridy = 6;
         add(labelSize, gbc_labelSize);
 
-        setTextFieldSizeFrom(new JTextField());
+        textFieldSizeFrom = new JTextField();
         GridBagConstraints gbc_textFieldSizeFrom = new GridBagConstraints();
         gbc_textFieldSizeFrom.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeFrom.fill = GridBagConstraints.HORIZONTAL;
@@ -144,7 +157,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_textFieldSizeFrom.gridy = 6;
         add(getTextFieldSizeFrom(), gbc_textFieldSizeFrom);
 
-        setTextFieldSizeTo(new JTextField());
+        textFieldSizeTo = new JTextField();
         GridBagConstraints gbc_textFieldSizeTo = new GridBagConstraints();
         gbc_textFieldSizeTo.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeTo.fill = GridBagConstraints.HORIZONTAL;
@@ -245,10 +258,10 @@ public class GeneralSearchPanel extends JPanel {
     }
 
     /**
-     * This method return the FieldToDateCreation
+     * This method return the fieldToDateCreation
      */
     public JDateChooser getFieldToDateCreation() {
-        return FieldToDateCreation;
+        return fieldToDateCreation;
     }
 
     /**
@@ -258,31 +271,31 @@ public class GeneralSearchPanel extends JPanel {
         return textFieldFromDateCreation;
     }
     /**
-     * This method return the FieldDateModificationFrom
+     * This method return the fieldDateModificationFrom
      */
     public JDateChooser getFieldDateModificationFrom() {
-        return FieldDateModificationFrom;
+        return fieldDateModificationFrom;
     }
 
     /**
-     * This method return the FieldDateModificationTo
+     * This method return the fieldDateModificationTo
      */
     public JDateChooser getFieldDateModificationTo() {
-        return FieldDateModificationTo;
+        return fieldDateModificationTo;
     }
 
     /**
      * This method return the Field Date Access From
      */
     public JDateChooser getFieldDateAccessFrom() {
-        return FieldDateAccessFrom;
+        return fieldDateAccessFrom;
     }
 
     /**
-     * This method return the FieldDateModificationTo
+     * This method return the fieldDateModificationTo
      */
     public JDateChooser getFieldDateAccessTo() {
-        return FieldDateAccessTo;
+        return fieldDateAccessTo;
     }
 
     /**
@@ -338,28 +351,28 @@ public class GeneralSearchPanel extends JPanel {
      * This method set the Field DateModificationFrom
      */
     public void setFieldDateModificationFrom(JDateChooser fieldDateModificationFrom) {
-        FieldDateModificationFrom = fieldDateModificationFrom;
+        this.fieldDateModificationFrom = fieldDateModificationFrom;
     }
 
     /**
      * This method set theField DateModificationTo
      */
     public void setFieldDateModificationTo(JDateChooser fieldDateModificationTo) {
-        FieldDateModificationTo = fieldDateModificationTo;
+        this.fieldDateModificationTo = fieldDateModificationTo;
     }
 
     /**
      * This method set the Field DateAccessFrom
      */
     public void setFieldDateAccessFrom(JDateChooser fieldDateAccessFrom) {
-        FieldDateAccessFrom = fieldDateAccessFrom;
+        this.fieldDateAccessFrom = fieldDateAccessFrom;
     }
 
     /**
      * This method set the Field DateAccessTo
      */
     public void setFieldDateAccessTo(JDateChooser fieldDateAccessTo) {
-        FieldDateAccessTo = fieldDateAccessTo;
+        this.fieldDateAccessTo = fieldDateAccessTo;
     }
 
     /**
