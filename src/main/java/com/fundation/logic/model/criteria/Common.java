@@ -205,7 +205,6 @@ public class Common extends Criteria {
      * @return True if two criteria are equal.
      */
     public boolean equals(Criteria criteria) {
-
             Common commonCriteria = (Common) criteria;
             if(this.getPath().equals(commonCriteria.getPath()) &&
                     this.getFileName().equals(commonCriteria.getFileName()) &&
@@ -224,8 +223,6 @@ public class Common extends Criteria {
                     this.criteriaMimeType.equals(commonCriteria.criteriaMimeType)) {
                 return true;
             }
-
-
         return false;
     }
 }
