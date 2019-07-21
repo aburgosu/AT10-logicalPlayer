@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,13 +82,20 @@ public class Query {
      * This method show the info criteria between two dates.
      */
     public List filterByDates(String firstDate, String secondDate) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String lower = secondDate;
+        String upper = firstDate;
+        LocalDateTime lowerdt = LocalDateTime.parse(lower, formatter);
+        LocalDateTime upperdt = LocalDateTime.parse(upper, formatter);
+
         List<String> infCriterias = new ArrayList<String>();
-        String sql = "SELECT * FROM criterias WHERE data BETWEEN '?' AND '?'";
+        String sql = "SELECT * FROM criterias WHERE date BETWEEN ? AND ?";
         try {
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, firstDate);
-            statement.setString(2, secondDate);
+            statement.setTimestamp(1, Timestamp.valueOf(lowerdt));
+            statement.setTimestamp(2, Timestamp.valueOf(upperdt));
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
                 infCriterias.add(result.getInt("id") + "\t" + result.getString("name") + "\t" + result.getDate("date") + "\t" + result.getString("json"));
