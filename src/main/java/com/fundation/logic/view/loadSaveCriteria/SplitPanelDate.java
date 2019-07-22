@@ -7,19 +7,19 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view.components;
+package com.fundation.logic.view.loadSaveCriteria;
 
-import com.fundation.logic.view.LoadSavePanel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 /**
  * This class allows you to separate the panels.
  *
- * @author Jesus Menacho
+ * @author Melissa Romám
  * @version 1.0
  */
 public class SplitPanelDate extends JPanel {
+    private LoadSavePanel loadSavePanel;
 
     /**
      *  The constructor let it initializer.
@@ -39,10 +39,15 @@ public class SplitPanelDate extends JPanel {
      *  This method allows to display the content in divided panels.
      */
     public void contentSplitPanels() {
-        JPanel dateSearch = new DateSearch();
-        JPanel loadSavePanel = new LoadSavePanel();
+        JPanel dateSearch = new SearchByDate();
+        loadSavePanel = new LoadSavePanel();
         JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, dateSearch, loadSavePanel);
-        splitPane.setOneTouchExpandable(true);
+        splitPane.setOneTouchExpandable(false);
         add(splitPane);
     }
+
+    public LoadSavePanel getLoadSavePanel() {
+        return loadSavePanel;
+    }
+
 }

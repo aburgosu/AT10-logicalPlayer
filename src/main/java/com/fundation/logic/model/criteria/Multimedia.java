@@ -13,9 +13,9 @@ package com.fundation.logic.model.criteria;
  * Implements the model class Multimedia and the getter and setter´s methods.
  *
  * @authors Andres Burgos.
- * @version 1.1
+ * @version 1.0
  */
-public class Multimedia extends Criteria {
+public abstract class Multimedia extends Criteria {
     private String audioCodec;
     private int duration;
     private int bitrate;
@@ -61,4 +61,11 @@ public class Multimedia extends Criteria {
     public void setBitrate(int bitrate) {
         this.bitrate = bitrate;
     }
+
+    /**
+     * Equals override to be implemented in subclasses.
+     * @param criteria - Criteria to be compare with.
+     * @return True if two criteria are equal.
+     */
+    public abstract boolean equals(Criteria criteria);
 }

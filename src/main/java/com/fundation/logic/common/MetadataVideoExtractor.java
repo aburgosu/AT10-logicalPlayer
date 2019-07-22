@@ -55,7 +55,6 @@ public class MetadataVideoExtractor {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(-1);
         }
         return "Metadata No available";
     }
@@ -175,5 +174,4 @@ public class MetadataVideoExtractor {
     public List<String> getSearchListMetadata() {
         return list;
     }
-
 }

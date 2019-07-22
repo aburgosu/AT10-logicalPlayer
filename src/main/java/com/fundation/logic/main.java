@@ -9,8 +9,9 @@
  */
 package com.fundation.logic;
 
-import com.fundation.logic.view.SearchVideoFrame;
+import com.fundation.logic.view.MainFrame;
 import com.fundation.logic.controller.Controller;
+
 /**
  * Implements the main class
  *
@@ -20,8 +21,9 @@ import com.fundation.logic.controller.Controller;
 public class main {
 
     public static void main(String[] arg) {
-        SearchVideoFrame searchFrame = new SearchVideoFrame();
+        MainFrame searchFrame = new MainFrame();
         Controller controller = new Controller(searchFrame);
         controller.setEvents();
+        controller.showLoadSaveData();
     }
 }

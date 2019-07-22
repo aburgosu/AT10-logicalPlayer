@@ -7,12 +7,10 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view.components;
+package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.SearchAdvanceTab;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
 
 /**
  * This class allows you to separate the panels.
@@ -20,13 +18,13 @@ import javax.swing.JTabbedPane;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class SplitPanelSearch extends JPanel {
-    private BasicSearch basicSearch;
+public class SearchSplitPanel extends JPanel {
+    private BasicSearchPanel basicSearch;
     private SearchAdvanceTab searchOptionTabs;
     /**
      * The constructor allows components to be initialized.
      */
-    public SplitPanelSearch() {
+    public SearchSplitPanel() {
         initComponent();
     }
 
@@ -41,7 +39,7 @@ public class SplitPanelSearch extends JPanel {
      * This method shows the content of the division of panels in a splitPane.
      */
     public void ContentsplitPanel() {
-        basicSearch = new BasicSearch();
+        basicSearch = new BasicSearchPanel();
         searchOptionTabs = new SearchAdvanceTab();
         JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true, basicSearch, searchOptionTabs);
         splitPane.setOneTouchExpandable(false);
@@ -52,7 +50,7 @@ public class SplitPanelSearch extends JPanel {
      * This method return the basicSearch content.
      * @return basicSearch
      */
-    public BasicSearch getBasicSearchPanel() {
+    public BasicSearchPanel getBasicSearchPanel() {
         return basicSearch;
     }
 
