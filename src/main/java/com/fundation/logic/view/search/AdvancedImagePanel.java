@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
+import com.fundation.logic.view.CustomePanel;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.DefaultComboBoxModel;
@@ -26,7 +27,7 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class AdvancedImagePanel extends JPanel {
+public class AdvancedImagePanel extends CustomePanel {
     private JButton btnSearchAdvanceImage;
     private JTextField textFieldWidth;
     private JTextField textFieldHeight;
@@ -53,7 +54,7 @@ public class AdvancedImagePanel extends JPanel {
      * This method show the content panel.
      */
     private void imageContentPanel() {
-        JLabel lblWidth = new JLabel("Width: ");
+        JLabel lblWidth = new JLabel("Width:");
         GridBagConstraints gbc_lblWidth = new GridBagConstraints();
         gbc_lblWidth.anchor = GridBagConstraints.EAST;
         gbc_lblWidth.insets = new Insets(0, 0, 5, 5);
@@ -69,7 +70,15 @@ public class AdvancedImagePanel extends JPanel {
         gbc_textFieldWith.gridy = 4;
         add(textFieldWidth, gbc_textFieldWith);
 
-        JLabel lblHeight = new JLabel("Height: ");
+        JLabel lblPixels = new JLabel("  pixels");
+        GridBagConstraints gbc_lblPixels = new GridBagConstraints();
+        gbc_lblPixels.anchor = GridBagConstraints.WEST;
+        gbc_lblPixels.insets = new Insets(0, 0, 5, 5);
+        gbc_lblPixels.gridx = 3;
+        gbc_lblPixels.gridy = 4;
+        add(lblPixels, gbc_lblPixels);
+
+        JLabel lblHeight = new JLabel("Height:");
         GridBagConstraints gbc_lblHeight = new GridBagConstraints();
         gbc_lblHeight.insets = new Insets(0, 0, 5, 5);
         gbc_lblHeight.anchor = GridBagConstraints.EAST;
@@ -85,7 +94,15 @@ public class AdvancedImagePanel extends JPanel {
         gbc_textFieldWidth.gridy = 5;
         add(textFieldHeight, gbc_textFieldWidth);
 
-        JLabel lblColorSpaceData = new JLabel("Color space data: ");
+        JLabel lblPixelsH = new JLabel("  pixels");
+        GridBagConstraints gbc_lblPixelsH = new GridBagConstraints();
+        gbc_lblPixelsH.anchor = GridBagConstraints.WEST;
+        gbc_lblPixelsH.insets = new Insets(0, 0, 5, 5);
+        gbc_lblPixelsH.gridx = 3;
+        gbc_lblPixelsH.gridy = 5;
+        add(lblPixelsH, gbc_lblPixelsH);
+
+        JLabel lblColorSpaceData = new JLabel("Color space data:");
         GridBagConstraints gbc_ColorSpaceData = new GridBagConstraints();
         gbc_ColorSpaceData.anchor = GridBagConstraints.EAST;
         gbc_ColorSpaceData.insets = new Insets(0, 0, 5, 5);
@@ -104,10 +121,11 @@ public class AdvancedImagePanel extends JPanel {
 
         btnSearchAdvanceImage = new JButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
-        gbc_btnSearch.anchor = GridBagConstraints.CENTER;
         gbc_btnSearch.gridwidth = 6;
+        gbc_btnSearch.anchor = GridBagConstraints.CENTER;
+        gbc_btnSearch.insets = new Insets(0, 0, 10, 0);
         gbc_btnSearch.gridx = 0;
-        gbc_btnSearch.gridy = 7;
+        gbc_btnSearch.gridy = 17;
         add(btnSearchAdvanceImage, gbc_btnSearch);
     }
 

@@ -66,11 +66,11 @@ public class ConvertVideoPanel extends JPanel {
      * This method shows the convert video form.
      */
     private void videoCriteriaConvertPanel() {
-        JLabel lblNewFormat = new JLabel("New format: ");
+        JLabel lblNewFormat = new JLabel("New format:");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
         gbc_lblNewFormat.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewFormat.gridx = 0;
+        gbc_lblNewFormat.gridx = 1;
         gbc_lblNewFormat.gridy = 4;
         add(lblNewFormat, gbc_lblNewFormat);
 
@@ -79,15 +79,15 @@ public class ConvertVideoPanel extends JPanel {
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxNewFormat.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxNewFormat.gridx = 1;
+        gbc_comboBoxNewFormat.gridx = 2;
         gbc_comboBoxNewFormat.gridy = 4;
         add(comboBoxNewFormat, gbc_comboBoxNewFormat);
 
-        JLabel lblAudioCodec = new JLabel("Audio codec: ");
+        JLabel lblAudioCodec = new JLabel("Audio codec:");
         GridBagConstraints gbc_lblAudioCodec = new GridBagConstraints();
         gbc_lblAudioCodec.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodec.insets = new Insets(0, 0, 5, 5);
-        gbc_lblAudioCodec.gridx = 0;
+        gbc_lblAudioCodec.gridx = 1;
         gbc_lblAudioCodec.gridy = 5;
         add(lblAudioCodec, gbc_lblAudioCodec);
 
@@ -97,15 +97,15 @@ public class ConvertVideoPanel extends JPanel {
         GridBagConstraints gbc_comboBoxAudioCodec = new GridBagConstraints();
         gbc_comboBoxAudioCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioCodec.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxAudioCodec.gridx = 1;
+        gbc_comboBoxAudioCodec.gridx = 2;
         gbc_comboBoxAudioCodec.gridy = 5;
         add(comboBoxAudioCodec, gbc_comboBoxAudioCodec);
 
-        JLabel lblAudioBit = new JLabel("Audio bit rate: ");
+        JLabel lblAudioBit = new JLabel("Audio bitrate:");
         GridBagConstraints gbc_lblAudioBit = new GridBagConstraints();
         gbc_lblAudioBit.anchor = GridBagConstraints.EAST;
         gbc_lblAudioBit.insets = new Insets(0, 0, 5, 5);
-        gbc_lblAudioBit.gridx = 0;
+        gbc_lblAudioBit.gridx = 1;
         gbc_lblAudioBit.gridy = 6;
         add(lblAudioBit, gbc_lblAudioBit);
 
@@ -114,15 +114,15 @@ public class ConvertVideoPanel extends JPanel {
         GridBagConstraints gbc_comboBoxAudioBit = new GridBagConstraints();
         gbc_comboBoxAudioBit.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioBit.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxAudioBit.gridx = 1;
+        gbc_comboBoxAudioBit.gridx = 2;
         gbc_comboBoxAudioBit.gridy = 6;
         add(comboBoxAudioBit, gbc_comboBoxAudioBit);
 
-        JLabel lblAudioChannel = new JLabel("Audio channel: ");
+        JLabel lblAudioChannel = new JLabel("Audio channel:");
         GridBagConstraints gbc_lblAudioChannel = new GridBagConstraints();
         gbc_lblAudioChannel.anchor = GridBagConstraints.EAST;
         gbc_lblAudioChannel.insets = new Insets(0, 0, 5, 5);
-        gbc_lblAudioChannel.gridx = 0;
+        gbc_lblAudioChannel.gridx = 1;
         gbc_lblAudioChannel.gridy = 7;
         add(lblAudioChannel, gbc_lblAudioChannel);
 
@@ -131,15 +131,15 @@ public class ConvertVideoPanel extends JPanel {
         GridBagConstraints gbc_comboBoxAudioChannel = new GridBagConstraints();
         gbc_comboBoxAudioChannel.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioChannel.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxAudioChannel.gridx = 1;
+        gbc_comboBoxAudioChannel.gridx = 2;
         gbc_comboBoxAudioChannel.gridy = 7;
         add(comboBoxAudioChannel, gbc_comboBoxAudioChannel);
 
-        JLabel lblVideoCodec = new JLabel("Video codec: ");
+        JLabel lblVideoCodec = new JLabel("Video codec:");
         GridBagConstraints gbc_lblVideoCodec = new GridBagConstraints();
         gbc_lblVideoCodec.anchor = GridBagConstraints.EAST;
         gbc_lblVideoCodec.insets = new Insets(0, 0, 5, 5);
-        gbc_lblVideoCodec.gridx = 0;
+        gbc_lblVideoCodec.gridx = 1;
         gbc_lblVideoCodec.gridy = 9;
         add(lblVideoCodec, gbc_lblVideoCodec);
 
@@ -149,15 +149,15 @@ public class ConvertVideoPanel extends JPanel {
         GridBagConstraints gbc_comboBoxVideoCodec = new GridBagConstraints();
         gbc_comboBoxVideoCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoCodec.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxVideoCodec.gridx = 1;
+        gbc_comboBoxVideoCodec.gridx = 2;
         gbc_comboBoxVideoCodec.gridy = 9;
         add(comboBoxVideoCodec, gbc_comboBoxVideoCodec);
 
-        JLabel lblVideoBit = new JLabel("Video bitrate: ");
+        JLabel lblVideoBit = new JLabel("Video bitrate:");
         GridBagConstraints gbc_lblVideoBit = new GridBagConstraints();
         gbc_lblVideoBit.anchor = GridBagConstraints.EAST;
         gbc_lblVideoBit.insets = new Insets(0, 0, 5, 5);
-        gbc_lblVideoBit.gridx = 0;
+        gbc_lblVideoBit.gridx = 1;
         gbc_lblVideoBit.gridy = 11;
         add(lblVideoBit, gbc_lblVideoBit);
 
@@ -166,15 +166,15 @@ public class ConvertVideoPanel extends JPanel {
         GridBagConstraints gbc_comboBoxVideoBit = new GridBagConstraints();
         gbc_comboBoxVideoBit.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoBit.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxVideoBit.gridx = 1;
+        gbc_comboBoxVideoBit.gridx = 2;
         gbc_comboBoxVideoBit.gridy = 11;
         add(comboBoxVideoBit, gbc_comboBoxVideoBit);
 
-        JLabel lblVideoRate = new JLabel("Frames per second: ");
+        JLabel lblVideoRate = new JLabel("Frames per second:");
         GridBagConstraints gbc_lblVideoRate = new GridBagConstraints();
         gbc_lblVideoRate.anchor = GridBagConstraints.EAST;
         gbc_lblVideoRate.insets = new Insets(0, 0, 5, 5);
-        gbc_lblVideoRate.gridx = 0;
+        gbc_lblVideoRate.gridx = 1;
         gbc_lblVideoRate.gridy = 12;
         add(lblVideoRate, gbc_lblVideoRate);
 
@@ -183,15 +183,15 @@ public class ConvertVideoPanel extends JPanel {
         GridBagConstraints gbc_comboBoxVideoRate = new GridBagConstraints();
         gbc_comboBoxVideoRate.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoRate.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxVideoRate.gridx = 1;
+        gbc_comboBoxVideoRate.gridx = 2;
         gbc_comboBoxVideoRate.gridy = 12;
         add(comboBoxVideoRate, gbc_comboBoxVideoRate);
 
-        JLabel lblKeyFrame = new JLabel("Key frame: ");
+        JLabel lblKeyFrame = new JLabel("Key frame:");
         GridBagConstraints gbc_lblKeyFrame = new GridBagConstraints();
         gbc_lblKeyFrame.anchor = GridBagConstraints.EAST;
         gbc_lblKeyFrame.insets = new Insets(0, 0, 5, 5);
-        gbc_lblKeyFrame.gridx = 0;//0
+        gbc_lblKeyFrame.gridx = 1;
         gbc_lblKeyFrame.gridy = 13;
         add(lblKeyFrame, gbc_lblKeyFrame);
 
@@ -199,15 +199,15 @@ public class ConvertVideoPanel extends JPanel {
         GridBagConstraints gbc_checkBoxKeyFrame = new GridBagConstraints();
         gbc_checkBoxKeyFrame.anchor = GridBagConstraints.WEST;
         gbc_checkBoxKeyFrame.insets = new Insets(0, 0, 5, 5);
-        gbc_checkBoxKeyFrame.gridx = 1;//1
+        gbc_checkBoxKeyFrame.gridx = 2;
         gbc_checkBoxKeyFrame.gridy = 13;
         add(checkBoxKeyFrame, gbc_checkBoxKeyFrame);
 
-        JLabel lblEvery = new JLabel("Every: ");
+        JLabel lblEvery = new JLabel("Every:");
         GridBagConstraints gbc_lblEvery = new GridBagConstraints();
         gbc_lblEvery.anchor = GridBagConstraints.EAST;
         gbc_lblEvery.insets = new Insets(0, 0, 5, 5);
-        gbc_lblEvery.gridx = 2;//0
+        gbc_lblEvery.gridx = 2;
         gbc_lblEvery.gridy = 13;
         add(lblEvery, gbc_lblEvery);
 
@@ -223,16 +223,16 @@ public class ConvertVideoPanel extends JPanel {
         dateEditor.getTextField().setEditable(false);
         minuteSpinnerKeyFrame.setEditor(dateEditor);
         GridBagConstraints gbc_spinner = new GridBagConstraints();
-        gbc_spinner.anchor = GridBagConstraints.EAST;
-        gbc_spinner.gridx = 3;//0
+        gbc_spinner.anchor = GridBagConstraints.NORTHWEST;
+        gbc_spinner.gridx = 3;
         gbc_spinner.gridy = 13;
         add(minuteSpinnerKeyFrame, gbc_spinner);
 
-        JLabel lblThumbnail = new JLabel("Thumbnail: ");
+        JLabel lblThumbnail = new JLabel("Thumbnail:");
         GridBagConstraints gbc_lblThumbnail = new GridBagConstraints();
         gbc_lblThumbnail.anchor = GridBagConstraints.EAST;
         gbc_lblThumbnail.insets = new Insets(0, 0, 5, 5);
-        gbc_lblThumbnail.gridx = 0;
+        gbc_lblThumbnail.gridx = 1;
         gbc_lblThumbnail.gridy = 14;
         add(lblThumbnail, gbc_lblThumbnail);
 
@@ -240,15 +240,15 @@ public class ConvertVideoPanel extends JPanel {
         GridBagConstraints gbc_checkBoxThumbnail = new GridBagConstraints();
         gbc_checkBoxThumbnail.anchor = GridBagConstraints.WEST;
         gbc_checkBoxThumbnail.insets = new Insets(0, 0, 5, 5);
-        gbc_checkBoxThumbnail.gridx = 1;
+        gbc_checkBoxThumbnail.gridx = 2;
         gbc_checkBoxThumbnail.gridy = 14;
         add(checkBoxThumbnail, gbc_checkBoxThumbnail);
 
-        JLabel lblAt = new JLabel("At: ");
+        JLabel lblAt = new JLabel("At:");
         GridBagConstraints gbc_lblAt = new GridBagConstraints();
         gbc_lblAt.anchor = GridBagConstraints.EAST;
         gbc_lblAt.insets = new Insets(0, 0, 5, 5);
-        gbc_lblAt.gridx = 2;//0
+        gbc_lblAt.gridx = 2;
         gbc_lblAt.gridy = 14;
         add(lblAt, gbc_lblAt);
 
@@ -259,15 +259,16 @@ public class ConvertVideoPanel extends JPanel {
         dateEditorTo.getTextField().setEditable(false);
         minuteSpinnerThumbnail.setEditor(dateEditorTo);
         GridBagConstraints gbc_minuteSpinnerTo = new GridBagConstraints();
-        gbc_minuteSpinnerTo.anchor = GridBagConstraints.EAST;
+        gbc_minuteSpinnerTo.anchor = GridBagConstraints.NORTHWEST;
         gbc_minuteSpinnerTo.gridx = 3;
         gbc_minuteSpinnerTo.gridy = 14;
         add(minuteSpinnerThumbnail, gbc_minuteSpinnerTo);
 
         btnConvertVideo = new JButton("Convert");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
-        gbc_btnSearch.anchor = GridBagConstraints.EAST;
-        gbc_btnSearch.gridwidth = 2;
+        gbc_btnSearch.anchor = GridBagConstraints.CENTER;
+        gbc_btnSearch.insets = new Insets(0,0,10,0);
+        gbc_btnSearch.gridwidth = 6;
         gbc_btnSearch.gridx = 0;
         gbc_btnSearch.gridy = 17;
         add(btnConvertVideo, gbc_btnSearch);

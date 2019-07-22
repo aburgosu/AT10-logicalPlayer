@@ -54,11 +54,11 @@ public class ConvertPPTPanel extends JPanel {
      * This method show convert PPT form.
      */
     private void showPPTConvertCriteriaForm() {
-        JLabel lblNewFormat = new JLabel("New format: ");
+        JLabel lblNewFormat = new JLabel("New format:");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
         gbc_lblNewFormat.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewFormat.gridx = 0;
+        gbc_lblNewFormat.gridx = 1;
         gbc_lblNewFormat.gridy = 4;
         add(lblNewFormat, gbc_lblNewFormat);
 
@@ -67,16 +67,17 @@ public class ConvertPPTPanel extends JPanel {
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxNewFormat.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxNewFormat.gridx = 1;
+        gbc_comboBoxNewFormat.gridx = 2;
         gbc_comboBoxNewFormat.gridy = 4;
         add(comboBoxNewFormat, gbc_comboBoxNewFormat);
 
         btnConvertAudio = new JButton("Convert");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
-        gbc_btnSearch.anchor = GridBagConstraints.EAST;
-        gbc_btnSearch.gridwidth = 2;
+        gbc_btnSearch.anchor = GridBagConstraints.CENTER;
+        gbc_btnSearch.insets = new Insets(0, 0, 10, 0);
+        gbc_btnSearch.gridwidth = 6;
         gbc_btnSearch.gridx = 0;
-        gbc_btnSearch.gridy = 9;
+        gbc_btnSearch.gridy = 17;
         add(btnConvertAudio, gbc_btnSearch);
     }
 
