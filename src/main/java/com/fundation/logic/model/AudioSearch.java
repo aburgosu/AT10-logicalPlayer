@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * <p>
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -11,6 +11,7 @@ package com.fundation.logic.model;
 
 import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.common.MetadataAudioExtractor;
+import com.fundation.logic.common.MetadataImageExtractor;
 import com.fundation.logic.model.criteria.Audio;
 
 import java.io.File;
@@ -19,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implements new Video Search class.
+ * Implements new Video search class.
  *
  * @author John Salazar Pinto
  * @version 1.0
@@ -28,7 +29,7 @@ public class AudioSearch implements ISearch {
     static private Audio audioCriteria;
 
     /**
-     * Initializes a Search instance which requires a criteria as parameter.
+     * Initializes a search instance which requires a criteria as parameter.
      */
     public AudioSearch(Audio audioCriteria) {
         this.audioCriteria = audioCriteria;
@@ -55,36 +56,59 @@ public class AudioSearch implements ISearch {
         File file = new File(path);
         String criteriaFileName = audioCriteria.getFileName();
         String criteriaExtension = audioCriteria.getExtension();
-        String criteriaAudioCodec = audioCriteria.getAudioCodec();
+        String criteriAudioCodec = audioCriteria.getAudioCodec();
+        String criteriaDuration = Integer.toString(audioCriteria.getDuration());
         String criteriaChannel = Integer.toString(audioCriteria.getChannel());
-        System.out.println(criteriaChannel);
-        System.out.println(criteriaAudioCodec);
+        String criteriaMimeType = "audio";
+        String criteriaSampleRate = Integer.toString(audioCriteria.getSampleRate());
         File[] allSubFiles = file.listFiles();
-
         for (File fileExtractor : allSubFiles) {
-            if (fileExtractor.isDirectory()) {
-                searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
-            } else {
-                String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
-                String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
+            try {
+                if (fileExtractor.isDirectory()) {
+                    searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
+                } else {
+                    System.out.println(criteriaSampleRate);
+                    String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
+                    String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
+                    MetadataImageExtractor metadataImageExtractor = new MetadataImageExtractor();
+                    String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
+                    String pathd = exiftool + "\"" + fileExtractor + "\"";
+                    MetadataAudioExtractor metadataAudioExtractor = new MetadataAudioExtractor();
+                    metadataAudioExtractor.run(pathd);
+                    metadataImageExtractor.run(pathd);
+                    String channel = "All";
+                    if (criteriaChannel != "All") {
+                        channel = MetadataAudioExtractor.getAudioChannel();
+                    }
+                    String audioCodec = "All";
+                    if (criteriAudioCodec != "All") {
+                        audioCodec = MetadataAudioExtractor.searchAudioCodec();
+                    }
+                    String mimeType = MetadataAudioExtractor.searchMimeType();
 
-                String channel = MetadataAudioExtractor.getAudioChannel(fileExtractor);
+                    System.out.println(mimeType);
+                    System.out.println(audioCodec);
 
-                Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
-                Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
-                Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
-                Float fileSize = FileInfo.getFileSize(fileExtractor);
+                    Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
+                    Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
+                    Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
+                    Float fileSize = FileInfo.getFileSize(fileExtractor);
 
-                if (evaluateString(fileName, criteriaFileName)
-                        && evaluateString(fileExtension, criteriaExtension)
-                      && evaluateString(channel, criteriaChannel)
-                ) {
-                    CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
-                            fileExtension, false, false,
-                            fileSize, creationDate, accessDate,
-                            modificationDate, "MimeType", "video");
-                    searchResult.add(matchingFile);
+                    if (evaluateString(fileName, criteriaFileName)
+                            && evaluateString(fileExtension, criteriaExtension)
+                            && evaluateString(channel, criteriaChannel)
+                            && evaluateString(audioCodec, criteriAudioCodec)
+                            && evaluateString(mimeType, criteriaMimeType)
+                    ) {
+                        CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
+                                fileExtension, false, false,
+                                fileSize, creationDate, accessDate,
+                                modificationDate, "MimeType", "video");
+                        searchResult.add(matchingFile);
+                    }
                 }
+            } catch (Exception e) {
+                System.out.println("The file  :" + FileInfo.getFileDenomination(fileExtractor, "name") + " -  No was added ");
             }
         }
         return searchResult;
