@@ -9,8 +9,10 @@
  */
 package com.fundation.logic.view.resultTable;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import java.awt.BorderLayout;
+import java.awt.Rectangle;
 import java.io.File;
 import java.util.List;
 
