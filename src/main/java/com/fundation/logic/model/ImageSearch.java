@@ -71,7 +71,7 @@ public class ImageSearch implements ISearch {
                     metadataImageExtractor.run(pathd);
                     String width = "0";
                     if (criteriaWidth.length() != 1){
-                        width = MetadataImageExtractor.getWidth(fileExtractor);
+                        width = MetadataImageExtractor.getWidth();
                     }
                     String height = "0";
                     if (criteriaHeight.length() != 1){

@@ -84,7 +84,6 @@ public class MetadataImageExtractor {
      * This method returns metadata image Width.
      */
     public static void width(String width) {
-        System.out.println(width+"asdfasdfadsf");
         if ((width.contains("Image Width"))) {
             int initIndex = width.indexOf(":");
             int endIndex = width.length();
