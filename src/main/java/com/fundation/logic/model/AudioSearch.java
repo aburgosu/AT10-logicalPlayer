@@ -19,16 +19,16 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implements new Video Search class.
+ * Implements new Video search class.
  *
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class AudioSearch {
+public class AudioSearch implements ISearch {
     static private Audio audioCriteria;
 
     /**
-     * Initializes a Search instance which requires a criteria as parameter.
+     * Initializes a search instance which requires a criteria as parameter.
      */
     public AudioSearch(Audio audioCriteria) {
         this.audioCriteria = audioCriteria;

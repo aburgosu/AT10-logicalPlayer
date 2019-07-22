@@ -94,7 +94,7 @@ public class ImageSearch implements ISearch {
                     }
                 }
             } catch (Exception e) {
-                System.out.println("The file  :" + FileInfo.getFileDenomination(fileExtractor, "name") + " -  No was added ");
+                System.out.println("The file  :" + FileInfo.getFileDenomination(fileExtractor, "name") + " -  Has not been added ");
             }
         }
         return searchResult;
