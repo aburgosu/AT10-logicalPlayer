@@ -10,9 +10,10 @@
 package com.fundation.logic.common;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implements the MetadataImageExtractor class
@@ -21,100 +22,96 @@ import java.io.InputStreamReader;
  * @version 1.0
  */
 public class MetadataImageExtractor {
+    static Process extractMetadata;
+    static String searchWidth;
+    static String searchHeight;
+    static String searchColorSpace;
+    private List<String> list;
+
+    public void run(String path) throws IOException {
+        extractMetadata = Runtime.getRuntime().exec(path);
+        readAll();
+    }
 
     /**
-     * This method returns metadata image height.
+     * This method read all metadata.
+     *
+     * @return
      */
-    public static String getHeight(File pathFile) {
-        String height = null;
+    public String readAll() {
+        String metadata = null;
+        list = new ArrayList<>();
+        BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((height = stdInput.readLine()) != null) {
-                if ((height.contains("Image Height"))) {
-                    int initIndex = height.indexOf(":");
-                    int endIndex = height.length();
-                    int freeSpace = 2;
-                    height = height.substring(initIndex +freeSpace, endIndex);
-                    return height;
+            while ((metadata = stdInput.readLine()) != null) {
+                height(metadata);
+                width(metadata);
+                list.add(metadata);
+                if ((metadata.contains("Read_All"))) {
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(-1);
         }
-        return "There is not image Height";
+        return "No available";
+    }
+
+    /**
+     * This method returns metadata image height.
+     */
+    public static void height(String height) {
+        if ((height.contains("Image Height"))) {
+            int initIndex = height.indexOf(":");
+            int endIndex = height.length();
+            int freeSpace = 2;
+            searchHeight = height.substring(initIndex + freeSpace, endIndex);
+        }
+    }
+
+    /**
+     * This method returns height image.
+     */
+    public static String getHeight() {
+        return searchHeight;
     }
 
     /**
      * This method returns metadata image Width.
      */
-    public static String getWidth(File pathFile) {
-        String width = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((width = stdInput.readLine()) != null) {
-                if ((width.contains("Image Width"))) {
-                    int initIndex = width.indexOf(":");
-                    int endIndex = width.length();
-                    int freeSpace = 2;
-                    width = width.substring(initIndex + freeSpace, endIndex);
-                    return width;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+    public static void width(String width) {
+        if ((width.contains("Image Width"))) {
+            int initIndex = width.indexOf(":");
+            int endIndex = width.length();
+            int freeSpace = 2;
+            width = width.substring(initIndex + freeSpace, endIndex);
+            searchWidth = width;
         }
-        return "There is not image Width";
+    }
+
+    /**
+     * This method returns width image.
+     */
+    public static String getWidth() {
+        return searchWidth;
     }
 
     /**
      * This method returns metadata image color space.
      */
-    public static String getColorSpace(File pathFile) {
-        String colorSpace = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((colorSpace = stdInput.readLine()) != null) {
-                if ((colorSpace.contains("Color Space"))) {
-                    int initIndex = colorSpace.indexOf(":");
-                    int endIndex = colorSpace.length();
-                    int freeSpace = 2;
-                    colorSpace = colorSpace.substring(initIndex + freeSpace, endIndex);
-                    return colorSpace;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+    public static void getColorSpace(String colorSpace) {
+        if ((colorSpace.contains("Color Space"))) {
+            int initIndex = colorSpace.indexOf(":");
+            int endIndex = colorSpace.length();
+            int freeSpace = 2;
+            colorSpace = colorSpace.substring(initIndex + freeSpace, endIndex);
+            searchColorSpace = colorSpace;
         }
-        return "There is not color space";
     }
 
     /**
-     * This method returns metadata file type.
+     * This method returns metadata list.
      */
-    public static String getFileType(File pathFile) {
-        String imageFileType = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile);
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((imageFileType = stdInput.readLine()) != null) {
-                if ((imageFileType.contains("File Type"))) {
-                    int initIndex = imageFileType.indexOf(":");
-                    int endIndex = imageFileType.length();
-                    int freeSpace = 2;
-                    imageFileType = imageFileType.substring(initIndex + freeSpace, endIndex);
-                    return imageFileType;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-        return "There is not file type";
+    public List<String> getSearchListMetadata() {
+        return list;
     }
 }
