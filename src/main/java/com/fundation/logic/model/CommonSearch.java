@@ -15,6 +15,7 @@ import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.model.criteria.Common;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -178,7 +179,7 @@ public class CommonSearch implements ISearch {
             return fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit));
         }
         return (fileExtractorDate.after(DateSetter.setStartOfDay(lowerLimit)) &&
-            fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit)));
+                fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit)));
     }
 
     /**
