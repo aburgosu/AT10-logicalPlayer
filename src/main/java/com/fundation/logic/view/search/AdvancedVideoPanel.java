@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
+import com.fundation.logic.view.CustomePanel;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.DefaultComboBoxModel;
@@ -28,7 +29,7 @@ import java.util.Calendar;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class AdvancedVideoPanel extends JPanel {
+public class AdvancedVideoPanel extends CustomePanel {
 
     private PanelSetter settingPanel;
     private JComboBox comboBoxVideoCodec;

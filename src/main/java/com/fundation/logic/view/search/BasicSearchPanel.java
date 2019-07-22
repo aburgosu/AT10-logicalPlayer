@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
+import com.fundation.logic.view.CustomePanel;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.JPanel;
@@ -29,7 +30,7 @@ import java.awt.event.ActionListener;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class BasicSearchPanel extends JPanel {
+public class BasicSearchPanel extends CustomePanel {
     private JTextField textFieldPath;
     private JTextField textFileName;
     private JTextField textFieldFileType;

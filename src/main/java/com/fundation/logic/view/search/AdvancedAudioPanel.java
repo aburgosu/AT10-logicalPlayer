@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
+import com.fundation.logic.view.CustomePanel;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.JPanel;
@@ -28,7 +29,7 @@ import java.util.Calendar;
  * @author Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class AdvancedAudioPanel extends JPanel {
+public class AdvancedAudioPanel extends CustomePanel {
     private JButton btnSearchAdvanceAudio;
     private JComboBox comboBoxAudioCodecName;
     private JComboBox comboBoxAudioChannel;

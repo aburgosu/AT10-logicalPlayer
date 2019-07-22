@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
+import com.fundation.logic.view.CustomePanel;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 
@@ -30,7 +31,7 @@ import java.awt.Insets;
  * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class GeneralSearchPanel extends JPanel {
+public class GeneralSearchPanel extends CustomePanel {
     private JTextField textFieldOwner;
     private JDateChooser fieldToDateCreation;
     private JDateChooser textFieldFromDateCreation;
@@ -50,8 +51,8 @@ public class GeneralSearchPanel extends JPanel {
      * Initializes a MainTabs instance for the search options
      */
     public GeneralSearchPanel() {
-        Color newColor = new Color(81, 209, 246);
-        setBackground(newColor);
+        //Color newColor = new Color(81, 209, 246);
+        //setBackground(newColor);
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{5, 80, 80, 80, 80, 5};
         gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0};

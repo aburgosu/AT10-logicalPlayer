@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
+import com.fundation.logic.view.CustomePanel;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.DefaultComboBoxModel;
@@ -26,7 +27,7 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class AdvancedImagePanel extends JPanel {
+public class AdvancedImagePanel extends CustomePanel {
     private JButton btnSearchAdvanceImage;
     private JTextField textFieldWidth;
     private JTextField textFieldHeight;
