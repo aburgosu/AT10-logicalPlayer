@@ -25,6 +25,7 @@ public class MetadataAudioExtractor {
     private static String searchChannelMode;
     private static String searchAudioCodec;
     private static String searchMimeType;
+    private static String searchSampleRate;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -45,6 +46,7 @@ public class MetadataAudioExtractor {
                 audioChannel(s);
                 audioCodec(s);
                 mimeType(s);
+                sampleRAte(s);
                 if ((frameRate.contains("Read_All"))) {
                     int initIndex = frameRate.indexOf(":");
                     int endIndex = frameRate.length();
@@ -119,25 +121,18 @@ public class MetadataAudioExtractor {
     /**
      * This method returns metadata sample rate.
      */
-    public static String getSampleRate(File pathFile) {
-        String sampleRate = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((sampleRate = stdInput.readLine()) != null) {
-                if ((sampleRate.contains("Sample Rate"))) {
-                    int initIndex = sampleRate.indexOf(":");
-                    int endIndex = sampleRate.length();
-                    int freeSpace = 2;
-                    sampleRate = sampleRate.substring(initIndex + freeSpace, endIndex);
-                    return sampleRate;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+    public static void sampleRAte(String sampleRate) {
+        if ((sampleRate.contains("Sample Rate"))) {
+            int initIndex = sampleRate.indexOf(":");
+            int endIndex = sampleRate.length();
+            int freeSpace = 2;
+            sampleRate = sampleRate.substring(initIndex + freeSpace, endIndex);
+            searchSampleRate = sampleRate;
         }
-        return "There is not sample rate";
+    }
+
+    public static String getSearchSampleRate(){
+        return searchSampleRate;
     }
 
     /**
