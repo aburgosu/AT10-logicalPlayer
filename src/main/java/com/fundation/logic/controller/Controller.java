@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * <p>
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -9,12 +9,22 @@
  */
 package com.fundation.logic.controller;
 
-import com.fundation.logic.model.*;
-import com.fundation.logic.model.criteria.*;
-import com.fundation.logic.view.SearchVideoFrame;
+import com.fundation.logic.model.AudioSearch;
+import com.fundation.logic.model.CommonSearch;
+import com.fundation.logic.model.CriteriaRecord;
+import com.fundation.logic.model.CustomizedFile;
+import com.fundation.logic.model.ISearch;
+import com.fundation.logic.model.ImageSearch;
+import com.fundation.logic.model.QueryForCriteria;
+import com.fundation.logic.model.VideoSearch;
+import com.fundation.logic.model.criteria.Audio;
+import com.fundation.logic.model.criteria.Common;
+import com.fundation.logic.model.criteria.Criteria;
+import com.fundation.logic.model.criteria.Image;
+import com.fundation.logic.model.criteria.Video;
+import com.fundation.logic.view.MainFrame;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +36,7 @@ import java.util.List;
  */
 public class Controller {
     private ISearch search;
-    private SearchVideoFrame searchFrame;
+    private MainFrame searchFrame;
     private QueryForCriteria queryCriteria;
 
     private final int COMMON_SEARCH = 0;
@@ -37,7 +47,7 @@ public class Controller {
     /**
      * Initializes a Controller instance with a searchFrame and a criteria
      */
-    public Controller(SearchVideoFrame searchFrame) {
+    public Controller(MainFrame searchFrame) {
         this.searchFrame = searchFrame;
         queryCriteria = new QueryForCriteria();
     }
@@ -63,7 +73,7 @@ public class Controller {
     }
 
     /**
-     * show the result in the table
+     * Shows the result in the table
      */
     public void showSearchResult(int searchType) {
         List<CustomizedFile> foundFiles = null;
@@ -97,6 +107,7 @@ public class Controller {
 
     /**
      * Get Common criteria
+     *
      * @return Common criteria
      */
     public Common getCommonCriteria() {
@@ -150,8 +161,8 @@ public class Controller {
         if (owner.length() == 0) {
             owner = null;
         }
-        String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimetype().getSelectedItem().toString();
-        if(mimeType == "ALL") {
+        String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimeType().getSelectedItem().toString();
+        if (mimeType == "All") {
             mimeType = null;
         }
         boolean fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
@@ -172,11 +183,13 @@ public class Controller {
         criteria.setCriteriaModificationDateMax(dateModificationTo);
         criteria.setCriteriaOwner(owner);
         criteria.setCriteriaMimeType(mimeType);
+
         return criteria;
     }
 
     /**
      * Get Image criteria
+     *
      * @return Image criteria
      */
     private Criteria getImageCriteria() {
@@ -196,7 +209,7 @@ public class Controller {
         }
         String height = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced().getTextFieldHeight().getText();
         if (height.length() == 0) {
-            height= "0";
+            height = "0";
         }
         criteria.setPath(path);
         criteria.setWidth(Integer.parseInt(width));
@@ -206,14 +219,49 @@ public class Controller {
 
     /**
      * Get Audio criteria
+     *
      * @return Audio criteria
      */
     private Criteria getAudioCriteria() {
-        return null;
+        Audio criteria = new Audio();
+        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath().getText();
+        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName().getText();
+        if (fileName.length() == 0) {
+            fileName = null;
+        }
+        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldFileType().getText();
+        if (extensionName.length() == 0) {
+            extensionName = null;
+        }
+        String channel = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioChannel().getSelectedItem().toString();
+        if (channel.length() == 0) {
+            channel = null;
+        }
+        String audioCodec = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioCodecName().getSelectedItem().toString();
+        if (audioCodec.length() == 0) {
+            audioCodec = null;
+        }
+        String sampleRate = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioSampleRate().getSelectedItem().toString();
+        if (sampleRate.length() == 0) {
+            sampleRate = null;
+        }
+
+        sampleRate = sampleRate.substring(0,5);
+        int sampleRateInt = Integer.parseInt(sampleRate);
+        channel = channel.substring(0, 1);
+        criteria.setPath(path);
+        criteria.setFileName(fileName);
+        criteria.setExtension(extensionName);
+        criteria.setChannel(Integer.parseInt(channel));
+        criteria.setAudioCodec(audioCodec);
+        criteria.setSampleRate(sampleRateInt);
+
+        return criteria;
     }
 
     /**
      * Get Video criteria
+     *
      * @return Video criteria
      */
     private Criteria getVideoCriteria() {
@@ -236,7 +284,7 @@ public class Controller {
         if (audioCodec.length() == 0) {
             audioCodec = null;
         }
-        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoFramerate().getSelectedItem().toString());
+        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoFrameRate().getSelectedItem().toString());
         if (framerate.length() == 0) {
             framerate = null;
         }
@@ -250,7 +298,7 @@ public class Controller {
         criteria.setVideoCodec(videoCodec);
         criteria.setAudioCodec(audioCodec);
         criteria.setFrameRate(framerate);
-        criteria.setHeight(Integer.parseInt(resolution.substring(resolution.indexOf("x")+1)));
+        criteria.setHeight(Integer.parseInt(resolution.substring(resolution.indexOf("x") + 1)));
         return criteria;
     }
 
@@ -276,13 +324,13 @@ public class Controller {
         });
     }
 
-    public void showLoadSaveData(){
-        searchFrame.getSearchTabs().getSplitPanelDate().getLoadSavePanel().clearTableResult();
+    public void showLoadSaveData() {
+        searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().clearTableResult();
         List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();
         for (int index = 0; index < registers.size(); index++) {
             String name = registers.get(index).getName();
             String date = registers.get(index).getDate();
-            searchFrame.getSearchTabs().getSplitPanelDate().getLoadSavePanel().addRegister(name,date);
+            searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name, date);
         }
     }
 }
