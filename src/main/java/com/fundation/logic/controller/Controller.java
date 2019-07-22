@@ -99,8 +99,9 @@ public class Controller {
                 Date creationDate = foundFiles.get(index).getCreationDate();
                 Date modificationDate = foundFiles.get(index).getModificationDate();
                 Date lastAccessDate = foundFiles.get(index).getAccessDate();
+                List<String> detailsList = foundFiles.get(index).getMetadata();
                 this.searchFrame.getTableResult().addResult(path, name, extension, size, creationDate,
-                        modificationDate, lastAccessDate, "---");
+                        modificationDate, lastAccessDate, detailsList);
             }
         }
     }

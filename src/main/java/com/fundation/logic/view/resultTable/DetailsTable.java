@@ -25,22 +25,22 @@ public class DetailsTable extends JTable {
     /**
      * Constructs the details table.
      */
-    public DetailsTable() {
-        initSetting();
+    public DetailsTable(List<String> detailsList) {
+        initSetting(detailsList);
     }
 
     /**
      * Inits details table.
      */
-    public void initSetting() {
-        model = new DefaultTableModel(new Object[]{"Metadata", "MetadataInfo"}, 0) {
+    public void initSetting(List<String> detailsList) {
+        model = new DefaultTableModel(new Object[]{"Metadata type", "Metadata info"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
         this.setModel(model);
-        //showMetadataTable();
+        showMetadataTable(detailsList);
     }
 
     /**
@@ -69,7 +69,7 @@ public class DetailsTable extends JTable {
      */
     public String getMetadataInfo(String detail) {
         int indexOfTwoPoints = detail.indexOf(":");
-        return detail.substring(indexOfTwoPoints);
+        return detail.substring(indexOfTwoPoints + 1);
     }
 
     /**
@@ -77,7 +77,7 @@ public class DetailsTable extends JTable {
      * @param detailsList
      */
     public void showMetadataTable(List<String> detailsList) {
-        for (int index = 0; index < detailsList.size(); index++) {
+        for (int index = 1; index < detailsList.size(); index++) {
             addMetadata(getMetadataType(detailsList.get(index)), getMetadataInfo(detailsList.get(index)));
         }
     }

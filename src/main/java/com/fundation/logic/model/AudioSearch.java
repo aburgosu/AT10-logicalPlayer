@@ -11,6 +11,7 @@ package com.fundation.logic.model;
 
 import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.common.MetadataAudioExtractor;
+import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.common.MetadataImageExtractor;
 import com.fundation.logic.model.criteria.Audio;
 
@@ -99,12 +100,12 @@ public class AudioSearch implements ISearch {
                             && evaluateString(channel, criteriaChannel)
                             && evaluateString(audioCodec, criteriAudioCodec)
                             && evaluateString(mimeType, criteriaMimeType)
-                            && evaluateString(sampleRate, criteriaSampleRate)
-                    ) {
+                            && evaluateString(sampleRate, criteriaSampleRate)) {
+                        List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false,
                                 fileSize, creationDate, accessDate,
-                                modificationDate, "MimeType", "video");
+                                modificationDate, "MimeType", "video", metadata);
                         searchResult.add(matchingFile);
                     }
                 }

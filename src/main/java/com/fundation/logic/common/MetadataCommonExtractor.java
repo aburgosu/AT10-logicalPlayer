@@ -25,7 +25,7 @@ public class MetadataCommonExtractor {
 
     static Process extractMetadata;
     static String searchMimeType;
-    List<String> list;
+    static List<String> list;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -91,7 +91,7 @@ public class MetadataCommonExtractor {
      *
      * @return
      */
-    public List<String> getSearchListMetadata() {
+    public static List<String> getSearchListMetadata() {
         return list;
     }
 }

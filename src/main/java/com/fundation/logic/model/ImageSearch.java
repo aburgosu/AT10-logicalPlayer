@@ -10,6 +10,7 @@
 package com.fundation.logic.model;
 
 import com.fundation.logic.common.FileInfo;
+import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.common.MetadataImageExtractor;
 import com.fundation.logic.model.criteria.Image;
 
@@ -84,12 +85,12 @@ public class ImageSearch implements ISearch {
                     if (evaluateString(fileName, criteriaFileName)
                             && evaluateString(fileExtension, criteriaExtension)
                             && evaluateString(width, criteriaWidth)
-                            && evaluateString(height, criteriaHeight)
-                    ) {
+                            && evaluateString(height, criteriaHeight)) {
+                        List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
                                 fileName, fileExtension, false, false,
                                 fileSize, creationDate, accessDate,
-                                modificationDate, "MimeType", "video");
+                                modificationDate, "MimeType", "video", metadata);
                         searchResult.add(matchingFile);
                     }
                 }
