@@ -169,6 +169,10 @@ public class MetadataVideoExtractor {
         return searchHeight;
     }
 
+    /**
+     * This method return metadata list.
+     * @return
+     */
     public List<String> getSearchListMetadata() {
         return list;
     }
