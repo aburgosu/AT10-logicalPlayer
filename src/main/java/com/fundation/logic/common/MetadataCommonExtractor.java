@@ -43,7 +43,6 @@ public class MetadataCommonExtractor {
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
             while ((metadata = stdInput.readLine()) != null) {
-                String s = metadata;
                 list.add(metadata);
                 mimeType(metadata);
                 if ((metadata.contains("Read_All"))) {
@@ -76,7 +75,6 @@ public class MetadataCommonExtractor {
                 searchMimeType = "Image";
             }
         }
-        System.out.println("No entro");
     }
 
     /**
@@ -96,5 +94,4 @@ public class MetadataCommonExtractor {
     public List<String> getSearchListMetadata() {
         return list;
     }
-
 }
