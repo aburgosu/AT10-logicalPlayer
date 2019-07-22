@@ -292,8 +292,9 @@ public class Controller {
         List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();
         for (int index = 0; index < registers.size(); index++) {
             String name = registers.get(index).getName();
+            String type = registers.get(index).getType();
             String date = registers.get(index).getDate();
-            searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name,date);
+            searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name, type, date);
         }
     }
 }

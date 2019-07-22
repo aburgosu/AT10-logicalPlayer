@@ -53,11 +53,11 @@ public class ConvertAudioPanel extends JPanel {
      * This method show the form to set a convert criteria.
      */
     private void showAudioCriteriaConvertForm() {
-        JLabel lblNewFormat = new JLabel("New format: ");
+        JLabel lblNewFormat = new JLabel("New format:");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
         gbc_lblNewFormat.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewFormat.gridx = 0;
+        gbc_lblNewFormat.gridx = 1;
         gbc_lblNewFormat.gridy = 4;
         add(lblNewFormat, gbc_lblNewFormat);
 
@@ -66,15 +66,15 @@ public class ConvertAudioPanel extends JPanel {
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxNewFormat.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxNewFormat.gridx = 1;
+        gbc_comboBoxNewFormat.gridx = 2;
         gbc_comboBoxNewFormat.gridy = 4;
         add(comboBoxNewFormat, gbc_comboBoxNewFormat);
 
-        JLabel lblCodec = new JLabel("Codec: ");
+        JLabel lblCodec = new JLabel("Codec:");
         GridBagConstraints gbc_lblCodec = new GridBagConstraints();
         gbc_lblCodec.anchor = GridBagConstraints.EAST;
         gbc_lblCodec.insets = new Insets(0, 0, 5, 5);
-        gbc_lblCodec.gridx = 0;
+        gbc_lblCodec.gridx = 1;
         gbc_lblCodec.gridy = 5;
         add(lblCodec, gbc_lblCodec);
 
@@ -84,15 +84,15 @@ public class ConvertAudioPanel extends JPanel {
         GridBagConstraints gbc_comboBoxCodec = new GridBagConstraints();
         gbc_comboBoxCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxCodec.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxCodec.gridx = 1;
+        gbc_comboBoxCodec.gridx = 2;
         gbc_comboBoxCodec.gridy = 5;
         add(comboBoxCodec, gbc_comboBoxCodec);
 
-        JLabel lblBit = new JLabel("Bitrate: ");
+        JLabel lblBit = new JLabel("Bitrate:");
         GridBagConstraints gbc_lblBit = new GridBagConstraints();
         gbc_lblBit.anchor = GridBagConstraints.EAST;
         gbc_lblBit.insets = new Insets(0, 0, 5, 5);
-        gbc_lblBit.gridx = 0;
+        gbc_lblBit.gridx = 1;
         gbc_lblBit.gridy = 6;
         add(lblBit, gbc_lblBit);
 
@@ -101,15 +101,15 @@ public class ConvertAudioPanel extends JPanel {
         GridBagConstraints gbc_comboBoxBit = new GridBagConstraints();
         gbc_comboBoxBit.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxBit.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxBit.gridx = 1;
+        gbc_comboBoxBit.gridx = 2;
         gbc_comboBoxBit.gridy = 6;
         add(comboBoxBit, gbc_comboBoxBit);
 
-        JLabel lblChannel = new JLabel("Channel: ");
+        JLabel lblChannel = new JLabel("Channel:");
         GridBagConstraints gbc_lblChannel = new GridBagConstraints();
         gbc_lblChannel.anchor = GridBagConstraints.EAST;
         gbc_lblChannel.insets = new Insets(0, 0, 5, 5);
-        gbc_lblChannel.gridx = 0;
+        gbc_lblChannel.gridx = 1;
         gbc_lblChannel.gridy = 7;
         add(lblChannel, gbc_lblChannel);
 
@@ -118,16 +118,17 @@ public class ConvertAudioPanel extends JPanel {
         GridBagConstraints gbc_comboBoxChannel = new GridBagConstraints();
         gbc_comboBoxChannel.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxChannel.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxChannel.gridx = 1;
+        gbc_comboBoxChannel.gridx = 2;
         gbc_comboBoxChannel.gridy = 7;
         add(comboBoxChannel, gbc_comboBoxChannel);
 
         btnConvertAudio = new JButton("Convert");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
-        gbc_btnSearch.anchor = GridBagConstraints.EAST;
-        gbc_btnSearch.gridwidth = 2;
+        gbc_btnSearch.anchor = GridBagConstraints.CENTER;
+        gbc_btnSearch.insets = new Insets(0, 0, 10, 0);
+        gbc_btnSearch.gridwidth = 6;
         gbc_btnSearch.gridx = 0;
-        gbc_btnSearch.gridy = 9;
+        gbc_btnSearch.gridy = 17;
         add(btnConvertAudio, gbc_btnSearch);
     }
 

@@ -37,11 +37,12 @@ public class PopupMenu extends JPopupMenu {
         if(FileInfo.isVideo(filePath) || FileInfo.isAudio(filePath)) {
             playItem = new JMenuItem("Play");
             add(playItem);
+            convertItem = new JMenuItem("Convert");
+            add(convertItem);
         }
+
         detailsItem = new JMenuItem("Details");
         add(detailsItem);
-        convertItem = new JMenuItem("convert");
-        add(convertItem);
         initItemMenuListener();
     }
 
@@ -56,6 +57,20 @@ public class PopupMenu extends JPopupMenu {
                     if (e.getButton() == MouseEvent.BUTTON1) {
                         PlayerFrame playerWindow = new PlayerFrame(filePath);
                         playerWindow.setVisible(true);
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
+        try {
+            detailsItem.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (e.getButton() == MouseEvent.BUTTON1) {
+                        DetailsFrame details = new DetailsFrame(filePath);
+                        details.setVisible(true);
                     }
                 }
             });
