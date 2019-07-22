@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * <p>
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -10,9 +10,10 @@
 package com.fundation.logic.common;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implements the MetadataImageExtractor class
@@ -25,6 +26,8 @@ public class MetadataImageExtractor {
     static String searchWidth;
     static String searchHeight;
     static String searchColorSpace;
+    private List<String> list;
+
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -37,23 +40,15 @@ public class MetadataImageExtractor {
      * @return
      */
     public String readAll() {
-        String frameRate = null;
+        String metadata = null;
+        list = new ArrayList<>();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
-            while ((frameRate = stdInput.readLine()) != null) {
-                String s = frameRate;
-                height(s);
-                width(s);
-                if ((frameRate.contains("Read_All"))) {
-                    int initIndex = frameRate.indexOf(":");
-                    int endIndex = frameRate.length();
-                    int freeSpace = 2;
-                    frameRate = frameRate.substring(initIndex + freeSpace, endIndex);
-                    frameRate = Float.toString(Math.round(Float.parseFloat(frameRate)));
-                    int start = 0;
-                    int deleteDat0 = 2;
-                    frameRate = frameRate.substring(start, deleteDat0);
-                    return frameRate;
+            while ((metadata = stdInput.readLine()) != null) {
+                height(metadata);
+                width(metadata);
+                list.add(metadata);
+                if ((metadata.contains("Read_All"))) {
                 }
             }
         } catch (IOException e) {
@@ -76,6 +71,9 @@ public class MetadataImageExtractor {
         }
     }
 
+    /**
+     * This method returns height image.
+     */
     public static String getHeight() {
         return searchHeight;
     }
@@ -93,6 +91,9 @@ public class MetadataImageExtractor {
         }
     }
 
+    /**
+     * This method returns width image.
+     */
     public static String getWidth() {
         return searchWidth;
     }
@@ -101,24 +102,20 @@ public class MetadataImageExtractor {
     /**
      * This method returns metadata image color space.
      */
-    public static String getColorSpace(File pathFile) {
-        String colorSpace = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((colorSpace = stdInput.readLine()) != null) {
-                if ((colorSpace.contains("Color Space"))) {
-                    int initIndex = colorSpace.indexOf(":");
-                    int endIndex = colorSpace.length();
-                    int freeSpace = 2;
-                    colorSpace = colorSpace.substring(initIndex + freeSpace, endIndex);
-                    return colorSpace;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+    public static void getColorSpace(String colorSpace) {
+        if ((colorSpace.contains("Color Space"))) {
+            int initIndex = colorSpace.indexOf(":");
+            int endIndex = colorSpace.length();
+            int freeSpace = 2;
+            colorSpace = colorSpace.substring(initIndex + freeSpace, endIndex);
+            searchColorSpace = colorSpace;
         }
-        return "There is not color space";
+    }
+
+    /**
+     * This method returns metadata list.
+     */
+    public List<String> getSearchListMetadata() {
+        return list;
     }
 }
