@@ -9,15 +9,14 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomePanel;
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JFileChooser;
 import javax.swing.JButton;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -30,7 +29,7 @@ import java.awt.event.ActionListener;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class BasicSearchPanel extends CustomePanel {
+public class BasicSearchPanel extends CustomPanel {
     private JTextField textFieldPath;
     private JTextField textFileName;
     private JTextField textFieldFileType;
@@ -84,9 +83,7 @@ public class BasicSearchPanel extends CustomePanel {
         add(textFieldPath, gbc_textFieldPath);
         textFieldPath.setColumns(5);
 
-        JButton btnBrowsePath = new JButton("Browse");
-        Color newColor = new Color(81, 209, 246);
-        btnBrowsePath.setBackground(newColor);
+        CustomButton btnBrowsePath = new CustomButton("Browse");
         btnBrowsePath.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 JFileChooser folderChooser = new JFileChooser();

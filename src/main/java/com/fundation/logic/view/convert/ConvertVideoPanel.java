@@ -9,6 +9,8 @@
  */
 package com.fundation.logic.view.convert;
 
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.DefaultComboBoxModel;
@@ -16,7 +18,6 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.awt.GridBagConstraints;
@@ -29,7 +30,7 @@ import java.util.Calendar;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertVideoPanel extends JPanel {
+public class ConvertVideoPanel extends CustomPanel {
     private JComboBox comboBoxNewFormat;
     private JComboBox comboBoxAudioCodec;
     private JComboBox comboBoxAudioBit;
@@ -44,7 +45,7 @@ public class ConvertVideoPanel extends JPanel {
     private JSpinner minuteSpinnerKeyFrame;
     private JSpinner minuteSpinnerThumbnail;
     private PanelSetter settingPanel;
-    private JButton btnConvertVideo;
+    private CustomButton btnConvertVideo;
 
     /**
      * This constructor initializes the component.
@@ -264,7 +265,7 @@ public class ConvertVideoPanel extends JPanel {
         gbc_minuteSpinnerTo.gridy = 14;
         add(minuteSpinnerThumbnail, gbc_minuteSpinnerTo);
 
-        btnConvertVideo = new JButton("Convert");
+        btnConvertVideo = new CustomButton("Convert");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.anchor = GridBagConstraints.CENTER;
         gbc_btnSearch.insets = new Insets(0,0,10,0);

@@ -1,6 +1,8 @@
 package com.fundation.logic.view.loadSaveCriteria;
 
-import javax.swing.JPanel;
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagLayout;
@@ -14,7 +16,7 @@ import java.awt.Insets;
  * @author Andres Burgos
  * @version 1.0
  */
-public class LoadSavePanel extends JPanel {
+public class LoadSavePanel extends CustomPanel {
     private JTable dataTable;
     private DefaultTableModel model;
 
@@ -41,7 +43,7 @@ public class LoadSavePanel extends JPanel {
         gbc_table.gridy = 0;
         add(dataTable, gbc_table);
 
-        JButton btnLoad = new JButton(" Load ");
+        CustomButton btnLoad = new CustomButton(" Load ");
         GridBagConstraints gbc_btnLoad = new GridBagConstraints();
         gbc_btnLoad.fill = GridBagConstraints.CENTER;
         gbc_btnLoad.insets = new Insets(0, 0, 10, 5);
@@ -49,7 +51,7 @@ public class LoadSavePanel extends JPanel {
         gbc_btnLoad.gridy = 1;
         add(btnLoad, gbc_btnLoad);
 
-        JButton btnSave = new JButton(" Save ");
+        CustomButton btnSave = new CustomButton(" Save ");
         GridBagConstraints gbc_btnSave = new GridBagConstraints();
         gbc_btnSave.fill = GridBagConstraints.CENTER;
         gbc_btnSave.insets = new Insets(0, 0, 10, 5);
@@ -57,7 +59,7 @@ public class LoadSavePanel extends JPanel {
         gbc_btnSave.gridy = 1;
         add(btnSave, gbc_btnSave);
 
-        JButton btnDelete = new JButton("Delete");
+        CustomButton btnDelete = new CustomButton("Delete");
         GridBagConstraints gbc_btnDelete = new GridBagConstraints();
         gbc_btnDelete.fill = GridBagConstraints.CENTER;
         gbc_btnDelete.insets = new Insets(0, 0, 10, 5);

@@ -9,14 +9,14 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomePanel;
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.awt.GridBagConstraints;
@@ -29,7 +29,7 @@ import java.util.Calendar;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class AdvancedVideoPanel extends CustomePanel {
+public class AdvancedVideoPanel extends CustomPanel {
 
     private PanelSetter settingPanel;
     private JComboBox comboBoxVideoCodec;
@@ -38,7 +38,7 @@ public class AdvancedVideoPanel extends CustomePanel {
     private JComboBox comboBoxAudioCodecName;
     private JSpinner minuteSpinner;
     private JSpinner minuteSpinnerTo;
-    private JButton btnSearchAdvanceVideoPanel;
+    private CustomButton btnSearchAdvanceVideoPanel;
 
     /**
      * This constructor initializer the component.
@@ -170,7 +170,7 @@ public class AdvancedVideoPanel extends CustomePanel {
         gbc_minuteSpinnerTo.gridy = 12;
         add(minuteSpinnerTo, gbc_minuteSpinnerTo);
 
-        btnSearchAdvanceVideoPanel = new JButton("Search");
+        btnSearchAdvanceVideoPanel = new CustomButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.insets = new Insets(5, 0, 10, 0);
         gbc_btnSearch.gridwidth = 6;

@@ -90,8 +90,6 @@ public class CommonSearch implements ISearch {
                     MetadataCommonExtractor metadataCommonExtractor = new MetadataCommonExtractor();
                     metadataCommonExtractor.run(pathd);
                     String mimeType = MetadataCommonExtractor.getSearchMimeType();
-                    System.out.println(mimeType+" mimetype");
-                    System.out.println(criteriaMimeType+" criteria");
                     if (evaluateString(fileName, criteriaFileName) &&
                             evaluateString(fileExtension, criteriaExtension) &&
                             evaluateHidden(fileHiddenStatus, criteriaHidden) &&
@@ -102,14 +100,15 @@ public class CommonSearch implements ISearch {
                             evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
                             evaluateString(owner, criteriaOwner) &&
                             evaluateString(mimeType, criteriaMimeType)){
+                        List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
-                                modificationDate, owner, mimeType);
+                                modificationDate, owner, mimeType, metadata);
                         searchResult.add(matchingFile);
                     }
                 }
-            } catch (Exception exp) {
-                System.out.println("The file  :" + FileInfo.getFileDenomination(fileExtractor, "name") + " -  No was added ");
+            } catch (Exception exc) {
+                exc.getMessage();
             }
         }
         return searchResult;

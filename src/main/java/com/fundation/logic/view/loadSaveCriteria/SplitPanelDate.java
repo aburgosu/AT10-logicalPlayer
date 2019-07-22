@@ -9,6 +9,8 @@
  */
 package com.fundation.logic.view.loadSaveCriteria;
 
+import com.fundation.logic.view.CustomPanel;
+
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
@@ -18,7 +20,7 @@ import javax.swing.JSplitPane;
  * @author Melissa Romám
  * @version 1.0
  */
-public class SplitPanelDate extends JPanel {
+public class SplitPanelDate extends CustomPanel {
     private LoadSavePanel loadSavePanel;
 
     /**

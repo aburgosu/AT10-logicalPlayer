@@ -9,7 +9,8 @@
  */
 package com.fundation.logic.view.search;
 
-import javax.swing.JPanel;
+import com.fundation.logic.view.CustomPanel;
+
 import javax.swing.JSplitPane;
 
 /**
@@ -18,7 +19,7 @@ import javax.swing.JSplitPane;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class SearchSplitPanel extends JPanel {
+public class SearchSplitPanel extends CustomPanel {
     private BasicSearchPanel basicSearch;
     private SearchAdvanceTab searchOptionTabs;
     /**

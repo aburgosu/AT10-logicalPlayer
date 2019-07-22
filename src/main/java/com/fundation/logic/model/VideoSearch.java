@@ -10,6 +10,7 @@
 package com.fundation.logic.model;
 
 import com.fundation.logic.common.FileInfo;
+import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.common.MetadataVideoExtractor;
 import com.fundation.logic.model.criteria.Video;
 
@@ -97,8 +98,10 @@ public class VideoSearch implements ISearch {
                             && evaluateString(fileVideoCodec, criteriVideoCodec)
                             && evaluateString(videoAudioCodec, criteriAudioVideoCodec)
                             && evaluateString(fileHeight, criteriaHeight)) {
+                        List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
-                                fileExtension, false, false, fileSize, creationDate, accessDate, modificationDate, "MimeType", "video");
+                                fileExtension, false, false, fileSize, creationDate,
+                                accessDate, modificationDate, "MimeType", "video", metadata);
                         searchResult.add(matchingFile);
                     }
                 }
