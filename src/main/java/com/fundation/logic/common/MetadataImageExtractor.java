@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * <p>
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -21,54 +21,83 @@ import java.io.InputStreamReader;
  * @version 1.0
  */
 public class MetadataImageExtractor {
+    static Process extractMetadata;
+    static String searchWidth;
+    static String searchHeight;
+    static String searchColorSpace;
+
+    public void run(String path) throws IOException {
+        extractMetadata = Runtime.getRuntime().exec(path);
+        readAll();
+    }
 
     /**
-     * This method returns metadata image height.
+     * This method read all metadata.
+     *
+     * @return
      */
-    public static String getHeight(File pathFile) {
-        String height = null;
+    public String readAll() {
+        String frameRate = null;
+        BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((height = stdInput.readLine()) != null) {
-                if ((height.contains("Image Height"))) {
-                    int initIndex = height.indexOf(":");
-                    int endIndex = height.length();
+            while ((frameRate = stdInput.readLine()) != null) {
+                String s = frameRate;
+                height(s);
+                width(s);
+                if ((frameRate.contains("Read_All"))) {
+                    int initIndex = frameRate.indexOf(":");
+                    int endIndex = frameRate.length();
                     int freeSpace = 2;
-                    height = height.substring(initIndex +freeSpace, endIndex);
-                    return height;
+                    frameRate = frameRate.substring(initIndex + freeSpace, endIndex);
+                    frameRate = Float.toString(Math.round(Float.parseFloat(frameRate)));
+                    int start = 0;
+                    int deleteDat0 = 2;
+                    frameRate = frameRate.substring(start, deleteDat0);
+                    return frameRate;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
+            System.out.println("No paso frame rate");
         }
-        return "There is not image Height";
+        return "NO hay";
+    }
+
+    /**
+     * This method returns metadata image height.
+     */
+    public static void height(String height) {
+        if ((height.contains("Image Height"))) {
+            int initIndex = height.indexOf(":");
+            int endIndex = height.length();
+            int freeSpace = 2;
+            searchHeight = height.substring(initIndex + freeSpace, endIndex);
+        }
+    }
+
+    public static String getHeight() {
+        return searchHeight;
     }
 
     /**
      * This method returns metadata image Width.
      */
-    public static String getWidth(File pathFile) {
-        String width = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((width = stdInput.readLine()) != null) {
-                if ((width.contains("Image Width"))) {
-                    int initIndex = width.indexOf(":");
-                    int endIndex = width.length();
-                    int freeSpace = 2;
-                    width = width.substring(initIndex + freeSpace, endIndex);
-                    return width;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+    public static void width(String width) {
+        System.out.println(width+"asdfasdfadsf");
+        if ((width.contains("Image Width"))) {
+            int initIndex = width.indexOf(":");
+            int endIndex = width.length();
+            int freeSpace = 2;
+            width = width.substring(initIndex + freeSpace, endIndex);
+            searchWidth = width;
         }
-        return "There is not image Width";
     }
+
+    public static String getWidth() {
+        return searchWidth;
+    }
+
 
     /**
      * This method returns metadata image color space.
@@ -92,29 +121,5 @@ public class MetadataImageExtractor {
             System.exit(-1);
         }
         return "There is not color space";
-    }
-
-    /**
-     * This method returns metadata file type.
-     */
-    public static String getFileType(File pathFile) {
-        String imageFileType = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile);
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((imageFileType = stdInput.readLine()) != null) {
-                if ((imageFileType.contains("File Type"))) {
-                    int initIndex = imageFileType.indexOf(":");
-                    int endIndex = imageFileType.length();
-                    int freeSpace = 2;
-                    imageFileType = imageFileType.substring(initIndex + freeSpace, endIndex);
-                    return imageFileType;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-        return "There is not file type";
     }
 }
