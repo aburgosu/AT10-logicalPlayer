@@ -106,7 +106,7 @@ public class AdvancedAudioPanel extends CustomPanel {
 
         comboBoxAudioSampleRate = new JComboBox();
         comboBoxAudioSampleRate.setModel(new DefaultComboBoxModel(new String[]{"All", "8000 Hz", "11025 Hz", "16000 Hz",
-            "22050 Hz", "32000 Hz", "37800 Hz", "44056 Hz", "47250 Hz", "48000 Hz", "50000 Hz", "50400 Hz", "64000 Hz",
+            "22050 Hz", "32000 Hz", "37800 Hz", "44100 Hz", "47250 Hz", "48000 Hz", "50000 Hz", "50400 Hz", "64000 Hz",
             "88200 Hz", "96000 Hz", "176400 Hz", "192000 Hz", "352800 Hz"}));
         GridBagConstraints gbc_comboBoxAudioSampleRate = new GridBagConstraints();
         gbc_comboBoxAudioSampleRate.gridwidth = 2;
