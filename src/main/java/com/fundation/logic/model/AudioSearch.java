@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * <p>
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -86,6 +86,10 @@ public class AudioSearch implements ISearch {
                     }
                     String mimeType = MetadataAudioExtractor.searchMimeType();
 
+                    String sampleRate = "All";
+                    if (criteriaSampleRate != "All") {
+                        sampleRate = MetadataAudioExtractor.getSearchSampleRate();
+                    }
                     System.out.println(mimeType);
                     System.out.println(audioCodec);
 
@@ -99,6 +103,7 @@ public class AudioSearch implements ISearch {
                             && evaluateString(channel, criteriaChannel)
                             && evaluateString(audioCodec, criteriAudioCodec)
                             && evaluateString(mimeType, criteriaMimeType)
+                            && evaluateString(sampleRate, criteriaSampleRate)
                     ) {
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false,
