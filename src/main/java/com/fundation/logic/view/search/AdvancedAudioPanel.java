@@ -196,17 +196,17 @@ public class AdvancedAudioPanel extends JPanel {
 
     /**
      * Allows to get minuteSpinner.
-     * @return minuteSpinner
+     * @return minuteSpinner value
      */
-    public JSpinner getMinuteSpinner() {
-        return minuteSpinner;
+    public String getMinuteSpinner() {
+        return minuteSpinner.getValue().toString();
     }
 
     /**
      * Allows to get minuteSpinnerTo.
-     * @return minuteSpinnerTo
+     * @return minuteSpinnerTo value
      */
-    public JSpinner getMinuteSpinnerTo() {
-        return minuteSpinnerTo;
+    public String getMinuteSpinnerTo() {
+        return minuteSpinnerTo.getValue().toString();
     }
 }
