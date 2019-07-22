@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * 
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -107,6 +107,7 @@ public class Controller {
 
     /**
      * Get Common criteria
+     *
      * @return Common criteria
      */
     public Common getCommonCriteria() {
@@ -161,7 +162,7 @@ public class Controller {
             owner = null;
         }
         String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimeType().getSelectedItem().toString();
-        if(mimeType == "All") {
+        if (mimeType == "All") {
             mimeType = null;
         }
         boolean fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
@@ -188,6 +189,7 @@ public class Controller {
 
     /**
      * Get Image criteria
+     *
      * @return Image criteria
      */
     private Criteria getImageCriteria() {
@@ -207,7 +209,7 @@ public class Controller {
         }
         String height = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced().getTextFieldHeight().getText();
         if (height.length() == 0) {
-            height= "0";
+            height = "0";
         }
         criteria.setPath(path);
         criteria.setWidth(Integer.parseInt(width));
@@ -217,14 +219,49 @@ public class Controller {
 
     /**
      * Get Audio criteria
+     *
      * @return Audio criteria
      */
     private Criteria getAudioCriteria() {
-        return null;
+        Audio criteria = new Audio();
+        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath().getText();
+        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName().getText();
+        if (fileName.length() == 0) {
+            fileName = null;
+        }
+        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldFileType().getText();
+        if (extensionName.length() == 0) {
+            extensionName = null;
+        }
+        String channel = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioChannel().getSelectedItem().toString();
+        if (channel.length() == 0) {
+            channel = null;
+        }
+        String audioCodec = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioCodecName().getSelectedItem().toString();
+        if (audioCodec.length() == 0) {
+            audioCodec = null;
+        }
+        String sampleRate = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioSampleRate().getSelectedItem().toString();
+        if (sampleRate.length() == 0) {
+            sampleRate = null;
+        }
+
+        sampleRate = sampleRate.substring(0,5);
+        int sampleRateInt = Integer.parseInt(sampleRate);
+        channel = channel.substring(0, 1);
+        criteria.setPath(path);
+        criteria.setFileName(fileName);
+        criteria.setExtension(extensionName);
+        criteria.setChannel(Integer.parseInt(channel));
+        criteria.setAudioCodec(audioCodec);
+        criteria.setSampleRate(sampleRateInt);
+
+        return criteria;
     }
 
     /**
      * Get Video criteria
+     *
      * @return Video criteria
      */
     private Criteria getVideoCriteria() {
@@ -261,7 +298,7 @@ public class Controller {
         criteria.setVideoCodec(videoCodec);
         criteria.setAudioCodec(audioCodec);
         criteria.setFrameRate(framerate);
-        criteria.setHeight(Integer.parseInt(resolution.substring(resolution.indexOf("x")+1)));
+        criteria.setHeight(Integer.parseInt(resolution.substring(resolution.indexOf("x") + 1)));
         return criteria;
     }
 
