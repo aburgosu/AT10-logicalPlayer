@@ -150,7 +150,6 @@ public class MetadataAudioExtractor {
                     int freeSpace = 2;
                     int unnecesaryWords = 9;
                     duration = duration.substring(initIndex + freeSpace, endIndex - unnecesaryWords);
-                    System.out.println("test" + duration);
                     return duration;
                 }
             }
