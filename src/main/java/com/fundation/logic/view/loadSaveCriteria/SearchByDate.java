@@ -9,13 +9,13 @@
  */
 package com.fundation.logic.view.loadSaveCriteria;
 
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JTextFieldDateEditor;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -26,9 +26,9 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class SearchByDate extends JPanel {
+public class SearchByDate extends CustomPanel {
     private PanelSetter settingPanel;
-    private JButton btnFilterByDate;
+    private CustomButton btnFilterByDate;
     private JDateChooser fieldDateFirstDate;
     private JDateChooser fieldDateSecondDate;
 
@@ -85,7 +85,7 @@ public class SearchByDate extends JPanel {
         gbc_FieldToDateSecondDate.gridy = 1;
         add(fieldDateSecondDate, gbc_FieldToDateSecondDate);
 
-        btnFilterByDate = new JButton(" Filter ");
+        btnFilterByDate = new CustomButton(" Filter ");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.gridwidth = 1;
         gbc_btnSearch.anchor = GridBagConstraints.NORTH;

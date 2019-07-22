@@ -9,14 +9,14 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomePanel;
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -27,8 +27,8 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class AdvancedImagePanel extends CustomePanel {
-    private JButton btnSearchAdvanceImage;
+public class AdvancedImagePanel extends CustomPanel {
+    private CustomButton btnSearchAdvanceImage;
     private JTextField textFieldWidth;
     private JTextField textFieldHeight;
     private JComboBox comboBoxColorSpaceData;
@@ -119,7 +119,7 @@ public class AdvancedImagePanel extends CustomePanel {
         gbc_ComboBoxColorSpaceData.gridy = 6;
         add(comboBoxColorSpaceData, gbc_ComboBoxColorSpaceData);
 
-        btnSearchAdvanceImage = new JButton("Search");
+        btnSearchAdvanceImage = new CustomButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.gridwidth = 6;
         gbc_btnSearch.anchor = GridBagConstraints.CENTER;

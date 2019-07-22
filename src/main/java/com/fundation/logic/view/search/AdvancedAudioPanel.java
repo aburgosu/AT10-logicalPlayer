@@ -9,10 +9,10 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomePanel;
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 
-import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -29,8 +29,8 @@ import java.util.Calendar;
  * @author Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class AdvancedAudioPanel extends CustomePanel {
-    private JButton btnSearchAdvanceAudio;
+public class AdvancedAudioPanel extends CustomPanel {
+    private CustomButton btnSearchAdvanceAudio;
     private JComboBox comboBoxAudioCodecName;
     private JComboBox comboBoxAudioChannel;
     private JComboBox comboBoxAudioSampleRate;
@@ -153,7 +153,7 @@ public class AdvancedAudioPanel extends CustomePanel {
         gbc_minuteSpinnerTo.gridy = 10;
         add(minuteSpinnerTo, gbc_minuteSpinnerTo);
 
-        btnSearchAdvanceAudio = new JButton("Search");
+        btnSearchAdvanceAudio = new CustomButton("Search");
         GridBagConstraints gbc_btnSearchAdvanceAudio = new GridBagConstraints();
         gbc_btnSearchAdvanceAudio.gridwidth = 6;
         gbc_btnSearchAdvanceAudio.anchor = GridBagConstraints.CENTER;

@@ -9,7 +9,8 @@
  */
 package com.fundation.logic.view.convert;
 
-import javax.swing.JPanel;
+import com.fundation.logic.view.CustomPanel;
+
 import javax.swing.JSplitPane;
 
 /**
@@ -18,7 +19,7 @@ import javax.swing.JSplitPane;
  * @author Melissa Román
  * @version 1.0
  */
-public class SplitPanelConvert extends JPanel {
+public class SplitPanelConvert extends CustomPanel {
     private ConvertBasicPanel basicConvert;
     private ConvertTabs converterTab;
 

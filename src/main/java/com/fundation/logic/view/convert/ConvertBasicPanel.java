@@ -9,9 +9,10 @@
  */
 package com.fundation.logic.view.convert;
 
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 
-import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -30,7 +31,7 @@ import java.awt.event.ActionListener;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertBasicPanel extends JPanel {
+public class ConvertBasicPanel extends CustomPanel {
     private JTextField textFieldSourcePath;
     private JTextField textFieldDestinationPath;
     private JTextField textFieldNewName;
@@ -85,7 +86,7 @@ public class ConvertBasicPanel extends JPanel {
         add(textFieldSourcePath, gbc_textFieldSourcePath);
         textFieldSourcePath.setColumns(5);
 
-        JButton btnBrowseSourcePath = new JButton("Browse");
+        CustomButton btnBrowseSourcePath = new CustomButton("Browse");
         btnBrowseSourcePath.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 JFileChooser folderChooser = new JFileChooser();
@@ -123,7 +124,7 @@ public class ConvertBasicPanel extends JPanel {
         add(textFieldDestinationPath, gbc_textFieldDestinationPath);
         textFieldDestinationPath.setColumns(5);
 
-        JButton btnBrowseDestinationPath = new JButton("Browse");
+        CustomButton btnBrowseDestinationPath = new CustomButton("Browse");
         btnBrowseDestinationPath.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 JFileChooser folderChooser = new JFileChooser();

@@ -9,18 +9,16 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomePanel;
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JTextFieldDateEditor;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -31,7 +29,7 @@ import java.awt.Insets;
  * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class GeneralSearchPanel extends CustomePanel {
+public class GeneralSearchPanel extends CustomPanel {
     private JTextField textFieldOwner;
     private JDateChooser fieldToDateCreation;
     private JDateChooser textFieldFromDateCreation;
@@ -41,7 +39,7 @@ public class GeneralSearchPanel extends CustomePanel {
     private JDateChooser fieldDateAccessTo;
     private JTextField textFieldSizeFrom;
     private JTextField textFieldSizeTo;
-    private JButton btnSearch;
+    private CustomButton btnSearch;
     private JCheckBox checkBoxReadOnly;
     private JCheckBox checkBoxHidden;
     private JComboBox comboBoxSizeUnit;
@@ -232,7 +230,7 @@ public class GeneralSearchPanel extends CustomePanel {
         gbc_checkBoxReadOnly.gridy = 15;
         add(checkBoxReadOnly, gbc_checkBoxReadOnly);
 
-        btnSearch = new JButton("Search");
+        btnSearch = new CustomButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.gridwidth = 6;
         gbc_btnSearch.anchor = GridBagConstraints.CENTER;

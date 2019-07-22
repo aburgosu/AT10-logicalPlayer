@@ -9,9 +9,10 @@
  */
 package com.fundation.logic.view.convert;
 
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 
-import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -25,14 +26,10 @@ import java.awt.Insets;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertPPTPanel extends JPanel {
+public class ConvertPPTPanel extends CustomPanel {
     private JComboBox comboBoxNewFormat;
-    private JComboBox comboBoxCodec;
-    private JComboBox comboBoxBit;
-    private JComboBox comboBoxChannel;
-    private JComboBox comboBoxRate;
     private PanelSetter settingPanel;
-    private JButton btnConvertAudio;
+    private CustomButton btnConvertAudio;
 
     /**
      * This constructor initializes the component.
@@ -71,7 +68,7 @@ public class ConvertPPTPanel extends JPanel {
         gbc_comboBoxNewFormat.gridy = 4;
         add(comboBoxNewFormat, gbc_comboBoxNewFormat);
 
-        btnConvertAudio = new JButton("Convert");
+        btnConvertAudio = new CustomButton("Convert");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
         gbc_btnSearch.anchor = GridBagConstraints.CENTER;
         gbc_btnSearch.insets = new Insets(0, 0, 10, 0);
@@ -88,38 +85,6 @@ public class ConvertPPTPanel extends JPanel {
      */
     public JComboBox getComboBoxNewFormat() {
         return comboBoxNewFormat;
-    }
-
-    /**
-     * Allows to get comboBoxNewFormat.
-     * @return comboBoxCodec
-     */
-    public JComboBox getComboBoxCodec() {
-        return comboBoxCodec;
-    }
-
-    /**
-     * Allows to get comboBoxNewFormat.
-     * @return comboBoxBit
-     */
-    public JComboBox getComboBoxBit() {
-        return comboBoxBit;
-    }
-
-    /**
-     * Allows to get comboBoxNewFormat.
-     * @return comboBoxChannel
-     */
-    public JComboBox getComboBoxChannel() {
-        return comboBoxChannel;
-    }
-
-    /**
-     * Allows to get comboBoxNewFormat.
-     * @return comboBoxRate
-     */
-    public JComboBox getComboBoxRate() {
-        return comboBoxRate;
     }
 
     /**
