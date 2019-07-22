@@ -22,10 +22,16 @@ import java.util.List;
 public class DetailsTable extends JTable {
     private DefaultTableModel model;
 
+    /**
+     * Constructs the details table.
+     */
     public DetailsTable() {
         initSetting();
     }
 
+    /**
+     * Inits details table.
+     */
     public void initSetting() {
         model = new DefaultTableModel(new Object[]{"Metadata", "MetadataInfo"}, 0) {
             @Override
@@ -37,23 +43,42 @@ public class DetailsTable extends JTable {
         //showMetadataTable();
     }
 
-    public void addResult(String metadata, String metadataInfo) {
+    /**
+     * Adds a row to metadata table.
+     * @param metadata - Type of metadata
+     * @param metadataInfo - Metadata info
+     */
+    public void addMetadata(String metadata, String metadataInfo) {
         model.addRow(new Object[]{metadata, metadataInfo});
     }
 
+    /**
+     * Allows to get metadata type from a string.
+     * @param detail
+     * @return metadataType
+     */
     public String getMetadataType(String detail) {
         int indexOfTwoPoints = detail.indexOf(":");
         return detail.substring(0, indexOfTwoPoints - 1);
     }
 
+    /**
+     * Allows to get metadata info from a string.
+     * @param detail
+     * @return metadataInfo
+     */
     public String getMetadataInfo(String detail) {
         int indexOfTwoPoints = detail.indexOf(":");
         return detail.substring(indexOfTwoPoints);
     }
 
+    /**
+     * Shows metadata table.
+     * @param detailsList
+     */
     public void showMetadataTable(List<String> detailsList) {
         for (int index = 0; index < detailsList.size(); index++) {
-            addResult(getMetadataType(detailsList.get(index)), getMetadataInfo(detailsList.get(index)));
+            addMetadata(getMetadataType(detailsList.get(index)), getMetadataInfo(detailsList.get(index)));
         }
     }
 }

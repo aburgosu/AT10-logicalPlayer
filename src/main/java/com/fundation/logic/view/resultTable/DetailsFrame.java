@@ -22,10 +22,18 @@ import java.io.File;
 public class DetailsFrame extends JFrame {
     private DetailsTable detailsTable;
 
-    public DetailsFrame(String pathFile) {
-       initSetting(pathFile);
+    /**
+     * Inits details frame.
+     * @param path - Path of the file to show details from
+     */
+    public DetailsFrame(String path) {
+       initSetting(path);
     }
 
+    /**
+     * Inits frame to show details.
+     * @param path - Path of the file to show details from
+     */
     public void initSetting(String path) {
         setBounds(new Rectangle(700, 100, 400, 400));
         File file = new File(path);

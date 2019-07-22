@@ -35,6 +35,8 @@ public class AdvancedVideoPanel extends JPanel {
     private JComboBox comboBoxVideoFrameRate;
     private JComboBox comboBoxResolution;
     private JComboBox comboBoxAudioCodecName;
+    private JSpinner minuteSpinner;
+    private JSpinner minuteSpinnerTo;
     private JButton btnSearchAdvanceVideoPanel;
 
     /**
@@ -145,7 +147,7 @@ public class AdvancedVideoPanel extends JPanel {
 
         SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
         minuteSpinnerModelFrom.setValue(calendar.getTime());
-        JSpinner minuteSpinner = new JSpinner(minuteSpinnerModelFrom);
+        minuteSpinner = new JSpinner(minuteSpinnerModelFrom);
         JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "00:mm:ss");
         dateEditor.getTextField().setEditable(false);
         minuteSpinner.setEditor(dateEditor);
@@ -157,7 +159,7 @@ public class AdvancedVideoPanel extends JPanel {
 
         SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
         minuteSpinnerModelTo.setValue(calendar.getTime());
-        JSpinner minuteSpinnerTo = new JSpinner(minuteSpinnerModelTo);
+        minuteSpinnerTo = new JSpinner(minuteSpinnerModelTo);
         JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "00:mm:ss");
         dateEditorTo.getTextField().setEditable(false);
         minuteSpinnerTo.setEditor(dateEditorTo);
@@ -215,5 +217,21 @@ public class AdvancedVideoPanel extends JPanel {
      */
     public JButton getBtnSearchAdvanceVideoPanel() {
         return btnSearchAdvanceVideoPanel;
+    }
+
+    /**
+     * Allows to get minuteSpinner.
+     * @return minuteSpinner value
+     */
+    public String getMinuteSpinner() {
+        return minuteSpinner.getValue().toString();
+    }
+
+    /**
+     * Allows to get minuteSpinnerTo.
+     * @return minuteSpinnerTo value
+     */
+    public String getMinuteSpinnerTo() {
+        return minuteSpinnerTo.getValue().toString();
     }
 }
