@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * 
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -32,50 +32,8 @@ public class MetadataVideoExtractor {
         readAll();
     }
 
-//    public static String isVideo() {
-//        String fileName = null;
-//        try {
-//            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-//            while ((fileName = stdInput.readLine()) != null) {
-//                if ((fileName.contains("MIME Type"))) {
-//                    System.out.println(fileName);
-//                    if (fileName.contains("video")){
-//                        System.out.println(fileName);
-//                    }
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            System.exit(-1);
-//        }
-//        return "All";
-//    }
-
     /**
-     * This method returns metadata frame rate.
-     */
-//    public static String getFileName() {
-//        String fileName = null;
-//        try {
-//            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-//            while ((fileName = stdInput.readLine()) != null) {
-//                if ((fileName.contains("File Name"))) {
-//                    int initIndex = fileName.indexOf(":");
-//                    int endIndex = fileName.length();
-//                    int freeSpace = 2;
-//                    fileName = fileName.substring(initIndex + freeSpace, endIndex);
-//                    return fileName;
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            System.exit(-1);
-//        }
-//        return "All";
-//    }
-
-    /**
-     * This method returns metadata frame rate.
+     * This method read all metadata.
      *
      * @return
      */
@@ -111,24 +69,11 @@ public class MetadataVideoExtractor {
         return "NO hay";
     }
 
-    public void mimeType(String mimeType) {
-        frameRate(mimeType);
-        getVideoCodec(mimeType);
-        getHeight(mimeType);
-        getVideoAudioCodec(mimeType);
-        if ((mimeType.contains("Frame Rate"))) {
-            int initIndex = mimeType.indexOf(":");
-            int endIndex = mimeType.length();
-            int freeSpace = 2;
-            mimeType = mimeType.substring(initIndex + freeSpace, endIndex);
-            mimeType = Float.toString(Math.round(Float.parseFloat(mimeType)));
-            int start = 0;
-            int deleteDat0 = 2;
-            mimeType = mimeType.substring(start, deleteDat0);
-            this.searchFrameRate = mimeType;
-        }
-    }
-
+    /**
+     * This method search metadata frame rate.
+     *
+     * @return
+     */
     public void frameRate(String frameRate) {
         if ((frameRate.contains("Frame Rate"))) {
             int initIndex = frameRate.indexOf(":");
@@ -144,101 +89,22 @@ public class MetadataVideoExtractor {
     }
 
     /**
-     * This method returns metadata file type.
+     * This method search metadata resolution.
      */
-//    public static String getFileType() {
-//        String videoFileType = null;
-//        try {
-//            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-//            while ((videoFileType = stdInput.readLine()) != null) {
-//                if ((videoFileType.contains("File Type"))) {
-//                    int initIndex = videoFileType.indexOf(":");
-//                    int endIndex = videoFileType.length();
-//                    int freeSpace = 2;
-//                    videoFileType = videoFileType.substring(initIndex + freeSpace, endIndex);
-//                    return videoFileType;
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            System.exit(-1);
-//        }
-//        return "All";
-//    }
-
-    /**
-     * This method returns metadata resolution.
-     */
-    public void getHeight(String resolution) {
-        //BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-        // String resolution = stdInput.readLine();
-        //while ((resolution) != null) {
-        //      System.out.println(resolution);
-        if ((resolution.contains("Image Height"))) {
-            int initIndex = resolution.indexOf(":");
-            int endIndex = resolution.length();
+    public void getHeight(String height) {
+        if ((height.contains("Image Height"))) {
+            int initIndex = height.indexOf(":");
+            int endIndex = height.length();
             int freeSpace = 2;
-            resolution = resolution.substring(initIndex + freeSpace, endIndex);
-            searchHeight = resolution;
+            height = height.substring(initIndex + freeSpace, endIndex);
+            searchHeight = height;
         }
     }
-    //}
 
     /**
-     * This method returns duration of the video.
-     */
-//    public static String getDuration(File pathFile) {
-//        String duration = null;
-//        try {
-//            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-//            while ((stdInput.readLine()) != null) {
-//                duration = stdInput.readLine();
-//                if ((duration.contains("Duration"))) {
-//                    int freeSpace = 2;
-//                    int initIndex = duration.indexOf(":") + freeSpace;
-//                    int endIndex = duration.length();
-//                    duration = duration.substring(initIndex, endIndex);
-//                    return duration;
-//                }
-//            }
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//            System.exit(-1);
-//        }
-//        return "All";
-//    }
-
-    /**
-     * This method returns duration of the video.
-     */
-//    public static String getTitle(File pathFile) {
-//        String title = null;
-//        try {
-//            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-//            while ((title = stdInput.readLine()) != null) {
-//                if (title.contains("Title")) {
-//                    int initIndex = title.indexOf(":");
-//                    int endIndex = title.length();
-//                    int freeSpace = 2;
-//                    title = title.substring(initIndex + freeSpace, endIndex);
-//                    return title;
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            System.exit(-1);
-//        }
-//        return "All";
-//    }
-
-    /**
-     * This method returns video codec.
+     * This method search video codec.
      */
     public void getVideoCodec(String videoCodec) {
-        //String videoCodec = null;
-        //try {
-        //  BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-        //  while ((videoCodec) != null) {
         if (videoCodec.contains("Video Codec")) {
             int initIndex = videoCodec.indexOf(":");
             int endIndex = videoCodec.length();
@@ -253,20 +119,12 @@ public class MetadataVideoExtractor {
                 searchVideoCodec = videoCodec;
             }
         }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.exit(-1);
-//        }
     }
 
     /**
-     * This method returns video audio codec.
+     * This method seach video audio codec.
      */
     public void getVideoAudioCodec(String videoAudioCodec) {
-        //     String videoAudioCodec = null;
-        //   System.out.println(videoAudioCodec+"hhhhhhhhhhh");
-        //BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         if (videoAudioCodec.contains("Audio Codec")) {
             int initIndex = videoAudioCodec.indexOf(":");
             int endIndex = videoAudioCodec.length();
@@ -287,18 +145,34 @@ public class MetadataVideoExtractor {
         }
     }
 
+    /**
+     * This method return frame rate.
+     * @return
+     */
     public static String getSearchFrameRate() {
         return searchFrameRate;
     }
 
-    public static String getACodec() {
+    /**
+     * This method return audio codec.
+     * @return
+     */
+    public static String getSearchAudioCodec() {
         return searchAudioCodec;
     }
 
+    /**
+     * This method return video codec.
+     * @return
+     */
     public static String getSearchVideoCodec() {
         return searchVideoCodec;
     }
 
+    /**
+     * This method return image size.
+     * @return
+     */
     public static String getSearchHeight() {
         return searchHeight;
     }
