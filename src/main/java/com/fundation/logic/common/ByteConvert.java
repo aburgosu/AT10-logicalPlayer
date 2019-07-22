@@ -23,12 +23,14 @@ public class ByteConvert {
     public static Float bytesConvert(String bytesNumber, String unitConversion) {
         Float unitBase = 1024F;
         switch (unitConversion) {
+            case "Bytes":
+                return Float.parseFloat(bytesNumber);
             case "KBytes":
-                return Math.round((Float.parseFloat(bytesNumber) / unitBase) * 100 )/100f;
+                return (Float.parseFloat(bytesNumber) / unitBase);
             case "MBytes":
-                return Math.round(((Float.parseFloat(bytesNumber) / unitBase) / unitBase)*100)/100f;
+                return ((Float.parseFloat(bytesNumber) / unitBase) / unitBase);
             case "GBytes":
-                return Math.round((((Float.parseFloat(bytesNumber) / unitBase) / unitBase)/ unitBase)*100)/100f;
+                return (((Float.parseFloat(bytesNumber) / unitBase) / unitBase)/ unitBase);
         }
         return null;
     }
@@ -40,12 +42,14 @@ public class ByteConvert {
         Float unitBase = 1024F;
         Float numberConvert = Float.parseFloat(numberToConvert);
         switch (unitConversion) {
+            case "Bytes":
+                return numberConvert;
             case "KBytes":
-                return Math.round((numberConvert * unitBase)*100)/100f;
+                return (numberConvert * unitBase);
             case "MBytes":
-                return Math.round(((numberConvert * unitBase) * unitBase)*100)/100f;
+                return ((numberConvert * unitBase) * unitBase);
             case "GBytes":
-                return Math.round((((numberConvert * unitBase) * unitBase) * unitBase)*100)/100f;
+                return (((numberConvert * unitBase) * unitBase) * unitBase);
         }
         return null;
     }
