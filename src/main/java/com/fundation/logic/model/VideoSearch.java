@@ -98,8 +98,7 @@ public class VideoSearch implements ISearch {
                             && evaluateString(fileExtension, criteriaExtension)
                             && evaluateString(fileVideoCodec, criteriVideoCodec)
                             && evaluateString(videoAudioCodec, criteriAudioVideoCodec)
-                            && evaluateString(fileHeight, criteriaHeight)
-                    ) {
+                            && evaluateString(fileHeight, criteriaHeight)) {
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false,
                                 fileSize, creationDate, accessDate,

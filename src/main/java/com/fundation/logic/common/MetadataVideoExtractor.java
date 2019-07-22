@@ -22,7 +22,6 @@ import java.util.List;
  * @version 1.0
  */
 public class MetadataVideoExtractor {
-
     static Process extractMetadata;
     static String searchFrameRate;
     static String searchAudioCodec;
@@ -58,7 +57,7 @@ public class MetadataVideoExtractor {
             e.printStackTrace();
             System.exit(-1);
         }
-        return "there isn't";
+        return "Metadata No available";
     }
 
     /**
