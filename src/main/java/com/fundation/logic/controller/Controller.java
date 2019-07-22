@@ -9,6 +9,8 @@
  */
 package com.fundation.logic.controller;
 
+import com.fundation.logic.common.ByteConvert;
+import com.fundation.logic.common.Validators;
 import com.fundation.logic.model.AudioSearch;
 import com.fundation.logic.model.CommonSearch;
 import com.fundation.logic.model.CriteriaRecord;
@@ -96,10 +98,13 @@ public class Controller {
                 String name = foundFiles.get(index).getName();
                 String extension = foundFiles.get(index).getExtension();
                 Float size = foundFiles.get(index).getSize();
+                String sizeUnit = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedItem().toString();
+                size = ByteConvert.bytesConvert(size.toString(),sizeUnit);
+                System.out.println(sizeUnit);
                 Date creationDate = foundFiles.get(index).getCreationDate();
                 Date modificationDate = foundFiles.get(index).getModificationDate();
                 Date lastAccessDate = foundFiles.get(index).getAccessDate();
-                this.searchFrame.getTableResult().addResult(path, name, extension, size, creationDate,
+                this.searchFrame.getTableResult().addResult(path, name, extension, size + " " +  sizeUnit, creationDate,
                         modificationDate, lastAccessDate, "---");
             }
         }
@@ -166,6 +171,56 @@ public class Controller {
         }
         boolean fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
         boolean readOnly = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxReadOnly().isSelected();
+
+        /**
+         * Validates entered data.
+         */
+        if (!Validators.isValidPath(path)) {
+            searchFrame.showPopupMessage("Information Message","The path is not correct or does not exist.");
+        }
+
+        if(fromDateCreation != null && toDateCreation != null){
+            if(toDateCreation.before(fromDateCreation)){
+                searchFrame.showPopupMessage("Invalid Created Date", "The date on the left must be less than the date on the right.");
+            }
+        }
+        if(dateModificationFrom != null && dateModificationTo != null){
+            if(dateModificationTo.before(dateModificationFrom)){
+                searchFrame.showPopupMessage("Invalid Modified Date", "The date on the left must be less than the date on the right.");
+            }
+        }
+        if(dateAccessFrom != null && dateAccessTo != null){
+            if(dateAccessTo.before(dateAccessFrom)){
+                searchFrame.showPopupMessage("Invalid Accessed Date", "The date on the left must be less than the date on the right.");
+            }
+        }
+        int sizeUnit = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedIndex();
+        if(sizeUnit == 1){
+            sizeFromF = ByteConvert.anyConvertBytes("KBytes", sizeFrom);
+
+        }
+        if(sizeUnit == 2){
+            sizeFromF = ByteConvert.anyConvertBytes("MBytes", sizeFrom);
+        }
+        if(sizeUnit == 3){
+            sizeFromF = ByteConvert.anyConvertBytes("GBytes", sizeFrom);
+        }
+
+        if(sizeUnit == 1){
+            sizeToF = ByteConvert.anyConvertBytes("KBytes", sizeTo);
+
+        }
+        if(sizeUnit == 2){
+            sizeToF = ByteConvert.anyConvertBytes("MBytes", sizeTo);
+        }
+        if(sizeUnit == 3){
+            sizeToF = ByteConvert.anyConvertBytes("GBytes", sizeTo);
+        }
+        if (sizeFromF != null && sizeToF != null){
+            if(sizeFromF > sizeToF){
+                searchFrame.showPopupMessage("Error Message","The size of the left must be smaller than the size of the right");
+            }
+        }
 
         criteria.setPath(path);
         criteria.setFileName(fileName);
