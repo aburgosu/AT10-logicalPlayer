@@ -81,7 +81,7 @@ public class VideoSearch implements ISearch {
                     }
                     String videoAudioCodec = "All";
                     if (criteriAudioVideoCodec != "All") {
-                        videoAudioCodec = MetadataVideoExtractor.getACodec();
+                        videoAudioCodec = MetadataVideoExtractor.getSearchAudioCodec();
                     }
                     String fileHeight = "All";
                     if (criteriaHeight != "All") {
