@@ -100,7 +100,6 @@ public class Controller {
                 Float size = foundFiles.get(index).getSize();
                 String sizeUnit = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedItem().toString();
                 size = ByteConvert.bytesConvert(size.toString(),sizeUnit);
-                System.out.println(sizeUnit);
                 Date creationDate = foundFiles.get(index).getCreationDate();
                 Date modificationDate = foundFiles.get(index).getModificationDate();
                 Date lastAccessDate = foundFiles.get(index).getAccessDate();
