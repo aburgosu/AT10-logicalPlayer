@@ -1,7 +1,6 @@
 package com.fundation.logic.poc;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -9,7 +8,6 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
@@ -23,7 +21,7 @@ public class PostService {
         try {
             HttpPost httppost = new HttpPost("http://127.0.0.1/convertVideo");
 
-            FileBody fileBody = new FileBody(new File("C:\\Users\\Andres\\OneDrive - Fundacion-Jala\\Tutorials\\LaCasaDePapel.mp4"));
+            FileBody fileBody = new FileBody(new File("C:\\Users\\AndresBurgos\\Desktop\\LaCasaDePapel.mp4"));
             StringBody input = new StringBody("df543654246cd9cfbdc153433ea8c023", ContentType.TEXT_PLAIN);
             StringBody config = new StringBody("avi,libvorbis,128000,2,mpeg4,160000,30,json,True,30,False,60", ContentType.TEXT_PLAIN);
             StringBody output = new StringBody("papel,.avi", ContentType.TEXT_PLAIN);
@@ -53,5 +51,4 @@ public class PostService {
             httpclient.close();
         }
     }
-
 }
