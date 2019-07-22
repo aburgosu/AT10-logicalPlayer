@@ -98,14 +98,12 @@ public class VideoSearch implements ISearch {
                             && evaluateString(videoAudioCodec, criteriAudioVideoCodec)
                             && evaluateString(fileHeight, criteriaHeight)) {
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
-                                fileExtension, false, false,
-                                fileSize, creationDate, accessDate,
-                                modificationDate, "MimeType", "video");
+                                fileExtension, false, false, fileSize, creationDate, accessDate, modificationDate, "MimeType", "video");
                         searchResult.add(matchingFile);
                     }
                 }
-            } catch (Exception exp) {
-                System.out.println("The file  :" + FileInfo.getFileDenomination(fileExtractor, "name") + " -  No was added ");
+            } catch (Exception excp) {
+                excp.getMessage();
             }
         }
         return searchResult;
