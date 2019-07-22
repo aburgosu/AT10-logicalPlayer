@@ -53,29 +53,29 @@ public class PopupMenu extends JPopupMenu {
         try {
             playItem.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mousePressed(MouseEvent e) {
-                    if (e.getButton() == MouseEvent.BUTTON1) {
+                public void mousePressed(MouseEvent event) {
+                    if (event.getButton() == MouseEvent.BUTTON1) {
                         PlayerFrame playerWindow = new PlayerFrame(filePath);
                         playerWindow.setVisible(true);
                     }
                 }
             });
-        } catch (Exception e) {
-            e.getMessage();
+        } catch (Exception exception) {
+            exception.getMessage();
         }
 
         try {
             detailsItem.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mousePressed(MouseEvent e) {
-                    if (e.getButton() == MouseEvent.BUTTON1) {
+                public void mousePressed(MouseEvent event) {
+                    if (event.getButton() == MouseEvent.BUTTON1) {
                         DetailsFrame details = new DetailsFrame(filePath);
                         details.setVisible(true);
                     }
                 }
             });
-        } catch (Exception e) {
-            e.getMessage();
+        } catch (Exception exception) {
+            exception.getMessage();
         }
     }
 }

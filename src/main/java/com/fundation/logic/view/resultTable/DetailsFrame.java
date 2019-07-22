@@ -10,7 +10,7 @@
 package com.fundation.logic.view.resultTable;
 
 import javax.swing.JFrame;
-import java.awt.*;
+import java.awt.Rectangle;
 import java.io.File;
 
 /**
