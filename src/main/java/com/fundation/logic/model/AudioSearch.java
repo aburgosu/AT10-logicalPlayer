@@ -67,7 +67,6 @@ public class AudioSearch implements ISearch {
                 if (fileExtractor.isDirectory()) {
                     searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
                 } else {
-                    System.out.println(criteriaSampleRate);
                     String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
                     String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
                     MetadataImageExtractor metadataImageExtractor = new MetadataImageExtractor();
@@ -90,9 +89,6 @@ public class AudioSearch implements ISearch {
                     if (criteriaSampleRate != "All") {
                         sampleRate = MetadataAudioExtractor.getSearchSampleRate();
                     }
-                    System.out.println(mimeType);
-                    System.out.println(audioCodec);
-
                     Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
                     Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
                     Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
