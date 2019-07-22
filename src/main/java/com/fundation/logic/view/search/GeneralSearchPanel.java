@@ -51,8 +51,6 @@ public class GeneralSearchPanel extends CustomePanel {
      * Initializes a MainTabs instance for the search options
      */
     public GeneralSearchPanel() {
-        //Color newColor = new Color(81, 209, 246);
-        //setBackground(newColor);
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{5, 80, 80, 80, 80, 5};
         gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0};
@@ -70,8 +68,6 @@ public class GeneralSearchPanel extends CustomePanel {
         add(lblDateCreation, gbc_lblDateCreation);
 
         textFieldFromDateCreation = new JDateChooser();
-        //JTextFieldDateEditor editorCreationDateFrom = (JTextFieldDateEditor) textFieldFromDateCreation.getDateEditor();
-        //editorCreationDateFrom.setEditable(false);
         GridBagConstraints gbc_textFieldToDateCreation = new GridBagConstraints();
         gbc_textFieldToDateCreation.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
