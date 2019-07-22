@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * 
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -104,14 +104,16 @@ public class Controller {
                 Date creationDate = foundFiles.get(index).getCreationDate();
                 Date modificationDate = foundFiles.get(index).getModificationDate();
                 Date lastAccessDate = foundFiles.get(index).getAccessDate();
-                this.searchFrame.getTableResult().addResult(path, name, extension, size + " " +  sizeUnit, creationDate,
-                        modificationDate, lastAccessDate, "---");
+                List<String> detailsList = foundFiles.get(index).getMetadata();
+                this.searchFrame.getTableResult().addResult(path, name, extension, size, creationDate,
+                        modificationDate, lastAccessDate, detailsList);
             }
         }
     }
 
     /**
      * Get Common criteria
+     *
      * @return Common criteria
      */
     public Common getCommonCriteria() {
@@ -166,7 +168,7 @@ public class Controller {
             owner = null;
         }
         String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxMimeType().getSelectedItem().toString();
-        if(mimeType == "All") {
+        if (mimeType == "All") {
             mimeType = null;
         }
         boolean fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getCheckBoxHidden().isSelected();
@@ -179,13 +181,13 @@ public class Controller {
             searchFrame.showPopupMessage("Information Message","The path is not correct or does not exist.");
         }
 
-        if(fromDateCreation != null && toDateCreation != null){
-            if(toDateCreation.before(fromDateCreation)){
+        if (fromDateCreation != null && toDateCreation != null) {
+            if(toDateCreation.before(fromDateCreation)) {
                 searchFrame.showPopupMessage("Invalid Created Date", "The date on the left must be less than the date on the right.");
             }
         }
-        if(dateModificationFrom != null && dateModificationTo != null){
-            if(dateModificationTo.before(dateModificationFrom)){
+        if (dateModificationFrom != null && dateModificationTo != null) {
+            if(dateModificationTo.before(dateModificationFrom)) {
                 searchFrame.showPopupMessage("Invalid Modified Date", "The date on the left must be less than the date on the right.");
             }
         }
@@ -195,29 +197,28 @@ public class Controller {
             }
         }
         int sizeUnit = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedIndex();
-        if(sizeUnit == 1){
+        if(sizeUnit == 1) {
             sizeFromF = ByteConvert.anyConvertBytes("KBytes", sizeFrom);
 
         }
-        if(sizeUnit == 2){
+        if (sizeUnit == 2) {
             sizeFromF = ByteConvert.anyConvertBytes("MBytes", sizeFrom);
         }
-        if(sizeUnit == 3){
+        if (sizeUnit == 3) {
             sizeFromF = ByteConvert.anyConvertBytes("GBytes", sizeFrom);
         }
-
-        if(sizeUnit == 1){
+        if (sizeUnit == 1) {
             sizeToF = ByteConvert.anyConvertBytes("KBytes", sizeTo);
 
         }
-        if(sizeUnit == 2){
+        if (sizeUnit == 2) {
             sizeToF = ByteConvert.anyConvertBytes("MBytes", sizeTo);
         }
-        if(sizeUnit == 3){
+        if (sizeUnit == 3) {
             sizeToF = ByteConvert.anyConvertBytes("GBytes", sizeTo);
         }
-        if (sizeFromF != null && sizeToF != null){
-            if(sizeFromF > sizeToF){
+        if (sizeFromF != null && sizeToF != null) {
+            if(sizeFromF > sizeToF) {
                 searchFrame.showPopupMessage("Error Message","The size of the left must be smaller than the size of the right");
             }
         }
@@ -243,6 +244,7 @@ public class Controller {
 
     /**
      * Get Image criteria
+     *
      * @return Image criteria
      */
     private Criteria getImageCriteria() {
@@ -262,7 +264,7 @@ public class Controller {
         }
         String height = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced().getTextFieldHeight().getText();
         if (height.length() == 0) {
-            height= "0";
+            height = "0";
         }
         criteria.setPath(path);
         criteria.setWidth(Integer.parseInt(width));
@@ -272,14 +274,49 @@ public class Controller {
 
     /**
      * Get Audio criteria
+     *
      * @return Audio criteria
      */
     private Criteria getAudioCriteria() {
-        return null;
+        Audio criteria = new Audio();
+        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath().getText();
+        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName().getText();
+        if (fileName.length() == 0) {
+            fileName = null;
+        }
+        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldFileType().getText();
+        if (extensionName.length() == 0) {
+            extensionName = null;
+        }
+        String channel = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioChannel().getSelectedItem().toString();
+        if (channel.length() == 0) {
+            channel = null;
+        }
+        String audioCodec = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioCodecName().getSelectedItem().toString();
+        if (audioCodec.length() == 0) {
+            audioCodec = null;
+        }
+        String sampleRate = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioSampleRate().getSelectedItem().toString();
+        if (sampleRate.length() == 0) {
+            sampleRate = null;
+        }
+
+        sampleRate = sampleRate.substring(0,5);
+        int sampleRateInt = Integer.parseInt(sampleRate);
+        channel = channel.substring(0, 1);
+        criteria.setPath(path);
+        criteria.setFileName(fileName);
+        criteria.setExtension(extensionName);
+        criteria.setChannel(Integer.parseInt(channel));
+        criteria.setAudioCodec(audioCodec);
+        criteria.setSampleRate(sampleRateInt);
+
+        return criteria;
     }
 
     /**
      * Get Video criteria
+     *
      * @return Video criteria
      */
     private Criteria getVideoCriteria() {
@@ -316,7 +353,7 @@ public class Controller {
         criteria.setVideoCodec(videoCodec);
         criteria.setAudioCodec(audioCodec);
         criteria.setFrameRate(framerate);
-        criteria.setHeight(Integer.parseInt(resolution.substring(resolution.indexOf("x")+1)));
+        criteria.setHeight(Integer.parseInt(resolution.substring(resolution.indexOf("x") + 1)));
         return criteria;
     }
 
@@ -347,8 +384,9 @@ public class Controller {
         List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();
         for (int index = 0; index < registers.size(); index++) {
             String name = registers.get(index).getName();
+            String type = registers.get(index).getType();
             String date = registers.get(index).getDate();
-            searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name,date);
+            searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name, type, date);
         }
     }
 }

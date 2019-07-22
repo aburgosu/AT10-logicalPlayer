@@ -9,9 +9,10 @@
  */
 package com.fundation.logic.view.convert;
 
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 
-import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -30,7 +31,7 @@ import java.awt.event.ActionListener;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertBasicPanel extends JPanel {
+public class ConvertBasicPanel extends CustomPanel {
     private JTextField textFieldSourcePath;
     private JTextField textFieldDestinationPath;
     private JTextField textFieldNewName;
@@ -58,15 +59,15 @@ public class ConvertBasicPanel extends JPanel {
      */
     private void showBasicConvertForm() {
         JLabel title = new JLabel("Convert");
-        title.setFont(new Font("Tahoma", Font.BOLD, 14));
+        title.setFont(new Font("Arial", Font.PLAIN, 14));
         GridBagConstraints gbc_lblTittle = new GridBagConstraints();
-        gbc_lblTittle.gridwidth = 3;
+        gbc_lblTittle.gridwidth = 6;
         gbc_lblTittle.insets = new Insets(5, 5, 5, 5);
         gbc_lblTittle.gridx = 0;
         gbc_lblTittle.gridy = 0;
         add(title, gbc_lblTittle);
 
-        JLabel lblSourcePath = new JLabel("Source path: ");
+        JLabel lblSourcePath = new JLabel("Source path:");
         GridBagConstraints gbc_lblSourcePath = new GridBagConstraints();
         gbc_lblSourcePath.anchor = GridBagConstraints.EAST;
         gbc_lblSourcePath.insets = new Insets(0, 5, 5, 5);
@@ -76,14 +77,16 @@ public class ConvertBasicPanel extends JPanel {
 
         textFieldSourcePath = new JTextField();
         GridBagConstraints gbc_textFieldSourcePath = new GridBagConstraints();
-        gbc_textFieldSourcePath.insets = new Insets(0, 0, 5, 10);
+        gbc_textFieldSourcePath.insets = new Insets(0, 0, 5, 5);
+        textFieldSourcePath.setEditable(false);
+        gbc_textFieldSourcePath.gridwidth = 3;
         gbc_textFieldSourcePath.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldSourcePath.gridx = 1;
         gbc_textFieldSourcePath.gridy = 1;
         add(textFieldSourcePath, gbc_textFieldSourcePath);
         textFieldSourcePath.setColumns(5);
 
-        JButton btnBrowseSourcePath = new JButton("Browse");
+        CustomButton btnBrowseSourcePath = new CustomButton("Browse");
         btnBrowseSourcePath.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 JFileChooser folderChooser = new JFileChooser();
@@ -96,13 +99,13 @@ public class ConvertBasicPanel extends JPanel {
         });
 
         GridBagConstraints gbc_btnBrowseSourcePath = new GridBagConstraints();
-        gbc_btnBrowseSourcePath.insets = new Insets(0, 0, 5, 10);
+        gbc_btnBrowseSourcePath.insets = new Insets(0, 0, 5, 0);
         gbc_btnBrowseSourcePath.anchor = GridBagConstraints.NORTHWEST;
-        gbc_btnBrowseSourcePath.gridx = 2;
+        gbc_btnBrowseSourcePath.gridx = 4;
         gbc_btnBrowseSourcePath.gridy = 1;
         add(btnBrowseSourcePath, gbc_btnBrowseSourcePath);
 
-        JLabel lblDestinationPath = new JLabel("Destination path: ");
+        JLabel lblDestinationPath = new JLabel("Destination path:");
         GridBagConstraints gbc_lblDestinationPath = new GridBagConstraints();
         gbc_lblDestinationPath.anchor = GridBagConstraints.EAST;
         gbc_lblDestinationPath.insets = new Insets(0, 5, 5, 5);
@@ -112,14 +115,16 @@ public class ConvertBasicPanel extends JPanel {
 
         textFieldDestinationPath = new JTextField();
         GridBagConstraints gbc_textFieldDestinationPath = new GridBagConstraints();
-        gbc_textFieldDestinationPath.insets = new Insets(0, 0, 5, 10);
+        textFieldDestinationPath.setEditable(false);
+        gbc_textFieldDestinationPath.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldDestinationPath.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textFieldDestinationPath.gridwidth = 3;
         gbc_textFieldDestinationPath.gridx = 1;
         gbc_textFieldDestinationPath.gridy = 2;
         add(textFieldDestinationPath, gbc_textFieldDestinationPath);
         textFieldDestinationPath.setColumns(5);
 
-        JButton btnBrowseDestinationPath = new JButton("Browse");
+        CustomButton btnBrowseDestinationPath = new CustomButton("Browse");
         btnBrowseDestinationPath.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 JFileChooser folderChooser = new JFileChooser();
@@ -132,13 +137,13 @@ public class ConvertBasicPanel extends JPanel {
         });
 
         GridBagConstraints gbc_btnBrowseDestinationPath = new GridBagConstraints();
-        gbc_btnBrowseDestinationPath.insets = new Insets(0, 0, 5, 10);
+        gbc_btnBrowseDestinationPath.insets = new Insets(0, 0, 5, 0);
         gbc_btnBrowseDestinationPath.anchor = GridBagConstraints.NORTHWEST;
-        gbc_btnBrowseDestinationPath.gridx = 2;
+        gbc_btnBrowseDestinationPath.gridx = 4;
         gbc_btnBrowseDestinationPath.gridy = 2;
         add(btnBrowseDestinationPath, gbc_btnBrowseDestinationPath);
 
-        JLabel lblNewName = new JLabel("New name: ");
+        JLabel lblNewName = new JLabel("New name:");
         GridBagConstraints gbc_lblNewName = new GridBagConstraints();
         gbc_lblNewName.anchor = GridBagConstraints.EAST;
         gbc_lblNewName.insets = new Insets(0, 10, 5, 5);
@@ -148,18 +153,19 @@ public class ConvertBasicPanel extends JPanel {
 
         textFieldNewName = new JTextField();
         GridBagConstraints gbc_textFieldNewName = new GridBagConstraints();
-        gbc_textFieldNewName.insets = new Insets(0, 0, 5, 10);
+        gbc_textFieldNewName.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldNewName.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textFieldNewName.gridwidth = 3;
         gbc_textFieldNewName.gridx = 1;
         gbc_textFieldNewName.gridy = 3;
         add(textFieldNewName, gbc_textFieldNewName);
         textFieldNewName.setColumns(5);
 
-        JLabel lblMetadataFormat = new JLabel("Metadata format: ");
+        JLabel lblMetadataFormat = new JLabel("Metadata format:");
         GridBagConstraints gbc_lblMetadataFormat = new GridBagConstraints();
         gbc_lblMetadataFormat.anchor = GridBagConstraints.EAST;
         gbc_lblMetadataFormat.insets = new Insets(0, 0, 5, 5);
-        gbc_lblMetadataFormat.gridx = 1;
+        gbc_lblMetadataFormat.gridx = 0;
         gbc_lblMetadataFormat.gridy = 4;
         add(lblMetadataFormat, gbc_lblMetadataFormat);
 
@@ -168,7 +174,7 @@ public class ConvertBasicPanel extends JPanel {
         GridBagConstraints gbc_comboBoxMetadataFormat = new GridBagConstraints();
         gbc_comboBoxMetadataFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxMetadataFormat.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxMetadataFormat.gridx = 2;
+        gbc_comboBoxMetadataFormat.gridx = 1;
         gbc_comboBoxMetadataFormat.gridy = 4;
         add(comboBoxMetadataFormat, gbc_comboBoxMetadataFormat);
     }
