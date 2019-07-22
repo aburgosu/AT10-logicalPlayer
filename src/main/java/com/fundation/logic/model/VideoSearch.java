@@ -60,6 +60,7 @@ public class VideoSearch implements ISearch {
         String criteriaFrameRate = videoCriteria.getFrameRate();
         String criteriaHeight = Integer.toString(videoCriteria.getHeight());
         File[] allSubFiles = file.listFiles();
+
         for (File fileExtractor : allSubFiles) {
             try {
                 if (fileExtractor.isDirectory()) {
@@ -70,7 +71,9 @@ public class VideoSearch implements ISearch {
                     String frameRate = "All";
                     String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
                     String pathd = exiftool + "\"" + fileExtractor + "\"";
-                    MetadataVideoExtractor.run(pathd);
+                    MetadataVideoExtractor metadataVideoExtractor = new MetadataVideoExtractor();
+                    metadataVideoExtractor.run(pathd);
+
                     if (criteriaFrameRate != "All") {
                         frameRate = MetadataVideoExtractor.getSearchFrameRate();
                     }
@@ -80,7 +83,7 @@ public class VideoSearch implements ISearch {
                     }
                     String videoAudioCodec = "All";
                     if (criteriAudioVideoCodec != "All") {
-                        videoAudioCodec = MetadataVideoExtractor.getSearchAudioCodec();
+                        videoAudioCodec = MetadataVideoExtractor.getACodec();
                     }
                     String fileHeight = "All";
                     if (criteriaHeight != "All") {
