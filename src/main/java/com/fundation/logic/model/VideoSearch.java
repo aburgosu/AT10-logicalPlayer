@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implements new Video Search class.
+ * Implements new Video search class.
  *
  * @author John Salazar Pinto
  * @version 1.0
@@ -28,7 +28,7 @@ public class VideoSearch implements ISearch {
     static private Video videoCriteria;
 
     /**
-     * Initializes a Search instance which requires a criteria as parameter.
+     * Initializes a search instance which requires a criteria as parameter.
      */
     public VideoSearch(Video videoCriteria) {
         this.videoCriteria = videoCriteria;
@@ -60,7 +60,6 @@ public class VideoSearch implements ISearch {
         String criteriaFrameRate = videoCriteria.getFrameRate();
         String criteriaHeight = Integer.toString(videoCriteria.getHeight());
         File[] allSubFiles = file.listFiles();
-
         for (File fileExtractor : allSubFiles) {
             try {
                 if (fileExtractor.isDirectory()) {
@@ -73,7 +72,6 @@ public class VideoSearch implements ISearch {
                     String pathd = exiftool + "\"" + fileExtractor + "\"";
                     MetadataVideoExtractor metadataVideoExtractor = new MetadataVideoExtractor();
                     metadataVideoExtractor.run(pathd);
-
                     if (criteriaFrameRate != "All") {
                         frameRate = MetadataVideoExtractor.getSearchFrameRate();
                     }
@@ -98,17 +96,14 @@ public class VideoSearch implements ISearch {
                             && evaluateString(fileExtension, criteriaExtension)
                             && evaluateString(fileVideoCodec, criteriVideoCodec)
                             && evaluateString(videoAudioCodec, criteriAudioVideoCodec)
-                            && evaluateString(fileHeight, criteriaHeight)
-                    ) {
+                            && evaluateString(fileHeight, criteriaHeight)) {
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
-                                fileExtension, false, false,
-                                fileSize, creationDate, accessDate,
-                                modificationDate, "MimeType", "video");
+                                fileExtension, false, false, fileSize, creationDate, accessDate, modificationDate, "MimeType", "video");
                         searchResult.add(matchingFile);
                     }
                 }
-            } catch (Exception exp) {
-                System.out.println("The file  :" + FileInfo.getFileDenomination(fileExtractor, "name") + " -  No was added ");
+            } catch (Exception excp) {
+                excp.getMessage();
             }
         }
         return searchResult;

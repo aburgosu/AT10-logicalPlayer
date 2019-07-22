@@ -56,9 +56,8 @@ public class MetadataVideoExtractor {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(-1);
         }
-        return "there isn't";
+        return "All";
     }
 
     /**
@@ -176,5 +175,4 @@ public class MetadataVideoExtractor {
     public List<String> getSearchListMetadata() {
         return list;
     }
-
 }

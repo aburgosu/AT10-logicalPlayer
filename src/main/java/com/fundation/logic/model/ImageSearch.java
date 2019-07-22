@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * 
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -19,16 +19,16 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implements new Image Search class.
+ * Implements new Image search class.
  *
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class ImageSearch {
+public class ImageSearch implements ISearch {
     static private Image imageCriteria;
 
     /**
-     * Initializes a Search instance which requires a criteria as parameter.
+     * Initializes a search instance which requires a criteria as parameter.
      */
     public ImageSearch(Image audioCriteria) {
         this.imageCriteria = audioCriteria;
@@ -55,32 +55,46 @@ public class ImageSearch {
         File file = new File(path);
         String criteriaFileName = imageCriteria.getFileName();
         String criteriaExtension = imageCriteria.getExtension();
-        String criteriaWidth = Integer.toString(imageCriteria.getWidth());
-        String criteriaHeight = Integer.toString(imageCriteria.getHeight());
-        String criteriaColorSpace = imageCriteria.getColorSpaceData();
+        String criteriaWidth = imageCriteria.getWidth();
+        String criteriaHeight = imageCriteria.getHeight();
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
-            if (fileExtractor.isDirectory()) {
-                searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
-            } else {
-                String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
-                String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
-                String width = MetadataImageExtractor.getWidth(fileExtractor);
-                String height = MetadataImageExtractor.getHeight(fileExtractor);
-                String colorSpace = MetadataImageExtractor.getColorSpace(fileExtractor);
-                Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
-                Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
-                Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
-                Float fileSize = FileInfo.getFileSize(fileExtractor);
-                if (evaluateString(fileName, criteriaFileName) && evaluateString(fileExtension, criteriaExtension)
-                        && evaluateString(width, criteriaWidth) && evaluateString(height, criteriaHeight)
-                        && evaluateString(colorSpace, criteriaColorSpace)) {
-                    CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
-                            fileName, fileExtension, false, false,
-                            fileSize, creationDate, accessDate,
-                            modificationDate, "MimeType", "video");
-                    searchResult.add(matchingFile);
+            try {
+                if (fileExtractor.isDirectory()) {
+                    searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
+                } else {
+                    String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
+                    String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
+                    MetadataImageExtractor metadataImageExtractor = new MetadataImageExtractor();
+                    String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
+                    String pathd = exiftool + "\"" + fileExtractor + "\"";
+                    metadataImageExtractor.run(pathd);
+                    String width = "0";
+                    if (criteriaWidth.length() != 1) {
+                        width = MetadataImageExtractor.getWidth();
+                    }
+                    String height = "0";
+                    if (criteriaHeight.length() != 1) {
+                        height = MetadataImageExtractor.getHeight();
+                    }
+                    Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
+                    Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
+                    Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
+                    Float fileSize = FileInfo.getFileSize(fileExtractor);
+                    if (evaluateString(fileName, criteriaFileName)
+                            && evaluateString(fileExtension, criteriaExtension)
+                            && evaluateString(width, criteriaWidth)
+                            && evaluateString(height, criteriaHeight)
+                    ) {
+                        CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
+                                fileName, fileExtension, false, false,
+                                fileSize, creationDate, accessDate,
+                                modificationDate, "MimeType", "video");
+                        searchResult.add(matchingFile);
+                    }
                 }
+            } catch (Exception e) {
+                System.out.println("The file  :" + FileInfo.getFileDenomination(fileExtractor, "name") + " -  Has not been added ");
             }
         }
         return searchResult;

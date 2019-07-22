@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * <p>
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -9,25 +9,33 @@
  */
 package com.fundation.logic.view;
 
+import com.fundation.logic.view.resultTable.TableResult;
+
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JScrollPane;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.Color;
 
 /**
- * Implements the SearchVideoFrame class
+ * Implements the MainFrame class
  *
- * @author John Salazar Pinto
+ * @author John Salazar Pinto, Melissa Román
  * @version 1.0
  */
-public class SearchVideoFrame extends JFrame {
+public class MainFrame extends JFrame {
     JPanel mainContentPanel;
-    private SearchTabs searchTabs;
+    private MainTabs searchTabs;
     private TableResult tableResult;
 
-    public SearchVideoFrame() {
+    public MainFrame() {
         initSetting();
     }
 
@@ -35,7 +43,11 @@ public class SearchVideoFrame extends JFrame {
      * This method init all component
      */
     public void initComponent() {
-
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
         mainContentPanel = new JPanel();
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));
@@ -50,7 +62,7 @@ public class SearchVideoFrame extends JFrame {
         tableScrollPanel.add(tableResult);
         mainSplitPanel.setRightComponent(tableResult);
 
-        searchTabs = new SearchTabs();
+        searchTabs = new MainTabs();
         mainSplitPanel.setLeftComponent(searchTabs);
     }
 
@@ -75,9 +87,27 @@ public class SearchVideoFrame extends JFrame {
     }
 
     /**
-     * This method return the SearchTabs
+     * This method return the MainTabs
      */
-    public SearchTabs getSearchTabs() {
+    public MainTabs getSearchTabs() {
         return searchTabs;
+    }
+
+    /**
+     * Shows a popup message
+     * @param messageTittle - Tittle of the message
+     * @param messageText - Text of the message
+     */
+    public void showPopupMessage(String messageTittle, String messageText) {
+        JDialog message = new JDialog(this, messageTittle);
+        message.setBounds(50, 200, 350, 150);
+        message.setSize(350, 120);
+        JPanel messageTextPanel = new JPanel();
+        JLabel text = new JLabel(messageText);
+        text.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        text.setForeground(Color.red);
+        messageTextPanel.add(text, SwingConstants.CENTER);
+        message.add(messageTextPanel, BorderLayout.CENTER);
+        message.setVisible(true);
     }
 }
