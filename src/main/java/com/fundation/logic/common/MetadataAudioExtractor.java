@@ -56,10 +56,8 @@ public class MetadataAudioExtractor {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(-1);
-            System.out.println("No paso frame rate");
         }
-        return "NO hay";
+        return "No available";
     }
 
     /**
@@ -67,18 +65,19 @@ public class MetadataAudioExtractor {
      */
     public static void audioChannel(String channelMode) {
         if ((channelMode.contains("Channel"))) {
-            if (channelMode.contains("Stereo")){
+            if (channelMode.contains("Stereo")) {
                 searchChannelMode = "2";
             }
-            if (channelMode.contains("Mono")){
+            if (channelMode.contains("Mono")) {
                 searchChannelMode = "1";
             }
         }
     }
+
     /**
      * This method returns audio channel.
      */
-    public static String getAudioChannel(){
+    public static String getAudioChannel() {
         return searchChannelMode;
     }
 
@@ -87,13 +86,13 @@ public class MetadataAudioExtractor {
      */
     public static void audioCodec(String audioCodec) {
         if ((audioCodec.contains("MIME Type"))) {
-            if (audioCodec.contains("mpeg")){
+            if (audioCodec.contains("mpeg")) {
                 searchAudioCodec = "MPEG-4 ALS";
             }
-            if (audioCodec.contains("wav")){
+            if (audioCodec.contains("wav")) {
                 searchAudioCodec = "WAV";
             }
-            if (audioCodec.contains("mp3")){
+            if (audioCodec.contains("mp3")) {
                 searchChannelMode = "MP3";
             }
         }
@@ -102,7 +101,7 @@ public class MetadataAudioExtractor {
     /**
      * This method returns audrio codec to AudioSearch.
      */
-    public static String searchAudioCodec(){
+    public static String searchAudioCodec() {
         return searchAudioCodec;
     }
 
@@ -120,7 +119,7 @@ public class MetadataAudioExtractor {
     /**
      * This method returns mime type to AudioSearch.
      */
-    public static String searchMimeType(){
+    public static String searchMimeType() {
         return searchMimeType;
     }
 
@@ -140,7 +139,7 @@ public class MetadataAudioExtractor {
     /**
      * This method returns metadata sample rate.
      */
-    public static String getSearchSampleRate(){
+    public static String getSearchSampleRate() {
         return searchSampleRate;
     }
 
@@ -164,7 +163,6 @@ public class MetadataAudioExtractor {
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
-            System.exit(-1);
         }
         return "There is not duration";
     }
