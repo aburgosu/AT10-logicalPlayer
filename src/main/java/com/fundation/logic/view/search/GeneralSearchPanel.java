@@ -9,17 +9,16 @@
  */
 package com.fundation.logic.view.search;
 
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JTextFieldDateEditor;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -30,7 +29,7 @@ import java.awt.Insets;
  * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class GeneralSearchPanel extends JPanel {
+public class GeneralSearchPanel extends CustomPanel {
     private JTextField textFieldOwner;
     private JDateChooser fieldToDateCreation;
     private JDateChooser textFieldFromDateCreation;
@@ -40,7 +39,7 @@ public class GeneralSearchPanel extends JPanel {
     private JDateChooser fieldDateAccessTo;
     private JTextField textFieldSizeFrom;
     private JTextField textFieldSizeTo;
-    private JButton btnSearch;
+    private CustomButton btnSearch;
     private JCheckBox checkBoxReadOnly;
     private JCheckBox checkBoxHidden;
     private JComboBox comboBoxSizeUnit;
@@ -50,17 +49,15 @@ public class GeneralSearchPanel extends JPanel {
      * Initializes a MainTabs instance for the search options
      */
     public GeneralSearchPanel() {
-        Color newColor = new Color(81, 209, 246);
-        setBackground(newColor);
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{5, 80, 80, 80, 80, 5};
-        gridBagLayout.rowHeights = new int[]{23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0};
         gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
         gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
             0.0, 0.0, 0.0, Double.MIN_VALUE};
         setLayout(gridBagLayout);
 
-        JLabel lblDateCreation = new JLabel("Date created: ");
+        JLabel lblDateCreation = new JLabel("Date created:");
         GridBagConstraints gbc_lblDateCreation = new GridBagConstraints();
         gbc_lblDateCreation.anchor = GridBagConstraints.EAST;
         gbc_lblDateCreation.insets = new Insets(0, 0, 5, 5);
@@ -69,8 +66,6 @@ public class GeneralSearchPanel extends JPanel {
         add(lblDateCreation, gbc_lblDateCreation);
 
         textFieldFromDateCreation = new JDateChooser();
-        JTextFieldDateEditor editorCreationDateFrom = (JTextFieldDateEditor) textFieldFromDateCreation.getDateEditor();
-        editorCreationDateFrom.setEditable(false);
         GridBagConstraints gbc_textFieldToDateCreation = new GridBagConstraints();
         gbc_textFieldToDateCreation.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
@@ -79,8 +74,6 @@ public class GeneralSearchPanel extends JPanel {
         add(textFieldFromDateCreation, gbc_textFieldToDateCreation);
 
         fieldToDateCreation = new JDateChooser();
-        JTextFieldDateEditor editorCreationDateTo = (JTextFieldDateEditor) fieldToDateCreation.getDateEditor();
-        editorCreationDateTo.setEditable(false);
         GridBagConstraints gbc_FieldToDateCreation = new GridBagConstraints();
         gbc_FieldToDateCreation.insets = new Insets(0, 0, 5, 5);
         gbc_FieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
@@ -88,7 +81,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_FieldToDateCreation.gridy = 3;
         add(getFieldToDateCreation(), gbc_FieldToDateCreation);
 
-        JLabel lblDateModification = new JLabel("Date modified: ");
+        JLabel lblDateModification = new JLabel("Date modified:");
         GridBagConstraints gbc_lblDateModification = new GridBagConstraints();
         gbc_lblDateModification.anchor = GridBagConstraints.EAST;
         gbc_lblDateModification.insets = new Insets(0, 0, 5, 5);
@@ -97,8 +90,6 @@ public class GeneralSearchPanel extends JPanel {
         add(lblDateModification, gbc_lblDateModification);
 
         fieldDateModificationFrom = new JDateChooser();
-        JTextFieldDateEditor editorModificationFrom = (JTextFieldDateEditor) fieldDateModificationFrom.getDateEditor();
-        editorModificationFrom.setEditable(false);
         GridBagConstraints gbc_FieldDateModificationFrom = new GridBagConstraints();
         gbc_FieldDateModificationFrom.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateModificationFrom.fill = GridBagConstraints.HORIZONTAL;
@@ -107,8 +98,6 @@ public class GeneralSearchPanel extends JPanel {
         add(getFieldDateModificationFrom(), gbc_FieldDateModificationFrom);
 
         fieldDateModificationTo = new JDateChooser();
-        JTextFieldDateEditor editorModificationTo = (JTextFieldDateEditor) fieldDateModificationTo.getDateEditor();
-        editorModificationTo.setEditable(false);
         GridBagConstraints gbc_FieldDateModificationTo = new GridBagConstraints();
         gbc_FieldDateModificationTo.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateModificationTo.fill = GridBagConstraints.HORIZONTAL;
@@ -116,7 +105,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_FieldDateModificationTo.gridy = 4;
         add(getFieldDateModificationTo(), gbc_FieldDateModificationTo);
 
-        JLabel labelDateAccess = new JLabel("Date last accessed: ");
+        JLabel labelDateAccess = new JLabel("Date last accessed:");
         GridBagConstraints gbc_labelDateAccess = new GridBagConstraints();
         gbc_labelDateAccess.anchor = GridBagConstraints.EAST;
         gbc_labelDateAccess.insets = new Insets(0, 0, 5, 5);
@@ -125,8 +114,6 @@ public class GeneralSearchPanel extends JPanel {
         add(labelDateAccess, gbc_labelDateAccess);
 
         fieldDateAccessFrom = new JDateChooser();
-        JTextFieldDateEditor editorAccessFrom = (JTextFieldDateEditor) fieldDateAccessFrom.getDateEditor();
-        editorAccessFrom.setEditable(false);
         GridBagConstraints gbc_FieldDateAccessFrom = new GridBagConstraints();
         gbc_FieldDateAccessFrom.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateAccessFrom.fill = GridBagConstraints.HORIZONTAL;
@@ -135,8 +122,6 @@ public class GeneralSearchPanel extends JPanel {
         add(getFieldDateAccessFrom(), gbc_FieldDateAccessFrom);
 
         fieldDateAccessTo = new JDateChooser();
-        JTextFieldDateEditor editorAccessTo = (JTextFieldDateEditor) fieldDateAccessTo.getDateEditor();
-        editorAccessTo.setEditable(false);
         GridBagConstraints gbc_FieldDateAccessTo = new GridBagConstraints();
         gbc_FieldDateAccessTo.insets = new Insets(0, 0, 5, 5);
         gbc_FieldDateAccessTo.fill = GridBagConstraints.HORIZONTAL;
@@ -177,7 +162,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_comboBoxSizeUnit.gridy = 6;
         add(comboBoxSizeUnit, gbc_comboBoxSizeUnit);
 
-        JLabel lblMimeType = new JLabel("Mime type: ");
+        JLabel lblMimeType = new JLabel("Mime type:");
         GridBagConstraints gbc_lblMimeType = new GridBagConstraints();
         gbc_lblMimeType.anchor = GridBagConstraints.EAST;
         gbc_lblMimeType.insets = new Insets(0, 0, 5, 5);
@@ -186,7 +171,8 @@ public class GeneralSearchPanel extends JPanel {
         add(lblMimeType, gbc_lblMimeType);
 
         comboBoxMimeType = new JComboBox();
-        comboBoxMimeType.setModel(new DefaultComboBoxModel(new String[] {"All","Audio", "Video", "Image", "Text", "Application"}));
+        comboBoxMimeType.setModel(new DefaultComboBoxModel(new String[] {"All","Audio", "Video", "Image", "Text",
+            "Application"}));
         GridBagConstraints gbc_comboBoxMimeType = new GridBagConstraints();
         gbc_comboBoxMimeType.gridwidth = 2;
         gbc_comboBoxMimeType.insets = new Insets(0, 0, 5, 5);
@@ -195,7 +181,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_comboBoxMimeType.gridy = 7;
         add(comboBoxMimeType, gbc_comboBoxMimeType);
 
-        JLabel lblOwner = new JLabel("Owner: ");
+        JLabel lblOwner = new JLabel("Owner:");
         GridBagConstraints gbc_lblOwner = new GridBagConstraints();
         gbc_lblOwner.anchor = GridBagConstraints.EAST;
         gbc_lblOwner.insets = new Insets(0, 0, 5, 5);
@@ -212,7 +198,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_textFieldOwner.gridy = 8;
         add(textFieldOwner, gbc_textFieldOwner);
 
-        JLabel labelHidden = new JLabel("Hidden: ");
+        JLabel labelHidden = new JLabel("Hidden:");
         GridBagConstraints gbc_labelHidden = new GridBagConstraints();
         gbc_labelHidden.anchor = GridBagConstraints.EAST;
         gbc_labelHidden.insets = new Insets(0, 0, 5, 5);
@@ -228,7 +214,7 @@ public class GeneralSearchPanel extends JPanel {
         gbc_checkBoxHidden.gridy = 14;
         add(checkBoxHidden, gbc_checkBoxHidden);
 
-        JLabel lblReadOnly = new JLabel("Read only: ");
+        JLabel lblReadOnly = new JLabel("Read only:");
         GridBagConstraints gbc_lblReadOnly = new GridBagConstraints();
         gbc_lblReadOnly.anchor = GridBagConstraints.EAST;
         gbc_lblReadOnly.insets = new Insets(0, 0, 5, 5);
@@ -244,12 +230,13 @@ public class GeneralSearchPanel extends JPanel {
         gbc_checkBoxReadOnly.gridy = 15;
         add(checkBoxReadOnly, gbc_checkBoxReadOnly);
 
-        btnSearch = new JButton("Search");
+        btnSearch = new CustomButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
-        gbc_btnSearch.anchor = GridBagConstraints.EAST;
-        gbc_btnSearch.insets = new Insets(0, 0, 5, 0);
-        gbc_btnSearch.gridx = 2;
-        gbc_btnSearch.gridy = 16;
+        gbc_btnSearch.gridwidth = 6;
+        gbc_btnSearch.anchor = GridBagConstraints.CENTER;
+        gbc_btnSearch.insets = new Insets(0, 0, 10, 0);
+        gbc_btnSearch.gridx = 0;
+        gbc_btnSearch.gridy = 17;
         add(btnSearch, gbc_btnSearch);
     }
 

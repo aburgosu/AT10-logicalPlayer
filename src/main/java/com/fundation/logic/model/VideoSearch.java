@@ -10,6 +10,7 @@
 package com.fundation.logic.model;
 
 import com.fundation.logic.common.FileInfo;
+import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.common.MetadataVideoExtractor;
 import com.fundation.logic.model.criteria.Video;
 
@@ -57,53 +58,55 @@ public class VideoSearch implements ISearch {
         String criteriaExtension = videoCriteria.getExtension();
         String criteriVideoCodec = videoCriteria.getVideoCodec();
         String criteriAudioVideoCodec = videoCriteria.getAudioCodec();
-
         String criteriaFrameRate = videoCriteria.getFrameRate();
         String criteriaHeight = Integer.toString(videoCriteria.getHeight());
         File[] allSubFiles = file.listFiles();
-
         for (File fileExtractor : allSubFiles) {
-            if (fileExtractor.isDirectory()) {
-                searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
-            } else {
-               String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
-               String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
-               String frameRate = "All";
-               if (criteriaFrameRate != "All") {
-                   frameRate = MetadataVideoExtractor.getFrameRate(fileExtractor);
-               }
-
-                String fileVideoCodec = "All";
-                if (criteriVideoCodec != "All") {
-                    fileVideoCodec = MetadataVideoExtractor.getVideoCodec(fileExtractor);
+            try {
+                if (fileExtractor.isDirectory()) {
+                    searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
+                } else {
+                    String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
+                    String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
+                    String frameRate = "All";
+                    String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
+                    String pathd = exiftool + "\"" + fileExtractor + "\"";
+                    MetadataVideoExtractor metadataVideoExtractor = new MetadataVideoExtractor();
+                    metadataVideoExtractor.run(pathd);
+                    if (criteriaFrameRate != "All") {
+                        frameRate = MetadataVideoExtractor.getSearchFrameRate();
+                    }
+                    String fileVideoCodec = "All";
+                    if (criteriVideoCodec != "All") {
+                        fileVideoCodec = MetadataVideoExtractor.getSearchVideoCodec();
+                    }
+                    String videoAudioCodec = "All";
+                    if (criteriAudioVideoCodec != "All") {
+                        videoAudioCodec = MetadataVideoExtractor.getSearchAudioCodec();
+                    }
+                    String fileHeight = "All";
+                    if (criteriaHeight != "All") {
+                        fileHeight = MetadataVideoExtractor.getSearchHeight();
+                    }
+                    Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
+                    Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
+                    Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
+                    Float fileSize = FileInfo.getFileSize(fileExtractor);
+                    if (evaluateString(frameRate, criteriaFrameRate)
+                            && evaluateString(fileName, criteriaFileName)
+                            && evaluateString(fileExtension, criteriaExtension)
+                            && evaluateString(fileVideoCodec, criteriVideoCodec)
+                            && evaluateString(videoAudioCodec, criteriAudioVideoCodec)
+                            && evaluateString(fileHeight, criteriaHeight)) {
+                        List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
+                        CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
+                                fileExtension, false, false, fileSize, creationDate,
+                                accessDate, modificationDate, "MimeType", "video", metadata);
+                        searchResult.add(matchingFile);
+                    }
                 }
-                String videoAudioCodec = "All";
-                if (criteriAudioVideoCodec != "All") {
-                    videoAudioCodec = MetadataVideoExtractor.getVideoAudioCodec(fileExtractor);
-                }
-                String fileHeight = "All";
-                if (criteriaHeight != "All") {
-                    fileHeight = MetadataVideoExtractor.getResolution(fileExtractor);
-                }
-
-                Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
-                Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
-                Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
-                Float fileSize = FileInfo.getFileSize(fileExtractor);
-
-                if (evaluateString(frameRate, criteriaFrameRate)
-                        && evaluateString(fileName, criteriaFileName)
-                        && evaluateString(fileExtension, criteriaExtension)
-                        && evaluateString(fileVideoCodec, criteriVideoCodec)
-                        && evaluateString(videoAudioCodec, criteriAudioVideoCodec)
-                        && evaluateString(fileHeight, criteriaHeight)
-                ) {
-                    CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
-                            fileExtension, false, false,
-                            fileSize, creationDate, accessDate,
-                            modificationDate, "MimeType", "video");
-                    searchResult.add(matchingFile);
-                }
+            } catch (Exception excp) {
+                excp.getMessage();
             }
         }
         return searchResult;

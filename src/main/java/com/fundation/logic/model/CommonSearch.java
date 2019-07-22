@@ -11,9 +11,11 @@ package com.fundation.logic.model;
 
 import com.fundation.logic.common.DateSetter;
 import com.fundation.logic.common.FileInfo;
+import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.model.criteria.Common;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -70,33 +72,43 @@ public class CommonSearch implements ISearch {
 
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
-            if (fileExtractor.isDirectory()) {
-                searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
-            } else {
-                String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
-                String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
-                boolean fileHiddenStatus = fileExtractor.isHidden();
-                boolean fileCanWrite = fileExtractor.canWrite();
-                Float fileSize = FileInfo.getFileSize(fileExtractor);
-                Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
-                Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
-                Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
-                String owner = FileInfo.getFileOwner(fileExtractor, "user");
-                String mimeType = FileInfo.getMimeType(fileExtractor);
-                if (evaluateString(fileName, criteriaFileName) &&
-                        evaluateString(fileExtension, criteriaExtension) &&
-                        evaluateHidden(fileHiddenStatus, criteriaHidden) &&
-                        evaluateReadOnly(fileCanWrite, criteriaReadOnly) &&
-                        evaluateSizeLimits(fileSize, sizeLowerLimit, sizeUpperLimit) &&
-                        evaluateDate(creationDate, creationDateLL, creationDateUL) &&
-                        evaluateDate(accessDate, accessDateLL, accessDateUL) &&
-                        evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
-                        evaluateString(owner, criteriaOwner) && evaluateStringContains(mimeType, criteriaMimeType)){
-                    CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
-                            fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
-                            modificationDate, owner, mimeType);
-                    searchResult.add(matchingFile);
+            try {
+                if (fileExtractor.isDirectory()) {
+                    searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
+                } else {
+                    String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
+                    String pathd = exiftool + "\"" + fileExtractor + "\"";
+                    String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
+                    String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
+                    boolean fileHiddenStatus = fileExtractor.isHidden();
+                    boolean fileCanWrite = fileExtractor.canWrite();
+                    Float fileSize = FileInfo.getFileSize(fileExtractor);
+                    Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
+                    Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
+                    Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
+                    String owner = FileInfo.getFileOwner(fileExtractor, "user");
+                    MetadataCommonExtractor metadataCommonExtractor = new MetadataCommonExtractor();
+                    metadataCommonExtractor.run(pathd);
+                    String mimeType = MetadataCommonExtractor.getSearchMimeType();
+                    if (evaluateString(fileName, criteriaFileName) &&
+                            evaluateString(fileExtension, criteriaExtension) &&
+                            evaluateHidden(fileHiddenStatus, criteriaHidden) &&
+                            evaluateReadOnly(fileCanWrite, criteriaReadOnly) &&
+                            evaluateSizeLimits(fileSize, sizeLowerLimit, sizeUpperLimit) &&
+                            evaluateDate(creationDate, creationDateLL, creationDateUL) &&
+                            evaluateDate(accessDate, accessDateLL, accessDateUL) &&
+                            evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
+                            evaluateString(owner, criteriaOwner) &&
+                            evaluateString(mimeType, criteriaMimeType)){
+                        List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
+                        CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
+                                fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
+                                modificationDate, owner, mimeType, metadata);
+                        searchResult.add(matchingFile);
+                    }
                 }
+            } catch (Exception exc) {
+                exc.getMessage();
             }
         }
         return searchResult;
@@ -166,7 +178,7 @@ public class CommonSearch implements ISearch {
             return fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit));
         }
         return (fileExtractorDate.after(DateSetter.setStartOfDay(lowerLimit)) &&
-            fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit)));
+                fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit)));
     }
 
     /**

@@ -10,9 +10,10 @@
 package com.fundation.logic.common;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implements the MetadataVideoExtractor class.
@@ -21,220 +22,156 @@ import java.io.InputStreamReader;
  * @version 1.0
  */
 public class MetadataVideoExtractor {
+    static Process extractMetadata;
+    static String searchFrameRate;
+    static String searchAudioCodec;
+    static String searchVideoCodec;
+    static String searchHeight;
+    private List<String> list;
 
+    public void run(String path) throws IOException {
+        extractMetadata = Runtime.getRuntime().exec(path);
+        readAll();
+    }
 
     /**
-     * This method returns metadata frame rate.
+     * This method read all metadata.
+     *
+     * @return
      */
-    public static String getFileName(File pathFile) {
-        String fileName = null;
+    public String readAll() {
+        String metadata = null;
+        list = new ArrayList<>();
+        BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((fileName = stdInput.readLine()) != null) {
-                if ((fileName.contains("File Name"))) {
-                    int initIndex = fileName.indexOf(":");
-                    int endIndex = fileName.length();
-                    int freeSpace = 2;
-                    fileName = fileName.substring(initIndex + freeSpace, endIndex);
-                    return fileName;
+            while ((metadata = stdInput.readLine()) != null) {
+                frameRate(metadata);
+                getVideoCodec(metadata);
+                getHeight(metadata);
+                getVideoAudioCodec(metadata);
+                list.add(metadata);
+                if ((metadata.contains("Read_All"))) {
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(-1);
         }
-        return "All";
+        return "Metadata No available";
     }
 
     /**
-     * This method returns metadata frame rate.
+     * This method search metadata frame rate.
+     *
+     * @return
      */
-    public static String getFrameRate(File pathFile) {
-        String frameRate = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((frameRate = stdInput.readLine()) != null) {
-                if ((frameRate.contains("Video Frame Rate"))) {
-                    int initIndex = frameRate.indexOf(":");
-                    int endIndex = frameRate.length();
-                    int freeSpace = 2;
-                    frameRate = frameRate.substring(initIndex + freeSpace, endIndex);
-                    frameRate = Float.toString(Math.round(Float.parseFloat(frameRate)));
-                    int start = 0;
-                    int deleteDat0 = 2;
-                    frameRate = frameRate.substring(start, deleteDat0);
-                    return frameRate;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+    public void frameRate(String frameRate) {
+        if ((frameRate.contains("Frame Rate"))) {
+            int initIndex = frameRate.indexOf(":");
+            int endIndex = frameRate.length();
+            int freeSpace = 2;
+            frameRate = frameRate.substring(initIndex + freeSpace, endIndex);
+            frameRate = Float.toString(Math.round(Float.parseFloat(frameRate)));
+            int start = 0;
+            int deleteDat0 = 2;
+            frameRate = frameRate.substring(start, deleteDat0);
+            this.searchFrameRate = frameRate;
         }
-        return "All";
     }
 
     /**
-     * This method returns metadata file type.
+     * This method search metadata resolution.
      */
-    public static String getFileType(File pathFile) {
-        String videoFileType = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile);
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((videoFileType = stdInput.readLine()) != null) {
-                if ((videoFileType.contains("File Type"))) {
-                    int initIndex = videoFileType.indexOf(":");
-                    int endIndex = videoFileType.length();
-                    int freeSpace = 2;
-                    videoFileType = videoFileType.substring(initIndex + freeSpace, endIndex);
-                    return videoFileType;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+    public void getHeight(String height) {
+        if ((height.contains("Image Height"))) {
+            int initIndex = height.indexOf(":");
+            int endIndex = height.length();
+            int freeSpace = 2;
+            height = height.substring(initIndex + freeSpace, endIndex);
+            searchHeight = height;
         }
-        return "All";
     }
 
     /**
-     * This method returns metadata resolution.
+     * This method search video codec.
      */
-    public static String getResolution(File pathFile) {
-        String resolution = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((resolution = stdInput.readLine()) != null) {
-                if ((resolution.contains("Image Height"))) {
-                    int initIndex = resolution.indexOf(":");
-                    int endIndex = resolution.length();
-                    int freeSpace = 2;
-                    resolution = resolution.substring(initIndex + freeSpace, endIndex);
-                    return resolution;
-                }
+    public void getVideoCodec(String videoCodec) {
+        if (videoCodec.contains("Video Codec")) {
+            int initIndex = videoCodec.indexOf(":");
+            int endIndex = videoCodec.length();
+            int freeSpace = 2;
+            videoCodec = videoCodec.substring(initIndex + freeSpace, endIndex);
+            if (videoCodec.contains("Windows")) {
+                videoCodec = "WMV";
+                searchVideoCodec = videoCodec;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
+            if (videoCodec.contains("MP")) {
+                videoCodec = "MPEG-4";
+                searchVideoCodec = videoCodec;
+            }
         }
-        return "All";
     }
 
     /**
-     * This method returns duration of the video.
+     * This method seach video audio codec.
      */
-    public static String getDuration(File pathFile) {
-        String duration = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((stdInput.readLine()) != null) {
-                duration = stdInput.readLine();
-                if ((duration.contains("Duration"))) {
-                    int freeSpace = 2;
-                    int initIndex = duration.indexOf(":") + freeSpace;
-                    int endIndex = duration.length();
-                    duration = duration.substring(initIndex, endIndex);
-                    return duration;
-                }
+    public void getVideoAudioCodec(String videoAudioCodec) {
+        if (videoAudioCodec.contains("Audio Codec")) {
+            int initIndex = videoAudioCodec.indexOf(":");
+            int endIndex = videoAudioCodec.length();
+            int freeSpace = 2;
+            videoAudioCodec = videoAudioCodec.substring(initIndex + freeSpace, endIndex);
+            if (videoAudioCodec.contains("Windows")) {
+                videoAudioCodec = "WMA";
+                searchAudioCodec = videoAudioCodec;
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            System.exit(-1);
+            if (videoAudioCodec.contains("AAC")) {
+                videoAudioCodec = "AAC";
+                searchAudioCodec = videoAudioCodec;
+            }
+            if (videoAudioCodec.contains("MPEG")) {
+                videoAudioCodec = "MPEG";
+                searchAudioCodec = videoAudioCodec;
+            }
         }
-        return "All";
     }
 
     /**
-     * This method returns duration of the video.
+     * This method return frame rate.
+     * @return
      */
-    public static String getTitle(File pathFile) {
-        String title = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((title = stdInput.readLine()) != null) {
-                if (title.contains("Title")) {
-                    int initIndex = title.indexOf(":");
-                    int endIndex = title.length();
-                    int freeSpace = 2;
-                    title = title.substring(initIndex + freeSpace, endIndex);
-                    return title;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-        return "All";
+    public static String getSearchFrameRate() {
+        return searchFrameRate;
     }
 
     /**
-     * This method returns video codec.
+     * This method return audio codec.
+     * @return
      */
-    public static String getVideoCodec(File pathFile) {
-        String videoCodec = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((videoCodec = stdInput.readLine()) != null) {
-                if (videoCodec.contains("Video Codec")) {
-                    int initIndex = videoCodec.indexOf(":");
-                    int endIndex = videoCodec.length();
-                    int freeSpace = 2;
-                    videoCodec = videoCodec.substring(initIndex + freeSpace, endIndex);
-                    if (videoCodec.contains("Windows")) {
-                        videoCodec = "WMV";
-                        return videoCodec;
-                    }
-                    if (videoCodec.contains("MP")) {
-                        videoCodec = "MPEG-4";
-                        return videoCodec;
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-        return "All";
+    public static String getSearchAudioCodec() {
+        return searchAudioCodec;
     }
 
     /**
-     * This method returns video audio codec.
+     * This method return video codec.
+     * @return
      */
-    public static String getVideoAudioCodec(File pathFile) {
-        String videoAudioCodec = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((videoAudioCodec = stdInput.readLine()) != null) {
-                if (videoAudioCodec.contains("Audio Codec")) {
-                    int initIndex = videoAudioCodec.indexOf(":");
-                    int endIndex = videoAudioCodec.length();
-                    int freeSpace = 2;
-                    videoAudioCodec = videoAudioCodec.substring(initIndex + freeSpace, endIndex);
-                    if (videoAudioCodec.contains("Windows")) {
-                        videoAudioCodec = "WMA";
-                        return videoAudioCodec;
-                    }
-                    if (videoAudioCodec.contains("AAC")) {
-                        videoAudioCodec = "AAC";
-                        return videoAudioCodec;
-                    }
-                    if (videoAudioCodec.contains("MPEG")) {
-                        videoAudioCodec = "MPEG";
-                        return videoAudioCodec;
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-        return "All";
+    public static String getSearchVideoCodec() {
+        return searchVideoCodec;
+    }
+
+    /**
+     * This method return image size.
+     * @return
+     */
+    public static String getSearchHeight() {
+        return searchHeight;
+    }
+
+    /**
+     * This method return metadata list.
+     * @return
+     */
+    public List<String> getSearchListMetadata() {
+        return list;
     }
 }

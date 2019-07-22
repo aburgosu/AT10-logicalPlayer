@@ -10,6 +10,7 @@
 package com.fundation.logic.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Implements CustomizedFile class which is the new kind of file that will return the main search method.
@@ -29,6 +30,7 @@ public class CustomizedFile {
     private Date modificationDate;
     private String owner;
     private String mimeType;
+    private List<String> metadata;
 
     /**
      * CustomizedFile constructor. It requires all parameters so them will be assigned to each attribute.
@@ -44,7 +46,8 @@ public class CustomizedFile {
      * @param owner
      */
     public CustomizedFile( String path, String name, String extension, boolean hiddenStatus, boolean readOnlyStatus,
-            Float size, Date creationDate, Date accessDate, Date modificationDate, String owner, String mimeType) {
+            Float size, Date creationDate, Date accessDate, Date modificationDate, String owner, String mimeType,
+            List<String> metadata) {
         this.path = path;
         this.name = name;
         this.extension = extension;
@@ -56,6 +59,7 @@ public class CustomizedFile {
         this.modificationDate = modificationDate;
         this.owner = owner;
         this.mimeType = mimeType;
+        this.metadata = metadata;
     }
 
     /**
@@ -133,5 +137,12 @@ public class CustomizedFile {
      */
     public String getMimeType() {
         return mimeType;
+    }
+
+    /**
+     * @return Metadata list.
+     */
+    public List<String> getMetadata() {
+        return metadata;
     }
 }

@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Implements the Table Result to show to the users the results of th searches.
@@ -29,26 +30,27 @@ public class TableResult extends JTable {
      */
     public TableResult() {
         model = new DefaultTableModel(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
-                "Date last accessed", "Attribute"}, 0) {
+                "Date last accessed", "Metadata"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-
         model.addRow(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
-            "Date last accessed", "Attribute"});
+            "Date last accessed", "Metadata"});
         this.setModel(model);
+        this.getColumn(this.getColumnName(7)).setMaxWidth(0);
+        this.getColumn(this.getColumnName(0)).setPreferredWidth(300);
         this.initListen();
     }
 
     /**
      * Adds a new row to ResultTable
      */
-    public void addResult(String path, String file, String extension, String size, Date creationDate,
-            Date modificationDate, Date lastAccessDate, String attribute) {
+    public void addResult(String path, String file, String extension, Float size, Date creationDate,
+            Date modificationDate, Date lastAccessDate, List metadata) {
         model.addRow(new Object[]{path, file, extension, size, creationDate, modificationDate,
-            lastAccessDate, attribute});
+            lastAccessDate, metadata});
     }
 
     /**
@@ -58,7 +60,7 @@ public class TableResult extends JTable {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
         model.addRow(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
-            "Date last accessed", "Attribute"});
+            "Date last accessed", "Metadata"});
         model.fireTableDataChanged();
         revalidate();
     }
@@ -67,17 +69,23 @@ public class TableResult extends JTable {
      * Listen to right click to play the selected row's file.
      */
     public void initListen() {
-        this.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent me) {
-                if (me.getButton() == MouseEvent.BUTTON3) {
-                    int row = getSelectedRow();
-                    final int PATH_COLUMN = 0;
-                    String filePath = (String) model.getValueAt(row, PATH_COLUMN);
-                    PopupMenu menu = new PopupMenu(filePath);
-                    menu.show(me.getComponent(), me.getX(), me.getY());
-                    menu.setVisible(true);
+        try {
+            this.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent me) {
+                    if (me.getButton() == MouseEvent.BUTTON3) {
+                        int row = getSelectedRow();
+                        final int PATH_COLUMN = 0;
+                        final int METADATA_COLUMN = 7;
+                        String filePath = (String) model.getValueAt(row, PATH_COLUMN);
+                        List<String> metadata = (List) model.getValueAt(row, METADATA_COLUMN);
+                        PopupMenu menu = new PopupMenu(filePath, metadata);
+                        menu.show(me.getComponent(), me.getX(), me.getY());
+                        menu.setVisible(true);
+                    }
                 }
-            }
-        });
+            });
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 }

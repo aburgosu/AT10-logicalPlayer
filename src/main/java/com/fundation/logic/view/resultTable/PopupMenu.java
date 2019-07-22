@@ -15,6 +15,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 /**
  * Implements PopupMenu class which is in charge of show play, details and convert options on file.
@@ -27,21 +28,24 @@ public class PopupMenu extends JPopupMenu {
     private JMenuItem detailsItem;
     private JMenuItem convertItem;
     private String filePath;
+    private List<String> detailsList;
 
     /**
      * Initializes PopupMenu with options according on the file
      * @param filePath - File's path where the PopupMenu was triggered.
      */
-    public PopupMenu(String filePath) {
+    public PopupMenu(String filePath, List<String> detailsList) {
         this.filePath = filePath;
+        this.detailsList = detailsList;
         if(FileInfo.isVideo(filePath) || FileInfo.isAudio(filePath)) {
             playItem = new JMenuItem("Play");
             add(playItem);
+            convertItem = new JMenuItem("Convert");
+            add(convertItem);
         }
+
         detailsItem = new JMenuItem("Details");
         add(detailsItem);
-        convertItem = new JMenuItem("convert");
-        add(convertItem);
         initItemMenuListener();
     }
 
@@ -52,15 +56,29 @@ public class PopupMenu extends JPopupMenu {
         try {
             playItem.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mousePressed(MouseEvent e) {
-                    if (e.getButton() == MouseEvent.BUTTON1) {
+                public void mousePressed(MouseEvent event) {
+                    if (event.getButton() == MouseEvent.BUTTON1) {
                         PlayerFrame playerWindow = new PlayerFrame(filePath);
                         playerWindow.setVisible(true);
                     }
                 }
             });
-        } catch (Exception e) {
-            e.getMessage();
+        } catch (Exception exception) {
+            exception.getMessage();
+        }
+
+        try {
+            detailsItem.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent event) {
+                    if (event.getButton() == MouseEvent.BUTTON1) {
+                        DetailsFrame details = new DetailsFrame(filePath, detailsList);
+                        details.setVisible(true);
+                    }
+                }
+            });
+        } catch (Exception exception) {
+            exception.getMessage();
         }
     }
 }

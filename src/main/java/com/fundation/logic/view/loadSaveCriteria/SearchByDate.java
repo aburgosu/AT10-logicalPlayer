@@ -9,13 +9,13 @@
  */
 package com.fundation.logic.view.loadSaveCriteria;
 
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JTextFieldDateEditor;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -26,9 +26,9 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class SearchByDate extends JPanel {
+public class SearchByDate extends CustomPanel {
     private PanelSetter settingPanel;
-    private JButton btnFilterByDate;
+    private CustomButton btnFilterByDate;
     private JDateChooser fieldDateFirstDate;
     private JDateChooser fieldDateSecondDate;
 
@@ -53,15 +53,15 @@ public class SearchByDate extends JPanel {
      */
     private void contentBasicSearch() {
         JLabel title = new JLabel("Search Criteria");
-        title.setFont(new Font("Tahoma", Font.BOLD, 14));
+        title.setFont(new Font("Arial", Font.PLAIN, 14));
         GridBagConstraints gbc_lblVideo = new GridBagConstraints();
-        gbc_lblVideo.gridwidth = 3;
-        gbc_lblVideo.insets = new Insets(0, 0, 5, 0);
+        gbc_lblVideo.gridwidth = 7;
+        gbc_lblVideo.insets = new Insets(5, 5, 5, 5);
         gbc_lblVideo.gridx = 0;
         gbc_lblVideo.gridy = 0;
         add(title, gbc_lblVideo);
 
-        JLabel lblPath = new JLabel("Date saved: ");
+        JLabel lblPath = new JLabel("Date saved:");
         GridBagConstraints gbc_lblPath = new GridBagConstraints();
         gbc_lblPath.anchor = GridBagConstraints.EAST;
         gbc_lblPath.insets = new Insets(0, 0, 5, 5);
@@ -70,8 +70,6 @@ public class SearchByDate extends JPanel {
         add(lblPath, gbc_lblPath);
 
         fieldDateFirstDate = new JDateChooser();
-        JTextFieldDateEditor editorDateFrom = (JTextFieldDateEditor) fieldDateFirstDate.getDateEditor();
-        editorDateFrom.setEditable(false);
         GridBagConstraints gbc_FieldToDateCreation = new GridBagConstraints();
         gbc_FieldToDateCreation.insets = new Insets(0, 0, 5, 5);
         gbc_FieldToDateCreation.fill = GridBagConstraints.HORIZONTAL;
@@ -80,8 +78,6 @@ public class SearchByDate extends JPanel {
         add(fieldDateFirstDate, gbc_FieldToDateCreation);
 
         fieldDateSecondDate = new JDateChooser();
-        JTextFieldDateEditor editorDateTo = (JTextFieldDateEditor) fieldDateSecondDate.getDateEditor();
-        editorDateTo.setEditable(false);
         GridBagConstraints gbc_FieldToDateSecondDate = new GridBagConstraints();
         gbc_FieldToDateSecondDate.insets = new Insets(0, 0, 5, 5);
         gbc_FieldToDateSecondDate.fill = GridBagConstraints.HORIZONTAL;
@@ -89,11 +85,12 @@ public class SearchByDate extends JPanel {
         gbc_FieldToDateSecondDate.gridy = 1;
         add(fieldDateSecondDate, gbc_FieldToDateSecondDate);
 
-        btnFilterByDate = new JButton("Filter");
+        btnFilterByDate = new CustomButton(" Filter ");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
-        gbc_btnSearch.gridwidth = 2;
-        gbc_btnSearch.gridx = 0;
-        gbc_btnSearch.gridy = 3;
+        gbc_btnSearch.gridwidth = 1;
+        gbc_btnSearch.anchor = GridBagConstraints.NORTH;
+        gbc_btnSearch.gridx = 4;
+        gbc_btnSearch.gridy = 1;
         add(btnFilterByDate, gbc_btnSearch);
     }
 
