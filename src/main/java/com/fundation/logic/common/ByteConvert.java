@@ -20,15 +20,15 @@ public class ByteConvert {
     /**
      *This method convert byte to Kb, Mb and Gb.
      */
-    public Float bytesConvert(String bytesNumber, String unitConversion) {
-        double unitBase = 1024;
+    public static Float bytesConvert(String bytesNumber, String unitConversion) {
+        Float unitBase = 1024F;
         switch (unitConversion) {
-            case "KB":
-                return (float) (Double.parseDouble(bytesNumber) / unitBase);
-            case "MB":
-                return (float) ((Double.parseDouble(bytesNumber) / unitBase) / unitBase);
-            case "GB":
-                return (float) (((Double.parseDouble(bytesNumber) / unitBase) / unitBase)/ unitBase);
+            case "KBytes":
+                return Math.round((Float.parseFloat(bytesNumber) / unitBase) * 100 )/100f;
+            case "MBytes":
+                return Math.round(((Float.parseFloat(bytesNumber) / unitBase) / unitBase)*100)/100f;
+            case "GBytes":
+                return Math.round((((Float.parseFloat(bytesNumber) / unitBase) / unitBase)/ unitBase)*100)/100f;
         }
         return null;
     }
@@ -36,16 +36,16 @@ public class ByteConvert {
     /**
      *This method from Kb, Mb and Gb to bytes.
      */
-    public Float anyConvertBytes(String unitConversion, String numberToConvert) {
-        double unitBase = 1024;
-        double numberConvert = Double.parseDouble(numberToConvert);
+    public static Float anyConvertBytes(String unitConversion, String numberToConvert) {
+        Float unitBase = 1024F;
+        Float numberConvert = Float.parseFloat(numberToConvert);
         switch (unitConversion) {
-            case "KB":
-                return (float)(numberConvert * unitBase);
-            case "MB":
-                return (float)((numberConvert * unitBase) * unitBase);
-            case "GB":
-                return (float)(((numberConvert * unitBase) * unitBase) * unitBase);
+            case "KBytes":
+                return Math.round((numberConvert * unitBase)*100)/100f;
+            case "MBytes":
+                return Math.round(((numberConvert * unitBase) * unitBase)*100)/100f;
+            case "GBytes":
+                return Math.round((((numberConvert * unitBase) * unitBase) * unitBase)*100)/100f;
         }
         return null;
     }
