@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * <p>
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -14,7 +14,7 @@ import java.io.File;
 /**
  * Implements FileInfo abstract class which is used to get file details.
  *
- * @author Jesus Menacho
+ * @author Maday Alcalá Cuba
  * @version 1.0
  */
 public class Validators {
