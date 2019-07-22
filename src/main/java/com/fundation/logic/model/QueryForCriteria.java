@@ -60,7 +60,8 @@ public class QueryForCriteria {
             String date = DBItem.substring(indexTabDate + 1, lastIndexDate);
             int indexTabName = DBItem.indexOf("\t");
             String name = DBItem.substring(indexTabName + 1, indexTabDate);
-            String id = DBItem.substring(0, indexTabName);
+            String idAux = DBItem.substring(0, indexTabName);
+            int id = Integer.parseInt(idAux);
             String json = DBItem.substring(DBItem.indexOf("{"), DBItem.indexOf("}") + 1);
             String type = DBItem.substring(lastIndexDate + 1, DBItem.indexOf("{") - 1);
             CriteriaRecord record = new CriteriaRecord(id, name, date, type, json);
@@ -69,11 +70,16 @@ public class QueryForCriteria {
         return criteriaRecords;
     }
 
-    /**
-     * Prints all criteria in database.
-     */
-    public void showCriteriaInDB() {
-        List criteria = query.getAllCriterias();
+    public CriteriaRecord getLastCriteriaRecord() {
+        List<CriteriaRecord> criteriaRecords;
+        criteriaRecords = getAllCriteriaInDB();
+        int recordsLength = criteriaRecords.size();
+        return criteriaRecords.get(recordsLength - 1);
+    }
+
+    public void deleteById(int id) {
+        String idToDelete = Integer.toString(id);
+        query.deleteByIde(idToDelete);
     }
 
     /**

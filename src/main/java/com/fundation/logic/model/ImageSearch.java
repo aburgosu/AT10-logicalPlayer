@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implements new Image Search class.
+ * Implements new Image search class.
  *
  * @author John Salazar Pinto
  * @version 1.0
@@ -28,7 +28,7 @@ public class ImageSearch implements ISearch {
     static private Image imageCriteria;
 
     /**
-     * Initializes a Search instance which requires a criteria as parameter.
+     * Initializes a search instance which requires a criteria as parameter.
      */
     public ImageSearch(Image audioCriteria) {
         this.imageCriteria = audioCriteria;

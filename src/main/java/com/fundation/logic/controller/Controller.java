@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * <p>
+ * 
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -329,8 +329,9 @@ public class Controller {
         List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();
         for (int index = 0; index < registers.size(); index++) {
             String name = registers.get(index).getName();
+            String type = registers.get(index).getType();
             String date = registers.get(index).getDate();
-            searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name, date);
+            searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name, type, date);
         }
     }
 }
