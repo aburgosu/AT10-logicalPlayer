@@ -28,7 +28,6 @@ public class MetadataImageExtractor {
     static String searchColorSpace;
     private List<String> list;
 
-
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
         readAll();
@@ -53,10 +52,8 @@ public class MetadataImageExtractor {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(-1);
-            System.out.println("No paso frame rate");
         }
-        return "NO hay";
+        return "No available";
     }
 
     /**
@@ -97,7 +94,6 @@ public class MetadataImageExtractor {
     public static String getWidth() {
         return searchWidth;
     }
-
 
     /**
      * This method returns metadata image color space.
