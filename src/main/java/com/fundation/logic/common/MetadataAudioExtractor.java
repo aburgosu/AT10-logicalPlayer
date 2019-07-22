@@ -13,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implements the MetadataAudioExtractor class.
@@ -26,6 +28,7 @@ public class MetadataAudioExtractor {
     private static String searchAudioCodec;
     private static String searchMimeType;
     private static String searchSampleRate;
+    private List<String> list;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -39,6 +42,7 @@ public class MetadataAudioExtractor {
      */
     public String readAll() {
         String frameRate = null;
+        list = new ArrayList<>();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
             while ((frameRate = stdInput.readLine()) != null) {
@@ -47,6 +51,7 @@ public class MetadataAudioExtractor {
                 audioCodec(s);
                 mimeType(s);
                 sampleRAte(s);
+                list.add(s);
                 if ((frameRate.contains("Read_All"))) {
                     int initIndex = frameRate.indexOf(":");
                     int endIndex = frameRate.length();
@@ -159,4 +164,9 @@ public class MetadataAudioExtractor {
         }
         return "There is not duration";
     }
+
+    public List<String> getSearchListMetadata() {
+        return list;
+    }
+
 }
