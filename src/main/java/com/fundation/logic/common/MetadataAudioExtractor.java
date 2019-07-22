@@ -75,13 +75,15 @@ public class MetadataAudioExtractor {
             }
         }
     }
-
+    /**
+     * This method returns audio channel.
+     */
     public static String getAudioChannel(){
         return searchChannelMode;
     }
 
     /**
-     * This method returns duration of the audio.
+     * This method find audio codec .
      */
     public static void audioCodec(String audioCodec) {
         if ((audioCodec.contains("MIME Type"))) {
@@ -97,10 +99,16 @@ public class MetadataAudioExtractor {
         }
     }
 
+    /**
+     * This method returns audrio codec to AudioSearch.
+     */
     public static String searchAudioCodec(){
         return searchAudioCodec;
     }
 
+    /**
+     * This method find mime type of the audio.
+     */
     public static void mimeType(String mimeType) {
         if ((mimeType.contains("MIME Type"))) {
             if (mimeType.contains("audio")) {
@@ -109,12 +117,15 @@ public class MetadataAudioExtractor {
         }
     }
 
+    /**
+     * This method returns mime type to AudioSearch.
+     */
     public static String searchMimeType(){
         return searchMimeType;
     }
 
     /**
-     * This method returns metadata sample rate.
+     * This method find metadata sample rate.
      */
     public static void sampleRAte(String sampleRate) {
         if ((sampleRate.contains("Sample Rate"))) {
@@ -126,6 +137,9 @@ public class MetadataAudioExtractor {
         }
     }
 
+    /**
+     * This method returns metadata sample rate.
+     */
     public static String getSearchSampleRate(){
         return searchSampleRate;
     }
@@ -155,8 +169,10 @@ public class MetadataAudioExtractor {
         return "There is not duration";
     }
 
+    /**
+     * This method returns metadata list.
+     */
     public List<String> getSearchListMetadata() {
         return list;
     }
-
 }
