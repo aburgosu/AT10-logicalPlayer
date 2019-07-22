@@ -47,7 +47,7 @@ public class TableResult extends JTable {
     /**
      * Adds a new row to ResultTable
      */
-    public void addResult(String path, String file, String extension, Float size, Date creationDate,
+    public void addResult(String path, String file, String extension, String size, Date creationDate,
             Date modificationDate, Date lastAccessDate, List metadata) {
         model.addRow(new Object[]{path, file, extension, size, creationDate, modificationDate,
             lastAccessDate, metadata});
