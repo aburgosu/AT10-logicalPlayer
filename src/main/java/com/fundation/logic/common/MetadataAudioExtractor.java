@@ -41,27 +41,17 @@ public class MetadataAudioExtractor {
      * @return
      */
     public String readAll() {
-        String frameRate = null;
+        String metadata = null;
         list = new ArrayList<>();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
-            while ((frameRate = stdInput.readLine()) != null) {
-                String s = frameRate;
-                audioChannel(s);
-                audioCodec(s);
-                mimeType(s);
-                sampleRAte(s);
-                list.add(s);
-                if ((frameRate.contains("Read_All"))) {
-                    int initIndex = frameRate.indexOf(":");
-                    int endIndex = frameRate.length();
-                    int freeSpace = 2;
-                    frameRate = frameRate.substring(initIndex + freeSpace, endIndex);
-                    frameRate = Float.toString(Math.round(Float.parseFloat(frameRate)));
-                    int start = 0;
-                    int deleteDat0 = 2;
-                    frameRate = frameRate.substring(start, deleteDat0);
-                    return frameRate;
+            while ((metadata = stdInput.readLine()) != null) {
+                audioChannel(metadata);
+                audioCodec(metadata);
+                mimeType(metadata);
+                sampleRAte(metadata);
+                list.add(metadata);
+                if ((metadata.contains("Read_All"))) {
                 }
             }
         } catch (IOException e) {
