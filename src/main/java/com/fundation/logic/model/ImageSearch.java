@@ -70,11 +70,11 @@ public class ImageSearch implements ISearch {
                     String pathd = exiftool + "\"" + fileExtractor + "\"";
                     metadataImageExtractor.run(pathd);
                     String width = "0";
-                    if (criteriaWidth.length() != 1){
+                    if (criteriaWidth.length() != 1) {
                         width = MetadataImageExtractor.getWidth();
                     }
                     String height = "0";
-                    if (criteriaHeight.length() != 1){
+                    if (criteriaHeight.length() != 1) {
                         height = MetadataImageExtractor.getHeight();
                     }
                     Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
