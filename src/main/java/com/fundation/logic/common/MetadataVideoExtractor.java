@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * 
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -12,6 +12,8 @@ package com.fundation.logic.common;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implements the MetadataVideoExtractor class.
@@ -26,6 +28,7 @@ public class MetadataVideoExtractor {
     static String searchAudioCodec;
     static String searchVideoCodec;
     static String searchHeight;
+    private List<String> list;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -38,35 +41,24 @@ public class MetadataVideoExtractor {
      * @return
      */
     public String readAll() {
-        String frameRate = null;
+        String metadata = null;
+        list = new ArrayList<>();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
-            while ((frameRate = stdInput.readLine()) != null) {
-                String s = frameRate;
-                frameRate(s);
-                getVideoCodec(s);
-                getHeight(s);
-                getVideoAudioCodec(s);
-                if ((frameRate.contains("Read_All"))) {
-                    int initIndex = frameRate.indexOf(":");
-                    int endIndex = frameRate.length();
-                    int freeSpace = 2;
-                    frameRate = frameRate.substring(initIndex + freeSpace, endIndex);
-                    frameRate = Float.toString(Math.round(Float.parseFloat(frameRate)));
-                    int start = 0;
-                    int deleteDat0 = 2;
-                    frameRate = frameRate.substring(start, deleteDat0);
-                    this.searchFrameRate = frameRate;
-                    System.out.println(frameRate);
-                    return frameRate;
+            while ((metadata = stdInput.readLine()) != null) {
+                frameRate(metadata);
+                getVideoCodec(metadata);
+                getHeight(metadata);
+                getVideoAudioCodec(metadata);
+                list.add(metadata);
+                if ((metadata.contains("Read_All"))) {
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
-            System.out.println("No paso frame rate");
         }
-        return "NO hay";
+        return "there isn't";
     }
 
     /**
@@ -176,4 +168,9 @@ public class MetadataVideoExtractor {
     public static String getSearchHeight() {
         return searchHeight;
     }
+
+    public List<String> getSearchListMetadata() {
+        return list;
+    }
+
 }
