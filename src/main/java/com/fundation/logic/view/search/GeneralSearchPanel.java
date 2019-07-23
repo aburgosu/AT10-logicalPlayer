@@ -13,15 +13,10 @@ import com.fundation.logic.view.CustomButton;
 import com.fundation.logic.view.CustomPanel;
 import com.toedter.calendar.JDateChooser;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * Implements the GeneralSearch Panel.
@@ -139,11 +134,28 @@ public class GeneralSearchPanel extends CustomPanel {
 
         textFieldSizeFrom = new JTextField();
         GridBagConstraints gbc_textFieldSizeFrom = new GridBagConstraints();
+        JTextField textField = new JTextField(10);
+        InputMap invalidSizeFrom = textFieldSizeFrom.getInputMap(JTextField.WHEN_FOCUSED);
+        invalidSizeFrom.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         gbc_textFieldSizeFrom.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeFrom.fill = GridBagConstraints.HORIZONTAL;
         gbc_textFieldSizeFrom.gridx = 2;
         gbc_textFieldSizeFrom.gridy = 6;
         add(getTextFieldSizeFrom(), gbc_textFieldSizeFrom);
+        textFieldSizeFrom.addKeyListener(new KeyAdapter()
+        {
+            public void keyTyped(KeyEvent e)
+            {
+                char isNumber = e.getKeyChar();
+
+                if(((isNumber < '0') ||
+                        (isNumber > '9')) &&
+                        (isNumber != '\b' ))
+                {
+                    e.consume();
+                }
+            }
+        });
 
         textFieldSizeTo = new JTextField();
         GridBagConstraints gbc_textFieldSizeTo = new GridBagConstraints();
@@ -152,6 +164,22 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_textFieldSizeTo.gridx = 3;
         gbc_textFieldSizeTo.gridy = 6;
         add(getTextFieldSizeTo(), gbc_textFieldSizeTo);
+        InputMap invalidSizeTo = textFieldSizeTo.getInputMap(JTextField.WHEN_FOCUSED);
+        invalidSizeTo.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        textFieldSizeTo.addKeyListener(new KeyAdapter()
+        {
+            public void keyTyped(KeyEvent e)
+            {
+                char isNumber = e.getKeyChar();
+
+                if(((isNumber < '0') ||
+                        (isNumber > '9')) &&
+                        (isNumber != '\b' ))
+                {
+                    e.consume();
+                }
+            }
+        });
 
         comboBoxSizeUnit = new JComboBox();
         comboBoxSizeUnit.setModel(new DefaultComboBoxModel(new String[] {"Bytes", "KBytes", "MBytes", "GBytes"}));
