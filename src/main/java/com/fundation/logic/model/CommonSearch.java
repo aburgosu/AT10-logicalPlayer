@@ -93,8 +93,6 @@ public class CommonSearch implements ISearch {
                     if (sizeUpperLimit == null){
                         sizeUpperLimit = Float.MAX_VALUE;
                     }
-                    System.out.println(sizeLowerLimit);
-                    System.out.println(sizeUpperLimit);
                     metadataCommonExtractor.run(pathd);
                     String mimeType = MetadataCommonExtractor.getSearchMimeType();
                     if (evaluateString(fileName, criteriaFileName) &&
