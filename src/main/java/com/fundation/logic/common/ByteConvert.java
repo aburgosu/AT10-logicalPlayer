@@ -1,6 +1,5 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -24,13 +23,13 @@ public class ByteConvert {
         Float unitBase = 1024F;
         switch (unitConversion) {
             case "Bytes":
-                return Math.round(Float.parseFloat(bytesNumber)*100)/100f;
+                return Math.round(Float.parseFloat(bytesNumber) * 100) / 100f;
             case "KBytes":
-                return Math.round((Float.parseFloat(bytesNumber) / unitBase)*100)/100f;
+                return Math.round((Float.parseFloat(bytesNumber) / unitBase) * 100) / 100f;
             case "MBytes":
-                return Math.round(((Float.parseFloat(bytesNumber) / unitBase) / unitBase)*100)/100f;
+                return Math.round(((Float.parseFloat(bytesNumber) / unitBase) / unitBase) * 100) / 100f;
             case "GBytes":
-                return Math.round((((Float.parseFloat(bytesNumber) / unitBase) / unitBase)/ unitBase)*100)/100f;
+                return Math.round((((Float.parseFloat(bytesNumber) / unitBase) / unitBase) / unitBase) * 100) / 100f;
         }
         return null;
     }
@@ -43,13 +42,13 @@ public class ByteConvert {
         Float numberConvert = Float.parseFloat(numberToConvert);
         switch (unitConversion) {
             case "Bytes":
-                return Math.round(numberConvert*100)/100f;
+                return Math.round(numberConvert * 100) / 100f;
             case "KBytes":
-                return Math.round((numberConvert * unitBase)*100)/100f;
+                return Math.round((numberConvert * unitBase) * 100) / 100f;
             case "MBytes":
-                return Math.round(((numberConvert * unitBase) * unitBase)*100)/100f;
+                return Math.round(((numberConvert * unitBase) * unitBase) * 100) / 100f;
             case "GBytes":
-                return Math.round((((numberConvert * unitBase) * unitBase) * unitBase)*100)/100f;
+                return Math.round((((numberConvert * unitBase) * unitBase) * unitBase) * 100) / 100f;
         }
         return null;
     }
