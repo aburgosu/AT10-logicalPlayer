@@ -88,6 +88,14 @@ public class CommonSearch implements ISearch {
                     Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
                     String owner = FileInfo.getFileOwner(fileExtractor, "user");
                     MetadataCommonExtractor metadataCommonExtractor = new MetadataCommonExtractor();
+                    if (sizeLowerLimit == null){
+                        sizeLowerLimit = Float.MIN_VALUE;
+                    }
+                    if (sizeUpperLimit == null){
+                        sizeUpperLimit = Float.MAX_VALUE;
+                    }
+                    System.out.println(sizeLowerLimit);
+                    System.out.println(sizeUpperLimit);
                     metadataCommonExtractor.run(pathd);
                     String mimeType = MetadataCommonExtractor.getSearchMimeType();
                     if (evaluateString(fileName, criteriaFileName) &&
