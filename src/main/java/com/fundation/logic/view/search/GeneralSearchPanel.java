@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * 
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -49,7 +49,7 @@ public class GeneralSearchPanel extends CustomPanel {
         gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0};
         gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
         gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-            0.0, 0.0, 0.0, Double.MIN_VALUE};
+                0.0, 0.0, 0.0, Double.MIN_VALUE};
         setLayout(gridBagLayout);
 
         JLabel lblDateCreation = new JLabel("Date created:");
@@ -142,16 +142,10 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_textFieldSizeFrom.gridx = 2;
         gbc_textFieldSizeFrom.gridy = 6;
         add(getTextFieldSizeFrom(), gbc_textFieldSizeFrom);
-        textFieldSizeFrom.addKeyListener(new KeyAdapter()
-        {
-            public void keyTyped(KeyEvent e)
-            {
+        textFieldSizeFrom.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
                 char isNumber = e.getKeyChar();
-
-                if(((isNumber < '0') ||
-                        (isNumber > '9')) &&
-                        (isNumber != '\b' ))
-                {
+                if (((isNumber < '0') || (isNumber > '9')) && (isNumber != '\b')) {
                     e.consume();
                 }
             }
@@ -166,23 +160,17 @@ public class GeneralSearchPanel extends CustomPanel {
         add(getTextFieldSizeTo(), gbc_textFieldSizeTo);
         InputMap invalidSizeTo = textFieldSizeTo.getInputMap(JTextField.WHEN_FOCUSED);
         invalidSizeTo.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
-        textFieldSizeTo.addKeyListener(new KeyAdapter()
-        {
-            public void keyTyped(KeyEvent e)
-            {
+        textFieldSizeTo.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
                 char isNumber = e.getKeyChar();
-
-                if(((isNumber < '0') ||
-                        (isNumber > '9')) &&
-                        (isNumber != '\b' ))
-                {
+                if (((isNumber < '0') || (isNumber > '9')) && (isNumber != '\b')) {
                     e.consume();
                 }
             }
         });
 
         comboBoxSizeUnit = new JComboBox();
-        comboBoxSizeUnit.setModel(new DefaultComboBoxModel(new String[] {"Bytes", "KBytes", "MBytes", "GBytes"}));
+        comboBoxSizeUnit.setModel(new DefaultComboBoxModel(new String[]{"Bytes", "KBytes", "MBytes", "GBytes"}));
         GridBagConstraints gbc_comboBoxSizeUnit = new GridBagConstraints();
         gbc_comboBoxSizeUnit.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxSizeUnit.fill = GridBagConstraints.HORIZONTAL;
@@ -199,8 +187,8 @@ public class GeneralSearchPanel extends CustomPanel {
         add(lblMimeType, gbc_lblMimeType);
 
         comboBoxMimeType = new JComboBox();
-        comboBoxMimeType.setModel(new DefaultComboBoxModel(new String[] {"All","Audio", "Video", "Image", "Text",
-            "Application"}));
+        comboBoxMimeType.setModel(new DefaultComboBoxModel(new String[]{"All", "Audio", "Video", "Image", "Text",
+                "Application"}));
         GridBagConstraints gbc_comboBoxMimeType = new GridBagConstraints();
         gbc_comboBoxMimeType.gridwidth = 2;
         gbc_comboBoxMimeType.insets = new Insets(0, 0, 5, 5);
@@ -288,6 +276,7 @@ public class GeneralSearchPanel extends CustomPanel {
     public JDateChooser getTextFieldFromDateCreation() {
         return textFieldFromDateCreation;
     }
+
     /**
      * This method return the fieldDateModificationFrom
      */
