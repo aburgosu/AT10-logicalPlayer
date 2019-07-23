@@ -15,7 +15,6 @@ import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.model.criteria.Common;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
