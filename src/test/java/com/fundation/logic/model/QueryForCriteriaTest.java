@@ -1,6 +1,6 @@
 package com.fundation.logic.model;
 
-import com.fundation.logic.model.criteria.Common;
+import com.fundation.logic.model.searchCriteria.Common;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

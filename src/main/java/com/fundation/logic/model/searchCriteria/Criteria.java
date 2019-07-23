@@ -7,10 +7,10 @@
   * accordance with the terms of the license agreement you entered into
   * with Jalasoft.
   */
- package com.fundation.logic.model.criteria;
+ package com.fundation.logic.model.searchCriteria;
 
  /**
-  * Implements the model class criteria and the getter and setter´s methods.
+  * Implements the model class searchCriteria and the getter and setter´s methods.
   *
   * @authors Andres Burgos, Jesus Menacho, Melissa Román
   * @version 1.0
@@ -49,7 +49,7 @@
      }
 
      /**
-      * Set criteria's fileName.
+      * Set searchCriteria's fileName.
       */
      public void setFileName(String fileName) {
          this.fileName = fileName;
@@ -65,7 +65,7 @@
      /**
       * Equals override to be implemented in subclasses.
       * @param criteria - Criteria to be compare with.
-      * @return True if two criteria are equal.
+      * @return True if two searchCriteria are equal.
       */
      public abstract boolean equals(Criteria criteria);
  }

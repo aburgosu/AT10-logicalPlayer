@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model.criteria;
+package com.fundation.logic.model.searchCriteria;
 
 /**
  * Implements the model class Video and the getter and setter´s methods.
@@ -78,9 +78,9 @@ public class Video extends Multimedia {
     }
 
     /**
-     * Equals override to compare two video criteria.
+     * Equals override to compare two video searchCriteria.
      * @param criteria - Criteria to be compare with.
-     * @return True if two criteria are equal.
+     * @return True if two searchCriteria are equal.
      */
     public boolean equals(Criteria criteria) {
         try {

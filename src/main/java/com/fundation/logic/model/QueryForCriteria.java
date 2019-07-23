@@ -11,14 +11,14 @@ package com.fundation.logic.model;
 
 import com.fundation.logic.common.JsonConverter;
 import com.fundation.logic.database.Query;
-import com.fundation.logic.model.criteria.Criteria;
+import com.fundation.logic.model.searchCriteria.Criteria;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- * Implements QueryForCriteria class which is in charge to saving, deleting and retrieving criteria from database.
+ * Implements QueryForCriteria class which is in charge to saving, deleting and retrieving searchCriteria from database.
  *
  * @author Melissa Román
  * @version 1.0
@@ -34,9 +34,9 @@ public class QueryForCriteria {
     }
 
     /**
-     * Saves given criteria in database.
-     * @param criteriaName - Name under which the criteria is saved.
-     * @param criteria - The criteria to be saved.
+     * Saves given searchCriteria in database.
+     * @param criteriaName - Name under which the searchCriteria is saved.
+     * @param criteria - The searchCriteria to be saved.
      * @param criteriaType - Criteria's type. It could be Audio, Common, Image or Video.
      */
     public void saveCriteria(String criteriaName, Criteria criteria, String criteriaType) {
@@ -46,16 +46,16 @@ public class QueryForCriteria {
     }
 
     /**
-     * Allows to get a list of all criteria saved in the database.
+     * Allows to get a list of all searchCriteria saved in the database.
      * @return List of CriteriaRecord objects.
      */
     public List<CriteriaRecord> getAllCriteriaInDB() {
+        final int DATE_LENGTH = 11;
         List<CriteriaRecord> criteriaRecords = new ArrayList<CriteriaRecord>();
         List criteriaInDB = query.getAllCriterias();
         for (int index = 0; index < criteriaInDB.size(); index++) {
             String DBItem = criteriaInDB.get(index).toString();
             int indexTabDate = DBItem.indexOf("\t", 3);
-            final int DATE_LENGTH = 11;
             int lastIndexDate = indexTabDate + DATE_LENGTH;
             String date = DBItem.substring(indexTabDate + 1, lastIndexDate);
             int indexTabName = DBItem.indexOf("\t");
@@ -83,7 +83,7 @@ public class QueryForCriteria {
     }
 
     /**
-     * Finds criteria that were saved between two given dates.
+     * Finds searchCriteria that were saved between two given dates.
      * @param date1 - Start date.
      * @param date2 - End date.
      */

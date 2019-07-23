@@ -1,19 +1,19 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * <p>
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model;
+package com.fundation.logic.model.search;
 
 import com.fundation.logic.common.FileInfo;
-import com.fundation.logic.common.MetadataAudioExtractor;
 import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.common.MetadataImageExtractor;
-import com.fundation.logic.model.criteria.Audio;
+import com.fundation.logic.model.CustomizedFile;
+import com.fundation.logic.model.searchCriteria.Image;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -21,47 +21,44 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implements new Video search class.
+ * Implements new Image search class.
  *
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class AudioSearch implements ISearch {
-    static private Audio audioCriteria;
+public class ImageSearch implements ISearch {
+    static private Image imageCriteria;
 
     /**
-     * Initializes a search instance which requires a criteria as parameter.
+     * Initializes a search instance which requires a searchCriteria as parameter.
      */
-    public AudioSearch(Audio audioCriteria) {
-        this.audioCriteria = audioCriteria;
+    public ImageSearch(Image audioCriteria) {
+        this.imageCriteria = audioCriteria;
     }
 
     /**
      * Main search method.
      *
-     * @return List of found items if criteria's path is not null.
+     * @return List of found items if searchCriteria's path is not null.
      */
     public List search() {
-        if (audioCriteria.getPath() == null) {
+        if (imageCriteria.getPath() == null) {
             return null;
         }
-        return searchInPath(audioCriteria.getPath());
+        return searchInPath(imageCriteria.getPath());
     }
 
     /**
      * @param path
-     * @return Complete list of found items according on criteria's path.
+     * @return Complete list of found items according on searchCriteria's path.
      */
     public List searchInPath(String path) {
         List<CustomizedFile> searchResult = new ArrayList<>();
         File file = new File(path);
-        String criteriaFileName = audioCriteria.getFileName();
-        String criteriaExtension = audioCriteria.getExtension();
-        String criteriAudioCodec = audioCriteria.getAudioCodec();
-        String criteriaDuration = Integer.toString(audioCriteria.getDuration());
-        String criteriaChannel = Integer.toString(audioCriteria.getChannel());
-        String criteriaMimeType = "audio";
-        String criteriaSampleRate = Integer.toString(audioCriteria.getSampleRate());
+        String criteriaFileName = imageCriteria.getFileName();
+        String criteriaExtension = imageCriteria.getExtension();
+        String criteriaWidth = imageCriteria.getWidth();
+        String criteriaHeight = imageCriteria.getHeight();
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
             try {
@@ -73,51 +70,40 @@ public class AudioSearch implements ISearch {
                     MetadataImageExtractor metadataImageExtractor = new MetadataImageExtractor();
                     String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
                     String pathd = exiftool + "\"" + fileExtractor + "\"";
-                    MetadataAudioExtractor metadataAudioExtractor = new MetadataAudioExtractor();
-                    metadataAudioExtractor.run(pathd);
                     metadataImageExtractor.run(pathd);
-                    String channel = "All";
-                    if (criteriaChannel != "All") {
-                        channel = MetadataAudioExtractor.getAudioChannel();
+                    String width = "0";
+                    if (criteriaWidth.length() != 1) {
+                        width = MetadataImageExtractor.getWidth();
                     }
-                    String audioCodec = "All";
-                    if (criteriAudioCodec != "All") {
-                        audioCodec = MetadataAudioExtractor.searchAudioCodec();
-                    }
-                    String mimeType = MetadataAudioExtractor.searchMimeType();
-
-                    String sampleRate = "All";
-                    if (criteriaSampleRate != "All") {
-                        sampleRate = MetadataAudioExtractor.getSearchSampleRate();
+                    String height = "0";
+                    if (criteriaHeight.length() != 1) {
+                        height = MetadataImageExtractor.getHeight();
                     }
                     Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
                     Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
                     Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
                     Float fileSize = FileInfo.getFileSize(fileExtractor);
-
                     if (evaluateString(fileName, criteriaFileName)
                             && evaluateString(fileExtension, criteriaExtension)
-                            && evaluateString(channel, criteriaChannel)
-                            && evaluateString(audioCodec, criteriAudioCodec)
-                            && evaluateString(mimeType, criteriaMimeType)
-                            && evaluateString(sampleRate, criteriaSampleRate)) {
+                            && evaluateString(width, criteriaWidth)
+                            && evaluateString(height, criteriaHeight)) {
                         List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
-                        CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
-                                fileExtension, false, false,
+                        CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
+                                fileName, fileExtension, false, false,
                                 fileSize, creationDate, accessDate,
                                 modificationDate, "MimeType", "video", metadata);
                         searchResult.add(matchingFile);
                     }
                 }
             } catch (Exception e) {
-                System.out.println("The file  :" + FileInfo.getFileDenomination(fileExtractor, "name") + " -  No was added ");
+                System.out.println("The file  :" + FileInfo.getFileDenomination(fileExtractor, "name") + " -  Has not been added ");
             }
         }
         return searchResult;
     }
 
     /**
-     * Evaluates specific string field according on criteria.
+     * Evaluates specific string field according on searchCriteria.
      *
      * @return Answer after evaluation.
      */

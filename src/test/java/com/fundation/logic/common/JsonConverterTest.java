@@ -1,7 +1,7 @@
 package com.fundation.logic.common;
 
-import com.fundation.logic.model.criteria.Common;
-import com.fundation.logic.model.criteria.Criteria;
+import com.fundation.logic.model.searchCriteria.Common;
+import com.fundation.logic.model.searchCriteria.Criteria;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
