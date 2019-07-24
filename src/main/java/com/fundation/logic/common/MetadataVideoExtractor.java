@@ -28,12 +28,11 @@ public class MetadataVideoExtractor {
     static String searchVideoCodec;
     static String searchHeight;
     private static List<String> list;
-    private  Float searchHour;
-    private  Float searchMinute;
-    private  Float searchSeconds;
+    private Float searchHour;
+    private Float searchMinute;
+    private Float searchSeconds;
     private static Float searchDuration;
-
-
+    
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
         readAll();
@@ -152,10 +151,10 @@ public class MetadataVideoExtractor {
             Float hourToSeconds = new Float(3600);
             Float minuteToSeconds = new Float(60);
             duration = duration.substring(initIndex + freeSpace, endIndex);
-            searchHour =  Float.parseFloat(duration.substring(0,1))*hourToSeconds;
-            searchMinute =  Float.parseFloat(duration.substring(2,4))*minuteToSeconds;
-            searchSeconds =  Float.parseFloat(duration.substring(5,7));
-            searchDuration = (searchHour + searchMinute + searchSeconds) / 3600 ;
+            searchHour = Float.parseFloat(duration.substring(0, 1)) * hourToSeconds;
+            searchMinute = Float.parseFloat(duration.substring(2, 4)) * minuteToSeconds;
+            searchSeconds = Float.parseFloat(duration.substring(5, 7));
+            searchDuration = (searchHour + searchMinute + searchSeconds) / 3600;
         }
     }
 
