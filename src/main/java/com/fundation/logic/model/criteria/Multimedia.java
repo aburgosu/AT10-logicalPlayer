@@ -17,7 +17,7 @@ package com.fundation.logic.model.criteria;
  */
 public abstract class Multimedia extends Criteria {
     private String audioCodec;
-    private int duration;
+    private String duration;
     private int bitrate;
 
     /**
@@ -37,14 +37,14 @@ public abstract class Multimedia extends Criteria {
     /**
      * @return Duration.
      */
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
     /**
      * Set Duration.
      */
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
