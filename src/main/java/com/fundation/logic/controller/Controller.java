@@ -128,15 +128,18 @@ public class Controller {
         if (extensionName.length() == 0) {
             extensionName = null;
         }
+        String sizeUnit = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedItem().toString();
         String sizeFrom = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getTextFieldSizeFrom().getText());
         Float sizeFromF = null;
         if (sizeFrom.length() != 0) {
             sizeFromF = new Float(sizeFrom);
+            sizeFromF = ByteConvert.anyConvertBytes(sizeUnit, sizeFrom);
         }
         String sizeTo = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getTextFieldSizeTo().getText());
         Float sizeToF = null;
         if (sizeTo.length() != 0) {
             sizeToF = new Float(sizeTo);
+            sizeToF = ByteConvert.anyConvertBytes(sizeUnit, sizeTo);
         }
         Date fromDateCreation = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getTextFieldFromDateCreation().getDate();
         if (fromDateCreation == null) {
@@ -195,29 +198,8 @@ public class Controller {
                 searchFrame.showPopupMessage("Invalid Accessed Date", "The date on the left must be less than the date on the right.");
             }
         }
-        int sizeUnit = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedIndex();
-        if(sizeUnit == 1) {
-            sizeFromF = ByteConvert.anyConvertBytes("KBytes", sizeFrom);
-
-        }
-        if (sizeUnit == 2) {
-            sizeFromF = ByteConvert.anyConvertBytes("MBytes", sizeFrom);
-        }
-        if (sizeUnit == 3) {
-            sizeFromF = ByteConvert.anyConvertBytes("GBytes", sizeFrom);
-        }
-        if (sizeUnit == 1) {
-            sizeToF = ByteConvert.anyConvertBytes("KBytes", sizeTo);
-
-        }
-        if (sizeUnit == 2) {
-            sizeToF = ByteConvert.anyConvertBytes("MBytes", sizeTo);
-        }
-        if (sizeUnit == 3) {
-            sizeToF = ByteConvert.anyConvertBytes("GBytes", sizeTo);
-        }
-        if (sizeFromF != null && sizeToF != null) {
-            if(sizeFromF > sizeToF) {
+        if (sizeFrom != null && sizeTo != null) {
+            if (sizeTo.compareTo(sizeFrom) < 0){
                 searchFrame.showPopupMessage("Error Message","The size of the left must be smaller than the size of the right");
             }
         }

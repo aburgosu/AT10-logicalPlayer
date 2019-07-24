@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * 
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -24,13 +24,13 @@ public class ByteConvert {
         Float unitBase = 1024F;
         switch (unitConversion) {
             case "Bytes":
-                return Float.parseFloat(bytesNumber);
+                return Math.round(Float.parseFloat(bytesNumber) * 100) / 100f;
             case "KBytes":
-                return (Float.parseFloat(bytesNumber) / unitBase);
+                return Math.round((Float.parseFloat(bytesNumber) / unitBase) * 100) / 100f;
             case "MBytes":
-                return ((Float.parseFloat(bytesNumber) / unitBase) / unitBase);
+                return Math.round(((Float.parseFloat(bytesNumber) / unitBase) / unitBase) * 100) / 100f;
             case "GBytes":
-                return (((Float.parseFloat(bytesNumber) / unitBase) / unitBase)/ unitBase);
+                return Math.round((((Float.parseFloat(bytesNumber) / unitBase) / unitBase) / unitBase) * 100) / 100f;
         }
         return null;
     }
@@ -43,13 +43,13 @@ public class ByteConvert {
         Float numberConvert = Float.parseFloat(numberToConvert);
         switch (unitConversion) {
             case "Bytes":
-                return numberConvert;
+                return Math.round(numberConvert * 100) / 100f;
             case "KBytes":
-                return (numberConvert * unitBase);
+                return Math.round((numberConvert * unitBase) * 100) / 100f;
             case "MBytes":
-                return ((numberConvert * unitBase) * unitBase);
+                return Math.round(((numberConvert * unitBase) * unitBase) * 100) / 100f;
             case "GBytes":
-                return (((numberConvert * unitBase) * unitBase) * unitBase);
+                return Math.round((((numberConvert * unitBase) * unitBase) * unitBase) * 100) / 100f;
         }
         return null;
     }
