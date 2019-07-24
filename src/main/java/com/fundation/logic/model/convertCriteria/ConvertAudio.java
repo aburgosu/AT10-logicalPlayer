@@ -7,20 +7,13 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model;
-
-import java.util.List;
+package com.fundation.logic.model.convertCriteria;
 
 /**
- * Implements ISearch interface with search method.
+ * Implements ConvertAudio class which is used to set the convert audio criteria.
  *
- * @author Andres Burgos
+ * @author Melissa Román
  * @version 1.0
  */
-public interface ISearch {
-
-    /**
-     * @return CommonSearch result, list of found files.
-     */
-    List search();
+public class ConvertAudio extends ConvertMultimedia {
 }

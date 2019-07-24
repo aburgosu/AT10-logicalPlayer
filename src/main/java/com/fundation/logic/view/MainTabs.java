@@ -39,7 +39,7 @@ public class MainTabs extends JTabbedPane {
         addTab("Search", null, splitPanelSearch, "Perform general and advance search");
 
         loadSavePanel = new LoadSavePanel();
-        addTab("Save/Load", null, splitPanelSavedCriteria, "Save and load criteria");
+        addTab("Save/Load", null, splitPanelSavedCriteria, "Save and load searchCriteria");
 
         splitPanelConvert = new SplitPanelConvert();
         addTab("Convert", null, splitPanelConvert, "Perform video/audio converts");

@@ -45,7 +45,7 @@ public class Query {
     }
 
     /**
-     * This method show informations from the table criteria.
+     * This method show informations from the table searchCriteria.
      */
     public List getAllCriterias() {
         List<String> infCriterias = new ArrayList<String>();
@@ -64,7 +64,7 @@ public class Query {
     }
 
     /**
-     * This method delete informations acording a id from the table criteria.
+     * This method delete informations acording a id from the table searchCriteria.
      */
     public void deleteByIde(String ID) {
         String sql = "DELETE FROM criterias WHERE id = ?";
@@ -79,7 +79,7 @@ public class Query {
     }
 
     /**
-     * This method show the info criteria between two dates.
+     * This method show the info searchCriteria between two dates.
      */
     public List filterByDates(String firstDate, String secondDate) {
 
