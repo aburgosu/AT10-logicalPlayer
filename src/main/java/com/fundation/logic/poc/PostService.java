@@ -36,14 +36,19 @@ public class PostService {
 
             System.out.println("executing request " + httppost.getRequestLine());
             CloseableHttpResponse response = httpclient.execute(httppost);
+
+            System.out.println("-----------RESPONSE!----------------------");
+            System.out.println(response.getStatusLine().toString());
+
             try {
-                System.out.println("----------------------------------------");
-                System.out.println(response.getStatusLine());
+//                System.out.println("----------------------------------------");
+//                System.out.println(response.getStatusLine());
                 HttpEntity resEntity = response.getEntity();
                 if (resEntity != null) {
                     System.out.println("Successful conversion");
                 }
                 EntityUtils.consume(resEntity);
+
             } finally {
                 response.close();
             }

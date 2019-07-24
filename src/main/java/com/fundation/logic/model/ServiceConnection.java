@@ -1,5 +1,7 @@
 package com.fundation.logic.model;
 
+import com.fundation.logic.common.JsonConverter;
+import com.fundation.logic.model.convertCriteria.ConvertCriteria;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -12,7 +14,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.File;
-import java.io.IOException;
 
 public class ServiceConnection {
     CloseableHttpClient httpClient;
@@ -23,14 +24,12 @@ public class ServiceConnection {
         httpPost = new HttpPost(uri);
     }
 
-
-
-    public String convert(String asset, String input, String config, String output) throws IOException {
+    public String convert(ConvertCriteria criteria) throws Exception {
         String res="";
-        FileBody fileBody = new FileBody(new File(asset));
-        StringBody stringInput = new StringBody(input, ContentType.TEXT_PLAIN);
-        StringBody stringConfig = new StringBody(config, ContentType.TEXT_PLAIN);
-        StringBody stringOutput = new StringBody(output, ContentType.TEXT_PLAIN);
+        FileBody fileBody = new FileBody(new File(criteria.getSourcePath()));
+        StringBody stringInput = new StringBody(Checksum.getChecksum(criteria.getSourcePath(),"MD5"), ContentType.TEXT_PLAIN);
+        StringBody stringConfig = new StringBody(JsonConverter.convertCriteriaToJson(criteria), ContentType.TEXT_PLAIN);
+        StringBody stringOutput = new StringBody(criteria.getDestinationPath(), ContentType.TEXT_PLAIN);
 
         HttpEntity reqEntity = MultipartEntityBuilder.create()
                 .addPart("asset", fileBody)

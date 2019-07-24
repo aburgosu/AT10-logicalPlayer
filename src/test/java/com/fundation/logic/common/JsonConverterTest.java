@@ -24,7 +24,7 @@ import static org.junit.Assert.assertEquals;
 public class JsonConverterTest {
 
     /**
-     * Compare criteriaToJson method actual return with the expected string.
+     * Compare searchCriteriaToJson method actual return with the expected string.
      */
     @Test
     public void criteriaToJson_compareNewCriteria() {
@@ -44,13 +44,13 @@ public class JsonConverterTest {
         commonCriteria.setCriteriaModificationDateMax(null);
         commonCriteria.setCriteriaOwner(null);
         commonCriteria.setCriteriaMimeType(null);
-        String actual = JsonConverter.criteriaToJson(commonCriteria);
+        String actual = JsonConverter.searchCriteriaToJson(commonCriteria);
         String expected = "{\"path\":\"resources/\"}";
         assertEquals(expected, actual);
     }
 
     /**
-     * Compare jsonToCriteria method actual result with expected criteria object.
+     * Compare jsonToSearchCriteria method actual result with expected criteria object.
      */
     @Test
     public void jsonToCriteria_commonCriteria() {
@@ -71,7 +71,7 @@ public class JsonConverterTest {
         expectedCriteria.setCriteriaOwner(null);
         expectedCriteria.setCriteriaMimeType(null);
         String json = "{\"path\":\"resources/\"}";
-        Criteria actual = JsonConverter.jsonToCriteria(json, "Common");
+        Criteria actual = JsonConverter.jsonToSearchCriteria(json, "Common");
         Common actualCommon = (Common) actual;
         assertEquals(expectedCriteria.getPath(), actualCommon.getPath());
         assertEquals(expectedCriteria.getFileName(), actualCommon.getFileName());
