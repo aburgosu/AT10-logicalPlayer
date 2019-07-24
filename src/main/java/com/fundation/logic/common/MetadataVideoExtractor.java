@@ -32,7 +32,7 @@ public class MetadataVideoExtractor {
     private Float searchMinute;
     private Float searchSeconds;
     private static Float searchDuration;
-    
+
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
         readAll();
@@ -144,7 +144,8 @@ public class MetadataVideoExtractor {
      * This method search duration.
      */
     public void duration(String duration) {
-        if ((duration.contains("Duration"))) {
+        String validatorDuration = duration.substring(0, 8);
+        if (validatorDuration.contains("Duration")) {
             int initIndex = duration.indexOf(":");
             int endIndex = duration.length();
             int freeSpace = 2;
@@ -160,6 +161,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return frame rate.
+     *
      * @return
      */
     public static String getSearchFrameRate() {
@@ -168,6 +170,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return audio codec.
+     *
      * @return
      */
     public static String getSearchAudioCodec() {
@@ -176,6 +179,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return video codec.
+     *
      * @return
      */
     public static String getSearchVideoCodec() {
@@ -184,6 +188,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return image size.
+     *
      * @return
      */
     public static String getSearchHeight() {
@@ -192,6 +197,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return metadata list.
+     *
      * @return
      */
     public static List<String> getSearchListMetadata() {
@@ -200,6 +206,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return duration in decimal.
+     *
      * @return
      */
     public static Float getSearchDuration() {
