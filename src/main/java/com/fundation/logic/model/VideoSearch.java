@@ -10,7 +10,6 @@
 package com.fundation.logic.model;
 
 import com.fundation.logic.common.FileInfo;
-import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.common.MetadataVideoExtractor;
 import com.fundation.logic.model.criteria.Video;
 
@@ -60,7 +59,12 @@ public class VideoSearch implements ISearch {
         String criteriAudioVideoCodec = videoCriteria.getAudioCodec();
         String criteriaFrameRate = videoCriteria.getFrameRate();
         String criteriaHeight = Integer.toString(videoCriteria.getHeight());
+        String criteriaLLDuration = videoCriteria.getDurationfrom();
+        String criteriaLUDuration = videoCriteria.getDurationTo();
+        Float initDuration = convertDurationToDecimal(criteriaLLDuration);
+        Float endDuration = convertDurationToDecimal(criteriaLUDuration);
         File[] allSubFiles = file.listFiles();
+
         for (File fileExtractor : allSubFiles) {
             try {
                 if (fileExtractor.isDirectory()) {
@@ -70,9 +74,10 @@ public class VideoSearch implements ISearch {
                     String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
                     String frameRate = "All";
                     String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
-                    String pathd = exiftool + "\"" + fileExtractor + "\"";
+                    String owner = FileInfo.getFileOwner(fileExtractor, "user");
+                    String filePath = exiftool + "\"" + fileExtractor + "\"";
                     MetadataVideoExtractor metadataVideoExtractor = new MetadataVideoExtractor();
-                    metadataVideoExtractor.run(pathd);
+                    metadataVideoExtractor.run(filePath);
                     if (criteriaFrameRate != "All") {
                         frameRate = MetadataVideoExtractor.getSearchFrameRate();
                     }
@@ -88,6 +93,11 @@ public class VideoSearch implements ISearch {
                     if (criteriaHeight != "All") {
                         fileHeight = MetadataVideoExtractor.getSearchHeight();
                     }
+                    if (initDuration == 12.0 && endDuration == 12.0){
+                        initDuration = new Float(0.0);
+                        endDuration = new Float(12.99);
+                    }
+                    Float duration = MetadataVideoExtractor.getSearchDuration();
                     Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
                     Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
                     Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
@@ -97,11 +107,12 @@ public class VideoSearch implements ISearch {
                             && evaluateString(fileExtension, criteriaExtension)
                             && evaluateString(fileVideoCodec, criteriVideoCodec)
                             && evaluateString(videoAudioCodec, criteriAudioVideoCodec)
-                            && evaluateString(fileHeight, criteriaHeight)) {
-                        List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
+                            && evaluateString(fileHeight, criteriaHeight)
+                            && evaluateDuration(duration, initDuration, endDuration)) {
+                        List<String> metadata = MetadataVideoExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false, fileSize, creationDate,
-                                accessDate, modificationDate, "MimeType", "video", metadata);
+                                accessDate, modificationDate, owner, "video", metadata);
                         searchResult.add(matchingFile);
                     }
                 }
@@ -122,5 +133,33 @@ public class VideoSearch implements ISearch {
             return true;
         }
         return false;
+    }
+
+    public Float convertDurationToDecimal(String duration){
+        Float hourToSeconds = new Float(3600);
+        Float minuteToSeconds = new Float(60);
+        Float hour = Float.parseFloat(duration.substring(0, 2)) * hourToSeconds;
+        Float minutes = Float.parseFloat(duration.substring(3, 5)) * minuteToSeconds;
+        Float seconds = Float.parseFloat(duration.substring(6, 8));
+        Float initDuration = (hour + minutes + seconds) / 3600;
+        return initDuration;
+    }
+
+    /**
+     * Evaluates if the file size is between set limits.
+     *
+     * @return Answer after evaluation.
+     */
+    private boolean evaluateDuration(Float metadataDuration, Float lowerLimit, Float upperLimit) {
+        if (lowerLimit == null && upperLimit == null) {
+            return true;
+        }
+        if (lowerLimit != null && upperLimit == null) {
+            return metadataDuration >= lowerLimit;
+        }
+        if (lowerLimit == null && upperLimit != null) {
+            return metadataDuration <= upperLimit;
+        }
+        return (metadataDuration >= lowerLimit && metadataDuration <= upperLimit);
     }
 }
