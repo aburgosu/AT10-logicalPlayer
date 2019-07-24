@@ -26,7 +26,7 @@ public class MetadataImageExtractor {
     static String searchWidth;
     static String searchHeight;
     static String searchColorSpace;
-    private List<String> list;
+    private static List<String> list;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -111,7 +111,7 @@ public class MetadataImageExtractor {
     /**
      * This method returns metadata list.
      */
-    public List<String> getSearchListMetadata() {
+    public static List<String> getSearchListMetadata() {
         return list;
     }
 }

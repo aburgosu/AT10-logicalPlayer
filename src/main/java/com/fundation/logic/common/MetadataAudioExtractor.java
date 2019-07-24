@@ -28,7 +28,7 @@ public class MetadataAudioExtractor {
     private static String searchAudioCodec;
     private static String searchMimeType;
     private static String searchSampleRate;
-    private List<String> list;
+    private static List<String> list;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -170,7 +170,7 @@ public class MetadataAudioExtractor {
     /**
      * This method returns metadata list.
      */
-    public List<String> getSearchListMetadata() {
+    public static List<String> getSearchListMetadata() {
         return list;
     }
 }
