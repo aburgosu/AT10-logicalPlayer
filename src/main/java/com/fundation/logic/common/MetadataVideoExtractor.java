@@ -28,9 +28,9 @@ public class MetadataVideoExtractor {
     static String searchVideoCodec;
     static String searchHeight;
     private static List<String> list;
-    private static Float searchHour;
-    private static Float searchMinute;
-    private static Float searchSeconds;
+    private  Float searchHour;
+    private  Float searchMinute;
+    private  Float searchSeconds;
     private static Float searchDuration;
 
 
@@ -55,6 +55,7 @@ public class MetadataVideoExtractor {
                 getHeight(metadata);
                 getVideoAudioCodec(metadata);
                 list.add(metadata);
+                duration(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
@@ -152,9 +153,9 @@ public class MetadataVideoExtractor {
             Float minuteToSeconds = new Float(60);
             duration = duration.substring(initIndex + freeSpace, endIndex);
             searchHour =  Float.parseFloat(duration.substring(0,1))*hourToSeconds;
-            searchMinute =  Float.parseFloat(duration.substring(0,1))*minuteToSeconds;
-            searchSeconds =  Float.parseFloat(duration.substring(0,1));
-            searchDuration = (searchHour + searchMinute + searchMinute) / 3600 ;
+            searchMinute =  Float.parseFloat(duration.substring(2,4))*minuteToSeconds;
+            searchSeconds =  Float.parseFloat(duration.substring(5,7));
+            searchDuration = (searchHour + searchMinute + searchSeconds) / 3600 ;
         }
     }
 
@@ -205,5 +206,4 @@ public class MetadataVideoExtractor {
     public static Float getSearchDuration() {
         return searchDuration;
     }
-
 }
