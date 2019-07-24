@@ -67,6 +67,7 @@ public class ImageSearch implements ISearch {
                     String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
                     String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
                     MetadataImageExtractor metadataImageExtractor = new MetadataImageExtractor();
+                    String owner = FileInfo.getFileOwner(fileExtractor, "user");
                     String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
                     String pathd = exiftool + "\"" + fileExtractor + "\"";
                     metadataImageExtractor.run(pathd);
@@ -86,11 +87,11 @@ public class ImageSearch implements ISearch {
                             && evaluateString(fileExtension, criteriaExtension)
                             && evaluateString(width, criteriaWidth)
                             && evaluateString(height, criteriaHeight)) {
-                        List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
+                        List<String> metadata = MetadataImageExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
                                 fileName, fileExtension, false, false,
                                 fileSize, creationDate, accessDate,
-                                modificationDate, "MimeType", "video", metadata);
+                                modificationDate, owner, "mime type", metadata);
                         searchResult.add(matchingFile);
                     }
                 }
