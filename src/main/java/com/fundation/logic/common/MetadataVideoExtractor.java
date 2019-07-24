@@ -27,7 +27,12 @@ public class MetadataVideoExtractor {
     static String searchAudioCodec;
     static String searchVideoCodec;
     static String searchHeight;
-    private List<String> list;
+    private static List<String> list;
+    private static Float searchHour;
+    private static Float searchMinute;
+    private static Float searchSeconds;
+    private static Float searchDuration;
+
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -136,6 +141,24 @@ public class MetadataVideoExtractor {
     }
 
     /**
+     * This method search duration.
+     */
+    public void duration(String duration) {
+        if ((duration.contains("Duration"))) {
+            int initIndex = duration.indexOf(":");
+            int endIndex = duration.length();
+            int freeSpace = 2;
+            Float hourToSeconds = new Float(3600);
+            Float minuteToSeconds = new Float(60);
+            duration = duration.substring(initIndex + freeSpace, endIndex);
+            searchHour =  Float.parseFloat(duration.substring(0,1))*hourToSeconds;
+            searchMinute =  Float.parseFloat(duration.substring(0,1))*minuteToSeconds;
+            searchSeconds =  Float.parseFloat(duration.substring(0,1));
+            searchDuration = (searchHour + searchMinute + searchMinute) / 3600 ;
+        }
+    }
+
+    /**
      * This method return frame rate.
      * @return
      */
@@ -171,7 +194,16 @@ public class MetadataVideoExtractor {
      * This method return metadata list.
      * @return
      */
-    public List<String> getSearchListMetadata() {
+    public static List<String> getSearchListMetadata() {
         return list;
     }
+
+    /**
+     * This method return duration in decimal.
+     * @return
+     */
+    public static Float getSearchDuration() {
+        return searchDuration;
+    }
+
 }
