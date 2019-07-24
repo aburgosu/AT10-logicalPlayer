@@ -11,7 +11,6 @@ package com.fundation.logic.model;
 
 import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.common.MetadataAudioExtractor;
-import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.common.MetadataImageExtractor;
 import com.fundation.logic.model.criteria.Audio;
 
@@ -58,7 +57,8 @@ public class AudioSearch implements ISearch {
         String criteriaFileName = audioCriteria.getFileName();
         String criteriaExtension = audioCriteria.getExtension();
         String criteriAudioCodec = audioCriteria.getAudioCodec();
-        String criteriaDuration = Integer.toString(audioCriteria.getDuration());
+        String criteriaDuration = audioCriteria.getDuration();
+        System.out.println(criteriaDuration+" Duration audio");
         String criteriaChannel = Integer.toString(audioCriteria.getChannel());
         String criteriaMimeType = "audio";
         String criteriaSampleRate = Integer.toString(audioCriteria.getSampleRate());
@@ -71,6 +71,8 @@ public class AudioSearch implements ISearch {
                     String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
                     String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
                     MetadataImageExtractor metadataImageExtractor = new MetadataImageExtractor();
+                    String owner = FileInfo.getFileOwner(fileExtractor, "user");
+
                     String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
                     String pathd = exiftool + "\"" + fileExtractor + "\"";
                     MetadataAudioExtractor metadataAudioExtractor = new MetadataAudioExtractor();
@@ -101,16 +103,15 @@ public class AudioSearch implements ISearch {
                             && evaluateString(audioCodec, criteriAudioCodec)
                             && evaluateString(mimeType, criteriaMimeType)
                             && evaluateString(sampleRate, criteriaSampleRate)) {
-                        List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
+                        List<String> metadata = MetadataAudioExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false,
                                 fileSize, creationDate, accessDate,
-                                modificationDate, "MimeType", "video", metadata);
+                                modificationDate, owner, "video", metadata);
                         searchResult.add(matchingFile);
                     }
                 }
             } catch (Exception e) {
-                System.out.println("The file  :" + FileInfo.getFileDenomination(fileExtractor, "name") + " -  No was added ");
             }
         }
         return searchResult;
