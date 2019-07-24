@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model.criteria;
+package com.fundation.logic.model.searchCriteria;
 
 /**
  * Implements the model class Multimedia and the getter and setter´s methods.
@@ -65,7 +65,7 @@ public abstract class Multimedia extends Criteria {
     /**
      * Equals override to be implemented in subclasses.
      * @param criteria - Criteria to be compare with.
-     * @return True if two criteria are equal.
+     * @return True if two searchCriteria are equal.
      */
     public abstract boolean equals(Criteria criteria);
 }

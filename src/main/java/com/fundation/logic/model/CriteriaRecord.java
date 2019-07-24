@@ -10,7 +10,7 @@
 package com.fundation.logic.model;
 
 /**
- * Implements CriteriaRecord class which is used to save and get criteria details.
+ * Implements CriteriaRecord class which is used to save and get searchCriteria details.
  *
  * @author Melissa Román
  * @version 1.0
@@ -25,10 +25,10 @@ public class CriteriaRecord {
     /**
      * Constructs a CriteriaRecord object based on given parameters.
      * @param id - Criteria's ID on database.
-     * @param date - Date when the criteria was saved.
-     * @param name - Name under which the criteria is saved.
+     * @param date - Date when the searchCriteria was saved.
+     * @param name - Name under which the searchCriteria is saved.
      * @param type - Criteria's type. It could be Audio, Common, Image or Video.
-     * @param json - The criteria to be saved.
+     * @param json - The searchCriteria to be saved.
      */
     public CriteriaRecord(int id, String name, String date, String type, String json) {
         this.id = id;
@@ -39,7 +39,7 @@ public class CriteriaRecord {
     }
 
     /**
-     * Allows to get criteria's ID.
+     * Allows to get searchCriteria's ID.
      * @return Criteria's ID.
      */
     public int getId() {
@@ -47,7 +47,7 @@ public class CriteriaRecord {
     }
 
     /**
-     * Allows to get criteria's name.
+     * Allows to get searchCriteria's name.
      * @return Criteria's name.
      */
     public String getName() {
@@ -55,15 +55,15 @@ public class CriteriaRecord {
     }
 
     /**
-     * Allows to get the day the criteria was saved.
-     * @return Date the criteria was saved.
+     * Allows to get the day the searchCriteria was saved.
+     * @return Date the searchCriteria was saved.
      */
     public String getDate() {
         return this.date;
     }
 
     /**
-     * Allows to get criteria's type.
+     * Allows to get searchCriteria's type.
      * @return Criteria's type.
      */
     public String getType() {
@@ -71,7 +71,7 @@ public class CriteriaRecord {
     }
 
     /**
-     * Allows to get criteria's json.
+     * Allows to get searchCriteria's json.
      * @return Criteria's json.
      */
     public String getJson() {

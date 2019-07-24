@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model.criteria;
+package com.fundation.logic.model.searchCriteria;
 
 import java.util.Date;
 
@@ -39,170 +39,170 @@ public class Common extends Criteria {
     }
 
     /**
-     * @return criteria's hidden status.
+     * @return searchCriteria's hidden status.
      */
     public Boolean getCriteriaFileHidden() {
         return criteriaFileHidden;
     }
 
     /**
-     * Set criteria's readOnly status.
+     * Set searchCriteria's readOnly status.
      */
     public void setCriteriaFileReadOnly(Boolean criteriaFileReadOnly) {
         this.criteriaFileReadOnly = criteriaFileReadOnly;
     }
 
     /**
-     * @return criteria's readOnly status.
+     * @return searchCriteria's readOnly status.
      */
     public Boolean getCriteriaFileReadOnly() {
         return criteriaFileReadOnly;
     }
 
     /**
-     * Set lower limit for search by size criteria.
+     * Set lower limit for search by size searchCriteria.
      */
     public void setCriteriaSizeMin(Float criteriaSizeMin) {
         this.criteriaSizeMin = criteriaSizeMin;
     }
 
     /**
-     * @return criteria's lower limit for search.
+     * @return searchCriteria's lower limit for search.
      */
     public Float getCriteriaSizeMin() {
         return criteriaSizeMin;
     }
 
     /**
-     * Set upper limit for search by size criteria.
+     * Set upper limit for search by size searchCriteria.
      */
     public void setCriteriaSizeMax(Float criteriaSizeMax) {
         this.criteriaSizeMax = criteriaSizeMax;
     }
 
     /**
-     * @return criteria's upper limit for search by size.
+     * @return searchCriteria's upper limit for search by size.
      */
     public Float getCriteriaSizeMax() {
         return criteriaSizeMax;
     }
 
     /**
-     * Set lower limit for search by creation date criteria.
+     * Set lower limit for search by creation date searchCriteria.
      */
     public void setCriteriaCreationDateMin(Date criteriaCreationDateMin) {
         this.criteriaCreationDateMin = criteriaCreationDateMin;
     }
 
     /**
-     * @return criteria's lower limit for search by creation date.
+     * @return searchCriteria's lower limit for search by creation date.
      */
     public Date getCriteriaCreationDateMin() {
         return criteriaCreationDateMin;
     }
 
     /**
-     * Set upper limit for search by creation date criteria.
+     * Set upper limit for search by creation date searchCriteria.
      */
     public void setCriteriaCreationDateMax(Date criteriaCreationDateMax) {
         this.criteriaCreationDateMax = criteriaCreationDateMax;
     }
 
     /**
-     * @return criteria's upper limit for search by creation date.
+     * @return searchCriteria's upper limit for search by creation date.
      */
     public Date getCriteriaCreationDateMax() {
         return criteriaCreationDateMax;
     }
 
     /**
-     * Set lower limit for search by access date criteria.
+     * Set lower limit for search by access date searchCriteria.
      */
     public void setCriteriaAccessDateMin(Date criteriaAccessDateMin) {
         this.criteriaAccessDateMin = criteriaAccessDateMin;
     }
 
     /**
-     * @return criteria's lower limit for search by access date.
+     * @return searchCriteria's lower limit for search by access date.
      */
     public Date getCriteriaAccessDateMin() {
         return criteriaAccessDateMin;
     }
 
     /**
-     * Set upper limit for search by access date criteria.
+     * Set upper limit for search by access date searchCriteria.
      */
     public void setCriteriaAccessDateMax(Date criteriaAccessDateMax) {
         this.criteriaAccessDateMax = criteriaAccessDateMax;
     }
 
     /**
-     * @return criteria's upper limit for search by access date.
+     * @return searchCriteria's upper limit for search by access date.
      */
     public Date getCriteriaAccessDateMax() {
         return criteriaAccessDateMax;
     }
 
     /**
-     * Set lower limit for search by modification date criteria.
+     * Set lower limit for search by modification date searchCriteria.
      */
     public void setCriteriaModificationDateMin(Date criteriaModificationDateMin) {
         this.criteriaModificationDateMin = criteriaModificationDateMin;
     }
 
     /**
-     * @return criteria's lower limit for search by modification date.
+     * @return searchCriteria's lower limit for search by modification date.
      */
     public Date getCriteriaModificationDateMin() {
         return criteriaModificationDateMin;
     }
 
     /**
-     * Set upper limit for search by modification date criteria.
+     * Set upper limit for search by modification date searchCriteria.
      */
     public void setCriteriaModificationDateMax(Date criteriaModificationDateMax) {
         this.criteriaModificationDateMax = criteriaModificationDateMax;
     }
 
     /**
-     * @return criteria's upper limit for search by modification date.
+     * @return searchCriteria's upper limit for search by modification date.
      */
     public Date getCriteriaModificationDateMax() {
         return criteriaModificationDateMax;
     }
 
     /**
-     * Set criteria's owner.
+     * Set searchCriteria's owner.
      */
     public void setCriteriaOwner(String criteriaOwner) {
         this.criteriaOwner = criteriaOwner;
     }
 
     /**
-     * @return criteria's owner.
+     * @return searchCriteria's owner.
      */
     public String getCriteriaOwner() {
         return criteriaOwner;
     }
 
     /**
-     * Set criteria's mimeType.
+     * Set searchCriteria's mimeType.
      */
     public void setCriteriaMimeType(String criteriaMimeType) {
         this.criteriaMimeType = criteriaMimeType;
     }
 
     /**
-     * @return criteria's mimeType.
+     * @return searchCriteria's mimeType.
      */
     public String getCriteriaMimeType() {
         return criteriaMimeType;
     }
 
     /**
-     * Equals override to compare two common criteria.
+     * Equals override to compare two common searchCriteria.
      * @param criteria - Criteria to be compare with.
-     * @return True if two criteria are equal.
+     * @return True if two searchCriteria are equal.
      */
     public boolean equals(Criteria criteria) {
             Common commonCriteria = (Common) criteria;

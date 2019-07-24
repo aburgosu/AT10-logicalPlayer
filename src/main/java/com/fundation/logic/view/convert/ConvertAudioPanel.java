@@ -21,7 +21,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
 /**
- * Implements convert audio criteria panel.
+ * Implements convert audio searchCriteria panel.
  *
  * @author Melissa Román
  * @version 1.0
@@ -51,7 +51,7 @@ public class ConvertAudioPanel extends CustomPanel {
     }
 
     /**
-     * This method show the form to set a convert criteria.
+     * This method show the form to set a convert searchCriteria.
      */
     private void showAudioCriteriaConvertForm() {
         JLabel lblNewFormat = new JLabel("New format:");

@@ -7,12 +7,13 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model;
+package com.fundation.logic.model.search;
 
 import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.common.MetadataCommonExtractor;
 import com.fundation.logic.common.MetadataVideoExtractor;
-import com.fundation.logic.model.criteria.Video;
+import com.fundation.logic.model.CustomizedFile;
+import com.fundation.logic.model.searchCriteria.Video;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class VideoSearch implements ISearch {
     static private Video videoCriteria;
 
     /**
-     * Initializes a search instance which requires a criteria as parameter.
+     * Initializes a search instance which requires a searchCriteria as parameter.
      */
     public VideoSearch(Video videoCriteria) {
         this.videoCriteria = videoCriteria;
@@ -38,7 +39,7 @@ public class VideoSearch implements ISearch {
     /**
      * Main search method.
      *
-     * @return List of found items if criteria's path is not null.
+     * @return List of found items if searchCriteria's path is not null.
      */
     public List search() {
         if (videoCriteria.getPath() == null) {
@@ -49,7 +50,7 @@ public class VideoSearch implements ISearch {
 
     /**
      * @param path
-     * @return Complete list of found items according on criteria's path.
+     * @return Complete list of found items according on searchCriteria's path.
      */
     public List searchInPath(String path) {
         List<CustomizedFile> searchResult = new ArrayList<>();
@@ -113,7 +114,7 @@ public class VideoSearch implements ISearch {
     }
 
     /**
-     * Evaluates specific string field according on criteria.
+     * Evaluates specific string field according on searchCriteria.
      *
      * @return Answer after evaluation.
      */
