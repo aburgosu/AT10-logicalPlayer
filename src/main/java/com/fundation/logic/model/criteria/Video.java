@@ -20,7 +20,8 @@ public class Video extends Multimedia {
     private String frameRate;
     private int width;
     private int height;
-
+    private String durationFrom;
+    private String durationTo;
     /**
      * @return Video Codec.
      */
@@ -75,6 +76,31 @@ public class Video extends Multimedia {
      */
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    /**
+     * Set Audio Height.
+     */
+    public void setDurationFrom(String durationFrom) {
+        this.durationFrom = durationFrom;
+    }
+
+    public void setDurationTo(String durationTo) {
+        this.durationTo = durationTo;
+    }
+
+    /**
+     * @return durationFrom.
+     */
+    public String getDurationfrom() {
+        return durationFrom;
+    }
+
+    /**
+     * @return durationFrom.
+     */
+    public String getDurationTo() {
+        return durationTo;
     }
 
     /**
