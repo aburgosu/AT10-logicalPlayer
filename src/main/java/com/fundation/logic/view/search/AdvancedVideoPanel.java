@@ -21,6 +21,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -149,7 +150,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
         minuteSpinnerModelFrom.setValue(calendar.getTime());
         minuteSpinner = new JSpinner(minuteSpinnerModelFrom);
-        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "00:mm:ss");
+        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "HH:mm:ss");
         dateEditor.getTextField().setEditable(false);
         minuteSpinner.setEditor(dateEditor);
         GridBagConstraints gbc_spinner = new GridBagConstraints();
@@ -161,7 +162,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
         minuteSpinnerModelTo.setValue(calendar.getTime());
         minuteSpinnerTo = new JSpinner(minuteSpinnerModelTo);
-        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "00:mm:ss");
+        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "HH:mm:ss");
         dateEditorTo.getTextField().setEditable(false);
         minuteSpinnerTo.setEditor(dateEditorTo);
         GridBagConstraints gbc_minuteSpinnerTo = new GridBagConstraints();
