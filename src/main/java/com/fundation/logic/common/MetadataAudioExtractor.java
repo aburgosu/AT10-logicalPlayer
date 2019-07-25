@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * <p>
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -29,6 +29,7 @@ public class MetadataAudioExtractor {
     private static String searchMimeType;
     private static String searchSampleRate;
     private static List<String> list;
+    private static Float searchDuration;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -51,6 +52,7 @@ public class MetadataAudioExtractor {
                 mimeType(metadata);
                 sampleRAte(metadata);
                 list.add(metadata);
+                duration(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
@@ -144,27 +146,22 @@ public class MetadataAudioExtractor {
     }
 
     /**
-     * This method returns duration of the audio.
+     * This method search duration.
      */
-    public static String getDuration(File pathFile) {
-        String duration = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((duration = stdInput.readLine()) != null) {
-                if ((duration.contains("Duration"))) {
-                    int initIndex = duration.indexOf(":");
-                    int endIndex = duration.length();
-                    int freeSpace = 2;
-                    int unnecesaryWords = 9;
-                    duration = duration.substring(initIndex + freeSpace, endIndex - unnecesaryWords);
-                    return duration;
-                }
-            }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+    public void duration(String duration) {
+        String validatorDuration = duration.substring(0, 8);
+        if (validatorDuration.contains("Duration")) {
+            int initIndex = duration.indexOf(":");
+            int endIndex = duration.length();
+            int freeSpace = 2;
+            Float hourToSeconds = new Float(3600);
+            Float minuteToSeconds = new Float(60);
+            duration = duration.substring(initIndex + freeSpace, endIndex);
+            Float searchHour = Float.parseFloat(duration.substring(0, 1)) * hourToSeconds;
+            Float searchMinute = Float.parseFloat(duration.substring(2, 4)) * minuteToSeconds;
+            Float searchSeconds = Float.parseFloat(duration.substring(5, 7));
+            searchDuration = (searchHour + searchMinute + searchSeconds) / 3600;
         }
-        return "There is not duration";
     }
 
     /**
@@ -172,5 +169,14 @@ public class MetadataAudioExtractor {
      */
     public static List<String> getSearchListMetadata() {
         return list;
+    }
+
+    /**
+     * This method return duration in decimal.
+     *
+     * @return
+     */
+    public static Float getSearchDuration() {
+        return searchDuration;
     }
 }
