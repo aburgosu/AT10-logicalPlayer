@@ -19,22 +19,22 @@ public class ConvertCriteria {
     private final String sourcePath;
     private final String destinationPath;
     private final String newName;
-    private final String metadataFormat;
+    private final String metadata;
     private final String newFormat;
     private final String convertType;
     private String audioCodec;
-    private String audioBitrate;
+    private String audioBitRate;
     private String audioChannel;
     private String videoCodec;
-    private String videoBitrate;
+    private String videoBitRate;
     private String fps;
-    private boolean keyFrame;
-    private String keyFrameEvery;
-    private String keyFrameFormat;
+    private boolean keyframe;
+    private String keyframeTime;
+    private String keyframeFormat;
     private boolean thumbnail;
-    private String thumbnailAt;
+    private String thumbnailTime;
     private String thumbnailFormat;
-    private String colorFormat;
+    private String formatColor;
     private String dpi;
 
     public static class ConvertCriteriaBuilder {
@@ -43,20 +43,20 @@ public class ConvertCriteria {
         private final String newName;
         private final String newFormat;
         private final String convertType;
-        private String metadataFormat;
+        private String metadata;
         private String audioCodec;
-        private String audioBitrate;
+        private String audioBitRate;
         private String audioChannel;
         private String videoCodec;
-        private String videoBitrate;
+        private String videoBitRate;
         private String fps;
-        private boolean keyFrame;
-        private String keyFrameEvery;
-        private String keyFrameFormat;
+        private boolean keyframe;
+        private String keyframeTime;
+        private String keyframeFormat;
         private boolean thumbnail;
-        private String thumbnailAt;
+        private String thumbnailTime;
         private String thumbnailFormat;
-        private String colorFormat;
+        private String formatColor;
         private String dpi;
 
         /**
@@ -78,10 +78,10 @@ public class ConvertCriteria {
 
         /**
          * Allows to set if metadata format is required and if required, the metadata format.
-         * @param metadataFormat - Metadata format or none.
+         * @param metadata - Metadata format or none.
          */
-        public ConvertCriteriaBuilder setMetadataFormat(String metadataFormat) {
-            this.metadataFormat = metadataFormat;
+        public ConvertCriteriaBuilder setMetadata(String metadata) {
+            this.metadata = metadata;
             return this;
         }
 
@@ -97,11 +97,11 @@ public class ConvertCriteria {
 
         /**
          * Allows to set desired audio bitrate.
-         * @param audioBitrate - Desired audio bitrate.
+         * @param audioBitRate - Desired audio bitrate.
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setAudioBitrate(String audioBitrate) {
-            this.audioBitrate = audioBitrate;
+        public ConvertCriteriaBuilder setAudioBitRate(String audioBitRate) {
+            this.audioBitRate = audioBitRate;
             return this;
         }
 
@@ -127,11 +127,11 @@ public class ConvertCriteria {
 
         /**
          * Allows to set desired video bitrate.
-         * @param videoBitrate - Desired video bitrate.
+         * @param videoBitRate - Desired video bitrate.
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setVideoBitrate(String videoBitrate) {
-            this.videoBitrate = videoBitrate;
+        public ConvertCriteriaBuilder setVideoBitRate(String videoBitRate) {
+            this.videoBitRate = videoBitRate;
             return this;
         }
 
@@ -147,31 +147,31 @@ public class ConvertCriteria {
 
         /**
          * Allows to set if key frame is requested.
-         * @param keyFrame - Key frame requested?
+         * @param keyframe - Key frame requested?
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setKeyFrame(boolean keyFrame) {
-            this.keyFrame = keyFrame;
+        public ConvertCriteriaBuilder setKeyframe(boolean keyframe) {
+            this.keyframe = keyframe;
             return this;
         }
 
         /**
          * Allows to set key frame frequency.
-         * @param keyFrameEvery - Desired key frame frequency.
+         * @param keyframeTime - Desired key frame frequency.
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setKeyFrameEvery(String keyFrameEvery) {
-            this.keyFrameEvery = keyFrameEvery;
+        public ConvertCriteriaBuilder setKeyframeTime(String keyframeTime) {
+            this.keyframeTime = keyframeTime;
             return this;
         }
 
         /**
          * Allows to set desired key frame format.
-         * @param keyFrameFormat - Desired key frame format.
+         * @param keyframeFormat - Desired key frame format.
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setKeyFrameFormat(String keyFrameFormat) {
-            this.keyFrameFormat = keyFrameFormat;
+        public ConvertCriteriaBuilder setKeyframeFormat(String keyframeFormat) {
+            this.keyframeFormat = keyframeFormat;
             return this;
         }
 
@@ -187,11 +187,11 @@ public class ConvertCriteria {
 
         /**
          * Allows to set time of thumbnail.
-         * @param thumbnailAt - Desired time of thumbnail.
+         * @param thumbnailTime - Desired time of thumbnail.
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setThumbnailAt(String thumbnailAt) {
-            this.thumbnailAt = thumbnailAt;
+        public ConvertCriteriaBuilder setThumbnailTime(String thumbnailTime) {
+            this.thumbnailTime = thumbnailTime;
             return this;
         }
 
@@ -207,11 +207,11 @@ public class ConvertCriteria {
 
         /**
          * Allows to set desired color format.
-         * @param colorFormat - Desired color format.
+         * @param formatColor - Desired color format.
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setColorFormat(String colorFormat) {
-            this.colorFormat = colorFormat;
+        public ConvertCriteriaBuilder setFormatColor(String formatColor) {
+            this.formatColor = formatColor;
             return this;
         }
 
@@ -242,22 +242,22 @@ public class ConvertCriteria {
         this.sourcePath = builder.sourcePath;
         this.destinationPath = builder.destinationPath;
         this.newName = builder.newName;
-        this.metadataFormat = builder.metadataFormat;
+        this.metadata = builder.metadata;
         this.newFormat = builder.newFormat;
         this.convertType = builder.convertType;
         this.audioCodec = builder.audioCodec;
-        this.audioBitrate = builder.audioBitrate;
+        this.audioBitRate = builder.audioBitRate;
         this.audioChannel = builder.audioChannel;
         this.videoCodec = builder.videoCodec;
-        this.videoBitrate = builder.videoBitrate;
+        this.videoBitRate = builder.videoBitRate;
         this.fps = builder.fps;
-        this.keyFrame = builder.keyFrame;
-        this.keyFrameEvery = builder.keyFrameEvery;
-        this.keyFrameFormat = builder.keyFrameFormat;
+        this.keyframe = builder.keyframe;
+        this.keyframeTime = builder.keyframeTime;
+        this.keyframeFormat = builder.keyframeFormat;
         this.thumbnail = builder.thumbnail;
-        this.thumbnailAt = builder.thumbnailAt;
+        this.thumbnailTime = builder.thumbnailTime;
         this.thumbnailFormat = builder.thumbnailFormat;
-        this.colorFormat = builder.colorFormat;
+        this.formatColor = builder.formatColor;
         this.dpi = builder.dpi;
     }
 
@@ -289,8 +289,8 @@ public class ConvertCriteria {
      * Allows to get metadata format.
      * @return Metadata format.
      */
-    public String getMetadataFormat() {
-        return metadataFormat;
+    public String getMetadata() {
+        return metadata;
     }
 
     /**
@@ -321,8 +321,8 @@ public class ConvertCriteria {
      * Allows to get audio bitrate.
      * @return Audio bitrate.
      */
-    public String getAudioBitrate() {
-        return audioBitrate;
+    public String getAudioBitRate() {
+        return audioBitRate;
     }
 
     /**
@@ -345,8 +345,8 @@ public class ConvertCriteria {
      * Allows to get video bitrate.
      * @return Video bitrate.
      */
-    public String getVideoBitrate() {
-        return videoBitrate;
+    public String getVideoBitRate() {
+        return videoBitRate;
     }
 
     /**
@@ -362,23 +362,23 @@ public class ConvertCriteria {
      * @return Is key frame requested?
      */
     public boolean isKeyFrameRequired() {
-        return keyFrame;
+        return keyframe;
     }
 
     /**
      * Allows to get key frame frequency.
      * @return Key frame frequency.
      */
-    public String getKeyFrameEvery() {
-        return keyFrameEvery;
+    public String getKeyframeTime() {
+        return keyframeTime;
     }
 
     /**
      * Allows to get key frame format.
      * @return Key frame format.
      */
-    public String getKeyFrameFormat() {
-        return keyFrameFormat;
+    public String getKeyframeFormat() {
+        return keyframeFormat;
     }
 
     /**
@@ -393,8 +393,8 @@ public class ConvertCriteria {
      * Allows to get time of thumbnail.
      * @return Time of thumbnail.
      */
-    public String getThumbnailAt() {
-        return thumbnailAt;
+    public String getThumbnailTime() {
+        return thumbnailTime;
     }
 
     /**
@@ -409,8 +409,8 @@ public class ConvertCriteria {
      * Allows to get color format.
      * @return Color format.
      */
-    public String getColorFormat() {
-        return colorFormat;
+    public String getFormatColor() {
+        return formatColor;
     }
 
     /**
