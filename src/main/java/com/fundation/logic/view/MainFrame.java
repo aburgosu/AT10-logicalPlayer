@@ -51,6 +51,7 @@ public class MainFrame extends JFrame {
         mainContentPanel = new JPanel();
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));
+        mainContentPanel.setBackground(new Color(42, 135, 77));
 
         JSplitPane mainSplitPanel = new JSplitPane();
         mainSplitPanel.setDividerLocation(getWidth()/2);
@@ -73,6 +74,8 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setBounds(100, 100, 870, 400);
+        setForeground(Color.orange);
+        setBackground(Color.BLUE);
         setTitle("J2AM Player");
         initComponent();
         setContentPane(mainContentPanel);

@@ -11,6 +11,7 @@ package com.fundation.logic.view.convert;
 
 import com.fundation.logic.view.CustomButton;
 import com.fundation.logic.view.CustomPanel;
+import com.fundation.logic.view.CustomPanel2;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.DefaultComboBoxModel;
@@ -30,7 +31,7 @@ import java.util.Calendar;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertVideoPanel extends CustomPanel {
+public class ConvertVideoPanel extends CustomPanel2 {
     private JComboBox comboBoxNewFormat;
     private JComboBox comboBoxAudioCodec;
     private JComboBox comboBoxAudioBit;

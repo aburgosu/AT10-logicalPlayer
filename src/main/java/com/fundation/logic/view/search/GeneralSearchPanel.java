@@ -11,6 +11,7 @@ package com.fundation.logic.view.search;
 
 import com.fundation.logic.view.CustomButton;
 import com.fundation.logic.view.CustomPanel;
+import com.fundation.logic.view.CustomPanel2;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.DefaultComboBoxModel;
@@ -29,7 +30,7 @@ import java.awt.Insets;
  * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class GeneralSearchPanel extends CustomPanel {
+public class GeneralSearchPanel extends CustomPanel2 {
     private JTextField textFieldOwner;
     private JDateChooser fieldToDateCreation;
     private JDateChooser textFieldFromDateCreation;

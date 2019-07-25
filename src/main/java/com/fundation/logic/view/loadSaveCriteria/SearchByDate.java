@@ -11,6 +11,7 @@ package com.fundation.logic.view.loadSaveCriteria;
 
 import com.fundation.logic.view.CustomButton;
 import com.fundation.logic.view.CustomPanel;
+import com.fundation.logic.view.CustomPanel2;
 import com.fundation.logic.view.PanelSetter;
 import com.toedter.calendar.JDateChooser;
 
@@ -26,7 +27,7 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class SearchByDate extends CustomPanel {
+public class SearchByDate extends CustomPanel2 {
     private PanelSetter settingPanel;
     private CustomButton btnFilterByDate;
     private JDateChooser fieldDateFirstDate;

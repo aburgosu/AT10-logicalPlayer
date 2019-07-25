@@ -9,6 +9,8 @@
  */
 package com.fundation.logic.view.resultTable;
 
+import com.fundation.logic.view.CustomTable;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
@@ -22,7 +24,7 @@ import java.util.List;
  * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class TableResult extends JTable {
+public class TableResult extends CustomTable {
     private DefaultTableModel model;
 
     /**

@@ -11,6 +11,7 @@ package com.fundation.logic.view.convert;
 
 import com.fundation.logic.view.CustomButton;
 import com.fundation.logic.view.CustomPanel;
+import com.fundation.logic.view.CustomPanel2;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.JComboBox;
@@ -26,7 +27,7 @@ import java.awt.Insets;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertPPTPanel extends CustomPanel {
+public class ConvertPPTPanel extends CustomPanel2 {
     private JComboBox comboBoxNewFormat;
     private PanelSetter settingPanel;
     private CustomButton btnConvertAudio;
