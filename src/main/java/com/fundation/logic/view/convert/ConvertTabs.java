@@ -20,7 +20,7 @@ import javax.swing.JTabbedPane;
 public class ConvertTabs extends JTabbedPane {
     private ConvertAudioPanel convertAudioPanel;
     private ConvertVideoPanel convertVideoPanel;
-    private ConvertPPTPanel convertPPTPanel;
+    private ConvertPDFPanel convertPPTPanel;
 
     /**
      * Initializes a ConvertTabs instance for the convert options.
@@ -30,7 +30,7 @@ public class ConvertTabs extends JTabbedPane {
         addTab("Audio ", null, convertAudioPanel, "Convert audio");
         convertVideoPanel = new ConvertVideoPanel();
         addTab("Video ", null, convertVideoPanel, "Convert video");
-        convertPPTPanel = new ConvertPPTPanel();
-        addTab("PowerPoint ", null, convertPPTPanel, "Convert PPT to image");
+        convertPPTPanel = new ConvertPDFPanel();
+        addTab("PDF ", null, convertPPTPanel, "Convert PDF to image");
     }
 }

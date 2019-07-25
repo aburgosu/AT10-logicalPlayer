@@ -170,7 +170,7 @@ public class ConvertBasicPanel extends CustomPanel {
         add(lblMetadataFormat, gbc_lblMetadataFormat);
 
         comboBoxMetadataFormat = new JComboBox();
-        comboBoxMetadataFormat.setModel(new DefaultComboBoxModel(new String[]{"XMP", "JSON"}));
+        comboBoxMetadataFormat.setModel(new DefaultComboBoxModel(new String[]{"NONE", "XMP", "JSON"}));
         GridBagConstraints gbc_comboBoxMetadataFormat = new GridBagConstraints();
         gbc_comboBoxMetadataFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxMetadataFormat.fill = GridBagConstraints.HORIZONTAL;
