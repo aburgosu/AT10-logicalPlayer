@@ -41,9 +41,9 @@ public class ConvertCriteria {
         private final String sourcePath;
         private final String destinationPath;
         private final String newName;
-        private final String metadataFormat;
         private final String newFormat;
         private final String convertType;
+        private String metadataFormat;
         private String audioCodec;
         private String audioBitrate;
         private String audioChannel;
@@ -64,18 +64,25 @@ public class ConvertCriteria {
          * @param sourcePath - File to be converted source path.
          * @param destinationPath - File to be converted destination path.
          * @param newName - Converted file desired new name.
-         * @param metadataFormat - Desired metadata format.
          * @param newFormat - Desired format to convert the file.
          * @param convertType - Type of convert.
          */
-        public ConvertCriteriaBuilder(String sourcePath, String destinationPath, String newName, String metadataFormat,
-                                      String newFormat, String convertType) {
+        public ConvertCriteriaBuilder(String sourcePath, String destinationPath, String newName, String newFormat,
+                String convertType) {
             this.sourcePath = sourcePath;
             this.destinationPath = destinationPath;
             this.newName = newName;
-            this.metadataFormat = metadataFormat;
             this.newFormat = newFormat;
             this.convertType = convertType;
+        }
+
+        /**
+         * Allows to set if metadata format is required and if required, the metadata format.
+         * @param metadataFormat - Metadata format or none.
+         */
+        public ConvertCriteriaBuilder setMetadataFormat(String metadataFormat) {
+            this.metadataFormat = metadataFormat;
+            return this;
         }
 
         /**
@@ -143,7 +150,7 @@ public class ConvertCriteria {
          * @param keyFrame - Key frame requested?
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setKeyframe(boolean keyFrame) {
+        public ConvertCriteriaBuilder setKeyFrame(boolean keyFrame) {
             this.keyFrame = keyFrame;
             return this;
         }
@@ -354,7 +361,7 @@ public class ConvertCriteria {
      * Allows to get to know if key frame is requested.
      * @return Is key frame requested?
      */
-    public boolean isKeyFrame() {
+    public boolean isKeyFrameRequired() {
         return keyFrame;
     }
 
@@ -378,7 +385,7 @@ public class ConvertCriteria {
      * Allows to get to know if thumbnail is required.
      * @return Is thumbnail requested?
      */
-    public boolean isThumbnail() {
+    public boolean isThumbnailRequired() {
         return thumbnail;
     }
 
