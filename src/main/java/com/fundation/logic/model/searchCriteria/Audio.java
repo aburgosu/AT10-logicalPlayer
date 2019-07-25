@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.model.criteria;
+package com.fundation.logic.model.searchCriteria;
 
 /**
  * Implements the model class Audio and the getter and setter´s methods.
@@ -48,9 +48,9 @@ public class Audio extends Multimedia{
     }
 
     /**
-     * Equals override to compare two audio criteria.
+     * Equals override to compare two audio searchCriteria.
      * @param criteria - Criteria to be compare with.
-     * @return True if two criteria are equal.
+     * @return True if two searchCriteria are equal.
      */
     public boolean equals(Criteria criteria) {
         try {

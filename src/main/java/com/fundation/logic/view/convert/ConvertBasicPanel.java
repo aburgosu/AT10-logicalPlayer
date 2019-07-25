@@ -47,7 +47,7 @@ public class ConvertBasicPanel extends CustomPanel2 {
     }
 
     /**
-     * This method initializes the basic convert criteria fields panel.
+     * This method initializes the basic convert searchCriteria fields panel.
      */
     public void basicConvertInitializer() {
         settingPanel = new PanelSetter();
@@ -56,7 +56,7 @@ public class ConvertBasicPanel extends CustomPanel2 {
     }
 
     /**
-     * This method displays basic convert criteria form.
+     * This method displays basic convert searchCriteria form.
      */
     private void showBasicConvertForm() {
         JLabel title = new JLabel("Convert");

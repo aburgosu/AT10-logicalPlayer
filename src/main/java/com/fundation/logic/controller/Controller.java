@@ -11,19 +11,19 @@ package com.fundation.logic.controller;
 
 import com.fundation.logic.common.ByteConvert;
 import com.fundation.logic.common.Validators;
-import com.fundation.logic.model.AudioSearch;
-import com.fundation.logic.model.CommonSearch;
+import com.fundation.logic.model.search.AudioSearch;
+import com.fundation.logic.model.search.CommonSearch;
 import com.fundation.logic.model.CriteriaRecord;
 import com.fundation.logic.model.CustomizedFile;
-import com.fundation.logic.model.ISearch;
-import com.fundation.logic.model.ImageSearch;
+import com.fundation.logic.model.search.ISearch;
+import com.fundation.logic.model.search.ImageSearch;
 import com.fundation.logic.model.QueryForCriteria;
-import com.fundation.logic.model.VideoSearch;
-import com.fundation.logic.model.criteria.Audio;
-import com.fundation.logic.model.criteria.Common;
-import com.fundation.logic.model.criteria.Criteria;
-import com.fundation.logic.model.criteria.Image;
-import com.fundation.logic.model.criteria.Video;
+import com.fundation.logic.model.search.VideoSearch;
+import com.fundation.logic.model.searchCriteria.Audio;
+import com.fundation.logic.model.searchCriteria.Common;
+import com.fundation.logic.model.searchCriteria.Criteria;
+import com.fundation.logic.model.searchCriteria.Image;
+import com.fundation.logic.model.searchCriteria.Video;
 import com.fundation.logic.view.MainFrame;
 
 import java.io.File;
@@ -47,7 +47,7 @@ public class Controller {
     private final int IMAGE_SEARCH = 3;
 
     /**
-     * Initializes a Controller instance with a searchFrame and a criteria
+     * Initializes a Controller instance with a searchFrame and a searchCriteria
      */
     public Controller(MainFrame searchFrame) {
         this.searchFrame = searchFrame;
@@ -55,7 +55,7 @@ public class Controller {
     }
 
     /**
-     * Make the search sending the criteria as parameter
+     * Make the search sending the searchCriteria as parameter
      */
     public List makeSearch(Criteria criteria) {
         if (criteria instanceof Common) {
@@ -111,9 +111,9 @@ public class Controller {
     }
 
     /**
-     * Get Common criteria
+     * Get Common searchCriteria
      *
-     * @return Common criteria
+     * @return Common searchCriteria
      */
     public Common getCommonCriteria() {
         Common criteria = new Common();
@@ -128,15 +128,18 @@ public class Controller {
         if (extensionName.length() == 0) {
             extensionName = null;
         }
+        String sizeUnit = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedItem().toString();
         String sizeFrom = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getTextFieldSizeFrom().getText());
         Float sizeFromF = null;
         if (sizeFrom.length() != 0) {
             sizeFromF = new Float(sizeFrom);
+            sizeFromF = ByteConvert.anyConvertBytes(sizeUnit, sizeFrom);
         }
         String sizeTo = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getTextFieldSizeTo().getText());
         Float sizeToF = null;
         if (sizeTo.length() != 0) {
             sizeToF = new Float(sizeTo);
+            sizeToF = ByteConvert.anyConvertBytes(sizeUnit, sizeTo);
         }
         Date fromDateCreation = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getTextFieldFromDateCreation().getDate();
         if (fromDateCreation == null) {
@@ -195,29 +198,8 @@ public class Controller {
                 searchFrame.showPopupMessage("Invalid Accessed Date", "The date on the left must be less than the date on the right.");
             }
         }
-        int sizeUnit = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedIndex();
-        if(sizeUnit == 1) {
-            sizeFromF = ByteConvert.anyConvertBytes("KBytes", sizeFrom);
-
-        }
-        if (sizeUnit == 2) {
-            sizeFromF = ByteConvert.anyConvertBytes("MBytes", sizeFrom);
-        }
-        if (sizeUnit == 3) {
-            sizeFromF = ByteConvert.anyConvertBytes("GBytes", sizeFrom);
-        }
-        if (sizeUnit == 1) {
-            sizeToF = ByteConvert.anyConvertBytes("KBytes", sizeTo);
-
-        }
-        if (sizeUnit == 2) {
-            sizeToF = ByteConvert.anyConvertBytes("MBytes", sizeTo);
-        }
-        if (sizeUnit == 3) {
-            sizeToF = ByteConvert.anyConvertBytes("GBytes", sizeTo);
-        }
-        if (sizeFromF != null && sizeToF != null) {
-            if(sizeFromF > sizeToF) {
+        if (sizeFrom != null && sizeTo != null) {
+            if (sizeTo.compareTo(sizeFrom) < 0){
                 searchFrame.showPopupMessage("Error Message","The size of the left must be smaller than the size of the right");
             }
         }
@@ -242,9 +224,9 @@ public class Controller {
     }
 
     /**
-     * Get Image criteria
+     * Get Image searchCriteria
      *
-     * @return Image criteria
+     * @return Image searchCriteria
      */
     private Criteria getImageCriteria() {
         Image criteria = new Image();
@@ -272,9 +254,9 @@ public class Controller {
     }
 
     /**
-     * Get Audio criteria
+     * Get Audio searchCriteria
      *
-     * @return Audio criteria
+     * @return Audio searchCriteria
      */
     private Criteria getAudioCriteria() {
         Audio criteria = new Audio();
@@ -314,9 +296,9 @@ public class Controller {
     }
 
     /**
-     * Get Video criteria
+     * Get Video searchCriteria
      *
-     * @return Video criteria
+     * @return Video searchCriteria
      */
     private Criteria getVideoCriteria() {
         Video criteria = new Video();

@@ -1,12 +1,30 @@
+/**
+ * Copyright (c) 2019 Jalasoft.
+ *
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jalasoft.
+ */
 package com.fundation.logic.model;
 
-import com.fundation.logic.model.criteria.Common;
+import com.fundation.logic.model.searchCriteria.Common;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
+/**
+ * Implements QueryForCriteria test class to implement unit tests on its methods..
+ *
+ * @author Melissa Román
+ * @version 1.0
+ */
 public class QueryForCriteriaTest {
 
+    /**
+     * Test saveCriteria method by comparing last saved criteria with expected criteria.
+     */
     @Test
     public void saveCriteria_createNewCriteria_saveOnDB_compareToLastOne() {
         Common commonCriteria = new Common();
@@ -33,17 +51,5 @@ public class QueryForCriteriaTest {
             "2019-07-16", "Common", "{\"path\":\"resources/\"}");
         assertTrue(expectedCriteriaRecord.equals(actualCriteriaRecord));
         queryForCriteria.deleteById(idLastCriteria + 1);
-    }
-
-    @Test
-    public void getAllCriteriaInDB() {
-    }
-
-    @Test
-    public void deleteById() {
-    }
-
-    @Test
-    public void findCriteria() {
     }
 }

@@ -9,11 +9,11 @@
  */
 package com.fundation.logic.common;
 
-import com.fundation.logic.model.criteria.Audio;
-import com.fundation.logic.model.criteria.Common;
-import com.fundation.logic.model.criteria.Criteria;
-import com.fundation.logic.model.criteria.Image;
-import com.fundation.logic.model.criteria.Video;
+import com.fundation.logic.model.searchCriteria.Audio;
+import com.fundation.logic.model.searchCriteria.Common;
+import com.fundation.logic.model.searchCriteria.Criteria;
+import com.fundation.logic.model.searchCriteria.Image;
+import com.fundation.logic.model.searchCriteria.Video;
 import com.google.gson.Gson;
 
 /**
@@ -26,7 +26,7 @@ public abstract class JsonConverter {
     /**
      * Converts an instance of Criteria class to json.
      * @param criteria - Criteria to be convert to json.
-     * @return json corresponding to given criteria.
+     * @return json corresponding to given searchCriteria.
      */
     public static String criteriaToJson(Criteria criteria) {
         Gson gson = new Gson();

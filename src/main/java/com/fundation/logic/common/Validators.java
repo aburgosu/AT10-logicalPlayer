@@ -14,7 +14,7 @@ import java.io.File;
 /**
  * Implements FileInfo abstract class which is used to get file details.
  *
- * @author Jesus Menacho
+ * @author Maday Alcalá Cuba
  * @version 1.0
  */
 public class Validators {
