@@ -299,11 +299,17 @@ public class Controller {
         if (sampleRate.length() == 0) {
             sampleRate = null;
         }
-        String duration = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinner());
+        String endDuration = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinnerTo());
+        String initDuration = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinner());
+        int init = endDuration.length()-17;
+        int end = endDuration.length()-9;
+        endDuration = endDuration.substring(init,end);
+        initDuration = initDuration.substring(init,end);
+        criteria.setDurationTo(endDuration);
+        criteria.setDurationFrom(initDuration);
         sampleRate = sampleRate.substring(0,5);
         int sampleRateInt = Integer.parseInt(sampleRate);
         channel = channel.substring(0, 1);
-        criteria.setDuration(duration);
         criteria.setPath(path);
         criteria.setFileName(fileName);
         criteria.setExtension(extensionName);
