@@ -215,7 +215,7 @@ public class ConvertVideoPanel extends CustomPanel {
         add(lblFormatKeyframe, gbc_lblFormatKeyframe);
 
         comboBoxKeyFrameFormat = new JComboBox();
-        comboBoxKeyFrameFormat.setModel(new DefaultComboBoxModel(new String[]{"png", "jpg", "tiff"}));
+        comboBoxKeyFrameFormat.setModel(new DefaultComboBoxModel(new String[]{"PNG", "JPG", "TIFF"}));
         GridBagConstraints gbc_comboBoxKeyFrameFormat = new GridBagConstraints();
         gbc_comboBoxKeyFrameFormat.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxKeyFrameFormat.fill = GridBagConstraints.HORIZONTAL;
@@ -273,7 +273,7 @@ public class ConvertVideoPanel extends CustomPanel {
         add(lblThumbnailFormat, gbc_ThumbnailFormat);
 
         comboBoxThumbnailFormat = new JComboBox();
-        comboBoxThumbnailFormat.setModel(new DefaultComboBoxModel(new String[]{"bmp", "png", "jpg"}));
+        comboBoxThumbnailFormat.setModel(new DefaultComboBoxModel(new String[]{"BMP", "PNG", "JPG"}));
         GridBagConstraints gbc_comboBoxThumbnailFormat = new GridBagConstraints();
         gbc_comboBoxThumbnailFormat.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxThumbnailFormat.fill = GridBagConstraints.HORIZONTAL;

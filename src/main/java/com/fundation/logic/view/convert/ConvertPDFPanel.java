@@ -45,13 +45,13 @@ public class ConvertPDFPanel extends CustomPanel {
     public void initComponent() {
         settingPanel = new PanelSetter();
         settingPanel.setPanel(this);
-        showPPTConvertCriteriaForm();
+        showPDFConvertCriteriaForm();
     }
 
     /**
      * This method show convert PDF form.
      */
-    private void showPPTConvertCriteriaForm() {
+    private void showPDFConvertCriteriaForm() {
         JLabel lblNewFormat = new JLabel("New Format:");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
@@ -61,7 +61,7 @@ public class ConvertPDFPanel extends CustomPanel {
         add(lblNewFormat, gbc_lblNewFormat);
 
         comboBoxNewFormat = new JComboBox();
-        comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"png", "jpg"}));
+        comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"PNG", "JPG"}));
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxNewFormat.fill = GridBagConstraints.HORIZONTAL;
@@ -128,7 +128,7 @@ public class ConvertPDFPanel extends CustomPanel {
         add(lblThumbnailFormat, gbc_lblThumbnailFormat);
 
         comboBoxThumbnailFormat = new JComboBox();
-        comboBoxThumbnailFormat.setModel(new DefaultComboBoxModel(new String[]{"bmp", "png", "jpg"}));
+        comboBoxThumbnailFormat.setModel(new DefaultComboBoxModel(new String[]{"BMP", "PNG", "JPG"}));
         GridBagConstraints gbc_comboBoxThumbnailFormat = new GridBagConstraints();
         gbc_comboBoxThumbnailFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxThumbnailFormat.fill = GridBagConstraints.HORIZONTAL;
