@@ -10,7 +10,7 @@
 package com.fundation.logic.model;
 
 import com.fundation.logic.common.JsonConverter;
-import com.fundation.logic.model.convertCriteria.ConvertCriteria;
+import com.fundation.logic.model.convertCriteriaBuilderPattern.ConvertCriteria;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
