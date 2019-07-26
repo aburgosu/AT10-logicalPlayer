@@ -1,6 +1,5 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -45,16 +44,16 @@ public class ServiceConnection {
      * @return URL to download the file resultant of conversion process.
      */
     public String convert(ConvertCriteria criteria) throws Exception {
-        String res="";
+        String res = "";
         FileBody fileBody = new FileBody(new File(criteria.getSourcePath()));
-        StringBody stringInput = new StringBody("{\"typeConversion\":\""+"videoCONVERT"+"\",\"checksum\":\""+ Checksum.getChecksum(criteria.getSourcePath(),"MD5")+"\",\"destPath\":\""+criteria.getDestinationPath().replace("\\","\\\\")+"\""+"}", ContentType.TEXT_PLAIN);
+        StringBody stringInput = new StringBody("{\"typeConversion\":\"" + "videoCONVERT" + "\",\"checksum\":\"" + Checksum.getChecksum(criteria.getSourcePath(), "MD5") + "\",\"destPath\":\"" + criteria.getDestinationPath().replace("\\", "\\\\") + "\"" + "}", ContentType.TEXT_PLAIN);
         StringBody stringConfig = new StringBody(JsonConverter.convertCriteriaToJson(criteria), ContentType.TEXT_PLAIN);
-        StringBody stringOutput = new StringBody("{\"name\":\""+criteria.getNewName()+"\",\"ext\":\"."+criteria.getNewFormat()+"\"}", ContentType.TEXT_PLAIN);
+        StringBody stringOutput = new StringBody("{\"name\":\"" + criteria.getNewName() + "\",\"ext\":\"." + criteria.getNewFormat() + "\"}", ContentType.TEXT_PLAIN);
         HttpEntity reqEntity = MultipartEntityBuilder.create()
                 .addPart("asset", fileBody)
                 .addPart("input", stringInput)
-                .addPart("config",stringConfig)
-                .addPart("output",stringOutput)
+                .addPart("config", stringConfig)
+                .addPart("output", stringOutput)
                 .build();
         httpPost.setEntity(reqEntity);
         CloseableHttpResponse response = httpClient.execute(httpPost);
