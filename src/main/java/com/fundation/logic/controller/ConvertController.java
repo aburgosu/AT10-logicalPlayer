@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.controller;
 
+import com.fundation.logic.model.ServiceConnection;
 import com.fundation.logic.model.convertCriteriaBuilderPattern.ConvertCriteria;
 import com.fundation.logic.view.MainFrame;
 
@@ -40,12 +41,14 @@ public class ConvertController {
     private String thumbnailFormat;
     private String formatColor;
     private String dpi;
+    private ServiceConnection serviceConnection;
 
     /**
      * Initializes a Controller instance with a searchFrame and a searchCriteria
      */
     public ConvertController(MainFrame searchFrame) {
         this.searchFrame = searchFrame;
+        this.serviceConnection = new ServiceConnection("176.20.16.11/convertVideo");
     }
 
     /**
@@ -54,16 +57,25 @@ public class ConvertController {
     public void listenConvertButtons() {
         searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab().getConvertAudioPanel().getBtnConvertAudio()
             .addActionListener(e -> {
-                ConvertCriteria criteria = setConvertCriteria("Audio");
+                convert("Audio");
             });
         searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab().getConvertVideoPanel().getBtnConvertVideo()
             .addActionListener(e -> {
-            ConvertCriteria criteria = setConvertCriteria("Video");
+                convert("Video");
             });
         searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab().getConvertPDFPanel().getBtnConvertAudio()
             .addActionListener(e -> {
-                ConvertCriteria criteria = setConvertCriteria("PDF");
+                convert("PDF");
             });
+    }
+
+    public void convert(String convertType) {
+        ConvertCriteria criteria = setConvertCriteria(convertType);
+        try {
+            serviceConnection.convert(criteria);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     /**

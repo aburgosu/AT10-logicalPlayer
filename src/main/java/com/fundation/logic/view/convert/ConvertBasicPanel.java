@@ -90,7 +90,7 @@ public class ConvertBasicPanel extends CustomPanel {
         btnBrowseSourcePath.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 JFileChooser folderChooser = new JFileChooser();
-                folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                //folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int returnVal = folderChooser.showOpenDialog(null);
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
                     textFieldSourcePath.setText(folderChooser.getSelectedFile().getPath());
