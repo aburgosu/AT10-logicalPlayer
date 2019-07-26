@@ -40,6 +40,7 @@ public class ConvertController {
     private String thumbnailFormat;
     private String formatColor;
     private String dpi;
+
     /**
      * Initializes a Controller instance with a searchFrame and a searchCriteria
      */
@@ -47,6 +48,9 @@ public class ConvertController {
         this.searchFrame = searchFrame;
     }
 
+    /**
+     * Convert button listener for every convert panel.
+     */
     public void listenConvertButtons() {
         searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab().getConvertAudioPanel().getBtnConvertAudio()
             .addActionListener(e -> {
@@ -64,7 +68,7 @@ public class ConvertController {
 
     /**
      * Creates an instance of ConvertCriteria class based on data retrieved from UI convert forms.
-     * @return
+     * @return convertCriteria object based on data retrieved from UI convert forms.
      */
     public ConvertCriteria setConvertCriteria(String convertType) {
         getDataFromBasicPanel();
@@ -81,6 +85,10 @@ public class ConvertController {
         }
     }
 
+    /**
+     * Allows to get a ConvertCriteria object created based on retrieved data from convert audio panel.
+     * @return convertCriteria created based on retrieved data from convert audio panel.
+     */
     public ConvertCriteria setConvertAudioCriteria() {
         getDataFromConvertAudioPanel();
         ConvertCriteria convertAudioCriteria = new ConvertCriteria.ConvertCriteriaBuilder(sourcePath,
@@ -89,6 +97,10 @@ public class ConvertController {
         return convertAudioCriteria;
     }
 
+    /**
+     * Allows to get a ConvertCriteria object created based on retrieved data from convert video panel.
+     * @return convertCriteria created based on retrieved data from convert video panel.
+     */
     public ConvertCriteria setConvertVideoCriteria() {
         getDataFromConvertVideoPanel();
         ConvertCriteria convertVideoCriteria = new ConvertCriteria.ConvertCriteriaBuilder(sourcePath,
@@ -100,6 +112,10 @@ public class ConvertController {
         return convertVideoCriteria;
     }
 
+    /**
+     * Allows to get a ConvertCriteria object created based on retrieved data from convert PDF panel.
+     * @return convertCriteria created based on retrieved data from convert PDF panel.
+     */
     public ConvertCriteria setConvertPDFCriteria() {
         getDataFromConvertPDFPanel();
         ConvertCriteria convertPDFCriteria = new ConvertCriteria.ConvertCriteriaBuilder(sourcePath,
@@ -107,6 +123,9 @@ public class ConvertController {
         return convertPDFCriteria;
     }
 
+    /**
+     * Allows to get data from basic convert panel.
+     */
     public void getDataFromBasicPanel() {
         sourcePath = searchFrame.getSearchTabs().getSplitPanelConvert().getBasicConvert()
                 .getTextFieldSourcePath().getText();
@@ -121,6 +140,9 @@ public class ConvertController {
         }
     }
 
+    /**
+     * Allows to get data from convert audio panel.
+     */
     public void getDataFromConvertAudioPanel() {
         newFormat = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab().getConvertAudioPanel()
                 .getComboBoxNewFormat().getSelectedItem().toString();
@@ -141,6 +163,9 @@ public class ConvertController {
         }
     }
 
+    /**
+     * Allows to get data from convert video panel.
+     */
     public void getDataFromConvertVideoPanel() {
         newFormat = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab().getConvertVideoPanel()
                 .getComboBoxNewFormat().getSelectedItem().toString();
@@ -198,6 +223,9 @@ public class ConvertController {
         }
     }
 
+    /**
+     * Allows to get data from convert PDF panel.
+     */
     public void getDataFromConvertPDFPanel() {
         newFormat = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
                 .getConvertPDFPanel().getComboBoxNewFormat().getSelectedItem().toString();
