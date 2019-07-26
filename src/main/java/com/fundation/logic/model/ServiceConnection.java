@@ -47,10 +47,9 @@ public class ServiceConnection {
     public String convert(ConvertCriteria criteria) throws Exception {
         String res="";
         FileBody fileBody = new FileBody(new File(criteria.getSourcePath()));
-        StringBody stringInput = new StringBody("{\"typeConversion\":\""+"videoConvert"+"\",\"checksum\":\""+ Checksum.getChecksum(criteria.getSourcePath(),"MD5")+"\",\"destPath\":\""+criteria.getDestinationPath()+"\""+"}", ContentType.TEXT_PLAIN);
+        StringBody stringInput = new StringBody("{\"typeConversion\":\""+"videoCONVERT"+"\",\"checksum\":\""+ Checksum.getChecksum(criteria.getSourcePath(),"MD5")+"\",\"destPath\":\""+criteria.getDestinationPath().replace("\\","\\\\")+"\""+"}", ContentType.TEXT_PLAIN);
         StringBody stringConfig = new StringBody(JsonConverter.convertCriteriaToJson(criteria), ContentType.TEXT_PLAIN);
         StringBody stringOutput = new StringBody("{\"name\":\""+criteria.getNewName()+"\",\"ext\":\"."+criteria.getNewFormat()+"\"}", ContentType.TEXT_PLAIN);
-
         HttpEntity reqEntity = MultipartEntityBuilder.create()
                 .addPart("asset", fileBody)
                 .addPart("input", stringInput)
@@ -58,19 +57,13 @@ public class ServiceConnection {
                 .addPart("output",stringOutput)
                 .build();
         httpPost.setEntity(reqEntity);
-
         CloseableHttpResponse response = httpClient.execute(httpPost);
-
-        System.out.println("=======================================");
-        System.out.println(response.getEntity().getContent());
-        System.out.println("=======================================");
-
         try {
             HttpEntity resEntity = response.getEntity();
             if (response.getStatusLine().toString().contains("200")) {
                 //Add to logger
-                System.out.println("Successful conversion");
-                //res = response.
+                res = "Successful conversion";
+                // TO DO res = response.
             }
             EntityUtils.consume(resEntity);
         } finally {
