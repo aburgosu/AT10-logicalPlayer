@@ -48,4 +48,20 @@ public class SplitPanelConvert extends CustomPanel {
         splitPane.setOneTouchExpandable(false);
         add(splitPane);
     }
+
+    /**
+     * This method return the content ContentBasicPanel.
+     * @return ContentBasicPanel.
+     */
+    public ConvertBasicPanel getBasicConvert() {
+        return basicConvert;
+    }
+
+    /**
+     * This method return the content ConverterTab.
+     * @return ConverterTab.
+     */
+    public ConvertTabs getConverterTab() {
+        return converterTab;
+    }
 }
