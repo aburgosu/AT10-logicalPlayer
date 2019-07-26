@@ -69,9 +69,15 @@ public class MainTabs extends JTabbedPane {
 
     /**
      * This method return the content splitPanelSavedSearch.
-     * @return splitPanelSavedCriteria
+     * @return splitPanelSavedCriteria.
      */
     public SplitPanelDate getSplitPanelSavedCriteria() {
         return splitPanelSavedCriteria;
     }
+
+    /**
+     * This method return the content splitPanelConvert.
+     * @return splitPanelConvert.
+     */
+    public SplitPanelConvert getSplitPanelConvert() { return splitPanelConvert; }
 }
