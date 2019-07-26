@@ -19,9 +19,9 @@ public class ConvertCriteria {
     private final String sourcePath;
     private final String destinationPath;
     private final String newName;
-    private final String metadata;
     private final String newFormat;
     private final String convertType;
+    private String metadata;
     private String audioCodec;
     private String audioBitRate;
     private String audioChannel;
