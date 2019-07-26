@@ -422,4 +422,20 @@ public class ConvertVideoPanel extends CustomPanel {
     public JButton getBtnConvertVideo() {
         return btnConvertVideo;
     }
+
+    /**
+     * Allows to get MinuteSpinnerKeyFrame .
+     * @return MinuteSpinnerKeyFrame.
+     */
+    public JSpinner getMinuteSpinnerKeyFrame() {
+        return minuteSpinnerKeyFrame;
+    }
+
+    /**
+     * Allows to get MinuteSpinnerThumbnail.
+     * @return MinuteSpinnerThumbnail.
+     */
+    public JSpinner getMinuteSpinnerThumbnail() {
+        return minuteSpinnerThumbnail;
+    }
 }

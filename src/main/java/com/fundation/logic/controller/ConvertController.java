@@ -205,7 +205,7 @@ public class ConvertController {
             keyframeTime = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
                     .getConvertVideoPanel().getMinuteSpinnerKeyFrame().getValue().toString();
             keyframeFormat = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
-                    .getConvertVideoPanel().getComboBoxKeyFrameFormat().getValue().toString();
+                    .getConvertVideoPanel().getComboBoxKeyFrameFormat().getSelectedItem().toString();
             if(keyframeFormat == "Default") {
                 keyframeFormat = null;
             }
@@ -216,7 +216,7 @@ public class ConvertController {
             thumbnailTime = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
                     .getConvertVideoPanel().getMinuteSpinnerThumbnail().getValue().toString();
             thumbnailFormat = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
-                    .getConvertVideoPanel().getComboBoxThumbnailFormat().getValue().toString();
+                    .getConvertVideoPanel().getComboBoxThumbnailFormat().getSelectedItem().toString();
             if(thumbnailFormat == "Default") {
                 thumbnailFormat = null;
             }
