@@ -10,6 +10,7 @@
 package com.fundation.logic.view.search;
 
 import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomComboBox;
 import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
 
@@ -110,7 +111,7 @@ public class AdvancedImagePanel extends CustomPanel {
         gbc_ColorSpaceData.gridy = 6;
         add(lblColorSpaceData, gbc_ColorSpaceData);
 
-        comboBoxColorSpaceData = new JComboBox();
+        comboBoxColorSpaceData = new CustomComboBox();
         comboBoxColorSpaceData.setModel(new DefaultComboBoxModel(new String[]{"All", "RGB", "MCY", "RG", "CMYK",}));
         GridBagConstraints gbc_ComboBoxColorSpaceData = new GridBagConstraints();
         gbc_ComboBoxColorSpaceData.insets = new Insets(0, 0, 5, 0);

@@ -10,7 +10,7 @@
 package com.fundation.logic.view;
 
 import javax.swing.JButton;
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Implements CustomButton class.
@@ -23,5 +23,7 @@ public class CustomButton extends JButton {
         super(name);
         Color buttonColor = new Color(81, 209, 246);
         setBackground(buttonColor);
+        Font fuente = new Font("Calibri", 3, 12);
+        setFont(fuente);
     }
 }

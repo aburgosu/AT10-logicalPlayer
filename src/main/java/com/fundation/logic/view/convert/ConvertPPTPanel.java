@@ -9,10 +9,7 @@
  */
 package com.fundation.logic.view.convert;
 
-import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomPanel;
-import com.fundation.logic.view.CustomPanel2;
-import com.fundation.logic.view.PanelSetter;
+import com.fundation.logic.view.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -60,7 +57,7 @@ public class ConvertPPTPanel extends CustomPanel2 {
         gbc_lblNewFormat.gridy = 4;
         add(lblNewFormat, gbc_lblNewFormat);
 
-        comboBoxNewFormat = new JComboBox();
+        comboBoxNewFormat = new CustomComboBox();
         comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"PNG", "JPG", "BMP", "GIF", "TIF"}));
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);

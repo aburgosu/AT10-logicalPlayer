@@ -9,10 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomPanel;
-import com.fundation.logic.view.CustomPanel2;
-import com.fundation.logic.view.PanelSetter;
+import com.fundation.logic.view.*;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -56,7 +53,7 @@ public class BasicSearchPanel extends CustomPanel2 {
      * This method displays Basic search content on the screen.
      */
     private void contentBasicSearch() {
-        JLabel title = new JLabel("Search");
+        JLabel title = new CustomLabel("Search");
         title.setFont(new Font("Arial", Font.PLAIN, 14));
         GridBagConstraints gbc_lblVideo = new GridBagConstraints();
         gbc_lblVideo.gridwidth = 6;
@@ -65,7 +62,7 @@ public class BasicSearchPanel extends CustomPanel2 {
         gbc_lblVideo.gridy = 0;
         add(title, gbc_lblVideo);
 
-        JLabel lblPath = new JLabel("Path:");
+        JLabel lblPath = new CustomLabel("Path:");
         GridBagConstraints gbc_lblPath = new GridBagConstraints();
         gbc_lblPath.anchor = GridBagConstraints.EAST;
         gbc_lblPath.insets = new Insets(0, 5, 5, 5);

@@ -9,6 +9,8 @@
  */
 package com.fundation.logic.view.resultTable;
 
+import com.fundation.logic.view.CustomTable;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
@@ -19,7 +21,7 @@ import java.util.List;
  * @author Melissa Román
  * @version 1.0
  */
-public class DetailsTable extends JTable {
+public class DetailsTable extends CustomTable {
     private DefaultTableModel model;
 
     /**

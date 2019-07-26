@@ -21,7 +21,6 @@ import java.awt.Color;
 public class CustomPanel extends JPanel {
     public CustomPanel() {
         super();
-
         Color panelColor = new Color(26, 243, 112);
         setBackground(panelColor);
     }

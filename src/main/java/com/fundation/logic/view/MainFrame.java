@@ -30,7 +30,7 @@ import java.awt.Color;
  * @author John Salazar Pinto, Melissa Román
  * @version 1.0
  */
-public class MainFrame extends JFrame {
+public class MainFrame extends CustomJFrame {
     JPanel mainContentPanel;
     private MainTabs searchTabs;
     private TableResult tableResult;
@@ -43,11 +43,11 @@ public class MainFrame extends JFrame {
      * This method init all component
      */
     public void initComponent() {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            UIManager.setLookAndFeel(UIManager.getJavaLookAndFeelClassName());
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
         mainContentPanel = new JPanel();
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));
