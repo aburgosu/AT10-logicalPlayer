@@ -18,8 +18,8 @@ package com.fundation.logic.model.criteria;
 public class Video extends Multimedia {
     private String videoCodec;
     private String frameRate;
-    private int width;
-    private int height;
+    private String width;
+    private String height;
     private String durationFrom;
     private String durationTo;
     /**
@@ -53,28 +53,28 @@ public class Video extends Multimedia {
     /**
      * @return Width.
      */
-    public int getWidth() {
+    public String getWidth() {
         return width;
     }
 
     /**
      * Set Width.
      */
-    public void setWidth(int width) {
+    public void setWidth(String width) {
         this.width = width;
     }
 
     /**
      * @return Heigth.
      */
-    public int getHeight() {
+    public String getHeight() {
         return height;
     }
 
     /**
      * Set Audio Height.
      */
-    public void setHeight(int height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
