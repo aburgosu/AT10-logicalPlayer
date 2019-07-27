@@ -64,6 +64,7 @@ public class ConvertController {
             .addActionListener(e -> {
                 ConvertCriteria criteria = setConvertCriteria("PDF");
             });
+        resetCriteria();
     }
 
     /**
