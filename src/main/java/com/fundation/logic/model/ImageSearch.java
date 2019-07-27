@@ -58,6 +58,7 @@ public class ImageSearch implements ISearch {
         String criteriaExtension = imageCriteria.getExtension();
         String criteriaWidth = imageCriteria.getWidth();
         String criteriaHeight = imageCriteria.getHeight();
+        String criteriaColorSpace = imageCriteria.getColorSpaceData();
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
             try {
@@ -69,8 +70,8 @@ public class ImageSearch implements ISearch {
                     MetadataImageExtractor metadataImageExtractor = new MetadataImageExtractor();
                     String owner = FileInfo.getFileOwner(fileExtractor, "user");
                     String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
-                    String pathd = exiftool + "\"" + fileExtractor + "\"";
-                    metadataImageExtractor.run(pathd);
+                    String filePath = exiftool + "\"" + fileExtractor + "\"";
+                    metadataImageExtractor.run(filePath);
                     String width = "0";
                     if (criteriaWidth.length() != 1) {
                         width = MetadataImageExtractor.getWidth();
@@ -79,6 +80,10 @@ public class ImageSearch implements ISearch {
                     if (criteriaHeight.length() != 1) {
                         height = MetadataImageExtractor.getHeight();
                     }
+                    String colorSpace = "All";
+                    if (criteriaColorSpace != "All"){
+                        colorSpace = MetadataImageExtractor.getSearchColorSpace();
+                    }
                     Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
                     Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
                     Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
@@ -86,7 +91,8 @@ public class ImageSearch implements ISearch {
                     if (evaluateString(fileName, criteriaFileName)
                             && evaluateString(fileExtension, criteriaExtension)
                             && evaluateString(width, criteriaWidth)
-                            && evaluateString(height, criteriaHeight)) {
+                            && evaluateString(height, criteriaHeight)
+                            &&evaluateString(colorSpace,criteriaColorSpace)) {
                         List<String> metadata = MetadataImageExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
                                 fileName, fileExtension, false, false,
