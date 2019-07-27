@@ -57,15 +57,15 @@ public class ConvertController {
     public void listenConvertButtons() {
         searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab().getConvertAudioPanel().getBtnConvertAudio()
             .addActionListener(e -> {
-                convert("Audio");
+                convert("audio");
             });
         searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab().getConvertVideoPanel().getBtnConvertVideo()
             .addActionListener(e -> {
-                convert("Video");
+                convert("video");
             });
         searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab().getConvertPDFPanel().getBtnConvertAudio()
             .addActionListener(e -> {
-                convert("PDF");
+                convert("pdfToImage");
             });
     }
 
@@ -86,11 +86,11 @@ public class ConvertController {
         getDataFromBasicPanel();
         this.convertType = convertType;
         switch (convertType) {
-            case "Audio":
+            case "audio":
                 return setConvertAudioCriteria();
-            case "Video":
+            case "video":
                 return setConvertVideoCriteria();
-            case "PDF":
+            case "pdfToImage":
                 return setConvertPDFCriteria();
             default:
                 return null;

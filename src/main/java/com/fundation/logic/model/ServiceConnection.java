@@ -46,14 +46,16 @@ public class ServiceConnection {
     public String convert(ConvertCriteria criteria) throws Exception {
         String res = "";
         FileBody fileBody = new FileBody(new File(criteria.getSourcePath()));
-
         StringBody stringInput = new StringBody("{\"typeConversion\":\""
-                + "videoCONVERT" + "\",\"checksum\":\"" + Checksum.getChecksum(criteria.getSourcePath(), "MD5")
+                + criteria.getConvertType() + "\",\"checksum\":\"" + Checksum.getChecksum(criteria.getSourcePath(), "MD5")
                 + "\",\"destPath\":\"" + criteria.getDestinationPath().replace("\\", "\\\\") + "\""
                 + "}", ContentType.TEXT_PLAIN);
 
-
-
+        System.out.println("{\"typeConversion\":\""
+                + criteria.getConvertType() + "\",\"checksum\":\"" + Checksum.getChecksum(criteria.getSourcePath(), "MD5")
+                + "\",\"destPath\":\"" + criteria.getDestinationPath().replace("\\", "\\\\") + "\""
+                + "}");
+        
         StringBody stringConfig = new StringBody(JsonConverter.convertCriteriaToJson(criteria), ContentType.TEXT_PLAIN);
         StringBody stringOutput = new StringBody("{\"name\":\"" + criteria.getNewName() + "\",\"ext\":\"." + criteria.getNewFormat() + "\"}", ContentType.TEXT_PLAIN);
         HttpEntity reqEntity = MultipartEntityBuilder.create()
