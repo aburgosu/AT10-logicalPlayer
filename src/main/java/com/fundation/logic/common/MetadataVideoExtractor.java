@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * 
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -40,7 +40,6 @@ public class MetadataVideoExtractor {
 
     /**
      * This method read all metadata.
-     *
      * @return
      */
     public String readAll() {
@@ -66,7 +65,6 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata frame rate.
-     *
      * @return
      */
     public void frameRate(String frameRate) {
