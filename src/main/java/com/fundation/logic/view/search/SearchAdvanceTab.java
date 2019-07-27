@@ -11,8 +11,6 @@ package com.fundation.logic.view.search;
 
 import com.fundation.logic.view.CustomTab;
 
-import javax.swing.JTabbedPane;
-
 /**
  * Implements the tabs of different options.
  *

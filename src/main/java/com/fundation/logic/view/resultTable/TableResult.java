@@ -11,7 +11,6 @@ package com.fundation.logic.view.resultTable;
 
 import com.fundation.logic.view.CustomTable;
 
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

@@ -9,7 +9,11 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.*;
+import com.fundation.logic.view.CustomPanelSecond;
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.PanelSetter;
+import com.fundation.logic.view.CustomLabel;
+import com.fundation.logic.view.CustomTextField;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;

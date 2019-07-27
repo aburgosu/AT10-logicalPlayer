@@ -11,8 +11,6 @@ package com.fundation.logic.view.convert;
 
 import com.fundation.logic.view.CustomTab;
 
-import javax.swing.JTabbedPane;
-
 /**
  * Implements the ConvertTabs class.
  *

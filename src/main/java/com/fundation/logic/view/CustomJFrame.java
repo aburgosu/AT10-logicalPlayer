@@ -23,7 +23,7 @@ import java.awt.Color;
  */
 public class CustomJFrame extends JFrame {
     JLabel label = new JLabel("Welcome!", JLabel.CENTER);
-    public CustomJFrame(){
+    public CustomJFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(label, BorderLayout.CENTER);
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(43,43,43)));

@@ -9,7 +9,10 @@
  */
 package com.fundation.logic.view.loadSaveCriteria;
 
-import com.fundation.logic.view.*;
+import com.fundation.logic.view.CustomPanelSecond;
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.PanelSetter;
+import com.fundation.logic.view.CustomLabel;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.JButton;

@@ -9,11 +9,18 @@
  */
 package com.fundation.logic.view.convert;
 
-import com.fundation.logic.view.CustomButton;
 import com.fundation.logic.view.CustomPanel;
+import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.CustomCheckBox;
+import com.fundation.logic.view.CustomComboBox;
+import com.fundation.logic.view.CustomLabel;
 import com.fundation.logic.view.PanelSetter;
 
-import javax.swing.*;
+import javax.swing.JComboBox;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
@@ -52,7 +59,7 @@ public class ConvertPDFPanel extends CustomPanel {
      * This method show convert PDF form.
      */
     private void showPDFConvertCriteriaForm() {
-        JLabel lblNewFormat = new JLabel("New Format:");
+        JLabel lblNewFormat = new CustomLabel("New Format:");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
         gbc_lblNewFormat.insets = new Insets(0, 0, 5, 5);
@@ -60,7 +67,7 @@ public class ConvertPDFPanel extends CustomPanel {
         gbc_lblNewFormat.gridy = 4;
         add(lblNewFormat, gbc_lblNewFormat);
 
-        comboBoxNewFormat = new JComboBox();
+        comboBoxNewFormat = new CustomComboBox();
         comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"PNG", "JPG"}));
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
@@ -69,7 +76,7 @@ public class ConvertPDFPanel extends CustomPanel {
         gbc_comboBoxNewFormat.gridy = 4;
         add(comboBoxNewFormat, gbc_comboBoxNewFormat);
 
-        JLabel lblFormatColor = new JLabel("Color Format:");
+        JLabel lblFormatColor = new CustomLabel("Color Format:");
         GridBagConstraints gbc_lblFormatColor = new GridBagConstraints();
         gbc_lblFormatColor.anchor = GridBagConstraints.EAST;
         gbc_lblFormatColor.insets = new Insets(0, 0, 5, 5);
@@ -77,7 +84,7 @@ public class ConvertPDFPanel extends CustomPanel {
         gbc_lblFormatColor.gridy = 5;
         add(lblFormatColor, gbc_lblFormatColor);
 
-        comboBoxColorFormat = new JComboBox();
+        comboBoxColorFormat = new CustomComboBox();
         comboBoxColorFormat.setModel(new DefaultComboBoxModel(new String[]{"RGB", "RGBA", "GRAY", "BILEVEL"}));
         GridBagConstraints gbc_comboBoxColorFormat = new GridBagConstraints();
         gbc_comboBoxColorFormat.insets = new Insets(0, 0, 5, 0);
@@ -86,7 +93,7 @@ public class ConvertPDFPanel extends CustomPanel {
         gbc_comboBoxColorFormat.gridy = 5;
         add(comboBoxColorFormat, gbc_comboBoxColorFormat);
 
-        JLabel lblDpi = new JLabel("DPI:");
+        JLabel lblDpi = new CustomLabel("DPI:");
         GridBagConstraints gbc_lblDpi = new GridBagConstraints();
         gbc_lblDpi.anchor = GridBagConstraints.EAST;
         gbc_lblDpi.insets = new Insets(0, 0, 5, 5);
@@ -94,7 +101,7 @@ public class ConvertPDFPanel extends CustomPanel {
         gbc_lblDpi.gridy = 6;
         add(lblDpi, gbc_lblDpi);
 
-        comboBoxDpi = new JComboBox();
+        comboBoxDpi = new CustomComboBox();
         comboBoxDpi.setModel(new DefaultComboBoxModel(new String[]{"72", "96", "160", "300", "600", "4000"}));
         GridBagConstraints gbc_comboBoxDpi = new GridBagConstraints();
         gbc_comboBoxDpi.insets = new Insets(0, 0, 5, 0);
@@ -103,7 +110,7 @@ public class ConvertPDFPanel extends CustomPanel {
         gbc_comboBoxDpi.gridy = 6;
         add(comboBoxDpi, gbc_comboBoxDpi);
 
-        JLabel lblThumbnail = new JLabel("Thumbnail:");
+        JLabel lblThumbnail = new CustomLabel("Thumbnail:");
         GridBagConstraints gbc_lblThumbnail = new GridBagConstraints();
         gbc_lblThumbnail.anchor = GridBagConstraints.EAST;
         gbc_lblThumbnail.insets = new Insets(0, 0, 5, 5);
@@ -111,7 +118,7 @@ public class ConvertPDFPanel extends CustomPanel {
         gbc_lblThumbnail.gridy = 7;
         add(lblThumbnail, gbc_lblThumbnail);
 
-        checkBoxThumbnail = new JCheckBox("");
+        checkBoxThumbnail = new CustomCheckBox("");
         GridBagConstraints gbc_checkBoxThumbnail = new GridBagConstraints();
         gbc_checkBoxThumbnail.anchor = GridBagConstraints.WEST;
         gbc_checkBoxThumbnail.insets = new Insets(0, 0, 5, 5);
@@ -119,7 +126,7 @@ public class ConvertPDFPanel extends CustomPanel {
         gbc_checkBoxThumbnail.gridy = 7;
         add(checkBoxThumbnail, gbc_checkBoxThumbnail);
 
-        JLabel lblThumbnailFormat = new JLabel("Format: ");
+        JLabel lblThumbnailFormat = new CustomLabel("Format: ");
         GridBagConstraints gbc_lblThumbnailFormat = new GridBagConstraints();
         gbc_lblThumbnailFormat.anchor = GridBagConstraints.EAST;
         gbc_lblThumbnailFormat.insets = new Insets(0, 0, 5, 5);
@@ -127,7 +134,7 @@ public class ConvertPDFPanel extends CustomPanel {
         gbc_lblThumbnailFormat.gridy = 7;
         add(lblThumbnailFormat, gbc_lblThumbnailFormat);
 
-        comboBoxThumbnailFormat = new JComboBox();
+        comboBoxThumbnailFormat = new CustomComboBox();
         comboBoxThumbnailFormat.setModel(new DefaultComboBoxModel(new String[]{"BMP", "PNG", "JPG"}));
         GridBagConstraints gbc_comboBoxThumbnailFormat = new GridBagConstraints();
         gbc_comboBoxThumbnailFormat.insets = new Insets(0, 0, 5, 0);
