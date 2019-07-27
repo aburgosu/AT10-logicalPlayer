@@ -296,10 +296,10 @@ public class ConvertController {
         videoCodec = null;
         videoBitRate = null;
         fps = null;
-        keyframe = false;
+        keyframe = null;
         keyframeTime = null;
         keyframeFormat = null;
-        thumbnail = false;
+        thumbnail = null;
         thumbnailTime = null;
         thumbnailFormat = null;
         formatColor = null;
