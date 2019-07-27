@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.view;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
@@ -22,9 +23,10 @@ import java.awt.Font;
 public class CustomButton extends JButton {
     public CustomButton(String name) {
         super(name);
-        Color buttonColor = new Color(0, 139, 139);
+        Color buttonColor = new Color(60, 139, 139);
         setBackground(buttonColor);
-        Font fuente = new Font("Calibri", 3, 18);
-        setFont(fuente);
+        setForeground(new Color(230, 227, 210));
+        Font font = new Font("Calibri", 3, 18);
+        setFont(font);
     }
 }

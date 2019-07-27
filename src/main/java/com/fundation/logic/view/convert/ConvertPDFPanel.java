@@ -9,7 +9,7 @@
  */
 package com.fundation.logic.view.convert;
 
-import com.fundation.logic.view.CustomPanel;
+import com.fundation.logic.view.CustomPanelSecond;
 import com.fundation.logic.view.CustomButton;
 import com.fundation.logic.view.CustomCheckBox;
 import com.fundation.logic.view.CustomComboBox;
@@ -30,7 +30,7 @@ import java.awt.Insets;
  * @author Melissa Román, Maday Alcalá
  * @version 1.0
  */
-public class ConvertPDFPanel extends CustomPanel {
+public class ConvertPDFPanel extends CustomPanelSecond {
     private JComboBox comboBoxNewFormat;
     private JComboBox comboBoxDpi;
     private JComboBox comboBoxColorFormat;
