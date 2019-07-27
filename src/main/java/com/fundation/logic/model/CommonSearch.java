@@ -76,7 +76,7 @@ public class CommonSearch implements ISearch {
                     searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
                 } else {
                     String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
-                    String pathd = exiftool + "\"" + fileExtractor + "\"";
+                    String pathFile = exiftool + "\"" + fileExtractor + "\"";
                     String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
                     String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
                     boolean fileHiddenStatus = fileExtractor.isHidden();
@@ -87,13 +87,13 @@ public class CommonSearch implements ISearch {
                     Date modificationDate = FileInfo.getFileDate(fileExtractor, "modification");
                     String owner = FileInfo.getFileOwner(fileExtractor, "user");
                     MetadataCommonExtractor metadataCommonExtractor = new MetadataCommonExtractor();
-                    if (sizeLowerLimit == null){
+                    if (sizeLowerLimit == null) {
                         sizeLowerLimit = Float.MIN_VALUE;
                     }
-                    if (sizeUpperLimit == null){
+                    if (sizeUpperLimit == null) {
                         sizeUpperLimit = Float.MAX_VALUE;
                     }
-                    metadataCommonExtractor.run(pathd);
+                    metadataCommonExtractor.run(pathFile);
                     String mimeType = MetadataCommonExtractor.getSearchMimeType();
                     if (evaluateString(fileName, criteriaFileName) &&
                             evaluateString(fileExtension, criteriaExtension) &&
@@ -104,7 +104,7 @@ public class CommonSearch implements ISearch {
                             evaluateDate(accessDate, accessDateLL, accessDateUL) &&
                             evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
                             evaluateString(owner, criteriaOwner) &&
-                            evaluateString(mimeType, criteriaMimeType)){
+                            evaluateString(mimeType, criteriaMimeType)) {
                         List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
