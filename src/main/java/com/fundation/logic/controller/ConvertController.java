@@ -13,7 +13,7 @@ import com.fundation.logic.model.ServiceConnection;
 import com.fundation.logic.model.convertCriteriaBuilderPattern.ConvertCriteria;
 import com.fundation.logic.view.MainFrame;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
 /**
  * Implements the ConvertController class.
