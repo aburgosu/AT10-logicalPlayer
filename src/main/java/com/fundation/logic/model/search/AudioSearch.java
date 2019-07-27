@@ -52,7 +52,7 @@ public class AudioSearch implements ISearch {
      * @return Complete list of found items according on criteria's path.
      */
     public List searchInPath(String path) {
-        List<CustomizedFile> searchResult = new ArrayList<>();
+        List<CustomizedFile> audioSearchResult = new ArrayList<>();
         File file = new File(path);
         String criteriaFileName = audioCriteria.getFileName();
         String criteriaExtension = audioCriteria.getExtension();
@@ -67,7 +67,7 @@ public class AudioSearch implements ISearch {
         for (File fileExtractor : allSubFiles) {
             try {
                 if (fileExtractor.isDirectory()) {
-                    searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
+                    audioSearchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
                 } else {
                     String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
                     String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
@@ -89,8 +89,8 @@ public class AudioSearch implements ISearch {
                         sampleRate = MetadataAudioExtractor.getSearchSampleRate();
                     }
                     if (initDuration == 0.0 && endDuration == 0.0) {
-                        initDuration = new Float(0.0);
-                        endDuration = new Float(12.9);
+                        initDuration = Float.MIN_VALUE;
+                        endDuration = Float.MAX_VALUE;
                     }
                     Float duration = MetadataAudioExtractor.getSearchDuration();
                     Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
@@ -108,13 +108,13 @@ public class AudioSearch implements ISearch {
                                 fileExtension, false, false,
                                 fileSize, creationDate, accessDate,
                                 modificationDate, owner, "audio", metadata);
-                        searchResult.add(matchingFile);
+                        audioSearchResult.add(matchingFile);
                     }
                 }
             } catch (Exception e) {
             }
         }
-        return searchResult;
+        return audioSearchResult;
     }
 
     /**
