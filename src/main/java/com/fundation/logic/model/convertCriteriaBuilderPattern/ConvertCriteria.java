@@ -28,10 +28,10 @@ public class ConvertCriteria {
     private String videoCodec;
     private String videoBitRate;
     private String fps;
-    private boolean keyframe;
+    private String keyframe;
     private String keyframeTime;
     private String keyframeFormat;
-    private boolean thumbnail;
+    private String thumbnail;
     private String thumbnailTime;
     private String thumbnailFormat;
     private String formatColor;
@@ -50,10 +50,10 @@ public class ConvertCriteria {
         private String videoCodec;
         private String videoBitRate;
         private String fps;
-        private boolean keyframe;
+        private String keyframe;
         private String keyframeTime;
         private String keyframeFormat;
-        private boolean thumbnail;
+        private String thumbnail;
         private String thumbnailTime;
         private String thumbnailFormat;
         private String formatColor;
@@ -150,7 +150,7 @@ public class ConvertCriteria {
          * @param keyframe - Key frame requested?
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setKeyframe(boolean keyframe) {
+        public ConvertCriteriaBuilder setKeyframe(String keyframe) {
             this.keyframe = keyframe;
             return this;
         }
@@ -180,7 +180,7 @@ public class ConvertCriteria {
          * @param thumbnail - Thumbnail requested?
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setThumbnail(boolean thumbnail) {
+        public ConvertCriteriaBuilder setThumbnail(String thumbnail) {
             this.thumbnail = thumbnail;
             return this;
         }
@@ -361,7 +361,7 @@ public class ConvertCriteria {
      * Allows to get to know if key frame is requested.
      * @return Is key frame requested?
      */
-    public boolean isKeyFrameRequired() {
+    public String isKeyFrameRequired() {
         return keyframe;
     }
 
@@ -385,7 +385,7 @@ public class ConvertCriteria {
      * Allows to get to know if thumbnail is required.
      * @return Is thumbnail requested?
      */
-    public boolean isThumbnailRequired() {
+    public String isThumbnailRequired() {
         return thumbnail;
     }
 

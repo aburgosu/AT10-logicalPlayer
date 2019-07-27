@@ -78,7 +78,7 @@ public class ConvertVideoPanel extends CustomPanel {
         add(lblNewFormat, gbc_lblNewFormat);
 
         comboBoxNewFormat = new JComboBox();
-        comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"MP4", "AVI", "MKV", "FLV", "MOV", "WMV"}));
+        comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"mp4", "avi", "mkv", "flv", "mov", "wmv"}));
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxNewFormat.fill = GridBagConstraints.HORIZONTAL;
@@ -95,8 +95,8 @@ public class ConvertVideoPanel extends CustomPanel {
         add(lblAudioCodec, gbc_lblAudioCodec);
 
         comboBoxAudioCodec = new JComboBox();
-        comboBoxAudioCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "MP3", "WACPack", "AAC", "WMA",
-            "Vorbis", "FLAC"}));
+        comboBoxAudioCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "mp3", "wacpack", "aac", "wma",
+            "libvorbis", "FLAC"}));
         GridBagConstraints gbc_comboBoxAudioCodec = new GridBagConstraints();
         gbc_comboBoxAudioCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioCodec.fill = GridBagConstraints.HORIZONTAL;
@@ -130,7 +130,7 @@ public class ConvertVideoPanel extends CustomPanel {
         add(lblAudioChannel, gbc_lblAudioChannel);
 
         comboBoxAudioChannel = new JComboBox();
-        comboBoxAudioChannel.setModel(new DefaultComboBoxModel(new String[]{"Default", "1", "2", "5.1", "7.1"}));
+        comboBoxAudioChannel.setModel(new DefaultComboBoxModel(new String[]{"Default", "1", "2"}));
         GridBagConstraints gbc_comboBoxAudioChannel = new GridBagConstraints();
         gbc_comboBoxAudioChannel.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioChannel.fill = GridBagConstraints.HORIZONTAL;
@@ -147,8 +147,8 @@ public class ConvertVideoPanel extends CustomPanel {
         add(lblVideoCodec, gbc_lblVideoCodec);
 
         comboBoxVideoCodec = new JComboBox();
-        comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "Xvid", "Theora", "RealViedo",
-            "WMV", "MPEG-1", "MPEG-2", "MPEG-4", "H264"}));
+        comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "xvid", "theora", "realvideo",
+            "wmv", "mpeg1", "mpeg2", "mpeg4", "h264"}));
         GridBagConstraints gbc_comboBoxVideoCodec = new GridBagConstraints();
         gbc_comboBoxVideoCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoCodec.fill = GridBagConstraints.HORIZONTAL;
@@ -165,7 +165,7 @@ public class ConvertVideoPanel extends CustomPanel {
         add(lblVideoBit, gbc_lblVideoBit);
 
         comboBoxVideoBit = new JComboBox();
-        comboBoxVideoBit.setModel(new DefaultComboBoxModel(new String[]{"Default", "500000 bps"}));
+        comboBoxVideoBit.setModel(new DefaultComboBoxModel(new String[]{"Default", "160000"}));
         GridBagConstraints gbc_comboBoxVideoBit = new GridBagConstraints();
         gbc_comboBoxVideoBit.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoBit.fill = GridBagConstraints.HORIZONTAL;
@@ -173,13 +173,13 @@ public class ConvertVideoPanel extends CustomPanel {
         gbc_comboBoxVideoBit.gridy = 11;
         add(comboBoxVideoBit, gbc_comboBoxVideoBit);
 
-        JLabel lblVideoRate = new JLabel("Frames per second:");
+        JLabel lblFps = new JLabel("Frames per second:");
         GridBagConstraints gbc_lblVideoRate = new GridBagConstraints();
         gbc_lblVideoRate.anchor = GridBagConstraints.EAST;
         gbc_lblVideoRate.insets = new Insets(0, 0, 5, 5);
         gbc_lblVideoRate.gridx = 1;
         gbc_lblVideoRate.gridy = 12;
-        add(lblVideoRate, gbc_lblVideoRate);
+        add(lblFps, gbc_lblVideoRate);
 
         comboBoxVideoRate = new JComboBox();
         comboBoxVideoRate.setModel(new DefaultComboBoxModel(new String[]{"Default", "30"}));
@@ -215,7 +215,7 @@ public class ConvertVideoPanel extends CustomPanel {
         add(lblFormatKeyframe, gbc_lblFormatKeyframe);
 
         comboBoxKeyFrameFormat = new JComboBox();
-        comboBoxKeyFrameFormat.setModel(new DefaultComboBoxModel(new String[]{"PNG", "JPG", "TIFF"}));
+        comboBoxKeyFrameFormat.setModel(new DefaultComboBoxModel(new String[]{"png", "jpg", "tiff"}));
         GridBagConstraints gbc_comboBoxKeyFrameFormat = new GridBagConstraints();
         gbc_comboBoxKeyFrameFormat.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxKeyFrameFormat.fill = GridBagConstraints.HORIZONTAL;
@@ -273,7 +273,7 @@ public class ConvertVideoPanel extends CustomPanel {
         add(lblThumbnailFormat, gbc_ThumbnailFormat);
 
         comboBoxThumbnailFormat = new JComboBox();
-        comboBoxThumbnailFormat.setModel(new DefaultComboBoxModel(new String[]{"BMP", "PNG", "JPG"}));
+        comboBoxThumbnailFormat.setModel(new DefaultComboBoxModel(new String[]{"bmp", "png", "jpg"}));
         GridBagConstraints gbc_comboBoxThumbnailFormat = new GridBagConstraints();
         gbc_comboBoxThumbnailFormat.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxThumbnailFormat.fill = GridBagConstraints.HORIZONTAL;
@@ -404,7 +404,7 @@ public class ConvertVideoPanel extends CustomPanel {
      * @return checkBoxKeyFrameFormat
      */
     public JComboBox getComboBoxKeyFrameFormat() {
-        return getComboBoxKeyFrameFormat();
+        return comboBoxKeyFrameFormat;
     }
 
     /**
@@ -412,7 +412,7 @@ public class ConvertVideoPanel extends CustomPanel {
      * @return checkBoxThumbnailFormat
      */
     public JComboBox getComboBoxThumbnailFormat() {
-        return getComboBoxThumbnailFormat();
+        return comboBoxThumbnailFormat;
     }
 
     /**
