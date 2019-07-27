@@ -52,7 +52,7 @@ public class VideoSearch implements ISearch {
      * @return Complete list of found items according on criteria's path.
      */
     public List searchInPath(String path) {
-        List<CustomizedFile> searchResult = new ArrayList<>();
+        List<CustomizedFile> videoSearchResult = new ArrayList<>();
         File file = new File(path);
         String criteriaFileName = videoCriteria.getFileName();
         String criteriaExtension = videoCriteria.getExtension();
@@ -68,7 +68,7 @@ public class VideoSearch implements ISearch {
         for (File fileExtractor : allSubFiles) {
             try {
                 if (fileExtractor.isDirectory()) {
-                    searchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
+                    videoSearchResult.addAll(searchInPath(fileExtractor.getAbsolutePath()));
                 } else {
                     String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
                     String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
@@ -94,8 +94,8 @@ public class VideoSearch implements ISearch {
                         fileHeight = MetadataVideoExtractor.getSearchHeight();
                     }
                     if (initDuration == 0.0 && endDuration == 0.0){
-                        initDuration = new Float(0.0);
-                        endDuration = new Float(12.99);
+                        initDuration = Float.MIN_VALUE;
+                        endDuration = Float.MAX_VALUE;
                     }
                     Float duration = MetadataVideoExtractor.getSearchDuration();
                     Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
@@ -114,14 +114,14 @@ public class VideoSearch implements ISearch {
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false, fileSize, creationDate,
                                 accessDate, modificationDate, owner, mimeType, metadata);
-                        searchResult.add(matchingFile);
+                        videoSearchResult.add(matchingFile);
                     }
                 }
             } catch (Exception excp) {
                 excp.getMessage();
             }
         }
-        return searchResult;
+        return videoSearchResult;
     }
 
     /**
