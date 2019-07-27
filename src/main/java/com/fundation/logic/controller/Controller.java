@@ -266,7 +266,6 @@ public class Controller {
 
     /**
      * Get Audio criteria
-     *
      * @return Audio criteria
      */
     private Criteria getAudioCriteria() {
@@ -313,7 +312,6 @@ public class Controller {
 
     /**
      * Get Video criteria
-     *
      * @return Video criteria
      */
     private Criteria getVideoCriteria() {
@@ -402,6 +400,9 @@ public class Controller {
         });
     }
 
+    /**
+     * send the showLoad Save data.
+     */
     public void showLoadSaveData() {
         searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().clearTableResult();
         List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();
