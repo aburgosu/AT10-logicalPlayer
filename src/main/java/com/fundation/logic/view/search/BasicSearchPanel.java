@@ -70,7 +70,7 @@ public class BasicSearchPanel extends CustomPanel2 {
         gbc_lblPath.gridy = 1;
         add(lblPath, gbc_lblPath);
 
-        textFieldPath = new JTextField();
+        textFieldPath = new CustomTextField();
         GridBagConstraints gbc_textFieldPath = new GridBagConstraints();
         gbc_textFieldPath.gridwidth = 3;
         gbc_textFieldPath.insets = new Insets(0, 0, 5, 5);
@@ -100,7 +100,7 @@ public class BasicSearchPanel extends CustomPanel2 {
         gbc_btnBrowsePath.gridy = 1;
         add(btnBrowsePath, gbc_btnBrowsePath);
 
-        JLabel lblFileName = new JLabel("Name:");
+        JLabel lblFileName = new CustomLabel("Name:");
         GridBagConstraints gbc_lblTittle = new GridBagConstraints();
         gbc_lblTittle.anchor = GridBagConstraints.EAST;
         gbc_lblTittle.insets = new Insets(0, 5, 5, 5);
@@ -108,7 +108,7 @@ public class BasicSearchPanel extends CustomPanel2 {
         gbc_lblTittle.gridy = 2;
         add(lblFileName, gbc_lblTittle);
 
-        textFileName = new JTextField();
+        textFileName = new CustomTextField();
         GridBagConstraints gbc_textFieldTittle = new GridBagConstraints();
         gbc_textFieldTittle.gridwidth = 3;
         gbc_textFieldTittle.insets = new Insets(0, 0, 5, 5);
@@ -118,7 +118,7 @@ public class BasicSearchPanel extends CustomPanel2 {
         add(textFileName, gbc_textFieldTittle);
         textFileName.setColumns(5);
 
-        JLabel lblExtension = new JLabel("Extension:");
+        JLabel lblExtension = new CustomLabel("Extension:");
         GridBagConstraints gbc_lblFileType = new GridBagConstraints();
         gbc_lblFileType.anchor = GridBagConstraints.EAST;
         gbc_lblFileType.insets = new Insets(0, 10, 5, 5);
@@ -126,7 +126,7 @@ public class BasicSearchPanel extends CustomPanel2 {
         gbc_lblFileType.gridy = 3;
         add(lblExtension, gbc_lblFileType);
 
-        textFieldFileType = new JTextField();
+        textFieldFileType = new CustomTextField();
         GridBagConstraints gbc_textFieldFileExtension = new GridBagConstraints();
         gbc_textFieldFileExtension.insets = new Insets(0, 0, 5, 10);
         gbc_textFieldFileExtension.fill = GridBagConstraints.HORIZONTAL;

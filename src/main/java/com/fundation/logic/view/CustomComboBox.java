@@ -6,9 +6,9 @@ import java.awt.*;
 public class CustomComboBox extends JComboBox {
     public CustomComboBox() {
         super();
-        Color buttonColor = new Color(228, 206, 39);
+        Color buttonColor = new Color(255, 240,245);
         setBackground(buttonColor);
-        Font fuente = new Font("Calibri", 3, 20);
+        Font fuente = new Font("Calibri", 3, 14);
         setFont(fuente);
     }
 }

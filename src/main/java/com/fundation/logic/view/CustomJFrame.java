@@ -14,7 +14,7 @@ public class CustomJFrame extends JFrame {
 
 
 
-        getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.RED));
+        getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(0,139,139)));
         //this.getContentPane().setBackground(Color.orange);
         setVisible(true);
         //getRootPane().getLayeredPane().setBackground(Color.BLACK);

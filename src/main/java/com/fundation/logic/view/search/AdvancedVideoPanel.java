@@ -9,9 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomPanel;
-import com.fundation.logic.view.PanelSetter;
+import com.fundation.logic.view.*;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -29,7 +27,7 @@ import java.util.Calendar;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class AdvancedVideoPanel extends CustomPanel {
+public class AdvancedVideoPanel extends CustomPanel2 {
 
     private PanelSetter settingPanel;
     private JComboBox comboBoxVideoCodec;
@@ -60,7 +58,7 @@ public class AdvancedVideoPanel extends CustomPanel {
      * This method show the content the panel.
      */
     private void videoContentPanel() {
-        JLabel lblCodecVideo = new JLabel("Video codec:");
+        JLabel lblCodecVideo = new CustomLabel("Video codec:");
         GridBagConstraints gbc_lblCodecVideo = new GridBagConstraints();
         gbc_lblCodecVideo.anchor = GridBagConstraints.EAST;
         gbc_lblCodecVideo.insets = new Insets(0, 0, 5, 5);
@@ -68,7 +66,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_lblCodecVideo.gridy = 7;
         add(lblCodecVideo, gbc_lblCodecVideo);
 
-        comboBoxVideoCodec = new JComboBox();
+        comboBoxVideoCodec = new CustomComboBox();
         comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"All", "MPEG-4", "WMV"}));
         GridBagConstraints gbc_comboBoxVideoCodec = new GridBagConstraints();
         gbc_comboBoxVideoCodec.gridwidth = 2;
@@ -78,7 +76,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_comboBoxVideoCodec.gridy = 7;
         add(comboBoxVideoCodec, gbc_comboBoxVideoCodec);
 
-        JLabel lblAudioCodecName = new JLabel("Audio codec:");
+        JLabel lblAudioCodecName = new CustomLabel("Audio codec:");
         GridBagConstraints gbc_lblAudioCodecName = new GridBagConstraints();
         gbc_lblAudioCodecName.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodecName.insets = new Insets(0, 0, 5, 5);
@@ -86,7 +84,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_lblAudioCodecName.gridy = 8;
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
-        comboBoxAudioCodecName = new JComboBox();
+        comboBoxAudioCodecName = new CustomComboBox();
         comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"All", "MPEG", "WMA", "AAC"}));
         GridBagConstraints textFiled_AudioCodecName = new GridBagConstraints();
         textFiled_AudioCodecName.gridwidth = 2;
@@ -96,7 +94,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         textFiled_AudioCodecName.gridy = 8;
         add(comboBoxAudioCodecName, textFiled_AudioCodecName);
 
-        JLabel lblFrameRate = new JLabel("Frame rate:");
+        JLabel lblFrameRate = new CustomLabel("Frame rate:");
         GridBagConstraints gbc_lblFrameRate = new GridBagConstraints();
         gbc_lblFrameRate.anchor = GridBagConstraints.EAST;
         gbc_lblFrameRate.insets = new Insets(0, 0, 5, 5);
@@ -104,7 +102,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_lblFrameRate.gridy = 10;
         add(lblFrameRate, gbc_lblFrameRate);
 
-        comboBoxVideoFrameRate = new JComboBox();
+        comboBoxVideoFrameRate = new CustomComboBox();
         comboBoxVideoFrameRate.setModel(new DefaultComboBoxModel(new String[]{"All", "21", "24", "30", "60"}));
         GridBagConstraints gbc_comboBoxVideoFrameRate = new GridBagConstraints();
         gbc_comboBoxVideoFrameRate.gridwidth = 2;
@@ -114,7 +112,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_comboBoxVideoFrameRate.gridy = 10;
         add(comboBoxVideoFrameRate, gbc_comboBoxVideoFrameRate);
 
-        JLabel lblResolution = new JLabel("Resolution:");
+        JLabel lblResolution = new CustomLabel("Resolution:");
         GridBagConstraints gbc_lblWidth = new GridBagConstraints();
         gbc_lblWidth.insets = new Insets(0, 0, 5, 5);
         gbc_lblWidth.anchor = GridBagConstraints.EAST;
@@ -122,7 +120,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_lblWidth.gridy = 11;
         add(lblResolution, gbc_lblWidth);
 
-        comboBoxResolution = new JComboBox();
+        comboBoxResolution = new CustomComboBox();
         comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"All", "256x144", "426x144", "640x360",
             "1280x720", "1920x1080"}));
         GridBagConstraints gbc_comboBoxResolution = new GridBagConstraints();
@@ -133,7 +131,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_comboBoxResolution.gridy = 11;
         add(comboBoxResolution, gbc_comboBoxResolution);
 
-        JLabel lblDuration = new JLabel("Duration:");
+        JLabel lblDuration = new CustomLabel("Duration:");
         GridBagConstraints gbc_lblDuration = new GridBagConstraints();
         gbc_lblDuration.anchor = GridBagConstraints.EAST;
         gbc_lblDuration.insets = new Insets(0, 0, 5, 5);

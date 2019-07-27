@@ -21,9 +21,9 @@ import java.awt.*;
 public class CustomButton extends JButton {
     public CustomButton(String name) {
         super(name);
-        Color buttonColor = new Color(81, 209, 246);
+        Color buttonColor = new Color(0, 139, 139);
         setBackground(buttonColor);
-        Font fuente = new Font("Calibri", 3, 12);
+        Font fuente = new Font("Calibri", 3, 18);
         setFont(fuente);
     }
 }

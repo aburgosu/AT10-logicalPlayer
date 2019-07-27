@@ -9,9 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomPanel;
-import com.fundation.logic.view.CustomPanel2;
+import com.fundation.logic.view.*;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.DefaultComboBoxModel;
@@ -58,7 +56,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
             0.0, 0.0, 0.0, Double.MIN_VALUE};
         setLayout(gridBagLayout);
 
-        JLabel lblDateCreation = new JLabel("Date created:");
+        JLabel lblDateCreation = new CustomLabel("Date created:");
         GridBagConstraints gbc_lblDateCreation = new GridBagConstraints();
         gbc_lblDateCreation.anchor = GridBagConstraints.EAST;
         gbc_lblDateCreation.insets = new Insets(0, 0, 5, 5);
@@ -82,7 +80,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_FieldToDateCreation.gridy = 3;
         add(getFieldToDateCreation(), gbc_FieldToDateCreation);
 
-        JLabel lblDateModification = new JLabel("Date modified:");
+        JLabel lblDateModification = new CustomLabel("Date modified:");
         GridBagConstraints gbc_lblDateModification = new GridBagConstraints();
         gbc_lblDateModification.anchor = GridBagConstraints.EAST;
         gbc_lblDateModification.insets = new Insets(0, 0, 5, 5);
@@ -106,7 +104,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_FieldDateModificationTo.gridy = 4;
         add(getFieldDateModificationTo(), gbc_FieldDateModificationTo);
 
-        JLabel labelDateAccess = new JLabel("Date last accessed:");
+        JLabel labelDateAccess = new CustomLabel("Date last accessed:");
         GridBagConstraints gbc_labelDateAccess = new GridBagConstraints();
         gbc_labelDateAccess.anchor = GridBagConstraints.EAST;
         gbc_labelDateAccess.insets = new Insets(0, 0, 5, 5);
@@ -130,7 +128,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_FieldDateAccessTo.gridy = 5;
         add(getFieldDateAccessTo(), gbc_FieldDateAccessTo);
 
-        JLabel labelSize = new JLabel("Size: ");
+        JLabel labelSize = new CustomLabel("Size: ");
         GridBagConstraints gbc_labelSize = new GridBagConstraints();
         gbc_labelSize.anchor = GridBagConstraints.EAST;
         gbc_labelSize.insets = new Insets(0, 0, 5, 5);
@@ -138,7 +136,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_labelSize.gridy = 6;
         add(labelSize, gbc_labelSize);
 
-        textFieldSizeFrom = new JTextField();
+        textFieldSizeFrom = new CustomTextField();
         GridBagConstraints gbc_textFieldSizeFrom = new GridBagConstraints();
         gbc_textFieldSizeFrom.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeFrom.fill = GridBagConstraints.HORIZONTAL;
@@ -146,7 +144,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_textFieldSizeFrom.gridy = 6;
         add(getTextFieldSizeFrom(), gbc_textFieldSizeFrom);
 
-        textFieldSizeTo = new JTextField();
+        textFieldSizeTo = new CustomTextField();
         GridBagConstraints gbc_textFieldSizeTo = new GridBagConstraints();
         gbc_textFieldSizeTo.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeTo.fill = GridBagConstraints.HORIZONTAL;
@@ -154,7 +152,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_textFieldSizeTo.gridy = 6;
         add(getTextFieldSizeTo(), gbc_textFieldSizeTo);
 
-        comboBoxSizeUnit = new JComboBox();
+        comboBoxSizeUnit = new CustomComboBox();
         comboBoxSizeUnit.setModel(new DefaultComboBoxModel(new String[] {"Bytes", "KBytes", "MBytes", "GBytes"}));
         GridBagConstraints gbc_comboBoxSizeUnit = new GridBagConstraints();
         gbc_comboBoxSizeUnit.insets = new Insets(0, 0, 5, 5);
@@ -163,7 +161,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_comboBoxSizeUnit.gridy = 6;
         add(comboBoxSizeUnit, gbc_comboBoxSizeUnit);
 
-        JLabel lblMimeType = new JLabel("Mime type:");
+        JLabel lblMimeType = new CustomLabel("Mime type:");
         GridBagConstraints gbc_lblMimeType = new GridBagConstraints();
         gbc_lblMimeType.anchor = GridBagConstraints.EAST;
         gbc_lblMimeType.insets = new Insets(0, 0, 5, 5);
@@ -171,7 +169,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_lblMimeType.gridy = 7;
         add(lblMimeType, gbc_lblMimeType);
 
-        comboBoxMimeType = new JComboBox();
+        comboBoxMimeType = new CustomComboBox();
         comboBoxMimeType.setModel(new DefaultComboBoxModel(new String[] {"All","Audio", "Video", "Image", "Text",
             "Application"}));
         GridBagConstraints gbc_comboBoxMimeType = new GridBagConstraints();
@@ -182,7 +180,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_comboBoxMimeType.gridy = 7;
         add(comboBoxMimeType, gbc_comboBoxMimeType);
 
-        JLabel lblOwner = new JLabel("Owner:");
+        JLabel lblOwner = new CustomLabel("Owner:");
         GridBagConstraints gbc_lblOwner = new GridBagConstraints();
         gbc_lblOwner.anchor = GridBagConstraints.EAST;
         gbc_lblOwner.insets = new Insets(0, 0, 5, 5);
@@ -190,7 +188,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_lblOwner.gridy = 8;
         add(lblOwner, gbc_lblOwner);
 
-        textFieldOwner = new JTextField();
+        textFieldOwner = new CustomTextField();
         GridBagConstraints gbc_textFieldOwner = new GridBagConstraints();
         gbc_textFieldOwner.gridwidth = 2;
         gbc_textFieldOwner.insets = new Insets(0, 0, 5, 5);
@@ -199,7 +197,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_textFieldOwner.gridy = 8;
         add(textFieldOwner, gbc_textFieldOwner);
 
-        JLabel labelHidden = new JLabel("Hidden:");
+        JLabel labelHidden = new CustomLabel("Hidden:");
         GridBagConstraints gbc_labelHidden = new GridBagConstraints();
         gbc_labelHidden.anchor = GridBagConstraints.EAST;
         gbc_labelHidden.insets = new Insets(0, 0, 5, 5);
@@ -207,7 +205,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_labelHidden.gridy = 14;
         add(labelHidden, gbc_labelHidden);
 
-        checkBoxHidden = new JCheckBox("");
+        checkBoxHidden = new CustomCheckBox("");
         GridBagConstraints gbc_checkBoxHidden = new GridBagConstraints();
         gbc_checkBoxHidden.anchor = GridBagConstraints.WEST;
         gbc_checkBoxHidden.insets = new Insets(0, 0, 5, 5);
@@ -215,7 +213,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_checkBoxHidden.gridy = 14;
         add(checkBoxHidden, gbc_checkBoxHidden);
 
-        JLabel lblReadOnly = new JLabel("Read only:");
+        JLabel lblReadOnly = new CustomLabel("Read only:");
         GridBagConstraints gbc_lblReadOnly = new GridBagConstraints();
         gbc_lblReadOnly.anchor = GridBagConstraints.EAST;
         gbc_lblReadOnly.insets = new Insets(0, 0, 5, 5);
@@ -223,7 +221,7 @@ public class GeneralSearchPanel extends CustomPanel2 {
         gbc_lblReadOnly.gridy = 15;
         add(lblReadOnly, gbc_lblReadOnly);
 
-        checkBoxReadOnly = new JCheckBox("");
+        checkBoxReadOnly = new CustomCheckBox("");
         GridBagConstraints gbc_checkBoxReadOnly = new GridBagConstraints();
         gbc_checkBoxReadOnly.anchor = GridBagConstraints.WEST;
         gbc_checkBoxReadOnly.insets = new Insets(0, 0, 5, 5);

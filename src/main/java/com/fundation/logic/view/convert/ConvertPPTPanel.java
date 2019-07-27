@@ -49,7 +49,7 @@ public class ConvertPPTPanel extends CustomPanel2 {
      * This method show convert PPT form.
      */
     private void showPPTConvertCriteriaForm() {
-        JLabel lblNewFormat = new JLabel("New format:");
+        JLabel lblNewFormat = new CustomLabel("New format:");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
         gbc_lblNewFormat.insets = new Insets(0, 0, 5, 5);

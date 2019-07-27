@@ -9,10 +9,7 @@
  */
 package com.fundation.logic.view.convert;
 
-import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomPanel;
-import com.fundation.logic.view.CustomPanel2;
-import com.fundation.logic.view.PanelSetter;
+import com.fundation.logic.view.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -55,7 +52,7 @@ public class ConvertAudioPanel extends CustomPanel2 {
      * This method show the form to set a convert searchCriteria.
      */
     private void showAudioCriteriaConvertForm() {
-        JLabel lblNewFormat = new JLabel("New format:");
+        JLabel lblNewFormat = new CustomLabel("New format:");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
         gbc_lblNewFormat.insets = new Insets(0, 0, 5, 5);
@@ -63,7 +60,7 @@ public class ConvertAudioPanel extends CustomPanel2 {
         gbc_lblNewFormat.gridy = 4;
         add(lblNewFormat, gbc_lblNewFormat);
 
-        comboBoxNewFormat = new JComboBox();
+        comboBoxNewFormat = new CustomComboBox();
         comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"MP3", "WAV", "AIFF", "WMA", "FLAC"}));
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
@@ -72,7 +69,7 @@ public class ConvertAudioPanel extends CustomPanel2 {
         gbc_comboBoxNewFormat.gridy = 4;
         add(comboBoxNewFormat, gbc_comboBoxNewFormat);
 
-        JLabel lblCodec = new JLabel("Codec:");
+        JLabel lblCodec = new CustomLabel("Codec:");
         GridBagConstraints gbc_lblCodec = new GridBagConstraints();
         gbc_lblCodec.anchor = GridBagConstraints.EAST;
         gbc_lblCodec.insets = new Insets(0, 0, 5, 5);
@@ -80,7 +77,7 @@ public class ConvertAudioPanel extends CustomPanel2 {
         gbc_lblCodec.gridy = 5;
         add(lblCodec, gbc_lblCodec);
 
-        comboBoxCodec = new JComboBox();
+        comboBoxCodec = new CustomComboBox();
         comboBoxCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "MP3", "WACPack", "AAC", "WMA",
             "Vorbis", "FLAC"}));
         GridBagConstraints gbc_comboBoxCodec = new GridBagConstraints();
@@ -90,7 +87,7 @@ public class ConvertAudioPanel extends CustomPanel2 {
         gbc_comboBoxCodec.gridy = 5;
         add(comboBoxCodec, gbc_comboBoxCodec);
 
-        JLabel lblBit = new JLabel("Bitrate:");
+        JLabel lblBit = new CustomLabel("Bitrate:");
         GridBagConstraints gbc_lblBit = new GridBagConstraints();
         gbc_lblBit.anchor = GridBagConstraints.EAST;
         gbc_lblBit.insets = new Insets(0, 0, 5, 5);
@@ -98,7 +95,7 @@ public class ConvertAudioPanel extends CustomPanel2 {
         gbc_lblBit.gridy = 6;
         add(lblBit, gbc_lblBit);
 
-        comboBoxBit = new JComboBox();
+        comboBoxBit = new CustomComboBox();
         comboBoxBit.setModel(new DefaultComboBoxModel(new String[]{"Default", "128000"}));
         GridBagConstraints gbc_comboBoxBit = new GridBagConstraints();
         gbc_comboBoxBit.insets = new Insets(0, 0, 5, 0);
@@ -107,7 +104,7 @@ public class ConvertAudioPanel extends CustomPanel2 {
         gbc_comboBoxBit.gridy = 6;
         add(comboBoxBit, gbc_comboBoxBit);
 
-        JLabel lblChannel = new JLabel("Channel:");
+        JLabel lblChannel = new CustomLabel("Channel:");
         GridBagConstraints gbc_lblChannel = new GridBagConstraints();
         gbc_lblChannel.anchor = GridBagConstraints.EAST;
         gbc_lblChannel.insets = new Insets(0, 0, 5, 5);
@@ -115,7 +112,7 @@ public class ConvertAudioPanel extends CustomPanel2 {
         gbc_lblChannel.gridy = 7;
         add(lblChannel, gbc_lblChannel);
 
-        comboBoxChannel = new JComboBox();
+        comboBoxChannel = new CustomComboBox();
         comboBoxChannel.setModel(new DefaultComboBoxModel(new String[]{"Default", "1", "2", "5.1", "7.1"}));
         GridBagConstraints gbc_comboBoxChannel = new GridBagConstraints();
         gbc_comboBoxChannel.insets = new Insets(0, 0, 5, 0);

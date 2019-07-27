@@ -9,7 +9,7 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.Color;
 
 /**
@@ -21,7 +21,8 @@ import java.awt.Color;
 public class CustomPanel extends JPanel {
     public CustomPanel() {
         super();
-        Color panelColor = new Color(26, 243, 112);
+        Color panelColor = new Color(60, 63, 65);
         setBackground(panelColor);
+        setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
     }
 }

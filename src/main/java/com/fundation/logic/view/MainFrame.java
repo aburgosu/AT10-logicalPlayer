@@ -48,12 +48,12 @@ public class MainFrame extends CustomJFrame {
 //        } catch(Exception e) {
 //            e.printStackTrace();
 //        }
-        mainContentPanel = new JPanel();
+        mainContentPanel = new CustomPanel2();
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));
-        mainContentPanel.setBackground(new Color(42, 135, 77));
+        //mainContentPanel.setBackground(new Color(42, 135, 77));
 
-        JSplitPane mainSplitPanel = new JSplitPane();
+        JSplitPane mainSplitPanel = new CustomSplitPanel();
         mainSplitPanel.setDividerLocation(getWidth()/2);
         mainSplitPanel.setEnabled(false);
         mainContentPanel.add(mainSplitPanel, BorderLayout.CENTER);
