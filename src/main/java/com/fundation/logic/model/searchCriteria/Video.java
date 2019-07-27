@@ -18,9 +18,10 @@ package com.fundation.logic.model.searchCriteria;
 public class Video extends Multimedia {
     private String videoCodec;
     private String frameRate;
-    private int width;
-    private int height;
-
+    private String width;
+    private String height;
+    private String durationFrom;
+    private String durationTo;
     /**
      * @return Video Codec.
      */
@@ -52,35 +53,60 @@ public class Video extends Multimedia {
     /**
      * @return Width.
      */
-    public int getWidth() {
+    public String getWidth() {
         return width;
     }
 
     /**
      * Set Width.
      */
-    public void setWidth(int width) {
+    public void setWidth(String width) {
         this.width = width;
     }
 
     /**
      * @return Heigth.
      */
-    public int getHeight() {
+    public String getHeight() {
         return height;
     }
 
     /**
      * Set Audio Height.
      */
-    public void setHeight(int height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
     /**
-     * Equals override to compare two video searchCriteria.
+     * Set Audio Height.
+     */
+    public void setDurationFrom(String durationFrom) {
+        this.durationFrom = durationFrom;
+    }
+
+    public void setDurationTo(String durationTo) {
+        this.durationTo = durationTo;
+    }
+
+    /**
+     * @return durationFrom.
+     */
+    public String getDurationfrom() {
+        return durationFrom;
+    }
+
+    /**
+     * @return durationFrom.
+     */
+    public String getDurationTo() {
+        return durationTo;
+    }
+
+    /**
+     * Equals override to compare two video criteria.
      * @param criteria - Criteria to be compare with.
-     * @return True if two searchCriteria are equal.
+     * @return True if two criteria are equal.
      */
     public boolean equals(Criteria criteria) {
         try {
