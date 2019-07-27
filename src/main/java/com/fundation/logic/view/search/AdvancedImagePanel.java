@@ -140,7 +140,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
         add(lblColorSpaceData, gbc_ColorSpaceData);
 
         comboBoxColorSpaceData = new CustomComboBox();
-        comboBoxColorSpaceData.setModel(new DefaultComboBoxModel(new String[]{"All", "RGB", "MCY", "RG", "CMYK",}));
+        comboBoxColorSpaceData.setModel(new DefaultComboBoxModel(new String[]{"All", "RGB","sRGB", "MCY", "RG", "CMYK",}));
         GridBagConstraints gbc_ComboBoxColorSpaceData = new GridBagConstraints();
         gbc_ComboBoxColorSpaceData.insets = new Insets(0, 0, 5, 0);
         gbc_ComboBoxColorSpaceData.fill = GridBagConstraints.HORIZONTAL;
