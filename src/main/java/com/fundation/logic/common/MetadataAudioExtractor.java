@@ -135,6 +135,8 @@ public class MetadataAudioExtractor {
 
     /**
      * This method returns metadata sample rate.
+     * @param string
+     * @return searchSampreRate
      */
     public static String getSearchSampleRate() {
         return searchSampleRate;
@@ -142,6 +144,8 @@ public class MetadataAudioExtractor {
 
     /**
      * This method search duration.
+     * @param string
+     * @return void
      */
     public void duration(String duration) {
         String validatorDuration = duration.substring(0, 8);
@@ -161,15 +165,17 @@ public class MetadataAudioExtractor {
 
     /**
      * This method returns metadata list.
+     * @return list
+     * @param List
      */
     public static List<String> getSearchListMetadata() {
         return list;
     }
-
+    
     /**
-     * This method return duration in decimal.
-     *
-     * @return
+     * Return duration from the metadata.
+     * @return searchDuration
+     * @param List
      */
     public static Float getSearchDuration() {
         return searchDuration;
