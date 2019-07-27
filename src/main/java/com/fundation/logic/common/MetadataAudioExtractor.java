@@ -10,7 +10,6 @@
 package com.fundation.logic.common;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -28,7 +27,8 @@ public class MetadataAudioExtractor {
     private static String searchAudioCodec;
     private static String searchMimeType;
     private static String searchSampleRate;
-    private List<String> list;
+    private static List<String> list;
+    private static Float searchDuration;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -48,9 +48,9 @@ public class MetadataAudioExtractor {
             while ((metadata = stdInput.readLine()) != null) {
                 audioChannel(metadata);
                 audioCodec(metadata);
-                mimeType(metadata);
                 sampleRAte(metadata);
                 list.add(metadata);
+                duration(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
@@ -66,10 +66,25 @@ public class MetadataAudioExtractor {
     public static void audioChannel(String channelMode) {
         if ((channelMode.contains("Channel"))) {
             if (channelMode.contains("Stereo")) {
-                searchChannelMode = "2";
+                searchChannelMode = "2.0";
             }
             if (channelMode.contains("Mono")) {
-                searchChannelMode = "1";
+                searchChannelMode = "1.0";
+            }
+            if (channelMode.contains("2.1")) {
+                searchChannelMode = "2.1";
+            }
+            if (channelMode.contains("5")) {
+                searchChannelMode = "5.0";
+            }
+            if (channelMode.contains("5.1")) {
+                searchChannelMode = "5.1";
+            }
+            if (channelMode.contains("6.1")) {
+                searchChannelMode = "6.1";
+            }
+            if (channelMode.contains("7.1")) {
+                searchChannelMode = "7.1";
             }
         }
     }
@@ -106,24 +121,6 @@ public class MetadataAudioExtractor {
     }
 
     /**
-     * This method find mime type of the audio.
-     */
-    public static void mimeType(String mimeType) {
-        if ((mimeType.contains("MIME Type"))) {
-            if (mimeType.contains("audio")) {
-                searchMimeType = "audio";
-            }
-        }
-    }
-
-    /**
-     * This method returns mime type to AudioSearch.
-     */
-    public static String searchMimeType() {
-        return searchMimeType;
-    }
-
-    /**
      * This method find metadata sample rate.
      */
     public static void sampleRAte(String sampleRate) {
@@ -132,45 +129,55 @@ public class MetadataAudioExtractor {
             int endIndex = sampleRate.length();
             int freeSpace = 2;
             sampleRate = sampleRate.substring(initIndex + freeSpace, endIndex);
-            searchSampleRate = sampleRate;
+            searchSampleRate = sampleRate+" Hz";
         }
     }
 
     /**
      * This method returns metadata sample rate.
+     * @param string
+     * @return searchSampreRate
      */
     public static String getSearchSampleRate() {
         return searchSampleRate;
     }
 
     /**
-     * This method returns duration of the audio.
+     * This method search duration.
+     * @param string
+     * @return void
      */
-    public static String getDuration(File pathFile) {
-        String duration = null;
-        try {
-            Process extractMetadata = Runtime.getRuntime().exec("thirdParty/exiftool.exe " + pathFile.toString());
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
-            while ((duration = stdInput.readLine()) != null) {
-                if ((duration.contains("Duration"))) {
-                    int initIndex = duration.indexOf(":");
-                    int endIndex = duration.length();
-                    int freeSpace = 2;
-                    int unnecesaryWords = 9;
-                    duration = duration.substring(initIndex + freeSpace, endIndex - unnecesaryWords);
-                    return duration;
-                }
-            }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+    public void duration(String duration) {
+        String validatorDuration = duration.substring(0, 8);
+        if (validatorDuration.contains("Duration")) {
+            int initIndex = duration.indexOf(":");
+            int endIndex = duration.length();
+            int freeSpace = 2;
+            Float hourToSeconds = new Float(3600);
+            Float minuteToSeconds = new Float(60);
+            duration = duration.substring(initIndex + freeSpace, endIndex);
+            Float searchHour = Float.parseFloat(duration.substring(0, 1)) * hourToSeconds;
+            Float searchMinute = Float.parseFloat(duration.substring(2, 4)) * minuteToSeconds;
+            Float searchSeconds = Float.parseFloat(duration.substring(5, 7));
+            searchDuration = (searchHour + searchMinute + searchSeconds) / 3600;
         }
-        return "There is not duration";
     }
 
     /**
      * This method returns metadata list.
+     * @return list
+     * @param List
      */
-    public List<String> getSearchListMetadata() {
+    public static List<String> getSearchListMetadata() {
         return list;
+    }
+    
+    /**
+     * Return duration from the metadata.
+     * @return searchDuration
+     * @param List
+     */
+    public static Float getSearchDuration() {
+        return searchDuration;
     }
 }

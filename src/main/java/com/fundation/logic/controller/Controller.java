@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * 
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -87,14 +87,14 @@ public class Controller {
                 String extension = foundFiles.get(index).getExtension();
                 Float size = foundFiles.get(index).getSize();
                 String sizeUnit = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-                    .getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedItem().toString();
-                size = ByteConvert.bytesConvert(size.toString(),sizeUnit);
+                        .getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedItem().toString();
+                size = ByteConvert.bytesConvert(size.toString(), sizeUnit);
                 Date creationDate = foundFiles.get(index).getCreationDate();
                 Date modificationDate = foundFiles.get(index).getModificationDate();
                 Date lastAccessDate = foundFiles.get(index).getAccessDate();
                 List<String> detailsList = foundFiles.get(index).getMetadata();
-                this.searchFrame.getTableResult().addResult(path, name, extension, size +" "+ sizeUnit,
-                    creationDate, modificationDate, lastAccessDate, detailsList);
+                this.searchFrame.getTableResult().addResult(path, name, extension, size + " " + sizeUnit,
+                        creationDate, modificationDate, lastAccessDate, detailsList);
             }
         }
     }
@@ -107,106 +107,106 @@ public class Controller {
     public Common getCommonCriteria() {
         Common criteria = new Common();
         String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath()
-            .getText();
+                .getText();
         String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName()
-            .getText();
+                .getText();
         if (fileName.length() == 0) {
             fileName = null;
         }
         String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel()
-            .getTextFieldFileType().getText();
+                .getTextFieldFileType().getText();
         if (extensionName.length() == 0) {
             extensionName = null;
         }
         String sizeUnit = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedItem().toString();
+                .getGeneralSearchPanel().getComboBoxSizeUnit().getSelectedItem().toString();
         String sizeFrom = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getTextFieldSizeFrom().getText());
+                .getGeneralSearchPanel().getTextFieldSizeFrom().getText());
         Float sizeFromF = null;
         if (sizeFrom.length() != 0) {
             sizeFromF = ByteConvert.anyConvertBytes(sizeUnit, sizeFrom);
         }
         String sizeTo = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
-            .getTextFieldSizeTo().getText());
+                .getTextFieldSizeTo().getText());
         Float sizeToF = null;
         if (sizeTo.length() != 0) {
             sizeToF = ByteConvert.anyConvertBytes(sizeUnit, sizeTo);
         }
         Date fromDateCreation = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getTextFieldFromDateCreation().getDate();
+                .getGeneralSearchPanel().getTextFieldFromDateCreation().getDate();
         if (fromDateCreation == null) {
             fromDateCreation = null;
         }
         Date toDateCreation = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getFieldToDateCreation().getDate();
+                .getGeneralSearchPanel().getFieldToDateCreation().getDate();
         if (toDateCreation == null) {
             toDateCreation = null;
         }
         Date dateAccessFrom = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getFieldDateAccessFrom().getDate();
+                .getGeneralSearchPanel().getFieldDateAccessFrom().getDate();
         if (dateAccessFrom == null) {
             dateAccessFrom = null;
         }
         Date dateAccessTo = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getFieldDateAccessTo().getDate();
+                .getGeneralSearchPanel().getFieldDateAccessTo().getDate();
         if (dateAccessTo == null) {
             dateAccessTo = null;
         }
         Date dateModificationFrom = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getFieldDateModificationFrom().getDate();
+                .getGeneralSearchPanel().getFieldDateModificationFrom().getDate();
         if (dateModificationFrom == null) {
             dateModificationFrom = null;
         }
         Date dateModificationTo = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getFieldDateModificationTo().getDate();
+                .getGeneralSearchPanel().getFieldDateModificationTo().getDate();
         if (dateModificationTo == null) {
             dateModificationTo = null;
         }
         String owner = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
-            .getTextFieldOwner().getText();
+                .getTextFieldOwner().getText();
         if (owner.length() == 0) {
             owner = null;
         }
         String mimeType = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getComboBoxMimeType().getSelectedItem().toString();
+                .getGeneralSearchPanel().getComboBoxMimeType().getSelectedItem().toString();
         if (mimeType == "All") {
             mimeType = null;
         }
         String fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getComboBoxHidden().getSelectedItem().toString();
+                .getGeneralSearchPanel().getComboBoxHidden().getSelectedItem().toString();
         String readOnly = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getComboBoxReadOnly().getSelectedItem().toString();
+                .getGeneralSearchPanel().getComboBoxReadOnly().getSelectedItem().toString();
 
         /**
          * Validates entered data.
          */
         if (!Validators.isValidPath(path)) {
             searchFrame.showPopupMessage("Information Message",
-                "The path is not correct or does not exist.");
+                    "The path is not correct or does not exist.");
         }
 
         if (fromDateCreation != null && toDateCreation != null) {
-            if(toDateCreation.before(fromDateCreation)) {
+            if (toDateCreation.before(fromDateCreation)) {
                 searchFrame.showPopupMessage("Invalid Created Date",
-                    "The date on the left must be less than the date on the right.");
+                        "The date on the left must be less than the date on the right.");
             }
         }
         if (dateModificationFrom != null && dateModificationTo != null) {
-            if(dateModificationTo.before(dateModificationFrom)) {
+            if (dateModificationTo.before(dateModificationFrom)) {
                 searchFrame.showPopupMessage("Invalid Modified Date",
-                    "The date on the left must be less than the date on the right.");
+                        "The date on the left must be less than the date on the right.");
             }
         }
-        if(dateAccessFrom != null && dateAccessTo != null){
-            if(dateAccessTo.before(dateAccessFrom)){
+        if (dateAccessFrom != null && dateAccessTo != null) {
+            if (dateAccessTo.before(dateAccessFrom)) {
                 searchFrame.showPopupMessage("Invalid Accessed Date",
-                    "The date on the left must be less than the date on the right.");
+                        "The date on the left must be less than the date on the right.");
             }
         }
         if (sizeFrom != null && sizeTo != null) {
-            if (sizeTo.compareTo(sizeFrom) < 0){
+            if (sizeTo.compareTo(sizeFrom) < 0) {
                 searchFrame.showPopupMessage("Error Message",
-                    "The size of the left must be smaller than the size of the right");
+                        "The size of the left must be smaller than the size of the right");
             }
         }
         criteria.setPath(path);
@@ -235,24 +235,24 @@ public class Controller {
     private Criteria getImageCriteria() {
         Image criteria = new Image();
         String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath()
-            .getText();
+                .getText();
         String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName()
-            .getText();
+                .getText();
         if (fileName.length() == 0) {
             fileName = null;
         }
         String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel()
-            .getTextFieldFileType().getText();
+                .getTextFieldFileType().getText();
         if (extensionName.length() == 0) {
             extensionName = null;
         }
         String width = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced()
-            .getTextFieldWidth().getText();
+                .getTextFieldWidth().getText();
         if (width.length() == 0) {
             width = "0";
         }
         String height = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced()
-            .getTextFieldHeight().getText();
+                .getTextFieldHeight().getText();
         if (height.length() == 0) {
             height = "0";
         }
@@ -265,97 +265,112 @@ public class Controller {
     }
 
     /**
-     * Get Audio searchCriteria
-     *
-     * @return Audio searchCriteria
+     * Get Audio criteria
+     * @return Audio criteria
      */
     private Criteria getAudioCriteria() {
         Audio criteria = new Audio();
-        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath()
-            .getText();
-        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName()
-            .getText();
+        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath().getText();
+        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName().getText();
         if (fileName.length() == 0) {
             fileName = null;
         }
-        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel()
-            .getTextFieldFileType().getText();
+        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldFileType().getText();
         if (extensionName.length() == 0) {
             extensionName = null;
         }
-        String channel = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced()
-            .getComboBoxAudioChannel().getSelectedItem().toString();
+        String channel = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioChannel().getSelectedItem().toString();
         if (channel.length() == 0) {
             channel = null;
         }
-        String audioCodec = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getPanelAudioAdvanced().getComboBoxAudioCodecName().getSelectedItem().toString();
+        String audioCodec = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioCodecName().getSelectedItem().toString();
         if (audioCodec.length() == 0) {
             audioCodec = null;
         }
-        String sampleRate = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getPanelAudioAdvanced().getComboBoxAudioSampleRate().getSelectedItem().toString();
+        String sampleRate = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getComboBoxAudioSampleRate().getSelectedItem().toString();
         if (sampleRate.length() == 0) {
             sampleRate = null;
         }
-        sampleRate = sampleRate.substring(0,5);
-        int sampleRateInt = Integer.parseInt(sampleRate);
-        channel = channel.substring(0, 1);
+        String endDuration = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinnerTo());
+        String initDuration = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinner());
+        int subStringFromEnd = 17;
+        int subStringFromInit = 9;
+        int init = endDuration.length() - subStringFromEnd;
+        int end = initDuration.length() - subStringFromInit;
+        endDuration = endDuration.substring(init, end);
+        initDuration = initDuration.substring(init, end);
+        criteria.setDurationTo(endDuration);
+        criteria.setDurationFrom(initDuration);
         criteria.setPath(path);
         criteria.setFileName(fileName);
         criteria.setExtension(extensionName);
-        criteria.setChannel(Integer.parseInt(channel));
+        criteria.setChannel(channel);
         criteria.setAudioCodec(audioCodec);
-        criteria.setSampleRate(sampleRateInt);
+        criteria.setSampleRate(sampleRate);
         return criteria;
     }
 
     /**
-     * Get Video searchCriteria
-     *
-     * @return Video searchCriteria
+     * Get Video criteria
+     * @return Video criteria
      */
     private Criteria getVideoCriteria() {
         Video criteria = new Video();
-        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath()
-            .getText();
-        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName()
-            .getText();
+
+        String path = searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getBasicSearchPanel().getTextFieldPath().getText();
+        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getBasicSearchPanel().getTextFileName().getText();
         if (fileName.length() == 0) {
             fileName = null;
         }
-        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel()
-            .getTextFieldFileType().getText();
+        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getBasicSearchPanel().getTextFieldFileType().getText();
         if (extensionName.length() == 0) {
             extensionName = null;
         }
-        String videoCodec = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getPanelVideoAdvanced().getComboBoxVideoCodec().getSelectedItem().toString());
+        String videoCodec = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoCodec().getSelectedItem().toString());
         if (videoCodec.length() == 0) {
             videoCodec = null;
         }
-        String audioCodec = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getPanelVideoAdvanced().getComboBoxAudioCodecName().getSelectedItem().toString());
+        String audioCodec = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxAudioCodecName()
+                .getSelectedItem().toString());
         if (audioCodec.length() == 0) {
             audioCodec = null;
         }
-        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getPanelVideoAdvanced().getComboBoxVideoFrameRate().getSelectedItem().toString());
+        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoFrameRate()
+                .getSelectedItem().toString());
         if (framerate.length() == 0) {
             framerate = null;
         }
-        String resolution = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getPanelVideoAdvanced().getComboBoxResolution().getSelectedItem().toString());
+        String resolution = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxResolution()
+                .getSelectedItem().toString());
         if (resolution.length() == 0) {
             resolution = null;
         }
+        String endDuration = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinnerTo());
+        String initDuration = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinner());
+        int subStringFromEnd = 17;
+        int subStringFromInit = 9;
+        int init = endDuration.length() - subStringFromEnd;
+        int end = endDuration.length() - subStringFromInit;
+        endDuration = endDuration.substring(init, end);
+        initDuration = initDuration.substring(init, end);
+        criteria.setDurationTo(endDuration);
+        criteria.setDurationFrom(initDuration);
         criteria.setPath(path);
         criteria.setFileName(fileName);
         criteria.setExtension(extensionName);
         criteria.setVideoCodec(videoCodec);
         criteria.setAudioCodec(audioCodec);
         criteria.setFrameRate(framerate);
-        criteria.setHeight(Integer.parseInt(resolution.substring(resolution.indexOf("x") + 1)));
+        criteria.setHeight(resolution);
         return criteria;
     }
 
@@ -364,27 +379,30 @@ public class Controller {
      */
     public void setEvents() {
         searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
-            .getSearchButton().addActionListener(e -> {
-                searchFrame.getTableResult().clearTableResult();
-                showSearchResult(COMMON_SEARCH);
-            });
+                .getSearchButton().addActionListener(e -> {
+            searchFrame.getTableResult().clearTableResult();
+            showSearchResult(COMMON_SEARCH);
+        });
         searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced()
-            .getBtnSearchAdvanceVideoPanel().addActionListener(e -> {
-                searchFrame.getTableResult().clearTableResult();
-                showSearchResult(VIDEO_SEARCH);
-            });
+                .getBtnSearchAdvanceVideoPanel().addActionListener(e -> {
+            searchFrame.getTableResult().clearTableResult();
+            showSearchResult(VIDEO_SEARCH);
+        });
         searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced()
-            .getBtnSearchAdvanceAudio().addActionListener(e -> {
-                searchFrame.getTableResult().clearTableResult();
-                showSearchResult(AUDIO_SEARCH);
-            });
+                .getBtnSearchAdvanceAudio().addActionListener(e -> {
+            searchFrame.getTableResult().clearTableResult();
+            showSearchResult(AUDIO_SEARCH);
+        });
         searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced()
-            .getBtnSearchAdvanceImage().addActionListener(e -> {
-                searchFrame.getTableResult().clearTableResult();
-                showSearchResult(IMAGE_SEARCH);
-            });
+                .getBtnSearchAdvanceImage().addActionListener(e -> {
+            searchFrame.getTableResult().clearTableResult();
+            showSearchResult(IMAGE_SEARCH);
+        });
     }
 
+    /**
+     * send the showLoad Save data.
+     */
     public void showLoadSaveData() {
         searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().clearTableResult();
         List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();

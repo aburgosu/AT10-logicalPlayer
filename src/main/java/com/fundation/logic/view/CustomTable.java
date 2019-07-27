@@ -29,7 +29,7 @@ public class CustomTable extends JTable {
         Color tableColor = new Color(43,43,43);
         setBackground(tableColor);
         setForeground(Color.WHITE);
-        getTableHeader().setBackground(Color.RED);
+        getTableHeader().setBackground(Color.cyan);
         setGridColor(Color.BLACK);
 
 

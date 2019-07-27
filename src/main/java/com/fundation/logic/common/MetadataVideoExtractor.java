@@ -27,7 +27,12 @@ public class MetadataVideoExtractor {
     static String searchAudioCodec;
     static String searchVideoCodec;
     static String searchHeight;
-    private List<String> list;
+    private static List<String> list;
+    private Float searchHour;
+    private Float searchMinute;
+    private Float searchSeconds;
+    private static Float searchDuration;
+    static String searchMimeType;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -35,11 +40,11 @@ public class MetadataVideoExtractor {
     }
 
     /**
-     * This method read all metadata.
-     *
-     * @return
+     * This method get all metadata and set in each method for get a specific metadata.
+     * @return void
+     * @param list
      */
-    public String readAll() {
+    public void readAll() {
         String metadata = null;
         list = new ArrayList<>();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
@@ -50,19 +55,34 @@ public class MetadataVideoExtractor {
                 getHeight(metadata);
                 getVideoAudioCodec(metadata);
                 list.add(metadata);
+                duration(metadata);
+                mimeType(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "Metadata No available";
+    }
+
+    /**
+     * This method get all metadata and set in each method for get a specific metadata.
+     * @return void
+     * @param searchMimeType
+     */
+    public static void mimeType(String mimeType) {
+        if ((mimeType.contains("MIME Type"))) {
+            if (mimeType.contains("video")) {
+                searchMimeType = "Video";
+            }
+
+        }
     }
 
     /**
      * This method search metadata frame rate.
-     *
-     * @return
+     * @return void
+     * @param searchFrameRate
      */
     public void frameRate(String frameRate) {
         if ((frameRate.contains("Frame Rate"))) {
@@ -80,6 +100,8 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata resolution.
+     * @return void
+     * @param searchHeight
      */
     public void getHeight(String height) {
         if ((height.contains("Image Height"))) {
@@ -92,7 +114,9 @@ public class MetadataVideoExtractor {
     }
 
     /**
-     * This method search video codec.
+     * This method search metadata video codec.
+     * @return void
+     * @param searchVideoCodec
      */
     public void getVideoCodec(String videoCodec) {
         if (videoCodec.contains("Video Codec")) {
@@ -112,7 +136,9 @@ public class MetadataVideoExtractor {
     }
 
     /**
-     * This method seach video audio codec.
+     * This method search metadata audio codec.
+     * @return void
+     * @param searchVideoCodec
      */
     public void getVideoAudioCodec(String videoAudioCodec) {
         if (videoAudioCodec.contains("Audio Codec")) {
@@ -136,8 +162,29 @@ public class MetadataVideoExtractor {
     }
 
     /**
+     * This method search metadata duration.
+     * @return void
+     * @param searchVideoCodec
+     */
+    public void duration(String duration) {
+        String validatorDuration = duration.substring(0, 8);
+        if (validatorDuration.contains("Duration")) {
+            int initIndex = duration.indexOf(":");
+            int endIndex = duration.length();
+            int freeSpace = 2;
+            Float hourToSeconds = new Float(3600);
+            Float minuteToSeconds = new Float(60);
+            duration = duration.substring(initIndex + freeSpace, endIndex);
+            searchHour = Float.parseFloat(duration.substring(0, 1)) * hourToSeconds;
+            searchMinute = Float.parseFloat(duration.substring(2, 4)) * minuteToSeconds;
+            searchSeconds = Float.parseFloat(duration.substring(5, 7));
+            searchDuration = (searchHour + searchMinute + searchSeconds) / 3600;
+        }
+    }
+
+    /**
      * This method return frame rate.
-     * @return
+     * @return searchFrameRate
      */
     public static String getSearchFrameRate() {
         return searchFrameRate;
@@ -145,7 +192,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return audio codec.
-     * @return
+     * @return searchAudioCodec
      */
     public static String getSearchAudioCodec() {
         return searchAudioCodec;
@@ -153,7 +200,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return video codec.
-     * @return
+     * @return searchVideoCodec
      */
     public static String getSearchVideoCodec() {
         return searchVideoCodec;
@@ -161,7 +208,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return image size.
-     * @return
+     * @return searchHeight
      */
     public static String getSearchHeight() {
         return searchHeight;
@@ -169,9 +216,25 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return metadata list.
-     * @return
+     * @return list
      */
-    public List<String> getSearchListMetadata() {
+    public static List<String> getSearchListMetadata() {
         return list;
+    }
+
+    /**
+     * This method return duration in decimal.
+     * @return searchDuration
+     */
+    public static Float getSearchDuration() {
+        return searchDuration;
+    }
+
+    /**
+     * This method return mime type to CommonSearch.
+     * @return searchMimeType
+     */
+    public static String getSearchMimeType() {
+        return searchMimeType;
     }
 }
