@@ -40,10 +40,9 @@ public class MetadataVideoExtractor {
     }
 
     /**
-     * This method read all metadata.
-     * @return
+     * This method get all metadata and set in each method for get a specific metadata.
      */
-    public String readAll() {
+    public void readAll() {
         String metadata = null;
         list = new ArrayList<>();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
@@ -62,12 +61,10 @@ public class MetadataVideoExtractor {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "Metadata No available";
     }
 
     /**
-     * This method read mime type.
-     * @return
+     * This method search and get metadata mime type.
      */
     public static void mimeType(String mimeType) {
         if ((mimeType.contains("MIME Type"))) {
@@ -80,7 +77,6 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata frame rate.
-     * @return
      */
     public void frameRate(String frameRate) {
         if ((frameRate.contains("Frame Rate"))) {
