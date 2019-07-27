@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- *
+ * 
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -27,7 +27,11 @@ public class MetadataVideoExtractor {
     static String searchAudioCodec;
     static String searchVideoCodec;
     static String searchHeight;
-    private List<String> list;
+    private static List<String> list;
+    private Float searchHour;
+    private Float searchMinute;
+    private Float searchSeconds;
+    private static Float searchDuration;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -50,6 +54,7 @@ public class MetadataVideoExtractor {
                 getHeight(metadata);
                 getVideoAudioCodec(metadata);
                 list.add(metadata);
+                duration(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
@@ -136,6 +141,25 @@ public class MetadataVideoExtractor {
     }
 
     /**
+     * This method search duration.
+     */
+    public void duration(String duration) {
+        String validatorDuration = duration.substring(0, 8);
+        if (validatorDuration.contains("Duration")) {
+            int initIndex = duration.indexOf(":");
+            int endIndex = duration.length();
+            int freeSpace = 2;
+            Float hourToSeconds = new Float(3600);
+            Float minuteToSeconds = new Float(60);
+            duration = duration.substring(initIndex + freeSpace, endIndex);
+            searchHour = Float.parseFloat(duration.substring(0, 1)) * hourToSeconds;
+            searchMinute = Float.parseFloat(duration.substring(2, 4)) * minuteToSeconds;
+            searchSeconds = Float.parseFloat(duration.substring(5, 7));
+            searchDuration = (searchHour + searchMinute + searchSeconds) / 3600;
+        }
+    }
+
+    /**
      * This method return frame rate.
      * @return
      */
@@ -171,7 +195,15 @@ public class MetadataVideoExtractor {
      * This method return metadata list.
      * @return
      */
-    public List<String> getSearchListMetadata() {
+    public static List<String> getSearchListMetadata() {
         return list;
+    }
+
+    /**
+     * This method return duration in decimal.
+     * @return
+     */
+    public static Float getSearchDuration() {
+        return searchDuration;
     }
 }
