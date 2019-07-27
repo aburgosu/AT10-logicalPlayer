@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * <p>
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -10,7 +10,6 @@
 package com.fundation.logic.common;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -49,7 +48,6 @@ public class MetadataAudioExtractor {
             while ((metadata = stdInput.readLine()) != null) {
                 audioChannel(metadata);
                 audioCodec(metadata);
-                mimeType(metadata);
                 sampleRAte(metadata);
                 list.add(metadata);
                 duration(metadata);
@@ -68,10 +66,25 @@ public class MetadataAudioExtractor {
     public static void audioChannel(String channelMode) {
         if ((channelMode.contains("Channel"))) {
             if (channelMode.contains("Stereo")) {
-                searchChannelMode = "2";
+                searchChannelMode = "2.0";
             }
             if (channelMode.contains("Mono")) {
-                searchChannelMode = "1";
+                searchChannelMode = "1.0";
+            }
+            if (channelMode.contains("2.1")) {
+                searchChannelMode = "2.1";
+            }
+            if (channelMode.contains("5")) {
+                searchChannelMode = "5.0";
+            }
+            if (channelMode.contains("5.1")) {
+                searchChannelMode = "5.1";
+            }
+            if (channelMode.contains("6.1")) {
+                searchChannelMode = "6.1";
+            }
+            if (channelMode.contains("7.1")) {
+                searchChannelMode = "7.1";
             }
         }
     }
@@ -108,24 +121,6 @@ public class MetadataAudioExtractor {
     }
 
     /**
-     * This method find mime type of the audio.
-     */
-    public static void mimeType(String mimeType) {
-        if ((mimeType.contains("MIME Type"))) {
-            if (mimeType.contains("audio")) {
-                searchMimeType = "audio";
-            }
-        }
-    }
-
-    /**
-     * This method returns mime type to AudioSearch.
-     */
-    public static String searchMimeType() {
-        return searchMimeType;
-    }
-
-    /**
      * This method find metadata sample rate.
      */
     public static void sampleRAte(String sampleRate) {
@@ -134,7 +129,7 @@ public class MetadataAudioExtractor {
             int endIndex = sampleRate.length();
             int freeSpace = 2;
             sampleRate = sampleRate.substring(initIndex + freeSpace, endIndex);
-            searchSampleRate = sampleRate;
+            searchSampleRate = sampleRate+" Hz";
         }
     }
 
