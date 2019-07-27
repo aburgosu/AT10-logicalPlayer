@@ -52,7 +52,7 @@ public class VideoSearch implements ISearch {
      * @return Complete list of found items according on criteria's path.
      */
     public List searchInPath(String path) {
-        List<CustomizedFile> videoSearchResult = new ArrayList<>();
+        List<CustomizedFile> videoSearchResult = new ArrayList<CustomizedFile>();
         File file = new File(path);
         String criteriaFileName = videoCriteria.getFileName();
         String criteriaExtension = videoCriteria.getExtension();

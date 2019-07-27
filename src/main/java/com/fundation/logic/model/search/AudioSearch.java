@@ -52,7 +52,7 @@ public class AudioSearch implements ISearch {
      * @return Complete list of found items according on criteria's path.
      */
     public List searchInPath(String path) {
-        List<CustomizedFile> audioSearchResult = new ArrayList<>();
+        List<CustomizedFile> audioSearchResult = new ArrayList<CustomizedFile>();
         File file = new File(path);
         String criteriaFileName = audioCriteria.getFileName();
         String criteriaExtension = audioCriteria.getExtension();
