@@ -9,22 +9,19 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JButton;
+import javax.swing.JSplitPane;
 import java.awt.Color;
-import java.awt.Font;
 
 /**
- * Implements CustomButton class.
+ * Implements CustomSplitPanel class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomButton extends JButton {
-    public CustomButton(String name) {
-        super(name);
-        Color buttonColor = new Color(0, 139, 139);
-        setBackground(buttonColor);
-        Font fuente = new Font("Calibri", 3, 18);
-        setFont(fuente);
+public class CustomSplitPanel extends JSplitPane {
+    public CustomSplitPanel() {
+        super();
+        Color panelColor = new Color(16, 151, 152);
+        setBackground(panelColor);
     }
 }

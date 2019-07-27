@@ -9,7 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
-import javax.swing.JTabbedPane;
+import com.fundation.logic.view.CustomTab;
 
 /**
  * Implements the tabs of different options.
@@ -17,7 +17,7 @@ import javax.swing.JTabbedPane;
  * @author Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class SearchAdvanceTab extends JTabbedPane {
+public class SearchAdvanceTab extends CustomTab {
     private GeneralSearchPanel generalSearchPanel;
     private AdvancedVideoPanel panelVideoAdvanced;
     private AdvancedImagePanel panelImageAdvanced;

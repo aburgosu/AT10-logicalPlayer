@@ -9,22 +9,22 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JButton;
+import javax.swing.JTable;
 import java.awt.Color;
-import java.awt.Font;
 
 /**
- * Implements CustomButton class.
+ * Implements CustomTable class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomButton extends JButton {
-    public CustomButton(String name) {
-        super(name);
-        Color buttonColor = new Color(0, 139, 139);
-        setBackground(buttonColor);
-        Font fuente = new Font("Calibri", 3, 18);
-        setFont(fuente);
+public class CustomTable extends JTable {
+    public CustomTable() {
+        super();
+        Color tableColor = new Color(43,43,43);
+        setBackground(tableColor);
+        setForeground(Color.WHITE);
+        getTableHeader().setBackground(Color.RED);
+        setGridColor(Color.BLACK);
     }
 }

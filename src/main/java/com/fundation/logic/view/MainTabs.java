@@ -22,7 +22,7 @@ import javax.swing.JTabbedPane;
  * @author Andres Burgos, Jesus Menacho
  * @version 1.0
  */
-public class MainTabs extends JTabbedPane {
+public class MainTabs extends CustomTab {
     private GeneralSearchPanel generalSearchPanel;
     private LoadSavePanel loadSavePanel;
     private SearchSplitPanel splitPanelSearch;

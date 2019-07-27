@@ -9,9 +9,10 @@
  */
 package com.fundation.logic.view.loadSaveCriteria;
 
+import com.fundation.logic.view.CustomPanelSecond;
 import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
+import com.fundation.logic.view.CustomLabel;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.JButton;
@@ -26,7 +27,7 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class SearchByDate extends CustomPanel {
+public class SearchByDate extends CustomPanelSecond {
     private PanelSetter settingPanel;
     private CustomButton btnFilterByDate;
     private JDateChooser fieldDateFirstDate;
@@ -52,7 +53,7 @@ public class SearchByDate extends CustomPanel {
      * This method is responsible for displaying the content of BasicSearchPanel.
      */
     private void contentBasicSearch() {
-        JLabel title = new JLabel("Search Criteria");
+        JLabel title = new CustomLabel("Search Criteria");
         title.setFont(new Font("Arial", Font.PLAIN, 14));
         GridBagConstraints gbc_lblVideo = new GridBagConstraints();
         gbc_lblVideo.gridwidth = 7;
@@ -61,7 +62,7 @@ public class SearchByDate extends CustomPanel {
         gbc_lblVideo.gridy = 0;
         add(title, gbc_lblVideo);
 
-        JLabel lblPath = new JLabel("Date saved:");
+        JLabel lblPath = new CustomLabel("Date saved:");
         GridBagConstraints gbc_lblPath = new GridBagConstraints();
         gbc_lblPath.anchor = GridBagConstraints.EAST;
         gbc_lblPath.insets = new Insets(0, 0, 5, 5);

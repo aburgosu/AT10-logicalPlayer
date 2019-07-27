@@ -9,21 +9,24 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.BorderFactory;
 import java.awt.Color;
+import java.awt.Font;
 
 /**
- * Implements CustomPanel class.
+ * Implements CustomTab class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomPanel extends JPanel {
-    public CustomPanel() {
+public class CustomTab extends JTabbedPane {
+    public CustomTab() {
         super();
-        Color panelColor = new Color(60, 63, 65);
-        setBackground(panelColor);
-        setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(43, 43, 43)));
+        Color tabColor = new Color(32, 178, 170);
+        setBackground(tabColor);
+        Font font = new Font("Arial", 3, 15);
+        setFont(font);
+        setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(0,139,139)));
     }
 }

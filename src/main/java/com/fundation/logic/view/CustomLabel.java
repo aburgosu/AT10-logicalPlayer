@@ -9,22 +9,19 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JButton;
-import java.awt.Color;
+import javax.swing.JLabel;
 import java.awt.Font;
 
 /**
- * Implements CustomButton class.
+ * Implements CustomLabel class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomButton extends JButton {
-    public CustomButton(String name) {
+public class CustomLabel extends JLabel {
+    public CustomLabel(String name) {
         super(name);
-        Color buttonColor = new Color(0, 139, 139);
-        setBackground(buttonColor);
-        Font fuente = new Font("Calibri", 3, 18);
-        setFont(fuente);
+        Font font = new Font("Agency FB",3, 20);
+        setFont(font);
     }
 }

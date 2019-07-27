@@ -9,8 +9,12 @@
  */
 package com.fundation.logic.view.search;
 
+import com.fundation.logic.view.CustomPanelSecond;
 import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomPanel;
+import com.fundation.logic.view.CustomCheckBox;
+import com.fundation.logic.view.CustomLabel;
+import com.fundation.logic.view.CustomComboBox;
+import com.fundation.logic.view.CustomTextField;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.DefaultComboBoxModel;
@@ -34,7 +38,7 @@ import javax.swing.InputMap;
  * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class GeneralSearchPanel extends CustomPanel {
+public class GeneralSearchPanel extends CustomPanelSecond {
     private JTextField textFieldOwner;
     private JDateChooser fieldToDateCreation;
     private JDateChooser textFieldFromDateCreation;
@@ -45,8 +49,11 @@ public class GeneralSearchPanel extends CustomPanel {
     private JTextField textFieldSizeFrom;
     private JTextField textFieldSizeTo;
     private CustomButton btnSearch;
+    private CustomButton btnSave;
     private JComboBox comboBoxReadOnly;
     private JComboBox comboBoxHidden;
+    private JCheckBox checkBoxReadOnly;
+    private JCheckBox checkBoxHidden;
     private JComboBox comboBoxSizeUnit;
     private JComboBox comboBoxMimeType;
 
@@ -62,7 +69,7 @@ public class GeneralSearchPanel extends CustomPanel {
             0.0, 0.0, 0.0, Double.MIN_VALUE};
         setLayout(gridBagLayout);
 
-        JLabel lblDateCreation = new JLabel("Date created:");
+        JLabel lblDateCreation = new CustomLabel("Date created:");
         GridBagConstraints gbc_lblDateCreation = new GridBagConstraints();
         gbc_lblDateCreation.anchor = GridBagConstraints.EAST;
         gbc_lblDateCreation.insets = new Insets(0, 0, 5, 5);
@@ -86,7 +93,7 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_FieldToDateCreation.gridy = 3;
         add(getFieldToDateCreation(), gbc_FieldToDateCreation);
 
-        JLabel lblDateModification = new JLabel("Date modified:");
+        JLabel lblDateModification = new CustomLabel("Date modified:");
         GridBagConstraints gbc_lblDateModification = new GridBagConstraints();
         gbc_lblDateModification.anchor = GridBagConstraints.EAST;
         gbc_lblDateModification.insets = new Insets(0, 0, 5, 5);
@@ -110,7 +117,7 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_FieldDateModificationTo.gridy = 4;
         add(getFieldDateModificationTo(), gbc_FieldDateModificationTo);
 
-        JLabel labelDateAccess = new JLabel("Date last accessed:");
+        JLabel labelDateAccess = new CustomLabel("Date last accessed:");
         GridBagConstraints gbc_labelDateAccess = new GridBagConstraints();
         gbc_labelDateAccess.anchor = GridBagConstraints.EAST;
         gbc_labelDateAccess.insets = new Insets(0, 0, 5, 5);
@@ -134,7 +141,7 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_FieldDateAccessTo.gridy = 5;
         add(getFieldDateAccessTo(), gbc_FieldDateAccessTo);
 
-        JLabel labelSize = new JLabel("Size: ");
+        JLabel labelSize = new CustomLabel("Size: ");
         GridBagConstraints gbc_labelSize = new GridBagConstraints();
         gbc_labelSize.anchor = GridBagConstraints.EAST;
         gbc_labelSize.insets = new Insets(0, 0, 5, 5);
@@ -142,7 +149,7 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_labelSize.gridy = 6;
         add(labelSize, gbc_labelSize);
 
-        textFieldSizeFrom = new JTextField();
+        textFieldSizeFrom = new CustomTextField();
         GridBagConstraints gbc_textFieldSizeFrom = new GridBagConstraints();
         gbc_textFieldSizeFrom.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeFrom.fill = GridBagConstraints.HORIZONTAL;
@@ -160,7 +167,7 @@ public class GeneralSearchPanel extends CustomPanel {
             }
         });
 
-        textFieldSizeTo = new JTextField();
+        textFieldSizeTo = new CustomTextField();
         GridBagConstraints gbc_textFieldSizeTo = new GridBagConstraints();
         gbc_textFieldSizeTo.insets = new Insets(0, 0, 5, 5);
         gbc_textFieldSizeTo.fill = GridBagConstraints.HORIZONTAL;
@@ -178,7 +185,7 @@ public class GeneralSearchPanel extends CustomPanel {
             }
         });
 
-        comboBoxSizeUnit = new JComboBox();
+        comboBoxSizeUnit = new CustomComboBox();
         comboBoxSizeUnit.setModel(new DefaultComboBoxModel(new String[] {"Bytes", "KBytes", "MBytes", "GBytes"}));
         GridBagConstraints gbc_comboBoxSizeUnit = new GridBagConstraints();
         gbc_comboBoxSizeUnit.insets = new Insets(0, 0, 5, 5);
@@ -186,8 +193,8 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_comboBoxSizeUnit.gridx = 4;
         gbc_comboBoxSizeUnit.gridy = 6;
         add(comboBoxSizeUnit, gbc_comboBoxSizeUnit);
-        
-        JLabel lblMimeType = new JLabel("Mime type:");
+
+        JLabel lblMimeType = new CustomLabel("Mime type:");
         GridBagConstraints gbc_lblMimeType = new GridBagConstraints();
         gbc_lblMimeType.anchor = GridBagConstraints.EAST;
         gbc_lblMimeType.insets = new Insets(0, 0, 5, 5);
@@ -195,7 +202,7 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_lblMimeType.gridy = 7;
         add(lblMimeType, gbc_lblMimeType);
 
-        comboBoxMimeType = new JComboBox();
+        comboBoxMimeType = new CustomComboBox();
         comboBoxMimeType.setModel(new DefaultComboBoxModel(new String[] {"All","Audio", "Video", "Image", "Text",
             "Application"}));
         GridBagConstraints gbc_comboBoxMimeType = new GridBagConstraints();
@@ -206,7 +213,7 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_comboBoxMimeType.gridy = 7;
         add(comboBoxMimeType, gbc_comboBoxMimeType);
 
-        JLabel lblOwner = new JLabel("Owner:");
+        JLabel lblOwner = new CustomLabel("Owner:");
         GridBagConstraints gbc_lblOwner = new GridBagConstraints();
         gbc_lblOwner.anchor = GridBagConstraints.EAST;
         gbc_lblOwner.insets = new Insets(0, 0, 5, 5);
@@ -214,7 +221,7 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_lblOwner.gridy = 8;
         add(lblOwner, gbc_lblOwner);
 
-        textFieldOwner = new JTextField();
+        textFieldOwner = new CustomTextField();
         GridBagConstraints gbc_textFieldOwner = new GridBagConstraints();
         gbc_textFieldOwner.gridwidth = 2;
         gbc_textFieldOwner.insets = new Insets(0, 0, 5, 5);
@@ -223,13 +230,21 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_textFieldOwner.gridy = 8;
         add(textFieldOwner, gbc_textFieldOwner);
 
-        JLabel labelHidden = new JLabel("Hidden:");
+        JLabel labelHidden = new CustomLabel("Hidden:");
         GridBagConstraints gbc_labelHidden = new GridBagConstraints();
         gbc_labelHidden.anchor = GridBagConstraints.EAST;
         gbc_labelHidden.insets = new Insets(0, 0, 5, 5);
         gbc_labelHidden.gridx = 1;
         gbc_labelHidden.gridy = 14;
         add(labelHidden, gbc_labelHidden);
+
+        checkBoxHidden = new CustomCheckBox("");
+        GridBagConstraints gbc_checkBoxHidden = new GridBagConstraints();
+        gbc_checkBoxHidden.anchor = GridBagConstraints.WEST;
+        gbc_checkBoxHidden.insets = new Insets(0, 0, 5, 5);
+        gbc_checkBoxHidden.gridx = 2;
+        gbc_checkBoxHidden.gridy = 14;
+        add(checkBoxHidden, gbc_checkBoxHidden);
 
         comboBoxHidden = new JComboBox();
         comboBoxHidden.setModel(new DefaultComboBoxModel(new String[] {"All", "Only hidden", "All but hidden"}));
@@ -240,13 +255,21 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_comboBoxHidden.gridy = 14;
         add(comboBoxHidden, gbc_comboBoxHidden);
 
-        JLabel lblReadOnly = new JLabel("Read only:");
+        JLabel lblReadOnly = new CustomLabel("Read only:");
         GridBagConstraints gbc_lblReadOnly = new GridBagConstraints();
         gbc_lblReadOnly.anchor = GridBagConstraints.EAST;
         gbc_lblReadOnly.insets = new Insets(0, 0, 5, 5);
         gbc_lblReadOnly.gridx = 1;
         gbc_lblReadOnly.gridy = 15;
         add(lblReadOnly, gbc_lblReadOnly);
+
+        checkBoxReadOnly = new CustomCheckBox("");
+        GridBagConstraints gbc_checkBoxReadOnly = new GridBagConstraints();
+        gbc_checkBoxReadOnly.anchor = GridBagConstraints.WEST;
+        gbc_checkBoxReadOnly.insets = new Insets(0, 0, 5, 5);
+        gbc_checkBoxReadOnly.gridx = 2;
+        gbc_checkBoxReadOnly.gridy = 15;
+        add(checkBoxReadOnly, gbc_checkBoxReadOnly);
 
         comboBoxReadOnly = new JComboBox();
         comboBoxReadOnly.setModel(new DefaultComboBoxModel(new String[] {"All", "Only read-only", "All but read-only"}));
@@ -265,142 +288,179 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_btnSearch.gridx = 0;
         gbc_btnSearch.gridy = 17;
         add(btnSearch, gbc_btnSearch);
+
+        btnSave = new CustomButton("Save");
+        GridBagConstraints gbc_btnSave = new GridBagConstraints();
+        gbc_btnSave.gridwidth = 6;
+        gbc_btnSave.anchor = GridBagConstraints.CENTER;
+        gbc_btnSave.insets = new Insets(0, 0, 10, 0);
+        gbc_btnSave.gridx = 4;
+        gbc_btnSave.gridy = 17;
+        add(btnSave, gbc_btnSave);
     }
 
     /**
-     * This method return the CommonSearch Button
+     * This method return the CommonSearch Button.
      */
     public JButton getSearchButton() {
         return btnSearch;
     }
 
     /**
-     * This method return the fieldToDateCreation
+     * This method return the fieldToDateCreation.
      */
     public JDateChooser getFieldToDateCreation() {
         return fieldToDateCreation;
     }
 
     /**
-     * This method return the FieldFromDateCreation
+     * This method return the FieldFromDateCreation.
      */
     public JDateChooser getTextFieldFromDateCreation() {
         return textFieldFromDateCreation;
     }
     /**
-     * This method return the fieldDateModificationFrom
+     * This method return the fieldDateModificationFrom.
      */
     public JDateChooser getFieldDateModificationFrom() {
         return fieldDateModificationFrom;
     }
 
     /**
-     * This method return the fieldDateModificationTo
+     * This method return the fieldDateModificationTo.
      */
     public JDateChooser getFieldDateModificationTo() {
         return fieldDateModificationTo;
     }
 
     /**
-     * This method return the Field Date Access From
+     * This method return the Field Date Access From.
      */
     public JDateChooser getFieldDateAccessFrom() {
         return fieldDateAccessFrom;
     }
 
     /**
-     * This method return the fieldDateModificationTo
+     * This method return the fieldDateModificationTo.
      */
     public JDateChooser getFieldDateAccessTo() {
         return fieldDateAccessTo;
     }
 
     /**
-     * This method return the Field SizeFrom
+     * This method return the Field SizeFrom.
      */
     public JTextField getTextFieldSizeFrom() {
         return textFieldSizeFrom;
     }
 
     /**
-     * This method return the Field SizeTo
+     * This method return the Field SizeTo.
      */
     public JTextField getTextFieldSizeTo() {
         return textFieldSizeTo;
     }
 
     /**
-     * This method return the ComboBox Read Only
+     * This method return the ComboBox Read Only.
      */
     public JComboBox getComboBoxReadOnly() {
         return comboBoxReadOnly;
     }
 
     /**
-     * This method return the ComboBox Hidden
+     * This method return the ComboBox Hidden.
      */
     public JComboBox getComboBoxHidden() {
         return comboBoxHidden;
     }
 
     /**
-     * This method return the TextField Owner
+     * This method return the TextField Owner.
      */
     public JTextField getTextFieldOwner() {
         return textFieldOwner;
     }
 
     /**
-     * This method return the ComboBox SizeUnit
+     * This method return the ComboBox SizeUnit.
      */
     public JComboBox getComboBoxSizeUnit() {
         return comboBoxSizeUnit;
     }
 
     /**
-     * This method return the ComboBox Mimetype
+     * This method return the ComboBox Mimetype.
      */
     public JComboBox getComboBoxMimeType() {
         return comboBoxMimeType;
     }
 
     /**
-     * This method set the Field DateModificationFrom
+     * This method return the BtnSearch button.
+     */
+    public CustomButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    /**
+     * This method return the getBtnSave button.
+     */
+    public CustomButton getBtnSave() {
+        return btnSave;
+    }
+
+    /**
+     * This method return the CheckBox ReadOnly.
+     */
+    public JCheckBox getCheckBoxReadOnly() {
+        return checkBoxReadOnly;
+    }
+
+    /**
+     * This method return the CheckBox Hidden.
+     */
+    public JCheckBox getCheckBoxHidden() {
+        return checkBoxHidden;
+    }
+
+    /**
+     * This method set the Field DateModificationFrom.
      */
     public void setFieldDateModificationFrom(JDateChooser fieldDateModificationFrom) {
         this.fieldDateModificationFrom = fieldDateModificationFrom;
     }
 
     /**
-     * This method set theField DateModificationTo
+     * This method set theField DateModificationTo.
      */
     public void setFieldDateModificationTo(JDateChooser fieldDateModificationTo) {
         this.fieldDateModificationTo = fieldDateModificationTo;
     }
 
     /**
-     * This method set the Field DateAccessFrom
+     * This method set the Field DateAccessFrom.
      */
     public void setFieldDateAccessFrom(JDateChooser fieldDateAccessFrom) {
         this.fieldDateAccessFrom = fieldDateAccessFrom;
     }
 
     /**
-     * This method set the Field DateAccessTo
+     * This method set the Field DateAccessTo.
      */
     public void setFieldDateAccessTo(JDateChooser fieldDateAccessTo) {
         this.fieldDateAccessTo = fieldDateAccessTo;
     }
 
     /**
-     * This method set the TextField SizeFrom
+     * This method set the TextField SizeFrom.
      */
     public void setTextFieldSizeFrom(JTextField textFieldSizeFrom) {
         this.textFieldSizeFrom = textFieldSizeFrom;
     }
 
     /**
-     * This method set the TextField SizeTo
+     * This method set the TextField SizeTo.
      */
     public void setTextFieldSizeTo(JTextField textFieldSizeTo) {
         this.textFieldSizeTo = textFieldSizeTo;

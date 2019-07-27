@@ -12,7 +12,6 @@ package com.fundation.logic.view;
 import com.fundation.logic.view.resultTable.TableResult;
 
 import javax.swing.JFrame;
-import javax.swing.UIManager;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JScrollPane;
@@ -30,7 +29,7 @@ import java.awt.Color;
  * @author John Salazar Pinto, Melissa Román
  * @version 1.0
  */
-public class MainFrame extends JFrame {
+public class MainFrame extends CustomJFrame {
     JPanel mainContentPanel;
     private MainTabs searchTabs;
     private TableResult tableResult;
@@ -43,16 +42,11 @@ public class MainFrame extends JFrame {
      * This method init all component
      */
     public void initComponent() {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        mainContentPanel = new JPanel();
+        mainContentPanel = new CustomPanelSecond();
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));
 
-        JSplitPane mainSplitPanel = new JSplitPane();
+        JSplitPane mainSplitPanel = new CustomSplitPanel();
         mainSplitPanel.setDividerLocation(getWidth()/2);
         mainSplitPanel.setEnabled(false);
         mainContentPanel.add(mainSplitPanel, BorderLayout.CENTER);
@@ -73,6 +67,8 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setBounds(100, 100, 870, 400);
+        setForeground(Color.orange);
+        setBackground(Color.BLUE);
         setTitle("J2AM Player");
         initComponent();
         setContentPane(mainContentPanel);
