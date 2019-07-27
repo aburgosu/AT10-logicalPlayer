@@ -40,7 +40,7 @@ public class QueryForCriteria {
      * @param criteriaType - Criteria's type. It could be Audio, Common, Image or Video.
      */
     public void saveCriteria(String criteriaName, Criteria criteria, String criteriaType) {
-        String jsonCriteria = JsonConverter.criteriaToJson(criteria);
+        String jsonCriteria = JsonConverter.searchCriteriaToJson(criteria);
         String jsonRecord = criteriaType + " " + jsonCriteria;
         query.insertCriteria(criteriaName, jsonRecord);
     }

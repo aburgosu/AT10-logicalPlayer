@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.common;
 
+import com.fundation.logic.model.convertCriteriaBuilderPattern.ConvertCriteria;
 import com.fundation.logic.model.searchCriteria.Audio;
 import com.fundation.logic.model.searchCriteria.Common;
 import com.fundation.logic.model.searchCriteria.Criteria;
@@ -28,7 +29,7 @@ public abstract class JsonConverter {
      * @param criteria - Criteria to be convert to json.
      * @return json corresponding to given searchCriteria.
      */
-    public static String criteriaToJson(Criteria criteria) {
+    public static String searchCriteriaToJson(Criteria criteria) {
         Gson gson = new Gson();
         String json = gson.toJson(criteria);
         return json;
@@ -40,7 +41,7 @@ public abstract class JsonConverter {
      * @param type - Criteria's type.
      * @return Instance of Criteria class according on given type.
      */
-    public static Criteria jsonToCriteria(String json, String type) {
+    public static Criteria jsonToSearchCriteria(String json, String type) {
         Gson gson = new Gson();
         switch (type) {
             case "Audio":
@@ -54,5 +55,16 @@ public abstract class JsonConverter {
             default:
                 return null;
         }
+    }
+
+    /**
+     * Converts an instance of ConvertCriteria class to json.
+     * @param criteria - ConvertCriteria to be convert to json.
+     * @return json corresponding to given convertCriteria.
+     */
+    public static String convertCriteriaToJson(ConvertCriteria criteria) {
+        Gson gson = new Gson();
+        String json = gson.toJson(criteria);
+        return json;
     }
 }

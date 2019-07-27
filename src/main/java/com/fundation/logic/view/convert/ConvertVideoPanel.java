@@ -25,7 +25,7 @@ import java.util.Calendar;
 /**
  * Implements convert video form.
  *
- * @author Melissa Román
+ * @author Melissa Román, Maday Alcalá
  * @version 1.0
  */
 public class ConvertVideoPanel extends CustomPanelSecond {
@@ -38,6 +38,8 @@ public class ConvertVideoPanel extends CustomPanelSecond {
     private JComboBox comboBoxVideoTag;
     private JComboBox comboBoxVideoBit;
     private JComboBox comboBoxVideoRate;
+    private JComboBox comboBoxKeyFrameFormat;
+    private JComboBox comboBoxThumbnailFormat;
     private JCheckBox checkBoxKeyFrame;
     private JCheckBox checkBoxThumbnail;
     private JSpinner minuteSpinnerKeyFrame;
@@ -202,13 +204,24 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_checkBoxKeyFrame.gridy = 13;
         add(checkBoxKeyFrame, gbc_checkBoxKeyFrame);
 
+
         JLabel lblEvery = new CustomLabel("Every:");
-        GridBagConstraints gbc_lblEvery = new GridBagConstraints();
-        gbc_lblEvery.anchor = GridBagConstraints.EAST;
-        gbc_lblEvery.insets = new Insets(0, 0, 5, 5);
-        gbc_lblEvery.gridx = 2;
-        gbc_lblEvery.gridy = 13;
-        add(lblEvery, gbc_lblEvery);
+        JLabel lblFormatKeyframe = new JLabel("Format:");
+        GridBagConstraints gbc_lblFormatKeyframe = new GridBagConstraints();
+        gbc_lblFormatKeyframe.anchor = GridBagConstraints.EAST;
+        gbc_lblFormatKeyframe.insets = new Insets(0, 0, 5, 5);
+        gbc_lblFormatKeyframe.gridx = 2;
+        gbc_lblFormatKeyframe.gridy = 13;
+        add(lblFormatKeyframe, gbc_lblFormatKeyframe);
+
+        comboBoxKeyFrameFormat = new JComboBox();
+        comboBoxKeyFrameFormat.setModel(new DefaultComboBoxModel(new String[]{"PNG", "JPG", "TIFF"}));
+        GridBagConstraints gbc_comboBoxKeyFrameFormat = new GridBagConstraints();
+        gbc_comboBoxKeyFrameFormat.insets = new Insets(0, 0, 5, 5);
+        gbc_comboBoxKeyFrameFormat.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBoxKeyFrameFormat.gridx = 3;
+        gbc_comboBoxKeyFrameFormat.gridy = 13;
+        add(comboBoxKeyFrameFormat, gbc_comboBoxKeyFrameFormat);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR, 24);
@@ -222,8 +235,8 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         dateEditor.getTextField().setEditable(false);
         minuteSpinnerKeyFrame.setEditor(dateEditor);
         GridBagConstraints gbc_spinner = new GridBagConstraints();
-        gbc_spinner.anchor = GridBagConstraints.NORTHWEST;
-        gbc_spinner.gridx = 3;
+        gbc_spinner.anchor = GridBagConstraints.WEST;
+        gbc_spinner.gridx = 5;
         gbc_spinner.gridy = 13;
         add(minuteSpinnerKeyFrame, gbc_spinner);
 
@@ -243,13 +256,24 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_checkBoxThumbnail.gridy = 14;
         add(checkBoxThumbnail, gbc_checkBoxThumbnail);
 
+
         JLabel lblAt = new CustomLabel("At:");
-        GridBagConstraints gbc_lblAt = new GridBagConstraints();
-        gbc_lblAt.anchor = GridBagConstraints.EAST;
-        gbc_lblAt.insets = new Insets(0, 0, 5, 5);
-        gbc_lblAt.gridx = 2;
-        gbc_lblAt.gridy = 14;
-        add(lblAt, gbc_lblAt);
+        JLabel lblThumbnailFormat = new JLabel("Format:");
+        GridBagConstraints gbc_ThumbnailFormat = new GridBagConstraints();
+        gbc_ThumbnailFormat.anchor = GridBagConstraints.EAST;
+        gbc_ThumbnailFormat.insets = new Insets(0, 0, 5, 5);
+        gbc_ThumbnailFormat.gridx = 2;
+        gbc_ThumbnailFormat.gridy = 14;
+        add(lblThumbnailFormat, gbc_ThumbnailFormat);
+
+        comboBoxThumbnailFormat = new JComboBox();
+        comboBoxThumbnailFormat.setModel(new DefaultComboBoxModel(new String[]{"BMP", "PNG", "JPG"}));
+        GridBagConstraints gbc_comboBoxThumbnailFormat = new GridBagConstraints();
+        gbc_comboBoxThumbnailFormat.insets = new Insets(0, 0, 5, 5);
+        gbc_comboBoxThumbnailFormat.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBoxThumbnailFormat.gridx = 3;
+        gbc_comboBoxThumbnailFormat.gridy = 14;
+        add(comboBoxThumbnailFormat, gbc_comboBoxThumbnailFormat);
 
         SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
         minuteSpinnerModelTo.setValue(calendar.getTime());
@@ -258,8 +282,8 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         dateEditorTo.getTextField().setEditable(false);
         minuteSpinnerThumbnail.setEditor(dateEditorTo);
         GridBagConstraints gbc_minuteSpinnerTo = new GridBagConstraints();
-        gbc_minuteSpinnerTo.anchor = GridBagConstraints.NORTHWEST;
-        gbc_minuteSpinnerTo.gridx = 3;
+        gbc_minuteSpinnerTo.anchor = GridBagConstraints.WEST;
+        gbc_minuteSpinnerTo.gridx = 5;
         gbc_minuteSpinnerTo.gridy = 14;
         add(minuteSpinnerThumbnail, gbc_minuteSpinnerTo);
 
@@ -362,10 +386,42 @@ public class ConvertVideoPanel extends CustomPanelSecond {
     }
 
     /**
+     * Allows to get comboBoxKeyFrameFormat.
+     * @return checkBoxKeyFrameFormat
+     */
+    public JComboBox getComboBoxKeyFrameFormat() {
+        return getComboBoxKeyFrameFormat();
+    }
+
+    /**
+     * Allows to get comboBoxThumbnailFormat.
+     * @return checkBoxThumbnailFormat
+     */
+    public JComboBox getComboBoxThumbnailFormat() {
+        return getComboBoxThumbnailFormat();
+    }
+
+    /**
      * Allows to get convert video button.
      * @return btnConvertVideo
      */
     public JButton getBtnConvertVideo() {
         return btnConvertVideo;
+    }
+
+    /**
+     * Allows to get MinuteSpinnerKeyFrame .
+     * @return MinuteSpinnerKeyFrame.
+     */
+    public JSpinner getMinuteSpinnerKeyFrame() {
+        return minuteSpinnerKeyFrame;
+    }
+
+    /**
+     * Allows to get MinuteSpinnerThumbnail.
+     * @return MinuteSpinnerThumbnail.
+     */
+    public JSpinner getMinuteSpinnerThumbnail() {
+        return minuteSpinnerThumbnail;
     }
 }
