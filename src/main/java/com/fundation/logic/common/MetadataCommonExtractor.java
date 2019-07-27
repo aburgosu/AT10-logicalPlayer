@@ -61,7 +61,8 @@ public class MetadataCommonExtractor {
      * @return
      */
     public static void mimeType(String mimeType) {
-        if ((mimeType.contains("MIME Type"))) {
+        String audioMimeType = mimeType.substring(0,9);
+        if ((audioMimeType.contains("MIME Type"))) {
             if (mimeType.contains("audio")) {
                 searchMimeType = "Audio";
             }
@@ -73,6 +74,9 @@ public class MetadataCommonExtractor {
             }
             if (mimeType.contains("image")) {
                 searchMimeType = "Image";
+            }
+            if (mimeType.contains("application")) {
+                searchMimeType = "Application";
             }
         }
     }
