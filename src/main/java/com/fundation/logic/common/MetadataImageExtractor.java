@@ -38,7 +38,7 @@ public class MetadataImageExtractor {
      *
      * @return
      */
-    public String readAll() {
+    public void readAll() {
         String metadata = null;
         list = new ArrayList<>();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
@@ -47,13 +47,13 @@ public class MetadataImageExtractor {
                 height(metadata);
                 width(metadata);
                 list.add(metadata);
+                getColorSpace(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "No available";
     }
 
     /**
@@ -106,6 +106,10 @@ public class MetadataImageExtractor {
             colorSpace = colorSpace.substring(initIndex + freeSpace, endIndex);
             searchColorSpace = colorSpace;
         }
+    }
+
+    public static String getSearchColorSpace(){
+        return searchColorSpace;
     }
 
     /**
