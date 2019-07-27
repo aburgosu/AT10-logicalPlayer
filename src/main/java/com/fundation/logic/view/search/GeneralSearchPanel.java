@@ -44,6 +44,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
     private JTextField textFieldSizeFrom;
     private JTextField textFieldSizeTo;
     private CustomButton btnSearch;
+    private CustomButton btnSave;
     private JComboBox comboBoxReadOnly;
     private JComboBox comboBoxHidden;
     private JCheckBox checkBoxReadOnly;
@@ -282,142 +283,179 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_btnSearch.gridx = 0;
         gbc_btnSearch.gridy = 17;
         add(btnSearch, gbc_btnSearch);
+
+        btnSave = new CustomButton("Save");
+        GridBagConstraints gbc_btnSave = new GridBagConstraints();
+        gbc_btnSave.gridwidth = 6;
+        gbc_btnSave.anchor = GridBagConstraints.CENTER;
+        gbc_btnSave.insets = new Insets(0, 0, 10, 0);
+        gbc_btnSave.gridx = 4;
+        gbc_btnSave.gridy = 17;
+        add(btnSave, gbc_btnSave);
     }
 
     /**
-     * This method return the CommonSearch Button
+     * This method return the CommonSearch Button.
      */
     public JButton getSearchButton() {
         return btnSearch;
     }
 
     /**
-     * This method return the fieldToDateCreation
+     * This method return the fieldToDateCreation.
      */
     public JDateChooser getFieldToDateCreation() {
         return fieldToDateCreation;
     }
 
     /**
-     * This method return the FieldFromDateCreation
+     * This method return the FieldFromDateCreation.
      */
     public JDateChooser getTextFieldFromDateCreation() {
         return textFieldFromDateCreation;
     }
     /**
-     * This method return the fieldDateModificationFrom
+     * This method return the fieldDateModificationFrom.
      */
     public JDateChooser getFieldDateModificationFrom() {
         return fieldDateModificationFrom;
     }
 
     /**
-     * This method return the fieldDateModificationTo
+     * This method return the fieldDateModificationTo.
      */
     public JDateChooser getFieldDateModificationTo() {
         return fieldDateModificationTo;
     }
 
     /**
-     * This method return the Field Date Access From
+     * This method return the Field Date Access From.
      */
     public JDateChooser getFieldDateAccessFrom() {
         return fieldDateAccessFrom;
     }
 
     /**
-     * This method return the fieldDateModificationTo
+     * This method return the fieldDateModificationTo.
      */
     public JDateChooser getFieldDateAccessTo() {
         return fieldDateAccessTo;
     }
 
     /**
-     * This method return the Field SizeFrom
+     * This method return the Field SizeFrom.
      */
     public JTextField getTextFieldSizeFrom() {
         return textFieldSizeFrom;
     }
 
     /**
-     * This method return the Field SizeTo
+     * This method return the Field SizeTo.
      */
     public JTextField getTextFieldSizeTo() {
         return textFieldSizeTo;
     }
 
     /**
-     * This method return the ComboBox Read Only
+     * This method return the ComboBox Read Only.
      */
     public JComboBox getComboBoxReadOnly() {
         return comboBoxReadOnly;
     }
 
     /**
-     * This method return the ComboBox Hidden
+     * This method return the ComboBox Hidden.
      */
     public JComboBox getComboBoxHidden() {
         return comboBoxHidden;
     }
 
     /**
-     * This method return the TextField Owner
+     * This method return the TextField Owner.
      */
     public JTextField getTextFieldOwner() {
         return textFieldOwner;
     }
 
     /**
-     * This method return the ComboBox SizeUnit
+     * This method return the ComboBox SizeUnit.
      */
     public JComboBox getComboBoxSizeUnit() {
         return comboBoxSizeUnit;
     }
 
     /**
-     * This method return the ComboBox Mimetype
+     * This method return the ComboBox Mimetype.
      */
     public JComboBox getComboBoxMimeType() {
         return comboBoxMimeType;
     }
 
     /**
-     * This method set the Field DateModificationFrom
+     * This method return the BtnSearch button.
+     */
+    public CustomButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    /**
+     * This method return the getBtnSave button.
+     */
+    public CustomButton getBtnSave() {
+        return btnSave;
+    }
+
+    /**
+     * This method return the CheckBox ReadOnly.
+     */
+    public JCheckBox getCheckBoxReadOnly() {
+        return checkBoxReadOnly;
+    }
+
+    /**
+     * This method return the CheckBox Hidden.
+     */
+    public JCheckBox getCheckBoxHidden() {
+        return checkBoxHidden;
+    }
+
+    /**
+     * This method set the Field DateModificationFrom.
      */
     public void setFieldDateModificationFrom(JDateChooser fieldDateModificationFrom) {
         this.fieldDateModificationFrom = fieldDateModificationFrom;
     }
 
     /**
-     * This method set theField DateModificationTo
+     * This method set theField DateModificationTo.
      */
     public void setFieldDateModificationTo(JDateChooser fieldDateModificationTo) {
         this.fieldDateModificationTo = fieldDateModificationTo;
     }
 
     /**
-     * This method set the Field DateAccessFrom
+     * This method set the Field DateAccessFrom.
      */
     public void setFieldDateAccessFrom(JDateChooser fieldDateAccessFrom) {
         this.fieldDateAccessFrom = fieldDateAccessFrom;
     }
 
     /**
-     * This method set the Field DateAccessTo
+     * This method set the Field DateAccessTo.
      */
     public void setFieldDateAccessTo(JDateChooser fieldDateAccessTo) {
         this.fieldDateAccessTo = fieldDateAccessTo;
     }
 
     /**
-     * This method set the TextField SizeFrom
+     * This method set the TextField SizeFrom.
      */
     public void setTextFieldSizeFrom(JTextField textFieldSizeFrom) {
         this.textFieldSizeFrom = textFieldSizeFrom;
     }
 
     /**
-     * This method set the TextField SizeTo
+     * This method set the TextField SizeTo.
      */
     public void setTextFieldSizeTo(JTextField textFieldSizeTo) {
         this.textFieldSizeTo = textFieldSizeTo;

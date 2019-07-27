@@ -37,6 +37,7 @@ public class AdvancedVideoPanel extends CustomPanelSecond {
     private JSpinner minuteSpinner;
     private JSpinner minuteSpinnerTo;
     private CustomButton btnSearchAdvanceVideoPanel;
+    private CustomButton btnSaveAdvanceVideo;
 
     /**
      * This constructor initializer the component.
@@ -176,6 +177,15 @@ public class AdvancedVideoPanel extends CustomPanelSecond {
         gbc_btnSearch.gridx = 0;
         gbc_btnSearch.gridy = 17;
         add(btnSearchAdvanceVideoPanel, gbc_btnSearch);
+
+        btnSaveAdvanceVideo = new CustomButton("Save");
+        GridBagConstraints gbc_btnSaveAdvanceVideo = new GridBagConstraints();
+        gbc_btnSaveAdvanceVideo.gridwidth = 6;
+        gbc_btnSaveAdvanceVideo.anchor = GridBagConstraints.CENTER;
+        gbc_btnSaveAdvanceVideo.insets = new Insets(0, 0, 10, 0);
+        gbc_btnSaveAdvanceVideo.gridx = 4;
+        gbc_btnSaveAdvanceVideo.gridy = 17;
+        add(btnSaveAdvanceVideo, gbc_btnSaveAdvanceVideo);
     }
 
     /**
@@ -232,5 +242,12 @@ public class AdvancedVideoPanel extends CustomPanelSecond {
      */
     public String getMinuteSpinnerTo() {
         return minuteSpinnerTo.getValue().toString();
+    }
+
+    /**
+     * This method return the btnSaveAdvanceVideo button.
+     */
+    public CustomButton getbtnSaveAdvanceVideo() {
+        return btnSaveAdvanceVideo;
     }
 }

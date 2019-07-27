@@ -29,6 +29,7 @@ import java.util.Calendar;
  */
 public class AdvancedAudioPanel extends CustomPanelSecond {
     private CustomButton btnSearchAdvanceAudio;
+    private CustomButton btnSaveAdvanceAudio;
     private JComboBox comboBoxAudioCodecName;
     private JComboBox comboBoxAudioChannel;
     private JComboBox comboBoxAudioSampleRate;
@@ -159,6 +160,15 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
         gbc_btnSearchAdvanceAudio.gridx = 0;
         gbc_btnSearchAdvanceAudio.gridy = 17;
         add(btnSearchAdvanceAudio, gbc_btnSearchAdvanceAudio);
+
+        btnSaveAdvanceAudio = new CustomButton("Save");
+        GridBagConstraints gbc_btnSaveAdvanceAudio = new GridBagConstraints();
+        gbc_btnSaveAdvanceAudio.gridwidth = 6;
+        gbc_btnSaveAdvanceAudio.anchor = GridBagConstraints.CENTER;
+        gbc_btnSaveAdvanceAudio.insets = new Insets(0, 0, 10, 0);
+        gbc_btnSaveAdvanceAudio.gridx = 4;
+        gbc_btnSaveAdvanceAudio.gridy = 17;
+        add(btnSaveAdvanceAudio, gbc_btnSaveAdvanceAudio);
     }
 
     /**
@@ -208,4 +218,12 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
     public String getMinuteSpinnerTo() {
         return minuteSpinnerTo.getValue().toString();
     }
+
+    /**
+     * This method return the btnSaveAdvanceAudio button.
+     */
+    public CustomButton getbtnSaveAdvanceAudio() {
+        return btnSaveAdvanceAudio;
+    }
+
 }

@@ -32,6 +32,7 @@ import java.awt.event.KeyEvent;
  */
 public class AdvancedImagePanel extends CustomPanelSecond {
     private CustomButton btnSearchAdvanceImage;
+    private CustomButton btnSaveAdvanceImage;
     private JTextField textFieldWidth;
     private JTextField textFieldHeight;
     private JComboBox comboBoxColorSpaceData;
@@ -150,6 +151,15 @@ public class AdvancedImagePanel extends CustomPanelSecond {
         gbc_btnSearch.gridx = 0;
         gbc_btnSearch.gridy = 17;
         add(btnSearchAdvanceImage, gbc_btnSearch);
+
+        btnSaveAdvanceImage = new CustomButton("Save");
+        GridBagConstraints gbc_btnSaveAdvanceImage = new GridBagConstraints();
+        gbc_btnSaveAdvanceImage.gridwidth = 6;
+        gbc_btnSaveAdvanceImage.anchor = GridBagConstraints.CENTER;
+        gbc_btnSaveAdvanceImage.insets = new Insets(0, 0, 10, 0);
+        gbc_btnSaveAdvanceImage.gridx = 4;
+        gbc_btnSaveAdvanceImage.gridy = 17;
+        add(btnSaveAdvanceImage, gbc_btnSaveAdvanceImage);
     }
 
     /**
@@ -182,5 +192,12 @@ public class AdvancedImagePanel extends CustomPanelSecond {
      */
     public JComboBox getComboBoxColorSpaceData() {
         return comboBoxColorSpaceData;
+    }
+
+    /**
+     * This method return the btnSaveAdvanceImage button.
+     */
+    public CustomButton getbtnSaveAdvanceImage() {
+        return btnSaveAdvanceImage;
     }
 }
