@@ -9,7 +9,7 @@
  */
 package com.fundation.logic.view.convert;
 
-import javax.swing.JTabbedPane;
+import com.fundation.logic.view.CustomTab;
 
 /**
  * Implements the ConvertTabs class.
@@ -17,7 +17,7 @@ import javax.swing.JTabbedPane;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertTabs extends JTabbedPane {
+public class ConvertTabs extends CustomTab {
     private ConvertAudioPanel convertAudioPanel;
     private ConvertVideoPanel convertVideoPanel;
     private ConvertPDFPanel convertPDFPanel;

@@ -9,9 +9,11 @@
  */
 package com.fundation.logic.view.search;
 
+import com.fundation.logic.view.CustomPanelSecond;
 import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
+import com.fundation.logic.view.CustomLabel;
+import com.fundation.logic.view.CustomComboBox;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -29,8 +31,9 @@ import java.util.Calendar;
  * @author Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class AdvancedAudioPanel extends CustomPanel {
+public class AdvancedAudioPanel extends CustomPanelSecond {
     private CustomButton btnSearchAdvanceAudio;
+    private CustomButton btnSaveAdvanceAudio;
     private JComboBox comboBoxAudioCodecName;
     private JComboBox comboBoxAudioChannel;
     private JComboBox comboBoxAudioSampleRate;
@@ -58,7 +61,7 @@ public class AdvancedAudioPanel extends CustomPanel {
      * This method show the content audio panel.
      */
     private void audioContentPanel() {
-        JLabel lblAudioCodecName = new JLabel("Codec:");
+        JLabel lblAudioCodecName = new CustomLabel("Codec:");
         GridBagConstraints gbc_lblAudioCodecName = new GridBagConstraints();
         gbc_lblAudioCodecName.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodecName.insets = new Insets(0, 0, 5, 5);
@@ -66,7 +69,7 @@ public class AdvancedAudioPanel extends CustomPanel {
         gbc_lblAudioCodecName.gridy = 7;
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
-        comboBoxAudioCodecName = new JComboBox();
+        comboBoxAudioCodecName = new CustomComboBox();
         comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"All", "MPEG-4 ALS", "WAV", "MP3",
             "RTA"}));
         GridBagConstraints comboBox_AudioCodecName = new GridBagConstraints();
@@ -77,7 +80,7 @@ public class AdvancedAudioPanel extends CustomPanel {
         comboBox_AudioCodecName.gridy = 7;
         add(comboBoxAudioCodecName, comboBox_AudioCodecName);
 
-        JLabel lblAudioChanel = new JLabel("Channel:");
+        JLabel lblAudioChanel = new CustomLabel("Channel:");
         GridBagConstraints gbc_lblAudioChannel = new GridBagConstraints();
         gbc_lblAudioChannel.anchor = GridBagConstraints.EAST;
         gbc_lblAudioChannel.insets = new Insets(0, 0, 5, 5);
@@ -85,7 +88,7 @@ public class AdvancedAudioPanel extends CustomPanel {
         gbc_lblAudioChannel.gridy = 8;
         add(lblAudioChanel, gbc_lblAudioChannel);
 
-        comboBoxAudioChannel = new JComboBox();
+        comboBoxAudioChannel = new CustomComboBox();
         comboBoxAudioChannel.setModel(new DefaultComboBoxModel(new String[]{"All", "0", "1.0", "2.0", "2.1", "5.1",
             "6.1", "7.1"}));
         GridBagConstraints gbc_comboBoxAudioChannel = new GridBagConstraints();
@@ -96,7 +99,7 @@ public class AdvancedAudioPanel extends CustomPanel {
         gbc_comboBoxAudioChannel.gridy = 8;
         add(comboBoxAudioChannel, gbc_comboBoxAudioChannel);
 
-        JLabel lblAudioSampleRate = new JLabel("Sample rate:");
+        JLabel lblAudioSampleRate = new CustomLabel("Sample rate:");
         GridBagConstraints gbc_lblAudioSampleRate = new GridBagConstraints();
         gbc_lblAudioSampleRate.insets = new Insets(0, 0, 5, 5);
         gbc_lblAudioSampleRate.anchor = GridBagConstraints.EAST;
@@ -104,7 +107,7 @@ public class AdvancedAudioPanel extends CustomPanel {
         gbc_lblAudioSampleRate.gridy = 9;
         add(lblAudioSampleRate, gbc_lblAudioSampleRate);
 
-        comboBoxAudioSampleRate = new JComboBox();
+        comboBoxAudioSampleRate = new CustomComboBox();
         comboBoxAudioSampleRate.setModel(new DefaultComboBoxModel(new String[]{"All", "8000 Hz", "11025 Hz", "16000 Hz",
             "22050 Hz", "32000 Hz", "37800 Hz", "44100 Hz", "47250 Hz", "48000 Hz", "50000 Hz", "50400 Hz", "64000 Hz",
             "88200 Hz", "96000 Hz", "176400 Hz", "192000 Hz", "352800 Hz"}));
@@ -116,7 +119,7 @@ public class AdvancedAudioPanel extends CustomPanel {
         gbc_comboBoxAudioSampleRate.gridy = 9;
         add(comboBoxAudioSampleRate, gbc_comboBoxAudioSampleRate);
 
-        JLabel lblDuration = new JLabel("Duration:");
+        JLabel lblDuration = new CustomLabel("Duration:");
         GridBagConstraints gbc_lblDuration = new GridBagConstraints();
         gbc_lblDuration.anchor = GridBagConstraints.EAST;
         gbc_lblDuration.insets = new Insets(0, 0, 5, 5);
@@ -161,6 +164,15 @@ public class AdvancedAudioPanel extends CustomPanel {
         gbc_btnSearchAdvanceAudio.gridx = 0;
         gbc_btnSearchAdvanceAudio.gridy = 17;
         add(btnSearchAdvanceAudio, gbc_btnSearchAdvanceAudio);
+
+        btnSaveAdvanceAudio = new CustomButton("Save");
+        GridBagConstraints gbc_btnSaveAdvanceAudio = new GridBagConstraints();
+        gbc_btnSaveAdvanceAudio.gridwidth = 6;
+        gbc_btnSaveAdvanceAudio.anchor = GridBagConstraints.CENTER;
+        gbc_btnSaveAdvanceAudio.insets = new Insets(0, 0, 10, 0);
+        gbc_btnSaveAdvanceAudio.gridx = 4;
+        gbc_btnSaveAdvanceAudio.gridy = 17;
+        add(btnSaveAdvanceAudio, gbc_btnSaveAdvanceAudio);
     }
 
     /**
@@ -210,4 +222,12 @@ public class AdvancedAudioPanel extends CustomPanel {
     public String getMinuteSpinnerTo() {
         return minuteSpinnerTo.getValue().toString();
     }
+
+    /**
+     * This method return the btnSaveAdvanceAudio button.
+     */
+    public CustomButton getbtnSaveAdvanceAudio() {
+        return btnSaveAdvanceAudio;
+    }
+
 }

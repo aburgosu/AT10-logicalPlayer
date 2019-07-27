@@ -14,16 +14,17 @@ import javax.swing.BorderFactory;
 import java.awt.Color;
 
 /**
- * Implements CustomPanel class.
+ * Implements CustomPanelSecond class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomPanel extends JPanel {
-    public CustomPanel() {
+public class CustomPanelSecond extends JPanel {
+    public CustomPanelSecond() {
         super();
-        Color panelColor = new Color(60, 63, 65);
+        Color panelColor = new Color(32, 178, 170);
         setBackground(panelColor);
-        setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(43, 43, 43)));
+        setForeground(Color.orange);
+        setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(0, 139, 139)));
     }
 }
