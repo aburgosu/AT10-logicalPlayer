@@ -40,8 +40,8 @@ public class GeneralSearchPanel extends CustomPanel {
     private JTextField textFieldSizeFrom;
     private JTextField textFieldSizeTo;
     private CustomButton btnSearch;
-    private JCheckBox checkBoxReadOnly;
-    private JCheckBox checkBoxHidden;
+    private JComboBox comboBoxReadOnly;
+    private JComboBox comboBoxHidden;
     private JComboBox comboBoxSizeUnit;
     private JComboBox comboBoxMimeType;
 
@@ -206,13 +206,14 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_labelHidden.gridy = 14;
         add(labelHidden, gbc_labelHidden);
 
-        checkBoxHidden = new JCheckBox("");
-        GridBagConstraints gbc_checkBoxHidden = new GridBagConstraints();
-        gbc_checkBoxHidden.anchor = GridBagConstraints.WEST;
-        gbc_checkBoxHidden.insets = new Insets(0, 0, 5, 5);
-        gbc_checkBoxHidden.gridx = 2;
-        gbc_checkBoxHidden.gridy = 14;
-        add(checkBoxHidden, gbc_checkBoxHidden);
+        comboBoxHidden = new JComboBox();
+        comboBoxHidden.setModel(new DefaultComboBoxModel(new String[] {"All", "Only hidden", "All but hidden"}));
+        GridBagConstraints gbc_comboBoxHidden = new GridBagConstraints();
+        gbc_comboBoxHidden.insets = new Insets(0, 0, 5, 5);
+        gbc_comboBoxHidden.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBoxHidden.gridx = 2;
+        gbc_comboBoxHidden.gridy = 14;
+        add(comboBoxHidden, gbc_comboBoxHidden);
 
         JLabel lblReadOnly = new JLabel("Read only:");
         GridBagConstraints gbc_lblReadOnly = new GridBagConstraints();
@@ -222,13 +223,14 @@ public class GeneralSearchPanel extends CustomPanel {
         gbc_lblReadOnly.gridy = 15;
         add(lblReadOnly, gbc_lblReadOnly);
 
-        checkBoxReadOnly = new JCheckBox("");
-        GridBagConstraints gbc_checkBoxReadOnly = new GridBagConstraints();
-        gbc_checkBoxReadOnly.anchor = GridBagConstraints.WEST;
-        gbc_checkBoxReadOnly.insets = new Insets(0, 0, 5, 5);
-        gbc_checkBoxReadOnly.gridx = 2;
-        gbc_checkBoxReadOnly.gridy = 15;
-        add(checkBoxReadOnly, gbc_checkBoxReadOnly);
+        comboBoxReadOnly = new JComboBox();
+        comboBoxReadOnly.setModel(new DefaultComboBoxModel(new String[] {"All", "Only read-only", "All but read-only"}));
+        GridBagConstraints gbc_comboBoxReadOnly = new GridBagConstraints();
+        gbc_comboBoxReadOnly.insets = new Insets(0, 0, 5, 5);
+        gbc_comboBoxReadOnly.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBoxReadOnly.gridx = 2;
+        gbc_comboBoxReadOnly.gridy = 15;
+        add(comboBoxReadOnly, gbc_comboBoxReadOnly);
 
         btnSearch = new CustomButton("Search");
         GridBagConstraints gbc_btnSearch = new GridBagConstraints();
@@ -303,17 +305,17 @@ public class GeneralSearchPanel extends CustomPanel {
     }
 
     /**
-     * This method return the CheckBox Read Only
+     * This method return the ComboBox Read Only
      */
-    public JCheckBox getCheckBoxReadOnly() {
-        return checkBoxReadOnly;
+    public JComboBox getComboBoxReadOnly() {
+        return comboBoxReadOnly;
     }
 
     /**
-     * This method return the CheckBox Hidden
+     * This method return the ComboBox Hidden
      */
-    public JCheckBox getCheckBoxHidden() {
-        return checkBoxHidden;
+    public JComboBox getComboBoxHidden() {
+        return comboBoxHidden;
     }
 
     /**

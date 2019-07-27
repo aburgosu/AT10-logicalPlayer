@@ -57,8 +57,8 @@ public class CommonSearch implements ISearch {
         File file = new File(path);
         String criteriaFileName = criteria.getFileName();
         String criteriaExtension = criteria.getExtension();
-        boolean criteriaHidden = criteria.getCriteriaFileHidden();
-        boolean criteriaReadOnly = criteria.getCriteriaFileReadOnly();
+        String criteriaHidden = criteria.getCriteriaFileHidden();
+        String criteriaReadOnly = criteria.getCriteriaFileReadOnly();
         Float sizeLowerLimit = criteria.getCriteriaSizeMin();
         Float sizeUpperLimit = criteria.getCriteriaSizeMax();
         Date creationDateLL = criteria.getCriteriaCreationDateMin();
@@ -127,21 +127,31 @@ public class CommonSearch implements ISearch {
     }
 
     /**
-     * Evaluates hidden status according on if Hidden option is checked.
+     * Evaluates hidden status according to selected Hidden option .
      *
      * @return Answer after evaluation.
      */
-    private boolean evaluateHidden(boolean fileExtractorHidden, boolean criteria) {
-        return !(fileExtractorHidden) || criteria; //((~p)vq)
+    private boolean evaluateHidden(boolean fileExtractorHidden, String criteria) {
+        if("All".equals(criteria) || ("Only hidden".equals((criteria)) && fileExtractorHidden)
+                || ("All but hidden".equals(criteria) && !fileExtractorHidden)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
-     * Evaluates readOnly status according on if ReadOnly option is checked.
+     * Evaluates readOnly status according to selected Read-only option.
      *
      * @return Answer after evaluation.
      */
-    private boolean evaluateReadOnly(boolean fileExtractorCanWrite, boolean criteria) {
-        return !(criteria) || !(fileExtractorCanWrite); //((~q)v(~p))
+    private boolean evaluateReadOnly(boolean fileExtractorCanWrite, String criteria) {
+        if("All".equals(criteria) || ("Only read-only".equals((criteria)) && !fileExtractorCanWrite)
+                || ("All but read-only".equals(criteria) && fileExtractorCanWrite)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
