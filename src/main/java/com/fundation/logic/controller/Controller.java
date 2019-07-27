@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * 
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -311,51 +311,65 @@ public class Controller {
     }
 
     /**
-     * Get Video searchCriteria
+     * Get Video criteria
      *
-     * @return Video searchCriteria
+     * @return Video criteria
      */
     private Criteria getVideoCriteria() {
         Video criteria = new Video();
-        String path = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath()
-            .getText();
-        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFileName()
-            .getText();
+
+        String path = searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getBasicSearchPanel().getTextFieldPath().getText();
+        String fileName = searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getBasicSearchPanel().getTextFileName().getText();
         if (fileName.length() == 0) {
             fileName = null;
         }
-        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch().getBasicSearchPanel()
-            .getTextFieldFileType().getText();
+        String extensionName = searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getBasicSearchPanel().getTextFieldFileType().getText();
         if (extensionName.length() == 0) {
             extensionName = null;
         }
-        String videoCodec = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getPanelVideoAdvanced().getComboBoxVideoCodec().getSelectedItem().toString());
+        String videoCodec = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoCodec().getSelectedItem().toString());
         if (videoCodec.length() == 0) {
             videoCodec = null;
         }
-        String audioCodec = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getPanelVideoAdvanced().getComboBoxAudioCodecName().getSelectedItem().toString());
+        String audioCodec = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxAudioCodecName()
+                .getSelectedItem().toString());
         if (audioCodec.length() == 0) {
             audioCodec = null;
         }
-        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getPanelVideoAdvanced().getComboBoxVideoFrameRate().getSelectedItem().toString());
+        String framerate = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxVideoFrameRate()
+                .getSelectedItem().toString());
         if (framerate.length() == 0) {
             framerate = null;
         }
-        String resolution = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getPanelVideoAdvanced().getComboBoxResolution().getSelectedItem().toString());
+        String resolution = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getComboBoxResolution()
+                .getSelectedItem().toString());
         if (resolution.length() == 0) {
             resolution = null;
         }
+        String endDuration = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinnerTo());
+        String initDuration = (searchFrame.getSearchTabs().getSplitPanelSearch()
+                .getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinner());
+        int init = endDuration.length()-17;
+        int end = endDuration.length()-9;
+        endDuration = endDuration.substring(init,end);
+        initDuration = initDuration.substring(init,end);
+        criteria.setDurationTo(endDuration);
+        criteria.setDurationFrom(initDuration);
         criteria.setPath(path);
         criteria.setFileName(fileName);
         criteria.setExtension(extensionName);
         criteria.setVideoCodec(videoCodec);
         criteria.setAudioCodec(audioCodec);
         criteria.setFrameRate(framerate);
-        criteria.setHeight(Integer.parseInt(resolution.substring(resolution.indexOf("x") + 1)));
+        criteria.setHeight(resolution);
         return criteria;
     }
 

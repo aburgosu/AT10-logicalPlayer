@@ -32,6 +32,7 @@ public class MetadataVideoExtractor {
     private Float searchMinute;
     private Float searchSeconds;
     private static Float searchDuration;
+    static String searchMimeType;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -54,6 +55,7 @@ public class MetadataVideoExtractor {
                 getVideoAudioCodec(metadata);
                 list.add(metadata);
                 duration(metadata);
+                mimeType(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
@@ -61,6 +63,19 @@ public class MetadataVideoExtractor {
             e.printStackTrace();
         }
         return "Metadata No available";
+    }
+
+    /**
+     * This method read mime type.
+     * @return
+     */
+    public static void mimeType(String mimeType) {
+        if ((mimeType.contains("MIME Type"))) {
+            if (mimeType.contains("video")) {
+                searchMimeType = "Video";
+            }
+
+        }
     }
 
     /**
@@ -203,5 +218,14 @@ public class MetadataVideoExtractor {
      */
     public static Float getSearchDuration() {
         return searchDuration;
+    }
+
+    /**
+     * This method return mime type to CommonSearch.
+     *
+     * @return
+     */
+    public static String getSearchMimeType() {
+        return searchMimeType;
     }
 }
