@@ -24,8 +24,8 @@ import com.fundation.logic.model.searchCriteria.Video;
 public class SearchFactory {
     /**
      * Allows to get an instance of a class that implements ISearch interface according to criteria input.
-     * @param criteria
-     * @return
+     * @param criteria - Search criteria.
+     * @return Instance of class that implements ISearch interface according to criteria input.
      */
     public ISearch createSearch(Criteria criteria) {
         if (criteria instanceof Common) {

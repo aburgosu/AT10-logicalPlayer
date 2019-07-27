@@ -172,10 +172,10 @@ public class Controller {
         if (mimeType == "All") {
             mimeType = null;
         }
-        boolean fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getCheckBoxHidden().isSelected();
-        boolean readOnly = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
-            .getGeneralSearchPanel().getCheckBoxReadOnly().isSelected();
+        String fileHidden = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
+            .getGeneralSearchPanel().getComboBoxHidden().getSelectedItem().toString();
+        String readOnly = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab()
+            .getGeneralSearchPanel().getComboBoxReadOnly().getSelectedItem().toString();
 
         /**
          * Validates entered data.
