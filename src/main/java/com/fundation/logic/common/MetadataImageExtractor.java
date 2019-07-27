@@ -66,8 +66,8 @@ public class MetadataImageExtractor {
     public static void mimeType(String mimeType) {
         String imageMimeType = mimeType.substring(0,9);
         if ((imageMimeType.contains("MIME Type"))) {
-            if (mimeType.contains("audio")) {
-                searchMimeType = "Audio";
+            if (mimeType.contains("image")) {
+                searchMimeType = "image";
             }
         }
     }
