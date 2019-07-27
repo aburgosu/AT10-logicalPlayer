@@ -21,7 +21,7 @@ import java.awt.Font;
 public class CustomLabel extends JLabel {
     public CustomLabel(String name) {
         super(name);
-        Font font = new Font("Agency FB",3, 20);
+        Font font = new Font("Verdana",3, 12);
         setFont(font);
     }
 }
