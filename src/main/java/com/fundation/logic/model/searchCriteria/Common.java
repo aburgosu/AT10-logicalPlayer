@@ -18,8 +18,8 @@ import java.util.Date;
  * @version 1.0
  */
 public class Common extends Criteria {
-    private Boolean criteriaFileHidden;
-    private Boolean criteriaFileReadOnly;
+    private String criteriaFileHidden;
+    private String criteriaFileReadOnly;
     private Float criteriaSizeMin;
     private Float criteriaSizeMax;
     private Date criteriaCreationDateMin;
@@ -34,28 +34,28 @@ public class Common extends Criteria {
     /**
      * Set criteriaFileHidden.
      */
-    public void setCriteriaFileHidden(Boolean criteriaFileHidden) {
+    public void setCriteriaFileHidden(String criteriaFileHidden) {
         this.criteriaFileHidden = criteriaFileHidden;
     }
 
     /**
      * @return searchCriteria's hidden status.
      */
-    public Boolean getCriteriaFileHidden() {
+    public String getCriteriaFileHidden() {
         return criteriaFileHidden;
     }
 
     /**
      * Set searchCriteria's readOnly status.
      */
-    public void setCriteriaFileReadOnly(Boolean criteriaFileReadOnly) {
+    public void setCriteriaFileReadOnly(String criteriaFileReadOnly) {
         this.criteriaFileReadOnly = criteriaFileReadOnly;
     }
 
     /**
      * @return searchCriteria's readOnly status.
      */
-    public Boolean getCriteriaFileReadOnly() {
+    public String getCriteriaFileReadOnly() {
         return criteriaFileReadOnly;
     }
 

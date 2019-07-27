@@ -48,14 +48,15 @@ public class ServiceConnection {
         FileBody fileBody = new FileBody(new File(criteria.getSourcePath()));
         StringBody stringInput = new StringBody("{\"typeConversion\":\""
                 + criteria.getConvertType() + "\",\"checksum\":\"" + Checksum.getChecksum(criteria.getSourcePath(), "MD5")
-                + "\",\"destPath\":\"" + criteria.getDestinationPath().replace("\\", "\\\\") + "\""
+                + "\",\"destPath\":\"" + criteria.getDestPath().replace("\\", "\\\\") + "\""
                 + "}", ContentType.TEXT_PLAIN);
 
         System.out.println("{\"typeConversion\":\""
                 + criteria.getConvertType() + "\",\"checksum\":\"" + Checksum.getChecksum(criteria.getSourcePath(), "MD5")
-                + "\",\"destPath\":\"" + criteria.getDestinationPath().replace("\\", "\\\\") + "\""
+                + "\",\"destPath\":\"" + criteria.getDestPath().replace("\\", "\\\\") + "\""
                 + "}");
         
+
         StringBody stringConfig = new StringBody(JsonConverter.convertCriteriaToJson(criteria), ContentType.TEXT_PLAIN);
 
         System.out.println(JsonConverter.convertCriteriaToJson(criteria));
