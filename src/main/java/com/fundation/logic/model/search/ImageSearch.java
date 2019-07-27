@@ -67,6 +67,8 @@ public class ImageSearch implements ISearch {
                 } else {
                     String fileName = FileInfo.getFileDenomination(fileExtractor, "name");
                     String fileExtension = FileInfo.getFileDenomination(fileExtractor, "extension");
+                    String mimeType = FileInfo.getMimeType(fileExtractor);
+
                     MetadataImageExtractor metadataImageExtractor = new MetadataImageExtractor();
                     String owner = FileInfo.getFileOwner(fileExtractor, "user");
                     String exiftool = "thirdParty/exiftool.exe "; //Tool used for extract metadata
@@ -97,7 +99,7 @@ public class ImageSearch implements ISearch {
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
                                 fileName, fileExtension, false, false,
                                 fileSize, creationDate, accessDate,
-                                modificationDate, owner, "mime type", metadata);
+                                modificationDate, owner, mimeType, metadata);
                         searchResult.add(matchingFile);
                     }
                 }
