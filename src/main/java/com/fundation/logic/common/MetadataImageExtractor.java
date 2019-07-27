@@ -27,6 +27,7 @@ public class MetadataImageExtractor {
     static String searchHeight;
     static String searchColorSpace;
     private static List<String> list;
+    public static String searchMimeType;
 
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -47,12 +48,27 @@ public class MetadataImageExtractor {
                 height(metadata);
                 width(metadata);
                 list.add(metadata);
+                mimeType(metadata);
                 getColorSpace(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * This method read mime type.
+     *
+     * @return
+     */
+    public static void mimeType(String mimeType) {
+        String audioMimeType = mimeType.substring(0,9);
+        if ((audioMimeType.contains("MIME Type"))) {
+            if (mimeType.contains("audio")) {
+                searchMimeType = "Audio";
+            }
         }
     }
 
@@ -118,4 +134,14 @@ public class MetadataImageExtractor {
     public static List<String> getSearchListMetadata() {
         return list;
     }
+
+    /**
+     * This method return mime type to CommonSearch.
+     *
+     * @return
+     */
+    public static String getSearchMimeType() {
+        return searchMimeType;
+    }
+
 }
