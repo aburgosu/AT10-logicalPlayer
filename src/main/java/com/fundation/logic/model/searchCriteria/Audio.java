@@ -15,42 +15,69 @@ package com.fundation.logic.model.searchCriteria;
  * @authors Andres Burgos.
  * @version 1.0
  */
-public class Audio extends Multimedia{
-    private int channel;
-    private int sampleRate;
+public class Audio extends Multimedia {
+    private String channel;
+    private String sampleRate;
+    private String durationFrom;
+    private String durationTo;
 
     /**
      * @return Audio Channel.
      */
-    public int getChannel() {
+    public String getChannel() {
         return channel;
     }
 
     /**
      * Set Audio Channel.
      */
-    public void setChannel(int channel) {
+    public void setChannel(String channel) {
         this.channel = channel;
     }
 
     /**
      * @return Audio Sample Rate.
      */
-    public int getSampleRate() {
+    public String  getSampleRate() {
         return sampleRate;
     }
 
     /**
      * Set Audio Sample Rate.
      */
-    public void setSampleRate(int sampleRate) {
+    public void setSampleRate(String  sampleRate) {
         this.sampleRate = sampleRate;
     }
 
     /**
-     * Equals override to compare two audio searchCriteria.
+     * Set duration from.
+     */
+    public void setDurationFrom(String durationFrom) {
+        this.durationFrom = durationFrom;
+    }
+
+    public void setDurationTo(String durationTo) {
+        this.durationTo = durationTo;
+    }
+
+    /**
+     * @return durationFrom.
+     */
+    public String getDurationfrom() {
+        return durationFrom;
+    }
+
+    /**
+     * @return durationTo.
+     */
+    public String getDurationTo() {
+        return durationTo;
+    }
+
+    /**
+     * Equals override to compare two audio criteria.
      * @param criteria - Criteria to be compare with.
-     * @return True if two searchCriteria are equal.
+     * @return True if two criteria are equal.
      */
     public boolean equals(Criteria criteria) {
         try {

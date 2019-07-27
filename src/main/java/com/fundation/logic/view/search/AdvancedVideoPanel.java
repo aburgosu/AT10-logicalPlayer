@@ -126,8 +126,8 @@ public class AdvancedVideoPanel extends CustomPanelSecond {
         add(lblResolution, gbc_lblWidth);
 
         comboBoxResolution = new CustomComboBox();
-        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"All", "256x144", "426x144", "640x360",
-            "1280x720", "1920x1080"}));
+        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"All", "144", "360","480",
+            "720", "1080"}));
         GridBagConstraints gbc_comboBoxResolution = new GridBagConstraints();
         gbc_comboBoxResolution.gridwidth = 2;
         gbc_comboBoxResolution.insets = new Insets(0, 0, 5, 0);
@@ -152,7 +152,7 @@ public class AdvancedVideoPanel extends CustomPanelSecond {
         SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
         minuteSpinnerModelFrom.setValue(calendar.getTime());
         minuteSpinner = new JSpinner(minuteSpinnerModelFrom);
-        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "00:mm:ss");
+        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "HH:mm:ss");
         dateEditor.getTextField().setEditable(false);
         minuteSpinner.setEditor(dateEditor);
         GridBagConstraints gbc_spinner = new GridBagConstraints();
@@ -164,7 +164,7 @@ public class AdvancedVideoPanel extends CustomPanelSecond {
         SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
         minuteSpinnerModelTo.setValue(calendar.getTime());
         minuteSpinnerTo = new JSpinner(minuteSpinnerModelTo);
-        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "00:mm:ss");
+        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "HH:mm:ss");
         dateEditorTo.getTextField().setEditable(false);
         minuteSpinnerTo.setEditor(dateEditorTo);
         GridBagConstraints gbc_minuteSpinnerTo = new GridBagConstraints();
