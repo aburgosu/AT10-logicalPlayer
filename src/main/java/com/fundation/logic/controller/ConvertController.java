@@ -33,10 +33,10 @@ public class ConvertController {
     private String videoCodec;
     private String videoBitRate;
     private String fps;
-    private boolean keyframe;
+    private String keyframe;
     private String keyframeTime;
     private String keyframeFormat;
-    private boolean thumbnail;
+    private String thumbnail;
     private String thumbnailTime;
     private String thumbnailFormat;
     private String formatColor;
@@ -212,9 +212,10 @@ public class ConvertController {
         if(fps == "Default") {
             fps = null;
         }
-        keyframe = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
+        boolean keyframeAux = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
             .getConvertVideoPanel().getCheckBoxKeyFrame().isSelected();
-        if(keyframe == true) {
+        if(keyframeAux == true) {
+            keyframe = "true";
             keyframeTime = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
                 .getConvertVideoPanel().getMinuteSpinnerKeyFrame().getValue().toString();
             keyframeTime = keyframeTime.substring(17, 18);
@@ -223,10 +224,13 @@ public class ConvertController {
             if(keyframeFormat == "Default") {
                 keyframeFormat = null;
             }
+        } else {
+            keyframe = "false";
         }
-        thumbnail = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
+        boolean thumbnailAux = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
             .getConvertVideoPanel().getCheckBoxThumbnail().isSelected();
-        if(thumbnail == true) {
+        if(thumbnailAux == true) {
+            thumbnail = "true";
             thumbnailTime = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
                 .getConvertVideoPanel().getMinuteSpinnerThumbnail().getValue().toString();
             thumbnailTime = thumbnailTime.substring(17, 18);
@@ -235,6 +239,8 @@ public class ConvertController {
             if(thumbnailFormat == "Default") {
                 thumbnailFormat = null;
             }
+        } else {
+            thumbnail = "false";
         }
     }
 
@@ -248,9 +254,15 @@ public class ConvertController {
             .getConvertPDFPanel().getComboBoxColorFormat().getSelectedItem().toString();
         dpi = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
             .getConvertPDFPanel().getComboBoxDpi().getSelectedItem().toString();
-        thumbnail = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
+        boolean thumbnailAux = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
             .getConvertPDFPanel().getCheckBoxThumbnail().isSelected();
-        thumbnailFormat = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
-                .getConvertPDFPanel().getComboBoxThumbnailFormat().getSelectedItem().toString();
+        if(thumbnailAux == true) {
+            thumbnail = "true";
+            thumbnailFormat = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
+                    .getConvertPDFPanel().getComboBoxThumbnailFormat().getSelectedItem().toString();
+        } else {
+            thumbnail = "false";
+        }
+
     }
 }

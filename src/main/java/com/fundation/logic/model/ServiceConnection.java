@@ -78,6 +78,7 @@ public class ServiceConnection {
             if (response.getStatusLine().toString().contains("200")) {
                 //Add to logger
                 res = "Successful conversion";
+                System.out.println(res);
                 // TO DO res = response.
             }
             EntityUtils.consume(resEntity);
