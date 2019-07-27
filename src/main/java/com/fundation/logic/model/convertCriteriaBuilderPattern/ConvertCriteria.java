@@ -17,7 +17,7 @@ package com.fundation.logic.model.convertCriteriaBuilderPattern;
  */
 public class ConvertCriteria {
     private final String sourcePath;
-    private final String destinationPath;
+    private final String destPath;
     private final String newName;
     private final String newFormat;
     private final String convertType;
@@ -39,7 +39,7 @@ public class ConvertCriteria {
 
     public static class ConvertCriteriaBuilder {
         private final String sourcePath;
-        private final String destinationPath;
+        private final String destPath;
         private final String newName;
         private final String newFormat;
         private final String convertType;
@@ -70,7 +70,7 @@ public class ConvertCriteria {
         public ConvertCriteriaBuilder(String sourcePath, String destinationPath, String newName, String newFormat,
                 String convertType) {
             this.sourcePath = sourcePath;
-            this.destinationPath = destinationPath;
+            this.destPath = destinationPath;
             this.newName = newName;
             this.newFormat = newFormat;
             this.convertType = convertType;
@@ -240,7 +240,7 @@ public class ConvertCriteria {
      */
     private ConvertCriteria(ConvertCriteriaBuilder builder) {
         this.sourcePath = builder.sourcePath;
-        this.destinationPath = builder.destinationPath;
+        this.destPath = builder.destPath;
         this.newName = builder.newName;
         this.metadata = builder.metadata;
         this.newFormat = builder.newFormat;
@@ -273,8 +273,8 @@ public class ConvertCriteria {
      * Allows to get destination path.
      * @return Destination path.
      */
-    public String getDestinationPath() {
-        return destinationPath;
+    public String getDestPath() {
+        return destPath;
     }
 
     /**
