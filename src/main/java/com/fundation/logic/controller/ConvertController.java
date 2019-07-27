@@ -64,6 +64,7 @@ public class ConvertController {
             .addActionListener(e -> {
                 ConvertCriteria criteria = setConvertCriteria("PDF");
             });
+        resetCriteria();
     }
 
     /**
@@ -240,5 +241,31 @@ public class ConvertController {
             .getConvertPDFPanel().getCheckBoxThumbnail().isSelected();
         thumbnailFormat = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
                 .getConvertPDFPanel().getComboBoxThumbnailFormat().getSelectedItem().toString();
+    }
+
+    /**
+     * Resets all criteria attributes to null.
+     */
+    public void resetCriteria() {
+        sourcePath = null;
+        destPath = null;
+        newName = null;
+        newFormat = null;
+        convertType = null;
+        metadata = null;
+        audioCodec = null;
+        audioBitRate = null;
+        audioChannel = null;
+        videoCodec = null;
+        videoBitRate = null;
+        fps = null;
+        keyframe = false;
+        keyframeTime = null;
+        keyframeFormat = null;
+        thumbnail = false;
+        thumbnailTime = null;
+        thumbnailFormat = null;
+        formatColor = null;
+        dpi = null;
     }
 }
