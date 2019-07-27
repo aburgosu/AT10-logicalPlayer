@@ -404,7 +404,7 @@ public class ConvertVideoPanel extends CustomPanel {
      * @return checkBoxKeyFrameFormat
      */
     public JComboBox getComboBoxKeyFrameFormat() {
-        return getComboBoxKeyFrameFormat();
+        return comboBoxKeyFrameFormat;
     }
 
     /**
@@ -412,7 +412,7 @@ public class ConvertVideoPanel extends CustomPanel {
      * @return checkBoxThumbnailFormat
      */
     public JComboBox getComboBoxThumbnailFormat() {
-        return getComboBoxThumbnailFormat();
+        return comboBoxThumbnailFormat;
     }
 
     /**

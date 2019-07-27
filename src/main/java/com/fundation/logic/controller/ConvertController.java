@@ -13,6 +13,8 @@ import com.fundation.logic.model.ServiceConnection;
 import com.fundation.logic.model.convertCriteriaBuilderPattern.ConvertCriteria;
 import com.fundation.logic.view.MainFrame;
 
+import javax.swing.*;
+
 /**
  * Implements the ConvertController class.
  *
@@ -72,7 +74,19 @@ public class ConvertController {
     public void convert(String convertType) {
         ConvertCriteria criteria = setConvertCriteria(convertType);
         try {
+            JOptionPane.showMessageDialog(searchFrame,"Conversion in proccess...\nplease wait confirmation message");
             serviceConnection.convert(criteria);
+            while (true) {
+                if (serviceConnection.getStatus()== ServiceConnection.SUCCESS) {
+                    JOptionPane.showMessageDialog(searchFrame,"Conversion successful");
+                    break;
+                }
+                if (serviceConnection.getStatus()== ServiceConnection.ERROR) {
+                    JOptionPane.showMessageDialog(searchFrame,"Error in conversion, please contact support");
+                    break;
+                }
+                Thread.sleep(5000);
+            }
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -218,7 +232,7 @@ public class ConvertController {
             keyframe = "true";
             keyframeTime = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
                 .getConvertVideoPanel().getMinuteSpinnerKeyFrame().getValue().toString();
-            keyframeTime = keyframeTime.substring(17, 18);
+            keyframeTime = keyframeTime.substring(17, 19);
             keyframeFormat = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
                 .getConvertVideoPanel().getComboBoxKeyFrameFormat().getSelectedItem().toString();
             if(keyframeFormat == "Default") {
@@ -233,7 +247,7 @@ public class ConvertController {
             thumbnail = "true";
             thumbnailTime = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
                 .getConvertVideoPanel().getMinuteSpinnerThumbnail().getValue().toString();
-            thumbnailTime = thumbnailTime.substring(17, 18);
+            thumbnailTime = thumbnailTime.substring(17, 19);
             thumbnailFormat = searchFrame.getSearchTabs().getSplitPanelConvert().getConverterTab()
                 .getConvertVideoPanel().getComboBoxThumbnailFormat().getSelectedItem().toString();
             if(thumbnailFormat == "Default") {
@@ -263,6 +277,5 @@ public class ConvertController {
         } else {
             thumbnail = "false";
         }
-
     }
 }
