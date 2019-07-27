@@ -21,6 +21,11 @@ import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.Event;
+import javax.swing.KeyStroke;
+import javax.swing.InputMap;
 
 /**
  * Implements the GeneralSearch Panel.
@@ -145,6 +150,16 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_textFieldSizeFrom.gridx = 2;
         gbc_textFieldSizeFrom.gridy = 6;
         add(getTextFieldSizeFrom(), gbc_textFieldSizeFrom);
+        InputMap invalidSizeFrom = textFieldSizeFrom.getInputMap(JTextField.WHEN_FOCUSED);
+        invalidSizeFrom.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        textFieldSizeFrom.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char isNumber = e.getKeyChar();
+                if (((isNumber < '0') || (isNumber > '9')) && (isNumber != '\b')) {
+                    e.consume();
+                }
+            }
+        });
 
         textFieldSizeTo = new CustomTextField();
         GridBagConstraints gbc_textFieldSizeTo = new GridBagConstraints();
@@ -153,6 +168,16 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_textFieldSizeTo.gridx = 3;
         gbc_textFieldSizeTo.gridy = 6;
         add(getTextFieldSizeTo(), gbc_textFieldSizeTo);
+        InputMap invalidSizeTo = textFieldSizeTo.getInputMap(JTextField.WHEN_FOCUSED);
+        invalidSizeTo.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        textFieldSizeTo.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char isNumber = e.getKeyChar();
+                if (((isNumber < '0') || (isNumber > '9')) && (isNumber != '\b')) {
+                    e.consume();
+                }
+            }
+        });
 
         comboBoxSizeUnit = new CustomComboBox();
         comboBoxSizeUnit.setModel(new DefaultComboBoxModel(new String[] {"Bytes", "KBytes", "MBytes", "GBytes"}));

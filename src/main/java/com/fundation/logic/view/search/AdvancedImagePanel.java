@@ -16,8 +16,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.GridBagConstraints;
+import javax.swing.KeyStroke;
 import java.awt.Insets;
+import java.awt.Event;
+import javax.swing.InputMap;
+import java.awt.GridBagConstraints;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * This class show the Advance image in a panel.
@@ -67,6 +72,16 @@ public class AdvancedImagePanel extends CustomPanelSecond {
         gbc_textFieldWith.gridx = 2;
         gbc_textFieldWith.gridy = 4;
         add(textFieldWidth, gbc_textFieldWith);
+        InputMap invalidSizeTo = textFieldWidth.getInputMap(JTextField.WHEN_FOCUSED);
+        invalidSizeTo.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        textFieldWidth.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char isNumber = e.getKeyChar();
+                if (((isNumber < '0') || (isNumber > '9')) && (isNumber != '\b')) {
+                    e.consume();
+                }
+            }
+        });
 
         JLabel lblPixels = new CustomLabel("  pixels");
         GridBagConstraints gbc_lblPixels = new GridBagConstraints();
@@ -91,6 +106,16 @@ public class AdvancedImagePanel extends CustomPanelSecond {
         gbc_textFieldWidth.gridx = 2;
         gbc_textFieldWidth.gridy = 5;
         add(textFieldHeight, gbc_textFieldWidth);
+        InputMap invalidHeight = textFieldHeight.getInputMap(JTextField.WHEN_FOCUSED);
+        invalidHeight.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        textFieldHeight.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char isNumber = e.getKeyChar();
+                if (((isNumber < '0') || (isNumber > '9')) && (isNumber != '\b')) {
+                    e.consume();
+                }
+            }
+        });
 
         JLabel lblPixelsH = new CustomLabel("  pixels");
         GridBagConstraints gbc_lblPixelsH = new GridBagConstraints();
