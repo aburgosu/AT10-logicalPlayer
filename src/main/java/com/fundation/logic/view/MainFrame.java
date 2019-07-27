@@ -42,15 +42,9 @@ public class MainFrame extends CustomJFrame {
      * This method init all component
      */
     public void initComponent() {
-//        try {
-//            UIManager.setLookAndFeel(UIManager.getJavaLookAndFeelClassName());
-//        } catch(Exception e) {
-//            e.printStackTrace();
-//        }
         mainContentPanel = new CustomPanelSecond();
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));
-        //mainContentPanel.setBackground(new Color(42, 135, 77));
 
         JSplitPane mainSplitPanel = new CustomSplitPanel();
         mainSplitPanel.setDividerLocation(getWidth()/2);
