@@ -65,13 +65,13 @@ public class MainFrame extends CustomJFrame {
      */
     public void initSetting() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setBounds(100, 100, 870, 400);
+        setBounds(100, 100, 960, 400);
         setForeground(Color.orange);
         setBackground(Color.BLUE);
-        setTitle("J2AM Player");
+        setTitle("J2AM2 Player");
         initComponent();
         setContentPane(mainContentPanel);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
     }
 
