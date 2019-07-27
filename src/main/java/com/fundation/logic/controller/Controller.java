@@ -11,10 +11,11 @@ package com.fundation.logic.controller;
 
 import com.fundation.logic.common.ByteConvert;
 import com.fundation.logic.common.Validators;
-import com.fundation.logic.model.search.*;
 import com.fundation.logic.model.CriteriaRecord;
 import com.fundation.logic.model.CustomizedFile;
 import com.fundation.logic.model.QueryForCriteria;
+import com.fundation.logic.model.search.ISearch;
+import com.fundation.logic.model.search.SearchFactory;
 import com.fundation.logic.model.searchCriteria.Audio;
 import com.fundation.logic.model.searchCriteria.Common;
 import com.fundation.logic.model.searchCriteria.Criteria;
