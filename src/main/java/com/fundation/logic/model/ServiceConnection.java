@@ -57,7 +57,13 @@ public class ServiceConnection {
                 + "}");
         
         StringBody stringConfig = new StringBody(JsonConverter.convertCriteriaToJson(criteria), ContentType.TEXT_PLAIN);
+
+        System.out.println(JsonConverter.convertCriteriaToJson(criteria));
+
         StringBody stringOutput = new StringBody("{\"name\":\"" + criteria.getNewName() + "\",\"ext\":\"." + criteria.getNewFormat() + "\"}", ContentType.TEXT_PLAIN);
+
+        System.out.println("{\"name\":\"" + criteria.getNewName() + "\",\"ext\":\"." + criteria.getNewFormat() + "\"}");
+
         HttpEntity reqEntity = MultipartEntityBuilder.create()
                 .addPart("asset", fileBody)
                 .addPart("input", stringInput)

@@ -48,7 +48,7 @@ public class ConvertController {
      */
     public ConvertController(MainFrame searchFrame) {
         this.searchFrame = searchFrame;
-        this.serviceConnection = new ServiceConnection("176.20.16.11/convertVideo");
+        this.serviceConnection = new ServiceConnection("http://127.0.0.1/convert");
     }
 
     /**
@@ -142,7 +142,7 @@ public class ConvertController {
         sourcePath = searchFrame.getSearchTabs().getSplitPanelConvert().getBasicConvert()
                 .getTextFieldSourcePath().getText();
         destinationPath = searchFrame.getSearchTabs().getSplitPanelConvert().getBasicConvert()
-                .getTextFieldDestinationPath().getText();
+                .getTextFieldDestinationPath().getText()+"\\";
         newName = searchFrame.getSearchTabs().getSplitPanelConvert().getBasicConvert().getTextFieldNewName()
                 .getText();
         metadata = searchFrame.getSearchTabs().getSplitPanelConvert().getBasicConvert()
