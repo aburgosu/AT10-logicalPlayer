@@ -21,7 +21,6 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -124,8 +123,8 @@ public class AdvancedVideoPanel extends CustomPanel {
         add(lblResolution, gbc_lblWidth);
 
         comboBoxResolution = new JComboBox();
-        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"All", "256x144", "426x144", "640x360",
-            "1280x720", "1920x1080"}));
+        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"All", "144", "360","480",
+            "720", "1080"}));
         GridBagConstraints gbc_comboBoxResolution = new GridBagConstraints();
         gbc_comboBoxResolution.gridwidth = 2;
         gbc_comboBoxResolution.insets = new Insets(0, 0, 5, 0);
