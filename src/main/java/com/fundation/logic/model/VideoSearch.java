@@ -58,13 +58,12 @@ public class VideoSearch implements ISearch {
         String criteriVideoCodec = videoCriteria.getVideoCodec();
         String criteriAudioVideoCodec = videoCriteria.getAudioCodec();
         String criteriaFrameRate = videoCriteria.getFrameRate();
-        String criteriaHeight = Integer.toString(videoCriteria.getHeight());
+        String criteriaHeight = videoCriteria.getHeight();
         String criteriaLLDuration = videoCriteria.getDurationfrom();
         String criteriaLUDuration = videoCriteria.getDurationTo();
         Float initDuration = convertDurationToDecimal(criteriaLLDuration);
         Float endDuration = convertDurationToDecimal(criteriaLUDuration);
         File[] allSubFiles = file.listFiles();
-
         for (File fileExtractor : allSubFiles) {
             try {
                 if (fileExtractor.isDirectory()) {
