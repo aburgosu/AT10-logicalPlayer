@@ -265,6 +265,11 @@ public class Controller {
         if (height.length() == 0) {
             height = "0";
         }
+        String colorSpace = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced().getComboBoxColorSpaceData().getSelectedItem().toString();
+        if (height.length() == 0) {
+            height = "0";
+        }
+        criteria.setColorSpaceData(colorSpace);
         criteria.setPath(path);
         criteria.setWidth(Integer.parseInt(width));
         criteria.setHeight(Integer.parseInt(height));
@@ -299,23 +304,20 @@ public class Controller {
         if (sampleRate.length() == 0) {
             sampleRate = null;
         }
-        String endDuration = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinnerTo());
-        String initDuration = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinner());
+        String endDuration = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinnerTo());
+        String initDuration = (searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinner());
         int init = endDuration.length()-17;
-        int end = endDuration.length()-9;
+        int end = initDuration.length()-9;
         endDuration = endDuration.substring(init,end);
         initDuration = initDuration.substring(init,end);
         criteria.setDurationTo(endDuration);
         criteria.setDurationFrom(initDuration);
-        sampleRate = sampleRate.substring(0,5);
-        int sampleRateInt = Integer.parseInt(sampleRate);
-        channel = channel.substring(0, 1);
         criteria.setPath(path);
         criteria.setFileName(fileName);
         criteria.setExtension(extensionName);
-        criteria.setChannel(Integer.parseInt(channel));
+        criteria.setChannel(channel);
         criteria.setAudioCodec(audioCodec);
-        criteria.setSampleRate(sampleRateInt);
+        criteria.setSampleRate(sampleRate);
         return criteria;
     }
 
@@ -366,7 +368,7 @@ public class Controller {
         criteria.setVideoCodec(videoCodec);
         criteria.setAudioCodec(audioCodec);
         criteria.setFrameRate(framerate);
-        criteria.setHeight(Integer.parseInt(resolution.substring(resolution.indexOf("x") + 1)));
+        criteria.setHeight(resolution);
         return criteria;
     }
 
