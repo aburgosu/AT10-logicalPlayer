@@ -16,36 +16,36 @@ package com.fundation.logic.model.criteria;
  * @version 1.0
  */
 public class Audio extends Multimedia{
-    private int channel;
-    private int sampleRate;
+    private String channel;
+    private String sampleRate;
     private String durationFrom;
     private String durationTo;
 
     /**
      * @return Audio Channel.
      */
-    public int getChannel() {
+    public String getChannel() {
         return channel;
     }
 
     /**
      * Set Audio Channel.
      */
-    public void setChannel(int channel) {
+    public void setChannel(String channel) {
         this.channel = channel;
     }
 
     /**
      * @return Audio Sample Rate.
      */
-    public int getSampleRate() {
+    public String  getSampleRate() {
         return sampleRate;
     }
 
     /**
      * Set Audio Sample Rate.
      */
-    public void setSampleRate(int sampleRate) {
+    public void setSampleRate(String  sampleRate) {
         this.sampleRate = sampleRate;
     }
 
