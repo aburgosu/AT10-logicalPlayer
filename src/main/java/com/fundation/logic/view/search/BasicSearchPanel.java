@@ -14,7 +14,6 @@ import com.fundation.logic.view.*;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JFileChooser;
-import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -27,7 +26,7 @@ import java.awt.event.ActionListener;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class BasicSearchPanel extends CustomPanel2 {
+public class BasicSearchPanel extends CustomPanelSecond {
     private JTextField textFieldPath;
     private JTextField textFileName;
     private JTextField textFieldFileType;

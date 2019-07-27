@@ -28,7 +28,7 @@ import java.util.Calendar;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertVideoPanel extends CustomPanel2 {
+public class ConvertVideoPanel extends CustomPanelSecond {
     private JComboBox comboBoxNewFormat;
     private JComboBox comboBoxAudioCodec;
     private JComboBox comboBoxAudioBit;

@@ -12,7 +12,6 @@ package com.fundation.logic.view;
 import com.fundation.logic.view.resultTable.TableResult;
 
 import javax.swing.JFrame;
-import javax.swing.UIManager;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JScrollPane;
@@ -48,7 +47,7 @@ public class MainFrame extends CustomJFrame {
 //        } catch(Exception e) {
 //            e.printStackTrace();
 //        }
-        mainContentPanel = new CustomPanel2();
+        mainContentPanel = new CustomPanelSecond();
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));
         //mainContentPanel.setBackground(new Color(42, 135, 77));

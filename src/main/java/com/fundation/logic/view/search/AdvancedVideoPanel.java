@@ -27,7 +27,7 @@ import java.util.Calendar;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class AdvancedVideoPanel extends CustomPanel2 {
+public class AdvancedVideoPanel extends CustomPanelSecond {
 
     private PanelSetter settingPanel;
     private JComboBox comboBoxVideoCodec;

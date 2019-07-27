@@ -28,7 +28,7 @@ import java.awt.Insets;
  * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class GeneralSearchPanel extends CustomPanel2 {
+public class GeneralSearchPanel extends CustomPanelSecond {
     private JTextField textFieldOwner;
     private JDateChooser fieldToDateCreation;
     private JDateChooser textFieldFromDateCreation;

@@ -24,7 +24,7 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class SearchByDate extends CustomPanel2 {
+public class SearchByDate extends CustomPanelSecond {
     private PanelSetter settingPanel;
     private CustomButton btnFilterByDate;
     private JDateChooser fieldDateFirstDate;

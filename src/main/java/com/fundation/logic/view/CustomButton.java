@@ -10,7 +10,8 @@
 package com.fundation.logic.view;
 
 import javax.swing.JButton;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 
 /**
  * Implements CustomButton class.

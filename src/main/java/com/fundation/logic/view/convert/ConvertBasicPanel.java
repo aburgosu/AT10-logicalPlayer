@@ -12,7 +12,6 @@ package com.fundation.logic.view.convert;
 import com.fundation.logic.view.*;
 
 import javax.swing.JComboBox;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
@@ -29,7 +28,7 @@ import java.awt.event.ActionListener;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertBasicPanel extends CustomPanel2 {
+public class ConvertBasicPanel extends CustomPanelSecond {
     private JTextField textFieldSourcePath;
     private JTextField textFieldDestinationPath;
     private JTextField textFieldNewName;

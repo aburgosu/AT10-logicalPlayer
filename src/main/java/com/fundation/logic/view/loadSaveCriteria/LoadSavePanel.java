@@ -1,14 +1,12 @@
 package com.fundation.logic.view.loadSaveCriteria;
 
 import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomPanel;
-import com.fundation.logic.view.CustomPanel2;
+import com.fundation.logic.view.CustomPanelSecond;
 import com.fundation.logic.view.CustomTable;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagLayout;
-import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
@@ -18,7 +16,7 @@ import java.awt.Insets;
  * @author Andres Burgos
  * @version 1.0
  */
-public class LoadSavePanel extends CustomPanel2 {
+public class LoadSavePanel extends CustomPanelSecond {
     private JTable dataTable;
     private DefaultTableModel model;
 

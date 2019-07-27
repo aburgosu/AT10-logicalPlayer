@@ -24,7 +24,7 @@ import java.awt.Insets;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertAudioPanel extends CustomPanel2 {
+public class ConvertAudioPanel extends CustomPanelSecond {
     private JComboBox comboBoxNewFormat;
     private JComboBox comboBoxCodec;
     private JComboBox comboBoxBit;

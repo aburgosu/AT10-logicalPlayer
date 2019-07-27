@@ -24,7 +24,7 @@ import java.awt.Insets;
  * @author Melissa Román
  * @version 1.0
  */
-public class ConvertPPTPanel extends CustomPanel2 {
+public class ConvertPPTPanel extends CustomPanelSecond {
     private JComboBox comboBoxNewFormat;
     private PanelSetter settingPanel;
     private CustomButton btnConvertAudio;

@@ -25,7 +25,7 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class AdvancedImagePanel extends CustomPanel2 {
+public class AdvancedImagePanel extends CustomPanelSecond {
     private CustomButton btnSearchAdvanceImage;
     private JTextField textFieldWidth;
     private JTextField textFieldHeight;

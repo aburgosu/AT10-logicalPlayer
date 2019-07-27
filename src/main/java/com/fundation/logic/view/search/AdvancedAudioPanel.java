@@ -27,7 +27,7 @@ import java.util.Calendar;
  * @author Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class AdvancedAudioPanel extends CustomPanel2 {
+public class AdvancedAudioPanel extends CustomPanelSecond {
     private CustomButton btnSearchAdvanceAudio;
     private JComboBox comboBoxAudioCodecName;
     private JComboBox comboBoxAudioChannel;
