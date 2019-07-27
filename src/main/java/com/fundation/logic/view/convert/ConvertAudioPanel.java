@@ -65,7 +65,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
         add(lblNewFormat, gbc_lblNewFormat);
 
         comboBoxNewFormat = new CustomComboBox();
-        comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"MP3", "WAV", "AIFF", "WMA", "FLAC"}));
+        comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"mp3", "wav", "aiff", "wma", "flac"}));
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxNewFormat.fill = GridBagConstraints.HORIZONTAL;
@@ -82,7 +82,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
         add(lblCodec, gbc_lblCodec);
 
         comboBoxCodec = new CustomComboBox();
-        comboBoxCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "MP3", "WACPack", "AAC", "WMA",
+        comboBoxCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "mp3", "wacpack", "aac", "wma",
             "Vorbis", "FLAC"}));
         GridBagConstraints gbc_comboBoxCodec = new GridBagConstraints();
         gbc_comboBoxCodec.insets = new Insets(0, 0, 5, 0);
@@ -117,7 +117,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
         add(lblChannel, gbc_lblChannel);
 
         comboBoxChannel = new CustomComboBox();
-        comboBoxChannel.setModel(new DefaultComboBoxModel(new String[]{"Default", "1", "2", "5.1", "7.1"}));
+        comboBoxChannel.setModel(new DefaultComboBoxModel(new String[]{"Default", "1", "2", "5", "7"}));
         GridBagConstraints gbc_comboBoxChannel = new GridBagConstraints();
         gbc_comboBoxChannel.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxChannel.fill = GridBagConstraints.HORIZONTAL;

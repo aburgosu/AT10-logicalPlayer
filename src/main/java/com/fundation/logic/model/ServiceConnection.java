@@ -22,6 +22,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Implements the connection to the service to convert module.
@@ -30,8 +31,13 @@ import java.io.File;
  * @version 1.0
  */
 public class ServiceConnection {
-    CloseableHttpClient httpClient;
-    HttpPost httpPost;
+    private CloseableHttpClient httpClient;
+    private HttpPost httpPost;
+    private int status;
+
+    public static final int IN_PROCCES=0;
+    public static final int SUCCESS=1;
+    public static final int ERROR=2;
 
     public ServiceConnection(String uri) {
         httpClient = HttpClients.createDefault();
@@ -43,10 +49,18 @@ public class ServiceConnection {
      * @param criteria - Criteria generated from data obtained since UI.
      * @return URL to download the file resultant of conversion process.
      */
-    public String convert(ConvertCriteria criteria) throws Exception {
+    public String convert(ConvertCriteria criteria) {
         String res = "";
         FileBody fileBody = new FileBody(new File(criteria.getSourcePath()));
-        StringBody stringInput = new StringBody("{\"typeConversion\":\"" + "videoCONVERT" + "\",\"checksum\":\"" + Checksum.getChecksum(criteria.getSourcePath(), "MD5") + "\",\"destPath\":\"" + criteria.getDestPath().replace("\\", "\\\\") + "\"" + "}", ContentType.TEXT_PLAIN);
+        StringBody stringInput = null;
+        try {
+            stringInput = new StringBody("{\"typeConversion\":\""
+                    + criteria.getConvertType() + "\",\"checksum\":\"" + Checksum.getChecksum(criteria.getSourcePath(), "MD5")
+                    + "\",\"destPath\":\"" + criteria.getDestPath().replace("\\", "\\\\") + "\""
+                    + "}", ContentType.TEXT_PLAIN);
+        } catch (Exception e) {
+            status = this.ERROR;
+        }
         StringBody stringConfig = new StringBody(JsonConverter.convertCriteriaToJson(criteria), ContentType.TEXT_PLAIN);
         StringBody stringOutput = new StringBody("{\"name\":\"" + criteria.getNewName() + "\",\"ext\":\"." + criteria.getNewFormat() + "\"}", ContentType.TEXT_PLAIN);
         HttpEntity reqEntity = MultipartEntityBuilder.create()
@@ -56,18 +70,42 @@ public class ServiceConnection {
                 .addPart("output", stringOutput)
                 .build();
         httpPost.setEntity(reqEntity);
-        CloseableHttpResponse response = httpClient.execute(httpPost);
+        CloseableHttpResponse response = null;
         try {
-            HttpEntity resEntity = response.getEntity();
+            response = httpClient.execute(httpPost);
+            status = this.IN_PROCCES;
+        } catch (IOException e) {
+            status = this.ERROR;
+        }
+        try {
             if (response.getStatusLine().toString().contains("200")) {
-                //Add to logger
                 res = "Successful conversion";
-                // TO DO res = response.
+                status = this.SUCCESS;
             }
-            EntityUtils.consume(resEntity);
+            if (!response.getStatusLine().toString().contains("200")) {
+                res = "Conversion error";
+                status = this.ERROR;
+            }
+            HttpEntity resEntity = response.getEntity();
+            try {
+                EntityUtils.consume(resEntity);
+            } catch (IOException e) {
+                status = this.ERROR;
+            }
         } finally {
-            response.close();
+            try {
+                response.close();
+            } catch (IOException e) {
+                status = this.ERROR;
+            }
         }
         return res;
+    }
+
+    /**
+     * Allows to get status to convert process.
+     */
+    public int getStatus() {
+        return status;
     }
 }
