@@ -9,24 +9,22 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Implements CustomButton class.
+ * Implements CustomCheckBox class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomButton extends JButton {
-    public CustomButton(String name) {
-        super(name);
-        Color buttonColor = new Color(60, 139, 139);
-        setBackground(buttonColor);
-        setForeground(new Color(230, 227, 210));
-        Font font = new Font("Calibri", 3, 18);
+public class CustomCheckBox extends JCheckBox {
+    public CustomCheckBox(String check) {
+        super();
+        Color checkBoxColor = new Color(119, 136, 153);
+        setBackground(checkBoxColor);
+        Font font = new Font("Calibri", 3, 20);
         setFont(font);
     }
 }

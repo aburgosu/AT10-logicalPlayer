@@ -9,24 +9,21 @@
  */
 package com.fundation.logic.view;
 
+import javax.swing.JPanel;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import java.awt.Color;
-import java.awt.Font;
 
 /**
- * Implements CustomButton class.
+ * Implements CustomPanelSecond class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomButton extends JButton {
-    public CustomButton(String name) {
-        super(name);
-        Color buttonColor = new Color(60, 139, 139);
-        setBackground(buttonColor);
-        setForeground(new Color(230, 227, 210));
-        Font font = new Font("Calibri", 3, 18);
-        setFont(font);
+public class CustomPanelSecond extends JPanel {
+    public CustomPanelSecond() {
+        super();
+        Color panelColor = new Color(32, 178, 170);
+        setBackground(panelColor);
+        setForeground(Color.orange);
     }
 }

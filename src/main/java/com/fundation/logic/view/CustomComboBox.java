@@ -9,24 +9,22 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import javax.swing.JComboBox;
 import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Implements CustomButton class.
+ * Implements CustomComboBox class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomButton extends JButton {
-    public CustomButton(String name) {
-        super(name);
-        Color buttonColor = new Color(60, 139, 139);
-        setBackground(buttonColor);
-        setForeground(new Color(230, 227, 210));
-        Font font = new Font("Calibri", 3, 18);
+public class CustomComboBox extends JComboBox {
+    public CustomComboBox() {
+        super();
+        Color comboBoxColor = new Color(255, 240,245);
+        setBackground(comboBoxColor);
+        Font font = new Font("Calibri", 3, 14);
         setFont(font);
     }
 }

@@ -9,8 +9,11 @@
  */
 package com.fundation.logic.view.resultTable;
 
-import javax.swing.JTable;
+import com.fundation.logic.view.CustomTable;
+
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
@@ -22,8 +25,10 @@ import java.util.List;
  * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
-public class TableResult extends JTable {
+public class TableResult extends CustomTable {
+    private JTable tabla;
     private DefaultTableModel model;
+    private JScrollPane panelBarra;
 
     /**
      * Initializes a TableResult instance with headers
@@ -36,9 +41,11 @@ public class TableResult extends JTable {
                 return false;
             }
         };
+        this.setModel(model);
         model.addRow(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
             "Date last accessed", "Metadata"});
-        this.setModel(model);
+        tabla = new JTable(model);
+        panelBarra=new JScrollPane(tabla);
         this.getColumn(this.getColumnName(7)).setMaxWidth(0);
         this.getColumn(this.getColumnName(0)).setPreferredWidth(300);
         this.initListen();

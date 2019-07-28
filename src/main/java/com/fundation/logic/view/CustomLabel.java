@@ -9,24 +9,19 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import java.awt.Color;
+import javax.swing.JLabel;
 import java.awt.Font;
 
 /**
- * Implements CustomButton class.
+ * Implements CustomLabel class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomButton extends JButton {
-    public CustomButton(String name) {
+public class CustomLabel extends JLabel {
+    public CustomLabel(String name) {
         super(name);
-        Color buttonColor = new Color(60, 139, 139);
-        setBackground(buttonColor);
-        setForeground(new Color(230, 227, 210));
-        Font font = new Font("Calibri", 3, 18);
+        Font font = new Font("Verdana",3, 12);
         setFont(font);
     }
 }

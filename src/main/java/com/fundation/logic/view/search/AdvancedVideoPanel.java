@@ -9,9 +9,11 @@
  */
 package com.fundation.logic.view.search;
 
+import com.fundation.logic.view.CustomPanelSecond;
 import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomPanel;
 import com.fundation.logic.view.PanelSetter;
+import com.fundation.logic.view.CustomLabel;
+import com.fundation.logic.view.CustomComboBox;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -29,7 +31,7 @@ import java.util.Calendar;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class AdvancedVideoPanel extends CustomPanel {
+public class AdvancedVideoPanel extends CustomPanelSecond {
 
     private PanelSetter settingPanel;
     private JComboBox comboBoxVideoCodec;
@@ -39,6 +41,7 @@ public class AdvancedVideoPanel extends CustomPanel {
     private JSpinner minuteSpinner;
     private JSpinner minuteSpinnerTo;
     private CustomButton btnSearchAdvanceVideoPanel;
+    private CustomButton btnSaveAdvanceVideo;
 
     /**
      * This constructor initializer the component.
@@ -60,7 +63,7 @@ public class AdvancedVideoPanel extends CustomPanel {
      * This method show the content the panel.
      */
     private void videoContentPanel() {
-        JLabel lblCodecVideo = new JLabel("Video codec:");
+        JLabel lblCodecVideo = new CustomLabel("Video codec:");
         GridBagConstraints gbc_lblCodecVideo = new GridBagConstraints();
         gbc_lblCodecVideo.anchor = GridBagConstraints.EAST;
         gbc_lblCodecVideo.insets = new Insets(0, 0, 5, 5);
@@ -68,7 +71,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_lblCodecVideo.gridy = 7;
         add(lblCodecVideo, gbc_lblCodecVideo);
 
-        comboBoxVideoCodec = new JComboBox();
+        comboBoxVideoCodec = new CustomComboBox();
         comboBoxVideoCodec.setModel(new DefaultComboBoxModel(new String[]{"All", "MPEG-4", "WMV"}));
         GridBagConstraints gbc_comboBoxVideoCodec = new GridBagConstraints();
         gbc_comboBoxVideoCodec.gridwidth = 2;
@@ -78,7 +81,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_comboBoxVideoCodec.gridy = 7;
         add(comboBoxVideoCodec, gbc_comboBoxVideoCodec);
 
-        JLabel lblAudioCodecName = new JLabel("Audio codec:");
+        JLabel lblAudioCodecName = new CustomLabel("Audio codec:");
         GridBagConstraints gbc_lblAudioCodecName = new GridBagConstraints();
         gbc_lblAudioCodecName.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodecName.insets = new Insets(0, 0, 5, 5);
@@ -86,7 +89,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_lblAudioCodecName.gridy = 8;
         add(lblAudioCodecName, gbc_lblAudioCodecName);
 
-        comboBoxAudioCodecName = new JComboBox();
+        comboBoxAudioCodecName = new CustomComboBox();
         comboBoxAudioCodecName.setModel(new DefaultComboBoxModel(new String[]{"All", "MPEG", "WMA", "AAC"}));
         GridBagConstraints textFiled_AudioCodecName = new GridBagConstraints();
         textFiled_AudioCodecName.gridwidth = 2;
@@ -96,7 +99,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         textFiled_AudioCodecName.gridy = 8;
         add(comboBoxAudioCodecName, textFiled_AudioCodecName);
 
-        JLabel lblFrameRate = new JLabel("Frame rate:");
+        JLabel lblFrameRate = new CustomLabel("Frame rate:");
         GridBagConstraints gbc_lblFrameRate = new GridBagConstraints();
         gbc_lblFrameRate.anchor = GridBagConstraints.EAST;
         gbc_lblFrameRate.insets = new Insets(0, 0, 5, 5);
@@ -104,7 +107,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_lblFrameRate.gridy = 10;
         add(lblFrameRate, gbc_lblFrameRate);
 
-        comboBoxVideoFrameRate = new JComboBox();
+        comboBoxVideoFrameRate = new CustomComboBox();
         comboBoxVideoFrameRate.setModel(new DefaultComboBoxModel(new String[]{"All", "21", "24", "30", "60"}));
         GridBagConstraints gbc_comboBoxVideoFrameRate = new GridBagConstraints();
         gbc_comboBoxVideoFrameRate.gridwidth = 2;
@@ -114,7 +117,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_comboBoxVideoFrameRate.gridy = 10;
         add(comboBoxVideoFrameRate, gbc_comboBoxVideoFrameRate);
 
-        JLabel lblResolution = new JLabel("Resolution:");
+        JLabel lblResolution = new CustomLabel("Resolution:");
         GridBagConstraints gbc_lblWidth = new GridBagConstraints();
         gbc_lblWidth.insets = new Insets(0, 0, 5, 5);
         gbc_lblWidth.anchor = GridBagConstraints.EAST;
@@ -122,9 +125,9 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_lblWidth.gridy = 11;
         add(lblResolution, gbc_lblWidth);
 
-        comboBoxResolution = new JComboBox();
-        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"All", "256x144", "426x144", "640x360",
-            "1280x720", "1920x1080"}));
+        comboBoxResolution = new CustomComboBox();
+        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"All", "144", "360","480",
+            "720", "1080"}));
         GridBagConstraints gbc_comboBoxResolution = new GridBagConstraints();
         gbc_comboBoxResolution.gridwidth = 2;
         gbc_comboBoxResolution.insets = new Insets(0, 0, 5, 0);
@@ -133,7 +136,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_comboBoxResolution.gridy = 11;
         add(comboBoxResolution, gbc_comboBoxResolution);
 
-        JLabel lblDuration = new JLabel("Duration:");
+        JLabel lblDuration = new CustomLabel("Duration:");
         GridBagConstraints gbc_lblDuration = new GridBagConstraints();
         gbc_lblDuration.anchor = GridBagConstraints.EAST;
         gbc_lblDuration.insets = new Insets(0, 0, 5, 5);
@@ -149,7 +152,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
         minuteSpinnerModelFrom.setValue(calendar.getTime());
         minuteSpinner = new JSpinner(minuteSpinnerModelFrom);
-        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "00:mm:ss");
+        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "HH:mm:ss");
         dateEditor.getTextField().setEditable(false);
         minuteSpinner.setEditor(dateEditor);
         GridBagConstraints gbc_spinner = new GridBagConstraints();
@@ -161,7 +164,7 @@ public class AdvancedVideoPanel extends CustomPanel {
         SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
         minuteSpinnerModelTo.setValue(calendar.getTime());
         minuteSpinnerTo = new JSpinner(minuteSpinnerModelTo);
-        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "00:mm:ss");
+        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "HH:mm:ss");
         dateEditorTo.getTextField().setEditable(false);
         minuteSpinnerTo.setEditor(dateEditorTo);
         GridBagConstraints gbc_minuteSpinnerTo = new GridBagConstraints();
@@ -178,6 +181,15 @@ public class AdvancedVideoPanel extends CustomPanel {
         gbc_btnSearch.gridx = 0;
         gbc_btnSearch.gridy = 17;
         add(btnSearchAdvanceVideoPanel, gbc_btnSearch);
+
+        btnSaveAdvanceVideo = new CustomButton("Save");
+        GridBagConstraints gbc_btnSaveAdvanceVideo = new GridBagConstraints();
+        gbc_btnSaveAdvanceVideo.gridwidth = 6;
+        gbc_btnSaveAdvanceVideo.anchor = GridBagConstraints.CENTER;
+        gbc_btnSaveAdvanceVideo.insets = new Insets(0, 0, 10, 0);
+        gbc_btnSaveAdvanceVideo.gridx = 4;
+        gbc_btnSaveAdvanceVideo.gridy = 17;
+        add(btnSaveAdvanceVideo, gbc_btnSaveAdvanceVideo);
     }
 
     /**
@@ -234,5 +246,12 @@ public class AdvancedVideoPanel extends CustomPanel {
      */
     public String getMinuteSpinnerTo() {
         return minuteSpinnerTo.getValue().toString();
+    }
+
+    /**
+     * This method return the btnSaveAdvanceVideo button.
+     */
+    public CustomButton getbtnSaveAdvanceVideo() {
+        return btnSaveAdvanceVideo;
     }
 }

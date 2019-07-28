@@ -9,21 +9,19 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JPanel;
-import javax.swing.BorderFactory;
+import javax.swing.JSplitPane;
 import java.awt.Color;
 
 /**
- * Implements CustomPanel class.
+ * Implements CustomSplitPanel class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomPanel extends JPanel {
-    public CustomPanel() {
+public class CustomSplitPanel extends JSplitPane {
+    public CustomSplitPanel() {
         super();
-        Color panelColor = new Color(60, 63, 65);
+        Color panelColor = new Color(16, 151, 152);
         setBackground(panelColor);
-        setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(43, 43, 43)));
     }
 }

@@ -9,24 +9,22 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Implements CustomButton class.
+ * Implements CustomTextField class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomButton extends JButton {
-    public CustomButton(String name) {
-        super(name);
-        Color buttonColor = new Color(60, 139, 139);
-        setBackground(buttonColor);
-        setForeground(new Color(230, 227, 210));
-        Font font = new Font("Calibri", 3, 18);
+public class CustomTextField extends JTextField {
+    public CustomTextField() {
+        super();
+        Color textFieldColor = new Color(220, 220, 220);
+        setBackground(textFieldColor);
+        Font font = new Font("Calibri", 3, 12);
         setFont(font);
     }
 }
