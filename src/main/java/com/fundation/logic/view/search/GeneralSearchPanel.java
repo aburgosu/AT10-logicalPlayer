@@ -9,12 +9,12 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomPanelSecond;
-import com.fundation.logic.view.CustomButton;
-import com.fundation.logic.view.CustomCheckBox;
-import com.fundation.logic.view.CustomLabel;
-import com.fundation.logic.view.CustomComboBox;
-import com.fundation.logic.view.CustomTextField;
+import com.fundation.logic.view.customElements.CustomPanelSecond;
+import com.fundation.logic.view.customElements.CustomButton;
+import com.fundation.logic.view.customElements.CustomCheckBox;
+import com.fundation.logic.view.customElements.CustomLabel;
+import com.fundation.logic.view.customElements.CustomComboBox;
+import com.fundation.logic.view.customElements.CustomTextField;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.DefaultComboBoxModel;

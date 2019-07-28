@@ -13,12 +13,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implements CustomizedFile class which is the new kind of file that will return the main search method.
+ * Implements CustomFile class which is the new kind of file that will return the main search method.
  *
  * @author Melissa Román
  * @version 1.0
  */
-public class CustomizedFile {
+public class CustomFile {
     private String path;
     private String name;
     private String extension;
@@ -33,7 +33,7 @@ public class CustomizedFile {
     private List<String> metadata;
 
     /**
-     * CustomizedFile constructor. It requires all parameters so them will be assigned to each attribute.
+     * CustomFile constructor. It requires all parameters so them will be assigned to each attribute.
      * @param path
      * @param name
      * @param extension
@@ -45,9 +45,9 @@ public class CustomizedFile {
      * @param modificationDate
      * @param owner
      */
-    public CustomizedFile( String path, String name, String extension, boolean hiddenStatus, boolean readOnlyStatus,
-            Float size, Date creationDate, Date accessDate, Date modificationDate, String owner, String mimeType,
-            List<String> metadata) {
+    public CustomFile(String path, String name, String extension, boolean hiddenStatus, boolean readOnlyStatus,
+                      Float size, Date creationDate, Date accessDate, Date modificationDate, String owner, String mimeType,
+                      List<String> metadata) {
         this.path = path;
         this.name = name;
         this.extension = extension;

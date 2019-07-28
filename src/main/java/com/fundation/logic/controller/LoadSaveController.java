@@ -12,7 +12,12 @@ package com.fundation.logic.controller;
 import com.fundation.logic.model.CriteriaRecord;
 import com.fundation.logic.model.QueryForCriteria;
 import com.fundation.logic.view.MainFrame;
+import com.fundation.logic.view.loadSaveCriteria.PopupLoadSave;
+import com.fundation.logic.view.resultTable.PopupMenu;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,21 +27,100 @@ import java.util.List;
  * @version 1.0
  */
 public class LoadSaveController {
-    private MainFrame searchFrame;
+    private MainFrame mainFrame;
     private QueryForCriteria queryCriteria;
+    private SearchController searchController;
 
+    public LoadSaveController(MainFrame mainFrame, SearchController searchController) {
+        this.mainFrame = mainFrame;
+        this.searchController = searchController;
+        queryCriteria = new QueryForCriteria();
+    }
+
+    /**
+     * Shows all criteria saved in database.
+     */
     public void showLoadSaveData() {
-        searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().clearTableResult();
-        List<CriteriaRecord> registers = queryCriteria.getAllCriteriaInDB();
+        List<CriteriaRecord> allRegisters = queryCriteria.getAllCriteriaInDB();
+        showLoadSaveList(allRegisters);
+    }
+
+    /**
+     * Allows to show criteria records in table.
+     * @param registers
+     */
+    public void showLoadSaveList(List<CriteriaRecord> registers) {
+        mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().clearTableResult();
         for (int index = 0; index < registers.size(); index++) {
             String name = registers.get(index).getName();
             String type = registers.get(index).getType();
             String date = registers.get(index).getDate();
-            searchFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name, type, date);
+            int id = registers.get(index).getId();
+            mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().addRegister(name, type, date, id);
         }
     }
-    /*
-    public void saveCriteria() {
-        searchFrame.get
-    }*/
+
+    /**
+     * Listens to Save buttons in every panel to call the saveCriteria method with appropriate arguments.
+     */
+    public void listenSaveButtons() {
+        mainFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
+                .getBtnSave().addActionListener(e -> {
+            queryCriteria.saveCriteria("criteria name", searchController.getCommonCriteria(), "Common");
+        });
+        mainFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced()
+                .getbtnSaveAdvanceVideo().addActionListener(e -> {
+            queryCriteria.saveCriteria("criteria name", searchController.getVideoCriteria(), "Video");
+        });
+        mainFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced()
+                .getbtnSaveAdvanceAudio().addActionListener(e -> {
+            queryCriteria.saveCriteria("criteria name", searchController.getAudioCriteria(), "Audio");
+        });
+        mainFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced()
+                .getbtnSaveAdvanceImage().addActionListener(e -> {
+            queryCriteria.saveCriteria("criteria name", searchController.getImageCriteria(), "Image");
+        });
+    }
+
+    /**
+     * Shows filter by date results.
+     * @param startDate - Lower limit date.
+     * @param endDate - Upper limit date.
+     */
+    public void showFilterByDate(Date startDate, Date endDate) {
+        List<CriteriaRecord> foundCriteria = queryCriteria.findCriteria(startDate, endDate);
+        showLoadSaveList(foundCriteria);
+    }
+
+    /**
+     * Listen to Filter button.
+     */
+    public void listenFilterButton() {
+        mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getDateSearchPanel().getBtnFilterByDate()
+                .addActionListener(e -> {
+                    Date startDate =  mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getDateSearchPanel()
+                            .getFieldDateFirstDate().getDate();
+                    Date endDate = mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getDateSearchPanel()
+                            .getFieldDateSecondDate().getDate();
+                    showFilterByDate(startDate, endDate);
+                });
+    }
+
+    public void listenTable() {
+        final int ID_COLUMN = 4;
+        mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
+                .addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent me) {
+                if (me.getButton() == MouseEvent.BUTTON3) {
+                    int row = mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
+                            .getSelectedRow();
+                    String id = (String) mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel()
+                            .getModel().getValueAt(row, ID_COLUMN);
+                    PopupLoadSave menu = new PopupLoadSave();
+                    menu.show(me.getComponent(), me.getX(), me.getY());
+                    menu.setVisible(true);
+                }
+            }
+        });
+    }
 }

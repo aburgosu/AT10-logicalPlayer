@@ -7,26 +7,26 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.customElements;
 
+import javax.swing.JTabbedPane;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Implements CustomButton class.
+ * Implements CustomTab class.
  *
- * @author Melissa Román
+ * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomButton extends JButton {
-    public CustomButton(String name) {
-        super(name);
-        Color buttonColor = new Color(60, 139, 139);
-        setBackground(buttonColor);
-        setForeground(new Color(230, 227, 210));
-        Font font = new Font("Calibri", 3, 18);
+public class CustomTab extends JTabbedPane {
+    public CustomTab() {
+        super();
+        Color tabColor = new Color(32, 178, 170);
+        setBackground(tabColor);
+        Font font = new Font("Arial", 3, 15);
         setFont(font);
+        setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(0,139,139)));
     }
 }

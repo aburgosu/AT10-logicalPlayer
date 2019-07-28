@@ -9,6 +9,9 @@
  */
 package com.fundation.logic.view;
 
+import com.fundation.logic.view.customElements.CustomJFrame;
+import com.fundation.logic.view.customElements.CustomPanelSecond;
+import com.fundation.logic.view.customElements.CustomSplitPanel;
 import com.fundation.logic.view.resultTable.TableResult;
 
 import javax.swing.JFrame;

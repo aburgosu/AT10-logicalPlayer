@@ -7,26 +7,24 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.customElements;
 
-import javax.swing.JTabbedPane;
-import javax.swing.BorderFactory;
+import javax.swing.JCheckBox;
 import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Implements CustomTab class.
+ * Implements CustomCheckBox class.
  *
  * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomTab extends JTabbedPane {
-    public CustomTab() {
+public class CustomCheckBox extends JCheckBox {
+    public CustomCheckBox(String check) {
         super();
-        Color tabColor = new Color(32, 178, 170);
-        setBackground(tabColor);
-        Font font = new Font("Arial", 3, 15);
+        Color checkBoxColor = new Color(119, 136, 153);
+        setBackground(checkBoxColor);
+        Font font = new Font("Calibri", 3, 20);
         setFont(font);
-        setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(0,139,139)));
     }
 }

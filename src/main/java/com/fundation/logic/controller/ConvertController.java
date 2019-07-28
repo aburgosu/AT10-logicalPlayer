@@ -46,7 +46,7 @@ public class ConvertController {
     private ServiceConnection serviceConnection;
 
     /**
-     * Initializes a Controller instance with a searchFrame and a searchCriteria
+     * Initializes a SearchController instance with a searchFrame and a searchCriteria
      */
     public ConvertController(MainFrame searchFrame) {
         this.searchFrame = searchFrame;
