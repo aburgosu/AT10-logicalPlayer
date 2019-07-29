@@ -5,6 +5,7 @@ import com.fundation.logic.view.CustomPanelSecond;
 import com.fundation.logic.view.CustomTable;
 
 import javax.swing.JTable;
+import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -32,16 +33,19 @@ public class LoadSavePanel extends CustomPanelSecond {
         setLayout(gridBagLayout);
 
         dataTable = new CustomTable();
+
         model = new DefaultTableModel(new Object[] {"Name", "Type", "Date"}, 0);
-        model.addRow(new Object[]{"Name", "Type", "Date"});
+        //model.addRow(new Object[]{"Name", "Type", "Date"});
         dataTable.setModel(model);
+        JScrollPane tableScrollPanel = new JScrollPane(add(dataTable));
         GridBagConstraints gbc_table = new GridBagConstraints();
+
         gbc_table.gridwidth = 7;
         gbc_table.insets = new Insets(0, 0, 5, 0);
         gbc_table.fill = GridBagConstraints.BOTH;
         gbc_table.gridx = 0;
         gbc_table.gridy = 0;
-        add(dataTable, gbc_table);
+        add(tableScrollPanel, gbc_table);
 
         CustomButton btnLoad = new CustomButton(" Load ");
         GridBagConstraints gbc_btnLoad = new GridBagConstraints();

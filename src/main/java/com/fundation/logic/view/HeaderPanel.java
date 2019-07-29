@@ -27,11 +27,11 @@ public class HeaderPanel extends CustomPanelSecond {
         JLabel lbltitle = new CustomLabel(" LogicalPlayer");
         GridBagConstraints gbc_lbltitle = new GridBagConstraints();
         gbc_lbltitle.gridwidth = 1;
-        gbc_lbltitle.insets = new Insets(5, 5, 5, 5);
+        gbc_lbltitle.insets = new Insets(0, 0, 0, 0);
         gbc_lbltitle.gridx = 4;
         gbc_lbltitle.gridy = 0;
-        lbltitle.setFont( new Font("Comic Sans MS",3, 75));
-        lbltitle.setForeground(new Color(127,127, 127 ));
+        lbltitle.setFont( new Font("Comic Sans MS",1, 65));
+        lbltitle.setForeground(new Color(43, 43, 43 ));
         add(lbltitle, gbc_lbltitle);
     }
 }

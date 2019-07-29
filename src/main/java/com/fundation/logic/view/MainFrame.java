@@ -48,17 +48,15 @@ public class MainFrame extends CustomJFrame {
         mainSplitPanel.setEnabled(false);
         mainContentPanel.add(mainSplitPanel, BorderLayout.CENTER);
 
-        tableResult = new TableResult();
-        JScrollPane tableScrollPanel = new JScrollPane();
-        tableScrollPanel.add(tableResult);
-        mainSplitPanel.setRightComponent(tableResult);
+        searchTabs = new MainTabs();
+        mainSplitPanel.setLeftComponent(searchTabs);
 
+        tableResult = new TableResult();
+        JScrollPane tableScrollPanel = new JScrollPane(add(tableResult));
+        mainSplitPanel.setRightComponent(add(tableScrollPanel));
 
         footer = new FooterPanel();
         mainContentPanel.add(footer, BorderLayout.SOUTH);
-
-        searchTabs = new MainTabs();
-        mainSplitPanel.setLeftComponent(searchTabs);
     }
 
     /**
