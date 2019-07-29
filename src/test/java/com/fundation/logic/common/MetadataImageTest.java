@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2019 Jalasoft.
  *
@@ -23,7 +22,10 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class MetadataImageTest {
 
-    //This unit test verify the correct metadata width.
+    /**
+     * This unit test verify the correct metadata width.
+     * @throws IOException
+     */
     @Test
     public void testWidth() throws IOException {
         String path = "thirdParty/exiftool.exe resources/Images/Play.png";
@@ -34,7 +36,10 @@ public class MetadataImageTest {
         assertEquals(expected, result);
     }
 
-    //This unit test verify the correct metadata height.
+    /**
+     * This unit test verify the correct metadata height.
+     * @throws IOException
+     */
     @Test
     public void testHeight() throws IOException {
         String path ="thirdParty/exiftool.exe resources/Images/Play.png";
@@ -45,7 +50,10 @@ public class MetadataImageTest {
         assertEquals(expected, result);
     }
 
-    //This unit test verify the correct metadata color space.
+    /**
+     * This unit test verify the correct metadata color space.
+     * @throws IOException
+     */
     @Test
     public void testColorSpaceRGB() throws IOException {
         String path = "thirdParty/exiftool.exe resources/Images/Play.png";

@@ -22,7 +22,10 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class MetadataVideoTest {
 
-    //This unit test verify the correct metadata frame rate
+    /**
+     * This unit test verify the correct metadata frame rate.
+     * @throws IOException
+     */
     @Test
     public void testFrame() throws IOException {
         String path = "thirdParty/exiftool.exe resources/Grammar_posesivo_genitivo.mp4";
@@ -33,7 +36,10 @@ public class MetadataVideoTest {
         assertEquals(expected, result);
     }
 
-    //This unit test verify the correct metadata duration
+    /**
+     * This unit test verify the correct metadata duration
+     * @throws IOException
+     */
     @Test
     public void testDuration() throws IOException {
         String path = "thirdParty/exiftool.exe resources/Wildlife.wmv";
@@ -44,7 +50,10 @@ public class MetadataVideoTest {
         assertEquals(expected, result);
     }
 
-    //This unit test verify the correct metadata file type wmv
+    /**
+     * This unit test verify the correct metadata file type wmv.
+      * @throws IOException
+     */
     @Test
     public void testFileMimeTypeVideo() throws IOException {
         String path = "thirdParty/exiftool.exe resources/Wildlife.wmv";
@@ -55,7 +64,10 @@ public class MetadataVideoTest {
         assertEquals(expected, result);
     }
 
-    //This unit test verify the correct metadata image height
+    /**
+     * This unit test verify the correct metadata image height.
+     * @throws IOException
+     */
     @Test
     public void testHeight() throws IOException {
         String path ="thirdParty/exiftool.exe resources/Wildlife.wmv";
@@ -66,7 +78,10 @@ public class MetadataVideoTest {
         assertEquals(expected, result);
     }
 
-    //This unit test verify the correct metadata video codec
+    /**
+     * This unit test verify the correct metadata video codec.
+     * @throws IOException
+     */
     @Test
     public void testVideoCodec() throws IOException {
         String path ="thirdParty/exiftool.exe resources/Wildlife.wmv";
