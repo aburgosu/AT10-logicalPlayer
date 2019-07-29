@@ -94,7 +94,7 @@ public class VideoSearch implements ISearch {
                     if (criteriaHeight != "All") {
                         fileHeight = MetadataVideoExtractor.getSearchHeight();
                     }
-                    if (initDuration == 0.0 && endDuration == 0.0){
+                    if (initDuration == 12.0 && endDuration == 12.0){
                         initDuration = Float.MIN_VALUE;
                         endDuration = Float.MAX_VALUE;
                     }
