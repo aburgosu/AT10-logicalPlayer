@@ -99,7 +99,7 @@ public class CommonSearch implements ISearch {
                             evaluateDate(accessDate, accessDateLL, accessDateUL) &&
                             evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
                             evaluateString(owner, criteriaOwner) &&
-                            evaluateString(mimeType, criteriaMimeType)){
+                            evaluateString(mimeType, criteriaMimeType)) {
                         List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
                         CustomFile matchingFile = new CustomFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
