@@ -30,17 +30,19 @@ public class MetadataAudioExtractor {
     private static List<String> list;
     private static Float searchDuration;
 
+    /**
+     * This method read run exiftool.
+     */
     public void run(String path) throws IOException {
+        searchMimeType = null;
         extractMetadata = Runtime.getRuntime().exec(path);
         readAll();
     }
 
     /**
      * This method read all metadata.
-     *
-     * @return
      */
-    public String readAll() {
+    public void readAll() {
         String metadata = null;
         list = new ArrayList<>();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
@@ -51,17 +53,37 @@ public class MetadataAudioExtractor {
                 sampleRAte(metadata);
                 list.add(metadata);
                 duration(metadata);
+                mimeType(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "No available";
+    }
+
+    /**
+     * This method read mime type.
+     * @param mimeType
+     */
+    public static void mimeType(String mimeType) {
+        String mimetype2 = mimeType;
+        String audioMimeType = mimeType.substring(0, 4);
+        if ((audioMimeType.contains("MIME"))) {
+            if (mimetype2.contains("audio")) {
+                int initIndex = mimetype2.indexOf(":");
+                int freeSpace = 2;
+                mimeType = mimetype2.substring(initIndex + freeSpace, initIndex + 7);
+                searchMimeType = mimeType;
+            } else {
+                searchMimeType = "All";
+            }
+        }
     }
 
     /**
      * This method returns duration of the audio.
+     * @param channelMode
      */
     public static void audioChannel(String channelMode) {
         if ((channelMode.contains("Channel"))) {
@@ -90,14 +112,8 @@ public class MetadataAudioExtractor {
     }
 
     /**
-     * This method returns audio channel.
-     */
-    public static String getAudioChannel() {
-        return searchChannelMode;
-    }
-
-    /**
      * This method find audio codec .
+     * @param audioCodec
      */
     public static void audioCodec(String audioCodec) {
         if ((audioCodec.contains("MIME Type"))) {
@@ -115,6 +131,7 @@ public class MetadataAudioExtractor {
 
     /**
      * This method returns audrio codec to AudioSearch.
+     * @return searchAudioCodec
      */
     public static String searchAudioCodec() {
         return searchAudioCodec;
@@ -122,6 +139,7 @@ public class MetadataAudioExtractor {
 
     /**
      * This method find metadata sample rate.
+     * @param sampleRate
      */
     public static void sampleRAte(String sampleRate) {
         if ((sampleRate.contains("Sample Rate"))) {
@@ -135,7 +153,6 @@ public class MetadataAudioExtractor {
 
     /**
      * This method returns metadata sample rate.
-     * @param string
      * @return searchSampreRate
      */
     public static String getSearchSampleRate() {
@@ -144,8 +161,7 @@ public class MetadataAudioExtractor {
 
     /**
      * This method search duration.
-     * @param string
-     * @return void
+     * @param duration
      */
     public void duration(String duration) {
         String validatorDuration = duration.substring(0, 8);
@@ -166,18 +182,33 @@ public class MetadataAudioExtractor {
     /**
      * This method returns metadata list.
      * @return list
-     * @param List
      */
     public static List<String> getSearchListMetadata() {
         return list;
     }
-    
+
     /**
      * Return duration from the metadata.
      * @return searchDuration
-     * @param List
      */
     public static Float getSearchDuration() {
         return searchDuration;
+    }
+
+    /**
+     * Return mime type from the metadata.
+     * @return searhMimeType
+     */
+    public static String getSearchMimeType() {
+        return searchMimeType;
+    }
+
+
+    /**
+     * This method returns audio channel.
+     * @return  searchChannelMode
+     */
+    public static String getAudioChannel() {
+        return searchChannelMode;
     }
 }

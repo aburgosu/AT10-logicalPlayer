@@ -37,7 +37,6 @@ public class AudioSearch implements ISearch {
 
     /**
      * Main search method.
-     *
      * @return List of found items if criteria's path is not null.
      */
     public List search() {
@@ -61,6 +60,7 @@ public class AudioSearch implements ISearch {
         String criteriaLUDuration = audioCriteria.getDurationTo();
         String criteriaChannel = audioCriteria.getChannel();
         String criteriaSampleRate = audioCriteria.getSampleRate();
+        String criteriaMimeType = "audio";
         File[] allSubFiles = file.listFiles();
         Float initDuration = convertDurationToDecimal(criteriaLLDuration);
         Float endDuration = convertDurationToDecimal(criteriaLUDuration);
@@ -88,10 +88,11 @@ public class AudioSearch implements ISearch {
                     if (criteriaSampleRate != "All") {
                         sampleRate = MetadataAudioExtractor.getSearchSampleRate();
                     }
-                    if (initDuration == 0.0 && endDuration == 0.0) {
+                    if (initDuration == 12.0 && endDuration == 12.0) {
                         initDuration = Float.MIN_VALUE;
                         endDuration = Float.MAX_VALUE;
                     }
+                    String mimeType = MetadataAudioExtractor.getSearchMimeType();
                     Float duration = MetadataAudioExtractor.getSearchDuration();
                     Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
                     Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
@@ -102,7 +103,8 @@ public class AudioSearch implements ISearch {
                             && evaluateString(channel, criteriaChannel)
                             && evaluateString(audioCodec, criteriAudioCodec)
                             && evaluateString(sampleRate, criteriaSampleRate)
-                            && evaluateDuration(duration, initDuration, endDuration)) {
+                            && evaluateDuration(duration, initDuration, endDuration)
+                            && evaluateString(mimeType,criteriaMimeType)) {
                         List<String> metadata = MetadataAudioExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false,
@@ -131,7 +133,6 @@ public class AudioSearch implements ISearch {
 
     /**
      * Convert specific duration to decimal.
-     *
      * @return decimal duration.
      */
     public Float convertDurationToDecimal(String duration) {
@@ -146,7 +147,6 @@ public class AudioSearch implements ISearch {
 
     /**
      * Evaluates if the duration size is between set limits.
-     *
      * @return Answer after evaluation.
      */
     private boolean evaluateDuration(Float metadataDuration, Float lowerLimit, Float upperLimit) {
