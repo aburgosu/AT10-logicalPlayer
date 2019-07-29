@@ -27,6 +27,9 @@ public class MetadataCommonExtractor {
     static String searchMimeType;
     static List<String> list;
 
+    /**
+     * This method run exiftool.
+     */
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
         readAll();
@@ -42,7 +45,7 @@ public class MetadataCommonExtractor {
         try {
             while ((metadata = stdInput.readLine()) != null) {
                 list.add(metadata);
-                mimeType(metadata);
+                findMimeType(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
@@ -53,10 +56,11 @@ public class MetadataCommonExtractor {
 
     /**
      * This method read mime type.
+     * @param mimeType
      */
-    public static void mimeType(String mimeType) {
-        String audioMimeType = mimeType.substring(0, 9);
-        if ((audioMimeType.contains("MIME Type"))) {
+    public static void findMimeType(String mimeType) {
+        String commonMimeType = mimeType.substring(0, 9);
+        if ((commonMimeType.contains("MIME Type"))) {
             if (mimeType.contains("audio")) {
                 searchMimeType = "Audio";
             }
