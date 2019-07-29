@@ -12,6 +12,7 @@ package com.fundation.logic.model;
 import com.fundation.logic.model.searchCriteria.Common;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -44,12 +45,15 @@ public class QueryForCriteriaTest {
         commonCriteria.setCriteriaOwner(null);
         commonCriteria.setCriteriaMimeType(null);
         QueryForCriteria queryForCriteria = new QueryForCriteria();
-        int idLastCriteria = queryForCriteria.getLastCriteriaRecord().getId();
+        String idLastCriteria = queryForCriteria.getLastCriteriaRecord().getId();
+        int idLast = Integer.parseInt(idLastCriteria) + 1;
+        String idLastString = Integer.toString(idLast);
         queryForCriteria.saveCriteria("Criteria Test", commonCriteria, "Common");
         CriteriaRecord actualCriteriaRecord = queryForCriteria.getLastCriteriaRecord();
-        CriteriaRecord expectedCriteriaRecord = new CriteriaRecord((idLastCriteria + 1), "Criteria Test",
-            "2019-07-16", "Common", "{\"path\":\"resources/\"}");
-        assertTrue(expectedCriteriaRecord.equals(actualCriteriaRecord));
-        queryForCriteria.deleteById(idLastCriteria + 1);
+        CriteriaRecord expectedCriteriaRecord = new CriteriaRecord(idLastString, "Criteria Test",
+            "2019-07-29", "Common", "{\"path\":\"resources/\"}");
+        assertEquals(expectedCriteriaRecord.getJson(), actualCriteriaRecord.getJson());
+        assertEquals(expectedCriteriaRecord.getId(), actualCriteriaRecord.getId());
+        queryForCriteria.deleteById(idLastString);
     }
 }

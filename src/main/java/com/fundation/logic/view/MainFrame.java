@@ -34,7 +34,7 @@ import java.awt.Color;
  */
 public class MainFrame extends CustomJFrame {
     JPanel mainContentPanel;
-    private MainTabs searchTabs;
+    private MainTabs mainTabs;
     private TableResult tableResult;
 
     public MainFrame() {
@@ -59,8 +59,8 @@ public class MainFrame extends CustomJFrame {
         tableScrollPanel.add(tableResult);
         mainSplitPanel.setRightComponent(tableResult);
 
-        searchTabs = new MainTabs();
-        mainSplitPanel.setLeftComponent(searchTabs);
+        mainTabs = new MainTabs();
+        mainSplitPanel.setLeftComponent(mainTabs);
     }
 
     /**
@@ -88,8 +88,8 @@ public class MainFrame extends CustomJFrame {
     /**
      * This method return the MainTabs
      */
-    public MainTabs getSearchTabs() {
-        return searchTabs;
+    public MainTabs getMainTabs() {
+        return mainTabs;
     }
 
     /**

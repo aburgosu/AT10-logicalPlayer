@@ -81,8 +81,7 @@ public class QueryForCriteria {
         String date = DBItem.substring(indexTabDate + 1, lastIndexDate);
         int indexTabName = DBItem.indexOf("\t");
         String name = DBItem.substring(indexTabName + 1, indexTabDate);
-        String idAux = DBItem.substring(0, indexTabName);
-        int id = Integer.parseInt(idAux);
+        String id = DBItem.substring(0, indexTabName);
         String json = DBItem.substring(DBItem.indexOf("{"), DBItem.indexOf("}") + 1);
         String type = DBItem.substring(lastIndexDate + 1, DBItem.indexOf("{") - 1);
         CriteriaRecord record = new CriteriaRecord(id, name, date, type, json);
@@ -119,4 +118,21 @@ public class QueryForCriteria {
         List filterResult = query.filterByDates(firstDate, secondDate);
         return registerToCriteriaRecordList(filterResult);
     }
+
+    /**
+     * Allows to get a criteriaRecord by its ID.
+     * @param id
+     * @return
+     */
+    public CriteriaRecord getCriteriaRecordById(String id) {
+        List<CriteriaRecord> criteriaRecords;
+        criteriaRecords = getAllCriteriaInDB();
+        for (int i = 0; i < criteriaRecords.size(); i++) {
+            if(id.equals(criteriaRecords.get(i).getId())) {
+                return criteriaRecords.get(i);
+            }
+        }
+        return null;
+    }
+
 }

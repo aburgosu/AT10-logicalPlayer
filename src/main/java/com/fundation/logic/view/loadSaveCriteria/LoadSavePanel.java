@@ -81,7 +81,7 @@ public class LoadSavePanel extends CustomPanelSecond {
     /**
      * Adds a new row to ResultTable
      */
-    public void addRegister(String name, String type, String date, int id) {
+    public void addRegister(String name, String type, String date, String id) {
         model.addRow(new Object[]{name, type, date, id});
         revalidate();
     }
