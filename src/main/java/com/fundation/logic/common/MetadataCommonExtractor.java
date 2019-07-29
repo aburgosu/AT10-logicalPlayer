@@ -34,10 +34,9 @@ public class MetadataCommonExtractor {
 
     /**
      * This method read all metadata.
-     *
-     * @return
+     * @return void
      */
-    public String readAll() {
+    public void readAll() {
         String metadata = null;
         list = new ArrayList<>();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
@@ -50,18 +49,16 @@ public class MetadataCommonExtractor {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(-1);
         }
-        return "There isn't";
     }
 
     /**
      * This method read mime type.
-     *
-     * @return
+     * @return void
      */
     public static void mimeType(String mimeType) {
-        if ((mimeType.contains("MIME Type"))) {
+        String audioMimeType = mimeType.substring(0, 9);
+        if ((audioMimeType.contains("MIME Type"))) {
             if (mimeType.contains("audio")) {
                 searchMimeType = "Audio";
             }
@@ -74,13 +71,15 @@ public class MetadataCommonExtractor {
             if (mimeType.contains("image")) {
                 searchMimeType = "Image";
             }
+            if (mimeType.contains("application")) {
+                searchMimeType = "Application";
+            }
         }
     }
 
     /**
      * This method return mime type to CommonSearch.
-     *
-     * @return
+     * @return searchMimeType
      */
     public static String getSearchMimeType() {
         return searchMimeType;
@@ -88,8 +87,7 @@ public class MetadataCommonExtractor {
 
     /**
      * This method return metadata list to CommonSearch.
-     *
-     * @return
+     * @return list
      */
     public static List<String> getSearchListMetadata() {
         return list;
