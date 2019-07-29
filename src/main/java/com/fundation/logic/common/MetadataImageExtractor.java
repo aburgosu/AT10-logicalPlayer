@@ -25,19 +25,19 @@ public class MetadataImageExtractor {
     static Process extractMetadata;
     static String searchWidth;
     static String searchHeight;
-    static String searchColorSpace;
+    private static String searchColorSpace;
     private static List<String> list;
-    public static String searchMimeType;
+    private static String searchMimeType;
 
     public void run(String path) throws IOException {
+        searchColorSpace = null;
         extractMetadata = Runtime.getRuntime().exec(path);
         readAll();
     }
 
     /**
      * This method read all metadata.
-     *
-     * @return
+     * @return void
      */
     public void readAll() {
         String metadata = null;
@@ -45,11 +45,11 @@ public class MetadataImageExtractor {
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
             while ((metadata = stdInput.readLine()) != null) {
+                getColorSpace(metadata);
                 height(metadata);
                 width(metadata);
                 list.add(metadata);
                 mimeType(metadata);
-                getColorSpace(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
@@ -60,20 +60,26 @@ public class MetadataImageExtractor {
 
     /**
      * This method read mime type.
-     *
-     * @return
+     * @return void
      */
     public static void mimeType(String mimeType) {
-        String imageMimeType = mimeType.substring(0,9);
-        if ((imageMimeType.contains("MIME Type"))) {
-            if (mimeType.contains("image")) {
-                searchMimeType = "image";
+        String mimetype2 = mimeType;
+        String audioMimeType = mimeType.substring(0, 4);
+        if ((audioMimeType.contains("MIME"))) {
+            if (mimetype2.contains("image")) {
+                int initIndex = mimetype2.indexOf(":");
+                int freeSpace = 2;
+                mimeType = mimetype2.substring(initIndex + freeSpace, initIndex + 7);
+                searchMimeType = mimeType;
+            } else {
+                searchMimeType = "All";
             }
         }
     }
 
     /**
      * This method returns metadata image height.
+     * @return void
      */
     public static void height(String height) {
         if ((height.contains("Image Height"))) {
@@ -81,18 +87,14 @@ public class MetadataImageExtractor {
             int endIndex = height.length();
             int freeSpace = 2;
             searchHeight = height.substring(initIndex + freeSpace, endIndex);
+        } else {
+            searchHeight = "All";
         }
     }
 
     /**
-     * This method returns height image.
-     */
-    public static String getHeight() {
-        return searchHeight;
-    }
-
-    /**
      * This method returns metadata image Width.
+     * @return void
      */
     public static void width(String width) {
         if ((width.contains("Image Width"))) {
@@ -101,35 +103,48 @@ public class MetadataImageExtractor {
             int freeSpace = 2;
             width = width.substring(initIndex + freeSpace, endIndex);
             searchWidth = width;
+        } else {
+            searchWidth = "All";
         }
-    }
-
-    /**
-     * This method returns width image.
-     */
-    public static String getWidth() {
-        return searchWidth;
     }
 
     /**
      * This method returns metadata image color space.
+     * @return void
      */
-    public static void getColorSpace(String colorSpace) {
-        if ((colorSpace.contains("Color Space"))) {
-            int initIndex = colorSpace.indexOf(":");
-            int endIndex = colorSpace.length();
-            int freeSpace = 2;
-            colorSpace = colorSpace.substring(initIndex + freeSpace, endIndex);
-            searchColorSpace = colorSpace;
+    public static void getColorSpace(String mimeType) {
+        String mimetype2 = mimeType;
+        String audioMimeType = mimeType.substring(0, 5);
+        if ((audioMimeType.contains("Color"))) {
+            if (mimetype2.contains("RG")) {
+                searchColorSpace = "RG";
+            }
+            if (mimetype2.contains("RGB")) {
+                searchColorSpace = "RGB";
+            }
+            if (mimetype2.contains("sRGB")) {
+                searchColorSpace = "sRGB";
+            }
+            if (mimetype2.contains("MCY")) {
+                searchColorSpace = "MCY";
+            }
+            if (mimetype2.contains("CMYK")) {
+                searchColorSpace = "CMYK";
+            }
         }
     }
 
-    public static String getSearchColorSpace(){
+    /**
+     * This method returns metadata color space.
+     * @return searchColorSpace
+     */
+    public static String getSearchColorSpace() {
         return searchColorSpace;
     }
 
     /**
      * This method returns metadata list.
+     * @return list
      */
     public static List<String> getSearchListMetadata() {
         return list;
@@ -137,11 +152,25 @@ public class MetadataImageExtractor {
 
     /**
      * This method return mime type to CommonSearch.
-     *
-     * @return
+     * @return searchMimeType
      */
     public static String getSearchMimeType() {
         return searchMimeType;
     }
 
+    /**
+     * This method returns height image.
+     * @return searchHeight
+     */
+    public static String getHeight() {
+        return searchHeight;
+    }
+
+    /**
+     * This method returns width image.
+     * @return searchWidth
+     */
+    public static String getWidth() {
+        return searchWidth;
+    }
 }
