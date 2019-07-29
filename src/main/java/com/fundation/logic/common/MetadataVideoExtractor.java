@@ -42,8 +42,6 @@ public class MetadataVideoExtractor {
 
     /**
      * This method get all metadata and set in each method for get a specific metadata.
-     * @return void
-     * @param list
      */
     public void readAll() {
         String metadata = null;
@@ -68,16 +66,16 @@ public class MetadataVideoExtractor {
 
     /**
      * This method read mime type.
-     * @return void
+     * @param mimeType
      */
     public static void mimeType(String mimeType) {
-        String mimeTypeVideo = mimeType;
-        String audioMimeType = mimeType.substring(0, 4);
-        if ((audioMimeType.contains("MIME"))) {
-            if (mimeTypeVideo.contains("video")) {
-                int initIndex = mimeTypeVideo.indexOf(":");
+        String validatorMimeType = mimeType;
+        String videoMimeType = mimeType.substring(0, 4);
+        if ((videoMimeType.contains("MIME"))) {
+            if (validatorMimeType.contains("video")) {
+                int initIndex = validatorMimeType.indexOf(":");
                 int freeSpace = 2;
-                mimeType = mimeTypeVideo.substring(initIndex + freeSpace, initIndex + 7);
+                mimeType = validatorMimeType.substring(initIndex + freeSpace, initIndex + 7);
                 searchMimeType = mimeType;
             }
         }
@@ -85,8 +83,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata frame rate.
-     * @return void
-     * @param searchFrameRate
+     * @param frameRate
      */
     public void frameRate(String frameRate) {
         if ((frameRate.contains("Frame Rate"))) {
@@ -104,8 +101,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata resolution.
-     * @return void
-     * @param searchHeight
+     * @param height
      */
     public void getHeight(String height) {
         if ((height.contains("Image Height"))) {
@@ -119,8 +115,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata video codec.
-     * @return void
-     * @param searchVideoCodec
+     * @param videoCodec
      */
     public void getVideoCodec(String videoCodec) {
         if (videoCodec.contains("Video Codec")) {
@@ -141,8 +136,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata audio codec.
-     * @return void
-     * @param searchVideoCodec
+     * @param videoAudioCodec
      */
     public void getVideoAudioCodec(String videoAudioCodec) {
         if (videoAudioCodec.contains("Audio Codec")) {
@@ -167,8 +161,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata duration.
-     * @return void
-     * @param searchVideoCodec
+     * @param duration
      */
     public void duration(String duration) {
         String validatorDuration = duration.substring(0, 8);
