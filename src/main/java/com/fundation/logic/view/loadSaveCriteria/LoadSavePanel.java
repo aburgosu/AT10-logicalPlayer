@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Color;
 
 /**
  * Implements the tab of LoadSave Panel.
@@ -38,6 +39,7 @@ public class LoadSavePanel extends CustomPanelSecond {
         //model.addRow(new Object[]{"Name", "Type", "Date"});
         dataTable.setModel(model);
         JScrollPane tableScrollPanel = new JScrollPane(add(dataTable));
+        tableScrollPanel.getViewport().setBackground(new Color(43,43,43));
         GridBagConstraints gbc_table = new GridBagConstraints();
 
         gbc_table.gridwidth = 7;
@@ -86,7 +88,7 @@ public class LoadSavePanel extends CustomPanelSecond {
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
-        model.addRow(new Object[]{"Name", "Type", "Date"});
+        //model.addRow(new Object[]{"Name", "Type", "Date"});
         model.fireTableDataChanged();
         revalidate();
     }

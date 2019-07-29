@@ -43,7 +43,7 @@ public class MainFrame extends CustomJFrame {
         header = new HeaderPanel();
         mainContentPanel.add(header, BorderLayout.NORTH);
 
-        JSplitPane mainSplitPanel = new CustomSplitPanel();
+        CustomSplitPanel mainSplitPanel = new CustomSplitPanel();
         mainSplitPanel.setDividerLocation(getWidth()/2);
         mainSplitPanel.setEnabled(false);
         mainContentPanel.add(mainSplitPanel, BorderLayout.CENTER);
@@ -53,6 +53,7 @@ public class MainFrame extends CustomJFrame {
 
         tableResult = new TableResult();
         JScrollPane tableScrollPanel = new JScrollPane(add(tableResult));
+        tableScrollPanel.getViewport().setBackground(new Color(43,43,43));
         mainSplitPanel.setRightComponent(add(tableScrollPanel));
 
         footer = new FooterPanel();
