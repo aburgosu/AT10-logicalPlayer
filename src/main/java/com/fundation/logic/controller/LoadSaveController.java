@@ -106,6 +106,9 @@ public class LoadSaveController {
                 });
     }
 
+    /**
+     * Listen to actions on table.
+     */
     public void listenTable() {
         final int ID_COLUMN = 4;
         mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()

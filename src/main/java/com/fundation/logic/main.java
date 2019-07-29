@@ -31,6 +31,7 @@ public class main {
         loadSaveController.showLoadSaveData();
         loadSaveController.listenFilterButton();
         loadSaveController.listenSaveButtons();
+        loadSaveController.listenTable();
         convertController.listenConvertButtons();
     }
 }
