@@ -34,6 +34,10 @@ public class MetadataVideoExtractor {
     private static Float searchDuration;
     static String searchMimeType;
 
+    /**
+     * This method run exiftool.
+     * @param path path for extract metadata from exiftool
+     */
     public void run(String path) throws IOException {
         searchMimeType = null;
         extractMetadata = Runtime.getRuntime().exec(path);
@@ -66,7 +70,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method read mime type.
-     * @param mimeType
+     * @param mimeType string that contains metadata.
      */
     public static void mimeType(String mimeType) {
         String validatorMimeType = mimeType;
@@ -83,7 +87,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata frame rate.
-     * @param frameRate
+     * @param frameRate string that contains metadata.
      */
     public void frameRate(String frameRate) {
         if ((frameRate.contains("Frame Rate"))) {
@@ -101,7 +105,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata resolution.
-     * @param height
+     * @param height string that contains metadata.
      */
     public void getHeight(String height) {
         if ((height.contains("Image Height"))) {
@@ -115,7 +119,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata video codec.
-     * @param videoCodec
+     * @param videoCodec string that contains metadata.
      */
     public void getVideoCodec(String videoCodec) {
         if (videoCodec.contains("Video Codec")) {
@@ -136,7 +140,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata audio codec.
-     * @param videoAudioCodec
+     * @param videoAudioCodec string that contains metadata.
      */
     public void getVideoAudioCodec(String videoAudioCodec) {
         if (videoAudioCodec.contains("Audio Codec")) {
@@ -161,7 +165,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method search metadata duration.
-     * @param duration
+     * @param duration string that contains metadata.
      */
     public void duration(String duration) {
         String validatorDuration = duration.substring(0, 8);
@@ -181,7 +185,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return frame rate.
-     * @return searchFrameRate
+     * @return searchFrameRate to VideoSearch.
      */
     public static String getSearchFrameRate() {
         return searchFrameRate;
@@ -189,7 +193,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return audio codec.
-     * @return searchAudioCodec
+     * @return searchAudioCodec to VideoSearch.
      */
     public static String getSearchAudioCodec() {
         return searchAudioCodec;
@@ -197,7 +201,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return video codec.
-     * @return searchVideoCodec
+     * @return searchVideoCodec to VideoSearch.
      */
     public static String getSearchVideoCodec() {
         return searchVideoCodec;
@@ -205,7 +209,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return image size.
-     * @return searchHeight
+     * @return searchHeight to VideoSearch.
      */
     public static String getSearchHeight() {
         return searchHeight;
@@ -213,7 +217,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return metadata list.
-     * @return list
+     * @return list to VideoSearch.
      */
     public static List<String> getSearchListMetadata() {
         return list;
@@ -221,7 +225,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return duration in decimal.
-     * @return searchDuration
+     * @return searchDuration to VideoSearch.
      */
     public static Float getSearchDuration() {
         return searchDuration;
@@ -229,7 +233,7 @@ public class MetadataVideoExtractor {
 
     /**
      * This method return mime type to CommonSearch.
-     * @return searchMimeType
+     * @return searchMimeType to VideoSearch.
      */
     public static String getSearchMimeType() {
         return searchMimeType;
