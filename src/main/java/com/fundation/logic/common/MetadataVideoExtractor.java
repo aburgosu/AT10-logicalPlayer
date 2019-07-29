@@ -35,6 +35,7 @@ public class MetadataVideoExtractor {
     static String searchMimeType;
 
     public void run(String path) throws IOException {
+        searchMimeType = null;
         extractMetadata = Runtime.getRuntime().exec(path);
         readAll();
     }
@@ -66,16 +67,19 @@ public class MetadataVideoExtractor {
     }
 
     /**
-     * This method get all metadata and set in each method for get a specific metadata.
+     * This method read mime type.
      * @return void
-     * @param searchMimeType
      */
     public static void mimeType(String mimeType) {
-        if ((mimeType.contains("MIME Type"))) {
-            if (mimeType.contains("video")) {
-                searchMimeType = "Video";
+        String mimeTypeVideo = mimeType;
+        String audioMimeType = mimeType.substring(0, 4);
+        if ((audioMimeType.contains("MIME"))) {
+            if (mimeTypeVideo.contains("video")) {
+                int initIndex = mimeTypeVideo.indexOf(":");
+                int freeSpace = 2;
+                mimeType = mimeTypeVideo.substring(initIndex + freeSpace, initIndex + 7);
+                searchMimeType = mimeType;
             }
-
         }
     }
 

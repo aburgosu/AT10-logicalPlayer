@@ -62,6 +62,7 @@ public class VideoSearch implements ISearch {
         String criteriaHeight = videoCriteria.getHeight();
         String criteriaLLDuration = videoCriteria.getDurationfrom();
         String criteriaLUDuration = videoCriteria.getDurationTo();
+        String criteriaMimeType = "video";
         Float initDuration = convertDurationToDecimal(criteriaLLDuration);
         Float endDuration = convertDurationToDecimal(criteriaLUDuration);
         File[] allSubFiles = file.listFiles();
@@ -109,7 +110,8 @@ public class VideoSearch implements ISearch {
                             && evaluateString(fileVideoCodec, criteriVideoCodec)
                             && evaluateString(videoAudioCodec, criteriAudioVideoCodec)
                             && evaluateString(fileHeight, criteriaHeight)
-                            && evaluateDuration(duration, initDuration, endDuration)) {
+                            && evaluateDuration(duration, initDuration, endDuration)
+                            && evaluateString(mimeType,criteriaMimeType)) {
                         List<String> metadata = MetadataVideoExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false, fileSize, creationDate,
