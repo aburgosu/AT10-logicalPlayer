@@ -34,7 +34,6 @@ public class MetadataCommonExtractor {
 
     /**
      * This method read all metadata.
-     * @return void
      */
     public void readAll() {
         String metadata = null;
@@ -54,7 +53,6 @@ public class MetadataCommonExtractor {
 
     /**
      * This method read mime type.
-     * @return void
      */
     public static void mimeType(String mimeType) {
         String audioMimeType = mimeType.substring(0, 9);
