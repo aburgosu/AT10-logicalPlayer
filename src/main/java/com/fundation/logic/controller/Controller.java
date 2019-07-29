@@ -256,10 +256,8 @@ public class Controller {
         if (height.length() == 0) {
             height = "0";
         }
-
         String colorSpace = searchFrame.getSearchTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced()
                 .getComboBoxColorSpaceData().getSelectedItem().toString();
-
         criteria.setColorSpaceData(colorSpace);
         criteria.setPath(path);
         criteria.setFileName(fileName);
