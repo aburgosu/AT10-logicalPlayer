@@ -28,6 +28,7 @@ public class MetadataImageExtractor {
     private static String searchColorSpace;
     private static List<String> list;
     private static String searchMimeType;
+    private static final int FREESPACE = 2;
 
     public void run(String path) throws IOException {
         searchColorSpace = null;
@@ -37,7 +38,6 @@ public class MetadataImageExtractor {
 
     /**
      * This method read all metadata.
-     * @return void
      */
     public void readAll() {
         String metadata = null;
@@ -45,11 +45,11 @@ public class MetadataImageExtractor {
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
             while ((metadata = stdInput.readLine()) != null) {
-                getColorSpace(metadata);
-                height(metadata);
-                width(metadata);
+                findColorSpace(metadata);
+                findHeight(metadata);
+                findWidth(metadata);
                 list.add(metadata);
-                mimeType(metadata);
+                findMimeType(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
@@ -60,16 +60,14 @@ public class MetadataImageExtractor {
 
     /**
      * This method read mime type.
-     * @return void
      */
-    public static void mimeType(String mimeType) {
-        String mimetype2 = mimeType;
-        String audioMimeType = mimeType.substring(0, 4);
-        if ((audioMimeType.contains("MIME"))) {
-            if (mimetype2.contains("image")) {
-                int initIndex = mimetype2.indexOf(":");
-                int freeSpace = 2;
-                mimeType = mimetype2.substring(initIndex + freeSpace, initIndex + 7);
+    public static void findMimeType(String mimeType) {
+        String imageMimeType = mimeType;
+        String validatorMimeType = mimeType.substring(0, 4);
+        if ((validatorMimeType.contains("MIME"))) {
+            if (imageMimeType.contains("image")) {
+                int initIndex = imageMimeType.indexOf(":");
+                mimeType = imageMimeType.substring(initIndex + FREESPACE, initIndex + 7);
                 searchMimeType = mimeType;
             } else {
                 searchMimeType = "All";
@@ -79,40 +77,31 @@ public class MetadataImageExtractor {
 
     /**
      * This method returns metadata image height.
-     * @return void
      */
-    public static void height(String height) {
+    public static void findHeight(String height) {
         if ((height.contains("Image Height"))) {
             int initIndex = height.indexOf(":");
             int endIndex = height.length();
-            int freeSpace = 2;
-            searchHeight = height.substring(initIndex + freeSpace, endIndex);
-        } else {
-            searchHeight = "All";
+            searchHeight = height.substring(initIndex + FREESPACE, endIndex);
         }
     }
 
     /**
      * This method returns metadata image Width.
-     * @return void
      */
-    public static void width(String width) {
+    public static void findWidth(String width) {
         if ((width.contains("Image Width"))) {
             int initIndex = width.indexOf(":");
             int endIndex = width.length();
-            int freeSpace = 2;
-            width = width.substring(initIndex + freeSpace, endIndex);
+            width = width.substring(initIndex + FREESPACE, endIndex);
             searchWidth = width;
-        } else {
-            searchWidth = "All";
         }
     }
 
     /**
      * This method returns metadata image color space.
-     * @return void
      */
-    public static void getColorSpace(String mimeType) {
+    public static void findColorSpace(String mimeType) {
         String mimetype2 = mimeType;
         String audioMimeType = mimeType.substring(0, 5);
         if ((audioMimeType.contains("Color"))) {
