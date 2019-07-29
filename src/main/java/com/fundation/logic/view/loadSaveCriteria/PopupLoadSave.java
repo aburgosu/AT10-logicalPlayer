@@ -26,8 +26,7 @@ public class PopupLoadSave extends JPopupMenu {
     private JMenuItem deleteItem;
 
     /**
-     * Initializes PopupMenu with options according on the file
-     * @param filePath - File's path where the PopupMenu was triggered.
+     * Initializes PopupMenu with options to load or delete selected criteria.
      */
     public PopupLoadSave() {
         loadItem = new JMenuItem("Load");
@@ -37,8 +36,22 @@ public class PopupLoadSave extends JPopupMenu {
         //initItemMenuListener();
     }
 
+    /**
+     * Allows to get load item from the menu.
+     * @return Load item.
+     */
+    public JMenuItem getLoadItem() {
+        return loadItem;
+    }
 
     /**
+     * Allows to get delete item from the menu.
+     * @return Delete item.
+     */
+    public JMenuItem getDeleteItem() {
+        return deleteItem;
+    }
+/**
      * Initializes item menu listener.
      */
     /*

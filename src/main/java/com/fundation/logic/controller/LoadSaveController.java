@@ -110,20 +110,39 @@ public class LoadSaveController {
      * Listen to actions on table.
      */
     public void listenTable() {
-        final int ID_COLUMN = 4;
+        final int ID_COLUMN = 3;
         mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
                 .addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
                 if (me.getButton() == MouseEvent.BUTTON3) {
-                    int row = mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
-                            .getSelectedRow();
-                    String id = (String) mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel()
-                            .getModel().getValueAt(row, ID_COLUMN);
                     PopupLoadSave menu = new PopupLoadSave();
                     menu.show(me.getComponent(), me.getX(), me.getY());
                     menu.setVisible(true);
+                    int row = mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
+                            .getSelectedRow();
+                    String id = mainFrame.getSearchTabs().getSplitPanelSavedCriteria().getLoadSavePanel()
+                            .getDataTable().getValueAt(row, ID_COLUMN).toString();
+                    menu.getLoadItem().addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mousePressed(MouseEvent event) {
+                            if (event.getButton() == MouseEvent.BUTTON1) {
+                                System.out.println("Carga el criterio");
+                            }
+                        }
+                    });
+                    menu.getDeleteItem().addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mousePressed(MouseEvent event) {
+                            if (event.getButton() == MouseEvent.BUTTON1) {
+                                queryCriteria.deleteById(id);
+                                showLoadSaveData();
+                            }
+                        }
+                    });
                 }
             }
         });
     }
+
+
 }

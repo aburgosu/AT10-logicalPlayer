@@ -104,9 +104,8 @@ public class QueryForCriteria {
      * Deletes a register in database based on its id.
      * @param id - Id from register to be deleted.
      */
-    public void deleteById(int id) {
-        String idToDelete = Integer.toString(id);
-        query.deleteByIde(idToDelete);
+    public void deleteById(String id) {
+        query.deleteByIde(id);
     }
 
     /**
