@@ -31,6 +31,7 @@ public class MetadataAudioExtractor {
     private static Float searchDuration;
 
     public void run(String path) throws IOException {
+        searchMimeType = null;
         extractMetadata = Runtime.getRuntime().exec(path);
         readAll();
     }
@@ -51,6 +52,7 @@ public class MetadataAudioExtractor {
                 sampleRAte(metadata);
                 list.add(metadata);
                 duration(metadata);
+                mimeType(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
@@ -58,6 +60,25 @@ public class MetadataAudioExtractor {
             e.printStackTrace();
         }
         return "No available";
+    }
+
+    /**
+     * This method read mime type.
+     * @return void
+     */
+    public static void mimeType(String mimeType) {
+        String mimetype2 = mimeType;
+        String audioMimeType = mimeType.substring(0, 4);
+        if ((audioMimeType.contains("MIME"))) {
+            if (mimetype2.contains("audio")) {
+                int initIndex = mimetype2.indexOf(":");
+                int freeSpace = 2;
+                mimeType = mimetype2.substring(initIndex + freeSpace, initIndex + 7);
+                searchMimeType = mimeType;
+            } else {
+                searchMimeType = "All";
+            }
+        }
     }
 
     /**
@@ -179,5 +200,14 @@ public class MetadataAudioExtractor {
      */
     public static Float getSearchDuration() {
         return searchDuration;
+    }
+
+    /**
+     * Return duration from the metadata.
+     * @return searhMimeType
+     * @param List
+     */
+    public static String getSearchMimeType() {
+        return searchMimeType;
     }
 }

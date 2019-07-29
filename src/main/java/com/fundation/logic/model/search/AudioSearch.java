@@ -61,6 +61,7 @@ public class AudioSearch implements ISearch {
         String criteriaLUDuration = audioCriteria.getDurationTo();
         String criteriaChannel = audioCriteria.getChannel();
         String criteriaSampleRate = audioCriteria.getSampleRate();
+        String criteriaMimeType = "audio";
         File[] allSubFiles = file.listFiles();
         Float initDuration = convertDurationToDecimal(criteriaLLDuration);
         Float endDuration = convertDurationToDecimal(criteriaLUDuration);
@@ -92,6 +93,7 @@ public class AudioSearch implements ISearch {
                         initDuration = Float.MIN_VALUE;
                         endDuration = Float.MAX_VALUE;
                     }
+                    String mimeType = MetadataAudioExtractor.getSearchMimeType();
                     Float duration = MetadataAudioExtractor.getSearchDuration();
                     Date creationDate = FileInfo.getFileDate(fileExtractor, "creation");
                     Date accessDate = FileInfo.getFileDate(fileExtractor, "access");
@@ -102,7 +104,8 @@ public class AudioSearch implements ISearch {
                             && evaluateString(channel, criteriaChannel)
                             && evaluateString(audioCodec, criteriAudioCodec)
                             && evaluateString(sampleRate, criteriaSampleRate)
-                            && evaluateDuration(duration, initDuration, endDuration)) {
+                            && evaluateDuration(duration, initDuration, endDuration)
+                            && evaluateString(mimeType,criteriaMimeType)) {
                         List<String> metadata = MetadataAudioExtractor.getSearchListMetadata();
                         CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false,
