@@ -11,17 +11,9 @@ package com.fundation.logic.view;
 
 import com.fundation.logic.view.resultTable.TableResult;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.JScrollPane;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Implements the MainFrame class
@@ -33,6 +25,8 @@ public class MainFrame extends CustomJFrame {
     JPanel mainContentPanel;
     private MainTabs searchTabs;
     private TableResult tableResult;
+    private HeaderPanel header;
+    private FooterPanel footer;
 
     public MainFrame() {
         initSetting();
@@ -46,6 +40,9 @@ public class MainFrame extends CustomJFrame {
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));
 
+        header = new HeaderPanel();
+        mainContentPanel.add(header, BorderLayout.NORTH);
+
         JSplitPane mainSplitPanel = new CustomSplitPanel();
         mainSplitPanel.setDividerLocation(getWidth()/2);
         mainSplitPanel.setEnabled(false);
@@ -55,6 +52,10 @@ public class MainFrame extends CustomJFrame {
         JScrollPane tableScrollPanel = new JScrollPane();
         tableScrollPanel.add(tableResult);
         mainSplitPanel.setRightComponent(tableResult);
+
+
+        footer = new FooterPanel();
+        mainContentPanel.add(footer, BorderLayout.SOUTH);
 
         searchTabs = new MainTabs();
         mainSplitPanel.setLeftComponent(searchTabs);
@@ -66,8 +67,7 @@ public class MainFrame extends CustomJFrame {
     public void initSetting() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 400);
-        setForeground(Color.orange);
-        setBackground(Color.BLUE);
+        setIconImage(new ImageIcon("resources/Images/icon.png").getImage());
         setTitle("J2AM2 Player");
         initComponent();
         setContentPane(mainContentPanel);
