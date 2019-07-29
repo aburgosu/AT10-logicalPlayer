@@ -60,6 +60,7 @@ public class MetadataImageExtractor {
 
     /**
      * This method read mime type.
+     * @param mimeType
      */
     public static void findMimeType(String mimeType) {
         String imageMimeType = mimeType;
@@ -77,6 +78,7 @@ public class MetadataImageExtractor {
 
     /**
      * This method returns metadata image height.
+     * @param height
      */
     public static void findHeight(String height) {
         if ((height.contains("Image Height"))) {
@@ -88,6 +90,7 @@ public class MetadataImageExtractor {
 
     /**
      * This method returns metadata image Width.
+     * @param width
      */
     public static void findWidth(String width) {
         if ((width.contains("Image Width"))) {
@@ -100,6 +103,7 @@ public class MetadataImageExtractor {
 
     /**
      * This method returns metadata image color space.
+     * @param mimeType
      */
     public static void findColorSpace(String mimeType) {
         String mimetype2 = mimeType;
