@@ -31,7 +31,8 @@ public class MetadataAudioExtractor {
     private static Float searchDuration;
 
     /**
-     * This method read run exiftool.
+     * This method run exiftool.
+     * @param path path for extract metadata from exiftool
      */
     public void run(String path) throws IOException {
         searchMimeType = null;
@@ -40,7 +41,7 @@ public class MetadataAudioExtractor {
     }
 
     /**
-     * This method read all metadata.
+     * This method read all strings for extract metadata.
      */
     public void readAll() {
         String metadata = null;
@@ -64,7 +65,7 @@ public class MetadataAudioExtractor {
 
     /**
      * This method read mime type.
-     * @param mimeType
+     * @param mimeType string that contains metadata.
      */
     public static void mimeType(String mimeType) {
         String mimetype2 = mimeType;
@@ -83,7 +84,7 @@ public class MetadataAudioExtractor {
 
     /**
      * This method returns duration of the audio.
-     * @param channelMode
+     * @param channelMode string that contains metadata.
      */
     public static void audioChannel(String channelMode) {
         if ((channelMode.contains("Channel"))) {
@@ -113,7 +114,7 @@ public class MetadataAudioExtractor {
 
     /**
      * This method find audio codec .
-     * @param audioCodec
+     * @param audioCodec string that contains metadata.
      */
     public static void audioCodec(String audioCodec) {
         if ((audioCodec.contains("MIME Type"))) {
@@ -130,16 +131,8 @@ public class MetadataAudioExtractor {
     }
 
     /**
-     * This method returns audrio codec to AudioSearch.
-     * @return searchAudioCodec
-     */
-    public static String searchAudioCodec() {
-        return searchAudioCodec;
-    }
-
-    /**
      * This method find metadata sample rate.
-     * @param sampleRate
+     * @param sampleRate string that contains metadata.
      */
     public static void sampleRAte(String sampleRate) {
         if ((sampleRate.contains("Sample Rate"))) {
@@ -152,16 +145,8 @@ public class MetadataAudioExtractor {
     }
 
     /**
-     * This method returns metadata sample rate.
-     * @return searchSampreRate
-     */
-    public static String getSearchSampleRate() {
-        return searchSampleRate;
-    }
-
-    /**
      * This method search duration.
-     * @param duration
+     * @param duration string that contains metadata.
      */
     public void duration(String duration) {
         String validatorDuration = duration.substring(0, 8);
@@ -181,7 +166,7 @@ public class MetadataAudioExtractor {
 
     /**
      * This method returns metadata list.
-     * @return list
+     * @return list to AudioSearch.
      */
     public static List<String> getSearchListMetadata() {
         return list;
@@ -189,7 +174,7 @@ public class MetadataAudioExtractor {
 
     /**
      * Return duration from the metadata.
-     * @return searchDuration
+     * @return searchDuration to AudioSearch.
      */
     public static Float getSearchDuration() {
         return searchDuration;
@@ -197,7 +182,7 @@ public class MetadataAudioExtractor {
 
     /**
      * Return mime type from the metadata.
-     * @return searhMimeType
+     * @return searhMimeType to AudioSearch.
      */
     public static String getSearchMimeType() {
         return searchMimeType;
@@ -206,9 +191,26 @@ public class MetadataAudioExtractor {
 
     /**
      * This method returns audio channel.
-     * @return  searchChannelMode
+     * @return  searchChannelMode to AudioSearch.
      */
     public static String getAudioChannel() {
         return searchChannelMode;
+    }
+
+    /**
+     * This method returns metadata sample rate.
+     * @return searchSampreRate to AudioSearch.
+     */
+    public static String getSearchSampleRate() {
+        return searchSampleRate;
+    }
+
+
+    /**
+     * This method returns audio codec to AudioSearch.
+     * @return searchAudioCodec to AudioSearch.
+     */
+    public static String searchAudioCodec() {
+        return searchAudioCodec;
     }
 }
