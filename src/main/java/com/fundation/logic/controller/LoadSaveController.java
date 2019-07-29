@@ -155,21 +155,25 @@ public class LoadSaveController {
         String type = criteriaRecord.getType();
         switch(type) {
             case "Common":
-                //mainFrame.getMainTabs().setSelectedIndex(1);
                 loadCommonCriteria((Common) criteriaToLoad);
+                mainFrame.getMainTabs().setSelectedIndex(0);
                 mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().setSelectedIndex(0);
+                mainFrame.repaint();
             case "Image":
                 loadImageCriteria((Image) criteriaToLoad);
-                //mainFrame.getMainTabs().setSelectedIndex(1);
+                mainFrame.getMainTabs().setSelectedIndex(0);
                 mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().setSelectedIndex(1);
+                mainFrame.repaint();
             case "Audio":
                 loadAudioCriteria((Audio) criteriaToLoad);
-                //mainFrame.getMainTabs().setSelectedIndex(1);
+                mainFrame.getMainTabs().setSelectedIndex(0);
                 mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().setSelectedIndex(2);
+                mainFrame.repaint();
             case "Video":
                 loadVideoCriteria((Video) criteriaToLoad);
-                //mainFrame.getMainTabs().setSelectedIndex(1);
+                mainFrame.getMainTabs().setSelectedIndex(0);
                 mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().setSelectedIndex(3);
+                mainFrame.repaint();
         }
 
         System.out.println(criteriaToLoad);

@@ -18,6 +18,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,7 +60,8 @@ public class Query {
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                infCriteria.add(result.getInt("id") + "\t" + result.getString("name") + "\t" + result.getDate("date") + "\t" + result.getString("json"));
+                infCriteria.add(result.getInt("id") + "\t" + result.getString("name") + "\t"
+                        + result.getDate("date") + "\t" + result.getString("json"));
             }
         } catch (SQLException e) {
             e.getMessage();
@@ -86,21 +88,23 @@ public class Query {
      * This method filters registers in database that are between two dates.
      */
     public List filterByDates(String firstDate, String secondDate) {
-        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy");
         try {
             DateFormat dateFormatStart = new SimpleDateFormat( "EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
             Date date1 = dateFormatStart.parse(firstDate);
             System.out.println(date1);
+            LocalDateTime startDate = date1.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            System.out.println(startDate);
             DateFormat dateFormatEnd = new SimpleDateFormat( "EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
             Date date2 = dateFormatEnd.parse(secondDate);
-            System.out.println(date2);
+            LocalDateTime endDate = date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            System.out.println(endDate);
             List<String> infCriteria = new ArrayList<String>();
             String sql = "SELECT * FROM criterias WHERE date BETWEEN ? AND ?";
             try {
                 Connection connection = DBConnection.getInstance().getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
-                statement.setDate(1, new java.sql.Date(date1.getTime()));
-                statement.setDate(2, new java.sql.Date(date2.getTime()));
+                statement.setTimestamp(1, Timestamp.valueOf(startDate));
+                statement.setTimestamp(2, Timestamp.valueOf(endDate));
                 ResultSet result = statement.executeQuery(sql);
                 while (result.next()) {
                     infCriteria.add(result.getInt("id") + "\t" + result.getString("name") + "\t"

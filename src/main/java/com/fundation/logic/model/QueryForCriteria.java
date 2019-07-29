@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.model;
 
+import com.fundation.logic.common.DateSetter;
 import com.fundation.logic.common.JsonConverter;
 import com.fundation.logic.database.Query;
 import com.fundation.logic.model.searchCriteria.Criteria;
@@ -113,9 +114,10 @@ public class QueryForCriteria {
      * @param date2 - End date.
      */
     public List<CriteriaRecord> findCriteria(Date date1, Date date2) {
-        String firstDate = date1.toString();
-        String secondDate = date2.toString();
+        String firstDate = DateSetter.setStartOfDay(date1).toString();
+        String secondDate = DateSetter.setEndOfDay(date2).toString();
         List filterResult = query.filterByDates(firstDate, secondDate);
+        System.out.println("Filter result " + filterResult.size());
         return registerToCriteriaRecordList(filterResult);
     }
 
