@@ -35,6 +35,10 @@ public class LoadSaveController {
         this.mainFrame = mainFrame;
         this.searchController = searchController;
         queryCriteria = new QueryForCriteria();
+        showLoadSaveData();
+        listenFilterButton();
+        listenSaveButtons();
+        listenTable();
     }
 
     /**

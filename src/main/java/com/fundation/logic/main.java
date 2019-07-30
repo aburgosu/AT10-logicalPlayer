@@ -27,11 +27,5 @@ public class main {
         SearchController searchController = new SearchController(mainFrame);
         ConvertController convertController = new ConvertController(mainFrame);
         LoadSaveController loadSaveController = new LoadSaveController(mainFrame, searchController);
-        searchController.listenSearchButtons();
-        loadSaveController.showLoadSaveData();
-        loadSaveController.listenFilterButton();
-        loadSaveController.listenSaveButtons();
-        loadSaveController.listenTable();
-        convertController.listenConvertButtons();
     }
 }

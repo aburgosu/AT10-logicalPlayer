@@ -51,6 +51,7 @@ public class ConvertController {
     public ConvertController(MainFrame searchFrame) {
         this.searchFrame = searchFrame;
         this.serviceConnection = new ServiceConnection("http://127.0.0.1/convert");
+        listenConvertButtons();
     }
 
     /**

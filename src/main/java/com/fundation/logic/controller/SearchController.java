@@ -47,6 +47,7 @@ public class SearchController {
     public SearchController(MainFrame searchFrame) {
         this.mainFrame = searchFrame;
         this.searchFactory = new SearchFactory();
+        listenSearchButtons();
     }
 
     /**
