@@ -11,8 +11,12 @@ package com.fundation.logic.common;
 
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
+import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static junit.framework.TestCase.*;
 
 /**
  * Implements JsonConverter test class to implement unit tests on its methods..
@@ -60,5 +64,31 @@ public class FileInfoTest {
         String path = "resources/Grammar_posesivo_genitivo.mp4";
         boolean actual = FileInfo.isVideo(path);
         assertTrue(actual);
+    }
+
+    /**
+     * This unit test verify mime type video.
+     */
+    @Test
+    public void mimeTypeVideo(){
+        File path = new File("resources/Grammar_posesivo_genitivo.mp4");
+        String actual = FileInfo.getMimeType(path);
+        String expected = "video/mp4";
+        assertEquals(expected,actual);
+    }
+
+    /**
+     * This unit test verify file date.
+     */
+    @Test
+    public void fileDate() throws ParseException {
+        File path = new File("resources/Grammar_posesivo_genitivo.mp4");
+        Date actualDate = FileInfo.getFileDate(path,"creation");
+        String actual = actualDate.toString();
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateHour = "2019-07-30 09:56:55";
+        Date expectedDate = date.parse(dateHour);
+        String expected = expectedDate.toString();
+        assertEquals(expected,actual);
     }
 }
