@@ -16,8 +16,9 @@ import com.sun.jna.NativeLibrary;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 
-import javax.swing.JSlider;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JSlider;
 import java.awt.Rectangle;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -66,8 +67,14 @@ public class PlayerFrame extends CustomJFrame {
      */
     private void initComponent(String path) {
         playButton = new CustomButton("");
+        playButton.setBackground(new Color(32, 178, 170));
+        playButton.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(32, 178, 170)));
         stopButton = new CustomButton("");
+        stopButton.setBackground(new Color(32, 178, 170));
+        stopButton.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(32, 178, 170)));
         pauseButton = new CustomButton("");
+        pauseButton.setBackground(new Color(32, 178, 170));
+        pauseButton.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(32, 178, 170)));
         playingPanel = new CustomPanel();
         playingPanel.setBackground(new Color(32, 178, 170));
         bottomPanel = new CustomPanel();
@@ -75,8 +82,10 @@ public class PlayerFrame extends CustomJFrame {
         final int SLIDER_MIN_VALUE = 0;
         final int SLIDER_MAX_VALUE = 100;
         progressBar = new JSlider(SLIDER_MIN_VALUE, SLIDER_MAX_VALUE, 0);
+        progressBar.setBackground(new Color(32, 178, 170));
         volumeLevel = 50;
         volumeSlider = new JSlider(JSlider.VERTICAL, SLIDER_MIN_VALUE, SLIDER_MAX_VALUE, volumeLevel);
+        volumeSlider.setBackground(new Color(32, 178, 170));
         player = new EmbeddedMediaPlayerComponent();
         fileToBePlayed = new File(path);
         buttonListener = new PlayerButtonListener(volumeLevel);
@@ -86,6 +95,7 @@ public class PlayerFrame extends CustomJFrame {
      * Set all PlayerFrame components
      */
     private void initSetting() {
+        setLocationRelativeTo(null);
         final int BUTTON_SIDE_SIZE = 35;
         final int PLAYER_FRAME_WIDTH = 800;
         final int PLAYER_FRAME_HEIGHT = 540;

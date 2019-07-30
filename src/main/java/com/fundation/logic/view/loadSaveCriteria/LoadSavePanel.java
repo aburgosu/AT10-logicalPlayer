@@ -14,10 +14,10 @@ import com.fundation.logic.view.customElements.CustomTable;
 
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 /**
  * Implements the tab of LoadSave Panel.
@@ -39,22 +39,23 @@ public class LoadSavePanel extends CustomPanelSecond {
         gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gridBagLayout.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
         setLayout(gridBagLayout);
-
         dataTable = new CustomTable();
-
-        model = new DefaultTableModel(new Object[] {"Name", "Type", "Date", "ID"}, 0);
+        model = new DefaultTableModel(new Object[] {"Name", "Type", "Date", "ID"}, 0){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         dataTable.setModel(model);
-        JScrollPane tableScrollPanel = new JScrollPane(add(dataTable));
-
-        tableScrollPanel.getViewport().setBackground(new Color(43,43,43));
         GridBagConstraints gbc_table = new GridBagConstraints();
-
         gbc_table.gridwidth = 7;
         gbc_table.insets = new Insets(0, 0, 5, 0);
         gbc_table.fill = GridBagConstraints.BOTH;
         gbc_table.gridx = 0;
         gbc_table.gridy = 0;
-
+        JScrollPane tableScrollPanel = new JScrollPane();
+        tableScrollPanel.setViewportView(this.dataTable);
+        tableScrollPanel.getViewport().setBackground(new Color(43,43,43));
         dataTable.getColumnModel().getColumn(3).setMaxWidth(0);
         dataTable.getColumnModel().getColumn(3).setMinWidth(0);
         dataTable.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
