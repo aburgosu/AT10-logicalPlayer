@@ -47,7 +47,7 @@ public class SearchController {
     public SearchController() {
         this.searchFactory = new SearchFactory();
     }
-    
+
     /**
      * Initializes a SearchController instance with a mainFrame and a searchCriteria.
      */

@@ -10,9 +10,9 @@
 package com.fundation.logic.controller;
 
 import com.fundation.logic.model.CustomFile;
+import com.fundation.logic.model.searchCriteria.Audio;
 import com.fundation.logic.model.searchCriteria.Common;
 import com.fundation.logic.model.searchCriteria.Image;
-import com.fundation.logic.view.MainFrame;
 import org.junit.Test;
 
 import java.util.List;
@@ -50,8 +50,8 @@ public class SearchControllerTest {
         CustomFile expectedResult = new CustomFile("resources/Test/", "testImage", "bmp",
                 false, false, null, null, null,
                 null, null, "null", null);
-        assertTrue(expectedResult.getName().equals(actualResult.get(0).getName()));
-        assertTrue(expectedResult.getExtension().equals(actualResult.get(0).getExtension()));
+        assertEquals(expectedResult.getName(), actualResult.get(0).getName());
+        assertEquals(expectedResult.getExtension(), actualResult.get(0).getExtension());
     }
 
     @Test
@@ -69,8 +69,8 @@ public class SearchControllerTest {
                 false, false, null, null, null,
                 null, null, "null", null);
         System.out.println("Results length: " + actualResult.size());
-        assertTrue(expectedResult.getName().equals(actualResult.get(0).getName()));
-        assertTrue(expectedResult.getExtension().equals(actualResult.get(0).getExtension()));
+        assertEquals(expectedResult.getName(), actualResult.get(0).getName());
+        assertEquals(expectedResult.getExtension(), actualResult.get(0).getExtension());
     }
 
     @Test
