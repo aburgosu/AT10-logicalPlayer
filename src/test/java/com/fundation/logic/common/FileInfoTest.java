@@ -80,21 +80,6 @@ public class FileInfoTest {
     }
 
     /**
-     * This unit test verify file date.
-     */
-    @Test
-    public void fileDate() throws ParseException {
-        File path = new File("resources/Grammar_posesivo_genitivo.mp4");
-        Date actualDate = FileInfo.getFileDate(path,"creation");
-        String actual = actualDate.toString();
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String dateHour = "2019-07-30 09:56:55";
-        Date expectedDate = date.parse(dateHour);
-        String expected = expectedDate.toString();
-        assertEquals(expected,actual);
-    }
-
-    /**
      * This unit test verify file size.
      */
     @Test
