@@ -22,7 +22,6 @@ import java.awt.Font;
 public class CustomTable extends JTable {
     public CustomTable() {
         super();
-
         Color tableColor = new Color(60,63,65);
         setBackground(tableColor);
         setFont(new Font("Calibri", 2, 14));

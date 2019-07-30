@@ -9,7 +9,9 @@
  */
 package com.fundation.logic.view.customElements;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import java.awt.BorderLayout;
 
 /**

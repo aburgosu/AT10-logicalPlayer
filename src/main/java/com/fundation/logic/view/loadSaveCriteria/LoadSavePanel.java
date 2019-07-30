@@ -12,7 +12,7 @@ package com.fundation.logic.view.loadSaveCriteria;
 import com.fundation.logic.view.customElements.CustomPanelSecond;
 import com.fundation.logic.view.customElements.CustomTable;
 
-import javax.swing.*;
+import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
