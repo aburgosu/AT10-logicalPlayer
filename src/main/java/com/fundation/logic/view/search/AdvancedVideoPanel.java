@@ -232,16 +232,16 @@ public class AdvancedVideoPanel extends CustomPanelSecond {
      * Allows to get minuteSpinner.
      * @return minuteSpinner value
      */
-    public String getMinuteSpinner() {
-        return minuteSpinner.getValue().toString();
+    public JSpinner getMinuteSpinner() {
+        return minuteSpinner;
     }
 
     /**
      * Allows to get minuteSpinnerTo.
      * @return minuteSpinnerTo value
      */
-    public String getMinuteSpinnerTo() {
-        return minuteSpinnerTo.getValue().toString();
+    public JSpinner getMinuteSpinnerTo() {
+        return minuteSpinnerTo;
     }
 
     /**

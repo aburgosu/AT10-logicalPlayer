@@ -9,6 +9,7 @@
  */
 package com.fundation.logic.controller;
 
+import com.fundation.logic.common.StringToHour;
 import com.fundation.logic.model.CriteriaRecord;
 import com.fundation.logic.model.QueryForCriteria;
 import com.fundation.logic.model.searchCriteria.Audio;
@@ -20,8 +21,10 @@ import com.fundation.logic.view.MainFrame;
 import com.fundation.logic.view.loadSaveCriteria.NameFrame;
 import com.fundation.logic.view.loadSaveCriteria.PopupLoadSave;
 
+import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -440,15 +443,26 @@ public class LoadSaveController {
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced()
                 .getComboBoxAudioSampleRate().setSelectedIndex(optionSampleRate);
-        //Set durationEnd
-        /*
-        mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced()
-                .getMinuteSpinnerTo().
-        String endDuration = (mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
-                .getPanelAudioAdvanced().getMinuteSpinnerTo());
-        String initDuration = (mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
-                .getPanelAudioAdvanced().getMinuteSpinner());
-                */
+        //Set durationFrom
+        String durationFrom = criteria.getDurationfrom();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR, StringToHour.getHours(durationFrom));
+        calendar.set(Calendar.MINUTE, StringToHour.getMinutes(durationFrom));
+        calendar.set(Calendar.SECOND, StringToHour.getSeconds(durationFrom));
+        SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
+        minuteSpinnerModelFrom.setValue(calendar.getTime());
+        mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinner()
+                .setModel(minuteSpinnerModelFrom);
+        //Set durationTo
+        String durationTo = criteria.getDurationTo();
+        Calendar calendarTo = Calendar.getInstance();
+        calendarTo.set(Calendar.HOUR, StringToHour.getHours(durationTo));
+        calendarTo.set(Calendar.MINUTE, StringToHour.getMinutes(durationTo));
+        calendarTo.set(Calendar.SECOND, StringToHour.getSeconds(durationTo));
+        SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
+        minuteSpinnerModelTo.setValue(calendar.getTime());
+        mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinnerTo()
+                .setModel(minuteSpinnerModelTo);
     }
 
     public void loadVideoCriteria(Video criteria) {
@@ -511,13 +525,26 @@ public class LoadSaveController {
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced()
                 .getComboBoxResolution().setSelectedIndex(optionResolution);
-        /*
-        String endDuration = (mainFrame.getMainTabs().getSplitPanelSearch()
-                .getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinnerTo());
-        String initDuration = (mainFrame.getMainTabs().getSplitPanelSearch()
-                .getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinner());
-
-         */
+        //Set durationFrom
+        String durationFrom = criteria.getDurationfrom();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR, StringToHour.getHours(durationFrom));
+        calendar.set(Calendar.MINUTE, StringToHour.getMinutes(durationFrom));
+        calendar.set(Calendar.SECOND, StringToHour.getSeconds(durationFrom));
+        SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
+        minuteSpinnerModelFrom.setValue(calendar.getTime());
+        mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinner()
+                .setModel(minuteSpinnerModelFrom);
+        //Set durationTo
+        String durationTo= criteria.getDurationfrom();
+        Calendar calendarTo = Calendar.getInstance();
+        calendarTo.set(Calendar.HOUR, StringToHour.getHours(durationTo));
+        calendarTo.set(Calendar.MINUTE, StringToHour.getMinutes(durationTo));
+        calendarTo.set(Calendar.SECOND, StringToHour.getSeconds(durationTo));
+        SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
+        minuteSpinnerModelTo.setValue(calendar.getTime());
+        mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinnerTo()
+                .setModel(minuteSpinnerModelTo);
     }
 }
 

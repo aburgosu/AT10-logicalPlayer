@@ -303,10 +303,10 @@ public class SearchController {
         if (sampleRate.length() == 0) {
             sampleRate = null;
         }
-        String endDuration = (mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
-                .getPanelAudioAdvanced().getMinuteSpinnerTo());
-        String initDuration = (mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
-                .getPanelAudioAdvanced().getMinuteSpinner());
+        String endDuration = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getPanelAudioAdvanced().getMinuteSpinnerTo().getValue().toString();
+        String initDuration = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getPanelAudioAdvanced().getMinuteSpinner().getValue().toString();
         int subStringFromEnd = 17;
         int subStringFromInit = 9;
         int init = endDuration.length() - subStringFromEnd;
@@ -365,10 +365,10 @@ public class SearchController {
         if (resolution.length() == 0) {
             resolution = null;
         }
-        String endDuration = (mainFrame.getMainTabs().getSplitPanelSearch()
-                .getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinnerTo());
-        String initDuration = (mainFrame.getMainTabs().getSplitPanelSearch()
-                .getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinner());
+        String endDuration = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getPanelVideoAdvanced().getMinuteSpinnerTo().getValue().toString();
+        String initDuration = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getPanelVideoAdvanced().getMinuteSpinner().getValue().toString();
         int subStringFromEnd = 17;
         int subStringFromInit = 9;
         int init = endDuration.length() - subStringFromEnd;
