@@ -9,34 +9,35 @@
  */
 package com.fundation.logic.database;
 
+import java.sql.Timestamp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
+import java.sql.SQLException;
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implements insert in a table .
+ * Implements insert in a table.
  *
  * @author Andres Burgos, Jesus Menacho
  * @version 1.0
  */
 public class Query {
     /**
-     * This method inster informations from name and json to Data Base
+     * This method inserts information from name and json to Data Base
      */
     public void insertCriteria(String name, String json) {
         String sql = "INSERT INTO criterias(name, date, json) VALUES(?,?,?)";
         try {
+            Timestamp current = Timestamp.valueOf(LocalDateTime.now());
+            long dateLong = current.getTime();
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
-            statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setLong(2, dateLong);
             statement.setString(3, json);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -45,26 +46,27 @@ public class Query {
     }
 
     /**
-     * This method show informations from the table searchCriteria.
+     * This method allows to get all data from the database.
      */
-    public List getAllCriterias() {
-        List<String> infCriterias = new ArrayList<String>();
+    public List getAllCriteria() {
+        List<String> infCriteria = new ArrayList<String>();
         String sql = "SELECT * FROM criterias";
         try {
             Connection conn = DBConnection.getInstance().getConnection();
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                infCriterias.add(result.getInt("id") + "\t" + result.getString("name") + "\t" + result.getDate("date") + "\t" + result.getString("json"));
+                infCriteria.add(result.getInt("id") + "\t" + result.getString("name") + "\t"
+                        + result.getDate("date") + "\t" + result.getString("json"));
             }
         } catch (SQLException e) {
             e.getMessage();
         }
-        return infCriterias;
+        return infCriteria;
     }
 
     /**
-     * This method delete informations acording a id from the table searchCriteria.
+     * This method deletes registers according to id from the table database.
      */
     public void deleteByIde(String ID) {
         String sql = "DELETE FROM criterias WHERE id = ?";
@@ -79,30 +81,24 @@ public class Query {
     }
 
     /**
-     * This method show the info searchCriteria between two dates.
+     * This method filters registers in database that are between two dates.
      */
-    public List filterByDates(String firstDate, String secondDate) {
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String lower = secondDate;
-        String upper = firstDate;
-        LocalDateTime lowerdt = LocalDateTime.parse(lower, formatter);
-        LocalDateTime upperdt = LocalDateTime.parse(upper, formatter);
-
-        List<String> infCriterias = new ArrayList<String>();
-        String sql = "SELECT * FROM criterias WHERE date BETWEEN ? AND ?";
+    public List filterByDates(long firstDate, long secondDate) {
+        List<String> infCriteria = new ArrayList<>();
+        String sql = "SELECT * FROM criterias WHERE date >= ? AND date <= ?";
         try {
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setTimestamp(1, Timestamp.valueOf(lowerdt));
-            statement.setTimestamp(2, Timestamp.valueOf(upperdt));
+            statement.setLong(1, firstDate);
+            statement.setLong(2, secondDate);
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
-                infCriterias.add(result.getInt("id") + "\t" + result.getString("name") + "\t" + result.getDate("date") + "\t" + result.getString("json"));
+                infCriteria.add(result.getInt("id") + "\t" + result.getString("name") + "\t"
+                        + result.getDate("date") + "\t" + result.getString("json"));
             }
         } catch (SQLException e) {
-            e.getMessage();
+                e.getMessage();
         }
-        return infCriterias;
+        return infCriteria;
     }
 }

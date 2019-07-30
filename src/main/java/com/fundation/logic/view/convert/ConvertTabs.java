@@ -9,7 +9,7 @@
  */
 package com.fundation.logic.view.convert;
 
-import com.fundation.logic.view.CustomTab;
+import com.fundation.logic.view.customElements.CustomTab;
 
 /**
  * Implements the ConvertTabs class.

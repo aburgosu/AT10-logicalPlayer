@@ -9,7 +9,7 @@
  */
 package com.fundation.logic.view.loadSaveCriteria;
 
-import com.fundation.logic.view.CustomPanel;
+import com.fundation.logic.view.customElements.CustomPanel;
 
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -22,6 +22,7 @@ import javax.swing.JSplitPane;
  */
 public class SplitPanelDate extends CustomPanel {
     private LoadSavePanel loadSavePanel;
+    private BasicLoadSavePanel dateSearchPanel;
 
     /**
      *  The constructor let it initializer.
@@ -41,15 +42,26 @@ public class SplitPanelDate extends CustomPanel {
      *  This method allows to display the content in divided panels.
      */
     public void contentSplitPanels() {
-        JPanel dateSearch = new SearchByDate();
+        dateSearchPanel = new BasicLoadSavePanel();
         loadSavePanel = new LoadSavePanel();
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, dateSearch, loadSavePanel);
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, dateSearchPanel, loadSavePanel);
         splitPane.setOneTouchExpandable(false);
         add(splitPane);
     }
 
+    /**
+     * Allows to get LoadSavePanel.
+     * @return LoadSavePanel.
+     */
     public LoadSavePanel getLoadSavePanel() {
         return loadSavePanel;
     }
 
+    /**
+     * Allows to get dateSearchPanel.
+     * @return DateSearchPanel.
+     */
+    public BasicLoadSavePanel getDateSearchPanel() {
+        return dateSearchPanel;
+    }
 }

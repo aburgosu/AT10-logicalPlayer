@@ -7,24 +7,23 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.customElements;
 
-import javax.swing.JTextField;
+import javax.swing.JPanel;
+import javax.swing.BorderFactory;
 import java.awt.Color;
-import java.awt.Font;
 
 /**
- * Implements CustomTextField class.
+ * Implements CustomPanelSecond class.
  *
  * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomTextField extends JTextField {
-    public CustomTextField() {
+public class CustomPanelSecond extends JPanel {
+    public CustomPanelSecond() {
         super();
-        Color textFieldColor = new Color(220, 220, 220);
-        setBackground(textFieldColor);
-        Font font = new Font("Calibri", 3, 12);
-        setFont(font);
+        Color panelColor = new Color(32, 178, 170);
+        setBackground(panelColor);
+        setForeground(Color.orange);
     }
 }

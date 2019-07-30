@@ -9,7 +9,7 @@
  */
 package com.fundation.logic.view.resultTable;
 
-import com.fundation.logic.view.CustomTable;
+import com.fundation.logic.view.customElements.CustomTable;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.List;

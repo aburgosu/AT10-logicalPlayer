@@ -9,11 +9,11 @@
  */
 package com.fundation.logic.view.convert;
 
-import com.fundation.logic.view.CustomPanelSecond;
-import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.customElements.CustomPanelSecond;
+import com.fundation.logic.view.customElements.CustomButton;
 import com.fundation.logic.view.PanelSetter;
-import com.fundation.logic.view.CustomLabel;
-import com.fundation.logic.view.CustomComboBox;
+import com.fundation.logic.view.customElements.CustomLabel;
+import com.fundation.logic.view.customElements.CustomComboBox;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;

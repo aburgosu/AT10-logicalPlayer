@@ -7,21 +7,24 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.customElements;
 
-import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Implements CustomLabel class.
+ * Implements CustomTextField class.
  *
  * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomLabel extends JLabel {
-    public CustomLabel(String name) {
-        super(name);
-        Font font = new Font("Verdana",3, 12);
+public class CustomTextField extends JTextField {
+    public CustomTextField() {
+        super();
+        Color textFieldColor = new Color(220, 220, 220);
+        setBackground(textFieldColor);
+        Font font = new Font("Calibri", 3, 12);
         setFont(font);
     }
 }

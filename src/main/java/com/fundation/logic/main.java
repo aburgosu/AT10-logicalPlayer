@@ -10,8 +10,9 @@
 package com.fundation.logic;
 
 import com.fundation.logic.controller.ConvertController;
+import com.fundation.logic.controller.LoadSaveController;
 import com.fundation.logic.view.MainFrame;
-import com.fundation.logic.controller.Controller;
+import com.fundation.logic.controller.SearchController;
 
 /**
  * Implements the main class
@@ -22,11 +23,9 @@ import com.fundation.logic.controller.Controller;
 public class main {
 
     public static void main(String[] arg) {
-        MainFrame searchFrame = new MainFrame();
-        Controller controller = new Controller(searchFrame);
-        ConvertController convertController = new ConvertController(searchFrame);
-        convertController.listenConvertButtons();
-        controller.setEvents();
-        controller.showLoadSaveData();
+        MainFrame mainFrame = new MainFrame();
+        SearchController searchController = new SearchController(mainFrame);
+        ConvertController convertController = new ConvertController(mainFrame);
+        LoadSaveController loadSaveController = new LoadSaveController(mainFrame, searchController);
     }
 }

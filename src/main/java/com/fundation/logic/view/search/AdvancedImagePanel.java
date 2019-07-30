@@ -9,12 +9,12 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomPanelSecond;
-import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.customElements.CustomPanelSecond;
+import com.fundation.logic.view.customElements.CustomButton;
 import com.fundation.logic.view.PanelSetter;
-import com.fundation.logic.view.CustomLabel;
-import com.fundation.logic.view.CustomComboBox;
-import com.fundation.logic.view.CustomTextField;
+import com.fundation.logic.view.customElements.CustomLabel;
+import com.fundation.logic.view.customElements.CustomComboBox;
+import com.fundation.logic.view.customElements.CustomTextField;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -140,7 +140,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
         add(lblColorSpaceData, gbc_ColorSpaceData);
 
         comboBoxColorSpaceData = new CustomComboBox();
-        comboBoxColorSpaceData.setModel(new DefaultComboBoxModel(new String[]{"All", "RGB","sRGB", "MCY", "RG", "CMYK",}));
+        comboBoxColorSpaceData.setModel(new DefaultComboBoxModel(new String[]{"All", "RGB","sRGB", "MCY", "RG", "CMYK"}));
         GridBagConstraints gbc_ComboBoxColorSpaceData = new GridBagConstraints();
         gbc_ComboBoxColorSpaceData.insets = new Insets(0, 0, 5, 0);
         gbc_ComboBoxColorSpaceData.fill = GridBagConstraints.HORIZONTAL;

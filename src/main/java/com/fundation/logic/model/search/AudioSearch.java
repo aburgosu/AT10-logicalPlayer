@@ -11,7 +11,7 @@ package com.fundation.logic.model.search;
 
 import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.common.MetadataAudioExtractor;
-import com.fundation.logic.model.CustomizedFile;
+import com.fundation.logic.model.CustomFile;
 import com.fundation.logic.model.searchCriteria.Audio;
 
 import java.io.File;
@@ -52,7 +52,7 @@ public class AudioSearch implements ISearch {
      * @return Complete list of found items according on criteria's path.
      */
     public List searchInPath(String path) {
-        List<CustomizedFile> audioSearchResult = new ArrayList<CustomizedFile>();
+        List<CustomFile> audioSearchResult = new ArrayList<CustomFile>();
         File file = new File(path);
         String criteriaFileName = audioCriteria.getFileName();
         String criteriaExtension = audioCriteria.getExtension();
@@ -104,7 +104,7 @@ public class AudioSearch implements ISearch {
                             && evaluateString(sampleRate, criteriaSampleRate)
                             && evaluateDuration(duration, initDuration, endDuration)) {
                         List<String> metadata = MetadataAudioExtractor.getSearchListMetadata();
-                        CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
+                        CustomFile matchingFile = new CustomFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false,
                                 fileSize, creationDate, accessDate,
                                 modificationDate, owner, "audio", metadata);

@@ -9,11 +9,11 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomPanelSecond;
-import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.customElements.CustomPanelSecond;
+import com.fundation.logic.view.customElements.CustomButton;
 import com.fundation.logic.view.PanelSetter;
-import com.fundation.logic.view.CustomLabel;
-import com.fundation.logic.view.CustomComboBox;
+import com.fundation.logic.view.customElements.CustomLabel;
+import com.fundation.logic.view.customElements.CustomComboBox;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -126,8 +126,7 @@ public class AdvancedVideoPanel extends CustomPanelSecond {
         add(lblResolution, gbc_lblWidth);
 
         comboBoxResolution = new CustomComboBox();
-        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"All", "144", "360","480",
-            "720", "1080"}));
+        comboBoxResolution.setModel(new DefaultComboBoxModel(new String[]{"All", "144", "360","480", "720", "1080"}));
         GridBagConstraints gbc_comboBoxResolution = new GridBagConstraints();
         gbc_comboBoxResolution.gridwidth = 2;
         gbc_comboBoxResolution.insets = new Insets(0, 0, 5, 0);

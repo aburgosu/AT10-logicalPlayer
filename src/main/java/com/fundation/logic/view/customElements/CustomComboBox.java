@@ -7,24 +7,24 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.customElements;
 
-import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Implements CustomCheckBox class.
+ * Implements CustomComboBox class.
  *
  * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomCheckBox extends JCheckBox {
-    public CustomCheckBox(String check) {
+public class CustomComboBox extends JComboBox {
+    public CustomComboBox() {
         super();
-        Color checkBoxColor = new Color(119, 136, 153);
-        setBackground(checkBoxColor);
-        Font font = new Font("Calibri", 3, 20);
+        Color comboBoxColor = new Color(255, 240,245);
+        setBackground(comboBoxColor);
+        Font font = new Font("Calibri", 3, 14);
         setFont(font);
     }
 }

@@ -7,24 +7,21 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.customElements;
 
-import javax.swing.JComboBox;
-import java.awt.Color;
+import javax.swing.JLabel;
 import java.awt.Font;
 
 /**
- * Implements CustomComboBox class.
+ * Implements CustomLabel class.
  *
  * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomComboBox extends JComboBox {
-    public CustomComboBox() {
-        super();
-        Color comboBoxColor = new Color(255, 240,245);
-        setBackground(comboBoxColor);
-        Font font = new Font("Calibri", 3, 14);
+public class CustomLabel extends JLabel {
+    public CustomLabel(String name) {
+        super(name);
+        Font font = new Font("Verdana",3, 12);
         setFont(font);
     }
 }
