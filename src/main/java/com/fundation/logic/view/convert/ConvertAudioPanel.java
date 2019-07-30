@@ -65,7 +65,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
         add(lblNewFormat, gbc_lblNewFormat);
 
         comboBoxNewFormat = new CustomComboBox();
-        comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"mp3", "wav", "aiff", "wma", "flac"}));
+        comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"mp3", "wav", "aiff", "wma", "ogg", "acc"}));
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxNewFormat.fill = GridBagConstraints.HORIZONTAL;
@@ -82,8 +82,8 @@ public class ConvertAudioPanel extends CustomPanelSecond {
         add(lblCodec, gbc_lblCodec);
 
         comboBoxCodec = new CustomComboBox();
-        comboBoxCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "mp3", "wacpack", "aac", "wma",
-            "Vorbis", "FLAC"}));
+        comboBoxCodec.setModel(new DefaultComboBoxModel(new String[]{"Default", "libmp3lame", "ac3", "wmav1", "wmav2",
+            "vorbis", "g726"}));
         GridBagConstraints gbc_comboBoxCodec = new GridBagConstraints();
         gbc_comboBoxCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxCodec.fill = GridBagConstraints.HORIZONTAL;

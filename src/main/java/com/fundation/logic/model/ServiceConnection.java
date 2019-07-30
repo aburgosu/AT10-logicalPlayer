@@ -61,13 +61,8 @@ public class ServiceConnection {
             status = this.ERROR;
         }
         StringBody stringConfig = new StringBody(JsonConverter.convertCriteriaToJson(criteria), ContentType.TEXT_PLAIN);
-
-        System.out.println(JsonConverter.convertCriteriaToJson(criteria));
-
         StringBody stringOutput = new StringBody("{\"name\":\"" + criteria.getNewName() + "\",\"ext\":\"." + criteria.getNewFormat() + "\","
                     + "\"destPath\":\"" + criteria.getDestPath().replace("\\", "\\\\") + "\"" + "}" , ContentType.TEXT_PLAIN);
-        System.out.println("{\"name\":\"" + criteria.getNewName() + "\",\"ext\":\"." + criteria.getNewFormat() + "\","
-                    + "\"destPath\":\"" + criteria.getDestPath().replace("\\", "\\\\") + "\"" + "}");
         HttpEntity reqEntity = MultipartEntityBuilder.create()
                 .addPart("asset", fileBody)
                 .addPart("input", stringInput)
