@@ -88,8 +88,8 @@ public class SearchControllerTest {
         audioCriteria.setPath("resources/TestAudio/");
         audioCriteria.setFileName(null);
         audioCriteria.setExtension(null);
-        audioCriteria.setDurationTo("00:00:00");
-        audioCriteria.setDurationFrom("00:00:00");
+        audioCriteria.setDurationTo("12:00:00");
+        audioCriteria.setDurationFrom("12:00:00");
         audioCriteria.setChannel("All");
         audioCriteria.setAudioCodec("All");
         audioCriteria.setSampleRate("All");
@@ -111,8 +111,8 @@ public class SearchControllerTest {
         videoCriteria.setPath("resources/TestVideo/");
         videoCriteria.setFileName(null);
         videoCriteria.setExtension(null);
-        videoCriteria.setDurationTo("00:00:00");
-        videoCriteria.setDurationFrom("00:00:00");
+        videoCriteria.setDurationTo("12:00:00");
+        videoCriteria.setDurationFrom("12:00:00");
         videoCriteria.setAudioCodec("All");
         videoCriteria.setVideoCodec("All");
         videoCriteria.setFrameRate("All");
