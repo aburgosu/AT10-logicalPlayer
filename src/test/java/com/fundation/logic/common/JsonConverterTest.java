@@ -16,7 +16,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Implements JsonConverter test class to implement unit tests on its methods..
+ * Implements JsonConverter test class to implement unit tests on its methods.
  *
  * @author Melissa Román
  * @version 1.0
