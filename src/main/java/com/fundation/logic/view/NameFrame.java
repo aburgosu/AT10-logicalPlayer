@@ -35,9 +35,7 @@ public class NameFrame extends JFrame {
 
 
     /**
-     * Inits details frame.
-     *
-     * @param - Path of the file to show details from
+     * Inits Nameframe class.
      */
     public NameFrame() {
         initSetting();
@@ -68,7 +66,6 @@ public class NameFrame extends JFrame {
 
     /**
      * This method return the content of TextName.
-     *
      * @return TextName.
      */
     public JLabel getTextName() {
@@ -77,7 +74,6 @@ public class NameFrame extends JFrame {
 
     /**
      * This method return the content of textFieldName.
-     *
      * @return textFieldName.
      */
     public JTextField getTextFieldName() {
