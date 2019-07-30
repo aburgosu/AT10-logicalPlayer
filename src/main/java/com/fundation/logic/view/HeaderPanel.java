@@ -1,5 +1,8 @@
 package com.fundation.logic.view;
 
+import com.fundation.logic.view.customElements.CustomLabel;
+import com.fundation.logic.view.customElements.CustomPanelSecond;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

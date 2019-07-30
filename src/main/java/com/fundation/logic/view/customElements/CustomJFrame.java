@@ -23,9 +23,9 @@ public class CustomJFrame extends JFrame {
 
     public CustomJFrame() {
         image.setIcon(new ImageIcon("resources/Images/welcome.png"));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         add(image, BorderLayout.CENTER);
+        setIconImage(new ImageIcon("resources/Images/icon.png").getImage());
+        setTitle("J2AM2 Player");
         setVisible(true);
     }
 }

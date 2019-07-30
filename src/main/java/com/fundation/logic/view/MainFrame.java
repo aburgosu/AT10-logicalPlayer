@@ -14,7 +14,6 @@ import com.fundation.logic.view.customElements.CustomPanelSecond;
 import com.fundation.logic.view.customElements.CustomSplitPanel;
 import com.fundation.logic.view.resultTable.TableResult;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -56,8 +55,8 @@ public class MainFrame extends CustomJFrame {
         mainSplitPanel.setBackground(new Color(60,63,65));
         mainContentPanel.add(mainSplitPanel, BorderLayout.CENTER);
 
-        searchTabs = new MainTabs();
-        mainSplitPanel.setLeftComponent(searchTabs);
+        mainTabs = new MainTabs();
+        mainSplitPanel.setLeftComponent(mainTabs);
 
         tableResult = new TableResult();
         JScrollPane tableScrollPanel = new JScrollPane(add(tableResult));
@@ -74,8 +73,6 @@ public class MainFrame extends CustomJFrame {
     public void initSetting() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 400);
-        setIconImage(new ImageIcon("resources/Images/icon.png").getImage());
-        setTitle("J2AM2 Player");
         initComponent();
         setContentPane(mainContentPanel);
         setExtendedState(JFrame.MAXIMIZED_BOTH);

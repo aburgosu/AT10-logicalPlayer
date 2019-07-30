@@ -9,11 +9,10 @@
  */
 package com.fundation.logic.view.loadSaveCriteria;
 
-import com.fundation.logic.view.customElements.CustomButton;
 import com.fundation.logic.view.customElements.CustomPanelSecond;
 import com.fundation.logic.view.customElements.CustomTable;
 
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -44,9 +43,9 @@ public class LoadSavePanel extends CustomPanelSecond {
         dataTable = new CustomTable();
 
         model = new DefaultTableModel(new Object[] {"Name", "Type", "Date", "ID"}, 0);
-        model.addRow(new Object[]{"Name", "Type", "Date", "ID"});
         dataTable.setModel(model);
         JScrollPane tableScrollPanel = new JScrollPane(add(dataTable));
+
         tableScrollPanel.getViewport().setBackground(new Color(43,43,43));
         GridBagConstraints gbc_table = new GridBagConstraints();
 
@@ -57,7 +56,7 @@ public class LoadSavePanel extends CustomPanelSecond {
         gbc_table.gridy = 0;
 
         dataTable.getColumn(dataTable.getColumnName(3)).setMaxWidth(0);
-        add(dataTable, gbc_table);
+        add(tableScrollPanel, gbc_table);
     }
 
     /**
@@ -74,7 +73,6 @@ public class LoadSavePanel extends CustomPanelSecond {
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
-        model.addRow(new Object[]{"Name", "Type", "Date", "ID"});
         model.fireTableDataChanged();
         revalidate();
     }
@@ -91,7 +89,7 @@ public class LoadSavePanel extends CustomPanelSecond {
      * Allows to get datatable.
      * @return Data table.
      */
-    public JTable getDataTable() {
+    public CustomTable getDataTable() {
         return dataTable;
     }
 }

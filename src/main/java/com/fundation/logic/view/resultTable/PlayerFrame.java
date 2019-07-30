@@ -9,14 +9,14 @@
  */
 package com.fundation.logic.view.resultTable;
 
+import com.fundation.logic.view.customElements.CustomButton;
+import com.fundation.logic.view.customElements.CustomJFrame;
+import com.fundation.logic.view.customElements.CustomPanel;
 import com.sun.jna.NativeLibrary;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JSlider;
-import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Rectangle;
 import java.awt.BorderLayout;
@@ -30,12 +30,12 @@ import java.io.File;
  * @author Melissa Román
  * @version 1.0
  */
-public class PlayerFrame extends JFrame {
-    private JButton playButton;
-    private JButton stopButton;
-    private JButton pauseButton;
-    private JPanel playingPanel;
-    private JPanel bottomPanel;
+public class PlayerFrame extends CustomJFrame {
+    private CustomButton playButton;
+    private CustomButton stopButton;
+    private CustomButton pauseButton;
+    private CustomPanel playingPanel;
+    private CustomPanel bottomPanel;
     private JSlider progressBar;
     private JSlider volumeSlider;
     private int volumeLevel;
@@ -47,7 +47,7 @@ public class PlayerFrame extends JFrame {
      * Searchs for required vlc libraries: libvlc.dll libvlccore.dll
      */
     static {
-        NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:/Program Files/VideoLAN/VLC/");
+        NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "thirdParty/vlc-3.0.7.1/");
     }
 
     /**
@@ -65,11 +65,13 @@ public class PlayerFrame extends JFrame {
      * @param path
      */
     private void initComponent(String path) {
-        playButton = new JButton();
-        stopButton = new JButton();
-        pauseButton = new JButton();
-        playingPanel = new JPanel();
-        bottomPanel = new JPanel();
+        playButton = new CustomButton("");
+        stopButton = new CustomButton("");
+        pauseButton = new CustomButton("");
+        playingPanel = new CustomPanel();
+        playingPanel.setBackground(new Color(32, 178, 170));
+        bottomPanel = new CustomPanel();
+        bottomPanel.setBackground(new Color(32, 178, 170));
         final int SLIDER_MIN_VALUE = 0;
         final int SLIDER_MAX_VALUE = 100;
         progressBar = new JSlider(SLIDER_MIN_VALUE, SLIDER_MAX_VALUE, 0);

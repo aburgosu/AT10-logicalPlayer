@@ -39,10 +39,6 @@ public class TableResult extends CustomTable {
         };
 
         this.setModel(model);
-        model.addRow(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
-            "Date last accessed", "Metadata"});
-        tabla = new JTable(model);
-        panelBarra = new JScrollPane(tabla);
         this.getColumn(this.getColumnName(7)).setMaxWidth(0);
         this.getColumn(this.getColumnName(0)).setPreferredWidth(300);
         this.initListen();
@@ -63,8 +59,6 @@ public class TableResult extends CustomTable {
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
-//        model.addRow(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
-//            "Date last accessed", "Metadata"});
         model.fireTableDataChanged();
         revalidate();
     }
