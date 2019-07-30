@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Implements tests of SearchController methods.
@@ -27,6 +27,9 @@ import static org.junit.Assert.*;
  */
 public class SearchControllerTest {
 
+    /**
+     * This tests verifies makeSearch method by searching according to a common criteria.
+     */
     @Test
     public void makeSearch_commonSearch() {
         Common commonCriteria = new Common();
@@ -54,6 +57,9 @@ public class SearchControllerTest {
         assertEquals(expectedResult.getExtension(), actualResult.get(0).getExtension());
     }
 
+    /**
+     * This tests verifies makeSearch method by searching according to an image criteria.
+     */
     @Test
     public void makeSearch_imageSearch() {
         Image imageCriteria = new Image();
@@ -71,29 +77,5 @@ public class SearchControllerTest {
         System.out.println("Results length: " + actualResult.size());
         assertEquals(expectedResult.getName(), actualResult.get(0).getName());
         assertEquals(expectedResult.getExtension(), actualResult.get(0).getExtension());
-    }
-
-    @Test
-    public void showSearchResult() {
-    }
-
-    @Test
-    public void getCommonCriteria() {
-    }
-
-    @Test
-    public void getImageCriteria() {
-    }
-
-    @Test
-    public void getAudioCriteria() {
-    }
-
-    @Test
-    public void getVideoCriteria() {
-    }
-
-    @Test
-    public void listenSearchButtons() {
     }
 }
