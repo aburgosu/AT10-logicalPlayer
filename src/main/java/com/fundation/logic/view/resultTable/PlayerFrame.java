@@ -86,6 +86,7 @@ public class PlayerFrame extends CustomJFrame {
      * Set all PlayerFrame components
      */
     private void initSetting() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final int BUTTON_SIDE_SIZE = 35;
         final int PLAYER_FRAME_WIDTH = 800;
         final int PLAYER_FRAME_HEIGHT = 540;
