@@ -25,6 +25,7 @@ import java.util.List;
  */
 public class TableResult extends CustomTable {
     private DefaultTableModel model;
+    private PopupMenu menu;
 
     /**
      * Initializes a TableResult instance with headers
@@ -79,7 +80,7 @@ public class TableResult extends CustomTable {
                         int row = getSelectedRow();
                         String filePath = (String) model.getValueAt(row, PATH_COLUMN);
                         List<String> metadata = (List) model.getValueAt(row, METADATA_COLUMN);
-                        PopupMenu menu = new PopupMenu(filePath, metadata);
+                        menu = new PopupMenu(filePath, metadata);
                         menu.show(me.getComponent(), me.getX(), me.getY());
                         menu.setVisible(true);
                     }
@@ -88,5 +89,13 @@ public class TableResult extends CustomTable {
         } catch (Exception e) {
             e.getMessage();
         }
+    }
+
+    /**
+     * Allows to get Popupmenu.
+     * @return menu.
+     */
+    public PopupMenu getMenu() {
+        return menu;
     }
 }
