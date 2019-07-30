@@ -33,6 +33,7 @@ public class MetadataVideoExtractor {
     private Float searchSeconds;
     private static Float searchDuration;
     static String searchMimeType;
+    final static int FREESPACE = 2;
 
     /**
      * This method run exiftool.
@@ -78,8 +79,7 @@ public class MetadataVideoExtractor {
         if ((videoMimeType.contains("MIME"))) {
             if (validatorMimeType.contains("video")) {
                 int initIndex = validatorMimeType.indexOf(":");
-                int freeSpace = 2;
-                mimeType = validatorMimeType.substring(initIndex + freeSpace, initIndex + 7);
+                mimeType = validatorMimeType.substring(initIndex + FREESPACE, initIndex + 7);
                 searchMimeType = mimeType;
             }
         }
@@ -93,8 +93,7 @@ public class MetadataVideoExtractor {
         if ((frameRate.contains("Frame Rate"))) {
             int initIndex = frameRate.indexOf(":");
             int endIndex = frameRate.length();
-            int freeSpace = 2;
-            frameRate = frameRate.substring(initIndex + freeSpace, endIndex);
+            frameRate = frameRate.substring(initIndex + FREESPACE, endIndex);
             frameRate = Float.toString(Math.round(Float.parseFloat(frameRate)));
             int start = 0;
             int deleteDat0 = 2;
@@ -111,8 +110,7 @@ public class MetadataVideoExtractor {
         if ((height.contains("Image Height"))) {
             int initIndex = height.indexOf(":");
             int endIndex = height.length();
-            int freeSpace = 2;
-            height = height.substring(initIndex + freeSpace, endIndex);
+            height = height.substring(initIndex + FREESPACE, endIndex);
             searchHeight = height;
         }
     }
@@ -125,8 +123,7 @@ public class MetadataVideoExtractor {
         if (videoCodec.contains("Video Codec")) {
             int initIndex = videoCodec.indexOf(":");
             int endIndex = videoCodec.length();
-            int freeSpace = 2;
-            videoCodec = videoCodec.substring(initIndex + freeSpace, endIndex);
+            videoCodec = videoCodec.substring(initIndex + FREESPACE, endIndex);
             if (videoCodec.contains("Windows")) {
                 videoCodec = "WMV";
                 searchVideoCodec = videoCodec;
@@ -146,8 +143,7 @@ public class MetadataVideoExtractor {
         if (videoAudioCodec.contains("Audio Codec")) {
             int initIndex = videoAudioCodec.indexOf(":");
             int endIndex = videoAudioCodec.length();
-            int freeSpace = 2;
-            videoAudioCodec = videoAudioCodec.substring(initIndex + freeSpace, endIndex);
+            videoAudioCodec = videoAudioCodec.substring(initIndex + FREESPACE, endIndex);
             if (videoAudioCodec.contains("Windows")) {
                 videoAudioCodec = "WMA";
                 searchAudioCodec = videoAudioCodec;
@@ -172,10 +168,9 @@ public class MetadataVideoExtractor {
         if (validatorDuration.contains("Duration")) {
             int initIndex = duration.indexOf(":");
             int endIndex = duration.length();
-            int freeSpace = 2;
             Float hourToSeconds = new Float(3600);
             Float minuteToSeconds = new Float(60);
-            duration = duration.substring(initIndex + freeSpace, endIndex);
+            duration = duration.substring(initIndex + FREESPACE, endIndex);
             searchHour = Float.parseFloat(duration.substring(0, 1)) * hourToSeconds;
             searchMinute = Float.parseFloat(duration.substring(2, 4)) * minuteToSeconds;
             searchSeconds = Float.parseFloat(duration.substring(5, 7));

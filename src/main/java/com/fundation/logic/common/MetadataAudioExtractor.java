@@ -29,12 +29,15 @@ public class MetadataAudioExtractor {
     private static String searchSampleRate;
     private static List<String> list;
     private static Float searchDuration;
+    private static final int FREESPACE = 2;
 
     /**
      * This method run exiftool.
      * @param path path for extract metadata from exiftool
      */
     public void run(String path) throws IOException {
+        searchChannelMode = null;
+        searchSampleRate = null;
         searchMimeType = null;
         extractMetadata = Runtime.getRuntime().exec(path);
         readAll();
@@ -73,8 +76,7 @@ public class MetadataAudioExtractor {
         if ((audioMimeType.contains("MIME"))) {
             if (validatorMimeType.contains("audio")) {
                 int initIndex = validatorMimeType.indexOf(":");
-                int freeSpace = 2;
-                mimeType = validatorMimeType.substring(initIndex + freeSpace, initIndex + 7);
+                mimeType = validatorMimeType.substring(initIndex + FREESPACE, initIndex + 7);
                 searchMimeType = mimeType;
             } else {
                 searchMimeType = "All";
@@ -138,8 +140,7 @@ public class MetadataAudioExtractor {
         if ((sampleRate.contains("Sample Rate"))) {
             int initIndex = sampleRate.indexOf(":");
             int endIndex = sampleRate.length();
-            int freeSpace = 2;
-            sampleRate = sampleRate.substring(initIndex + freeSpace, endIndex);
+            sampleRate = sampleRate.substring(initIndex + FREESPACE, endIndex);
             searchSampleRate = sampleRate+" Hz";
         }
     }
@@ -153,10 +154,9 @@ public class MetadataAudioExtractor {
         if (validatorDuration.contains("Duration")) {
             int initIndex = duration.indexOf(":");
             int endIndex = duration.length();
-            int freeSpace = 2;
             Float hourToSeconds = new Float(3600);
             Float minuteToSeconds = new Float(60);
-            duration = duration.substring(initIndex + freeSpace, endIndex);
+            duration = duration.substring(initIndex + FREESPACE, endIndex);
             Float searchHour = Float.parseFloat(duration.substring(0, 1)) * hourToSeconds;
             Float searchMinute = Float.parseFloat(duration.substring(2, 4)) * minuteToSeconds;
             Float searchSeconds = Float.parseFloat(duration.substring(5, 7));
