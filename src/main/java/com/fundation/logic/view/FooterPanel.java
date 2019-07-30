@@ -23,10 +23,10 @@ public class FooterPanel extends JPanel {
     Label copyRight = new Label();
 
     /**
-     * Build the FooterPanel and shows the copyright of the company.     *
+     * Build the FooterPanel and shows the copyright of the company.
      */
     public FooterPanel(){
-        copyRight.setText("Copyright");
+        copyRight.setText("Copyright (c) 2019 Jalasoft, all rights reserved.");
         copyRight.setForeground(Color.BLACK);
         add(copyRight);
     }
