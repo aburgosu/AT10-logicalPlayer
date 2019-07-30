@@ -10,6 +10,7 @@
 package com.fundation.logic.common;
 
 import org.junit.Test;
+
 import java.io.IOException;
 
 import static junit.framework.TestCase.assertEquals;
@@ -30,7 +31,7 @@ public class MetadataAudioTest {
     public void testDuration() throws IOException {
         String path = "thirdParty/exiftool.exe resources/AudioPronunciacion.MP3";
         MetadataAudioExtractor metadata = new MetadataAudioExtractor();
-        Float expected =new Float(0.018055556);
+        Float expected = new Float(0.018055556);
         metadata.run(path);
         Float result = MetadataAudioExtractor.getSearchDuration();
         assertEquals(expected, result);
