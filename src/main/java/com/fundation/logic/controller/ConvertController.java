@@ -58,32 +58,32 @@ public class ConvertController {
      */
     public void listenConvertButtons() {
         searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab().getConvertAudioPanel().getBtnConvertAudio()
-            .addActionListener(e -> {
-                convert("audio");
-            });
+                .addActionListener(e -> {
+                    convert("audio");
+                });
         searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab().getConvertVideoPanel().getBtnConvertVideo()
-            .addActionListener(e -> {
-                convert("video");
-            });
+                .addActionListener(e -> {
+                    convert("video");
+                });
         searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab().getConvertPDFPanel().getBtnConvertAudio()
-            .addActionListener(e -> {
-                convert("pdfToImage");
-            });
+                .addActionListener(e -> {
+                    convert("pdfToImage");
+                });
         resetCriteria();
     }
 
     public void convert(String convertType) {
         ConvertCriteria criteria = setConvertCriteria(convertType);
         try {
-            JOptionPane.showMessageDialog(searchFrame,"Conversion in proccess...\nplease wait confirmation message");
+            JOptionPane.showMessageDialog(searchFrame, "Conversion in proccess...\nplease wait confirmation message");
             serviceConnection.convert(criteria);
             while (true) {
-                if (serviceConnection.getStatus()== ServiceConnection.SUCCESS) {
-                    JOptionPane.showMessageDialog(searchFrame,"Conversion successful");
+                if (serviceConnection.getStatus() == ServiceConnection.SUCCESS) {
+                    JOptionPane.showMessageDialog(searchFrame, "Conversion successful");
                     break;
                 }
-                if (serviceConnection.getStatus()== ServiceConnection.ERROR) {
-                    JOptionPane.showMessageDialog(searchFrame,"Error in conversion, please contact support");
+                if (serviceConnection.getStatus() == ServiceConnection.ERROR) {
+                    JOptionPane.showMessageDialog(searchFrame, "Error in conversion, please contact support");
                     break;
                 }
                 Thread.sleep(5000);
@@ -120,7 +120,7 @@ public class ConvertController {
         getDataFromConvertAudioPanel();
         ConvertCriteria convertAudioCriteria = new ConvertCriteria.ConvertCriteriaBuilder(sourcePath,
                 destPath, newName, newFormat, convertType).setMetadata(metadata).setAudioCodec(audioCodec)
-            .setAudioBitRate(audioBitRate).setAudioChannel(audioChannel).build();
+                .setAudioBitRate(audioBitRate).setAudioChannel(audioChannel).build();
         return convertAudioCriteria;
     }
 
@@ -132,10 +132,10 @@ public class ConvertController {
         getDataFromConvertVideoPanel();
         ConvertCriteria convertVideoCriteria = new ConvertCriteria.ConvertCriteriaBuilder(sourcePath,
                 destPath, newName, newFormat, convertType).setMetadata(metadata).setAudioCodec(audioCodec)
-            .setAudioBitRate(audioBitRate).setAudioChannel(audioChannel).setVideoCodec(videoCodec)
-            .setVideoBitRate(videoBitRate).setKeyframe(keyframe).setKeyframeTime(keyframeTime)
-            .setKeyframeFormat(keyframeFormat).setFps(fps).setThumbnail(thumbnail)
-            .setThumbnailTime(thumbnailTime).setThumbnailFormat(thumbnailFormat).build();
+                .setAudioBitRate(audioBitRate).setAudioChannel(audioChannel).setVideoCodec(videoCodec)
+                .setVideoBitRate(videoBitRate).setKeyframe(keyframe).setKeyframeTime(keyframeTime)
+                .setKeyframeFormat(keyframeFormat).setFps(fps).setThumbnail(thumbnail)
+                .setThumbnailTime(thumbnailTime).setThumbnailFormat(thumbnailFormat).build();
         return convertVideoCriteria;
     }
 
@@ -146,8 +146,8 @@ public class ConvertController {
     public ConvertCriteria setConvertPDFCriteria() {
         getDataFromConvertPDFPanel();
         ConvertCriteria convertPDFCriteria = new ConvertCriteria.ConvertCriteriaBuilder(sourcePath,
-            destPath, newName, newFormat, convertType).setMetadata(metadata).setFormatColor(formatColor)
-            .setDpi(dpi).setThumbnail(thumbnail).setThumbnailFormat(thumbnailFormat).build();
+                destPath, newName, newFormat, convertType).setMetadata(metadata).setFormatColor(formatColor)
+                .setDpi(dpi).setThumbnail(thumbnail).setThumbnailFormat(thumbnailFormat).build();
         return convertPDFCriteria;
     }
 
@@ -156,14 +156,14 @@ public class ConvertController {
      */
     public void getDataFromBasicPanel() {
         sourcePath = searchFrame.getMainTabs().getSplitPanelConvert().getBasicConvert()
-            .getTextFieldSourcePath().getText();
+                .getTextFieldSourcePath().getText();
         destPath = searchFrame.getMainTabs().getSplitPanelConvert().getBasicConvert()
-            .getTextFieldDestinationPath().getText() + "\\";
+                .getTextFieldDestinationPath().getText() + "\\";
         newName = searchFrame.getMainTabs().getSplitPanelConvert().getBasicConvert().getTextFieldNewName()
-            .getText();
+                .getText();
         metadata = searchFrame.getMainTabs().getSplitPanelConvert().getBasicConvert()
-            .getComboBoxMetadataFormat().getSelectedItem().toString();
-        if(metadata == "None") {
+                .getComboBoxMetadataFormat().getSelectedItem().toString();
+        if (metadata == "None") {
             metadata = null;
         }
     }
@@ -173,20 +173,20 @@ public class ConvertController {
      */
     public void getDataFromConvertAudioPanel() {
         newFormat = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab().getConvertAudioPanel()
-            .getComboBoxNewFormat().getSelectedItem().toString();
+                .getComboBoxNewFormat().getSelectedItem().toString();
         audioCodec = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab().getConvertAudioPanel()
-            .getComboBoxCodec().getSelectedItem().toString();
-        if(audioCodec == "Default") {
+                .getComboBoxCodec().getSelectedItem().toString();
+        if (audioCodec == "Default") {
             audioCodec = null;
         }
         audioBitRate = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertAudioPanel().getComboBoxBit().getSelectedItem().toString();
-        if(audioBitRate == "Default") {
+                .getConvertAudioPanel().getComboBoxBit().getSelectedItem().toString();
+        if (audioBitRate == "Default") {
             audioBitRate = null;
         }
         audioChannel = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertAudioPanel().getComboBoxChannel().getSelectedItem().toString();
-        if(audioChannel == "Default") {
+                .getConvertAudioPanel().getComboBoxChannel().getSelectedItem().toString();
+        if (audioChannel == "Default") {
             audioChannel = null;
         }
     }
@@ -196,62 +196,62 @@ public class ConvertController {
      */
     public void getDataFromConvertVideoPanel() {
         newFormat = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab().getConvertVideoPanel()
-            .getComboBoxNewFormat().getSelectedItem().toString();
+                .getComboBoxNewFormat().getSelectedItem().toString();
         audioCodec = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab().getConvertVideoPanel()
-            .getComboBoxAudioCodec().getSelectedItem().toString();
-        if(audioCodec == "Default") {
+                .getComboBoxAudioCodec().getSelectedItem().toString();
+        if (audioCodec == "Default") {
             audioCodec = null;
         }
         audioBitRate = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertVideoPanel().getComboBoxAudioBit().getSelectedItem().toString();
-        if(audioBitRate == "Default") {
+                .getConvertVideoPanel().getComboBoxAudioBit().getSelectedItem().toString();
+        if (audioBitRate == "Default") {
             audioBitRate = null;
         }
         audioChannel = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertVideoPanel().getComboBoxAudioChannel().getSelectedItem().toString();
-        if(audioChannel == "Default") {
+                .getConvertVideoPanel().getComboBoxAudioChannel().getSelectedItem().toString();
+        if (audioChannel == "Default") {
             audioChannel = null;
         }
         videoCodec = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertVideoPanel().getComboBoxVideoCodec().getSelectedItem().toString();
-        if(videoCodec == "Default") {
+                .getConvertVideoPanel().getComboBoxVideoCodec().getSelectedItem().toString();
+        if (videoCodec == "Default") {
             videoCodec = null;
         }
         videoBitRate = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertVideoPanel().getComboBoxVideoBit().getSelectedItem().toString();
-        if(videoBitRate == "Default") {
+                .getConvertVideoPanel().getComboBoxVideoBit().getSelectedItem().toString();
+        if (videoBitRate == "Default") {
             videoBitRate = null;
         }
         fps = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertVideoPanel().getComboBoxVideoRate().getSelectedItem().toString();
-        if(fps == "Default") {
+                .getConvertVideoPanel().getComboBoxVideoRate().getSelectedItem().toString();
+        if (fps == "Default") {
             fps = null;
         }
         boolean keyframeAux = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertVideoPanel().getCheckBoxKeyFrame().isSelected();
-        if(keyframeAux == true) {
+                .getConvertVideoPanel().getCheckBoxKeyFrame().isSelected();
+        if (keyframeAux == true) {
             keyframe = "true";
             keyframeTime = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-                .getConvertVideoPanel().getMinuteSpinnerKeyFrame().getValue().toString();
+                    .getConvertVideoPanel().getMinuteSpinnerKeyFrame().getValue().toString();
             keyframeTime = keyframeTime.substring(17, 19);
             keyframeFormat = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-                .getConvertVideoPanel().getComboBoxKeyFrameFormat().getSelectedItem().toString();
-            if(keyframeFormat == "Default") {
+                    .getConvertVideoPanel().getComboBoxKeyFrameFormat().getSelectedItem().toString();
+            if (keyframeFormat == "Default") {
                 keyframeFormat = null;
             }
         } else {
             keyframe = "false";
         }
         boolean thumbnailAux = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertVideoPanel().getCheckBoxThumbnail().isSelected();
-        if(thumbnailAux == true) {
+                .getConvertVideoPanel().getCheckBoxThumbnail().isSelected();
+        if (thumbnailAux == true) {
             thumbnail = "true";
             thumbnailTime = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-                .getConvertVideoPanel().getMinuteSpinnerThumbnail().getValue().toString();
+                    .getConvertVideoPanel().getMinuteSpinnerThumbnail().getValue().toString();
             thumbnailTime = thumbnailTime.substring(17, 19);
             thumbnailFormat = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-                .getConvertVideoPanel().getComboBoxThumbnailFormat().getSelectedItem().toString();
-            if(thumbnailFormat == "Default") {
+                    .getConvertVideoPanel().getComboBoxThumbnailFormat().getSelectedItem().toString();
+            if (thumbnailFormat == "Default") {
                 thumbnailFormat = null;
             }
         } else {
@@ -264,14 +264,14 @@ public class ConvertController {
      */
     public void getDataFromConvertPDFPanel() {
         newFormat = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertPDFPanel().getComboBoxNewFormat().getSelectedItem().toString();
+                .getConvertPDFPanel().getComboBoxNewFormat().getSelectedItem().toString();
         formatColor = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertPDFPanel().getComboBoxColorFormat().getSelectedItem().toString();
+                .getConvertPDFPanel().getComboBoxColorFormat().getSelectedItem().toString();
         dpi = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertPDFPanel().getComboBoxDpi().getSelectedItem().toString();
+                .getConvertPDFPanel().getComboBoxDpi().getSelectedItem().toString();
         boolean thumbnailAux = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
-            .getConvertPDFPanel().getCheckBoxThumbnail().isSelected();
-        if(thumbnailAux == true) {
+                .getConvertPDFPanel().getCheckBoxThumbnail().isSelected();
+        if (thumbnailAux == true) {
             thumbnail = "true";
             thumbnailFormat = searchFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
                     .getConvertPDFPanel().getComboBoxThumbnailFormat().getSelectedItem().toString();

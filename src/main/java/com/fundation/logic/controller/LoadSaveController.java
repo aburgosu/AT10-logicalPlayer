@@ -9,7 +9,6 @@
  */
 package com.fundation.logic.controller;
 
-import com.fundation.logic.common.ByteConvert;
 import com.fundation.logic.model.CriteriaRecord;
 import com.fundation.logic.model.QueryForCriteria;
 import com.fundation.logic.model.searchCriteria.*;
@@ -103,7 +102,7 @@ public class LoadSaveController {
     public void listenFilterButton() {
         mainFrame.getMainTabs().getSplitPanelSavedCriteria().getDateSearchPanel().getBtnFilterByDate()
                 .addActionListener(e -> {
-                    Date startDate =  mainFrame.getMainTabs().getSplitPanelSavedCriteria().getDateSearchPanel()
+                    Date startDate = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getDateSearchPanel()
                             .getFieldDateFirstDate().getDate();
                     Date endDate = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getDateSearchPanel()
                             .getFieldDateSecondDate().getDate();
@@ -118,42 +117,42 @@ public class LoadSaveController {
         final int ID_COLUMN = 3;
         mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
                 .addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent me) {
-                if (me.getButton() == MouseEvent.BUTTON3) {
-                    PopupLoadSave menu = new PopupLoadSave();
-                    menu.show(me.getComponent(), me.getX(), me.getY());
-                    menu.setVisible(true);
-                    int row = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
-                            .getSelectedRow();
-                    String id = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel()
-                            .getDataTable().getValueAt(row, ID_COLUMN).toString();
-                    menu.getLoadItem().addMouseListener(new MouseAdapter() {
-                        @Override
-                        public void mousePressed(MouseEvent event) {
-                            if (event.getButton() == MouseEvent.BUTTON1) {
-                                CriteriaRecord criteriaRecordToLoad = queryCriteria.getCriteriaRecordById(id);
-                                loadCriteria(criteriaRecordToLoad);
-                            }
+                    public void mouseClicked(MouseEvent me) {
+                        if (me.getButton() == MouseEvent.BUTTON3) {
+                            PopupLoadSave menu = new PopupLoadSave();
+                            menu.show(me.getComponent(), me.getX(), me.getY());
+                            menu.setVisible(true);
+                            int row = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
+                                    .getSelectedRow();
+                            String id = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel()
+                                    .getDataTable().getValueAt(row, ID_COLUMN).toString();
+                            menu.getLoadItem().addMouseListener(new MouseAdapter() {
+                                @Override
+                                public void mousePressed(MouseEvent event) {
+                                    if (event.getButton() == MouseEvent.BUTTON1) {
+                                        CriteriaRecord criteriaRecordToLoad = queryCriteria.getCriteriaRecordById(id);
+                                        loadCriteria(criteriaRecordToLoad);
+                                    }
+                                }
+                            });
+                            menu.getDeleteItem().addMouseListener(new MouseAdapter() {
+                                @Override
+                                public void mousePressed(MouseEvent event) {
+                                    if (event.getButton() == MouseEvent.BUTTON1) {
+                                        queryCriteria.deleteById(id);
+                                        showLoadSaveData();
+                                    }
+                                }
+                            });
                         }
-                    });
-                    menu.getDeleteItem().addMouseListener(new MouseAdapter() {
-                        @Override
-                        public void mousePressed(MouseEvent event) {
-                            if (event.getButton() == MouseEvent.BUTTON1) {
-                                queryCriteria.deleteById(id);
-                                showLoadSaveData();
-                            }
-                        }
-                    });
-                }
-            }
-        });
+                    }
+                });
     }
 
     public void loadCriteria(CriteriaRecord criteriaRecord) {
         Criteria criteriaToLoad = criteriaRecord.getCriteria();
         String type = criteriaRecord.getType();
-        switch(type) {
+        switch (type) {
             case "Common":
                 loadCommonCriteria((Common) criteriaToLoad);
                 mainFrame.getMainTabs().setSelectedIndex(0);
@@ -190,6 +189,7 @@ public class LoadSaveController {
         mainFrame.getMainTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldFileType()
                 .setText(criteria.getExtension());
     }
+
     /**
      * Loads General panel search form according to criteria input.
      * @param criteria - Common criteria to be loaded.
@@ -228,39 +228,39 @@ public class LoadSaveController {
                 .getTextFieldOwner().setText(criteria.getCriteriaOwner());
         //Set mimeType
         int optionMimeType = 0;
-        if(criteria.getCriteriaMimeType().equals("Audio")) {
+        if (criteria.getCriteriaMimeType().equals("Audio")) {
             optionMimeType = 1;
         }
-        if(criteria.getCriteriaMimeType().equals("Video")) {
+        if (criteria.getCriteriaMimeType().equals("Video")) {
             optionMimeType = 2;
         }
-        if(criteria.getCriteriaMimeType().equals("Image")) {
+        if (criteria.getCriteriaMimeType().equals("Image")) {
             optionMimeType = 3;
         }
-        if(criteria.getCriteriaMimeType().equals("Text")) {
+        if (criteria.getCriteriaMimeType().equals("Text")) {
             optionMimeType = 4;
         }
-        if(criteria.getCriteriaMimeType().equals("Application")) {
+        if (criteria.getCriteriaMimeType().equals("Application")) {
             optionMimeType = 5;
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
                 .getComboBoxMimeType().setSelectedIndex(optionMimeType);
         //Set fileHidden
         int optionFileHidden = 0;
-        if(criteria.getCriteriaFileHidden().equals("Only hidden")) {
+        if (criteria.getCriteriaFileHidden().equals("Only hidden")) {
             optionFileHidden = 1;
         }
-        if(criteria.getCriteriaFileHidden().equals("All but hidden")) {
+        if (criteria.getCriteriaFileHidden().equals("All but hidden")) {
             optionFileHidden = 2;
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
                 .getComboBoxHidden().setSelectedIndex(optionFileHidden);
         //Set readOnly
         int optionReadOnly = 0;
-        if(criteria.getCriteriaFileReadOnly().equals("Only read-only")) {
+        if (criteria.getCriteriaFileReadOnly().equals("Only read-only")) {
             optionReadOnly = 1;
         }
-        if(criteria.getCriteriaFileReadOnly().equals("All but read-only")) {
+        if (criteria.getCriteriaFileReadOnly().equals("All but read-only")) {
             optionReadOnly = 2;
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
@@ -281,19 +281,19 @@ public class LoadSaveController {
                 .setText(criteria.getHeight());
         //Set color space data
         int optionColor = 0;
-        if(criteria.getColorSpaceData().equals("RGB")) {
+        if (criteria.getColorSpaceData().equals("RGB")) {
             optionColor = 1;
         }
-        if(criteria.getColorSpaceData().equals("sRGB")) {
+        if (criteria.getColorSpaceData().equals("sRGB")) {
             optionColor = 2;
         }
-        if(criteria.getColorSpaceData().equals("MCY")) {
+        if (criteria.getColorSpaceData().equals("MCY")) {
             optionColor = 3;
         }
-        if(criteria.getColorSpaceData().equals("RG")) {
+        if (criteria.getColorSpaceData().equals("RG")) {
             optionColor = 4;
         }
-        if(criteria.getColorSpaceData().equals("CMYK")) {
+        if (criteria.getColorSpaceData().equals("CMYK")) {
             optionColor = 5;
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced()
@@ -347,55 +347,55 @@ public class LoadSaveController {
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced()
                 .getComboBoxAudioChannel().setSelectedIndex(optionChannel);
         int optionSampleRate = 0;
-        if(criteria.getSampleRate().equals("8000 Hz")) {
+        if (criteria.getSampleRate().equals("8000 Hz")) {
             optionSampleRate = 1;
         }
-        if(criteria.getSampleRate().equals("11025 Hz")) {
+        if (criteria.getSampleRate().equals("11025 Hz")) {
             optionSampleRate = 2;
         }
-        if(criteria.getSampleRate().equals("16000 Hz")) {
+        if (criteria.getSampleRate().equals("16000 Hz")) {
             optionSampleRate = 3;
         }
-        if(criteria.getSampleRate().equals("22050 Hz")) {
+        if (criteria.getSampleRate().equals("22050 Hz")) {
             optionSampleRate = 4;
         }
-        if(criteria.getSampleRate().equals("32000 Hz")) {
+        if (criteria.getSampleRate().equals("32000 Hz")) {
             optionSampleRate = 5;
         }
-        if(criteria.getSampleRate().equals("37800 Hz")) {
+        if (criteria.getSampleRate().equals("37800 Hz")) {
             optionSampleRate = 6;
         }
-        if(criteria.getSampleRate().equals("44100 Hz")) {
+        if (criteria.getSampleRate().equals("44100 Hz")) {
             optionSampleRate = 7;
         }
-        if(criteria.getSampleRate().equals("47250 Hz")) {
+        if (criteria.getSampleRate().equals("47250 Hz")) {
             optionSampleRate = 8;
         }
-        if(criteria.getSampleRate().equals("48000 Hz")) {
+        if (criteria.getSampleRate().equals("48000 Hz")) {
             optionSampleRate = 9;
         }
-        if(criteria.getSampleRate().equals("50000 Hz")) {
+        if (criteria.getSampleRate().equals("50000 Hz")) {
             optionSampleRate = 10;
         }
-        if(criteria.getSampleRate().equals("50400 Hz")) {
+        if (criteria.getSampleRate().equals("50400 Hz")) {
             optionSampleRate = 11;
         }
-        if(criteria.getSampleRate().equals("64000 Hz")) {
+        if (criteria.getSampleRate().equals("64000 Hz")) {
             optionSampleRate = 12;
         }
-        if(criteria.getSampleRate().equals("88200 Hz")) {
+        if (criteria.getSampleRate().equals("88200 Hz")) {
             optionSampleRate = 13;
         }
-        if(criteria.getSampleRate().equals("96000 Hz")) {
+        if (criteria.getSampleRate().equals("96000 Hz")) {
             optionSampleRate = 14;
         }
-        if(criteria.getSampleRate().equals("176400 Hz")) {
+        if (criteria.getSampleRate().equals("176400 Hz")) {
             optionSampleRate = 15;
         }
-        if(criteria.getSampleRate().equals("192000 Hz")) {
+        if (criteria.getSampleRate().equals("192000 Hz")) {
             optionSampleRate = 16;
         }
-        if(criteria.getSampleRate().equals("352800 Hz")) {
+        if (criteria.getSampleRate().equals("352800 Hz")) {
             optionSampleRate = 17;
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced()
@@ -415,58 +415,58 @@ public class LoadSaveController {
         loadBasicSearch(criteria);
         //Set video codec
         int optionVideoCodec = 0;
-        if(criteria.getVideoCodec().equals("MPEG-4")) {
+        if (criteria.getVideoCodec().equals("MPEG-4")) {
             optionVideoCodec = 1;
         }
-        if(criteria.getVideoCodec().equals("WMV")) {
+        if (criteria.getVideoCodec().equals("WMV")) {
             optionVideoCodec = 2;
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced()
                 .getComboBoxVideoCodec().setSelectedIndex(optionVideoCodec);
         //Set audio codec
         int optionAudioCodec = 0;
-        if(criteria.getAudioCodec().equals("MPEG")) {
+        if (criteria.getAudioCodec().equals("MPEG")) {
             optionAudioCodec = 1;
         }
-        if(criteria.getAudioCodec().equals("WMA")) {
+        if (criteria.getAudioCodec().equals("WMA")) {
             optionAudioCodec = 2;
         }
-        if(criteria.getAudioCodec().equals("AAC")) {
+        if (criteria.getAudioCodec().equals("AAC")) {
             optionAudioCodec = 3;
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced()
                 .getComboBoxAudioCodecName().setSelectedIndex(optionAudioCodec);
         //Set framerate
         int optionFrameRate = 0;
-        if(criteria.getFrameRate().equals("21")) {
+        if (criteria.getFrameRate().equals("21")) {
             optionFrameRate = 1;
         }
-        if(criteria.getFrameRate().equals("24")) {
+        if (criteria.getFrameRate().equals("24")) {
             optionFrameRate = 2;
         }
-        if(criteria.getFrameRate().equals("30")) {
+        if (criteria.getFrameRate().equals("30")) {
             optionFrameRate = 3;
         }
-        if(criteria.getFrameRate().equals("60")) {
+        if (criteria.getFrameRate().equals("60")) {
             optionFrameRate = 4;
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced()
                 .getComboBoxVideoFrameRate().setSelectedIndex(optionFrameRate);
         //Set resolution
         int optionResolution = 0;
-        if(criteria.getHeight().equals("144")) {
+        if (criteria.getHeight().equals("144")) {
             optionResolution = 1;
         }
-        if(criteria.getHeight().equals("360")) {
+        if (criteria.getHeight().equals("360")) {
             optionResolution = 2;
         }
-        if(criteria.getHeight().equals("480")) {
+        if (criteria.getHeight().equals("480")) {
             optionResolution = 3;
         }
-        if(criteria.getHeight().equals("720")) {
+        if (criteria.getHeight().equals("720")) {
             optionResolution = 4;
         }
-        if(criteria.getHeight().equals("1080")) {
+        if (criteria.getHeight().equals("1080")) {
             optionResolution = 5;
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced()

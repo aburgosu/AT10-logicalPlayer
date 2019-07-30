@@ -9,7 +9,6 @@
  */
 package com.fundation.logic.model;
 
-import com.fundation.logic.common.DateSetter;
 import com.fundation.logic.common.JsonConverter;
 import com.fundation.logic.database.Query;
 import com.fundation.logic.model.searchCriteria.Criteria;
