@@ -11,7 +11,11 @@ package com.fundation.logic.controller;
 
 import com.fundation.logic.model.CriteriaRecord;
 import com.fundation.logic.model.QueryForCriteria;
-import com.fundation.logic.model.searchCriteria.*;
+import com.fundation.logic.model.searchCriteria.Audio;
+import com.fundation.logic.model.searchCriteria.Common;
+import com.fundation.logic.model.searchCriteria.Criteria;
+import com.fundation.logic.model.searchCriteria.Image;
+import com.fundation.logic.model.searchCriteria.Video;
 import com.fundation.logic.view.MainFrame;
 import com.fundation.logic.view.loadSaveCriteria.NameFrame;
 import com.fundation.logic.view.loadSaveCriteria.PopupLoadSave;
