@@ -58,7 +58,7 @@ public class MetadataVideoTest {
     public void testFileMimeTypeVideo() throws IOException {
         String path = "thirdParty/exiftool.exe resources/Wildlife.wmv";
         MetadataVideoExtractor metadata = new MetadataVideoExtractor();
-        String expected = "Video";
+        String expected = "video";
         metadata.run(path);
         String result = MetadataVideoExtractor.getSearchMimeType();
         assertEquals(expected, result);

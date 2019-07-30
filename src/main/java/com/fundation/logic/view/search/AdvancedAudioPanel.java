@@ -135,7 +135,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
         SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
         minuteSpinnerModelFrom.setValue(calendar.getTime());
         minuteSpinner = new JSpinner(minuteSpinnerModelFrom);
-        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "hh:mm:ss");
+        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "HH:mm:ss");
         dateEditor.getTextField().setEditable(false);
         minuteSpinner.setEditor(dateEditor);
         GridBagConstraints gbc_spinner = new GridBagConstraints();
@@ -147,7 +147,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
         SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
         minuteSpinnerModelTo.setValue(calendar.getTime());
         minuteSpinnerTo = new JSpinner(minuteSpinnerModelTo);
-        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "hh:mm:ss");
+        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "HH:mm:ss");
         dateEditorTo.getTextField().setEditable(false);
         minuteSpinnerTo.setEditor(dateEditorTo);
         GridBagConstraints gbc_minuteSpinnerTo = new GridBagConstraints();
