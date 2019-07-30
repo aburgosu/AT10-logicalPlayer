@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Jalasoft.
- * 
+ *
  * This software is the confidential and proprietary information of Jalasoft.
  * ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -48,6 +48,26 @@ public class ByteConvertTest {
     public void byteConvertGBytes() {
         Float expected = new Float(3.0);
         Float result = ByteConvert.bytesConvert("3221225472", "GBytes");
+        assertEquals(expected, result);
+    }
+
+    /**
+     * This unit test verify the convertion from KBytes to Bytes.
+     */
+    @Test
+    public void toByteConvertFromKBytes() {
+        Float expected = new Float(1024);
+        Float result = ByteConvert.anyConvertBytes("KBytes", "1");
+        assertEquals(expected, result);
+    }
+
+    /**
+     * This unit test verify the convertion from MBytes to Bytes.
+     */
+    @Test
+    public void toByteConvertFromMBytes() {
+        Float expected = new Float(3145728);
+        Float result = ByteConvert.anyConvertBytes("MBytes", "3.0");
         assertEquals(expected, result);
     }
 }
