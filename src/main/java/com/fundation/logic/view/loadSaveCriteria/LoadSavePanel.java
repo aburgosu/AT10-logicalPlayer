@@ -50,31 +50,8 @@ public class LoadSavePanel extends CustomPanelSecond {
         gbc_table.fill = GridBagConstraints.BOTH;
         gbc_table.gridx = 0;
         gbc_table.gridy = 0;
+        dataTable.getColumn(dataTable.getColumnName(3)).setMaxWidth(0);
         add(dataTable, gbc_table);
-
-        CustomButton btnLoad = new CustomButton(" Update ");
-        GridBagConstraints gbc_btnLoad = new GridBagConstraints();
-        gbc_btnLoad.fill = GridBagConstraints.CENTER;
-        gbc_btnLoad.insets = new Insets(0, 0, 10, 5);
-        gbc_btnLoad.gridx = 1;
-        gbc_btnLoad.gridy = 1;
-        add(btnLoad, gbc_btnLoad);
-
-        CustomButton btnSave = new CustomButton(" Save ");
-        GridBagConstraints gbc_btnSave = new GridBagConstraints();
-        gbc_btnSave.fill = GridBagConstraints.CENTER;
-        gbc_btnSave.insets = new Insets(0, 0, 10, 5);
-        gbc_btnSave.gridx = 2;
-        gbc_btnSave.gridy = 1;
-        add(btnSave, gbc_btnSave);
-
-        CustomButton btnDelete = new CustomButton("Delete");
-        GridBagConstraints gbc_btnDelete = new GridBagConstraints();
-        gbc_btnDelete.fill = GridBagConstraints.CENTER;
-        gbc_btnDelete.insets = new Insets(0, 0, 10, 5);
-        gbc_btnDelete.gridx = 3;
-        gbc_btnDelete.gridy = 1;
-        add(btnDelete, gbc_btnDelete);
     }
 
     /**

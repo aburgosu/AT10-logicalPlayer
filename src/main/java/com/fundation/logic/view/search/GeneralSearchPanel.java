@@ -230,7 +230,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_textFieldOwner.gridy = 8;
         add(textFieldOwner, gbc_textFieldOwner);
 
-        JLabel labelHidden = new CustomLabel("Hidden:");
+        JLabel labelHidden = new CustomLabel("Include (hidden):");
         GridBagConstraints gbc_labelHidden = new GridBagConstraints();
         gbc_labelHidden.anchor = GridBagConstraints.EAST;
         gbc_labelHidden.insets = new Insets(0, 0, 5, 5);
@@ -241,13 +241,14 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         comboBoxHidden = new JComboBox();
         comboBoxHidden.setModel(new DefaultComboBoxModel(new String[] {"All", "Only hidden", "All but hidden"}));
         GridBagConstraints gbc_comboBoxHidden = new GridBagConstraints();
+        gbc_comboBoxHidden.gridwidth = 2;
         gbc_comboBoxHidden.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxHidden.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxHidden.gridx = 2;
         gbc_comboBoxHidden.gridy = 14;
         add(comboBoxHidden, gbc_comboBoxHidden);
 
-        JLabel lblReadOnly = new CustomLabel("Read only:");
+        JLabel lblReadOnly = new CustomLabel("Include (read-only):");
         GridBagConstraints gbc_lblReadOnly = new GridBagConstraints();
         gbc_lblReadOnly.anchor = GridBagConstraints.EAST;
         gbc_lblReadOnly.insets = new Insets(0, 0, 5, 5);
@@ -258,6 +259,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         comboBoxReadOnly = new JComboBox();
         comboBoxReadOnly.setModel(new DefaultComboBoxModel(new String[] {"All", "Only read-only", "All but read-only"}));
         GridBagConstraints gbc_comboBoxReadOnly = new GridBagConstraints();
+        gbc_comboBoxReadOnly.gridwidth = 2;
         gbc_comboBoxReadOnly.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxReadOnly.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxReadOnly.gridx = 2;
