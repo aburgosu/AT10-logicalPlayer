@@ -98,7 +98,6 @@ public class SearchControllerTest {
         CustomFile expectedResult = new CustomFile("resources/TestAudio/", "AudioPronunciacion", "MP3",
                 false, false, null, null, null,
                 null, null, null, null);
-        System.out.println("Results length: " + actualResult.size());
         assertEquals(expectedResult.getName(), actualResult.get(0).getName());
         assertEquals(expectedResult.getExtension(), actualResult.get(0).getExtension());
     }
@@ -123,7 +122,6 @@ public class SearchControllerTest {
         CustomFile expectedResult = new CustomFile("resources/TestVideo/", "Grammar_posesivo_genitivo",
                 "mp4", false, false, null, null, null,
                 null, null, null, null);
-        System.out.println("Results length: " + actualResult.size());
         assertEquals(expectedResult.getName(), actualResult.get(0).getName());
         assertEquals(expectedResult.getExtension(), actualResult.get(0).getExtension());
     }
