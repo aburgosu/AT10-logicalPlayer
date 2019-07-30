@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
+
 /**
  * Implements JsonConverter test class to implement unit tests on its methods..
  *
