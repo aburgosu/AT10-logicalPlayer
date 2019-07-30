@@ -86,7 +86,7 @@ public class Query {
      */
     public List filterByDates(long firstDate, long secondDate) {
         List<String> infCriteria = new ArrayList<>();
-        String sql = "SELECT * FROM criterias WHERE date >= ? AND date<= ?";
+        String sql = "SELECT * FROM criterias WHERE date >= ? AND date <= ?";
         try {
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);

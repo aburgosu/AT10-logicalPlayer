@@ -121,8 +121,8 @@ public class QueryForCriteria {
 
     /**
      * Allows to get a criteriaRecord by its ID.
-     * @param id
-     * @return
+     * @param id - Id from required CriteriaRecord
+     * @return CriteriaRecord which has the input id.
      */
     public CriteriaRecord getCriteriaRecordById(String id) {
         List<CriteriaRecord> criteriaRecords;
@@ -134,5 +134,4 @@ public class QueryForCriteria {
         }
         return null;
     }
-
 }

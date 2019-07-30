@@ -77,7 +77,6 @@ public class LoadSavePanel extends CustomPanelSecond {
         add(btnDelete, gbc_btnDelete);
     }
 
-
     /**
      * Adds a new row to ResultTable
      */
