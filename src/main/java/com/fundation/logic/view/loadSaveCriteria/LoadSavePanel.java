@@ -14,7 +14,10 @@ import com.fundation.logic.view.customElements.CustomTable;
 
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 /**
  * Implements the tab of LoadSave Panel.
