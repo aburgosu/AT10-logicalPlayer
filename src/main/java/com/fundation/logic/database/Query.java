@@ -9,12 +9,7 @@
  */
 package com.fundation.logic.database;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -38,10 +33,13 @@ public class Query {
     public void insertCriteria(String name, String json) {
         String sql = "INSERT INTO criterias(name, date, json) VALUES(?,?,?)";
         try {
+            Timestamp current = Timestamp.valueOf(LocalDateTime.now());
+            long dateLong = current.getTime();
+            System.out.println(dateLong);
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
-            statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setLong(2, dateLong);
             statement.setString(3, json);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -87,36 +85,22 @@ public class Query {
     /**
      * This method filters registers in database that are between two dates.
      */
-    public List filterByDates(String firstDate, String secondDate) {
+    public List filterByDates(long firstDate, long secondDate) {
+        List<String> infCriteria = new ArrayList<>();
+        String sql = "SELECT * FROM criterias WHERE date >= ? AND date<= ?";
         try {
-            DateFormat dateFormatStart = new SimpleDateFormat( "EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
-            Date date1 = dateFormatStart.parse(firstDate);
-            System.out.println(date1);
-            LocalDateTime startDate = date1.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            System.out.println(startDate);
-            DateFormat dateFormatEnd = new SimpleDateFormat( "EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
-            Date date2 = dateFormatEnd.parse(secondDate);
-            LocalDateTime endDate = date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            System.out.println(endDate);
-            List<String> infCriteria = new ArrayList<String>();
-            String sql = "SELECT * FROM criterias WHERE date BETWEEN ? AND ?";
-            try {
-                Connection connection = DBConnection.getInstance().getConnection();
-                PreparedStatement statement = connection.prepareStatement(sql);
-                statement.setTimestamp(1, Timestamp.valueOf(startDate));
-                statement.setTimestamp(2, Timestamp.valueOf(endDate));
-                ResultSet result = statement.executeQuery(sql);
-                while (result.next()) {
-                    infCriteria.add(result.getInt("id") + "\t" + result.getString("name") + "\t"
-                            + result.getDate("date") + "\t" + result.getString("json"));
-                }
-            } catch (SQLException e) {
-                e.getMessage();
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, firstDate);
+            statement.setLong(2, secondDate);
+            ResultSet result = statement.executeQuery(sql);
+            while (result.next()) {
+                infCriteria.add(result.getInt("id") + "\t" + result.getString("name") + "\t"
+                        + result.getDate("date") + "\t" + result.getString("json"));
             }
-            return infCriteria;
-        } catch(Exception exception) {
-            exception.printStackTrace();
+        } catch (SQLException e) {
+                e.getMessage();
         }
-        return null;
+        return infCriteria;
     }
 }

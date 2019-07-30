@@ -110,14 +110,13 @@ public class QueryForCriteria {
 
     /**
      * Finds searchCriteria that were saved between two given dates.
-     * @param date1 - Start date.
-     * @param date2 - End date.
+     * @param firstDate - Start date.
+     * @param secondDate - End date.
      */
-    public List<CriteriaRecord> findCriteria(Date date1, Date date2) {
-        String firstDate = DateSetter.setStartOfDay(date1).toString();
-        String secondDate = DateSetter.setEndOfDay(date2).toString();
-        List filterResult = query.filterByDates(firstDate, secondDate);
-        System.out.println("Filter result " + filterResult.size());
+    public List<CriteriaRecord> findCriteria(Date firstDate, Date secondDate) {
+        long startDate = firstDate.getTime();
+        long endDate = secondDate.getTime();
+        List filterResult = query.filterByDates(startDate, endDate);
         return registerToCriteriaRecordList(filterResult);
     }
 

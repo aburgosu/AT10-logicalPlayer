@@ -45,7 +45,7 @@ public class TableResult extends CustomTable {
         model.addRow(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
             "Date last accessed", "Metadata"});
         tabla = new JTable(model);
-        panelBarra=new JScrollPane(tabla);
+        panelBarra = new JScrollPane(tabla);
         this.getColumn(this.getColumnName(7)).setMaxWidth(0);
         this.getColumn(this.getColumnName(0)).setPreferredWidth(300);
         this.initListen();
