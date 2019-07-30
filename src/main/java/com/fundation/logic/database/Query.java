@@ -34,7 +34,6 @@ public class Query {
         try {
             Timestamp current = Timestamp.valueOf(LocalDateTime.now());
             long dateLong = current.getTime();
-            System.out.println(dateLong);
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
