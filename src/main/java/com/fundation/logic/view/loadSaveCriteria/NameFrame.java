@@ -7,7 +7,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.loadSaveCriteria;
 
 import com.fundation.logic.view.customElements.CustomButton;
 import com.fundation.logic.view.customElements.CustomLabel;
@@ -77,5 +77,13 @@ public class NameFrame extends JFrame {
      */
     public JTextField getTextFieldName() {
         return textFieldName;
+    }
+
+    /**
+     * Allows to get save button.
+     * @return Save button.
+     */
+    public CustomButton getBtnSave() {
+        return btnSave;
     }
 }

@@ -11,8 +11,13 @@ package com.fundation.logic.controller;
 
 import com.fundation.logic.model.CriteriaRecord;
 import com.fundation.logic.model.QueryForCriteria;
-import com.fundation.logic.model.searchCriteria.*;
+import com.fundation.logic.model.searchCriteria.Audio;
+import com.fundation.logic.model.searchCriteria.Common;
+import com.fundation.logic.model.searchCriteria.Criteria;
+import com.fundation.logic.model.searchCriteria.Image;
+import com.fundation.logic.model.searchCriteria.Video;
 import com.fundation.logic.view.MainFrame;
+import com.fundation.logic.view.loadSaveCriteria.NameFrame;
 import com.fundation.logic.view.loadSaveCriteria.PopupLoadSave;
 
 import java.awt.event.MouseAdapter;
@@ -30,6 +35,7 @@ public class LoadSaveController {
     private MainFrame mainFrame;
     private QueryForCriteria queryCriteria;
     private SearchController searchController;
+    private NameFrame nameFrame;
 
     public LoadSaveController(MainFrame mainFrame, SearchController searchController) {
         this.mainFrame = mainFrame;
@@ -70,23 +76,47 @@ public class LoadSaveController {
     public void listenSaveButtons() {
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
                 .getBtnSave().addActionListener(e -> {
-            queryCriteria.saveCriteria("criteria name", searchController.getCommonCriteria(), "Common");
-            showLoadSaveData();
+            nameFrame = new NameFrame();
+            nameFrame.setVisible(true);
+            nameFrame.getBtnSave().addActionListener(f -> {
+                queryCriteria.saveCriteria(this.nameFrame.getTextFieldName().getText(),
+                        searchController.getCommonCriteria(), "Common");
+                showLoadSaveData();
+                nameFrame.setVisible(false);
+            });
         });
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced()
                 .getbtnSaveAdvanceVideo().addActionListener(e -> {
-            queryCriteria.saveCriteria("criteria name", searchController.getVideoCriteria(), "Video");
-            showLoadSaveData();
+            nameFrame = new NameFrame();
+            nameFrame.setVisible(true);
+            nameFrame.getBtnSave().addActionListener(f -> {
+                queryCriteria.saveCriteria(this.nameFrame.getTextFieldName().getText(),
+                        searchController.getVideoCriteria(), "Video");
+                showLoadSaveData();
+                nameFrame.setVisible(false);
+            });
         });
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced()
                 .getbtnSaveAdvanceAudio().addActionListener(e -> {
-            queryCriteria.saveCriteria("criteria name", searchController.getAudioCriteria(), "Audio");
-            showLoadSaveData();
+            nameFrame = new NameFrame();
+            nameFrame.setVisible(true);
+            nameFrame.getBtnSave().addActionListener(f -> {
+                queryCriteria.saveCriteria(this.nameFrame.getTextFieldName().getText(),
+                        searchController.getAudioCriteria(), "Audio");
+                showLoadSaveData();
+                nameFrame.setVisible(false);
+            });
         });
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelImageAdvanced()
                 .getbtnSaveAdvanceImage().addActionListener(e -> {
-            queryCriteria.saveCriteria("criteria name", searchController.getImageCriteria(), "Image");
-            showLoadSaveData();
+            nameFrame = new NameFrame();
+            nameFrame.setVisible(true);
+            nameFrame.getBtnSave().addActionListener(f -> {
+                queryCriteria.saveCriteria(this.nameFrame.getTextFieldName().getText(),
+                        searchController.getImageCriteria(), "Image");
+                showLoadSaveData();
+                nameFrame.setVisible(false);
+            });
         });
     }
 
