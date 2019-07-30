@@ -28,6 +28,6 @@ public class CustomTable extends JTable {
         setForeground(new Color(237, 234, 229));
         getTableHeader().setBackground(Color.cyan);
         setGridColor(Color.WHITE);
-        setToolTipText("Right click for options");
+        setToolTipText("Select and right click for options");
     }
 }

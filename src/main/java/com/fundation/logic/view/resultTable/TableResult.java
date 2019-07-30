@@ -39,7 +39,11 @@ public class TableResult extends CustomTable {
         };
 
         this.setModel(model);
-        this.getColumn(this.getColumnName(7)).setMaxWidth(0);
+        getColumnModel().getColumn(7).setMaxWidth(0);
+        getColumnModel().getColumn(7).setMinWidth(0);
+        getTableHeader().getColumnModel().getColumn(7).setMaxWidth(0);
+        getTableHeader().getColumnModel().getColumn(7).setMinWidth(0);
+
         this.getColumn(this.getColumnName(0)).setPreferredWidth(300);
         this.initListen();
     }
