@@ -22,34 +22,32 @@ import static junit.framework.TestCase.*;
 public class ByteConvertTest {
 
     /**
-     * This unit test verify the path is correct.
+     * This unit test verify the convertion from bytes to MBytes.
      */
     @Test
     public void byteConvertMBytes() {
-        Float expected = new Float(1.0);
-        Float result = ByteConvert.bytesConvert("1048000","MBytes");
-        assertEquals(expected,result);
+        Float expected = new Float(3.0);
+        Float result = ByteConvert.bytesConvert("3145728", "MBytes");
+        assertEquals(expected, result);
     }
 
     /**
-     * This unit test verify the path is correct.
+     * This unit test verify the convertion from bytes to KBytes.
      */
     @Test
     public void byteConvertKBytes() {
         Float expected = new Float(1.0);
-        Float result = ByteConvert.bytesConvert("1024","KBytes");
-        assertEquals(expected,result);
+        Float result = ByteConvert.bytesConvert("1024", "KBytes");
+        assertEquals(expected, result);
     }
 
     /**
-     * This unit test verify the path is correct.
+     * This unit test verify the convertion from bytes to GBytes.
      */
     @Test
     public void byteConvertGBytes() {
-        Float expected = new Float(1.0);
-        Float result = ByteConvert.bytesConvert("1240000000","GBytes");
-        assertEquals(expected,result);
+        Float expected = new Float(3.0);
+        Float result = ByteConvert.bytesConvert("3221225472", "GBytes");
+        assertEquals(expected, result);
     }
 }
-
-
