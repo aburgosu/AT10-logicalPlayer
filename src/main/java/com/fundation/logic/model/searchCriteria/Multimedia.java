@@ -17,8 +17,6 @@ package com.fundation.logic.model.searchCriteria;
  */
 public abstract class Multimedia extends Criteria {
     private String audioCodec;
-    private int duration;
-    private int bitrate;
 
     /**
      * @return Audio Codec.
@@ -32,34 +30,6 @@ public abstract class Multimedia extends Criteria {
      */
     public void setAudioCodec(String audioCodec) {
         this.audioCodec = audioCodec;
-    }
-
-    /**
-     * @return Duration.
-     */
-    public int getDuration() {
-        return duration;
-    }
-
-    /**
-     * Set Duration.
-     */
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    /**
-     * @return bitrate.
-     */
-    public int getBitrate() {
-        return bitrate;
-    }
-
-    /**
-     * Set Bitrate.
-     */
-    public void setBitrate(int bitrate) {
-        this.bitrate = bitrate;
     }
 
     /**

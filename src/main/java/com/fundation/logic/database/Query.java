@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Implements insert in a table.
  *
- * @author Andres Burgos, Jesus Menacho
+ * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0
  */
 public class Query {

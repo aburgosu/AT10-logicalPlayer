@@ -13,6 +13,7 @@ import com.fundation.logic.model.CustomFile;
 import com.fundation.logic.model.searchCriteria.Audio;
 import com.fundation.logic.model.searchCriteria.Common;
 import com.fundation.logic.model.searchCriteria.Image;
+import com.fundation.logic.model.searchCriteria.Video;
 import org.junit.Test;
 
 import java.util.List;
@@ -50,9 +51,9 @@ public class SearchControllerTest {
         commonCriteria.setCriteriaMimeType(null);
         SearchController searchController = new SearchController();
         List<CustomFile> actualResult = searchController.makeSearch(commonCriteria);
-        CustomFile expectedResult = new CustomFile("resources/Test/", "testImage", "bmp",
+        CustomFile expectedResult = new CustomFile("resources/TestCommon/", "testImage", "bmp",
                 false, false, null, null, null,
-                null, null, "null", null);
+                null, null, null, null);
         assertEquals(expectedResult.getName(), actualResult.get(0).getName());
         assertEquals(expectedResult.getExtension(), actualResult.get(0).getExtension());
     }
@@ -71,10 +72,56 @@ public class SearchControllerTest {
         imageCriteria.setColorSpaceData("All");
         SearchController searchController = new SearchController();
         List<CustomFile> actualResult = searchController.makeSearch(imageCriteria);
-        CustomFile expectedResult = new CustomFile("resources/Test/", "testImage", "bmp",
+        CustomFile expectedResult = new CustomFile("resources/TestImage/", "testImage", "bmp",
                 false, false, null, null, null,
-                null, null, "null", null);
-        System.out.println("Results length: " + actualResult.size());
+                null, null, null, null);
+        assertEquals(expectedResult.getName(), actualResult.get(0).getName());
+        assertEquals(expectedResult.getExtension(), actualResult.get(0).getExtension());
+    }
+
+    /**
+     * This tests verifies makeSearch method by searching according to an audio criteria.
+     */
+    @Test
+    public void makeSearch_audioSearch() {
+        Audio audioCriteria = new Audio();
+        audioCriteria.setPath("resources/TestAudio/");
+        audioCriteria.setFileName(null);
+        audioCriteria.setExtension(null);
+        audioCriteria.setDurationTo("00:00:00");
+        audioCriteria.setDurationFrom("00:00:00");
+        audioCriteria.setChannel("All");
+        audioCriteria.setAudioCodec("All");
+        audioCriteria.setSampleRate("All");
+        SearchController searchController = new SearchController();
+        List<CustomFile> actualResult = searchController.makeSearch(audioCriteria);
+        CustomFile expectedResult = new CustomFile("resources/TestAudio/", "AudioPronunciacion", "MP3",
+                false, false, null, null, null,
+                null, null, null, null);
+        assertEquals(expectedResult.getName(), actualResult.get(0).getName());
+        assertEquals(expectedResult.getExtension(), actualResult.get(0).getExtension());
+    }
+
+    /**
+     * This tests verifies makeSearch method by searching according to a video criteria.
+     */
+    @Test
+    public void makeSearch_videoSearch() {
+        Video videoCriteria = new Video();
+        videoCriteria.setPath("resources/TestVideo/");
+        videoCriteria.setFileName(null);
+        videoCriteria.setExtension(null);
+        videoCriteria.setDurationTo("00:00:00");
+        videoCriteria.setDurationFrom("00:00:00");
+        videoCriteria.setAudioCodec("All");
+        videoCriteria.setVideoCodec("All");
+        videoCriteria.setFrameRate("All");
+        videoCriteria.setHeight("All");
+        SearchController searchController = new SearchController();
+        List<CustomFile> actualResult = searchController.makeSearch(videoCriteria);
+        CustomFile expectedResult = new CustomFile("resources/TestVideo/", "Grammar_posesivo_genitivo",
+                "mp4", false, false, null, null, null,
+                null, null, null, null);
         assertEquals(expectedResult.getName(), actualResult.get(0).getName());
         assertEquals(expectedResult.getExtension(), actualResult.get(0).getExtension());
     }
