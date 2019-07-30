@@ -7,27 +7,24 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.customElements;
 
-import javax.swing.JTable;
+import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Implements CustomTable class.
+ * Implements CustomTextField class.
  *
  * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomTable extends JTable {
-    public CustomTable() {
+public class CustomTextField extends JTextField {
+    public CustomTextField() {
         super();
-
-        Color tableColor = new Color(60,63,65);
-        setBackground(tableColor);
-        setFont(new Font("Calibri", 2, 14));
-        setForeground(new Color(237, 234, 229));
-        getTableHeader().setBackground(Color.cyan);
-        setGridColor(Color.WHITE);
+        Color textFieldColor = new Color(220, 220, 220);
+        setBackground(textFieldColor);
+        Font font = new Font("Calibri", 3, 12);
+        setFont(font);
     }
 }

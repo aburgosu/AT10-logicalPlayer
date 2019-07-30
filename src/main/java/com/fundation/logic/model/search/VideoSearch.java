@@ -11,7 +11,7 @@ package com.fundation.logic.model.search;
 
 import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.common.MetadataVideoExtractor;
-import com.fundation.logic.model.CustomizedFile;
+import com.fundation.logic.model.CustomFile;
 import com.fundation.logic.model.searchCriteria.Video;
 
 import java.io.File;
@@ -52,7 +52,7 @@ public class VideoSearch implements ISearch {
      * @return Complete list of found items according on criteria's path.
      */
     public List searchInPath(String path) {
-        List<CustomizedFile> videoSearchResult = new ArrayList<CustomizedFile>();
+        List<CustomFile> videoSearchResult = new ArrayList<CustomFile>();
         File file = new File(path);
         String criteriaFileName = videoCriteria.getFileName();
         String criteriaExtension = videoCriteria.getExtension();
@@ -62,6 +62,7 @@ public class VideoSearch implements ISearch {
         String criteriaHeight = videoCriteria.getHeight();
         String criteriaLLDuration = videoCriteria.getDurationfrom();
         String criteriaLUDuration = videoCriteria.getDurationTo();
+        String criteriaMimeType = "video";
         Float initDuration = convertDurationToDecimal(criteriaLLDuration);
         Float endDuration = convertDurationToDecimal(criteriaLUDuration);
         File[] allSubFiles = file.listFiles();
@@ -93,7 +94,7 @@ public class VideoSearch implements ISearch {
                     if (criteriaHeight != "All") {
                         fileHeight = MetadataVideoExtractor.getSearchHeight();
                     }
-                    if (initDuration == 0.0 && endDuration == 0.0){
+                    if (initDuration == 12.0 && endDuration == 12.0){
                         initDuration = Float.MIN_VALUE;
                         endDuration = Float.MAX_VALUE;
                     }
@@ -109,9 +110,10 @@ public class VideoSearch implements ISearch {
                             && evaluateString(fileVideoCodec, criteriVideoCodec)
                             && evaluateString(videoAudioCodec, criteriAudioVideoCodec)
                             && evaluateString(fileHeight, criteriaHeight)
-                            && evaluateDuration(duration, initDuration, endDuration)) {
+                            && evaluateDuration(duration, initDuration, endDuration)
+                            && evaluateString(mimeType,criteriaMimeType)) {
                         List<String> metadata = MetadataVideoExtractor.getSearchListMetadata();
-                        CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
+                        CustomFile matchingFile = new CustomFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, false, false, fileSize, creationDate,
                                 accessDate, modificationDate, owner, mimeType, metadata);
                         videoSearchResult.add(matchingFile);

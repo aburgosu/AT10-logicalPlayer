@@ -9,7 +9,7 @@
  */
 package com.fundation.logic.view.resultTable;
 
-import com.fundation.logic.view.CustomTable;
+import com.fundation.logic.view.customElements.CustomTable;
 
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
@@ -39,6 +39,10 @@ public class TableResult extends CustomTable {
         };
 
         this.setModel(model);
+        model.addRow(new Object[]{"Path", "Name", "Extension", "Size", "Date created", "Date modified",
+            "Date last accessed", "Metadata"});
+        tabla = new JTable(model);
+        panelBarra = new JScrollPane(tabla);
         this.getColumn(this.getColumnName(7)).setMaxWidth(0);
         this.getColumn(this.getColumnName(0)).setPreferredWidth(300);
         this.initListen();
@@ -69,13 +73,13 @@ public class TableResult extends CustomTable {
      * Listen to right click to play the selected row's file.
      */
     public void initListen() {
+        final int PATH_COLUMN = 0;
+        final int METADATA_COLUMN = 7;
         try {
             this.addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent me) {
                     if (me.getButton() == MouseEvent.BUTTON3) {
                         int row = getSelectedRow();
-                        final int PATH_COLUMN = 0;
-                        final int METADATA_COLUMN = 7;
                         String filePath = (String) model.getValueAt(row, PATH_COLUMN);
                         List<String> metadata = (List) model.getValueAt(row, METADATA_COLUMN);
                         PopupMenu menu = new PopupMenu(filePath, metadata);

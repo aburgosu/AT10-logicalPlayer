@@ -27,6 +27,9 @@ public class MetadataCommonExtractor {
     static String searchMimeType;
     static List<String> list;
 
+    /**
+     * This method run exiftool.
+     */
     public void run(String path) throws IOException {
         extractMetadata = Runtime.getRuntime().exec(path);
         readAll();
@@ -34,34 +37,30 @@ public class MetadataCommonExtractor {
 
     /**
      * This method read all metadata.
-     *
-     * @return
      */
-    public String readAll() {
+    public void readAll() {
         String metadata = null;
         list = new ArrayList<>();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(extractMetadata.getInputStream()));
         try {
             while ((metadata = stdInput.readLine()) != null) {
                 list.add(metadata);
-                mimeType(metadata);
+                findMimeType(metadata);
                 if ((metadata.contains("Read_All"))) {
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(-1);
         }
-        return "There isn't";
     }
 
     /**
      * This method read mime type.
-     *
-     * @return
+     * @param mimeType
      */
-    public static void mimeType(String mimeType) {
-        if ((mimeType.contains("MIME Type"))) {
+    public static void findMimeType(String mimeType) {
+        String commonMimeType = mimeType.substring(0, 9);
+        if ((commonMimeType.contains("MIME Type"))) {
             if (mimeType.contains("audio")) {
                 searchMimeType = "Audio";
             }
@@ -74,13 +73,15 @@ public class MetadataCommonExtractor {
             if (mimeType.contains("image")) {
                 searchMimeType = "Image";
             }
+            if (mimeType.contains("application")) {
+                searchMimeType = "Application";
+            }
         }
     }
 
     /**
      * This method return mime type to CommonSearch.
-     *
-     * @return
+     * @return searchMimeType
      */
     public static String getSearchMimeType() {
         return searchMimeType;
@@ -88,8 +89,7 @@ public class MetadataCommonExtractor {
 
     /**
      * This method return metadata list to CommonSearch.
-     *
-     * @return
+     * @return list
      */
     public static List<String> getSearchListMetadata() {
         return list;

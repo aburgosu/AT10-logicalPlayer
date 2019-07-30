@@ -11,7 +11,7 @@ package com.fundation.logic.model.search;
 
 import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.common.MetadataImageExtractor;
-import com.fundation.logic.model.CustomizedFile;
+import com.fundation.logic.model.CustomFile;
 import com.fundation.logic.model.searchCriteria.Image;
 
 import java.io.File;
@@ -52,13 +52,14 @@ public class ImageSearch implements ISearch {
      * @return Complete list of found items according on criteria's path.
      */
     public List searchInPath(String path) {
-        List<CustomizedFile> searchResult = new ArrayList<>();
+        List<CustomFile> searchResult = new ArrayList<>();
         File file = new File(path);
         String criteriaFileName = imageCriteria.getFileName();
         String criteriaExtension = imageCriteria.getExtension();
         String criteriaWidth = imageCriteria.getWidth();
         String criteriaHeight = imageCriteria.getHeight();
         String criteriaColorSpace = imageCriteria.getColorSpaceData();
+        String criteriaMimeType = "image";
         File[] allSubFiles = file.listFiles();
         for (File fileExtractor : allSubFiles) {
             try {
@@ -93,9 +94,10 @@ public class ImageSearch implements ISearch {
                             && evaluateString(fileExtension, criteriaExtension)
                             && evaluateString(width, criteriaWidth)
                             && evaluateString(height, criteriaHeight)
-                            &&evaluateString(colorSpace,criteriaColorSpace)) {
+                            && evaluateString(colorSpace,criteriaColorSpace)
+                            && evaluateString(mimeType,criteriaMimeType)) {
                         List<String> metadata = MetadataImageExtractor.getSearchListMetadata();
-                        CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(),
+                        CustomFile matchingFile = new CustomFile(fileExtractor.getAbsolutePath(),
                                 fileName, fileExtension, false, false,
                                 fileSize, creationDate, accessDate,
                                 modificationDate, owner, mimeType, metadata);

@@ -12,7 +12,7 @@ package com.fundation.logic.model.search;
 import com.fundation.logic.common.DateSetter;
 import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.common.MetadataCommonExtractor;
-import com.fundation.logic.model.CustomizedFile;
+import com.fundation.logic.model.CustomFile;
 import com.fundation.logic.model.searchCriteria.Common;
 
 import java.io.File;
@@ -53,7 +53,7 @@ public class CommonSearch implements ISearch {
      * @return Complete list of found items according on searchCriteria's path.
      */
     public List searchInPath(String path) {
-        List<CustomizedFile> searchResult = new ArrayList<>();
+        List<CustomFile> searchResult = new ArrayList<>();
         File file = new File(path);
         String criteriaFileName = criteria.getFileName();
         String criteriaExtension = criteria.getExtension();
@@ -99,9 +99,9 @@ public class CommonSearch implements ISearch {
                             evaluateDate(accessDate, accessDateLL, accessDateUL) &&
                             evaluateDate(modificationDate, modificationDateLL, modificationDateUL) &&
                             evaluateString(owner, criteriaOwner) &&
-                            evaluateString(mimeType, criteriaMimeType)){
+                            evaluateString(mimeType, criteriaMimeType)) {
                         List<String> metadata = MetadataCommonExtractor.getSearchListMetadata();
-                        CustomizedFile matchingFile = new CustomizedFile(fileExtractor.getAbsolutePath(), fileName,
+                        CustomFile matchingFile = new CustomFile(fileExtractor.getAbsolutePath(), fileName,
                                 fileExtension, fileHiddenStatus, !fileCanWrite, fileSize, creationDate, accessDate,
                                 modificationDate, owner, mimeType, metadata);
                         searchResult.add(matchingFile);

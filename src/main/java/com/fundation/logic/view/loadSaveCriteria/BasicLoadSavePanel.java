@@ -9,10 +9,10 @@
  */
 package com.fundation.logic.view.loadSaveCriteria;
 
-import com.fundation.logic.view.CustomPanelSecond;
-import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.customElements.CustomPanelSecond;
+import com.fundation.logic.view.customElements.CustomButton;
 import com.fundation.logic.view.PanelSetter;
-import com.fundation.logic.view.CustomLabel;
+import com.fundation.logic.view.customElements.CustomLabel;
 import com.toedter.calendar.JDateChooser;
 
 import java.awt.Font;
@@ -25,7 +25,7 @@ import java.awt.Insets;
  * @author Jesus Menacho
  * @version 1.0
  */
-public class SearchByDate extends CustomPanelSecond {
+public class BasicLoadSavePanel extends CustomPanelSecond {
     private PanelSetter settingPanel;
     private CustomButton btnFilterByDate;
     private JDateChooser fieldDateFirstDate;
@@ -34,7 +34,7 @@ public class SearchByDate extends CustomPanelSecond {
     /**
      *  The constructor let it initializer.
      */
-    public SearchByDate() {
+    public BasicLoadSavePanel() {
         dateSearchInitializer();
     }
 

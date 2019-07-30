@@ -9,7 +9,7 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomTab;
+import com.fundation.logic.view.customElements.CustomTab;
 
 /**
  * Implements the tabs of different options.

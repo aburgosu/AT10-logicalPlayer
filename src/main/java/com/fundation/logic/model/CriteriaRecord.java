@@ -9,6 +9,9 @@
  */
 package com.fundation.logic.model;
 
+import com.fundation.logic.common.JsonConverter;
+import com.fundation.logic.model.searchCriteria.Criteria;
+
 /**
  * Implements CriteriaRecord class which is used to save and get searchCriteria details.
  *
@@ -16,7 +19,7 @@ package com.fundation.logic.model;
  * @version 1.0
  */
 public class CriteriaRecord {
-    private int id;
+    private String id;
     private String date;
     private String name;
     private String type;
@@ -30,7 +33,7 @@ public class CriteriaRecord {
      * @param type - Criteria's type. It could be Audio, Common, Image or Video.
      * @param json - The searchCriteria to be saved.
      */
-    public CriteriaRecord(int id, String name, String date, String type, String json) {
+    public CriteriaRecord(String id, String name, String date, String type, String json) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -42,7 +45,7 @@ public class CriteriaRecord {
      * Allows to get searchCriteria's ID.
      * @return Criteria's ID.
      */
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -78,11 +81,24 @@ public class CriteriaRecord {
         return this.json;
     }
 
+    /**
+     * Compare to CriteriaRecord instances.
+     * @param record - CriteriaRecord to be compared with.
+     * @return If objects are equals.
+     */
     public boolean equals(CriteriaRecord record) {
         if(this.id == record.id && this.date.equals(record.date) && this.name.equals(record.name) &&
                 this.type.equals(record.type) && this.json.equals(record.json)) {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Allows to get a Criteria instance according to type input.
+     * @return Criteria according to type.
+     */
+    public Criteria getCriteria() {
+        return JsonConverter.jsonToSearchCriteria(json, type);
     }
 }

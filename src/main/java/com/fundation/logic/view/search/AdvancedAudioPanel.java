@@ -9,11 +9,11 @@
  */
 package com.fundation.logic.view.search;
 
-import com.fundation.logic.view.CustomPanelSecond;
-import com.fundation.logic.view.CustomButton;
+import com.fundation.logic.view.customElements.CustomPanelSecond;
+import com.fundation.logic.view.customElements.CustomButton;
 import com.fundation.logic.view.PanelSetter;
-import com.fundation.logic.view.CustomLabel;
-import com.fundation.logic.view.CustomComboBox;
+import com.fundation.logic.view.customElements.CustomLabel;
+import com.fundation.logic.view.customElements.CustomComboBox;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JSpinner;
@@ -132,7 +132,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
         SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
         minuteSpinnerModelFrom.setValue(calendar.getTime());
         minuteSpinner = new JSpinner(minuteSpinnerModelFrom);
-        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "00:mm:ss");
+        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(minuteSpinner, "hh:mm:ss");
         dateEditor.getTextField().setEditable(false);
         minuteSpinner.setEditor(dateEditor);
         GridBagConstraints gbc_spinner = new GridBagConstraints();
@@ -144,7 +144,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
         SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
         minuteSpinnerModelTo.setValue(calendar.getTime());
         minuteSpinnerTo = new JSpinner(minuteSpinnerModelTo);
-        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "00:mm:ss");
+        JSpinner.DateEditor dateEditorTo = new JSpinner.DateEditor(minuteSpinnerTo, "hh:mm:ss");
         dateEditorTo.getTextField().setEditable(false);
         minuteSpinnerTo.setEditor(dateEditorTo);
         GridBagConstraints gbc_minuteSpinnerTo = new GridBagConstraints();

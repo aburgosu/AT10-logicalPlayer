@@ -7,24 +7,27 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.customElements;
 
-import javax.swing.JComboBox;
+import javax.swing.JTable;
 import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Implements CustomComboBox class.
+ * Implements CustomTable class.
  *
  * @author Maday Alcalá
  * @version 1.0
  */
-public class CustomComboBox extends JComboBox {
-    public CustomComboBox() {
+public class CustomTable extends JTable {
+    public CustomTable() {
         super();
-        Color comboBoxColor = new Color(255, 240,245);
-        setBackground(comboBoxColor);
-        Font font = new Font("Calibri", 3, 14);
-        setFont(font);
+
+        Color tableColor = new Color(60,63,65);
+        setBackground(tableColor);
+        setFont(new Font("Calibri", 2, 14));
+        setForeground(new Color(237, 234, 229));
+        getTableHeader().setBackground(Color.cyan);
+        setGridColor(Color.WHITE);
     }
 }

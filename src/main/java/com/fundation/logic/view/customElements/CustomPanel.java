@@ -7,21 +7,23 @@
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
  */
-package com.fundation.logic.view;
+package com.fundation.logic.view.customElements;
 
-import javax.swing.JSplitPane;
+import javax.swing.JPanel;
+import javax.swing.BorderFactory;
 import java.awt.Color;
 
 /**
- * Implements CustomSplitPanel class.
+ * Implements CustomPanel class.
  *
- * @author Maday Alcalá
+ * @author Melissa Román
  * @version 1.0
  */
-public class CustomSplitPanel extends JSplitPane {
-    public CustomSplitPanel() {
+public class CustomPanel extends JPanel {
+    public CustomPanel() {
         super();
-        Color panelColor = new Color(16, 151, 152);
+        Color panelColor = new Color(60, 63, 65);
         setBackground(panelColor);
+        setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(43, 43, 43)));
     }
 }
