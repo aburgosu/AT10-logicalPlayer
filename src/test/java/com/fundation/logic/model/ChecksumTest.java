@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * This class serves as unit test class for checksum class.
  *
- * @author Andres
+ * @author Andres Burgos
  * @version 1.0
  */
 public class ChecksumTest {
