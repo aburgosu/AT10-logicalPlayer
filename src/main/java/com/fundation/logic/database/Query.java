@@ -34,6 +34,7 @@ public class Query {
         try {
             Timestamp current = Timestamp.valueOf(LocalDateTime.now());
             long dateLong = current.getTime();
+            System.out.println("date saved: " + dateLong);
             Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
@@ -91,7 +92,7 @@ public class Query {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setLong(1, firstDate);
             statement.setLong(2, secondDate);
-            ResultSet result = statement.executeQuery(sql);
+            ResultSet result = statement.executeQuery();
             while (result.next()) {
                 infCriteria.add(result.getInt("id") + "\t" + result.getString("name") + "\t"
                         + result.getDate("date") + "\t" + result.getString("json"));

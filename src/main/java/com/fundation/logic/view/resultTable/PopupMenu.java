@@ -43,7 +43,6 @@ public class PopupMenu extends JPopupMenu {
             convertItem = new JMenuItem("Convert");
             add(convertItem);
         }
-
         detailsItem = new JMenuItem("Details");
         add(detailsItem);
         initItemMenuListener();
@@ -66,7 +65,6 @@ public class PopupMenu extends JPopupMenu {
         } catch (Exception exception) {
             exception.getMessage();
         }
-
         try {
             detailsItem.addMouseListener(new MouseAdapter() {
                 @Override
@@ -80,5 +78,21 @@ public class PopupMenu extends JPopupMenu {
         } catch (Exception exception) {
             exception.getMessage();
         }
+    }
+
+    /**
+     * Allows to get convert item.
+     * @return convertItem.
+     */
+    public JMenuItem getConvertItem() {
+        return convertItem;
+    }
+
+    /**
+     * Allows to get selected file path.
+     * @return filePath.
+     */
+    public String getFilePath() {
+        return filePath;
     }
 }
