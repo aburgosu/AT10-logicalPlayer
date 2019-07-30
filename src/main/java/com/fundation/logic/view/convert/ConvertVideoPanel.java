@@ -17,10 +17,6 @@ import com.fundation.logic.view.customElements.CustomComboBox;
 import com.fundation.logic.view.PanelSetter;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.awt.GridBagConstraints;
@@ -34,17 +30,17 @@ import java.util.Calendar;
  * @version 1.0
  */
 public class ConvertVideoPanel extends CustomPanelSecond {
-    private JComboBox comboBoxNewFormat;
-    private JComboBox comboBoxAudioCodec;
-    private JComboBox comboBoxAudioBit;
-    private JComboBox comboBoxAudioChannel;
-    private JComboBox comboBoxVideoCodec;
-    private JComboBox comboBoxVideoBit;
-    private JComboBox comboBoxVideoRate;
-    private JComboBox comboBoxKeyFrameFormat;
-    private JComboBox comboBoxThumbnailFormat;
-    private JCheckBox checkBoxKeyFrame;
-    private JCheckBox checkBoxThumbnail;
+    private CustomComboBox comboBoxNewFormat;
+    private CustomComboBox comboBoxAudioCodec;
+    private CustomComboBox comboBoxAudioBit;
+    private CustomComboBox comboBoxAudioChannel;
+    private CustomComboBox comboBoxVideoCodec;
+    private CustomComboBox comboBoxVideoBit;
+    private CustomComboBox comboBoxVideoRate;
+    private CustomComboBox comboBoxKeyFrameFormat;
+    private CustomComboBox comboBoxThumbnailFormat;
+    private CustomCheckBox checkBoxKeyFrame;
+    private CustomCheckBox checkBoxThumbnail;
     private JSpinner minuteSpinnerKeyFrame;
     private JSpinner minuteSpinnerThumbnail;
     private PanelSetter settingPanel;
@@ -70,7 +66,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * This method shows the convert video form.
      */
     private void videoCriteriaConvertPanel() {
-        JLabel lblNewFormat = new CustomLabel("New format:");
+        CustomLabel lblNewFormat = new CustomLabel("New format:");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
         gbc_lblNewFormat.insets = new Insets(0, 0, 5, 5);
@@ -87,7 +83,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxNewFormat.gridy = 4;
         add(comboBoxNewFormat, gbc_comboBoxNewFormat);
 
-        JLabel lblAudioCodec = new CustomLabel("Audio codec:");
+        CustomLabel lblAudioCodec = new CustomLabel("Audio codec:");
         GridBagConstraints gbc_lblAudioCodec = new GridBagConstraints();
         gbc_lblAudioCodec.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodec.insets = new Insets(0, 0, 5, 5);
@@ -105,7 +101,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxAudioCodec.gridy = 5;
         add(comboBoxAudioCodec, gbc_comboBoxAudioCodec);
 
-        JLabel lblAudioBit = new CustomLabel("Audio bitrate:");
+        CustomLabel lblAudioBit = new CustomLabel("Audio bitrate:");
         GridBagConstraints gbc_lblAudioBit = new GridBagConstraints();
         gbc_lblAudioBit.anchor = GridBagConstraints.EAST;
         gbc_lblAudioBit.insets = new Insets(0, 0, 5, 5);
@@ -122,7 +118,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxAudioBit.gridy = 6;
         add(comboBoxAudioBit, gbc_comboBoxAudioBit);
 
-        JLabel lblAudioChannel = new CustomLabel("Audio channel:");
+        CustomLabel lblAudioChannel = new CustomLabel("Audio channel:");
         GridBagConstraints gbc_lblAudioChannel = new GridBagConstraints();
         gbc_lblAudioChannel.anchor = GridBagConstraints.EAST;
         gbc_lblAudioChannel.insets = new Insets(0, 0, 5, 5);
@@ -139,7 +135,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxAudioChannel.gridy = 7;
         add(comboBoxAudioChannel, gbc_comboBoxAudioChannel);
 
-        JLabel lblVideoCodec = new CustomLabel("Video codec:");
+        CustomLabel lblVideoCodec = new CustomLabel("Video codec:");
         GridBagConstraints gbc_lblVideoCodec = new GridBagConstraints();
         gbc_lblVideoCodec.anchor = GridBagConstraints.EAST;
         gbc_lblVideoCodec.insets = new Insets(0, 0, 5, 5);
@@ -157,7 +153,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxVideoCodec.gridy = 9;
         add(comboBoxVideoCodec, gbc_comboBoxVideoCodec);
 
-        JLabel lblVideoBit = new CustomLabel("Video bitrate:");
+        CustomLabel lblVideoBit = new CustomLabel("Video bitrate:");
         GridBagConstraints gbc_lblVideoBit = new GridBagConstraints();
         gbc_lblVideoBit.anchor = GridBagConstraints.EAST;
         gbc_lblVideoBit.insets = new Insets(0, 0, 5, 5);
@@ -174,7 +170,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxVideoBit.gridy = 11;
         add(comboBoxVideoBit, gbc_comboBoxVideoBit);
 
-        JLabel lblFps = new CustomLabel("Frames per second:");
+        CustomLabel lblFps = new CustomLabel("Frames per second:");
         GridBagConstraints gbc_lblFps = new GridBagConstraints();
         gbc_lblFps.anchor = GridBagConstraints.EAST;
         gbc_lblFps.insets = new Insets(0, 0, 5, 5);
@@ -191,7 +187,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxVideoRate.gridy = 12;
         add(comboBoxVideoRate, gbc_comboBoxVideoRate);
 
-        JLabel lblKeyFrame = new CustomLabel("Key frame:");
+        CustomLabel lblKeyFrame = new CustomLabel("Key frame:");
         GridBagConstraints gbc_lblKeyFrame = new GridBagConstraints();
         gbc_lblKeyFrame.anchor = GridBagConstraints.EAST;
         gbc_lblKeyFrame.insets = new Insets(0, 0, 5, 5);
@@ -207,7 +203,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_checkBoxKeyFrame.gridy = 13;
         add(checkBoxKeyFrame, gbc_checkBoxKeyFrame);
 
-        JLabel lblFormatKeyframe = new JLabel("Format:");
+        CustomLabel lblFormatKeyframe = new CustomLabel("Format:");
         GridBagConstraints gbc_lblFormatKeyframe = new GridBagConstraints();
         gbc_lblFormatKeyframe.anchor = GridBagConstraints.EAST;
         gbc_lblFormatKeyframe.insets = new Insets(0, 0, 5, 5);
@@ -215,7 +211,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblFormatKeyframe.gridy = 13;
         add(lblFormatKeyframe, gbc_lblFormatKeyframe);
 
-        comboBoxKeyFrameFormat = new JComboBox();
+        comboBoxKeyFrameFormat = new CustomComboBox();
         comboBoxKeyFrameFormat.setModel(new DefaultComboBoxModel(new String[]{"png", "jpg", "tiff"}));
         GridBagConstraints gbc_comboBoxKeyFrameFormat = new GridBagConstraints();
         gbc_comboBoxKeyFrameFormat.insets = new Insets(0, 0, 5, 5);
@@ -224,7 +220,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxKeyFrameFormat.gridy = 13;
         add(comboBoxKeyFrameFormat, gbc_comboBoxKeyFrameFormat);
 
-        JLabel lblEvery = new CustomLabel("Every:");
+        CustomLabel lblEvery = new CustomLabel("Every:");
         GridBagConstraints gbc_lblEvery = new GridBagConstraints();
         gbc_lblEvery.anchor = GridBagConstraints.EAST;
         gbc_lblEvery.insets = new Insets(0, 0, 5, 5);
@@ -249,7 +245,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_spinner.gridy = 13;
         add(minuteSpinnerKeyFrame, gbc_spinner);
 
-        JLabel lblThumbnail = new CustomLabel("Thumbnail:");
+        CustomLabel lblThumbnail = new CustomLabel("Thumbnail:");
         GridBagConstraints gbc_lblThumbnail = new GridBagConstraints();
         gbc_lblThumbnail.anchor = GridBagConstraints.EAST;
         gbc_lblThumbnail.insets = new Insets(0, 0, 5, 5);
@@ -265,7 +261,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_checkBoxThumbnail.gridy = 14;
         add(checkBoxThumbnail, gbc_checkBoxThumbnail);
 
-        JLabel lblThumbnailFormat = new JLabel("Format:");
+        CustomLabel lblThumbnailFormat = new CustomLabel("Format:");
         GridBagConstraints gbc_ThumbnailFormat = new GridBagConstraints();
         gbc_ThumbnailFormat.anchor = GridBagConstraints.EAST;
         gbc_ThumbnailFormat.insets = new Insets(0, 0, 5, 5);
@@ -273,7 +269,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_ThumbnailFormat.gridy = 14;
         add(lblThumbnailFormat, gbc_ThumbnailFormat);
 
-        comboBoxThumbnailFormat = new JComboBox();
+        comboBoxThumbnailFormat = new CustomComboBox();
         comboBoxThumbnailFormat.setModel(new DefaultComboBoxModel(new String[]{"bmp", "png", "jpg"}));
         GridBagConstraints gbc_comboBoxThumbnailFormat = new GridBagConstraints();
         gbc_comboBoxThumbnailFormat.insets = new Insets(0, 0, 5, 5);
@@ -282,7 +278,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxThumbnailFormat.gridy = 14;
         add(comboBoxThumbnailFormat, gbc_comboBoxThumbnailFormat);
 
-        JLabel lblAt = new CustomLabel("At:");
+        CustomLabel lblAt = new CustomLabel("At:");
         GridBagConstraints gbc_lblAt = new GridBagConstraints();
         gbc_lblAt.anchor = GridBagConstraints.EAST;
         gbc_lblAt.insets = new Insets(0, 0, 5, 5);
@@ -316,7 +312,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get comboBoxNewFormat.
      * @return comboBoxNewFormat
      */
-    public JComboBox getComboBoxNewFormat() {
+    public CustomComboBox getComboBoxNewFormat() {
         return comboBoxNewFormat;
     }
 
@@ -324,7 +320,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get comboBoxAudioCodec.
      * @return comboBoxAudioCodec
      */
-    public JComboBox getComboBoxAudioCodec() {
+    public CustomComboBox getComboBoxAudioCodec() {
         return comboBoxAudioCodec;
     }
 
@@ -332,7 +328,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get comboBoxAudioBit.
      * @return comboBoxAudioBit
      */
-    public JComboBox getComboBoxAudioBit() {
+    public CustomComboBox getComboBoxAudioBit() {
         return comboBoxAudioBit;
     }
 
@@ -340,7 +336,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get comboBoxAudioChannel.
      * @return comboBoxAudioChannel
      */
-    public JComboBox getComboBoxAudioChannel() {
+    public CustomComboBox getComboBoxAudioChannel() {
         return comboBoxAudioChannel;
     }
 
@@ -348,7 +344,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get comboBoxVideoCodec.
      * @return comboBoxVideoCodec
      */
-    public JComboBox getComboBoxVideoCodec() {
+    public CustomComboBox getComboBoxVideoCodec() {
         return comboBoxVideoCodec;
     }
 
@@ -357,7 +353,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * @return comboBoxVideoTag
      */
 
-    public JComboBox getComboBoxVideoBit() {
+    public CustomComboBox getComboBoxVideoBit() {
         return comboBoxVideoBit;
     }
 
@@ -365,7 +361,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get comboBoxVideoRate.
      * @return comboBoxVideoRate
      */
-    public JComboBox getComboBoxVideoRate() {
+    public CustomComboBox getComboBoxVideoRate() {
         return comboBoxVideoRate;
     }
 
@@ -373,7 +369,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get comboBoxKeyFrame.
      * @return checkBoxKeyFrame
      */
-    public JCheckBox getCheckBoxKeyFrame() {
+    public CustomCheckBox getCheckBoxKeyFrame() {
         return checkBoxKeyFrame;
     }
 
@@ -381,7 +377,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get comboBoxThumbnail.
      * @return checkBoxThumbnail
      */
-    public JCheckBox getCheckBoxThumbnail() {
+    public CustomCheckBox getCheckBoxThumbnail() {
         return checkBoxThumbnail;
     }
 
@@ -389,7 +385,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get comboBoxKeyFrameFormat.
      * @return checkBoxKeyFrameFormat
      */
-    public JComboBox getComboBoxKeyFrameFormat() {
+    public CustomComboBox getComboBoxKeyFrameFormat() {
         return comboBoxKeyFrameFormat;
     }
 
@@ -397,7 +393,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get comboBoxThumbnailFormat.
      * @return checkBoxThumbnailFormat
      */
-    public JComboBox getComboBoxThumbnailFormat() {
+    public CustomComboBox getComboBoxThumbnailFormat() {
         return comboBoxThumbnailFormat;
     }
 
@@ -405,7 +401,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
      * Allows to get convert video button.
      * @return btnConvertVideo
      */
-    public JButton getBtnConvertVideo() {
+    public CustomButton getBtnConvertVideo() {
         return btnConvertVideo;
     }
 

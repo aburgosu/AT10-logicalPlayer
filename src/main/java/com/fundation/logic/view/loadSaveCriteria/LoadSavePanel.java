@@ -9,15 +9,15 @@
  */
 package com.fundation.logic.view.loadSaveCriteria;
 
-import com.fundation.logic.view.customElements.CustomButton;
 import com.fundation.logic.view.customElements.CustomPanelSecond;
 import com.fundation.logic.view.customElements.CustomTable;
 
-import javax.swing.JTable;
+import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Color;
 
 /**
  * Implements the tab of LoadSave Panel.
@@ -26,7 +26,7 @@ import java.awt.Insets;
  * @version 1.0
  */
 public class LoadSavePanel extends CustomPanelSecond {
-    private JTable dataTable;
+    private CustomTable dataTable;
     private DefaultTableModel model;
 
     /**
@@ -41,17 +41,22 @@ public class LoadSavePanel extends CustomPanelSecond {
         setLayout(gridBagLayout);
 
         dataTable = new CustomTable();
+
         model = new DefaultTableModel(new Object[] {"Name", "Type", "Date", "ID"}, 0);
-        model.addRow(new Object[]{"Name", "Type", "Date", "ID"});
         dataTable.setModel(model);
+        JScrollPane tableScrollPanel = new JScrollPane(add(dataTable));
+
+        tableScrollPanel.getViewport().setBackground(new Color(43,43,43));
         GridBagConstraints gbc_table = new GridBagConstraints();
+
         gbc_table.gridwidth = 7;
         gbc_table.insets = new Insets(0, 0, 5, 0);
         gbc_table.fill = GridBagConstraints.BOTH;
         gbc_table.gridx = 0;
         gbc_table.gridy = 0;
+
         dataTable.getColumn(dataTable.getColumnName(3)).setMaxWidth(0);
-        add(dataTable, gbc_table);
+        add(tableScrollPanel, gbc_table);
     }
 
     /**
@@ -68,7 +73,6 @@ public class LoadSavePanel extends CustomPanelSecond {
     public void clearTableResult() {
         model.getDataVector().removeAllElements();
         model.setRowCount(0);
-        model.addRow(new Object[]{"Name", "Type", "Date", "ID"});
         model.fireTableDataChanged();
         revalidate();
     }
@@ -85,7 +89,7 @@ public class LoadSavePanel extends CustomPanelSecond {
      * Allows to get datatable.
      * @return Data table.
      */
-    public JTable getDataTable() {
+    public CustomTable getDataTable() {
         return dataTable;
     }
 }

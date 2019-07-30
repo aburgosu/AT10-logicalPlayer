@@ -10,7 +10,6 @@
 package com.fundation.logic.view.customElements;
 
 import javax.swing.JPanel;
-import javax.swing.BorderFactory;
 import java.awt.Color;
 
 /**

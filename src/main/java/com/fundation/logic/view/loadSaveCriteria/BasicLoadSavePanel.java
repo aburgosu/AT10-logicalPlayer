@@ -15,8 +15,6 @@ import com.fundation.logic.view.PanelSetter;
 import com.fundation.logic.view.customElements.CustomLabel;
 import com.toedter.calendar.JDateChooser;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -53,7 +51,7 @@ public class BasicLoadSavePanel extends CustomPanelSecond {
      * This method is responsible for displaying the content of BasicSearchPanel.
      */
     private void contentBasicSearch() {
-        JLabel title = new CustomLabel("Search Criteria");
+        CustomLabel title = new CustomLabel("Search Criteria");
         title.setFont(new Font("Arial", Font.PLAIN, 14));
         GridBagConstraints gbc_lblVideo = new GridBagConstraints();
         gbc_lblVideo.gridwidth = 7;
@@ -62,7 +60,7 @@ public class BasicLoadSavePanel extends CustomPanelSecond {
         gbc_lblVideo.gridy = 0;
         add(title, gbc_lblVideo);
 
-        JLabel lblPath = new CustomLabel("Date saved:");
+        CustomLabel lblPath = new CustomLabel("Date saved:");
         GridBagConstraints gbc_lblPath = new GridBagConstraints();
         gbc_lblPath.anchor = GridBagConstraints.EAST;
         gbc_lblPath.insets = new Insets(0, 0, 5, 5);
@@ -99,7 +97,7 @@ public class BasicLoadSavePanel extends CustomPanelSecond {
      * This method returns getBtnFilterByDate.
      * @return getBtnFilterByDate
      */
-    public JButton getBtnFilterByDate() {
+    public CustomButton getBtnFilterByDate() {
         return btnFilterByDate;
     }
 

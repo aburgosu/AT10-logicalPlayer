@@ -9,9 +9,11 @@
  */
 package com.fundation.logic.view.resultTable;
 
-import javax.swing.JFrame;
+import com.fundation.logic.view.customElements.CustomJFrame;
+
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.io.File;
 import java.util.List;
@@ -22,7 +24,7 @@ import java.util.List;
  * @author Melissa Román
  * @version 1.0
  */
-public class DetailsFrame extends JFrame {
+public class DetailsFrame extends CustomJFrame {
     private DetailsTable detailsTable;
 
     /**
@@ -43,6 +45,7 @@ public class DetailsFrame extends JFrame {
         setTitle(file.getName() + " details");
         detailsTable = new DetailsTable(detailsList);
         JScrollPane scrollPane = new JScrollPane(detailsTable);
+        scrollPane.getViewport().setBackground(new Color(43,43,43));
         add(scrollPane, BorderLayout.CENTER);
     }
 

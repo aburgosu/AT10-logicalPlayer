@@ -20,6 +20,7 @@ import com.fundation.logic.model.searchCriteria.Criteria;
 import com.fundation.logic.model.searchCriteria.Image;
 import com.fundation.logic.model.searchCriteria.Video;
 import com.fundation.logic.view.MainFrame;
+import com.fundation.logic.view.PopUpMessage;
 
 import java.io.File;
 import java.util.Date;
@@ -184,31 +185,31 @@ public class SearchController {
          * Validates entered data ans shows a message. according to error.
          */
         if (!Validators.isValidPath(path)) {
-            mainFrame.showPopupMessage("Information Message",
+            PopUpMessage.showPopupMessage("Information Message",
                     "The path is not correct or does not exist.");
         }
 
         if (fromDateCreation != null && toDateCreation != null) {
             if (toDateCreation.before(fromDateCreation)) {
-                mainFrame.showPopupMessage("Invalid Created Date",
+                PopUpMessage.showPopupMessage("Invalid Created Date",
                         "The date on the left must be less than the date on the right.");
             }
         }
         if (dateModificationFrom != null && dateModificationTo != null) {
             if (dateModificationTo.before(dateModificationFrom)) {
-                mainFrame.showPopupMessage("Invalid Modified Date",
+                PopUpMessage.showPopupMessage("Invalid Modified Date",
                         "The date on the left must be less than the date on the right.");
             }
         }
         if (dateAccessFrom != null && dateAccessTo != null) {
             if (dateAccessTo.before(dateAccessFrom)) {
-                mainFrame.showPopupMessage("Invalid Accessed Date",
+                PopUpMessage.showPopupMessage("Invalid Accessed Date",
                         "The date on the left must be less than the date on the right.");
             }
         }
         if (sizeFrom != null && sizeTo != null) {
             if (sizeTo.compareTo(sizeFrom) < 0) {
-                mainFrame.showPopupMessage("Error Message",
+                PopUpMessage.showPopupMessage("Error Message",
                         "The size of the left must be smaller than the size of the right");
             }
         }

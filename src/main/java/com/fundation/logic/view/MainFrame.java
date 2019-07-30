@@ -16,14 +16,9 @@ import com.fundation.logic.view.resultTable.TableResult;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import javax.swing.JScrollPane;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
-import java.awt.Font;
 import java.awt.Color;
 
 /**
@@ -36,6 +31,8 @@ public class MainFrame extends CustomJFrame {
     JPanel mainContentPanel;
     private MainTabs mainTabs;
     private TableResult tableResult;
+    private HeaderPanel header;
+    private FooterPanel footer;
 
     public MainFrame() {
         initSetting();
@@ -49,18 +46,25 @@ public class MainFrame extends CustomJFrame {
         mainContentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainContentPanel.setLayout(new BorderLayout(0, 0));
 
-        JSplitPane mainSplitPanel = new CustomSplitPanel();
+        header = new HeaderPanel();
+        mainContentPanel.add(header, BorderLayout.NORTH);
+
+        CustomSplitPanel mainSplitPanel = new CustomSplitPanel();
         mainSplitPanel.setDividerLocation(getWidth()/2);
         mainSplitPanel.setEnabled(false);
+        mainSplitPanel.setBackground(new Color(60,63,65));
         mainContentPanel.add(mainSplitPanel, BorderLayout.CENTER);
-
-        tableResult = new TableResult();
-        JScrollPane tableScrollPanel = new JScrollPane();
-        tableScrollPanel.add(tableResult);
-        mainSplitPanel.setRightComponent(tableResult);
 
         mainTabs = new MainTabs();
         mainSplitPanel.setLeftComponent(mainTabs);
+
+        tableResult = new TableResult();
+        JScrollPane tableScrollPanel = new JScrollPane(add(tableResult));
+        tableScrollPanel.getViewport().setBackground(new Color(43,43,43));
+        mainSplitPanel.setRightComponent(add(tableScrollPanel));
+
+        footer = new FooterPanel();
+        mainContentPanel.add(footer, BorderLayout.SOUTH);
     }
 
     /**
@@ -69,9 +73,6 @@ public class MainFrame extends CustomJFrame {
     public void initSetting() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 400);
-        setForeground(Color.orange);
-        setBackground(Color.BLUE);
-        setTitle("J2AM2 Player");
         initComponent();
         setContentPane(mainContentPanel);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -90,23 +91,5 @@ public class MainFrame extends CustomJFrame {
      */
     public MainTabs getMainTabs() {
         return mainTabs;
-    }
-
-    /**
-     * Shows a popup message
-     * @param messageTittle - Tittle of the message
-     * @param messageText - Text of the message
-     */
-    public void showPopupMessage(String messageTittle, String messageText) {
-        JDialog message = new JDialog(this, messageTittle);
-        message.setBounds(50, 200, 350, 150);
-        message.setSize(350, 120);
-        JPanel messageTextPanel = new JPanel();
-        JLabel text = new JLabel(messageText);
-        text.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        text.setForeground(Color.red);
-        messageTextPanel.add(text, SwingConstants.CENTER);
-        message.add(messageTextPanel, BorderLayout.CENTER);
-        message.setVisible(true);
     }
 }

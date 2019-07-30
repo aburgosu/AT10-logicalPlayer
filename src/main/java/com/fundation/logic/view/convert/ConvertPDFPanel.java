@@ -16,10 +16,6 @@ import com.fundation.logic.view.customElements.CustomComboBox;
 import com.fundation.logic.view.customElements.CustomLabel;
 import com.fundation.logic.view.PanelSetter;
 
-import javax.swing.JComboBox;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -31,11 +27,11 @@ import java.awt.Insets;
  * @version 1.0
  */
 public class ConvertPDFPanel extends CustomPanelSecond {
-    private JComboBox comboBoxNewFormat;
-    private JComboBox comboBoxDpi;
-    private JComboBox comboBoxColorFormat;
-    private JCheckBox checkBoxThumbnail;
-    private JComboBox comboBoxThumbnailFormat;
+    private CustomComboBox comboBoxNewFormat;
+    private CustomComboBox comboBoxDpi;
+    private CustomComboBox comboBoxColorFormat;
+    private CustomCheckBox checkBoxThumbnail;
+    private CustomComboBox comboBoxThumbnailFormat;
     private PanelSetter settingPanel;
     private CustomButton btnConvertAudio;
 
@@ -59,7 +55,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
      * This method show convert PDF form.
      */
     private void showPDFConvertCriteriaForm() {
-        JLabel lblNewFormat = new CustomLabel("New Format:");
+        CustomLabel lblNewFormat = new CustomLabel("New Format:");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
         gbc_lblNewFormat.insets = new Insets(0, 0, 5, 5);
@@ -76,7 +72,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
         gbc_comboBoxNewFormat.gridy = 4;
         add(comboBoxNewFormat, gbc_comboBoxNewFormat);
 
-        JLabel lblFormatColor = new CustomLabel("Color Format:");
+        CustomLabel lblFormatColor = new CustomLabel("Color Format:");
         GridBagConstraints gbc_lblFormatColor = new GridBagConstraints();
         gbc_lblFormatColor.anchor = GridBagConstraints.EAST;
         gbc_lblFormatColor.insets = new Insets(0, 0, 5, 5);
@@ -93,7 +89,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
         gbc_comboBoxColorFormat.gridy = 5;
         add(comboBoxColorFormat, gbc_comboBoxColorFormat);
 
-        JLabel lblDpi = new CustomLabel("DPI:");
+        CustomLabel lblDpi = new CustomLabel("DPI:");
         GridBagConstraints gbc_lblDpi = new GridBagConstraints();
         gbc_lblDpi.anchor = GridBagConstraints.EAST;
         gbc_lblDpi.insets = new Insets(0, 0, 5, 5);
@@ -110,7 +106,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
         gbc_comboBoxDpi.gridy = 6;
         add(comboBoxDpi, gbc_comboBoxDpi);
 
-        JLabel lblThumbnail = new CustomLabel("Thumbnail:");
+        CustomLabel lblThumbnail = new CustomLabel("Thumbnail:");
         GridBagConstraints gbc_lblThumbnail = new GridBagConstraints();
         gbc_lblThumbnail.anchor = GridBagConstraints.EAST;
         gbc_lblThumbnail.insets = new Insets(0, 0, 5, 5);
@@ -126,7 +122,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
         gbc_checkBoxThumbnail.gridy = 7;
         add(checkBoxThumbnail, gbc_checkBoxThumbnail);
 
-        JLabel lblThumbnailFormat = new CustomLabel("Format: ");
+        CustomLabel lblThumbnailFormat = new CustomLabel("Format: ");
         GridBagConstraints gbc_lblThumbnailFormat = new GridBagConstraints();
         gbc_lblThumbnailFormat.anchor = GridBagConstraints.EAST;
         gbc_lblThumbnailFormat.insets = new Insets(0, 0, 5, 5);
@@ -157,7 +153,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
      * Allows to get comboBoxNewFormat.
      * @return
      */
-    public JComboBox getComboBoxNewFormat() {
+    public CustomComboBox getComboBoxNewFormat() {
         return comboBoxNewFormat;
     }
 
@@ -165,7 +161,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
      * Allows to get comboBoxNewDpi.
      * @return
      */
-    public JComboBox getComboBoxDpi() {
+    public CustomComboBox getComboBoxDpi() {
         return comboBoxDpi;
     }
 
@@ -173,7 +169,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
      * Allows to get comboBoxColorFormat.
      * @return
      */
-    public JComboBox getComboBoxColorFormat() {
+    public CustomComboBox getComboBoxColorFormat() {
         return comboBoxColorFormat;
     }
 
@@ -181,7 +177,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
      * Allows to get CheckBoxThumbnail.
      * @return
      */
-    public JCheckBox getCheckBoxThumbnail() {
+    public CustomCheckBox getCheckBoxThumbnail() {
         return checkBoxThumbnail;
     }
 
@@ -189,7 +185,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
      * Allows to get ComboBoxThumbnailFormat.
      * @return
      */
-    public JComboBox getComboBoxThumbnailFormat() {
+    public CustomComboBox getComboBoxThumbnailFormat() {
         return comboBoxThumbnailFormat;
     }
 
@@ -197,7 +193,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
      * Allows to get comboBoxNewFormat.
      * @return btnConvertAudio
      */
-    public JButton getBtnConvertAudio() {
+    public CustomButton getBtnConvertAudio() {
         return btnConvertAudio;
     }
 }

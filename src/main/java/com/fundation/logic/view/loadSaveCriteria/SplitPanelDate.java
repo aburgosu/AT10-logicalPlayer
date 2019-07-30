@@ -11,7 +11,6 @@ package com.fundation.logic.view.loadSaveCriteria;
 
 import com.fundation.logic.view.customElements.CustomPanel;
 
-import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 /**

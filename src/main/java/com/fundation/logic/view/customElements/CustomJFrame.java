@@ -9,11 +9,10 @@
  */
 package com.fundation.logic.view.customElements;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.BorderFactory;
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 /**
  * Implements CustomJFrame class.
@@ -22,11 +21,13 @@ import java.awt.Color;
  * @version 1.0
  */
 public class CustomJFrame extends JFrame {
-    JLabel label = new JLabel("Welcome!", JLabel.CENTER);
+    JLabel image = new JLabel("", JLabel.CENTER);
+
     public CustomJFrame() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(label, BorderLayout.CENTER);
-        getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(43,43,43)));
+        image.setIcon(new ImageIcon("resources/Images/welcome.png"));
+        add(image, BorderLayout.CENTER);
+        setIconImage(new ImageIcon("resources/Images/icon.png").getImage());
+        setTitle("J2AM2 Player");
         setVisible(true);
     }
 }

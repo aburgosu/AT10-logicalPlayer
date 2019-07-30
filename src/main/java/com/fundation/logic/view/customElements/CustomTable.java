@@ -9,12 +9,9 @@
  */
 package com.fundation.logic.view.customElements;
 
-import com.fundation.logic.view.resultTable.DetailsTable;
-
 import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 
 /**
  * Implements CustomTable class.
@@ -25,13 +22,11 @@ import java.awt.Color;
 public class CustomTable extends JTable {
     public CustomTable() {
         super();
-
-        Color tableColor = new Color(43,43,43);
+        Color tableColor = new Color(60,63,65);
         setBackground(tableColor);
-        setForeground(Color.WHITE);
+        setFont(new Font("Calibri", 2, 14));
+        setForeground(new Color(237, 234, 229));
         getTableHeader().setBackground(Color.cyan);
-        setGridColor(Color.BLACK);
-
-
+        setGridColor(Color.WHITE);
     }
 }

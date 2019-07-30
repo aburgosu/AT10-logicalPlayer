@@ -16,10 +16,7 @@ import com.fundation.logic.view.customElements.CustomLabel;
 import com.fundation.logic.view.customElements.CustomComboBox;
 import com.fundation.logic.view.customElements.CustomTextField;
 
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
 import javax.swing.JFileChooser;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -34,10 +31,10 @@ import java.awt.event.ActionListener;
  * @version 1.0
  */
 public class ConvertBasicPanel extends CustomPanelSecond {
-    private JTextField textFieldSourcePath;
-    private JTextField textFieldDestinationPath;
-    private JTextField textFieldNewName;
-    private JComboBox comboBoxMetadataFormat;
+    private CustomTextField textFieldSourcePath;
+    private CustomTextField textFieldDestinationPath;
+    private CustomTextField textFieldNewName;
+    private CustomComboBox comboBoxMetadataFormat;
     private PanelSetter settingPanel;
 
     /**
@@ -60,7 +57,7 @@ public class ConvertBasicPanel extends CustomPanelSecond {
      * This method displays basic convert searchCriteria form.
      */
     private void showBasicConvertForm() {
-        JLabel title = new CustomLabel("Convert");
+        CustomLabel title = new CustomLabel("Convert");
         title.setFont(new Font("Arial", Font.PLAIN, 14));
         GridBagConstraints gbc_lblTittle = new GridBagConstraints();
         gbc_lblTittle.gridwidth = 6;
@@ -69,7 +66,7 @@ public class ConvertBasicPanel extends CustomPanelSecond {
         gbc_lblTittle.gridy = 0;
         add(title, gbc_lblTittle);
 
-        JLabel lblSourcePath = new CustomLabel("Source path:");
+        CustomLabel lblSourcePath = new CustomLabel("Source path:");
         GridBagConstraints gbc_lblSourcePath = new GridBagConstraints();
         gbc_lblSourcePath.anchor = GridBagConstraints.EAST;
         gbc_lblSourcePath.insets = new Insets(0, 5, 5, 5);
@@ -107,7 +104,7 @@ public class ConvertBasicPanel extends CustomPanelSecond {
         gbc_btnBrowseSourcePath.gridy = 1;
         add(btnBrowseSourcePath, gbc_btnBrowseSourcePath);
 
-        JLabel lblDestinationPath = new CustomLabel("Destination path:");
+        CustomLabel lblDestinationPath = new CustomLabel("Destination path:");
         GridBagConstraints gbc_lblDestinationPath = new GridBagConstraints();
         gbc_lblDestinationPath.anchor = GridBagConstraints.EAST;
         gbc_lblDestinationPath.insets = new Insets(0, 5, 5, 5);
@@ -145,7 +142,7 @@ public class ConvertBasicPanel extends CustomPanelSecond {
         gbc_btnBrowseDestinationPath.gridy = 2;
         add(btnBrowseDestinationPath, gbc_btnBrowseDestinationPath);
 
-        JLabel lblNewName = new CustomLabel("New name:");
+        CustomLabel lblNewName = new CustomLabel("New name:");
         GridBagConstraints gbc_lblNewName = new GridBagConstraints();
         gbc_lblNewName.anchor = GridBagConstraints.EAST;
         gbc_lblNewName.insets = new Insets(0, 10, 5, 5);
@@ -163,7 +160,7 @@ public class ConvertBasicPanel extends CustomPanelSecond {
         add(textFieldNewName, gbc_textFieldNewName);
         textFieldNewName.setColumns(5);
 
-        JLabel lblMetadataFormat = new CustomLabel("Metadata format:");
+        CustomLabel lblMetadataFormat = new CustomLabel("Metadata format:");
         GridBagConstraints gbc_lblMetadataFormat = new GridBagConstraints();
         gbc_lblMetadataFormat.anchor = GridBagConstraints.EAST;
         gbc_lblMetadataFormat.insets = new Insets(0, 0, 5, 5);
@@ -185,7 +182,7 @@ public class ConvertBasicPanel extends CustomPanelSecond {
      * Allows to get textFieldSourcePath.
      * @return textFieldSourcePath
      */
-    public JTextField getTextFieldSourcePath() {
+    public CustomTextField getTextFieldSourcePath() {
         return textFieldSourcePath;
     }
 
@@ -193,7 +190,7 @@ public class ConvertBasicPanel extends CustomPanelSecond {
      * Allows to get textFieldDestinationPath.
      * @return textFieldDestinationPath
      */
-    public JTextField getTextFieldDestinationPath() {
+    public CustomTextField getTextFieldDestinationPath() {
         return textFieldDestinationPath;
     }
 
@@ -201,7 +198,7 @@ public class ConvertBasicPanel extends CustomPanelSecond {
      * Allows to get textFieldNewName.
      * @return textFieldNewName
      */
-    public JTextField getTextFieldNewName() {
+    public CustomTextField getTextFieldNewName() {
         return textFieldNewName;
     }
 
@@ -209,7 +206,7 @@ public class ConvertBasicPanel extends CustomPanelSecond {
      * Allows to get textFieldMetadataFormat.
      * @return comboBoxMetadataFormat
      */
-    public JComboBox getComboBoxMetadataFormat() {
+    public CustomComboBox getComboBoxMetadataFormat() {
         return comboBoxMetadataFormat;
     }
 }

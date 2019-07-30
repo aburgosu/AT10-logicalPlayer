@@ -9,7 +9,6 @@
  */
 package com.fundation.logic.view.customElements;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
