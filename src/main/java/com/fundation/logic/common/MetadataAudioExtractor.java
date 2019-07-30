@@ -51,7 +51,7 @@ public class MetadataAudioExtractor {
             while ((metadata = stdInput.readLine()) != null) {
                 audioChannel(metadata);
                 audioCodec(metadata);
-                sampleRAte(metadata);
+                sampleRate(metadata);
                 list.add(metadata);
                 duration(metadata);
                 mimeType(metadata);
@@ -68,13 +68,13 @@ public class MetadataAudioExtractor {
      * @param mimeType string that contains metadata.
      */
     public static void mimeType(String mimeType) {
-        String mimetype2 = mimeType;
+        String validatorMimeType = mimeType;
         String audioMimeType = mimeType.substring(0, 4);
         if ((audioMimeType.contains("MIME"))) {
-            if (mimetype2.contains("audio")) {
-                int initIndex = mimetype2.indexOf(":");
+            if (validatorMimeType.contains("audio")) {
+                int initIndex = validatorMimeType.indexOf(":");
                 int freeSpace = 2;
-                mimeType = mimetype2.substring(initIndex + freeSpace, initIndex + 7);
+                mimeType = validatorMimeType.substring(initIndex + freeSpace, initIndex + 7);
                 searchMimeType = mimeType;
             } else {
                 searchMimeType = "All";
@@ -134,7 +134,7 @@ public class MetadataAudioExtractor {
      * This method find metadata sample rate.
      * @param sampleRate string that contains metadata.
      */
-    public static void sampleRAte(String sampleRate) {
+    public static void sampleRate(String sampleRate) {
         if ((sampleRate.contains("Sample Rate"))) {
             int initIndex = sampleRate.indexOf(":");
             int endIndex = sampleRate.length();
