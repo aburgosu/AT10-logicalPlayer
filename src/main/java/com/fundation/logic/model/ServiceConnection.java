@@ -56,13 +56,18 @@ public class ServiceConnection {
         try {
             stringInput = new StringBody("{\"typeConversion\":\""
                     + criteria.getConvertType() + "\",\"checksum\":\"" + Checksum.getChecksum(criteria.getSourcePath(), "MD5")
-                    + "\",\"destPath\":\"" + criteria.getDestPath().replace("\\", "\\\\") + "\""
-                    + "}", ContentType.TEXT_PLAIN);
+                    + "\"}", ContentType.TEXT_PLAIN);
         } catch (Exception e) {
             status = this.ERROR;
         }
         StringBody stringConfig = new StringBody(JsonConverter.convertCriteriaToJson(criteria), ContentType.TEXT_PLAIN);
-        StringBody stringOutput = new StringBody("{\"name\":\"" + criteria.getNewName() + "\",\"ext\":\"." + criteria.getNewFormat() + "\"}", ContentType.TEXT_PLAIN);
+
+        System.out.println(JsonConverter.convertCriteriaToJson(criteria));
+
+        StringBody stringOutput = new StringBody("{\"name\":\"" + criteria.getNewName() + "\",\"ext\":\"." + criteria.getNewFormat() + "\","
+                    + "\"destPath\":\"" + criteria.getDestPath().replace("\\", "\\\\") + "\"" + "}" , ContentType.TEXT_PLAIN);
+        System.out.println("{\"name\":\"" + criteria.getNewName() + "\",\"ext\":\"." + criteria.getNewFormat() + "\","
+                    + "\"destPath\":\"" + criteria.getDestPath().replace("\\", "\\\\") + "\"" + "}");
         HttpEntity reqEntity = MultipartEntityBuilder.create()
                 .addPart("asset", fileBody)
                 .addPart("input", stringInput)
