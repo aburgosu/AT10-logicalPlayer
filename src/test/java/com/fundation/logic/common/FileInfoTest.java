@@ -91,4 +91,15 @@ public class FileInfoTest {
         String expected = expectedDate.toString();
         assertEquals(expected,actual);
     }
+
+    /**
+     * This unit test verify file size.
+     */
+    @Test
+    public void sizeFile() {
+        File path = new File("resources/Grammar_posesivo_genitivo.mp4");
+        Float actual = FileInfo.getFileSize(path);
+        Float expected = new Float(4335709.0);
+        assertEquals(expected,actual);
+    }
 }
