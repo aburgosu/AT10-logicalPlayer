@@ -33,7 +33,6 @@ public class NameFrame extends JFrame {
     private CustomTextField textFieldName;
     private CustomButton btnSave;
 
-
     /**
      * Inits Nameframe class.
      */
