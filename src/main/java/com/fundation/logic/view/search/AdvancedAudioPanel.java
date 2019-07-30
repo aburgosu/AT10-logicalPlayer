@@ -15,9 +15,6 @@ import com.fundation.logic.view.PanelSetter;
 import com.fundation.logic.view.CustomLabel;
 import com.fundation.logic.view.CustomComboBox;
 
-import javax.swing.JComboBox;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -34,9 +31,9 @@ import java.util.Calendar;
 public class AdvancedAudioPanel extends CustomPanelSecond {
     private CustomButton btnSearchAdvanceAudio;
     private CustomButton btnSaveAdvanceAudio;
-    private JComboBox comboBoxAudioCodecName;
-    private JComboBox comboBoxAudioChannel;
-    private JComboBox comboBoxAudioSampleRate;
+    private CustomComboBox comboBoxAudioCodecName;
+    private CustomComboBox comboBoxAudioChannel;
+    private CustomComboBox comboBoxAudioSampleRate;
     private JSpinner minuteSpinner;
     private JSpinner minuteSpinnerTo;
     private PanelSetter settingPanel;
@@ -61,7 +58,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
      * This method show the content audio panel.
      */
     private void audioContentPanel() {
-        JLabel lblAudioCodecName = new CustomLabel("Codec:");
+        CustomLabel lblAudioCodecName = new CustomLabel("Codec:");
         GridBagConstraints gbc_lblAudioCodecName = new GridBagConstraints();
         gbc_lblAudioCodecName.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodecName.insets = new Insets(0, 0, 5, 5);
@@ -80,7 +77,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
         comboBox_AudioCodecName.gridy = 7;
         add(comboBoxAudioCodecName, comboBox_AudioCodecName);
 
-        JLabel lblAudioChanel = new CustomLabel("Channel:");
+        CustomLabel lblAudioChanel = new CustomLabel("Channel:");
         GridBagConstraints gbc_lblAudioChannel = new GridBagConstraints();
         gbc_lblAudioChannel.anchor = GridBagConstraints.EAST;
         gbc_lblAudioChannel.insets = new Insets(0, 0, 5, 5);
@@ -99,7 +96,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
         gbc_comboBoxAudioChannel.gridy = 8;
         add(comboBoxAudioChannel, gbc_comboBoxAudioChannel);
 
-        JLabel lblAudioSampleRate = new CustomLabel("Sample rate:");
+        CustomLabel lblAudioSampleRate = new CustomLabel("Sample rate:");
         GridBagConstraints gbc_lblAudioSampleRate = new GridBagConstraints();
         gbc_lblAudioSampleRate.insets = new Insets(0, 0, 5, 5);
         gbc_lblAudioSampleRate.anchor = GridBagConstraints.EAST;
@@ -119,7 +116,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
         gbc_comboBoxAudioSampleRate.gridy = 9;
         add(comboBoxAudioSampleRate, gbc_comboBoxAudioSampleRate);
 
-        JLabel lblDuration = new CustomLabel("Duration:");
+        CustomLabel lblDuration = new CustomLabel("Duration:");
         GridBagConstraints gbc_lblDuration = new GridBagConstraints();
         gbc_lblDuration.anchor = GridBagConstraints.EAST;
         gbc_lblDuration.insets = new Insets(0, 0, 5, 5);
@@ -179,7 +176,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
      * This method return the JButton related btnSearch Advance Audio.
      * @return btnSearchAdvanceAudio
      */
-    public JButton getBtnSearchAdvanceAudio() {
+    public CustomButton getBtnSearchAdvanceAudio() {
         return btnSearchAdvanceAudio;
     }
 
@@ -187,7 +184,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
      * This method return comboBoxAudioCodecName.
      * @return comboBoxAudioCodecName
      */
-    public JComboBox getComboBoxAudioCodecName() {
+    public CustomComboBox getComboBoxAudioCodecName() {
         return comboBoxAudioCodecName;
     }
 
@@ -195,7 +192,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
      * This method return comboBoxAudioChannel.
      * @return comboBoxAudioChannel
      */
-    public JComboBox getComboBoxAudioChannel() {
+    public CustomComboBox getComboBoxAudioChannel() {
         return comboBoxAudioChannel;
     }
 
@@ -203,7 +200,7 @@ public class AdvancedAudioPanel extends CustomPanelSecond {
      * This method return comboBoxAudioSampleRate.
      * @return comboBoxAudioSampleRate
      */
-    public JComboBox getComboBoxAudioSampleRate() {
+    public CustomComboBox getComboBoxAudioSampleRate() {
         return comboBoxAudioSampleRate;
     }
 

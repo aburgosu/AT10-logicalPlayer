@@ -15,8 +15,6 @@ import com.fundation.logic.view.PanelSetter;
 import com.fundation.logic.view.CustomLabel;
 import com.fundation.logic.view.CustomTextField;
 
-import javax.swing.JTextField;
-import javax.swing.JLabel;
 import javax.swing.JFileChooser;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -31,9 +29,9 @@ import java.awt.event.ActionListener;
  * @version 1.0
  */
 public class BasicSearchPanel extends CustomPanelSecond {
-    private JTextField textFieldPath;
-    private JTextField textFileName;
-    private JTextField textFieldFileType;
+    private CustomTextField textFieldPath;
+    private CustomTextField textFileName;
+    private CustomTextField textFieldFileType;
     private PanelSetter settingPanel;
 
     /**
@@ -56,7 +54,7 @@ public class BasicSearchPanel extends CustomPanelSecond {
      * This method displays Basic search content on the screen.
      */
     private void contentBasicSearch() {
-        JLabel title = new CustomLabel("Search");
+        CustomLabel title = new CustomLabel("Search");
         title.setFont(new Font("Arial", Font.PLAIN, 14));
         GridBagConstraints gbc_lblVideo = new GridBagConstraints();
         gbc_lblVideo.gridwidth = 6;
@@ -65,7 +63,7 @@ public class BasicSearchPanel extends CustomPanelSecond {
         gbc_lblVideo.gridy = 0;
         add(title, gbc_lblVideo);
 
-        JLabel lblPath = new CustomLabel("Path:");
+        CustomLabel lblPath = new CustomLabel("Path:");
         GridBagConstraints gbc_lblPath = new GridBagConstraints();
         gbc_lblPath.anchor = GridBagConstraints.EAST;
         gbc_lblPath.insets = new Insets(0, 5, 5, 5);
@@ -103,7 +101,7 @@ public class BasicSearchPanel extends CustomPanelSecond {
         gbc_btnBrowsePath.gridy = 1;
         add(btnBrowsePath, gbc_btnBrowsePath);
 
-        JLabel lblFileName = new CustomLabel("Name:");
+        CustomLabel lblFileName = new CustomLabel("Name:");
         GridBagConstraints gbc_lblTittle = new GridBagConstraints();
         gbc_lblTittle.anchor = GridBagConstraints.EAST;
         gbc_lblTittle.insets = new Insets(0, 5, 5, 5);
@@ -121,7 +119,7 @@ public class BasicSearchPanel extends CustomPanelSecond {
         add(textFileName, gbc_textFieldTittle);
         textFileName.setColumns(5);
 
-        JLabel lblExtension = new CustomLabel("Extension:");
+        CustomLabel lblExtension = new CustomLabel("Extension:");
         GridBagConstraints gbc_lblFileType = new GridBagConstraints();
         gbc_lblFileType.anchor = GridBagConstraints.EAST;
         gbc_lblFileType.insets = new Insets(0, 10, 5, 5);
@@ -143,7 +141,7 @@ public class BasicSearchPanel extends CustomPanelSecond {
      * This method return Path in TextFieldPath.
      * @return textFieldPath
      */
-    public JTextField getTextFieldPath() {
+    public CustomTextField getTextFieldPath() {
         return textFieldPath;
     }
 
@@ -151,7 +149,7 @@ public class BasicSearchPanel extends CustomPanelSecond {
      * This method return File Name in TextFileName.
      * @return textFileName
      */
-    public JTextField getTextFileName() {
+    public CustomTextField getTextFileName() {
         return textFileName;
     }
 
@@ -159,7 +157,7 @@ public class BasicSearchPanel extends CustomPanelSecond {
      * This method return File Type in TextFieldFileType.
      * @return textFileType
      */
-    public JTextField getTextFieldFileType() {
+    public CustomTextField getTextFieldFileType() {
         return textFieldFileType;
     }
 }

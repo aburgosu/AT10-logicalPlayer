@@ -4,7 +4,6 @@ import com.fundation.logic.view.CustomButton;
 import com.fundation.logic.view.CustomPanelSecond;
 import com.fundation.logic.view.CustomTable;
 
-import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.GridBagLayout;
@@ -19,7 +18,7 @@ import java.awt.Color;
  * @version 1.0
  */
 public class LoadSavePanel extends CustomPanelSecond {
-    private JTable dataTable;
+    private CustomTable dataTable;
     private DefaultTableModel model;
 
     /**

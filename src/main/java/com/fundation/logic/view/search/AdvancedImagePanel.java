@@ -17,10 +17,6 @@ import com.fundation.logic.view.CustomComboBox;
 import com.fundation.logic.view.CustomTextField;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import java.awt.Insets;
 import java.awt.Event;
@@ -38,9 +34,9 @@ import java.awt.event.KeyEvent;
 public class AdvancedImagePanel extends CustomPanelSecond {
     private CustomButton btnSearchAdvanceImage;
     private CustomButton btnSaveAdvanceImage;
-    private JTextField textFieldWidth;
-    private JTextField textFieldHeight;
-    private JComboBox comboBoxColorSpaceData;
+    private CustomTextField textFieldWidth;
+    private CustomTextField textFieldHeight;
+    private CustomComboBox comboBoxColorSpaceData;
     private PanelSetter settingPanel;
 
     /**
@@ -63,7 +59,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
      * This method show the content panel.
      */
     private void imageContentPanel() {
-        JLabel lblWidth = new CustomLabel("Width:");
+        CustomLabel lblWidth = new CustomLabel("Width:");
         GridBagConstraints gbc_lblWidth = new GridBagConstraints();
         gbc_lblWidth.anchor = GridBagConstraints.EAST;
         gbc_lblWidth.insets = new Insets(0, 0, 5, 5);
@@ -78,7 +74,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
         gbc_textFieldWith.gridx = 2;
         gbc_textFieldWith.gridy = 4;
         add(textFieldWidth, gbc_textFieldWith);
-        InputMap invalidSizeTo = textFieldWidth.getInputMap(JTextField.WHEN_FOCUSED);
+        InputMap invalidSizeTo = textFieldWidth.getInputMap(CustomTextField.WHEN_FOCUSED);
         invalidSizeTo.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         textFieldWidth.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
@@ -89,7 +85,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
             }
         });
 
-        JLabel lblPixels = new CustomLabel("  pixels");
+        CustomLabel lblPixels = new CustomLabel("  pixels");
         GridBagConstraints gbc_lblPixels = new GridBagConstraints();
         gbc_lblPixels.anchor = GridBagConstraints.WEST;
         gbc_lblPixels.insets = new Insets(0, 0, 5, 5);
@@ -97,7 +93,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
         gbc_lblPixels.gridy = 4;
         add(lblPixels, gbc_lblPixels);
 
-        JLabel lblHeight = new CustomLabel("Height:");
+        CustomLabel lblHeight = new CustomLabel("Height:");
         GridBagConstraints gbc_lblHeight = new GridBagConstraints();
         gbc_lblHeight.insets = new Insets(0, 0, 5, 5);
         gbc_lblHeight.anchor = GridBagConstraints.EAST;
@@ -112,7 +108,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
         gbc_textFieldWidth.gridx = 2;
         gbc_textFieldWidth.gridy = 5;
         add(textFieldHeight, gbc_textFieldWidth);
-        InputMap invalidHeight = textFieldHeight.getInputMap(JTextField.WHEN_FOCUSED);
+        InputMap invalidHeight = textFieldHeight.getInputMap(CustomTextField.WHEN_FOCUSED);
         invalidHeight.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         textFieldHeight.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
@@ -123,7 +119,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
             }
         });
 
-        JLabel lblPixelsH = new CustomLabel("  pixels");
+        CustomLabel lblPixelsH = new CustomLabel("  pixels");
         GridBagConstraints gbc_lblPixelsH = new GridBagConstraints();
         gbc_lblPixelsH.anchor = GridBagConstraints.WEST;
         gbc_lblPixelsH.insets = new Insets(0, 0, 5, 5);
@@ -131,7 +127,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
         gbc_lblPixelsH.gridy = 5;
         add(lblPixelsH, gbc_lblPixelsH);
 
-        JLabel lblColorSpaceData = new CustomLabel("Color space data:");
+        CustomLabel lblColorSpaceData = new CustomLabel("Color space data:");
         GridBagConstraints gbc_ColorSpaceData = new GridBagConstraints();
         gbc_ColorSpaceData.anchor = GridBagConstraints.EAST;
         gbc_ColorSpaceData.insets = new Insets(0, 0, 5, 5);
@@ -171,7 +167,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
      * This method return btnSearchAdvanceImage.
      * @return
      */
-    public JButton getBtnSearchAdvanceImage() {
+    public CustomButton getBtnSearchAdvanceImage() {
         return btnSearchAdvanceImage;
     }
 
@@ -179,7 +175,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
      * This method return textFieldWidth.
      * @return textFieldWidth
      */
-    public JTextField getTextFieldWidth() {
+    public CustomTextField getTextFieldWidth() {
         return textFieldWidth;
     }
 
@@ -187,7 +183,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
      * This method return textFieldHeight.
      * @return textFieldHeight
      */
-    public JTextField getTextFieldHeight() {
+    public CustomTextField getTextFieldHeight() {
         return textFieldHeight;
     }
 
@@ -195,7 +191,7 @@ public class AdvancedImagePanel extends CustomPanelSecond {
      * This method return comboBoxColorSpaceData.
      * @return comboBoxColorSpaceData
      */
-    public JComboBox getComboBoxColorSpaceData() {
+    public CustomComboBox getComboBoxColorSpaceData() {
         return comboBoxColorSpaceData;
     }
 

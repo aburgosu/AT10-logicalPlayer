@@ -9,11 +9,8 @@
  */
 package com.fundation.logic.view;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.BorderFactory;
+import javax.swing.*;
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 /**
  * Implements CustomJFrame class.
@@ -22,11 +19,13 @@ import java.awt.Color;
  * @version 1.0
  */
 public class CustomJFrame extends JFrame {
-    JLabel label = new JLabel("Welcome!", JLabel.CENTER);
+    JLabel image = new JLabel("", JLabel.CENTER);
+
     public CustomJFrame() {
+        image.setIcon(new ImageIcon("resources/Images/welcome.png"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(label, BorderLayout.CENTER);
-        getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(43,43,43)));
+
+        add(image, BorderLayout.CENTER);
         setVisible(true);
     }
 }

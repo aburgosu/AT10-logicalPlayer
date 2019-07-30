@@ -15,9 +15,6 @@ import com.fundation.logic.view.PanelSetter;
 import com.fundation.logic.view.CustomLabel;
 import com.fundation.logic.view.CustomComboBox;
 
-import javax.swing.JComboBox;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -29,10 +26,10 @@ import java.awt.Insets;
  * @version 1.0
  */
 public class ConvertAudioPanel extends CustomPanelSecond {
-    private JComboBox comboBoxNewFormat;
-    private JComboBox comboBoxCodec;
-    private JComboBox comboBoxBit;
-    private JComboBox comboBoxChannel;
+    private CustomComboBox comboBoxNewFormat;
+    private CustomComboBox comboBoxCodec;
+    private CustomComboBox comboBoxBit;
+    private CustomComboBox comboBoxChannel;
     private PanelSetter settingPanel;
     private CustomButton btnConvertAudio;
 
@@ -56,7 +53,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
      * This method show the form to set a convert searchCriteria.
      */
     private void showAudioCriteriaConvertForm() {
-        JLabel lblNewFormat = new CustomLabel("New format:");
+        CustomLabel lblNewFormat = new CustomLabel("New format:");
         GridBagConstraints gbc_lblNewFormat = new GridBagConstraints();
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
         gbc_lblNewFormat.insets = new Insets(0, 0, 5, 5);
@@ -73,7 +70,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
         gbc_comboBoxNewFormat.gridy = 4;
         add(comboBoxNewFormat, gbc_comboBoxNewFormat);
 
-        JLabel lblCodec = new CustomLabel("Codec:");
+        CustomLabel lblCodec = new CustomLabel("Codec:");
         GridBagConstraints gbc_lblCodec = new GridBagConstraints();
         gbc_lblCodec.anchor = GridBagConstraints.EAST;
         gbc_lblCodec.insets = new Insets(0, 0, 5, 5);
@@ -91,7 +88,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
         gbc_comboBoxCodec.gridy = 5;
         add(comboBoxCodec, gbc_comboBoxCodec);
 
-        JLabel lblBit = new CustomLabel("Bitrate:");
+        CustomLabel lblBit = new CustomLabel("Bitrate:");
         GridBagConstraints gbc_lblBit = new GridBagConstraints();
         gbc_lblBit.anchor = GridBagConstraints.EAST;
         gbc_lblBit.insets = new Insets(0, 0, 5, 5);
@@ -108,7 +105,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
         gbc_comboBoxBit.gridy = 6;
         add(comboBoxBit, gbc_comboBoxBit);
 
-        JLabel lblChannel = new CustomLabel("Channel:");
+        CustomLabel lblChannel = new CustomLabel("Channel:");
         GridBagConstraints gbc_lblChannel = new GridBagConstraints();
         gbc_lblChannel.anchor = GridBagConstraints.EAST;
         gbc_lblChannel.insets = new Insets(0, 0, 5, 5);
@@ -139,7 +136,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
      * Allows to get comboBoxNewFormat.
      * @return comboBoxNewFormat
      */
-    public JComboBox getComboBoxNewFormat() {
+    public CustomComboBox getComboBoxNewFormat() {
         return comboBoxNewFormat;
     }
 
@@ -147,7 +144,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
      * Allows to get comboBoxCodec.
      * @return comboBoxCodec
      */
-    public JComboBox getComboBoxCodec() {
+    public CustomComboBox getComboBoxCodec() {
         return comboBoxCodec;
     }
 
@@ -155,7 +152,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
      * Allows to get comboBoxBit.
      * @return comboBoxBit
      */
-    public JComboBox getComboBoxBit() {
+    public CustomComboBox getComboBoxBit() {
         return comboBoxBit;
     }
 
@@ -163,7 +160,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
      * Allows to get comboBoxChannel.
      * @return comboBoxChannel
      */
-    public JComboBox getComboBoxChannel() {
+    public CustomComboBox getComboBoxChannel() {
         return comboBoxChannel;
     }
 
@@ -171,7 +168,7 @@ public class ConvertAudioPanel extends CustomPanelSecond {
      * Allows to get convertAudio button.
      * @return btnConvertAudio
      */
-    public JButton getBtnConvertAudio() {
+    public CustomButton getBtnConvertAudio() {
         return btnConvertAudio;
     }
 }

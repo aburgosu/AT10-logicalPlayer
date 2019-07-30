@@ -11,9 +11,13 @@ package com.fundation.logic.view;
 
 import com.fundation.logic.view.resultTable.TableResult;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
 
 /**
  * Implements the MainFrame class
@@ -46,6 +50,7 @@ public class MainFrame extends CustomJFrame {
         CustomSplitPanel mainSplitPanel = new CustomSplitPanel();
         mainSplitPanel.setDividerLocation(getWidth()/2);
         mainSplitPanel.setEnabled(false);
+        mainSplitPanel.setBackground(new Color(60,63,65));
         mainContentPanel.add(mainSplitPanel, BorderLayout.CENTER);
 
         searchTabs = new MainTabs();
@@ -86,23 +91,5 @@ public class MainFrame extends CustomJFrame {
      */
     public MainTabs getSearchTabs() {
         return searchTabs;
-    }
-
-    /**
-     * Shows a popup message
-     * @param messageTittle - Tittle of the message
-     * @param messageText - Text of the message
-     */
-    public void showPopupMessage(String messageTittle, String messageText) {
-        JDialog message = new JDialog(this, messageTittle);
-        message.setBounds(50, 200, 350, 150);
-        message.setSize(350, 120);
-        JPanel messageTextPanel = new JPanel();
-        JLabel text = new JLabel(messageText);
-        text.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        text.setForeground(Color.red);
-        messageTextPanel.add(text, SwingConstants.CENTER);
-        message.add(messageTextPanel, BorderLayout.CENTER);
-        message.setVisible(true);
     }
 }

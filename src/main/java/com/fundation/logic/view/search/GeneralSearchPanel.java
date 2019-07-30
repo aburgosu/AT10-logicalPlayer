@@ -18,11 +18,6 @@ import com.fundation.logic.view.CustomTextField;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -39,23 +34,23 @@ import javax.swing.InputMap;
  * @version 1.0
  */
 public class GeneralSearchPanel extends CustomPanelSecond {
-    private JTextField textFieldOwner;
+    private CustomTextField textFieldOwner;
     private JDateChooser fieldToDateCreation;
     private JDateChooser textFieldFromDateCreation;
     private JDateChooser fieldDateModificationFrom;
     private JDateChooser fieldDateModificationTo;
     private JDateChooser fieldDateAccessFrom;
     private JDateChooser fieldDateAccessTo;
-    private JTextField textFieldSizeFrom;
-    private JTextField textFieldSizeTo;
+    private CustomTextField textFieldSizeFrom;
+    private CustomTextField textFieldSizeTo;
     private CustomButton btnSearch;
     private CustomButton btnSave;
-    private JComboBox comboBoxReadOnly;
-    private JComboBox comboBoxHidden;
-    private JCheckBox checkBoxReadOnly;
-    private JCheckBox checkBoxHidden;
-    private JComboBox comboBoxSizeUnit;
-    private JComboBox comboBoxMimeType;
+    private CustomComboBox comboBoxReadOnly;
+    private CustomComboBox comboBoxHidden;
+    private CustomCheckBox checkBoxReadOnly;
+    private CustomCheckBox checkBoxHidden;
+    private CustomComboBox comboBoxSizeUnit;
+    private CustomComboBox comboBoxMimeType;
 
     /**
      * Initializes a MainTabs instance for the search options
@@ -69,7 +64,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
             0.0, 0.0, 0.0, Double.MIN_VALUE};
         setLayout(gridBagLayout);
 
-        JLabel lblDateCreation = new CustomLabel("Date created:");
+        CustomLabel lblDateCreation = new CustomLabel("Date created:");
         GridBagConstraints gbc_lblDateCreation = new GridBagConstraints();
         gbc_lblDateCreation.anchor = GridBagConstraints.EAST;
         gbc_lblDateCreation.insets = new Insets(0, 0, 5, 5);
@@ -93,7 +88,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_FieldToDateCreation.gridy = 3;
         add(getFieldToDateCreation(), gbc_FieldToDateCreation);
 
-        JLabel lblDateModification = new CustomLabel("Date modified:");
+        CustomLabel lblDateModification = new CustomLabel("Date modified:");
         GridBagConstraints gbc_lblDateModification = new GridBagConstraints();
         gbc_lblDateModification.anchor = GridBagConstraints.EAST;
         gbc_lblDateModification.insets = new Insets(0, 0, 5, 5);
@@ -117,7 +112,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_FieldDateModificationTo.gridy = 4;
         add(getFieldDateModificationTo(), gbc_FieldDateModificationTo);
 
-        JLabel labelDateAccess = new CustomLabel("Date last accessed:");
+        CustomLabel labelDateAccess = new CustomLabel("Date last accessed:");
         GridBagConstraints gbc_labelDateAccess = new GridBagConstraints();
         gbc_labelDateAccess.anchor = GridBagConstraints.EAST;
         gbc_labelDateAccess.insets = new Insets(0, 0, 5, 5);
@@ -141,7 +136,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_FieldDateAccessTo.gridy = 5;
         add(getFieldDateAccessTo(), gbc_FieldDateAccessTo);
 
-        JLabel labelSize = new CustomLabel("Size: ");
+        CustomLabel labelSize = new CustomLabel("Size: ");
         GridBagConstraints gbc_labelSize = new GridBagConstraints();
         gbc_labelSize.anchor = GridBagConstraints.EAST;
         gbc_labelSize.insets = new Insets(0, 0, 5, 5);
@@ -156,7 +151,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_textFieldSizeFrom.gridx = 2;
         gbc_textFieldSizeFrom.gridy = 6;
         add(getTextFieldSizeFrom(), gbc_textFieldSizeFrom);
-        InputMap invalidSizeFrom = textFieldSizeFrom.getInputMap(JTextField.WHEN_FOCUSED);
+        InputMap invalidSizeFrom = textFieldSizeFrom.getInputMap(CustomTextField.WHEN_FOCUSED);
         invalidSizeFrom.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         textFieldSizeFrom.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
@@ -174,7 +169,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_textFieldSizeTo.gridx = 3;
         gbc_textFieldSizeTo.gridy = 6;
         add(getTextFieldSizeTo(), gbc_textFieldSizeTo);
-        InputMap invalidSizeTo = textFieldSizeTo.getInputMap(JTextField.WHEN_FOCUSED);
+        InputMap invalidSizeTo = textFieldSizeTo.getInputMap(CustomTextField.WHEN_FOCUSED);
         invalidSizeTo.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         textFieldSizeTo.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
@@ -194,7 +189,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_comboBoxSizeUnit.gridy = 6;
         add(comboBoxSizeUnit, gbc_comboBoxSizeUnit);
 
-        JLabel lblMimeType = new CustomLabel("Mime type:");
+        CustomLabel lblMimeType = new CustomLabel("Mime type:");
         GridBagConstraints gbc_lblMimeType = new GridBagConstraints();
         gbc_lblMimeType.anchor = GridBagConstraints.EAST;
         gbc_lblMimeType.insets = new Insets(0, 0, 5, 5);
@@ -213,7 +208,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_comboBoxMimeType.gridy = 7;
         add(comboBoxMimeType, gbc_comboBoxMimeType);
 
-        JLabel lblOwner = new CustomLabel("Owner:");
+        CustomLabel lblOwner = new CustomLabel("Owner:");
         GridBagConstraints gbc_lblOwner = new GridBagConstraints();
         gbc_lblOwner.anchor = GridBagConstraints.EAST;
         gbc_lblOwner.insets = new Insets(0, 0, 5, 5);
@@ -230,7 +225,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_textFieldOwner.gridy = 8;
         add(textFieldOwner, gbc_textFieldOwner);
 
-        JLabel labelHidden = new CustomLabel("Hidden:");
+        CustomLabel labelHidden = new CustomLabel("Hidden:");
         GridBagConstraints gbc_labelHidden = new GridBagConstraints();
         gbc_labelHidden.anchor = GridBagConstraints.EAST;
         gbc_labelHidden.insets = new Insets(0, 0, 5, 5);
@@ -246,7 +241,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_checkBoxHidden.gridy = 14;
         add(checkBoxHidden, gbc_checkBoxHidden);
 
-        comboBoxHidden = new JComboBox();
+        comboBoxHidden = new CustomComboBox();
         comboBoxHidden.setModel(new DefaultComboBoxModel(new String[] {"All", "Only hidden", "All but hidden"}));
         GridBagConstraints gbc_comboBoxHidden = new GridBagConstraints();
         gbc_comboBoxHidden.insets = new Insets(0, 0, 5, 5);
@@ -255,7 +250,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_comboBoxHidden.gridy = 14;
         add(comboBoxHidden, gbc_comboBoxHidden);
 
-        JLabel lblReadOnly = new CustomLabel("Read only:");
+        CustomLabel lblReadOnly = new CustomLabel("Read only:");
         GridBagConstraints gbc_lblReadOnly = new GridBagConstraints();
         gbc_lblReadOnly.anchor = GridBagConstraints.EAST;
         gbc_lblReadOnly.insets = new Insets(0, 0, 5, 5);
@@ -271,7 +266,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         gbc_checkBoxReadOnly.gridy = 15;
         add(checkBoxReadOnly, gbc_checkBoxReadOnly);
 
-        comboBoxReadOnly = new JComboBox();
+        comboBoxReadOnly = new CustomComboBox();
         comboBoxReadOnly.setModel(new DefaultComboBoxModel(new String[] {"All", "Only read-only", "All but read-only"}));
         GridBagConstraints gbc_comboBoxReadOnly = new GridBagConstraints();
         gbc_comboBoxReadOnly.insets = new Insets(0, 0, 5, 5);
@@ -302,7 +297,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
     /**
      * This method return the CommonSearch Button.
      */
-    public JButton getSearchButton() {
+    public CustomButton getSearchButton() {
         return btnSearch;
     }
 
@@ -350,49 +345,49 @@ public class GeneralSearchPanel extends CustomPanelSecond {
     /**
      * This method return the Field SizeFrom.
      */
-    public JTextField getTextFieldSizeFrom() {
+    public CustomTextField getTextFieldSizeFrom() {
         return textFieldSizeFrom;
     }
 
     /**
      * This method return the Field SizeTo.
      */
-    public JTextField getTextFieldSizeTo() {
+    public CustomTextField getTextFieldSizeTo() {
         return textFieldSizeTo;
     }
 
     /**
      * This method return the ComboBox Read Only.
      */
-    public JComboBox getComboBoxReadOnly() {
+    public CustomComboBox getComboBoxReadOnly() {
         return comboBoxReadOnly;
     }
 
     /**
      * This method return the ComboBox Hidden.
      */
-    public JComboBox getComboBoxHidden() {
+    public CustomComboBox getComboBoxHidden() {
         return comboBoxHidden;
     }
 
     /**
      * This method return the TextField Owner.
      */
-    public JTextField getTextFieldOwner() {
+    public CustomTextField getTextFieldOwner() {
         return textFieldOwner;
     }
 
     /**
      * This method return the ComboBox SizeUnit.
      */
-    public JComboBox getComboBoxSizeUnit() {
+    public CustomComboBox getComboBoxSizeUnit() {
         return comboBoxSizeUnit;
     }
 
     /**
      * This method return the ComboBox Mimetype.
      */
-    public JComboBox getComboBoxMimeType() {
+    public CustomComboBox getComboBoxMimeType() {
         return comboBoxMimeType;
     }
 
@@ -413,14 +408,14 @@ public class GeneralSearchPanel extends CustomPanelSecond {
     /**
      * This method return the CheckBox ReadOnly.
      */
-    public JCheckBox getCheckBoxReadOnly() {
+    public CustomCheckBox getCheckBoxReadOnly() {
         return checkBoxReadOnly;
     }
 
     /**
      * This method return the CheckBox Hidden.
      */
-    public JCheckBox getCheckBoxHidden() {
+    public CustomCheckBox getCheckBoxHidden() {
         return checkBoxHidden;
     }
 
@@ -455,14 +450,14 @@ public class GeneralSearchPanel extends CustomPanelSecond {
     /**
      * This method set the TextField SizeFrom.
      */
-    public void setTextFieldSizeFrom(JTextField textFieldSizeFrom) {
+    public void setTextFieldSizeFrom(CustomTextField textFieldSizeFrom) {
         this.textFieldSizeFrom = textFieldSizeFrom;
     }
 
     /**
      * This method set the TextField SizeTo.
      */
-    public void setTextFieldSizeTo(JTextField textFieldSizeTo) {
+    public void setTextFieldSizeTo(CustomTextField textFieldSizeTo) {
         this.textFieldSizeTo = textFieldSizeTo;
     }
 }

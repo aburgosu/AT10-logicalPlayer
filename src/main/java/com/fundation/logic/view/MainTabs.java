@@ -14,8 +14,6 @@ import com.fundation.logic.view.loadSaveCriteria.SplitPanelDate;
 import com.fundation.logic.view.search.GeneralSearchPanel;
 import com.fundation.logic.view.search.SearchSplitPanel;
 
-import javax.swing.JTabbedPane;
-
 /**
  * Implements the tabs of different options.
  *

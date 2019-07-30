@@ -10,6 +10,7 @@
 package com.fundation.logic.view.search;
 
 import com.fundation.logic.view.CustomPanel;
+import com.fundation.logic.view.CustomPanelSecond;
 
 import javax.swing.JSplitPane;
 

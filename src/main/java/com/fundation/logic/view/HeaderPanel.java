@@ -1,7 +1,13 @@
 package com.fundation.logic.view;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 public class HeaderPanel extends CustomPanelSecond {
     public HeaderPanel(){
@@ -28,10 +34,10 @@ public class HeaderPanel extends CustomPanelSecond {
         GridBagConstraints gbc_lbltitle = new GridBagConstraints();
         gbc_lbltitle.gridwidth = 1;
         gbc_lbltitle.insets = new Insets(0, 0, 0, 0);
-        gbc_lbltitle.gridx = 4;
+        gbc_lbltitle.gridx = 3;
         gbc_lbltitle.gridy = 0;
-        lbltitle.setFont( new Font("Comic Sans MS",1, 65));
-        lbltitle.setForeground(new Color(43, 43, 43 ));
+        lbltitle.setFont( new Font("Comic Sans MS",1, 55));
+        lbltitle.setForeground(new Color(255,255,255));
         add(lbltitle, gbc_lbltitle);
     }
 }
