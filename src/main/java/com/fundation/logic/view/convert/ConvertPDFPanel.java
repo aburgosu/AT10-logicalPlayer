@@ -64,7 +64,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
         add(lblNewFormat, gbc_lblNewFormat);
 
         comboBoxNewFormat = new CustomComboBox();
-        comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"PNG", "JPG"}));
+        comboBoxNewFormat.setModel(new DefaultComboBoxModel(new String[]{"png", "jpg"}));
         GridBagConstraints gbc_comboBoxNewFormat = new GridBagConstraints();
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxNewFormat.fill = GridBagConstraints.HORIZONTAL;
