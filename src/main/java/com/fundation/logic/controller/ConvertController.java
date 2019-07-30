@@ -317,7 +317,6 @@ public class ConvertController {
     public void listenConvertItem() {
         try {
             String path = mainFrame.getTableResult().getMenu().getFilePath();
-            System.out.println("path: " + path);
             mainFrame.getTableResult().getMenu().getConvertItem().addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent event) {
