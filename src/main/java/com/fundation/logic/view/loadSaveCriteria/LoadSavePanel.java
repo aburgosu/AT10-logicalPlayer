@@ -59,7 +59,6 @@ public class LoadSavePanel extends CustomPanelSecond {
         dataTable.getColumnModel().getColumn(3).setMinWidth(0);
         dataTable.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
         dataTable.getTableHeader().getColumnModel().getColumn(3).setMinWidth(0);
-
         add(tableScrollPanel, gbc_table);
     }
 
