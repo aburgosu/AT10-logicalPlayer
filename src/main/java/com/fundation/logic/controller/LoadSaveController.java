@@ -43,6 +43,7 @@ public class LoadSaveController {
         this.mainFrame = mainFrame;
         this.searchController = searchController;
         queryCriteria = new QueryForCriteria();
+        showLoadSaveData();
         listenFilterButton();
         listenSaveButtons();
         listenTable();
@@ -290,11 +291,8 @@ public class LoadSaveController {
         if ("Image".equals(criteria.getCriteriaMimeType())) {
             optionMimeType = 3;
         }
-        if ("Text".equals(criteria.getCriteriaMimeType())) {
-            optionMimeType = 4;
-        }
         if ("Application".equals(criteria.getCriteriaMimeType())) {
-            optionMimeType = 5;
+            optionMimeType = 4;
         }
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
                 .getComboBoxMimeType().setSelectedIndex(optionMimeType);

@@ -362,20 +362,24 @@ public class ConvertController {
                                 @Override
                                 public void mousePressed(MouseEvent event) {
                                     if (event.getButton() == MouseEvent.BUTTON1) {
+                                        mainFrame.getMainTabs().getSplitPanelConvert().getBasicConvert()
+                                                .getTextFieldSourcePath().setText(filePath);
                                         if (FileInfo.isAudio(filePath)) {
-                                            mainFrame.getMainTabs().getSplitPanelConvert().getBasicConvert()
-                                                    .getTextFieldSourcePath().setText(filePath);
                                             mainFrame.getMainTabs().setSelectedIndex(2);
                                             mainFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
                                                     .setSelectedIndex(0);
                                             mainFrame.repaint();
                                         }
                                         if (FileInfo.isVideo(filePath)) {
-                                            mainFrame.getMainTabs().getSplitPanelConvert().getBasicConvert()
-                                                    .getTextFieldSourcePath().setText(filePath);
                                             mainFrame.getMainTabs().setSelectedIndex(2);
                                             mainFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
                                                     .setSelectedIndex(1);
+                                            mainFrame.repaint();
+                                        }
+                                        if (FileInfo.isPdf(filePath)) {
+                                            mainFrame.getMainTabs().setSelectedIndex(2);
+                                            mainFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
+                                                    .setSelectedIndex(2);
                                             mainFrame.repaint();
                                         }
                                     }

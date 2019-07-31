@@ -38,6 +38,8 @@ public class PopupMenu extends JPopupMenu {
         if(FileInfo.isVideo(filePath) || FileInfo.isAudio(filePath)) {
             playItem = new JMenuItem("Play");
             add(playItem);
+        }
+        if(FileInfo.isVideo(filePath) || FileInfo.isAudio(filePath) || FileInfo.isPdf(filePath)) {
             convertItem = new JMenuItem("Convert");
             add(convertItem);
         }
