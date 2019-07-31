@@ -119,7 +119,7 @@ public class CommonSearch implements ISearch {
      *
      * @return Answer after evaluation.
      */
-    public boolean evaluateString(String fileExtractorCriteria, String criteria) {
+    private boolean evaluateString(String fileExtractorCriteria, String criteria) {
         if (criteria == null || fileExtractorCriteria.equalsIgnoreCase(criteria)) {
             return true;
         }
@@ -131,7 +131,7 @@ public class CommonSearch implements ISearch {
      *
      * @return Answer after evaluation.
      */
-    public boolean evaluateHidden(boolean fileExtractorHidden, String criteria) {
+    private boolean evaluateHidden(boolean fileExtractorHidden, String criteria) {
         if("All".equals(criteria) || ("Only hidden".equals((criteria)) && fileExtractorHidden)
                 || ("All but hidden".equals(criteria) && !fileExtractorHidden)) {
             return true;
@@ -145,7 +145,7 @@ public class CommonSearch implements ISearch {
      *
      * @return Answer after evaluation.
      */
-    public boolean evaluateReadOnly(boolean fileExtractorCanWrite, String criteria) {
+    private boolean evaluateReadOnly(boolean fileExtractorCanWrite, String criteria) {
         if("All".equals(criteria) || ("Only read-only".equals((criteria)) && !fileExtractorCanWrite)
                 || ("All but read-only".equals(criteria) && fileExtractorCanWrite)) {
             return true;
@@ -159,7 +159,7 @@ public class CommonSearch implements ISearch {
      *
      * @return Answer after evaluation.
      */
-    public boolean evaluateSizeLimits(Float sizeFileExtractor, Float lowerLimit, Float upperLimit) {
+    private boolean evaluateSizeLimits(Float sizeFileExtractor, Float lowerLimit, Float upperLimit) {
         if (lowerLimit == null && upperLimit == null) {
             return true;
         }
@@ -177,7 +177,7 @@ public class CommonSearch implements ISearch {
      *
      * @return Answer after evaluation.
      */
-    public boolean evaluateDate(Date fileExtractorDate, Date lowerLimit, Date upperLimit) {
+    private boolean evaluateDate(Date fileExtractorDate, Date lowerLimit, Date upperLimit) {
         if (lowerLimit == null && upperLimit == null) {
             return true;
         }
