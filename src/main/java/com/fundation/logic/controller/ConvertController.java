@@ -42,7 +42,7 @@ public class ConvertController {
     private String videoCodec;
     private String videoBitRate;
     private String fps;
-    private String keyframe;
+    private String keyframes;
     private String keyframeTime;
     private String keyframeFormat;
     private String thumbnail;
@@ -57,7 +57,7 @@ public class ConvertController {
      */
     public ConvertController(MainFrame searchFrame) {
         this.mainFrame = searchFrame;
-        this.serviceConnection = new ServiceConnection("http://127.0.0.1/convert");
+        this.serviceConnection = new ServiceConnection();
         listenConvertButtons();
         listenTableResult();
     }
@@ -142,7 +142,7 @@ public class ConvertController {
         ConvertCriteria convertVideoCriteria = new ConvertCriteria.ConvertCriteriaBuilder(sourcePath,
                 destPath, newName, newFormat, convertType).setMetadata(metadata).setAudioCodec(audioCodec)
                 .setAudioBitRate(audioBitRate).setAudioChannel(audioChannel).setVideoCodec(videoCodec)
-                .setVideoBitRate(videoBitRate).setKeyframe(keyframe).setKeyframeTime(keyframeTime)
+                .setVideoBitRate(videoBitRate).setKeyframes(keyframes).setKeyframeTime(keyframeTime)
                 .setKeyframeFormat(keyframeFormat).setFps(fps).setThumbnail(thumbnail)
                 .setThumbnailTime(thumbnailTime).setThumbnailFormat(thumbnailFormat).build();
         return convertVideoCriteria;
@@ -239,7 +239,7 @@ public class ConvertController {
         boolean keyframeAux = mainFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
                 .getConvertVideoPanel().getCheckBoxKeyFrame().isSelected();
         if (keyframeAux == true) {
-            keyframe = "true";
+            keyframes = "true";
             keyframeTime = mainFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
                     .getConvertVideoPanel().getMinuteSpinnerKeyFrame().getValue().toString();
             keyframeTime = keyframeTime.substring(17, 19);
@@ -249,7 +249,7 @@ public class ConvertController {
                 keyframeFormat = null;
             }
         } else {
-            keyframe = "false";
+            keyframes = "false";
         }
         boolean thumbnailAux = mainFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
                 .getConvertVideoPanel().getCheckBoxThumbnail().isSelected();
@@ -305,7 +305,7 @@ public class ConvertController {
         videoCodec = null;
         videoBitRate = null;
         fps = null;
-        keyframe = null;
+        keyframes = null;
         keyframeTime = null;
         keyframeFormat = null;
         thumbnail = null;

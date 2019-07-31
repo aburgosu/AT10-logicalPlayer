@@ -23,7 +23,7 @@ public class ConvertCriteriaTest {
     ConvertCriteria convertCriteria = new ConvertCriteria.ConvertCriteriaBuilder("resources/TestVideo/Grammar_posesivo_genitivo.mp4",
             "resources/", "converted", "avi", "video").setMetadata("None")
             .setAudioCodec("Default").setAudioBitRate("Default").setAudioChannel("Default").setVideoCodec("Default")
-            .setVideoBitRate("Default").setKeyframe("Default").setKeyframeTime("Default").setKeyframeFormat("Default")
+            .setVideoBitRate("Default").setKeyframes("Default").setKeyframeTime("Default").setKeyframeFormat("Default")
             .setFps("Default").setThumbnail("Default").setThumbnailTime("Default").setThumbnailFormat("Default")
             .setFormatColor("Default").setDpi("Default").build();
 

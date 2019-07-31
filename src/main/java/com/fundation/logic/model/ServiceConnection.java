@@ -22,7 +22,10 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * Implements the connection to the service to convert module.
@@ -35,13 +38,35 @@ public class ServiceConnection {
     private HttpPost httpPost;
     private int status;
 
-    public static final int IN_PROCCES=0;
-    public static final int SUCCESS=1;
-    public static final int ERROR=2;
+    public static final int IN_PROCCES = 0;
+    public static final int SUCCESS = 1;
+    public static final int ERROR = 2;
 
-    public ServiceConnection(String uri) {
+    /**
+     * Create the instance of Service connection, reading config.properties file.
+     * @return Endpoint to the endpoint service.
+     */
+    public ServiceConnection() {
         httpClient = HttpClients.createDefault();
+        String uri = readConfigurationEndpoint();
         httpPost = new HttpPost(uri);
+    }
+
+    /**
+     * Connect to the Configuration File for endpoint server.
+     * @return Endpoint to the endpoint service.
+     */
+    private String readConfigurationEndpoint() {
+        InputStream inputProperties;
+        Properties properties = new Properties();
+        try {
+            inputProperties = new FileInputStream("config.properties");
+            properties.load(inputProperties);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties.getProperty("server.endpoint");
     }
 
     /**
