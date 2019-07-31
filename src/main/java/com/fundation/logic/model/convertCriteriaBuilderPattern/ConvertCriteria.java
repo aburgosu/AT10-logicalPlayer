@@ -28,7 +28,7 @@ public class ConvertCriteria {
     private String videoCodec;
     private String videoBitRate;
     private String fps;
-    private String keyframe;
+    private String keyframes;
     private String keyframeTime;
     private String keyframeFormat;
     private String thumbnail;
@@ -50,7 +50,7 @@ public class ConvertCriteria {
         private String videoCodec;
         private String videoBitRate;
         private String fps;
-        private String keyframe;
+        private String keyframes;
         private String keyframeTime;
         private String keyframeFormat;
         private String thumbnail;
@@ -147,11 +147,11 @@ public class ConvertCriteria {
 
         /**
          * Allows to set if key frame is requested.
-         * @param keyframe - Key frame requested?
+         * @param keyframes - Key frame requested?
          * @return ConvertCriteriaBuilder itself with corresponding set attribute.
          */
-        public ConvertCriteriaBuilder setKeyframe(String keyframe) {
-            this.keyframe = keyframe;
+        public ConvertCriteriaBuilder setKeyframes(String keyframes) {
+            this.keyframes = keyframes;
             return this;
         }
 
@@ -251,7 +251,7 @@ public class ConvertCriteria {
         this.videoCodec = builder.videoCodec;
         this.videoBitRate = builder.videoBitRate;
         this.fps = builder.fps;
-        this.keyframe = builder.keyframe;
+        this.keyframes = builder.keyframes;
         this.keyframeTime = builder.keyframeTime;
         this.keyframeFormat = builder.keyframeFormat;
         this.thumbnail = builder.thumbnail;
