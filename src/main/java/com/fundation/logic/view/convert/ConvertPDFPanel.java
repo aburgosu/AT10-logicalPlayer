@@ -122,7 +122,7 @@ public class ConvertPDFPanel extends CustomPanelSecond {
         gbc_checkBoxThumbnail.gridy = 7;
         add(checkBoxThumbnail, gbc_checkBoxThumbnail);
 
-        CustomLabel lblThumbnailFormat = new CustomLabel("Format: ");
+        CustomLabel lblThumbnailFormat = new CustomLabel("Format:");
         GridBagConstraints gbc_lblThumbnailFormat = new GridBagConstraints();
         gbc_lblThumbnailFormat.anchor = GridBagConstraints.EAST;
         gbc_lblThumbnailFormat.insets = new Insets(0, 0, 5, 5);

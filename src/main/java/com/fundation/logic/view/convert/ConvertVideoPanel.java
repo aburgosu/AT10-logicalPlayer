@@ -71,7 +71,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblNewFormat.anchor = GridBagConstraints.EAST;
         gbc_lblNewFormat.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewFormat.gridx = 1;
-        gbc_lblNewFormat.gridy = 4;
+        gbc_lblNewFormat.gridy = 0;
         add(lblNewFormat, gbc_lblNewFormat);
 
         comboBoxNewFormat = new CustomComboBox();
@@ -80,7 +80,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxNewFormat.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxNewFormat.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxNewFormat.gridx = 2;
-        gbc_comboBoxNewFormat.gridy = 4;
+        gbc_comboBoxNewFormat.gridy = 0;
         add(comboBoxNewFormat, gbc_comboBoxNewFormat);
 
         CustomLabel lblAudioCodec = new CustomLabel("Audio codec:");
@@ -88,7 +88,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblAudioCodec.anchor = GridBagConstraints.EAST;
         gbc_lblAudioCodec.insets = new Insets(0, 0, 5, 5);
         gbc_lblAudioCodec.gridx = 1;
-        gbc_lblAudioCodec.gridy = 5;
+        gbc_lblAudioCodec.gridy = 1;
         add(lblAudioCodec, gbc_lblAudioCodec);
 
         comboBoxAudioCodec = new CustomComboBox();
@@ -98,7 +98,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxAudioCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioCodec.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxAudioCodec.gridx = 2;
-        gbc_comboBoxAudioCodec.gridy = 5;
+        gbc_comboBoxAudioCodec.gridy = 1;
         add(comboBoxAudioCodec, gbc_comboBoxAudioCodec);
 
         CustomLabel lblAudioBit = new CustomLabel("Audio bitrate:");
@@ -106,7 +106,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblAudioBit.anchor = GridBagConstraints.EAST;
         gbc_lblAudioBit.insets = new Insets(0, 0, 5, 5);
         gbc_lblAudioBit.gridx = 1;
-        gbc_lblAudioBit.gridy = 6;
+        gbc_lblAudioBit.gridy = 2;
         add(lblAudioBit, gbc_lblAudioBit);
 
         comboBoxAudioBit = new CustomComboBox();
@@ -115,7 +115,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxAudioBit.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioBit.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxAudioBit.gridx = 2;
-        gbc_comboBoxAudioBit.gridy = 6;
+        gbc_comboBoxAudioBit.gridy = 2;
         add(comboBoxAudioBit, gbc_comboBoxAudioBit);
 
         CustomLabel lblAudioChannel = new CustomLabel("Audio channel:");
@@ -123,7 +123,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblAudioChannel.anchor = GridBagConstraints.EAST;
         gbc_lblAudioChannel.insets = new Insets(0, 0, 5, 5);
         gbc_lblAudioChannel.gridx = 1;
-        gbc_lblAudioChannel.gridy = 7;
+        gbc_lblAudioChannel.gridy = 3;
         add(lblAudioChannel, gbc_lblAudioChannel);
 
         comboBoxAudioChannel = new CustomComboBox();
@@ -132,7 +132,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxAudioChannel.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxAudioChannel.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxAudioChannel.gridx = 2;
-        gbc_comboBoxAudioChannel.gridy = 7;
+        gbc_comboBoxAudioChannel.gridy = 3;
         add(comboBoxAudioChannel, gbc_comboBoxAudioChannel);
 
         CustomLabel lblVideoCodec = new CustomLabel("Video codec:");
@@ -140,7 +140,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblVideoCodec.anchor = GridBagConstraints.EAST;
         gbc_lblVideoCodec.insets = new Insets(0, 0, 5, 5);
         gbc_lblVideoCodec.gridx = 1;
-        gbc_lblVideoCodec.gridy = 9;
+        gbc_lblVideoCodec.gridy = 5;
         add(lblVideoCodec, gbc_lblVideoCodec);
 
         comboBoxVideoCodec = new CustomComboBox();
@@ -150,7 +150,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxVideoCodec.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoCodec.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxVideoCodec.gridx = 2;
-        gbc_comboBoxVideoCodec.gridy = 9;
+        gbc_comboBoxVideoCodec.gridy = 5;
         add(comboBoxVideoCodec, gbc_comboBoxVideoCodec);
 
         CustomLabel lblVideoBit = new CustomLabel("Video bitrate:");
@@ -158,7 +158,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblVideoBit.anchor = GridBagConstraints.EAST;
         gbc_lblVideoBit.insets = new Insets(0, 0, 5, 5);
         gbc_lblVideoBit.gridx = 1;
-        gbc_lblVideoBit.gridy = 11;
+        gbc_lblVideoBit.gridy = 7;
         add(lblVideoBit, gbc_lblVideoBit);
 
         comboBoxVideoBit = new CustomComboBox();
@@ -167,7 +167,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxVideoBit.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoBit.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxVideoBit.gridx = 2;
-        gbc_comboBoxVideoBit.gridy = 11;
+        gbc_comboBoxVideoBit.gridy = 7;
         add(comboBoxVideoBit, gbc_comboBoxVideoBit);
 
         CustomLabel lblFps = new CustomLabel("Frames per second:");
@@ -175,7 +175,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblFps.anchor = GridBagConstraints.EAST;
         gbc_lblFps.insets = new Insets(0, 0, 5, 5);
         gbc_lblFps.gridx = 1;
-        gbc_lblFps.gridy = 12;
+        gbc_lblFps.gridy = 8;
         add(lblFps, gbc_lblFps);
 
         comboBoxVideoRate = new CustomComboBox();
@@ -184,7 +184,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxVideoRate.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxVideoRate.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxVideoRate.gridx = 2;
-        gbc_comboBoxVideoRate.gridy = 12;
+        gbc_comboBoxVideoRate.gridy = 8;
         add(comboBoxVideoRate, gbc_comboBoxVideoRate);
 
         CustomLabel lblKeyFrame = new CustomLabel("Key frame:");
@@ -192,7 +192,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblKeyFrame.anchor = GridBagConstraints.EAST;
         gbc_lblKeyFrame.insets = new Insets(0, 0, 5, 5);
         gbc_lblKeyFrame.gridx = 1;
-        gbc_lblKeyFrame.gridy = 13;
+        gbc_lblKeyFrame.gridy = 9;
         add(lblKeyFrame, gbc_lblKeyFrame);
 
         checkBoxKeyFrame = new CustomCheckBox("");
@@ -200,7 +200,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_checkBoxKeyFrame.anchor = GridBagConstraints.WEST;
         gbc_checkBoxKeyFrame.insets = new Insets(0, 0, 5, 5);
         gbc_checkBoxKeyFrame.gridx = 2;
-        gbc_checkBoxKeyFrame.gridy = 13;
+        gbc_checkBoxKeyFrame.gridy = 9;
         add(checkBoxKeyFrame, gbc_checkBoxKeyFrame);
 
         CustomLabel lblFormatKeyframe = new CustomLabel("Format:");
@@ -208,7 +208,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblFormatKeyframe.anchor = GridBagConstraints.EAST;
         gbc_lblFormatKeyframe.insets = new Insets(0, 0, 5, 5);
         gbc_lblFormatKeyframe.gridx = 2;
-        gbc_lblFormatKeyframe.gridy = 13;
+        gbc_lblFormatKeyframe.gridy = 9;
         add(lblFormatKeyframe, gbc_lblFormatKeyframe);
 
         comboBoxKeyFrameFormat = new CustomComboBox();
@@ -217,7 +217,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxKeyFrameFormat.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxKeyFrameFormat.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxKeyFrameFormat.gridx = 3;
-        gbc_comboBoxKeyFrameFormat.gridy = 13;
+        gbc_comboBoxKeyFrameFormat.gridy = 9;
         add(comboBoxKeyFrameFormat, gbc_comboBoxKeyFrameFormat);
 
         CustomLabel lblEvery = new CustomLabel("Every:");
@@ -225,7 +225,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblEvery.anchor = GridBagConstraints.EAST;
         gbc_lblEvery.insets = new Insets(0, 0, 5, 5);
         gbc_lblEvery.gridx = 4;
-        gbc_lblEvery.gridy = 13;
+        gbc_lblEvery.gridy = 9;
         add(lblEvery, gbc_lblEvery);
 
         Calendar calendar = Calendar.getInstance();
@@ -242,7 +242,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         GridBagConstraints gbc_spinner = new GridBagConstraints();
         gbc_spinner.anchor = GridBagConstraints.WEST;
         gbc_spinner.gridx = 5;
-        gbc_spinner.gridy = 13;
+        gbc_spinner.gridy = 10;
         add(minuteSpinnerKeyFrame, gbc_spinner);
 
         CustomLabel lblThumbnail = new CustomLabel("Thumbnail:");
@@ -250,7 +250,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblThumbnail.anchor = GridBagConstraints.EAST;
         gbc_lblThumbnail.insets = new Insets(0, 0, 5, 5);
         gbc_lblThumbnail.gridx = 1;
-        gbc_lblThumbnail.gridy = 14;
+        gbc_lblThumbnail.gridy = 10;
         add(lblThumbnail, gbc_lblThumbnail);
 
         checkBoxThumbnail = new CustomCheckBox("");
@@ -258,7 +258,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_checkBoxThumbnail.anchor = GridBagConstraints.WEST;
         gbc_checkBoxThumbnail.insets = new Insets(0, 0, 5, 5);
         gbc_checkBoxThumbnail.gridx = 2;
-        gbc_checkBoxThumbnail.gridy = 14;
+        gbc_checkBoxThumbnail.gridy = 10;
         add(checkBoxThumbnail, gbc_checkBoxThumbnail);
 
         CustomLabel lblThumbnailFormat = new CustomLabel("Format:");
@@ -266,7 +266,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_ThumbnailFormat.anchor = GridBagConstraints.EAST;
         gbc_ThumbnailFormat.insets = new Insets(0, 0, 5, 5);
         gbc_ThumbnailFormat.gridx = 2;
-        gbc_ThumbnailFormat.gridy = 14;
+        gbc_ThumbnailFormat.gridy = 10;
         add(lblThumbnailFormat, gbc_ThumbnailFormat);
 
         comboBoxThumbnailFormat = new CustomComboBox();
@@ -275,7 +275,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_comboBoxThumbnailFormat.insets = new Insets(0, 0, 5, 5);
         gbc_comboBoxThumbnailFormat.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxThumbnailFormat.gridx = 3;
-        gbc_comboBoxThumbnailFormat.gridy = 14;
+        gbc_comboBoxThumbnailFormat.gridy = 10;
         add(comboBoxThumbnailFormat, gbc_comboBoxThumbnailFormat);
 
         CustomLabel lblAt = new CustomLabel("At:");
@@ -283,7 +283,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_lblAt.anchor = GridBagConstraints.EAST;
         gbc_lblAt.insets = new Insets(0, 0, 5, 5);
         gbc_lblAt.gridx = 4;
-        gbc_lblAt.gridy = 14;
+        gbc_lblAt.gridy = 10;
         add(lblAt, gbc_lblAt);
 
         SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
@@ -295,7 +295,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         GridBagConstraints gbc_minuteSpinnerTo = new GridBagConstraints();
         gbc_minuteSpinnerTo.anchor = GridBagConstraints.WEST;
         gbc_minuteSpinnerTo.gridx = 5;
-        gbc_minuteSpinnerTo.gridy = 14;
+        gbc_minuteSpinnerTo.gridy = 10;
         add(minuteSpinnerThumbnail, gbc_minuteSpinnerTo);
 
         btnConvertVideo = new CustomButton("Convert");
@@ -304,7 +304,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         gbc_btnSearch.insets = new Insets(0,0,10,0);
         gbc_btnSearch.gridwidth = 6;
         gbc_btnSearch.gridx = 0;
-        gbc_btnSearch.gridy = 17;
+        gbc_btnSearch.gridy = 11;
         add(btnConvertVideo, gbc_btnSearch);
     }
 

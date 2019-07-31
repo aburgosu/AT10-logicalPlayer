@@ -13,6 +13,7 @@ import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.model.ServiceConnection;
 import com.fundation.logic.model.convertCriteriaBuilderPattern.ConvertCriteria;
 import com.fundation.logic.view.MainFrame;
+import com.fundation.logic.view.PopUpMessage;
 import com.fundation.logic.view.resultTable.DetailsFrame;
 import com.fundation.logic.view.resultTable.PlayerFrame;
 import com.fundation.logic.view.resultTable.PopupMenu;
@@ -84,15 +85,15 @@ public class ConvertController {
     public void convert(String convertType) {
         ConvertCriteria criteria = setConvertCriteria(convertType);
         try {
-            JOptionPane.showMessageDialog(mainFrame, "Conversion in proccess...\nplease wait confirmation message");
+            PopUpMessage.showPopupMessage(mainFrame, "Service Connection", "Conversion in proccess...\nplease wait confirmation message");
             serviceConnection.convert(criteria);
             while (true) {
                 if (serviceConnection.getStatus() == ServiceConnection.SUCCESS) {
-                    JOptionPane.showMessageDialog(mainFrame, "Conversion successful");
+                     PopUpMessage.showPopupMessage(mainFrame, "Service Connection", "Conversion successful");
                     break;
                 }
                 if (serviceConnection.getStatus() == ServiceConnection.ERROR) {
-                    JOptionPane.showMessageDialog(mainFrame, "Error in conversion, please contact support");
+                    PopUpMessage.showPopupMessage(mainFrame, "Service Connection", "Error in conversion, please contact support");
                     break;
                 }
                 Thread.sleep(5000);

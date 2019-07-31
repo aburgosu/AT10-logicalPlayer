@@ -22,8 +22,6 @@ import java.awt.Font;
 public class CustomComboBox extends JComboBox {
     public CustomComboBox() {
         super();
-        Color comboBoxColor = new Color(255, 240,245);
-        setBackground(comboBoxColor);
         Font font = new Font("Calibri", 3, 14);
         setFont(font);
     }
