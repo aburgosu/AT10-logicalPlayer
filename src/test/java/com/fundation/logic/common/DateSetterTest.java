@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) 2019 Jalasoft.
+ *
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jalasoft.
+ */
 package com.fundation.logic.common;
 
 import org.junit.Assert;
@@ -8,6 +17,12 @@ import java.util.Date;
 
 import static java.util.Calendar.HOUR_OF_DAY;
 
+/**
+ * Implements setters time test.
+ *
+ * @author Maday Alcalá
+ * @version 1.0
+ */
 public class DateSetterTest {
 
     /**
