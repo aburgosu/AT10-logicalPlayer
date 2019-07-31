@@ -196,7 +196,7 @@ public class GeneralSearchPanel extends CustomPanelSecond {
         add(lblMimeType, gbc_lblMimeType);
 
         comboBoxMimeType = new CustomComboBox();
-        comboBoxMimeType.setModel(new DefaultComboBoxModel(new String[] {"All","Audio", "Video", "Image", "Text",
+        comboBoxMimeType.setModel(new DefaultComboBoxModel(new String[] {"All","Audio", "Video", "Image",
             "Application"}));
         GridBagConstraints gbc_comboBoxMimeType = new GridBagConstraints();
         gbc_comboBoxMimeType.gridwidth = 2;
