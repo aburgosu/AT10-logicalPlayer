@@ -65,10 +65,7 @@ public class SearchController {
     public List makeSearch(Criteria criteria) {
         this.searchEngine = searchFactory.createSearch(criteria);
         List<File> foundFiles = new ArrayList<>();
-        if(criteria != null){
-            PopUpMessage.showPopupMessage(mainFrame, "Service Connection", "Conversion in proccess...\nplease wait confirmation message");
-            foundFiles = searchEngine.search();
-        }
+        foundFiles = searchEngine.search();
         return foundFiles;
     }
 
@@ -359,7 +356,7 @@ public class SearchController {
         criteria.setHeight(resolution);
         return criteria;
     }
-    
+
     /**
      * Validates entered data ans shows a message. according to error.
      */
@@ -387,27 +384,35 @@ public class SearchController {
                 if (toDateCreation.before(fromDateCreation)) {
                     PopUpMessage.showPopupMessage("Invalid Created Date",
                             "The date on the left must be less than the date on the right.");
+                }else{
+                    showSearchResult(COMMON_SEARCH);
                 }
             }
             if (dateModificationFrom != null && dateModificationTo != null) {
                 if (dateModificationTo.before(dateModificationFrom)) {
                     PopUpMessage.showPopupMessage("Invalid Modified Date",
                             "The date on the left must be less than the date on the right.");
+                }else{
+                    showSearchResult(COMMON_SEARCH);
                 }
             }
             if (dateAccessFrom != null && dateAccessTo != null) {
                 if (dateAccessTo.before(dateAccessFrom)) {
                     PopUpMessage.showPopupMessage("Invalid Accessed Date",
                             "The date on the left must be less than the date on the right.");
+                }else{
+                    showSearchResult(COMMON_SEARCH);
                 }
             }
             if (sizeFrom != null && sizeTo != null) {
                 if (sizeTo.compareTo(sizeFrom) < 0) {
                     PopUpMessage.showPopupMessage("Error Message",
                             "The size of the left must be smaller than the size of the right");
+                }else{
+                    showSearchResult(COMMON_SEARCH);
                 }
             }
-            showSearchResult(COMMON_SEARCH);
+
         }else {
             PopUpMessage.showPopupMessage("Invalid Path",
                     "The path is not correct or does not exist.");

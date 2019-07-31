@@ -9,12 +9,11 @@
  */
 package com.fundation.logic.view;
 
-import com.fundation.logic.view.customElements.CustomLabel;
-import com.fundation.logic.view.customElements.CustomPanel;
 import com.fundation.logic.view.customElements.CustomPanelSecond;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import java.awt.Color;
 
 /**
  * Implements the PopUpMessage class
