@@ -22,8 +22,6 @@ import java.awt.Font;
 public class CustomTextField extends JTextField {
     public CustomTextField() {
         super();
-        Color textFieldColor = new Color(220, 220, 220);
-        setBackground(textFieldColor);
         Font font = new Font("Calibri", 3, 12);
         setFont(font);
     }

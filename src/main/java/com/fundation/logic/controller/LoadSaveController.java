@@ -18,6 +18,7 @@ import com.fundation.logic.model.searchCriteria.Criteria;
 import com.fundation.logic.model.searchCriteria.Image;
 import com.fundation.logic.model.searchCriteria.Video;
 import com.fundation.logic.view.MainFrame;
+import com.fundation.logic.view.PopUpMessage;
 import com.fundation.logic.view.loadSaveCriteria.NameFrame;
 import com.fundation.logic.view.loadSaveCriteria.PopupLoadSave;
 
@@ -142,6 +143,20 @@ public class LoadSaveController {
                 .getFieldDateFirstDate().getDate();
             Date endDate = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getDateSearchPanel()
                 .getFieldDateSecondDate().getDate();
+            if (startDate == null) {
+                startDate = null;
+            }
+
+            if (endDate == null) {
+                endDate = null;
+            }
+
+            if (startDate != null && endDate != null) {
+                if (endDate.before(startDate)) {
+                PopUpMessage.showPopupMessage("Invalid Date",
+                    "The date on the left must be less than the date on the right.");
+                }
+            }
             showFilterByDate(startDate, endDate);
         });
     }

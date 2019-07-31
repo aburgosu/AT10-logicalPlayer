@@ -23,6 +23,7 @@ import com.fundation.logic.view.MainFrame;
 import com.fundation.logic.view.PopUpMessage;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -63,7 +64,8 @@ public class SearchController {
      */
     public List makeSearch(Criteria criteria) {
         this.searchEngine = searchFactory.createSearch(criteria);
-        List<File> foundFiles = searchEngine.search();
+        List<File> foundFiles = new ArrayList<>();
+        foundFiles = searchEngine.search();
         return foundFiles;
     }
 
@@ -181,38 +183,6 @@ public class SearchController {
         String readOnly = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
                 .getGeneralSearchPanel().getComboBoxReadOnly().getSelectedItem().toString();
 
-        /**
-         * Validates entered data ans shows a message. according to error.
-         */
-        if (!Validators.isValidPath(path)) {
-            PopUpMessage.showPopupMessage("Information Message",
-                    "The path is not correct or does not exist.");
-        }
-
-        if (fromDateCreation != null && toDateCreation != null) {
-            if (toDateCreation.before(fromDateCreation)) {
-                PopUpMessage.showPopupMessage("Invalid Created Date",
-                        "The date on the left must be less than the date on the right.");
-            }
-        }
-        if (dateModificationFrom != null && dateModificationTo != null) {
-            if (dateModificationTo.before(dateModificationFrom)) {
-                PopUpMessage.showPopupMessage("Invalid Modified Date",
-                        "The date on the left must be less than the date on the right.");
-            }
-        }
-        if (dateAccessFrom != null && dateAccessTo != null) {
-            if (dateAccessTo.before(dateAccessFrom)) {
-                PopUpMessage.showPopupMessage("Invalid Accessed Date",
-                        "The date on the left must be less than the date on the right.");
-            }
-        }
-        if (sizeFrom != null && sizeTo != null) {
-            if (sizeTo.compareTo(sizeFrom) < 0) {
-                PopUpMessage.showPopupMessage("Error Message",
-                        "The size of the left must be smaller than the size of the right");
-            }
-        }
         criteria.setPath(path);
         criteria.setFileName(fileName);
         criteria.setExtension(extensionName);
@@ -388,13 +358,74 @@ public class SearchController {
     }
 
     /**
+     * Validates entered data ans shows a message. according to error.
+     */
+    public void ValidateForm(){
+        String path = mainFrame.getMainTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath()
+                .getText();
+        String sizeFrom = (mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getGeneralSearchPanel().getTextFieldSizeFrom().getText());
+        String sizeTo = (mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
+                .getTextFieldSizeTo().getText());
+        Date fromDateCreation = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getGeneralSearchPanel().getTextFieldFromDateCreation().getDate();
+        Date toDateCreation = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getGeneralSearchPanel().getFieldToDateCreation().getDate();
+        Date dateAccessFrom = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getGeneralSearchPanel().getFieldDateAccessFrom().getDate();
+        Date dateAccessTo = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getGeneralSearchPanel().getFieldDateAccessTo().getDate();
+        Date dateModificationFrom = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getGeneralSearchPanel().getFieldDateModificationFrom().getDate();
+        Date dateModificationTo = mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab()
+                .getGeneralSearchPanel().getFieldDateModificationTo().getDate();
+        if (Validators.isValidPath(path)) {
+            if (fromDateCreation != null && toDateCreation != null) {
+                if (toDateCreation.before(fromDateCreation)) {
+                    PopUpMessage.showPopupMessage("Invalid Created Date",
+                            "The date on the left must be less than the date on the right.");
+                }else{
+                    showSearchResult(COMMON_SEARCH);
+                }
+            }
+            if (dateModificationFrom != null && dateModificationTo != null) {
+                if (dateModificationTo.before(dateModificationFrom)) {
+                    PopUpMessage.showPopupMessage("Invalid Modified Date",
+                            "The date on the left must be less than the date on the right.");
+                }else{
+                    showSearchResult(COMMON_SEARCH);
+                }
+            }
+            if (dateAccessFrom != null && dateAccessTo != null) {
+                if (dateAccessTo.before(dateAccessFrom)) {
+                    PopUpMessage.showPopupMessage("Invalid Accessed Date",
+                            "The date on the left must be less than the date on the right.");
+                }else{
+                    showSearchResult(COMMON_SEARCH);
+                }
+            }
+            if (sizeFrom != null && sizeTo != null) {
+                if (sizeTo.compareTo(sizeFrom) < 0) {
+                    PopUpMessage.showPopupMessage("Error Message",
+                            "The size of the left must be smaller than the size of the right");
+                }else{
+                    showSearchResult(COMMON_SEARCH);
+                }
+            }
+
+        }else {
+            PopUpMessage.showPopupMessage("Invalid Path",
+                    "The path is not correct or does not exist.");
+        }}
+
+    /**
      * Listens to Search buttons in every panel to call the search methods with appropriate argument.
      */
     public void listenSearchButtons() {
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getGeneralSearchPanel()
                 .getSearchButton().addActionListener(e -> {
             mainFrame.getTableResult().clearTableResult();
-            showSearchResult(COMMON_SEARCH);
+            ValidateForm();
         });
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced()
                 .getBtnSearchAdvanceVideoPanel().addActionListener(e -> {

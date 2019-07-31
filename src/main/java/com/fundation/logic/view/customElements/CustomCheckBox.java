@@ -22,7 +22,7 @@ import java.awt.Font;
 public class CustomCheckBox extends JCheckBox {
     public CustomCheckBox(String check) {
         super();
-        Color checkBoxColor = new Color(119, 136, 153);
+        Color checkBoxColor = new Color(32, 178, 170);
         setBackground(checkBoxColor);
         Font font = new Font("Calibri", 3, 20);
         setFont(font);
