@@ -13,10 +13,14 @@ import com.fundation.logic.common.FileInfo;
 import com.fundation.logic.model.ServiceConnection;
 import com.fundation.logic.model.convertCriteriaBuilderPattern.ConvertCriteria;
 import com.fundation.logic.view.MainFrame;
+import com.fundation.logic.view.resultTable.DetailsFrame;
+import com.fundation.logic.view.resultTable.PlayerFrame;
+import com.fundation.logic.view.resultTable.PopupMenu;
 
 import javax.swing.JOptionPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 /**
  * Implements the ConvertController class.
@@ -55,7 +59,7 @@ public class ConvertController {
         this.mainFrame = searchFrame;
         this.serviceConnection = new ServiceConnection("http://127.0.0.1/convert");
         listenConvertButtons();
-        listenConvertItem();
+        listenTableResult();
     }
 
     /**
@@ -312,34 +316,79 @@ public class ConvertController {
     }
 
     /**
-     * Listen to convert option on table result popupmenu.
+     * Listen to table result to show PopupMenu.
      */
-    public void listenConvertItem() {
+    public void listenTableResult() {
+        final int PATH_COLUMN = 0;
+        final int METADATA_COLUMN = 7;
         try {
-            String path = mainFrame.getTableResult().getMenu().getFilePath();
-            mainFrame.getTableResult().getMenu().getConvertItem().addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent event) {
-                    if (event.getButton() == MouseEvent.BUTTON1) {
-                        if (FileInfo.isAudio(path)) {
-                            mainFrame.getMainTabs().getSplitPanelConvert().getBasicConvert().getTextFieldSourcePath()
-                                    .setText(path);
-                            mainFrame.getMainTabs().setSelectedIndex(2);
-                            mainFrame.getMainTabs().getSplitPanelConvert().getConverterTab().setSelectedIndex(0);
-                            mainFrame.repaint();
+            mainFrame.getTableResult().addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent me) {
+                    if (me.getButton() == MouseEvent.BUTTON3) {
+                        int row = mainFrame.getTableResult().getSelectedRow();
+                        String filePath = (String) mainFrame.getTableResult().getModel().getValueAt(row, PATH_COLUMN);
+                        List<String> metadata = (List) mainFrame.getTableResult().getModel().getValueAt(row, METADATA_COLUMN);
+                        PopupMenu menu = new PopupMenu(filePath, metadata);
+                        menu.show(me.getComponent(), me.getX(), me.getY());
+                        menu.setVisible(true);
+                        try {
+                            menu.getPlayItem().addMouseListener(new MouseAdapter() {
+                                @Override
+                                public void mousePressed(MouseEvent event) {
+                                    if (event.getButton() == MouseEvent.BUTTON1) {
+                                        PlayerFrame playerWindow = new PlayerFrame(filePath);
+                                        playerWindow.setVisible(true);
+                                    }
+                                }
+                            });
+                        } catch (Exception exception) {
+                            exception.getMessage();
                         }
-                        if (FileInfo.isVideo(path)) {
-                            mainFrame.getMainTabs().getSplitPanelConvert().getBasicConvert().getTextFieldSourcePath()
-                                    .setText(path);
-                            mainFrame.getMainTabs().setSelectedIndex(2);
-                            mainFrame.getMainTabs().getSplitPanelConvert().getConverterTab().setSelectedIndex(1);
-                            mainFrame.repaint();
+                        try {
+                            menu.getDetailsItem().addMouseListener(new MouseAdapter() {
+                                @Override
+                                public void mousePressed(MouseEvent event) {
+                                    if (event.getButton() == MouseEvent.BUTTON1) {
+                                        DetailsFrame details = new DetailsFrame(filePath, metadata);
+                                        details.setVisible(true);
+                                    }
+                                }
+                            });
+                        } catch (Exception exception) {
+                            exception.getMessage();
+                        }
+                        try {
+                            menu.getConvertItem().addMouseListener(new MouseAdapter() {
+                                @Override
+                                public void mousePressed(MouseEvent event) {
+                                    if (event.getButton() == MouseEvent.BUTTON1) {
+                                        if (FileInfo.isAudio(filePath)) {
+                                            mainFrame.getMainTabs().getSplitPanelConvert().getBasicConvert()
+                                                    .getTextFieldSourcePath().setText(filePath);
+                                            mainFrame.getMainTabs().setSelectedIndex(2);
+                                            mainFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
+                                                    .setSelectedIndex(0);
+                                            mainFrame.repaint();
+                                        }
+                                        if (FileInfo.isVideo(filePath)) {
+                                            mainFrame.getMainTabs().getSplitPanelConvert().getBasicConvert()
+                                                    .getTextFieldSourcePath().setText(filePath);
+                                            mainFrame.getMainTabs().setSelectedIndex(2);
+                                            mainFrame.getMainTabs().getSplitPanelConvert().getConverterTab()
+                                                    .setSelectedIndex(1);
+                                            mainFrame.repaint();
+                                        }
+                                    }
+                                }
+                            });
+                        } catch (Exception exception) {
+                            exception.getMessage();
                         }
                     }
                 }
             });
-        } catch (Exception exception) {
-            exception.getMessage();
+        } catch (Exception firstException) {
+            firstException.getMessage();
         }
     }
 }

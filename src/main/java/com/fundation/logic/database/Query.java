@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implements insert in a table.
+ * Implements queries for database.
  *
  * @author Andres Burgos, Jesus Menacho, Melissa Román
  * @version 1.0

@@ -45,7 +45,6 @@ public class TableResult extends CustomTable {
         getTableHeader().getColumnModel().getColumn(7).setMaxWidth(0);
         getTableHeader().getColumnModel().getColumn(7).setMinWidth(0);
         this.getColumn(this.getColumnName(0)).setPreferredWidth(300);
-        this.initListen();
     }
 
     /**
@@ -65,37 +64,5 @@ public class TableResult extends CustomTable {
         model.setRowCount(0);
         model.fireTableDataChanged();
         revalidate();
-    }
-
-    /**
-     * Listen to right click to play the selected row's file.
-     */
-    public void initListen() {
-        final int PATH_COLUMN = 0;
-        final int METADATA_COLUMN = 7;
-        try {
-            this.addMouseListener(new MouseAdapter() {
-                public void mouseClicked(MouseEvent me) {
-                    if (me.getButton() == MouseEvent.BUTTON3) {
-                        int row = getSelectedRow();
-                        String filePath = (String) model.getValueAt(row, PATH_COLUMN);
-                        List<String> metadata = (List) model.getValueAt(row, METADATA_COLUMN);
-                        menu = new PopupMenu(filePath, metadata);
-                        menu.show(me.getComponent(), me.getX(), me.getY());
-                        menu.setVisible(true);
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.getMessage();
-        }
-    }
-
-    /**
-     * Allows to get Popupmenu.
-     * @return menu.
-     */
-    public PopupMenu getMenu() {
-        return menu;
     }
 }
