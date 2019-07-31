@@ -242,7 +242,7 @@ public class ConvertVideoPanel extends CustomPanelSecond {
         GridBagConstraints gbc_spinner = new GridBagConstraints();
         gbc_spinner.anchor = GridBagConstraints.WEST;
         gbc_spinner.gridx = 5;
-        gbc_spinner.gridy = 10;
+        gbc_spinner.gridy = 9;
         add(minuteSpinnerKeyFrame, gbc_spinner);
 
         CustomLabel lblThumbnail = new CustomLabel("Thumbnail:");
