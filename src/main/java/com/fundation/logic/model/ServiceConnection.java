@@ -42,12 +42,20 @@ public class ServiceConnection {
     public static final int SUCCESS=1;
     public static final int ERROR=2;
 
+    /**
+     * Create the instance of Service connection, reading config.properties file.
+     * @return Endpoint to the endpoint service.
+     */
     public ServiceConnection() {
         httpClient = HttpClients.createDefault();
         String uri = readConfigurationEndpoint();
         httpPost = new HttpPost(uri);
     }
 
+    /**
+     * Connect to the Configuration File for endpoint server.
+     * @return Endpoint to the endpoint service.
+     */
     private String readConfigurationEndpoint() {
         InputStream inputProperties;
         Properties properties = new Properties();
