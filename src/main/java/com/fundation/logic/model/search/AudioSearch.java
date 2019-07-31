@@ -135,7 +135,7 @@ public class AudioSearch implements ISearch {
      * Convert specific duration to decimal.
      * @return decimal duration.
      */
-    public Float convertDurationToDecimal(String duration) {
+    private Float convertDurationToDecimal(String duration) {
         Float hourToSeconds = new Float(3600);
         Float minuteToSeconds = new Float(60);
         Float hour = Float.parseFloat(duration.substring(0, 2)) * hourToSeconds;
