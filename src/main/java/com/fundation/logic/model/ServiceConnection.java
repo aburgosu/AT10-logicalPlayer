@@ -38,9 +38,9 @@ public class ServiceConnection {
     private HttpPost httpPost;
     private int status;
 
-    public static final int IN_PROCCES=0;
-    public static final int SUCCESS=1;
-    public static final int ERROR=2;
+    public static final int IN_PROCCES = 0;
+    public static final int SUCCESS = 1;
+    public static final int ERROR = 2;
 
     /**
      * Create the instance of Service connection, reading config.properties file.
