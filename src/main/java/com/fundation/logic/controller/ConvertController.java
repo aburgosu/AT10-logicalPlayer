@@ -387,8 +387,8 @@ public class ConvertController {
                     }
                 }
             });
-        } catch (Exception e) {
-            e.getMessage();
+        } catch (Exception firstException) {
+            firstException.getMessage();
         }
     }
 }

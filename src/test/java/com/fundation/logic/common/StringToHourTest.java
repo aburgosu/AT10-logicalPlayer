@@ -6,11 +6,12 @@
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into
  * with Jalasoft.
- */package com.fundation.logic.common;
+ */
+package com.fundation.logic.common;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Implements StringToHour tests.

@@ -23,12 +23,14 @@ import java.awt.Rectangle;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 
 /**
  * Implements the player frame with playing control buttons
  *
- * @author Melissa Román
+ * @author Melissa Román, Maday Alcalá
  * @version 1.0
  */
 public class PlayerFrame extends CustomJFrame {
@@ -45,7 +47,7 @@ public class PlayerFrame extends CustomJFrame {
     private PlayerButtonListener buttonListener;
 
     /**
-     * Searchs for required vlc libraries: libvlc.dll libvlccore.dll
+     * Searches for required vlc libraries: libvlc.dll libvlccore.dll
      */
     static {
         NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "thirdParty/vlc-3.0.7.1/");
@@ -58,6 +60,7 @@ public class PlayerFrame extends CustomJFrame {
     public PlayerFrame(String path) {
         initComponent(path);
         initSetting();
+        listenToFinishReproduction();
     }
 
     /**
@@ -92,7 +95,7 @@ public class PlayerFrame extends CustomJFrame {
     }
 
     /**
-     * Set all PlayerFrame components
+     * Sets all PlayerFrame components
      */
     private void initSetting() {
         setLocationRelativeTo(null);
@@ -134,5 +137,17 @@ public class PlayerFrame extends CustomJFrame {
         progressBar.setEnabled(true);
         //Sends all required arguments to buttonListener's listen method
         buttonListener.listen(playButton, stopButton, pauseButton, player, fileToBePlayed, progressBar, volumeSlider);
+    }
+
+    /**
+     * Finishes playing the file when window un closed.
+     */
+    private void listenToFinishReproduction() {
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                player.getMediaPlayer().stop();
+            }
+        });
     }
 }

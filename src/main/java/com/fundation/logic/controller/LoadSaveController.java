@@ -43,7 +43,6 @@ public class LoadSaveController {
         this.mainFrame = mainFrame;
         this.searchController = searchController;
         queryCriteria = new QueryForCriteria();
-        showLoadSaveData();
         listenFilterButton();
         listenSaveButtons();
         listenTable();
@@ -151,40 +150,48 @@ public class LoadSaveController {
      */
     public void listenTable() {
         final int ID_COLUMN = 3;
-        mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
-                .addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent me) {
-                if (me.getButton() == MouseEvent.BUTTON3) {
-                    PopupLoadSave menu = new PopupLoadSave();
-                    menu.show(me.getComponent(), me.getX(), me.getY());
-                    menu.setVisible(true);
-                    int row = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
-                            .getSelectedRow();
-                    String id = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel()
-                            .getDataTable().getValueAt(row, ID_COLUMN).toString();
-                    menu.getLoadItem().addMouseListener(new MouseAdapter() {
-                        @Override
-                        public void mousePressed(MouseEvent event) {
-                        if (event.getButton() == MouseEvent.BUTTON1) {
-                                CriteriaRecord criteriaRecordToLoad = queryCriteria.getCriteriaRecordById(id);
-                                        loadCriteria(criteriaRecordToLoad);
+        try {
+            mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
+                    .addMouseListener(new MouseAdapter() {
+                        public void mouseClicked(MouseEvent me) {
+                            if (me.getButton() == MouseEvent.BUTTON3) {
+                                PopupLoadSave menu = new PopupLoadSave();
+                                menu.show(me.getComponent(), me.getX(), me.getY());
+                                menu.setVisible(true);
+                                int row = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel().getDataTable()
+                                        .getSelectedRow();
+                                String id = mainFrame.getMainTabs().getSplitPanelSavedCriteria().getLoadSavePanel()
+                                        .getDataTable().getValueAt(row, ID_COLUMN).toString();
+                                menu.getLoadItem().addMouseListener(new MouseAdapter() {
+                                    @Override
+                                    public void mousePressed(MouseEvent event) {
+                                        if (event.getButton() == MouseEvent.BUTTON1) {
+                                            CriteriaRecord criteriaRecordToLoad = queryCriteria.getCriteriaRecordById(id);
+                                            loadCriteria(criteriaRecordToLoad);
+                                        }
                                     }
-                                }
-                            });
-                            menu.getDeleteItem().addMouseListener(new MouseAdapter() {
-                                @Override
-                                public void mousePressed(MouseEvent event) {
-                                    if (event.getButton() == MouseEvent.BUTTON1) {
-                                        queryCriteria.deleteById(id);
-                                        showLoadSaveData();
+                                });
+                                menu.getDeleteItem().addMouseListener(new MouseAdapter() {
+                                    @Override
+                                    public void mousePressed(MouseEvent event) {
+                                        if (event.getButton() == MouseEvent.BUTTON1) {
+                                            queryCriteria.deleteById(id);
+                                            showLoadSaveData();
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }
                         }
-                    }
-                });
+                    });
+        } catch (Exception exception) {
+            exception.getMessage();
+        }
     }
 
+    /**
+     * Loads search form according to criteria record.
+     * @param criteriaRecord - Criteria record to be loaded.
+     */
     public void loadCriteria(CriteriaRecord criteriaRecord) {
         Criteria criteriaToLoad = criteriaRecord.getCriteria();
         String type = criteriaRecord.getType();
@@ -216,6 +223,10 @@ public class LoadSaveController {
         }
     }
 
+    /**
+     * Loads search form basic fields according to criteria.
+     * @param criteria - Criteria to be loaded.
+     */
     public void loadBasicSearch(Criteria criteria) {
         //Set path
         mainFrame.getMainTabs().getSplitPanelSearch().getBasicSearchPanel().getTextFieldPath()
@@ -445,7 +456,11 @@ public class LoadSaveController {
         //Set durationFrom
         String durationFrom = criteria.getDurationfrom();
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR, StringToHour.getHours(durationFrom));
+        if(StringToHour.getHours(durationFrom) == 0) {
+            calendar.set(Calendar.HOUR, 24);
+        } else {
+            calendar.set(Calendar.HOUR, StringToHour.getHours(durationFrom));
+        }
         calendar.set(Calendar.MINUTE, StringToHour.getMinutes(durationFrom));
         calendar.set(Calendar.SECOND, StringToHour.getSeconds(durationFrom));
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinner()
@@ -453,7 +468,11 @@ public class LoadSaveController {
         //Set durationTo
         String durationTo = criteria.getDurationTo();
         Calendar calendarTo = Calendar.getInstance();
-        calendarTo.set(Calendar.HOUR, StringToHour.getHours(durationTo));
+        if(StringToHour.getHours(durationTo) == 0) {
+            calendarTo.set(Calendar.HOUR, 24);
+        } else {
+            calendarTo.set(Calendar.HOUR, StringToHour.getHours(durationTo));
+        }
         calendarTo.set(Calendar.MINUTE, StringToHour.getMinutes(durationTo));
         calendarTo.set(Calendar.SECOND, StringToHour.getSeconds(durationTo));
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinnerTo()
@@ -526,16 +545,24 @@ public class LoadSaveController {
                 .getComboBoxResolution().setSelectedIndex(optionResolution);
         //Set durationFrom
         String durationFrom = criteria.getDurationfrom();
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR, StringToHour.getHours(durationFrom));
-        calendar.set(Calendar.MINUTE, StringToHour.getMinutes(durationFrom));
-        calendar.set(Calendar.SECOND, StringToHour.getSeconds(durationFrom));
+        Calendar calendarFrom = Calendar.getInstance();
+        if(StringToHour.getHours(durationFrom) == 0) {
+            calendarFrom.set(Calendar.HOUR, 24);
+        } else {
+            calendarFrom.set(Calendar.HOUR, StringToHour.getHours(durationFrom));
+        }
+        calendarFrom.set(Calendar.MINUTE, StringToHour.getMinutes(durationFrom));
+        calendarFrom.set(Calendar.SECOND, StringToHour.getSeconds(durationFrom));
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinner()
-                .setValue(calendar.getTime());
+                .setValue(calendarFrom.getTime());
         //Set durationTo
         String durationTo= criteria.getDurationTo();
         Calendar calendarTo = Calendar.getInstance();
-        calendarTo.set(Calendar.HOUR, StringToHour.getHours(durationTo));
+        if(StringToHour.getHours(durationTo) == 0) {
+            calendarTo.set(Calendar.HOUR, 24);
+        } else {
+            calendarTo.set(Calendar.HOUR, StringToHour.getHours(durationTo));
+        }
         calendarTo.set(Calendar.MINUTE, StringToHour.getMinutes(durationTo));
         calendarTo.set(Calendar.SECOND, StringToHour.getSeconds(durationTo));
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinnerTo()
