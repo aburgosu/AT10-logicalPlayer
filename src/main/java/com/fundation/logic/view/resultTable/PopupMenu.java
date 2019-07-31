@@ -13,8 +13,6 @@ import com.fundation.logic.common.FileInfo;
 
 import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.List;
 
 /**
@@ -45,39 +43,6 @@ public class PopupMenu extends JPopupMenu {
         }
         detailsItem = new JMenuItem("Details");
         add(detailsItem);
-        initItemMenuListener();
-    }
-
-    /**
-     * Initializes item menu listener.
-     */
-    public void initItemMenuListener(){
-        try {
-            playItem.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent event) {
-                    if (event.getButton() == MouseEvent.BUTTON1) {
-                        PlayerFrame playerWindow = new PlayerFrame(filePath);
-                        playerWindow.setVisible(true);
-                    }
-                }
-            });
-        } catch (Exception exception) {
-            exception.getMessage();
-        }
-        try {
-            detailsItem.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent event) {
-                    if (event.getButton() == MouseEvent.BUTTON1) {
-                        DetailsFrame details = new DetailsFrame(filePath, detailsList);
-                        details.setVisible(true);
-                    }
-                }
-            });
-        } catch (Exception exception) {
-            exception.getMessage();
-        }
     }
 
     /**
@@ -89,10 +54,18 @@ public class PopupMenu extends JPopupMenu {
     }
 
     /**
-     * Allows to get selected file path.
-     * @return filePath.
+     * Allows to get play item.
+     * @return playItem.
      */
-    public String getFilePath() {
-        return filePath;
+    public JMenuItem getPlayItem() {
+        return playItem;
+    }
+
+    /**
+     * Allows to get details item.
+     * @return detailsItem.
+     */
+    public JMenuItem getDetailsItem() {
+        return detailsItem;
     }
 }
