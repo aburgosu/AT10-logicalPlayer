@@ -190,16 +190,4 @@ public class CommonSearch implements ISearch {
         return (fileExtractorDate.after(DateSetter.setStartOfDay(lowerLimit)) &&
                 fileExtractorDate.before(DateSetter.setEndOfDay(upperLimit)));
     }
-
-    /**
-     * Evaluates file's mimeType according on selected searchCriteria.
-     *
-     * @return Answer after evaluation.
-     */
-    private boolean evaluateStringContains(String fileExtractorCriteria, String criteria) {
-        if (criteria == null || fileExtractorCriteria.contains(criteria.toLowerCase())) {
-            return true;
-        }
-        return false;
-    }
 }

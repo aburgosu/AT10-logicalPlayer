@@ -138,7 +138,7 @@ public class VideoSearch implements ISearch {
         return false;
     }
 
-    public Float convertDurationToDecimal(String duration){
+    private Float convertDurationToDecimal(String duration){
         Float hourToSeconds = new Float(3600);
         Float minuteToSeconds = new Float(60);
         Float hour = Float.parseFloat(duration.substring(0, 2)) * hourToSeconds;
