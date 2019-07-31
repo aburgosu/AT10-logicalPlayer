@@ -449,22 +449,22 @@ public class LoadSaveController {
         calendar.set(Calendar.HOUR, StringToHour.getHours(durationFrom));
         calendar.set(Calendar.MINUTE, StringToHour.getMinutes(durationFrom));
         calendar.set(Calendar.SECOND, StringToHour.getSeconds(durationFrom));
-        SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
-        minuteSpinnerModelFrom.setValue(calendar.getTime());
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinner()
-                .setModel(minuteSpinnerModelFrom);
+                .setValue(calendar.getTime());
         //Set durationTo
         String durationTo = criteria.getDurationTo();
         Calendar calendarTo = Calendar.getInstance();
         calendarTo.set(Calendar.HOUR, StringToHour.getHours(durationTo));
         calendarTo.set(Calendar.MINUTE, StringToHour.getMinutes(durationTo));
         calendarTo.set(Calendar.SECOND, StringToHour.getSeconds(durationTo));
-        SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
-        minuteSpinnerModelTo.setValue(calendar.getTime());
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced().getMinuteSpinnerTo()
-                .setModel(minuteSpinnerModelTo);
+                .setValue(calendarTo.getTime());
     }
 
+    /**
+     * Loads Video advance panel search form according to criteria input.
+     * @param criteria - Video criteria to be loaded.
+     */
     public void loadVideoCriteria(Video criteria) {
         loadBasicSearch(criteria);
         //Set video codec
@@ -531,20 +531,16 @@ public class LoadSaveController {
         calendar.set(Calendar.HOUR, StringToHour.getHours(durationFrom));
         calendar.set(Calendar.MINUTE, StringToHour.getMinutes(durationFrom));
         calendar.set(Calendar.SECOND, StringToHour.getSeconds(durationFrom));
-        SpinnerDateModel minuteSpinnerModelFrom = new SpinnerDateModel();
-        minuteSpinnerModelFrom.setValue(calendar.getTime());
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinner()
-                .setModel(minuteSpinnerModelFrom);
+                .setValue(calendar.getTime());
         //Set durationTo
-        String durationTo= criteria.getDurationfrom();
+        String durationTo= criteria.getDurationTo();
         Calendar calendarTo = Calendar.getInstance();
         calendarTo.set(Calendar.HOUR, StringToHour.getHours(durationTo));
         calendarTo.set(Calendar.MINUTE, StringToHour.getMinutes(durationTo));
         calendarTo.set(Calendar.SECOND, StringToHour.getSeconds(durationTo));
-        SpinnerDateModel minuteSpinnerModelTo = new SpinnerDateModel();
-        minuteSpinnerModelTo.setValue(calendar.getTime());
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced().getMinuteSpinnerTo()
-                .setModel(minuteSpinnerModelTo);
+                .setValue(calendarTo.getTime());
     }
 }
 
