@@ -11,7 +11,6 @@ package com.fundation.logic.view.search;
 
 import com.fundation.logic.view.customElements.CustomPanelSecond;
 import com.fundation.logic.view.customElements.CustomButton;
-import com.fundation.logic.view.customElements.CustomCheckBox;
 import com.fundation.logic.view.customElements.CustomLabel;
 import com.fundation.logic.view.customElements.CustomComboBox;
 import com.fundation.logic.view.customElements.CustomTextField;
@@ -375,58 +374,9 @@ public class GeneralSearchPanel extends CustomPanelSecond {
     }
 
     /**
-     * This method return the BtnSearch button.
-     */
-    public CustomButton getBtnSearch() {
-        return btnSearch;
-    }
-
-    /**
      * This method return the getBtnSave button.
      */
     public CustomButton getBtnSave() {
         return btnSave;
-    }
-
-    /**
-     * This method set the Field DateModificationFrom.
-     */
-    public void setFieldDateModificationFrom(JDateChooser fieldDateModificationFrom) {
-        this.fieldDateModificationFrom = fieldDateModificationFrom;
-    }
-
-    /**
-     * This method set theField DateModificationTo.
-     */
-    public void setFieldDateModificationTo(JDateChooser fieldDateModificationTo) {
-        this.fieldDateModificationTo = fieldDateModificationTo;
-    }
-
-    /**
-     * This method set the Field DateAccessFrom.
-     */
-    public void setFieldDateAccessFrom(JDateChooser fieldDateAccessFrom) {
-        this.fieldDateAccessFrom = fieldDateAccessFrom;
-    }
-
-    /**
-     * This method set the Field DateAccessTo.
-     */
-    public void setFieldDateAccessTo(JDateChooser fieldDateAccessTo) {
-        this.fieldDateAccessTo = fieldDateAccessTo;
-    }
-
-    /**
-     * This method set the TextField SizeFrom.
-     */
-    public void setTextFieldSizeFrom(CustomTextField textFieldSizeFrom) {
-        this.textFieldSizeFrom = textFieldSizeFrom;
-    }
-
-    /**
-     * This method set the TextField SizeTo.
-     */
-    public void setTextFieldSizeTo(CustomTextField textFieldSizeTo) {
-        this.textFieldSizeTo = textFieldSizeTo;
     }
 }
