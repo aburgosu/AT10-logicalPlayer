@@ -1,5 +1,19 @@
+# Gradle project-specific cache directory
+.gradle
+.project
+.classpath
+.settings/
+
+# Gradle build output directory
+build
+/bin/
+
+# IDE files
+.idea
+
 # Compiled class file
 *.class
+/out/
 
 # Log file
 *.log
