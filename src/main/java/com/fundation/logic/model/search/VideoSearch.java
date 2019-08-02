@@ -60,7 +60,7 @@ public class VideoSearch implements ISearch {
         String criteriAudioVideoCodec = videoCriteria.getAudioCodec();
         String criteriaFrameRate = videoCriteria.getFrameRate();
         String criteriaHeight = videoCriteria.getHeight();
-        String criteriaLLDuration = videoCriteria.getDurationfrom();
+        String criteriaLLDuration = videoCriteria.getDurationFrom();
         String criteriaLUDuration = videoCriteria.getDurationTo();
         String criteriaMimeType = "video";
         Float initDuration = convertDurationToDecimal(criteriaLLDuration);

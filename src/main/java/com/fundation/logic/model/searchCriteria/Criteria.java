@@ -61,11 +61,4 @@
      public String getFileName() {
          return fileName;
      }
-
-     /**
-      * Equals override to be implemented in subclasses.
-      * @param criteria - Criteria to be compare with.
-      * @return True if two searchCriteria are equal.
-      */
-     public abstract boolean equals(Criteria criteria);
  }

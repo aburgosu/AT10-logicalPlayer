@@ -56,7 +56,7 @@ public class AudioSearch implements ISearch {
         String criteriaFileName = audioCriteria.getFileName();
         String criteriaExtension = audioCriteria.getExtension();
         String criteriAudioCodec = audioCriteria.getAudioCodec();
-        String criteriaLLDuration = audioCriteria.getDurationfrom();
+        String criteriaLLDuration = audioCriteria.getDurationFrom();
         String criteriaLUDuration = audioCriteria.getDurationTo();
         String criteriaChannel = audioCriteria.getChannel();
         String criteriaSampleRate = audioCriteria.getSampleRate();

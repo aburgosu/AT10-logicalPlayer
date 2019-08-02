@@ -18,8 +18,6 @@ package com.fundation.logic.model.searchCriteria;
 public class Audio extends Multimedia {
     private String channel;
     private String sampleRate;
-    private String durationFrom;
-    private String durationTo;
 
     /**
      * @return Audio Channel.
@@ -47,49 +45,5 @@ public class Audio extends Multimedia {
      */
     public void setSampleRate(String  sampleRate) {
         this.sampleRate = sampleRate;
-    }
-
-    /**
-     * Set duration from.
-     */
-    public void setDurationFrom(String durationFrom) {
-        this.durationFrom = durationFrom;
-    }
-
-    public void setDurationTo(String durationTo) {
-        this.durationTo = durationTo;
-    }
-
-    /**
-     * @return durationFrom.
-     */
-    public String getDurationfrom() {
-        return durationFrom;
-    }
-
-    /**
-     * @return durationTo.
-     */
-    public String getDurationTo() {
-        return durationTo;
-    }
-
-    /**
-     * Equals override to compare two audio criteria.
-     * @param criteria - Criteria to be compare with.
-     * @return True if two criteria are equal.
-     */
-    public boolean equals(Criteria criteria) {
-        try {
-            Audio audioCriteria = (Audio) criteria;
-            if(this.getPath().equals(audioCriteria.getPath()) && this.getFileName().equals(audioCriteria.getFileName())
-                    && this.getExtension().equals(audioCriteria.getExtension()) &&
-                    this.channel == audioCriteria.channel && this.sampleRate == audioCriteria.sampleRate) {
-                return true;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-        return false;
     }
 }
