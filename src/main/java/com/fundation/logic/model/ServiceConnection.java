@@ -39,6 +39,7 @@ public class ServiceConnection {
     private int status;
 
     public static final int IN_PROCCES = 0;
+    public static final int WAITING = -1;
     public static final int SUCCESS = 1;
     public static final int ERROR = 2;
 
@@ -50,13 +51,14 @@ public class ServiceConnection {
         httpClient = HttpClients.createDefault();
         String uri = readConfigurationEndpoint();
         httpPost = new HttpPost(uri);
+        this.status = ServiceConnection.WAITING;
     }
 
     /**
      * Connect to the Configuration File for endpoint server.
      * @return Endpoint to the endpoint service.
      */
-    private String readConfigurationEndpoint() {
+    public String readConfigurationEndpoint() {
         InputStream inputProperties;
         Properties properties = new Properties();
         try {
