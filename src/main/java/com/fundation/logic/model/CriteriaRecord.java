@@ -82,19 +82,6 @@ public class CriteriaRecord {
     }
 
     /**
-     * Compare to CriteriaRecord instances.
-     * @param record - CriteriaRecord to be compared with.
-     * @return If objects are equals.
-     */
-    public boolean equals(CriteriaRecord record) {
-        if(this.id == record.id && this.date.equals(record.date) && this.name.equals(record.name) &&
-                this.type.equals(record.type) && this.json.equals(record.json)) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Allows to get a Criteria instance according to type input.
      * @return Criteria according to type.
      */

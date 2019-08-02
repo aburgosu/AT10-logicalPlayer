@@ -18,10 +18,8 @@ package com.fundation.logic.model.searchCriteria;
 public class Video extends Multimedia {
     private String videoCodec;
     private String frameRate;
-    private String width;
     private String height;
-    private String durationFrom;
-    private String durationTo;
+
     /**
      * @return Video Codec.
      */
@@ -51,20 +49,6 @@ public class Video extends Multimedia {
     }
 
     /**
-     * @return Width.
-     */
-    public String getWidth() {
-        return width;
-    }
-
-    /**
-     * Set Width.
-     */
-    public void setWidth(String width) {
-        this.width = width;
-    }
-
-    /**
      * @return Heigth.
      */
     public String getHeight() {
@@ -72,55 +56,9 @@ public class Video extends Multimedia {
     }
 
     /**
-     * Set Audio Height.
+     * Set Height.
      */
     public void setHeight(String height) {
         this.height = height;
-    }
-
-    /**
-     * Set Audio Height.
-     */
-    public void setDurationFrom(String durationFrom) {
-        this.durationFrom = durationFrom;
-    }
-
-    public void setDurationTo(String durationTo) {
-        this.durationTo = durationTo;
-    }
-
-    /**
-     * @return durationFrom.
-     */
-    public String getDurationfrom() {
-        return durationFrom;
-    }
-
-    /**
-     * @return durationFrom.
-     */
-    public String getDurationTo() {
-        return durationTo;
-    }
-
-    /**
-     * Equals override to compare two video criteria.
-     * @param criteria - Criteria to be compare with.
-     * @return True if two criteria are equal.
-     */
-    public boolean equals(Criteria criteria) {
-        try {
-            Video videoCriteria = (Video) criteria;
-            if(this.getPath().equals(videoCriteria.getPath()) && this.getFileName().equals(videoCriteria.getFileName())
-                    && this.getExtension().equals(videoCriteria.getExtension()) &&
-                    this.videoCodec.equals(videoCriteria.videoCodec) &&
-                    this.frameRate.equals(videoCriteria.frameRate) && this.width == videoCriteria.width &&
-                    this.height == videoCriteria.height) {
-                return true;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-        return false;
     }
 }

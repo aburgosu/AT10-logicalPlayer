@@ -54,6 +54,8 @@ public class QueryForCriteriaTest {
             "2019-07-29", "Common", "{\"path\":\"resources/\"}");
         assertEquals(expectedCriteriaRecord.getJson(), actualCriteriaRecord.getJson());
         assertEquals(expectedCriteriaRecord.getId(), actualCriteriaRecord.getId());
+        assertEquals(expectedCriteriaRecord.getName(), actualCriteriaRecord.getName());
+        assertEquals(expectedCriteriaRecord.getType(), actualCriteriaRecord.getType());
         queryForCriteria.deleteById(idLastString);
     }
 }

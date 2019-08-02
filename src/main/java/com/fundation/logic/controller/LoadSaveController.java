@@ -467,7 +467,7 @@ public class LoadSaveController {
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelAudioAdvanced()
                 .getComboBoxAudioSampleRate().setSelectedIndex(optionSampleRate);
         //Set durationFrom
-        String durationFrom = criteria.getDurationfrom();
+        String durationFrom = criteria.getDurationFrom();
         Calendar calendar = Calendar.getInstance();
         if(StringToHour.getHours(durationFrom) == 0) {
             calendar.set(Calendar.HOUR, 24);
@@ -557,7 +557,7 @@ public class LoadSaveController {
         mainFrame.getMainTabs().getSplitPanelSearch().getSearchAdvanceTab().getPanelVideoAdvanced()
                 .getComboBoxResolution().setSelectedIndex(optionResolution);
         //Set durationFrom
-        String durationFrom = criteria.getDurationfrom();
+        String durationFrom = criteria.getDurationFrom();
         Calendar calendarFrom = Calendar.getInstance();
         if(StringToHour.getHours(durationFrom) == 0) {
             calendarFrom.set(Calendar.HOUR, 24);
